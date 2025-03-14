@@ -1,0 +1,6860 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Activity {
+  action: String!
+  contentId: Float!
+  contentType: String!
+  createdAt: DateTime
+  deletedUserId: Float
+  description: String!
+  details: String!
+  id: ID!
+  updatedAt: DateTime
+  userId: Float
+  userName: String!
+}
+
+type ActivityConnection {
+  """Array of edges."""
+  edges: [ActivityEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ActivityDeleteFilter {
+  and: [ActivityDeleteFilter!]
+  id: IDFilterComparison
+  or: [ActivityDeleteFilter!]
+  userName: StringFieldComparison
+}
+
+type ActivityDeleteResponse {
+  action: String
+  contentId: Float
+  contentType: String
+  createdAt: DateTime
+  deletedUserId: Float
+  description: String
+  details: String
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+  userName: String
+}
+
+type ActivityEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Activity"""
+  node: Activity!
+}
+
+input ActivityFilter {
+  and: [ActivityFilter!]
+  id: IDFilterComparison
+  or: [ActivityFilter!]
+  userName: StringFieldComparison
+}
+
+input ActivitySort {
+  direction: SortDirection!
+  field: ActivitySortFields!
+  nulls: SortNulls
+}
+
+enum ActivitySortFields {
+  id
+  userName
+}
+
+input ActivityUpdateFilter {
+  and: [ActivityUpdateFilter!]
+  id: IDFilterComparison
+  or: [ActivityUpdateFilter!]
+  userName: StringFieldComparison
+}
+
+type Address {
+  address: String!
+  address2: String
+  cityId: Float!
+  countryId: Float!
+  createdAt: DateTime
+  crmCompanyId: String
+  crmCompanyPersonId: String
+  deletedAt: DateTime
+  email: String
+  fullAddress: String
+  fullname: String
+  fullnameDescription: String
+  fullnameTrimmed: String
+  id: ID!
+  latitude: String
+  longitude: String
+  nationalId: String
+  oldAddress: String!
+  phone: String
+  phone2: String
+  sepidarId: Float
+  stateId: Float!
+  updatedAt: DateTime
+  userId: Float!
+  zipCode: String
+}
+
+type AddressConnection {
+  """Array of edges."""
+  edges: [AddressEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input AddressDeleteFilter {
+  and: [AddressDeleteFilter!]
+  id: IDFilterComparison
+  or: [AddressDeleteFilter!]
+}
+
+type AddressDeleteResponse {
+  address: String
+  address2: String
+  cityId: Float
+  countryId: Float
+  createdAt: DateTime
+  crmCompanyId: String
+  crmCompanyPersonId: String
+  deletedAt: DateTime
+  email: String
+  fullAddress: String
+  fullname: String
+  fullnameDescription: String
+  fullnameTrimmed: String
+  id: ID
+  latitude: String
+  longitude: String
+  nationalId: String
+  oldAddress: String
+  phone: String
+  phone2: String
+  sepidarId: Float
+  stateId: Float
+  updatedAt: DateTime
+  userId: Float
+  zipCode: String
+}
+
+type AddressEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Address"""
+  node: Address!
+}
+
+input AddressFilter {
+  and: [AddressFilter!]
+  id: IDFilterComparison
+  or: [AddressFilter!]
+}
+
+input AddressSort {
+  direction: SortDirection!
+  field: AddressSortFields!
+  nulls: SortNulls
+}
+
+enum AddressSortFields {
+  id
+}
+
+input AddressUpdateFilter {
+  and: [AddressUpdateFilter!]
+  id: IDFilterComparison
+  or: [AddressUpdateFilter!]
+}
+
+type Attribute {
+  createdAt: DateTime
+  id: Float!
+  isActive: Float
+  name: String!
+  sortOrder: Float
+  type: Float!
+  updatedAt: DateTime
+}
+
+type AttributeAttributeGroup {
+  attributeGroupId: Float!
+  attributeId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+}
+
+type AttributeGroup {
+  createdAt: DateTime
+  generalName: String
+  id: Float!
+  isActive: Float
+  name: String!
+  productCategoryId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type AttributeItem {
+  attributeGroupId: Float
+  attributeId: Float!
+  createdAt: DateTime
+  id: Float!
+  name: String!
+  updatedAt: DateTime
+}
+
+type AttributeProduct {
+  attributeId: Float!
+  attributeItemId: Float
+  createdAt: DateTime
+  id: Float!
+  isChecked: Boolean
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+  value: String
+}
+
+type AttributeSubproduct {
+  attributeId: Float!
+  attributeItemId: Float
+  createdAt: DateTime
+  id: Float!
+  isChecked: Boolean
+  subproductId: Float!
+  updatedAt: DateTime
+  value: String
+}
+
+type AutomationEvent {
+  createdAt: DateTime
+  deletedAt: DateTime
+  event: String!
+  eventDate: String!
+  eventDatetime: DateTime!
+  eventTimestamp: String!
+  id: ID!
+  lastEec: String
+  messages: String
+  onlineSheetSaved: Boolean!
+  rfmCat: String
+  rfmScore: String
+  smsSent: Boolean!
+  status: String!
+  triggerDatetime: DateTime!
+  type: String!
+  typeId: Float!
+  updatedAt: DateTime
+  userContact: String!
+  userId: Float
+  userName: String!
+  userUid: Float!
+}
+
+type AutomationEventConnection {
+  """Array of edges."""
+  edges: [AutomationEventEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input AutomationEventDeleteFilter {
+  and: [AutomationEventDeleteFilter!]
+  id: IDFilterComparison
+  or: [AutomationEventDeleteFilter!]
+}
+
+type AutomationEventDeleteResponse {
+  createdAt: DateTime
+  deletedAt: DateTime
+  event: String
+  eventDate: String
+  eventDatetime: DateTime
+  eventTimestamp: String
+  id: ID
+  lastEec: String
+  messages: String
+  onlineSheetSaved: Boolean
+  rfmCat: String
+  rfmScore: String
+  smsSent: Boolean
+  status: String
+  triggerDatetime: DateTime
+  type: String
+  typeId: Float
+  updatedAt: DateTime
+  userContact: String
+  userId: Float
+  userName: String
+  userUid: Float
+}
+
+type AutomationEventEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the AutomationEvent"""
+  node: AutomationEvent!
+}
+
+input AutomationEventFilter {
+  and: [AutomationEventFilter!]
+  id: IDFilterComparison
+  or: [AutomationEventFilter!]
+}
+
+input AutomationEventSort {
+  direction: SortDirection!
+  field: AutomationEventSortFields!
+  nulls: SortNulls
+}
+
+enum AutomationEventSortFields {
+  id
+}
+
+input AutomationEventUpdateFilter {
+  and: [AutomationEventUpdateFilter!]
+  id: IDFilterComparison
+  or: [AutomationEventUpdateFilter!]
+}
+
+type AutomationRfmScore {
+  id: ID!
+  rfmScore: String!
+  rfmScoreCode: String!
+  rfmScoreTitle: String!
+}
+
+type AutomationRfmScoreConnection {
+  """Array of edges."""
+  edges: [AutomationRfmScoreEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input AutomationRfmScoreDeleteFilter {
+  and: [AutomationRfmScoreDeleteFilter!]
+  id: IDFilterComparison
+  or: [AutomationRfmScoreDeleteFilter!]
+}
+
+type AutomationRfmScoreDeleteResponse {
+  id: ID
+  rfmScore: String
+  rfmScoreCode: String
+  rfmScoreTitle: String
+}
+
+type AutomationRfmScoreEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the AutomationRfmScore"""
+  node: AutomationRfmScore!
+}
+
+input AutomationRfmScoreFilter {
+  and: [AutomationRfmScoreFilter!]
+  id: IDFilterComparison
+  or: [AutomationRfmScoreFilter!]
+}
+
+input AutomationRfmScoreSort {
+  direction: SortDirection!
+  field: AutomationRfmScoreSortFields!
+  nulls: SortNulls
+}
+
+enum AutomationRfmScoreSortFields {
+  id
+}
+
+input AutomationRfmScoreUpdateFilter {
+  and: [AutomationRfmScoreUpdateFilter!]
+  id: IDFilterComparison
+  or: [AutomationRfmScoreUpdateFilter!]
+}
+
+type BasicCarpetBorder {
+  code: String!
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime
+}
+
+type BasicCarpetBorderConnection {
+  """Array of edges."""
+  edges: [BasicCarpetBorderEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetBorderDeleteFilter {
+  and: [BasicCarpetBorderDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetBorderDeleteFilter!]
+}
+
+type BasicCarpetBorderDeleteResponse {
+  code: String
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetBorderEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetBorder"""
+  node: BasicCarpetBorder!
+}
+
+input BasicCarpetBorderFilter {
+  and: [BasicCarpetBorderFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetBorderFilter!]
+}
+
+input BasicCarpetBorderSort {
+  direction: SortDirection!
+  field: BasicCarpetBorderSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetBorderSortFields {
+  id
+}
+
+input BasicCarpetBorderUpdateFilter {
+  and: [BasicCarpetBorderUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetBorderUpdateFilter!]
+}
+
+type BasicCarpetColor {
+  code: String!
+  colorCode: String
+  createdAt: DateTime!
+  englishTitle: String
+  id: ID!
+  isActive: Boolean!
+  persianTitle: String
+  russianTitle: String
+  shortCode: String
+  sortOrder: Float
+  spanishTitle: String
+  title: String!
+  updatedAt: DateTime!
+}
+
+type BasicCarpetColorConnection {
+  """Array of edges."""
+  edges: [BasicCarpetColorEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetColorDeleteFilter {
+  and: [BasicCarpetColorDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetColorDeleteFilter!]
+}
+
+type BasicCarpetColorDeleteResponse {
+  code: String
+  colorCode: String
+  createdAt: DateTime
+  englishTitle: String
+  id: ID
+  isActive: Boolean
+  persianTitle: String
+  russianTitle: String
+  shortCode: String
+  sortOrder: Float
+  spanishTitle: String
+  title: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetColorEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetColor"""
+  node: BasicCarpetColor!
+}
+
+input BasicCarpetColorFilter {
+  and: [BasicCarpetColorFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetColorFilter!]
+}
+
+input BasicCarpetColorSort {
+  direction: SortDirection!
+  field: BasicCarpetColorSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetColorSortFields {
+  id
+}
+
+input BasicCarpetColorUpdateFilter {
+  and: [BasicCarpetColorUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetColorUpdateFilter!]
+}
+
+type BasicCarpetDesign {
+  code: String!
+  createdAt: DateTime!
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime!
+}
+
+type BasicCarpetDesignConnection {
+  """Array of edges."""
+  edges: [BasicCarpetDesignEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetDesignDeleteFilter {
+  and: [BasicCarpetDesignDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetDesignDeleteFilter!]
+}
+
+type BasicCarpetDesignDeleteResponse {
+  code: String
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetDesignEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetDesign"""
+  node: BasicCarpetDesign!
+}
+
+input BasicCarpetDesignFilter {
+  and: [BasicCarpetDesignFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetDesignFilter!]
+}
+
+input BasicCarpetDesignSort {
+  direction: SortDirection!
+  field: BasicCarpetDesignSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetDesignSortFields {
+  id
+}
+
+input BasicCarpetDesignUpdateFilter {
+  and: [BasicCarpetDesignUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetDesignUpdateFilter!]
+}
+
+type BasicCarpetDesigner {
+  cityId: Float
+  code: String!
+  countryId: Float
+  createdAt: DateTime!
+  description: String
+  facebookId: String
+  headerImage: String
+  id: ID!
+  instagramId: String
+  isActive: Boolean!
+  linkedinId: String
+  pricePercentage: Float
+  profilePicture: String
+  selfEmployed: Boolean
+  sortOrder: Float
+  stateId: Float
+  title: String!
+  twitterId: String
+  updatedAt: DateTime!
+  userId: Float
+}
+
+type BasicCarpetDesignerConnection {
+  """Array of edges."""
+  edges: [BasicCarpetDesignerEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetDesignerDeleteFilter {
+  and: [BasicCarpetDesignerDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetDesignerDeleteFilter!]
+}
+
+type BasicCarpetDesignerDeleteResponse {
+  cityId: Float
+  code: String
+  countryId: Float
+  createdAt: DateTime
+  description: String
+  facebookId: String
+  headerImage: String
+  id: ID
+  instagramId: String
+  isActive: Boolean
+  linkedinId: String
+  pricePercentage: Float
+  profilePicture: String
+  selfEmployed: Boolean
+  sortOrder: Float
+  stateId: Float
+  title: String
+  twitterId: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type BasicCarpetDesignerEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetDesigner"""
+  node: BasicCarpetDesigner!
+}
+
+input BasicCarpetDesignerFilter {
+  and: [BasicCarpetDesignerFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetDesignerFilter!]
+}
+
+input BasicCarpetDesignerSort {
+  direction: SortDirection!
+  field: BasicCarpetDesignerSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetDesignerSortFields {
+  id
+}
+
+input BasicCarpetDesignerUpdateFilter {
+  and: [BasicCarpetDesignerUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetDesignerUpdateFilter!]
+}
+
+type BasicCarpetMaterial {
+  code: String!
+  createdAt: DateTime!
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime!
+}
+
+type BasicCarpetMaterialConnection {
+  """Array of edges."""
+  edges: [BasicCarpetMaterialEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetMaterialDeleteFilter {
+  and: [BasicCarpetMaterialDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetMaterialDeleteFilter!]
+}
+
+type BasicCarpetMaterialDeleteResponse {
+  code: String
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetMaterialEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetMaterial"""
+  node: BasicCarpetMaterial!
+}
+
+input BasicCarpetMaterialFilter {
+  and: [BasicCarpetMaterialFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetMaterialFilter!]
+}
+
+input BasicCarpetMaterialSort {
+  direction: SortDirection!
+  field: BasicCarpetMaterialSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetMaterialSortFields {
+  id
+}
+
+input BasicCarpetMaterialUpdateFilter {
+  and: [BasicCarpetMaterialUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetMaterialUpdateFilter!]
+}
+
+type BasicCarpetSize {
+  altText: String
+  altTextEn: String
+  carpetVolume: Float
+  code: String!
+  createdAt: DateTime!
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: ID!
+  imageId: Float
+  isActive: Boolean!
+  length: Float!
+  lengthText: String
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  padVolume: Float
+  pageTitle: String
+  pageTitleEn: String
+  sizeText: String
+  sizeTextEn: String
+  sortOrder: Float
+  title: String!
+  titleEn: String
+  unitRatio: Float!
+  updatedAt: DateTime!
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float!
+  width: Float!
+  widthText: String
+}
+
+type BasicCarpetSizeConnection {
+  """Array of edges."""
+  edges: [BasicCarpetSizeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetSizeDeleteFilter {
+  and: [BasicCarpetSizeDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetSizeDeleteFilter!]
+}
+
+type BasicCarpetSizeDeleteResponse {
+  altText: String
+  altTextEn: String
+  carpetVolume: Float
+  code: String
+  createdAt: DateTime
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: ID
+  imageId: Float
+  isActive: Boolean
+  length: Float
+  lengthText: String
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  padVolume: Float
+  pageTitle: String
+  pageTitleEn: String
+  sizeText: String
+  sizeTextEn: String
+  sortOrder: Float
+  title: String
+  titleEn: String
+  unitRatio: Float
+  updatedAt: DateTime
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float
+  width: Float
+  widthText: String
+}
+
+type BasicCarpetSizeDetail {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetSizeDetailConnection {
+  """Array of edges."""
+  edges: [BasicCarpetSizeDetailEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetSizeDetailDeleteFilter {
+  and: [BasicCarpetSizeDetailDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetSizeDetailDeleteFilter!]
+}
+
+type BasicCarpetSizeDetailDeleteResponse {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetSizeDetailEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetSizeDetail"""
+  node: BasicCarpetSizeDetail!
+}
+
+input BasicCarpetSizeDetailFilter {
+  and: [BasicCarpetSizeDetailFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetSizeDetailFilter!]
+}
+
+input BasicCarpetSizeDetailSort {
+  direction: SortDirection!
+  field: BasicCarpetSizeDetailSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetSizeDetailSortFields {
+  id
+}
+
+input BasicCarpetSizeDetailUpdateFilter {
+  and: [BasicCarpetSizeDetailUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetSizeDetailUpdateFilter!]
+}
+
+type BasicCarpetSizeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetSize"""
+  node: BasicCarpetSize!
+}
+
+input BasicCarpetSizeFilter {
+  and: [BasicCarpetSizeFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetSizeFilter!]
+}
+
+input BasicCarpetSizeSort {
+  direction: SortDirection!
+  field: BasicCarpetSizeSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetSizeSortFields {
+  id
+}
+
+input BasicCarpetSizeUpdateFilter {
+  and: [BasicCarpetSizeUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetSizeUpdateFilter!]
+}
+
+type BasicCarpetType {
+  code: String!
+  createdAt: DateTime!
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime!
+}
+
+type BasicCarpetTypeConnection {
+  """Array of edges."""
+  edges: [BasicCarpetTypeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BasicCarpetTypeDeleteFilter {
+  and: [BasicCarpetTypeDeleteFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetTypeDeleteFilter!]
+}
+
+type BasicCarpetTypeDeleteResponse {
+  code: String
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type BasicCarpetTypeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the BasicCarpetType"""
+  node: BasicCarpetType!
+}
+
+input BasicCarpetTypeFilter {
+  and: [BasicCarpetTypeFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetTypeFilter!]
+}
+
+input BasicCarpetTypeSort {
+  direction: SortDirection!
+  field: BasicCarpetTypeSortFields!
+  nulls: SortNulls
+}
+
+enum BasicCarpetTypeSortFields {
+  id
+}
+
+input BasicCarpetTypeUpdateFilter {
+  and: [BasicCarpetTypeUpdateFilter!]
+  id: IDFilterComparison
+  or: [BasicCarpetTypeUpdateFilter!]
+}
+
+type Border {
+  code: String!
+  count: Float
+  id: ID!
+}
+
+type BorderConnection {
+  """Array of edges."""
+  edges: [BorderEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input BorderDeleteFilter {
+  and: [BorderDeleteFilter!]
+  id: IDFilterComparison
+  or: [BorderDeleteFilter!]
+}
+
+type BorderDeleteResponse {
+  code: String
+  count: Float
+  id: ID
+}
+
+type BorderEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Border"""
+  node: Border!
+}
+
+input BorderFilter {
+  and: [BorderFilter!]
+  id: IDFilterComparison
+  or: [BorderFilter!]
+}
+
+input BorderSort {
+  direction: SortDirection!
+  field: BorderSortFields!
+  nulls: SortNulls
+}
+
+enum BorderSortFields {
+  id
+}
+
+input BorderUpdateFilter {
+  and: [BorderUpdateFilter!]
+  id: IDFilterComparison
+  or: [BorderUpdateFilter!]
+}
+
+type CampaignFreeOffer {
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  minPrice: String!
+  updatedAt: DateTime
+}
+
+type CampaignFreeOfferConnection {
+  """Array of edges."""
+  edges: [CampaignFreeOfferEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignFreeOfferDeleteFilter {
+  and: [CampaignFreeOfferDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignFreeOfferDeleteFilter!]
+}
+
+type CampaignFreeOfferDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  minPrice: String
+  updatedAt: DateTime
+}
+
+type CampaignFreeOfferEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignFreeOffer"""
+  node: CampaignFreeOffer!
+}
+
+input CampaignFreeOfferFilter {
+  and: [CampaignFreeOfferFilter!]
+  id: IDFilterComparison
+  or: [CampaignFreeOfferFilter!]
+}
+
+type CampaignFreeOfferSize {
+  basicCarpetSizeId: Float!
+  campaignFreeOfferId: Float!
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+}
+
+type CampaignFreeOfferSizeConnection {
+  """Array of edges."""
+  edges: [CampaignFreeOfferSizeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignFreeOfferSizeDeleteFilter {
+  and: [CampaignFreeOfferSizeDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignFreeOfferSizeDeleteFilter!]
+}
+
+type CampaignFreeOfferSizeDeleteResponse {
+  basicCarpetSizeId: Float
+  campaignFreeOfferId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+}
+
+type CampaignFreeOfferSizeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignFreeOfferSize"""
+  node: CampaignFreeOfferSize!
+}
+
+input CampaignFreeOfferSizeFilter {
+  and: [CampaignFreeOfferSizeFilter!]
+  id: IDFilterComparison
+  or: [CampaignFreeOfferSizeFilter!]
+}
+
+input CampaignFreeOfferSizeSort {
+  direction: SortDirection!
+  field: CampaignFreeOfferSizeSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignFreeOfferSizeSortFields {
+  id
+}
+
+input CampaignFreeOfferSizeUpdateFilter {
+  and: [CampaignFreeOfferSizeUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignFreeOfferSizeUpdateFilter!]
+}
+
+input CampaignFreeOfferSort {
+  direction: SortDirection!
+  field: CampaignFreeOfferSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignFreeOfferSortFields {
+  id
+}
+
+input CampaignFreeOfferUpdateFilter {
+  and: [CampaignFreeOfferUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignFreeOfferUpdateFilter!]
+}
+
+type CampaignGoldCoinSub {
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type CampaignGoldCoinSubConnection {
+  """Array of edges."""
+  edges: [CampaignGoldCoinSubEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignGoldCoinSubDeleteFilter {
+  and: [CampaignGoldCoinSubDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignGoldCoinSubDeleteFilter!]
+}
+
+type CampaignGoldCoinSubDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignGoldCoinSubEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignGoldCoinSub"""
+  node: CampaignGoldCoinSub!
+}
+
+input CampaignGoldCoinSubFilter {
+  and: [CampaignGoldCoinSubFilter!]
+  id: IDFilterComparison
+  or: [CampaignGoldCoinSubFilter!]
+}
+
+input CampaignGoldCoinSubSort {
+  direction: SortDirection!
+  field: CampaignGoldCoinSubSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignGoldCoinSubSortFields {
+  id
+}
+
+input CampaignGoldCoinSubUpdateFilter {
+  and: [CampaignGoldCoinSubUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignGoldCoinSubUpdateFilter!]
+}
+
+type CampaignInstagramFollow {
+  answerNo: Int
+  birthYear: Int
+  createdAt: DateTime
+  id: ID!
+  image1: String
+  image2: String
+  name: String!
+  phone: String!
+  phoneVerified: Boolean!
+  sex: Int
+  updatedAt: DateTime
+  userId: Int
+  verificationCode: String
+}
+
+type CampaignInstagramFollowConnection {
+  """Array of edges."""
+  edges: [CampaignInstagramFollowEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignInstagramFollowDeleteFilter {
+  and: [CampaignInstagramFollowDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignInstagramFollowDeleteFilter!]
+}
+
+type CampaignInstagramFollowDeleteResponse {
+  answerNo: Int
+  birthYear: Int
+  createdAt: DateTime
+  id: ID
+  image1: String
+  image2: String
+  name: String
+  phone: String
+  phoneVerified: Boolean
+  sex: Int
+  updatedAt: DateTime
+  userId: Int
+  verificationCode: String
+}
+
+type CampaignInstagramFollowEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignInstagramFollow"""
+  node: CampaignInstagramFollow!
+}
+
+input CampaignInstagramFollowFilter {
+  and: [CampaignInstagramFollowFilter!]
+  id: IDFilterComparison
+  or: [CampaignInstagramFollowFilter!]
+}
+
+input CampaignInstagramFollowSort {
+  direction: SortDirection!
+  field: CampaignInstagramFollowSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignInstagramFollowSortFields {
+  id
+}
+
+input CampaignInstagramFollowUpdateFilter {
+  and: [CampaignInstagramFollowUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignInstagramFollowUpdateFilter!]
+}
+
+type CampaignPetForm {
+  couponId: Float
+  createdAt: DateTime
+  discountAmount: Float!
+  donationAmount: Float!
+  filename: String
+  id: ID!
+  mime: String
+  originalFilename: String
+  path: String
+  petName: String
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type CampaignPetFormConnection {
+  """Array of edges."""
+  edges: [CampaignPetFormEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignPetFormDeleteFilter {
+  and: [CampaignPetFormDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignPetFormDeleteFilter!]
+}
+
+type CampaignPetFormDeleteResponse {
+  couponId: Float
+  createdAt: DateTime
+  discountAmount: Float
+  donationAmount: Float
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String
+  petName: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignPetFormEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignPetForm"""
+  node: CampaignPetForm!
+}
+
+input CampaignPetFormFilter {
+  and: [CampaignPetFormFilter!]
+  id: IDFilterComparison
+  or: [CampaignPetFormFilter!]
+}
+
+input CampaignPetFormSort {
+  direction: SortDirection!
+  field: CampaignPetFormSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignPetFormSortFields {
+  id
+}
+
+input CampaignPetFormUpdateFilter {
+  and: [CampaignPetFormUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignPetFormUpdateFilter!]
+}
+
+type CampaignRoomvoImage {
+  createdAt: DateTime
+  filename: String
+  id: ID!
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  userId: Float!
+  votesCount: Float!
+}
+
+type CampaignRoomvoImageConnection {
+  """Array of edges."""
+  edges: [CampaignRoomvoImageEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignRoomvoImageDeleteFilter {
+  and: [CampaignRoomvoImageDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignRoomvoImageDeleteFilter!]
+}
+
+type CampaignRoomvoImageDeleteResponse {
+  createdAt: DateTime
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  userId: Float
+  votesCount: Float
+}
+
+type CampaignRoomvoImageEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignRoomvoImage"""
+  node: CampaignRoomvoImage!
+}
+
+input CampaignRoomvoImageFilter {
+  and: [CampaignRoomvoImageFilter!]
+  id: IDFilterComparison
+  or: [CampaignRoomvoImageFilter!]
+}
+
+input CampaignRoomvoImageSort {
+  direction: SortDirection!
+  field: CampaignRoomvoImageSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignRoomvoImageSortFields {
+  id
+}
+
+input CampaignRoomvoImageUpdateFilter {
+  and: [CampaignRoomvoImageUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignRoomvoImageUpdateFilter!]
+}
+
+type CampaignRoomvoVote {
+  campaignRoomvoImageId: Float!
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type CampaignRoomvoVoteConnection {
+  """Array of edges."""
+  edges: [CampaignRoomvoVoteEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignRoomvoVoteDeleteFilter {
+  and: [CampaignRoomvoVoteDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignRoomvoVoteDeleteFilter!]
+}
+
+type CampaignRoomvoVoteDeleteResponse {
+  campaignRoomvoImageId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignRoomvoVoteEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignRoomvoVote"""
+  node: CampaignRoomvoVote!
+}
+
+input CampaignRoomvoVoteFilter {
+  and: [CampaignRoomvoVoteFilter!]
+  id: IDFilterComparison
+  or: [CampaignRoomvoVoteFilter!]
+}
+
+input CampaignRoomvoVoteSort {
+  direction: SortDirection!
+  field: CampaignRoomvoVoteSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignRoomvoVoteSortFields {
+  id
+}
+
+input CampaignRoomvoVoteUpdateFilter {
+  and: [CampaignRoomvoVoteUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignRoomvoVoteUpdateFilter!]
+}
+
+type CampaignSubscription {
+  campaignName: String
+  code: Int
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Int!
+}
+
+type CampaignSubscriptionConnection {
+  """Array of edges."""
+  edges: [CampaignSubscriptionEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignSubscriptionDeleteFilter {
+  and: [CampaignSubscriptionDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignSubscriptionDeleteFilter!]
+}
+
+type CampaignSubscriptionDeleteResponse {
+  campaignName: String
+  code: Int
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Int
+}
+
+type CampaignSubscriptionEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignSubscription"""
+  node: CampaignSubscription!
+}
+
+input CampaignSubscriptionFilter {
+  and: [CampaignSubscriptionFilter!]
+  id: IDFilterComparison
+  or: [CampaignSubscriptionFilter!]
+}
+
+input CampaignSubscriptionSort {
+  direction: SortDirection!
+  field: CampaignSubscriptionSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignSubscriptionSortFields {
+  id
+}
+
+input CampaignSubscriptionUpdateFilter {
+  and: [CampaignSubscriptionUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignSubscriptionUpdateFilter!]
+}
+
+type CampaignUefaEuroSubscriber {
+  contactFormStatusId: Float!
+  createdAt: DateTime
+  id: ID!
+  mobile: String!
+  status: Float!
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignUefaEuroSubscriberConnection {
+  """Array of edges."""
+  edges: [CampaignUefaEuroSubscriberEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignUefaEuroSubscriberDeleteFilter {
+  and: [CampaignUefaEuroSubscriberDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignUefaEuroSubscriberDeleteFilter!]
+}
+
+type CampaignUefaEuroSubscriberDeleteResponse {
+  contactFormStatusId: Float
+  createdAt: DateTime
+  id: ID
+  mobile: String
+  status: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignUefaEuroSubscriberEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignUefaEuroSubscriber"""
+  node: CampaignUefaEuroSubscriber!
+}
+
+input CampaignUefaEuroSubscriberFilter {
+  and: [CampaignUefaEuroSubscriberFilter!]
+  id: IDFilterComparison
+  or: [CampaignUefaEuroSubscriberFilter!]
+}
+
+type CampaignUefaEuroSubscriberHistory {
+  campaignUefaEuroSubscriberId: Float!
+  comment: String
+  contactFormStatusId: Float!
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignUefaEuroSubscriberHistoryConnection {
+  """Array of edges."""
+  edges: [CampaignUefaEuroSubscriberHistoryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignUefaEuroSubscriberHistoryDeleteFilter {
+  and: [CampaignUefaEuroSubscriberHistoryDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignUefaEuroSubscriberHistoryDeleteFilter!]
+}
+
+type CampaignUefaEuroSubscriberHistoryDeleteResponse {
+  campaignUefaEuroSubscriberId: Float
+  comment: String
+  contactFormStatusId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CampaignUefaEuroSubscriberHistoryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignUefaEuroSubscriberHistory"""
+  node: CampaignUefaEuroSubscriberHistory!
+}
+
+input CampaignUefaEuroSubscriberHistoryFilter {
+  and: [CampaignUefaEuroSubscriberHistoryFilter!]
+  id: IDFilterComparison
+  or: [CampaignUefaEuroSubscriberHistoryFilter!]
+}
+
+input CampaignUefaEuroSubscriberHistorySort {
+  direction: SortDirection!
+  field: CampaignUefaEuroSubscriberHistorySortFields!
+  nulls: SortNulls
+}
+
+enum CampaignUefaEuroSubscriberHistorySortFields {
+  id
+}
+
+input CampaignUefaEuroSubscriberHistoryUpdateFilter {
+  and: [CampaignUefaEuroSubscriberHistoryUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignUefaEuroSubscriberHistoryUpdateFilter!]
+}
+
+input CampaignUefaEuroSubscriberSort {
+  direction: SortDirection!
+  field: CampaignUefaEuroSubscriberSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignUefaEuroSubscriberSortFields {
+  id
+}
+
+input CampaignUefaEuroSubscriberUpdateFilter {
+  and: [CampaignUefaEuroSubscriberUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignUefaEuroSubscriberUpdateFilter!]
+}
+
+type CampaignVotingImage {
+  campaignNo: Float!
+  createdAt: DateTime
+  id: ID!
+  imageId: Float
+  isActive: Boolean!
+  sortOrder: Float!
+  title: String!
+  updatedAt: DateTime
+}
+
+type CampaignVotingImageConnection {
+  """Array of edges."""
+  edges: [CampaignVotingImageEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CampaignVotingImageDeleteFilter {
+  and: [CampaignVotingImageDeleteFilter!]
+  id: IDFilterComparison
+  or: [CampaignVotingImageDeleteFilter!]
+}
+
+type CampaignVotingImageDeleteResponse {
+  campaignNo: Float
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type CampaignVotingImageEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CampaignVotingImage"""
+  node: CampaignVotingImage!
+}
+
+input CampaignVotingImageFilter {
+  and: [CampaignVotingImageFilter!]
+  id: IDFilterComparison
+  or: [CampaignVotingImageFilter!]
+}
+
+input CampaignVotingImageSort {
+  direction: SortDirection!
+  field: CampaignVotingImageSortFields!
+  nulls: SortNulls
+}
+
+enum CampaignVotingImageSortFields {
+  id
+}
+
+input CampaignVotingImageUpdateFilter {
+  and: [CampaignVotingImageUpdateFilter!]
+  id: IDFilterComparison
+  or: [CampaignVotingImageUpdateFilter!]
+}
+
+type CarpetFeature {
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime
+}
+
+type CarpetFeatureConnection {
+  """Array of edges."""
+  edges: [CarpetFeatureEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetFeatureDeleteFilter {
+  and: [CarpetFeatureDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetFeatureDeleteFilter!]
+}
+
+type CarpetFeatureDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type CarpetFeatureEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetFeature"""
+  node: CarpetFeature!
+}
+
+input CarpetFeatureFilter {
+  and: [CarpetFeatureFilter!]
+  id: IDFilterComparison
+  or: [CarpetFeatureFilter!]
+}
+
+input CarpetFeatureSort {
+  direction: SortDirection!
+  field: CarpetFeatureSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetFeatureSortFields {
+  id
+}
+
+input CarpetFeatureUpdateFilter {
+  and: [CarpetFeatureUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetFeatureUpdateFilter!]
+}
+
+type CarpetFeatureUser {
+  carpetFeatureId: Float!
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type CarpetFeatureUserConnection {
+  """Array of edges."""
+  edges: [CarpetFeatureUserEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetFeatureUserDeleteFilter {
+  and: [CarpetFeatureUserDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetFeatureUserDeleteFilter!]
+}
+
+type CarpetFeatureUserDeleteResponse {
+  carpetFeatureId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CarpetFeatureUserEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetFeatureUser"""
+  node: CarpetFeatureUser!
+}
+
+input CarpetFeatureUserFilter {
+  and: [CarpetFeatureUserFilter!]
+  id: IDFilterComparison
+  or: [CarpetFeatureUserFilter!]
+}
+
+input CarpetFeatureUserSort {
+  direction: SortDirection!
+  field: CarpetFeatureUserSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetFeatureUserSortFields {
+  id
+}
+
+input CarpetFeatureUserUpdateFilter {
+  and: [CarpetFeatureUserUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetFeatureUserUpdateFilter!]
+}
+
+type CarpetMaterial {
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  name: String!
+  pricePerInch: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type CarpetMaterialConnection {
+  """Array of edges."""
+  edges: [CarpetMaterialEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetMaterialDeleteFilter {
+  and: [CarpetMaterialDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetMaterialDeleteFilter!]
+}
+
+type CarpetMaterialDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  name: String
+  pricePerInch: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type CarpetMaterialEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetMaterial"""
+  node: CarpetMaterial!
+}
+
+input CarpetMaterialFilter {
+  and: [CarpetMaterialFilter!]
+  id: IDFilterComparison
+  or: [CarpetMaterialFilter!]
+}
+
+input CarpetMaterialSort {
+  direction: SortDirection!
+  field: CarpetMaterialSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetMaterialSortFields {
+  id
+}
+
+input CarpetMaterialUpdateFilter {
+  and: [CarpetMaterialUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetMaterialUpdateFilter!]
+}
+
+type CarpetShape {
+  createdAt: DateTime
+  hasLength: Boolean!
+  id: ID!
+  isActive: Boolean!
+  maxLength: Float!
+  maxWidth: Float!
+  minLength: Float!
+  minWidth: Float!
+  name: String!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type CarpetShapeConnection {
+  """Array of edges."""
+  edges: [CarpetShapeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetShapeDeleteFilter {
+  and: [CarpetShapeDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetShapeDeleteFilter!]
+}
+
+type CarpetShapeDeleteResponse {
+  createdAt: DateTime
+  hasLength: Boolean
+  id: ID
+  isActive: Boolean
+  maxLength: Float
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  name: String
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type CarpetShapeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetShape"""
+  node: CarpetShape!
+}
+
+input CarpetShapeFilter {
+  and: [CarpetShapeFilter!]
+  id: IDFilterComparison
+  or: [CarpetShapeFilter!]
+}
+
+input CarpetShapeSort {
+  direction: SortDirection!
+  field: CarpetShapeSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetShapeSortFields {
+  id
+}
+
+input CarpetShapeUpdateFilter {
+  and: [CarpetShapeUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetShapeUpdateFilter!]
+}
+
+type CarpetSize {
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  length: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+  width: Float!
+}
+
+type CarpetSizeConnection {
+  """Array of edges."""
+  edges: [CarpetSizeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetSizeDeleteFilter {
+  and: [CarpetSizeDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetSizeDeleteFilter!]
+}
+
+type CarpetSizeDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  length: Float
+  sortOrder: Float
+  updatedAt: DateTime
+  width: Float
+}
+
+type CarpetSizeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetSize"""
+  node: CarpetSize!
+}
+
+input CarpetSizeFilter {
+  and: [CarpetSizeFilter!]
+  id: IDFilterComparison
+  or: [CarpetSizeFilter!]
+}
+
+input CarpetSizeSort {
+  direction: SortDirection!
+  field: CarpetSizeSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetSizeSortFields {
+  id
+}
+
+input CarpetSizeUpdateFilter {
+  and: [CarpetSizeUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetSizeUpdateFilter!]
+}
+
+type CarpetUsagePlace {
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime
+}
+
+type CarpetUsagePlaceConnection {
+  """Array of edges."""
+  edges: [CarpetUsagePlaceEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetUsagePlaceDeleteFilter {
+  and: [CarpetUsagePlaceDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceDeleteFilter!]
+}
+
+type CarpetUsagePlaceDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+type CarpetUsagePlaceEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetUsagePlace"""
+  node: CarpetUsagePlace!
+}
+
+input CarpetUsagePlaceFilter {
+  and: [CarpetUsagePlaceFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceFilter!]
+}
+
+type CarpetUsagePlaceInvoiceProduct {
+  carpetUsagePlaceId: Float!
+  createdAt: DateTime
+  id: ID!
+  invoiceProductId: Float!
+  row: Float!
+  updatedAt: DateTime
+}
+
+type CarpetUsagePlaceInvoiceProductConnection {
+  """Array of edges."""
+  edges: [CarpetUsagePlaceInvoiceProductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetUsagePlaceInvoiceProductDeleteFilter {
+  and: [CarpetUsagePlaceInvoiceProductDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceInvoiceProductDeleteFilter!]
+}
+
+type CarpetUsagePlaceInvoiceProductDeleteResponse {
+  carpetUsagePlaceId: Float
+  createdAt: DateTime
+  id: ID
+  invoiceProductId: Float
+  row: Float
+  updatedAt: DateTime
+}
+
+type CarpetUsagePlaceInvoiceProductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetUsagePlaceInvoiceProduct"""
+  node: CarpetUsagePlaceInvoiceProduct!
+}
+
+input CarpetUsagePlaceInvoiceProductFilter {
+  and: [CarpetUsagePlaceInvoiceProductFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceInvoiceProductFilter!]
+}
+
+input CarpetUsagePlaceInvoiceProductSort {
+  direction: SortDirection!
+  field: CarpetUsagePlaceInvoiceProductSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetUsagePlaceInvoiceProductSortFields {
+  id
+}
+
+input CarpetUsagePlaceInvoiceProductUpdateFilter {
+  and: [CarpetUsagePlaceInvoiceProductUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceInvoiceProductUpdateFilter!]
+}
+
+input CarpetUsagePlaceSort {
+  direction: SortDirection!
+  field: CarpetUsagePlaceSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetUsagePlaceSortFields {
+  id
+}
+
+input CarpetUsagePlaceUpdateFilter {
+  and: [CarpetUsagePlaceUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceUpdateFilter!]
+}
+
+type CarpetUsagePlaceUser {
+  carpetUsagePlaceId: Float!
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type CarpetUsagePlaceUserConnection {
+  """Array of edges."""
+  edges: [CarpetUsagePlaceUserEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CarpetUsagePlaceUserDeleteFilter {
+  and: [CarpetUsagePlaceUserDeleteFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceUserDeleteFilter!]
+}
+
+type CarpetUsagePlaceUserDeleteResponse {
+  carpetUsagePlaceId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+type CarpetUsagePlaceUserEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CarpetUsagePlaceUser"""
+  node: CarpetUsagePlaceUser!
+}
+
+input CarpetUsagePlaceUserFilter {
+  and: [CarpetUsagePlaceUserFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceUserFilter!]
+}
+
+input CarpetUsagePlaceUserSort {
+  direction: SortDirection!
+  field: CarpetUsagePlaceUserSortFields!
+  nulls: SortNulls
+}
+
+enum CarpetUsagePlaceUserSortFields {
+  id
+}
+
+input CarpetUsagePlaceUserUpdateFilter {
+  and: [CarpetUsagePlaceUserUpdateFilter!]
+  id: IDFilterComparison
+  or: [CarpetUsagePlaceUserUpdateFilter!]
+}
+
+type ChaparSettlementStatus {
+  createdAt: DateTime
+  id: ID!
+  status: String!
+  updatedAt: DateTime
+}
+
+type ChaparSettlementStatusConnection {
+  """Array of edges."""
+  edges: [ChaparSettlementStatusEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ChaparSettlementStatusDeleteFilter {
+  and: [ChaparSettlementStatusDeleteFilter!]
+  id: IDFilterComparison
+  or: [ChaparSettlementStatusDeleteFilter!]
+}
+
+type ChaparSettlementStatusDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  status: String
+  updatedAt: DateTime
+}
+
+type ChaparSettlementStatusEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ChaparSettlementStatus"""
+  node: ChaparSettlementStatus!
+}
+
+input ChaparSettlementStatusFilter {
+  and: [ChaparSettlementStatusFilter!]
+  id: IDFilterComparison
+  or: [ChaparSettlementStatusFilter!]
+}
+
+input ChaparSettlementStatusSort {
+  direction: SortDirection!
+  field: ChaparSettlementStatusSortFields!
+  nulls: SortNulls
+}
+
+enum ChaparSettlementStatusSortFields {
+  id
+}
+
+input ChaparSettlementStatusUpdateFilter {
+  and: [ChaparSettlementStatusUpdateFilter!]
+  id: IDFilterComparison
+  or: [ChaparSettlementStatusUpdateFilter!]
+}
+
+type ChaparTrackingHistory {
+  createdAt: DateTime
+  date: String!
+  id: ID!
+  invoiceId: Float!
+  reference: String!
+  status: String!
+  statusNote: String!
+  time: String!
+  tracking: String!
+  updatedAt: DateTime
+}
+
+type ChaparTrackingHistoryConnection {
+  """Array of edges."""
+  edges: [ChaparTrackingHistoryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ChaparTrackingHistoryDeleteFilter {
+  and: [ChaparTrackingHistoryDeleteFilter!]
+  id: IDFilterComparison
+  or: [ChaparTrackingHistoryDeleteFilter!]
+}
+
+type ChaparTrackingHistoryDeleteResponse {
+  createdAt: DateTime
+  date: String
+  id: ID
+  invoiceId: Float
+  reference: String
+  status: String
+  statusNote: String
+  time: String
+  tracking: String
+  updatedAt: DateTime
+}
+
+type ChaparTrackingHistoryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ChaparTrackingHistory"""
+  node: ChaparTrackingHistory!
+}
+
+input ChaparTrackingHistoryFilter {
+  and: [ChaparTrackingHistoryFilter!]
+  id: IDFilterComparison
+  or: [ChaparTrackingHistoryFilter!]
+}
+
+input ChaparTrackingHistorySort {
+  direction: SortDirection!
+  field: ChaparTrackingHistorySortFields!
+  nulls: SortNulls
+}
+
+enum ChaparTrackingHistorySortFields {
+  id
+}
+
+input ChaparTrackingHistoryUpdateFilter {
+  and: [ChaparTrackingHistoryUpdateFilter!]
+  id: IDFilterComparison
+  or: [ChaparTrackingHistoryUpdateFilter!]
+}
+
+type CitiesSepidar {
+  cityId: Float
+  id: ID!
+  name: String
+  sepidarStateId: Float
+  stateId: Float
+  stateName: String
+}
+
+type CitiesSepidarConnection {
+  """Array of edges."""
+  edges: [CitiesSepidarEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CitiesSepidarDeleteFilter {
+  and: [CitiesSepidarDeleteFilter!]
+  id: IDFilterComparison
+  or: [CitiesSepidarDeleteFilter!]
+}
+
+type CitiesSepidarDeleteResponse {
+  cityId: Float
+  id: ID
+  name: String
+  sepidarStateId: Float
+  stateId: Float
+  stateName: String
+}
+
+type CitiesSepidarEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CitiesSepidar"""
+  node: CitiesSepidar!
+}
+
+input CitiesSepidarFilter {
+  and: [CitiesSepidarFilter!]
+  id: IDFilterComparison
+  or: [CitiesSepidarFilter!]
+}
+
+input CitiesSepidarSort {
+  direction: SortDirection!
+  field: CitiesSepidarSortFields!
+  nulls: SortNulls
+}
+
+enum CitiesSepidarSortFields {
+  id
+}
+
+input CitiesSepidarUpdateFilter {
+  and: [CitiesSepidarUpdateFilter!]
+  id: IDFilterComparison
+  or: [CitiesSepidarUpdateFilter!]
+}
+
+type City {
+  chaparId: Float
+  code: String
+  createdAt: DateTime
+  id: ID!
+  mahexCode: String
+  name: String!
+  sepidarId: Float
+  stateId: Float!
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+type City2 {
+  id: ID!
+  sepidarId: Float
+}
+
+type City2Connection {
+  """Array of edges."""
+  edges: [City2Edge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input City2DeleteFilter {
+  and: [City2DeleteFilter!]
+  id: IDFilterComparison
+  or: [City2DeleteFilter!]
+}
+
+type City2DeleteResponse {
+  id: ID
+  sepidarId: Float
+}
+
+type City2Edge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the City2"""
+  node: City2!
+}
+
+input City2Filter {
+  and: [City2Filter!]
+  id: IDFilterComparison
+  or: [City2Filter!]
+}
+
+input City2Sort {
+  direction: SortDirection!
+  field: City2SortFields!
+  nulls: SortNulls
+}
+
+enum City2SortFields {
+  id
+}
+
+input City2UpdateFilter {
+  and: [City2UpdateFilter!]
+  id: IDFilterComparison
+  or: [City2UpdateFilter!]
+}
+
+type CityConnection {
+  """Array of edges."""
+  edges: [CityEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CityDeleteFilter {
+  and: [CityDeleteFilter!]
+  id: IDFilterComparison
+  or: [CityDeleteFilter!]
+}
+
+type CityDeleteResponse {
+  chaparId: Float
+  code: String
+  createdAt: DateTime
+  id: ID
+  mahexCode: String
+  name: String
+  sepidarId: Float
+  stateId: Float
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+type CityEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the City"""
+  node: City!
+}
+
+input CityFilter {
+  and: [CityFilter!]
+  id: IDFilterComparison
+  or: [CityFilter!]
+}
+
+input CitySort {
+  direction: SortDirection!
+  field: CitySortFields!
+  nulls: SortNulls
+}
+
+enum CitySortFields {
+  id
+}
+
+input CityUpdateFilter {
+  and: [CityUpdateFilter!]
+  id: IDFilterComparison
+  or: [CityUpdateFilter!]
+}
+
+type Color {
+  colorCode: String
+  colorCodeOriginal: String
+  colorName: String
+  hexCode: String
+  id: ID!
+}
+
+type ColorCategory {
+  altText: String
+  altTextEn: String
+  color: String!
+  createdAt: DateTime
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: ID!
+  imageId: Float
+  isActive: Boolean!
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  name: String!
+  nameEn: String
+  pageTitle: String
+  pageTitleEn: String
+  sortOrder: Float
+  updatedAt: DateTime
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float!
+}
+
+type ColorCategoryConnection {
+  """Array of edges."""
+  edges: [ColorCategoryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ColorCategoryDeleteFilter {
+  and: [ColorCategoryDeleteFilter!]
+  id: IDFilterComparison
+  or: [ColorCategoryDeleteFilter!]
+}
+
+type ColorCategoryDeleteResponse {
+  altText: String
+  altTextEn: String
+  color: String
+  createdAt: DateTime
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: ID
+  imageId: Float
+  isActive: Boolean
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  name: String
+  nameEn: String
+  pageTitle: String
+  pageTitleEn: String
+  sortOrder: Float
+  updatedAt: DateTime
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float
+}
+
+type ColorCategoryDetail {
+  colorCategoryId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+type ColorCategoryDetailConnection {
+  """Array of edges."""
+  edges: [ColorCategoryDetailEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ColorCategoryDetailDeleteFilter {
+  and: [ColorCategoryDetailDeleteFilter!]
+  id: IDFilterComparison
+  or: [ColorCategoryDetailDeleteFilter!]
+}
+
+type ColorCategoryDetailDeleteResponse {
+  colorCategoryId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+type ColorCategoryDetailEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ColorCategoryDetail"""
+  node: ColorCategoryDetail!
+}
+
+input ColorCategoryDetailFilter {
+  and: [ColorCategoryDetailFilter!]
+  id: IDFilterComparison
+  or: [ColorCategoryDetailFilter!]
+}
+
+input ColorCategoryDetailSort {
+  direction: SortDirection!
+  field: ColorCategoryDetailSortFields!
+  nulls: SortNulls
+}
+
+enum ColorCategoryDetailSortFields {
+  id
+}
+
+input ColorCategoryDetailUpdateFilter {
+  and: [ColorCategoryDetailUpdateFilter!]
+  id: IDFilterComparison
+  or: [ColorCategoryDetailUpdateFilter!]
+}
+
+type ColorCategoryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ColorCategory"""
+  node: ColorCategory!
+}
+
+input ColorCategoryFilter {
+  and: [ColorCategoryFilter!]
+  id: IDFilterComparison
+  or: [ColorCategoryFilter!]
+}
+
+input ColorCategorySort {
+  direction: SortDirection!
+  field: ColorCategorySortFields!
+  nulls: SortNulls
+}
+
+enum ColorCategorySortFields {
+  id
+}
+
+type ColorCategorySubproduct {
+  colorCategoryId: Float!
+  createdAt: DateTime
+  id: ID!
+  subproductId: Float!
+  updatedAt: DateTime
+}
+
+type ColorCategorySubproductConnection {
+  """Array of edges."""
+  edges: [ColorCategorySubproductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ColorCategorySubproductDeleteFilter {
+  and: [ColorCategorySubproductDeleteFilter!]
+  id: IDFilterComparison
+  or: [ColorCategorySubproductDeleteFilter!]
+}
+
+type ColorCategorySubproductDeleteResponse {
+  colorCategoryId: Float
+  createdAt: DateTime
+  id: ID
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+type ColorCategorySubproductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ColorCategorySubproduct"""
+  node: ColorCategorySubproduct!
+}
+
+input ColorCategorySubproductFilter {
+  and: [ColorCategorySubproductFilter!]
+  id: IDFilterComparison
+  or: [ColorCategorySubproductFilter!]
+}
+
+input ColorCategorySubproductSort {
+  direction: SortDirection!
+  field: ColorCategorySubproductSortFields!
+  nulls: SortNulls
+}
+
+enum ColorCategorySubproductSortFields {
+  id
+}
+
+input ColorCategorySubproductUpdateFilter {
+  and: [ColorCategorySubproductUpdateFilter!]
+  id: IDFilterComparison
+  or: [ColorCategorySubproductUpdateFilter!]
+}
+
+input ColorCategoryUpdateFilter {
+  and: [ColorCategoryUpdateFilter!]
+  id: IDFilterComparison
+  or: [ColorCategoryUpdateFilter!]
+}
+
+type ColorConnection {
+  """Array of edges."""
+  edges: [ColorEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ColorDeleteFilter {
+  and: [ColorDeleteFilter!]
+  id: IDFilterComparison
+  or: [ColorDeleteFilter!]
+}
+
+type ColorDeleteResponse {
+  colorCode: String
+  colorCodeOriginal: String
+  colorName: String
+  hexCode: String
+  id: ID
+}
+
+type ColorEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Color"""
+  node: Color!
+}
+
+input ColorFilter {
+  and: [ColorFilter!]
+  id: IDFilterComparison
+  or: [ColorFilter!]
+}
+
+input ColorSort {
+  direction: SortDirection!
+  field: ColorSortFields!
+  nulls: SortNulls
+}
+
+enum ColorSortFields {
+  id
+}
+
+input ColorUpdateFilter {
+  and: [ColorUpdateFilter!]
+  id: IDFilterComparison
+  or: [ColorUpdateFilter!]
+}
+
+type Config {
+  createdAt: DateTime
+  id: ID!
+  key: String!
+  updatedAt: DateTime
+  value: String
+}
+
+type ConfigConnection {
+  """Array of edges."""
+  edges: [ConfigEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ConfigDeleteFilter {
+  and: [ConfigDeleteFilter!]
+  id: IDFilterComparison
+  or: [ConfigDeleteFilter!]
+}
+
+type ConfigDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  key: String
+  updatedAt: DateTime
+  value: String
+}
+
+type ConfigEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Config"""
+  node: Config!
+}
+
+input ConfigFilter {
+  and: [ConfigFilter!]
+  id: IDFilterComparison
+  or: [ConfigFilter!]
+}
+
+input ConfigSort {
+  direction: SortDirection!
+  field: ConfigSortFields!
+  nulls: SortNulls
+}
+
+enum ConfigSortFields {
+  id
+}
+
+input ConfigUpdateFilter {
+  and: [ConfigUpdateFilter!]
+  id: IDFilterComparison
+  or: [ConfigUpdateFilter!]
+}
+
+"""Cursor for paging through collections"""
+scalar ConnectionCursor
+
+type ContactForm {
+  answer1: String
+  answer2: String
+  answer3: String
+  city: String
+  contactFormStatusId: Float!
+  countryId: Float!
+  createdAt: DateTime
+  departmentId: Float
+  email: String
+  id: ID!
+  name: String
+  phone: String
+  text: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type ContactFormConnection {
+  """Array of edges."""
+  edges: [ContactFormEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ContactFormDeleteFilter {
+  and: [ContactFormDeleteFilter!]
+  id: IDFilterComparison
+  or: [ContactFormDeleteFilter!]
+}
+
+type ContactFormDeleteResponse {
+  answer1: String
+  answer2: String
+  answer3: String
+  city: String
+  contactFormStatusId: Float
+  countryId: Float
+  createdAt: DateTime
+  departmentId: Float
+  email: String
+  id: ID
+  name: String
+  phone: String
+  text: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type ContactFormEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ContactForm"""
+  node: ContactForm!
+}
+
+input ContactFormFilter {
+  and: [ContactFormFilter!]
+  id: IDFilterComparison
+  or: [ContactFormFilter!]
+}
+
+type ContactFormHistory {
+  comment: String
+  contactFormId: Float!
+  contactFormStatusId: Float!
+  createdAt: DateTime
+  id: ID!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type ContactFormHistoryConnection {
+  """Array of edges."""
+  edges: [ContactFormHistoryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ContactFormHistoryDeleteFilter {
+  and: [ContactFormHistoryDeleteFilter!]
+  id: IDFilterComparison
+  or: [ContactFormHistoryDeleteFilter!]
+}
+
+type ContactFormHistoryDeleteResponse {
+  comment: String
+  contactFormId: Float
+  contactFormStatusId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+type ContactFormHistoryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ContactFormHistory"""
+  node: ContactFormHistory!
+}
+
+input ContactFormHistoryFilter {
+  and: [ContactFormHistoryFilter!]
+  id: IDFilterComparison
+  or: [ContactFormHistoryFilter!]
+}
+
+input ContactFormHistorySort {
+  direction: SortDirection!
+  field: ContactFormHistorySortFields!
+  nulls: SortNulls
+}
+
+enum ContactFormHistorySortFields {
+  id
+}
+
+input ContactFormHistoryUpdateFilter {
+  and: [ContactFormHistoryUpdateFilter!]
+  id: IDFilterComparison
+  or: [ContactFormHistoryUpdateFilter!]
+}
+
+input ContactFormSort {
+  direction: SortDirection!
+  field: ContactFormSortFields!
+  nulls: SortNulls
+}
+
+enum ContactFormSortFields {
+  id
+}
+
+input ContactFormUpdateFilter {
+  and: [ContactFormUpdateFilter!]
+  id: IDFilterComparison
+  or: [ContactFormUpdateFilter!]
+}
+
+input CreateActivityInput {
+  action: String!
+  contentId: Float!
+  contentType: String!
+  createdAt: DateTime
+  deletedUserId: Float
+  description: String!
+  details: String!
+  id: Float!
+  updatedAt: DateTime
+  userId: Float
+  userName: String!
+}
+
+input CreateAddressInput {
+  address: String!
+  address2: String
+  cityId: Float!
+  countryId: Float!
+  createdAt: DateTime
+  crmCompanyId: String
+  crmCompanyPersonId: String
+  deletedAt: DateTime
+  email: String
+  fullAddress: String
+  fullname: String
+  fullnameDescription: String
+  fullnameTrimmed: String
+  id: Float!
+  latitude: String
+  longitude: String
+  nationalId: String
+  oldAddress: String!
+  phone: String
+  phone2: String
+  sepidarId: Float
+  stateId: Float!
+  updatedAt: DateTime
+  userId: Float!
+  zipCode: String
+}
+
+input CreateAttributeAttributeGroupInput {
+  attributeGroupId: Float!
+  attributeId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+}
+
+input CreateAttributeInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Float
+  name: String!
+  sortOrder: Float
+  type: Float!
+  updatedAt: DateTime
+}
+
+input CreateAttributeItemInput {
+  attributeGroupId: Float
+  attributeId: Float!
+  createdAt: DateTime
+  id: Float!
+  name: String!
+  updatedAt: DateTime
+}
+
+input CreateAttributeProductInput {
+  attributeId: Float!
+  attributeItemId: Float
+  createdAt: DateTime
+  id: Float!
+  isChecked: Boolean
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+  value: String
+}
+
+input CreateAttributeSubproductInput {
+  attributeId: Float!
+  attributeItemId: Float
+  createdAt: DateTime
+  id: Float!
+  isChecked: Boolean
+  subproductId: Float!
+  updatedAt: DateTime
+  value: String
+}
+
+input CreateAutomationEventInput {
+  createdAt: DateTime
+  deletedAt: DateTime
+  event: String!
+  eventDate: String!
+  eventDatetime: DateTime!
+  eventTimestamp: String!
+  id: Float!
+  lastEec: String
+  messages: String
+  onlineSheetSaved: Boolean! = false
+  rfmCat: String
+  rfmScore: String
+  smsSent: Boolean! = false
+  status: String!
+  triggerDatetime: DateTime!
+  type: String!
+  typeId: Float!
+  updatedAt: DateTime
+  userContact: String!
+  userId: Float
+  userName: String!
+  userUid: Float!
+}
+
+input CreateAutomationRfmScoreInput {
+  id: Float!
+  rfmScore: String!
+  rfmScoreCode: String!
+  rfmScoreTitle: String!
+}
+
+input CreateBasicCarpetBorderInput {
+  code: String!
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime
+}
+
+input CreateBasicCarpetColorInput {
+  code: String!
+  colorCode: String
+  createdAt: DateTime! = "2025-03-14T16:58:40.690Z"
+  englishTitle: String
+  id: Float!
+  isActive: Boolean! = true
+  persianTitle: String
+  russianTitle: String
+  shortCode: String
+  sortOrder: Float
+  spanishTitle: String
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateBasicCarpetDesignInput {
+  code: String!
+  createdAt: DateTime! = "2025-03-14T16:58:40.697Z"
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateBasicCarpetDesignerInput {
+  cityId: Float
+  code: String!
+  countryId: Float
+  createdAt: DateTime! = "2025-03-14T16:58:40.701Z"
+  description: String
+  facebookId: String
+  headerImage: String
+  id: Float!
+  instagramId: String
+  isActive: Boolean! = true
+  linkedinId: String
+  pricePercentage: Float = 0
+  profilePicture: String
+  selfEmployed: Boolean = false
+  sortOrder: Float
+  stateId: Float
+  title: String!
+  twitterId: String
+  updatedAt: DateTime!
+  userId: Float
+}
+
+input CreateBasicCarpetMaterialInput {
+  code: String!
+  createdAt: DateTime! = "2025-03-14T16:58:40.707Z"
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateBasicCarpetSizeDetailInput {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+input CreateBasicCarpetSizeInput {
+  altText: String
+  altTextEn: String
+  carpetVolume: Float = 0
+  code: String!
+  createdAt: DateTime! = "2025-03-14T16:58:40.713Z"
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: Float!
+  imageId: Float
+  isActive: Boolean! = true
+  length: Float!
+  lengthText: String
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  padVolume: Float = 0
+  pageTitle: String
+  pageTitleEn: String
+  sizeText: String
+  sizeTextEn: String
+  sortOrder: Float
+  title: String!
+  titleEn: String
+  unitRatio: Float!
+  updatedAt: DateTime!
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float! = 0
+  width: Float!
+  widthText: String
+}
+
+input CreateBasicCarpetTypeInput {
+  code: String!
+  createdAt: DateTime! = "2025-03-14T16:58:40.725Z"
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateBorderInput {
+  code: String!
+  count: Float
+  id: Float!
+}
+
+input CreateCampaignFreeOfferInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  minPrice: String!
+  updatedAt: DateTime
+}
+
+input CreateCampaignFreeOfferSizeInput {
+  basicCarpetSizeId: Float!
+  campaignFreeOfferId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+}
+
+input CreateCampaignGoldCoinSubInput {
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateCampaignInstagramFollowInput {
+  answerNo: Int
+  birthYear: Int
+  createdAt: DateTime
+  id: Int!
+  image1: String
+  image2: String
+  name: String!
+  phone: String!
+  phoneVerified: Boolean!
+  sex: Int
+  updatedAt: DateTime
+  userId: Int
+  verificationCode: String
+}
+
+input CreateCampaignPetFormInput {
+  couponId: Float
+  createdAt: DateTime
+  discountAmount: Float! = 0
+  donationAmount: Float! = 0
+  filename: String
+  id: Float!
+  mime: String
+  originalFilename: String
+  path: String = "/"
+  petName: String
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateCampaignRoomvoImageInput {
+  createdAt: DateTime
+  filename: String
+  id: Float!
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  userId: Float!
+  votesCount: Float! = 0
+}
+
+input CreateCampaignRoomvoVoteInput {
+  campaignRoomvoImageId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateCampaignSubscriptionInput {
+  campaignName: String
+  code: Int
+  createdAt: DateTime
+  id: Int!
+  updatedAt: DateTime
+  userId: Int!
+}
+
+input CreateCampaignUefaEuroSubscriberHistoryInput {
+  campaignUefaEuroSubscriberId: Float!
+  comment: String
+  contactFormStatusId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+  userId: Float
+}
+
+input CreateCampaignUefaEuroSubscriberInput {
+  contactFormStatusId: Float! = 1
+  createdAt: DateTime
+  id: Float!
+  mobile: String!
+  status: Float! = 1
+  updatedAt: DateTime
+  userId: Float
+}
+
+input CreateCampaignVotingImageInput {
+  campaignNo: Float!
+  createdAt: DateTime
+  id: Float!
+  imageId: Float
+  isActive: Boolean! = true
+  sortOrder: Float! = 1
+  title: String!
+  updatedAt: DateTime
+}
+
+input CreateCarpetFeatureInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime
+}
+
+input CreateCarpetFeatureUserInput {
+  carpetFeatureId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateCarpetMaterialInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  name: String!
+  pricePerInch: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input CreateCarpetShapeInput {
+  createdAt: DateTime
+  hasLength: Boolean! = true
+  id: Float!
+  isActive: Boolean! = true
+  maxLength: Float!
+  maxWidth: Float!
+  minLength: Float!
+  minWidth: Float!
+  name: String!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input CreateCarpetSizeInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  length: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+  width: Float!
+}
+
+input CreateCarpetUsagePlaceInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  sortOrder: Float
+  title: String!
+  updatedAt: DateTime
+}
+
+input CreateCarpetUsagePlaceInvoiceProductInput {
+  carpetUsagePlaceId: Float!
+  createdAt: DateTime
+  id: Float!
+  invoiceProductId: Float!
+  row: Float!
+  updatedAt: DateTime
+}
+
+input CreateCarpetUsagePlaceUserInput {
+  carpetUsagePlaceId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateChaparSettlementStatusInput {
+  createdAt: DateTime
+  id: Float!
+  status: String!
+  updatedAt: DateTime
+}
+
+input CreateChaparTrackingHistoryInput {
+  createdAt: DateTime
+  date: String!
+  id: Float!
+  invoiceId: Float!
+  reference: String!
+  status: String!
+  statusNote: String!
+  time: String!
+  tracking: String!
+  updatedAt: DateTime
+}
+
+input CreateCitiesSepidarInput {
+  cityId: Float
+  id: Float!
+  name: String
+  sepidarStateId: Float
+  stateId: Float
+  stateName: String
+}
+
+input CreateCity2Input {
+  id: Int
+  sepidarId: Int
+}
+
+input CreateCityInput {
+  chaparId: Float
+  code: String
+  createdAt: DateTime
+  id: Float!
+  mahexCode: String
+  name: String!
+  sepidarId: Float
+  stateId: Float!
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+input CreateColorCategoryDetailInput {
+  colorCategoryId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: Float!
+  isActive: Boolean!
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+input CreateColorCategoryInput {
+  altText: String
+  altTextEn: String
+  color: String!
+  createdAt: DateTime
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: Float!
+  imageId: Float
+  isActive: Boolean!
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  name: String!
+  nameEn: String
+  pageTitle: String
+  pageTitleEn: String
+  sortOrder: Float
+  updatedAt: DateTime
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float!
+}
+
+input CreateColorCategorySubproductInput {
+  colorCategoryId: Float!
+  createdAt: DateTime
+  id: Float!
+  subproductId: Float!
+  updatedAt: DateTime
+}
+
+input CreateColorInput {
+  colorCode: String
+  colorCodeOriginal: String
+  colorName: String
+  hexCode: String
+  id: Float!
+}
+
+input CreateConfigInput {
+  createdAt: DateTime
+  id: Float!
+  key: String!
+  updatedAt: DateTime
+  value: String
+}
+
+input CreateContactFormHistoryInput {
+  comment: String
+  contactFormId: Float!
+  contactFormStatusId: Float!
+  createdAt: DateTime
+  id: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateContactFormInput {
+  answer1: String
+  answer2: String
+  answer3: String
+  city: String
+  contactFormStatusId: Float!
+  countryId: Float!
+  createdAt: DateTime
+  departmentId: Float
+  email: String
+  id: Float!
+  name: String
+  phone: String
+  text: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input CreateManyActivitiesInput {
+  """Array of records to create"""
+  activities: [CreateActivityInput!]!
+}
+
+input CreateManyAddressesInput {
+  """Array of records to create"""
+  addresses: [CreateAddressInput!]!
+}
+
+input CreateManyAutomationEventsInput {
+  """Array of records to create"""
+  automationEvents: [CreateAutomationEventInput!]!
+}
+
+input CreateManyAutomationRfmScoresInput {
+  """Array of records to create"""
+  automationRfmScores: [CreateAutomationRfmScoreInput!]!
+}
+
+input CreateManyBasicCarpetBordersInput {
+  """Array of records to create"""
+  basicCarpetBorders: [CreateBasicCarpetBorderInput!]!
+}
+
+input CreateManyBasicCarpetColorsInput {
+  """Array of records to create"""
+  basicCarpetColors: [CreateBasicCarpetColorInput!]!
+}
+
+input CreateManyBasicCarpetDesignersInput {
+  """Array of records to create"""
+  basicCarpetDesigners: [CreateBasicCarpetDesignerInput!]!
+}
+
+input CreateManyBasicCarpetDesignsInput {
+  """Array of records to create"""
+  basicCarpetDesigns: [CreateBasicCarpetDesignInput!]!
+}
+
+input CreateManyBasicCarpetMaterialsInput {
+  """Array of records to create"""
+  basicCarpetMaterials: [CreateBasicCarpetMaterialInput!]!
+}
+
+input CreateManyBasicCarpetSizeDetailsInput {
+  """Array of records to create"""
+  basicCarpetSizeDetails: [CreateBasicCarpetSizeDetailInput!]!
+}
+
+input CreateManyBasicCarpetSizesInput {
+  """Array of records to create"""
+  basicCarpetSizes: [CreateBasicCarpetSizeInput!]!
+}
+
+input CreateManyBasicCarpetTypesInput {
+  """Array of records to create"""
+  basicCarpetTypes: [CreateBasicCarpetTypeInput!]!
+}
+
+input CreateManyBordersInput {
+  """Array of records to create"""
+  borders: [CreateBorderInput!]!
+}
+
+input CreateManyCampaignFreeOfferSizesInput {
+  """Array of records to create"""
+  campaignFreeOfferSizes: [CreateCampaignFreeOfferSizeInput!]!
+}
+
+input CreateManyCampaignFreeOffersInput {
+  """Array of records to create"""
+  campaignFreeOffers: [CreateCampaignFreeOfferInput!]!
+}
+
+input CreateManyCampaignGoldCoinSubsInput {
+  """Array of records to create"""
+  campaignGoldCoinSubs: [CreateCampaignGoldCoinSubInput!]!
+}
+
+input CreateManyCampaignInstagramFollowsInput {
+  """Array of records to create"""
+  campaignInstagramFollows: [CreateCampaignInstagramFollowInput!]!
+}
+
+input CreateManyCampaignPetFormsInput {
+  """Array of records to create"""
+  campaignPetForms: [CreateCampaignPetFormInput!]!
+}
+
+input CreateManyCampaignRoomvoImagesInput {
+  """Array of records to create"""
+  campaignRoomvoImages: [CreateCampaignRoomvoImageInput!]!
+}
+
+input CreateManyCampaignRoomvoVotesInput {
+  """Array of records to create"""
+  campaignRoomvoVotes: [CreateCampaignRoomvoVoteInput!]!
+}
+
+input CreateManyCampaignSubscriptionsInput {
+  """Array of records to create"""
+  campaignSubscriptions: [CreateCampaignSubscriptionInput!]!
+}
+
+input CreateManyCampaignUefaEuroSubscriberHistoriesInput {
+  """Array of records to create"""
+  campaignUefaEuroSubscriberHistories: [CreateCampaignUefaEuroSubscriberHistoryInput!]!
+}
+
+input CreateManyCampaignUefaEuroSubscribersInput {
+  """Array of records to create"""
+  campaignUefaEuroSubscribers: [CreateCampaignUefaEuroSubscriberInput!]!
+}
+
+input CreateManyCampaignVotingImagesInput {
+  """Array of records to create"""
+  campaignVotingImages: [CreateCampaignVotingImageInput!]!
+}
+
+input CreateManyCarpetFeatureUsersInput {
+  """Array of records to create"""
+  carpetFeatureUsers: [CreateCarpetFeatureUserInput!]!
+}
+
+input CreateManyCarpetFeaturesInput {
+  """Array of records to create"""
+  carpetFeatures: [CreateCarpetFeatureInput!]!
+}
+
+input CreateManyCarpetMaterialsInput {
+  """Array of records to create"""
+  carpetMaterials: [CreateCarpetMaterialInput!]!
+}
+
+input CreateManyCarpetShapesInput {
+  """Array of records to create"""
+  carpetShapes: [CreateCarpetShapeInput!]!
+}
+
+input CreateManyCarpetSizesInput {
+  """Array of records to create"""
+  carpetSizes: [CreateCarpetSizeInput!]!
+}
+
+input CreateManyCarpetUsagePlaceInvoiceProductsInput {
+  """Array of records to create"""
+  carpetUsagePlaceInvoiceProducts: [CreateCarpetUsagePlaceInvoiceProductInput!]!
+}
+
+input CreateManyCarpetUsagePlaceUsersInput {
+  """Array of records to create"""
+  carpetUsagePlaceUsers: [CreateCarpetUsagePlaceUserInput!]!
+}
+
+input CreateManyCarpetUsagePlacesInput {
+  """Array of records to create"""
+  carpetUsagePlaces: [CreateCarpetUsagePlaceInput!]!
+}
+
+input CreateManyChaparSettlementStatusesInput {
+  """Array of records to create"""
+  chaparSettlementStatuses: [CreateChaparSettlementStatusInput!]!
+}
+
+input CreateManyChaparTrackingHistoriesInput {
+  """Array of records to create"""
+  chaparTrackingHistories: [CreateChaparTrackingHistoryInput!]!
+}
+
+input CreateManyCitiesInput {
+  """Array of records to create"""
+  cities: [CreateCityInput!]!
+}
+
+input CreateManyCitiesSepidarsInput {
+  """Array of records to create"""
+  citiesSepidars: [CreateCitiesSepidarInput!]!
+}
+
+input CreateManyCity2sInput {
+  """Array of records to create"""
+  city2s: [CreateCity2Input!]!
+}
+
+input CreateManyColorCategoriesInput {
+  """Array of records to create"""
+  colorCategories: [CreateColorCategoryInput!]!
+}
+
+input CreateManyColorCategoryDetailsInput {
+  """Array of records to create"""
+  colorCategoryDetails: [CreateColorCategoryDetailInput!]!
+}
+
+input CreateManyColorCategorySubproductsInput {
+  """Array of records to create"""
+  colorCategorySubproducts: [CreateColorCategorySubproductInput!]!
+}
+
+input CreateManyColorsInput {
+  """Array of records to create"""
+  colors: [CreateColorInput!]!
+}
+
+input CreateManyConfigsInput {
+  """Array of records to create"""
+  configs: [CreateConfigInput!]!
+}
+
+input CreateManyContactFormHistoriesInput {
+  """Array of records to create"""
+  contactFormHistories: [CreateContactFormHistoryInput!]!
+}
+
+input CreateManyContactFormsInput {
+  """Array of records to create"""
+  contactForms: [CreateContactFormInput!]!
+}
+
+input CreateOneActivityInput {
+  """The record to create"""
+  activity: CreateActivityInput!
+}
+
+input CreateOneAddressInput {
+  """The record to create"""
+  address: CreateAddressInput!
+}
+
+input CreateOneAutomationEventInput {
+  """The record to create"""
+  automationEvent: CreateAutomationEventInput!
+}
+
+input CreateOneAutomationRfmScoreInput {
+  """The record to create"""
+  automationRfmScore: CreateAutomationRfmScoreInput!
+}
+
+input CreateOneBasicCarpetBorderInput {
+  """The record to create"""
+  basicCarpetBorder: CreateBasicCarpetBorderInput!
+}
+
+input CreateOneBasicCarpetColorInput {
+  """The record to create"""
+  basicCarpetColor: CreateBasicCarpetColorInput!
+}
+
+input CreateOneBasicCarpetDesignInput {
+  """The record to create"""
+  basicCarpetDesign: CreateBasicCarpetDesignInput!
+}
+
+input CreateOneBasicCarpetDesignerInput {
+  """The record to create"""
+  basicCarpetDesigner: CreateBasicCarpetDesignerInput!
+}
+
+input CreateOneBasicCarpetMaterialInput {
+  """The record to create"""
+  basicCarpetMaterial: CreateBasicCarpetMaterialInput!
+}
+
+input CreateOneBasicCarpetSizeDetailInput {
+  """The record to create"""
+  basicCarpetSizeDetail: CreateBasicCarpetSizeDetailInput!
+}
+
+input CreateOneBasicCarpetSizeInput {
+  """The record to create"""
+  basicCarpetSize: CreateBasicCarpetSizeInput!
+}
+
+input CreateOneBasicCarpetTypeInput {
+  """The record to create"""
+  basicCarpetType: CreateBasicCarpetTypeInput!
+}
+
+input CreateOneBorderInput {
+  """The record to create"""
+  border: CreateBorderInput!
+}
+
+input CreateOneCampaignFreeOfferInput {
+  """The record to create"""
+  campaignFreeOffer: CreateCampaignFreeOfferInput!
+}
+
+input CreateOneCampaignFreeOfferSizeInput {
+  """The record to create"""
+  campaignFreeOfferSize: CreateCampaignFreeOfferSizeInput!
+}
+
+input CreateOneCampaignGoldCoinSubInput {
+  """The record to create"""
+  campaignGoldCoinSub: CreateCampaignGoldCoinSubInput!
+}
+
+input CreateOneCampaignInstagramFollowInput {
+  """The record to create"""
+  campaignInstagramFollow: CreateCampaignInstagramFollowInput!
+}
+
+input CreateOneCampaignPetFormInput {
+  """The record to create"""
+  campaignPetForm: CreateCampaignPetFormInput!
+}
+
+input CreateOneCampaignRoomvoImageInput {
+  """The record to create"""
+  campaignRoomvoImage: CreateCampaignRoomvoImageInput!
+}
+
+input CreateOneCampaignRoomvoVoteInput {
+  """The record to create"""
+  campaignRoomvoVote: CreateCampaignRoomvoVoteInput!
+}
+
+input CreateOneCampaignSubscriptionInput {
+  """The record to create"""
+  campaignSubscription: CreateCampaignSubscriptionInput!
+}
+
+input CreateOneCampaignUefaEuroSubscriberHistoryInput {
+  """The record to create"""
+  campaignUefaEuroSubscriberHistory: CreateCampaignUefaEuroSubscriberHistoryInput!
+}
+
+input CreateOneCampaignUefaEuroSubscriberInput {
+  """The record to create"""
+  campaignUefaEuroSubscriber: CreateCampaignUefaEuroSubscriberInput!
+}
+
+input CreateOneCampaignVotingImageInput {
+  """The record to create"""
+  campaignVotingImage: CreateCampaignVotingImageInput!
+}
+
+input CreateOneCarpetFeatureInput {
+  """The record to create"""
+  carpetFeature: CreateCarpetFeatureInput!
+}
+
+input CreateOneCarpetFeatureUserInput {
+  """The record to create"""
+  carpetFeatureUser: CreateCarpetFeatureUserInput!
+}
+
+input CreateOneCarpetMaterialInput {
+  """The record to create"""
+  carpetMaterial: CreateCarpetMaterialInput!
+}
+
+input CreateOneCarpetShapeInput {
+  """The record to create"""
+  carpetShape: CreateCarpetShapeInput!
+}
+
+input CreateOneCarpetSizeInput {
+  """The record to create"""
+  carpetSize: CreateCarpetSizeInput!
+}
+
+input CreateOneCarpetUsagePlaceInput {
+  """The record to create"""
+  carpetUsagePlace: CreateCarpetUsagePlaceInput!
+}
+
+input CreateOneCarpetUsagePlaceInvoiceProductInput {
+  """The record to create"""
+  carpetUsagePlaceInvoiceProduct: CreateCarpetUsagePlaceInvoiceProductInput!
+}
+
+input CreateOneCarpetUsagePlaceUserInput {
+  """The record to create"""
+  carpetUsagePlaceUser: CreateCarpetUsagePlaceUserInput!
+}
+
+input CreateOneChaparSettlementStatusInput {
+  """The record to create"""
+  chaparSettlementStatus: CreateChaparSettlementStatusInput!
+}
+
+input CreateOneChaparTrackingHistoryInput {
+  """The record to create"""
+  chaparTrackingHistory: CreateChaparTrackingHistoryInput!
+}
+
+input CreateOneCitiesSepidarInput {
+  """The record to create"""
+  citiesSepidar: CreateCitiesSepidarInput!
+}
+
+input CreateOneCity2Input {
+  """The record to create"""
+  city2: CreateCity2Input!
+}
+
+input CreateOneCityInput {
+  """The record to create"""
+  city: CreateCityInput!
+}
+
+input CreateOneColorCategoryDetailInput {
+  """The record to create"""
+  colorCategoryDetail: CreateColorCategoryDetailInput!
+}
+
+input CreateOneColorCategoryInput {
+  """The record to create"""
+  colorCategory: CreateColorCategoryInput!
+}
+
+input CreateOneColorCategorySubproductInput {
+  """The record to create"""
+  colorCategorySubproduct: CreateColorCategorySubproductInput!
+}
+
+input CreateOneColorInput {
+  """The record to create"""
+  color: CreateColorInput!
+}
+
+input CreateOneConfigInput {
+  """The record to create"""
+  config: CreateConfigInput!
+}
+
+input CreateOneContactFormHistoryInput {
+  """The record to create"""
+  contactFormHistory: CreateContactFormHistoryInput!
+}
+
+input CreateOneContactFormInput {
+  """The record to create"""
+  contactForm: CreateContactFormInput!
+}
+
+input CursorPaging {
+  """Paginate after opaque cursor"""
+  after: ConnectionCursor
+
+  """Paginate before opaque cursor"""
+  before: ConnectionCursor
+
+  """Paginate first"""
+  first: Int
+
+  """Paginate last"""
+  last: Int
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DeleteManyActivitiesInput {
+  """Filter to find records to delete"""
+  filter: ActivityDeleteFilter!
+}
+
+input DeleteManyAddressesInput {
+  """Filter to find records to delete"""
+  filter: AddressDeleteFilter!
+}
+
+input DeleteManyAutomationEventsInput {
+  """Filter to find records to delete"""
+  filter: AutomationEventDeleteFilter!
+}
+
+input DeleteManyAutomationRfmScoresInput {
+  """Filter to find records to delete"""
+  filter: AutomationRfmScoreDeleteFilter!
+}
+
+input DeleteManyBasicCarpetBordersInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetBorderDeleteFilter!
+}
+
+input DeleteManyBasicCarpetColorsInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetColorDeleteFilter!
+}
+
+input DeleteManyBasicCarpetDesignersInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetDesignerDeleteFilter!
+}
+
+input DeleteManyBasicCarpetDesignsInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetDesignDeleteFilter!
+}
+
+input DeleteManyBasicCarpetMaterialsInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetMaterialDeleteFilter!
+}
+
+input DeleteManyBasicCarpetSizeDetailsInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetSizeDetailDeleteFilter!
+}
+
+input DeleteManyBasicCarpetSizesInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetSizeDeleteFilter!
+}
+
+input DeleteManyBasicCarpetTypesInput {
+  """Filter to find records to delete"""
+  filter: BasicCarpetTypeDeleteFilter!
+}
+
+input DeleteManyBordersInput {
+  """Filter to find records to delete"""
+  filter: BorderDeleteFilter!
+}
+
+input DeleteManyCampaignFreeOfferSizesInput {
+  """Filter to find records to delete"""
+  filter: CampaignFreeOfferSizeDeleteFilter!
+}
+
+input DeleteManyCampaignFreeOffersInput {
+  """Filter to find records to delete"""
+  filter: CampaignFreeOfferDeleteFilter!
+}
+
+input DeleteManyCampaignGoldCoinSubsInput {
+  """Filter to find records to delete"""
+  filter: CampaignGoldCoinSubDeleteFilter!
+}
+
+input DeleteManyCampaignInstagramFollowsInput {
+  """Filter to find records to delete"""
+  filter: CampaignInstagramFollowDeleteFilter!
+}
+
+input DeleteManyCampaignPetFormsInput {
+  """Filter to find records to delete"""
+  filter: CampaignPetFormDeleteFilter!
+}
+
+input DeleteManyCampaignRoomvoImagesInput {
+  """Filter to find records to delete"""
+  filter: CampaignRoomvoImageDeleteFilter!
+}
+
+input DeleteManyCampaignRoomvoVotesInput {
+  """Filter to find records to delete"""
+  filter: CampaignRoomvoVoteDeleteFilter!
+}
+
+input DeleteManyCampaignSubscriptionsInput {
+  """Filter to find records to delete"""
+  filter: CampaignSubscriptionDeleteFilter!
+}
+
+input DeleteManyCampaignUefaEuroSubscriberHistoriesInput {
+  """Filter to find records to delete"""
+  filter: CampaignUefaEuroSubscriberHistoryDeleteFilter!
+}
+
+input DeleteManyCampaignUefaEuroSubscribersInput {
+  """Filter to find records to delete"""
+  filter: CampaignUefaEuroSubscriberDeleteFilter!
+}
+
+input DeleteManyCampaignVotingImagesInput {
+  """Filter to find records to delete"""
+  filter: CampaignVotingImageDeleteFilter!
+}
+
+input DeleteManyCarpetFeatureUsersInput {
+  """Filter to find records to delete"""
+  filter: CarpetFeatureUserDeleteFilter!
+}
+
+input DeleteManyCarpetFeaturesInput {
+  """Filter to find records to delete"""
+  filter: CarpetFeatureDeleteFilter!
+}
+
+input DeleteManyCarpetMaterialsInput {
+  """Filter to find records to delete"""
+  filter: CarpetMaterialDeleteFilter!
+}
+
+input DeleteManyCarpetShapesInput {
+  """Filter to find records to delete"""
+  filter: CarpetShapeDeleteFilter!
+}
+
+input DeleteManyCarpetSizesInput {
+  """Filter to find records to delete"""
+  filter: CarpetSizeDeleteFilter!
+}
+
+input DeleteManyCarpetUsagePlaceInvoiceProductsInput {
+  """Filter to find records to delete"""
+  filter: CarpetUsagePlaceInvoiceProductDeleteFilter!
+}
+
+input DeleteManyCarpetUsagePlaceUsersInput {
+  """Filter to find records to delete"""
+  filter: CarpetUsagePlaceUserDeleteFilter!
+}
+
+input DeleteManyCarpetUsagePlacesInput {
+  """Filter to find records to delete"""
+  filter: CarpetUsagePlaceDeleteFilter!
+}
+
+input DeleteManyChaparSettlementStatusesInput {
+  """Filter to find records to delete"""
+  filter: ChaparSettlementStatusDeleteFilter!
+}
+
+input DeleteManyChaparTrackingHistoriesInput {
+  """Filter to find records to delete"""
+  filter: ChaparTrackingHistoryDeleteFilter!
+}
+
+input DeleteManyCitiesInput {
+  """Filter to find records to delete"""
+  filter: CityDeleteFilter!
+}
+
+input DeleteManyCitiesSepidarsInput {
+  """Filter to find records to delete"""
+  filter: CitiesSepidarDeleteFilter!
+}
+
+input DeleteManyCity2sInput {
+  """Filter to find records to delete"""
+  filter: City2DeleteFilter!
+}
+
+input DeleteManyColorCategoriesInput {
+  """Filter to find records to delete"""
+  filter: ColorCategoryDeleteFilter!
+}
+
+input DeleteManyColorCategoryDetailsInput {
+  """Filter to find records to delete"""
+  filter: ColorCategoryDetailDeleteFilter!
+}
+
+input DeleteManyColorCategorySubproductsInput {
+  """Filter to find records to delete"""
+  filter: ColorCategorySubproductDeleteFilter!
+}
+
+input DeleteManyColorsInput {
+  """Filter to find records to delete"""
+  filter: ColorDeleteFilter!
+}
+
+input DeleteManyConfigsInput {
+  """Filter to find records to delete"""
+  filter: ConfigDeleteFilter!
+}
+
+input DeleteManyContactFormHistoriesInput {
+  """Filter to find records to delete"""
+  filter: ContactFormHistoryDeleteFilter!
+}
+
+input DeleteManyContactFormsInput {
+  """Filter to find records to delete"""
+  filter: ContactFormDeleteFilter!
+}
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+input DeleteOneActivityInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneAddressInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneAutomationEventInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneAutomationRfmScoreInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetBorderInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetColorInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetDesignInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetDesignerInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetMaterialInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetSizeDetailInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetSizeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBasicCarpetTypeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneBorderInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignFreeOfferInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignFreeOfferSizeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignGoldCoinSubInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignInstagramFollowInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignPetFormInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignRoomvoImageInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignRoomvoVoteInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignSubscriptionInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignUefaEuroSubscriberHistoryInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignUefaEuroSubscriberInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCampaignVotingImageInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetFeatureInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetFeatureUserInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetMaterialInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetShapeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetSizeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetUsagePlaceInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetUsagePlaceInvoiceProductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCarpetUsagePlaceUserInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneChaparSettlementStatusInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneChaparTrackingHistoryInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCitiesSepidarInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCity2Input {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCityInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneColorCategoryDetailInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneColorCategoryInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneColorCategorySubproductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneColorInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneConfigInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneContactFormHistoryInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneContactFormInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input IDFilterComparison {
+  eq: ID
+  gt: ID
+  gte: ID
+  iLike: ID
+  in: [ID!]
+  is: Boolean
+  isNot: Boolean
+  like: ID
+  lt: ID
+  lte: ID
+  neq: ID
+  notILike: ID
+  notIn: [ID!]
+  notLike: ID
+}
+
+type Mutation {
+  createAttribute(createAttributeInput: CreateAttributeInput!): Attribute!
+  createAttributeAttributeGroup(createAttributeAttributeGroupInput: CreateAttributeAttributeGroupInput!): AttributeAttributeGroup!
+  createAttributeItem(createAttributeItemInput: CreateAttributeItemInput!): AttributeItem!
+  createAttributeProduct(createAttributeProductInput: CreateAttributeProductInput!): AttributeProduct!
+  createAttributeSubproduct(createAttributeSubproductInput: CreateAttributeSubproductInput!): AttributeSubproduct!
+  createChaparSettlementStatus(createChaparSettlementStatusInput: CreateChaparSettlementStatusInput!): ChaparSettlementStatus!
+  createCity(createCityInput: CreateCityInput!): City!
+  createColor(createColorInput: CreateColorInput!): Color!
+  createManyActivities(input: CreateManyActivitiesInput!): [Activity!]!
+  createManyAddresses(input: CreateManyAddressesInput!): [Address!]!
+  createManyAutomationEvents(input: CreateManyAutomationEventsInput!): [AutomationEvent!]!
+  createManyAutomationRfmScores(input: CreateManyAutomationRfmScoresInput!): [AutomationRfmScore!]!
+  createManyBasicCarpetBorders(input: CreateManyBasicCarpetBordersInput!): [BasicCarpetBorder!]!
+  createManyBasicCarpetColors(input: CreateManyBasicCarpetColorsInput!): [BasicCarpetColor!]!
+  createManyBasicCarpetDesigners(input: CreateManyBasicCarpetDesignersInput!): [BasicCarpetDesigner!]!
+  createManyBasicCarpetDesigns(input: CreateManyBasicCarpetDesignsInput!): [BasicCarpetDesign!]!
+  createManyBasicCarpetMaterials(input: CreateManyBasicCarpetMaterialsInput!): [BasicCarpetMaterial!]!
+  createManyBasicCarpetSizeDetails(input: CreateManyBasicCarpetSizeDetailsInput!): [BasicCarpetSizeDetail!]!
+  createManyBasicCarpetSizes(input: CreateManyBasicCarpetSizesInput!): [BasicCarpetSize!]!
+  createManyBasicCarpetTypes(input: CreateManyBasicCarpetTypesInput!): [BasicCarpetType!]!
+  createManyBorders(input: CreateManyBordersInput!): [Border!]!
+  createManyCampaignFreeOfferSizes(input: CreateManyCampaignFreeOfferSizesInput!): [CampaignFreeOfferSize!]!
+  createManyCampaignFreeOffers(input: CreateManyCampaignFreeOffersInput!): [CampaignFreeOffer!]!
+  createManyCampaignGoldCoinSubs(input: CreateManyCampaignGoldCoinSubsInput!): [CampaignGoldCoinSub!]!
+  createManyCampaignInstagramFollows(input: CreateManyCampaignInstagramFollowsInput!): [CampaignInstagramFollow!]!
+  createManyCampaignPetForms(input: CreateManyCampaignPetFormsInput!): [CampaignPetForm!]!
+  createManyCampaignRoomvoImages(input: CreateManyCampaignRoomvoImagesInput!): [CampaignRoomvoImage!]!
+  createManyCampaignRoomvoVotes(input: CreateManyCampaignRoomvoVotesInput!): [CampaignRoomvoVote!]!
+  createManyCampaignSubscriptions(input: CreateManyCampaignSubscriptionsInput!): [CampaignSubscription!]!
+  createManyCampaignUefaEuroSubscriberHistories(input: CreateManyCampaignUefaEuroSubscriberHistoriesInput!): [CampaignUefaEuroSubscriberHistory!]!
+  createManyCampaignUefaEuroSubscribers(input: CreateManyCampaignUefaEuroSubscribersInput!): [CampaignUefaEuroSubscriber!]!
+  createManyCampaignVotingImages(input: CreateManyCampaignVotingImagesInput!): [CampaignVotingImage!]!
+  createManyCarpetFeatureUsers(input: CreateManyCarpetFeatureUsersInput!): [CarpetFeatureUser!]!
+  createManyCarpetFeatures(input: CreateManyCarpetFeaturesInput!): [CarpetFeature!]!
+  createManyCarpetMaterials(input: CreateManyCarpetMaterialsInput!): [CarpetMaterial!]!
+  createManyCarpetShapes(input: CreateManyCarpetShapesInput!): [CarpetShape!]!
+  createManyCarpetSizes(input: CreateManyCarpetSizesInput!): [CarpetSize!]!
+  createManyCarpetUsagePlaceInvoiceProducts(input: CreateManyCarpetUsagePlaceInvoiceProductsInput!): [CarpetUsagePlaceInvoiceProduct!]!
+  createManyCarpetUsagePlaceUsers(input: CreateManyCarpetUsagePlaceUsersInput!): [CarpetUsagePlaceUser!]!
+  createManyCarpetUsagePlaces(input: CreateManyCarpetUsagePlacesInput!): [CarpetUsagePlace!]!
+  createManyChaparSettlementStatuses(input: CreateManyChaparSettlementStatusesInput!): [ChaparSettlementStatus!]!
+  createManyChaparTrackingHistories(input: CreateManyChaparTrackingHistoriesInput!): [ChaparTrackingHistory!]!
+  createManyCities(input: CreateManyCitiesInput!): [City!]!
+  createManyCitiesSepidars(input: CreateManyCitiesSepidarsInput!): [CitiesSepidar!]!
+  createManyCity2s(input: CreateManyCity2sInput!): [City2!]!
+  createManyColorCategories(input: CreateManyColorCategoriesInput!): [ColorCategory!]!
+  createManyColorCategoryDetails(input: CreateManyColorCategoryDetailsInput!): [ColorCategoryDetail!]!
+  createManyColorCategorySubproducts(input: CreateManyColorCategorySubproductsInput!): [ColorCategorySubproduct!]!
+  createManyColors(input: CreateManyColorsInput!): [Color!]!
+  createManyConfigs(input: CreateManyConfigsInput!): [Config!]!
+  createManyContactFormHistories(input: CreateManyContactFormHistoriesInput!): [ContactFormHistory!]!
+  createManyContactForms(input: CreateManyContactFormsInput!): [ContactForm!]!
+  createOneActivity(input: CreateOneActivityInput!): Activity!
+  createOneAddress(input: CreateOneAddressInput!): Address!
+  createOneAutomationEvent(input: CreateOneAutomationEventInput!): AutomationEvent!
+  createOneAutomationRfmScore(input: CreateOneAutomationRfmScoreInput!): AutomationRfmScore!
+  createOneBasicCarpetBorder(input: CreateOneBasicCarpetBorderInput!): BasicCarpetBorder!
+  createOneBasicCarpetColor(input: CreateOneBasicCarpetColorInput!): BasicCarpetColor!
+  createOneBasicCarpetDesign(input: CreateOneBasicCarpetDesignInput!): BasicCarpetDesign!
+  createOneBasicCarpetDesigner(input: CreateOneBasicCarpetDesignerInput!): BasicCarpetDesigner!
+  createOneBasicCarpetMaterial(input: CreateOneBasicCarpetMaterialInput!): BasicCarpetMaterial!
+  createOneBasicCarpetSize(input: CreateOneBasicCarpetSizeInput!): BasicCarpetSize!
+  createOneBasicCarpetSizeDetail(input: CreateOneBasicCarpetSizeDetailInput!): BasicCarpetSizeDetail!
+  createOneBasicCarpetType(input: CreateOneBasicCarpetTypeInput!): BasicCarpetType!
+  createOneBorder(input: CreateOneBorderInput!): Border!
+  createOneCampaignFreeOffer(input: CreateOneCampaignFreeOfferInput!): CampaignFreeOffer!
+  createOneCampaignFreeOfferSize(input: CreateOneCampaignFreeOfferSizeInput!): CampaignFreeOfferSize!
+  createOneCampaignGoldCoinSub(input: CreateOneCampaignGoldCoinSubInput!): CampaignGoldCoinSub!
+  createOneCampaignInstagramFollow(input: CreateOneCampaignInstagramFollowInput!): CampaignInstagramFollow!
+  createOneCampaignPetForm(input: CreateOneCampaignPetFormInput!): CampaignPetForm!
+  createOneCampaignRoomvoImage(input: CreateOneCampaignRoomvoImageInput!): CampaignRoomvoImage!
+  createOneCampaignRoomvoVote(input: CreateOneCampaignRoomvoVoteInput!): CampaignRoomvoVote!
+  createOneCampaignSubscription(input: CreateOneCampaignSubscriptionInput!): CampaignSubscription!
+  createOneCampaignUefaEuroSubscriber(input: CreateOneCampaignUefaEuroSubscriberInput!): CampaignUefaEuroSubscriber!
+  createOneCampaignUefaEuroSubscriberHistory(input: CreateOneCampaignUefaEuroSubscriberHistoryInput!): CampaignUefaEuroSubscriberHistory!
+  createOneCampaignVotingImage(input: CreateOneCampaignVotingImageInput!): CampaignVotingImage!
+  createOneCarpetFeature(input: CreateOneCarpetFeatureInput!): CarpetFeature!
+  createOneCarpetFeatureUser(input: CreateOneCarpetFeatureUserInput!): CarpetFeatureUser!
+  createOneCarpetMaterial(input: CreateOneCarpetMaterialInput!): CarpetMaterial!
+  createOneCarpetShape(input: CreateOneCarpetShapeInput!): CarpetShape!
+  createOneCarpetSize(input: CreateOneCarpetSizeInput!): CarpetSize!
+  createOneCarpetUsagePlace(input: CreateOneCarpetUsagePlaceInput!): CarpetUsagePlace!
+  createOneCarpetUsagePlaceInvoiceProduct(input: CreateOneCarpetUsagePlaceInvoiceProductInput!): CarpetUsagePlaceInvoiceProduct!
+  createOneCarpetUsagePlaceUser(input: CreateOneCarpetUsagePlaceUserInput!): CarpetUsagePlaceUser!
+  createOneChaparSettlementStatus(input: CreateOneChaparSettlementStatusInput!): ChaparSettlementStatus!
+  createOneChaparTrackingHistory(input: CreateOneChaparTrackingHistoryInput!): ChaparTrackingHistory!
+  createOneCitiesSepidar(input: CreateOneCitiesSepidarInput!): CitiesSepidar!
+  createOneCity(input: CreateOneCityInput!): City!
+  createOneCity2(input: CreateOneCity2Input!): City2!
+  createOneColor(input: CreateOneColorInput!): Color!
+  createOneColorCategory(input: CreateOneColorCategoryInput!): ColorCategory!
+  createOneColorCategoryDetail(input: CreateOneColorCategoryDetailInput!): ColorCategoryDetail!
+  createOneColorCategorySubproduct(input: CreateOneColorCategorySubproductInput!): ColorCategorySubproduct!
+  createOneConfig(input: CreateOneConfigInput!): Config!
+  createOneContactForm(input: CreateOneContactFormInput!): ContactForm!
+  createOneContactFormHistory(input: CreateOneContactFormHistoryInput!): ContactFormHistory!
+  deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
+  deleteManyAddresses(input: DeleteManyAddressesInput!): DeleteManyResponse!
+  deleteManyAutomationEvents(input: DeleteManyAutomationEventsInput!): DeleteManyResponse!
+  deleteManyAutomationRfmScores(input: DeleteManyAutomationRfmScoresInput!): DeleteManyResponse!
+  deleteManyBasicCarpetBorders(input: DeleteManyBasicCarpetBordersInput!): DeleteManyResponse!
+  deleteManyBasicCarpetColors(input: DeleteManyBasicCarpetColorsInput!): DeleteManyResponse!
+  deleteManyBasicCarpetDesigners(input: DeleteManyBasicCarpetDesignersInput!): DeleteManyResponse!
+  deleteManyBasicCarpetDesigns(input: DeleteManyBasicCarpetDesignsInput!): DeleteManyResponse!
+  deleteManyBasicCarpetMaterials(input: DeleteManyBasicCarpetMaterialsInput!): DeleteManyResponse!
+  deleteManyBasicCarpetSizeDetails(input: DeleteManyBasicCarpetSizeDetailsInput!): DeleteManyResponse!
+  deleteManyBasicCarpetSizes(input: DeleteManyBasicCarpetSizesInput!): DeleteManyResponse!
+  deleteManyBasicCarpetTypes(input: DeleteManyBasicCarpetTypesInput!): DeleteManyResponse!
+  deleteManyBorders(input: DeleteManyBordersInput!): DeleteManyResponse!
+  deleteManyCampaignFreeOfferSizes(input: DeleteManyCampaignFreeOfferSizesInput!): DeleteManyResponse!
+  deleteManyCampaignFreeOffers(input: DeleteManyCampaignFreeOffersInput!): DeleteManyResponse!
+  deleteManyCampaignGoldCoinSubs(input: DeleteManyCampaignGoldCoinSubsInput!): DeleteManyResponse!
+  deleteManyCampaignInstagramFollows(input: DeleteManyCampaignInstagramFollowsInput!): DeleteManyResponse!
+  deleteManyCampaignPetForms(input: DeleteManyCampaignPetFormsInput!): DeleteManyResponse!
+  deleteManyCampaignRoomvoImages(input: DeleteManyCampaignRoomvoImagesInput!): DeleteManyResponse!
+  deleteManyCampaignRoomvoVotes(input: DeleteManyCampaignRoomvoVotesInput!): DeleteManyResponse!
+  deleteManyCampaignSubscriptions(input: DeleteManyCampaignSubscriptionsInput!): DeleteManyResponse!
+  deleteManyCampaignUefaEuroSubscriberHistories(input: DeleteManyCampaignUefaEuroSubscriberHistoriesInput!): DeleteManyResponse!
+  deleteManyCampaignUefaEuroSubscribers(input: DeleteManyCampaignUefaEuroSubscribersInput!): DeleteManyResponse!
+  deleteManyCampaignVotingImages(input: DeleteManyCampaignVotingImagesInput!): DeleteManyResponse!
+  deleteManyCarpetFeatureUsers(input: DeleteManyCarpetFeatureUsersInput!): DeleteManyResponse!
+  deleteManyCarpetFeatures(input: DeleteManyCarpetFeaturesInput!): DeleteManyResponse!
+  deleteManyCarpetMaterials(input: DeleteManyCarpetMaterialsInput!): DeleteManyResponse!
+  deleteManyCarpetShapes(input: DeleteManyCarpetShapesInput!): DeleteManyResponse!
+  deleteManyCarpetSizes(input: DeleteManyCarpetSizesInput!): DeleteManyResponse!
+  deleteManyCarpetUsagePlaceInvoiceProducts(input: DeleteManyCarpetUsagePlaceInvoiceProductsInput!): DeleteManyResponse!
+  deleteManyCarpetUsagePlaceUsers(input: DeleteManyCarpetUsagePlaceUsersInput!): DeleteManyResponse!
+  deleteManyCarpetUsagePlaces(input: DeleteManyCarpetUsagePlacesInput!): DeleteManyResponse!
+  deleteManyChaparSettlementStatuses(input: DeleteManyChaparSettlementStatusesInput!): DeleteManyResponse!
+  deleteManyChaparTrackingHistories(input: DeleteManyChaparTrackingHistoriesInput!): DeleteManyResponse!
+  deleteManyCities(input: DeleteManyCitiesInput!): DeleteManyResponse!
+  deleteManyCitiesSepidars(input: DeleteManyCitiesSepidarsInput!): DeleteManyResponse!
+  deleteManyCity2s(input: DeleteManyCity2sInput!): DeleteManyResponse!
+  deleteManyColorCategories(input: DeleteManyColorCategoriesInput!): DeleteManyResponse!
+  deleteManyColorCategoryDetails(input: DeleteManyColorCategoryDetailsInput!): DeleteManyResponse!
+  deleteManyColorCategorySubproducts(input: DeleteManyColorCategorySubproductsInput!): DeleteManyResponse!
+  deleteManyColors(input: DeleteManyColorsInput!): DeleteManyResponse!
+  deleteManyConfigs(input: DeleteManyConfigsInput!): DeleteManyResponse!
+  deleteManyContactFormHistories(input: DeleteManyContactFormHistoriesInput!): DeleteManyResponse!
+  deleteManyContactForms(input: DeleteManyContactFormsInput!): DeleteManyResponse!
+  deleteOneActivity(input: DeleteOneActivityInput!): ActivityDeleteResponse!
+  deleteOneAddress(input: DeleteOneAddressInput!): AddressDeleteResponse!
+  deleteOneAutomationEvent(input: DeleteOneAutomationEventInput!): AutomationEventDeleteResponse!
+  deleteOneAutomationRfmScore(input: DeleteOneAutomationRfmScoreInput!): AutomationRfmScoreDeleteResponse!
+  deleteOneBasicCarpetBorder(input: DeleteOneBasicCarpetBorderInput!): BasicCarpetBorderDeleteResponse!
+  deleteOneBasicCarpetColor(input: DeleteOneBasicCarpetColorInput!): BasicCarpetColorDeleteResponse!
+  deleteOneBasicCarpetDesign(input: DeleteOneBasicCarpetDesignInput!): BasicCarpetDesignDeleteResponse!
+  deleteOneBasicCarpetDesigner(input: DeleteOneBasicCarpetDesignerInput!): BasicCarpetDesignerDeleteResponse!
+  deleteOneBasicCarpetMaterial(input: DeleteOneBasicCarpetMaterialInput!): BasicCarpetMaterialDeleteResponse!
+  deleteOneBasicCarpetSize(input: DeleteOneBasicCarpetSizeInput!): BasicCarpetSizeDeleteResponse!
+  deleteOneBasicCarpetSizeDetail(input: DeleteOneBasicCarpetSizeDetailInput!): BasicCarpetSizeDetailDeleteResponse!
+  deleteOneBasicCarpetType(input: DeleteOneBasicCarpetTypeInput!): BasicCarpetTypeDeleteResponse!
+  deleteOneBorder(input: DeleteOneBorderInput!): BorderDeleteResponse!
+  deleteOneCampaignFreeOffer(input: DeleteOneCampaignFreeOfferInput!): CampaignFreeOfferDeleteResponse!
+  deleteOneCampaignFreeOfferSize(input: DeleteOneCampaignFreeOfferSizeInput!): CampaignFreeOfferSizeDeleteResponse!
+  deleteOneCampaignGoldCoinSub(input: DeleteOneCampaignGoldCoinSubInput!): CampaignGoldCoinSubDeleteResponse!
+  deleteOneCampaignInstagramFollow(input: DeleteOneCampaignInstagramFollowInput!): CampaignInstagramFollowDeleteResponse!
+  deleteOneCampaignPetForm(input: DeleteOneCampaignPetFormInput!): CampaignPetFormDeleteResponse!
+  deleteOneCampaignRoomvoImage(input: DeleteOneCampaignRoomvoImageInput!): CampaignRoomvoImageDeleteResponse!
+  deleteOneCampaignRoomvoVote(input: DeleteOneCampaignRoomvoVoteInput!): CampaignRoomvoVoteDeleteResponse!
+  deleteOneCampaignSubscription(input: DeleteOneCampaignSubscriptionInput!): CampaignSubscriptionDeleteResponse!
+  deleteOneCampaignUefaEuroSubscriber(input: DeleteOneCampaignUefaEuroSubscriberInput!): CampaignUefaEuroSubscriberDeleteResponse!
+  deleteOneCampaignUefaEuroSubscriberHistory(input: DeleteOneCampaignUefaEuroSubscriberHistoryInput!): CampaignUefaEuroSubscriberHistoryDeleteResponse!
+  deleteOneCampaignVotingImage(input: DeleteOneCampaignVotingImageInput!): CampaignVotingImageDeleteResponse!
+  deleteOneCarpetFeature(input: DeleteOneCarpetFeatureInput!): CarpetFeatureDeleteResponse!
+  deleteOneCarpetFeatureUser(input: DeleteOneCarpetFeatureUserInput!): CarpetFeatureUserDeleteResponse!
+  deleteOneCarpetMaterial(input: DeleteOneCarpetMaterialInput!): CarpetMaterialDeleteResponse!
+  deleteOneCarpetShape(input: DeleteOneCarpetShapeInput!): CarpetShapeDeleteResponse!
+  deleteOneCarpetSize(input: DeleteOneCarpetSizeInput!): CarpetSizeDeleteResponse!
+  deleteOneCarpetUsagePlace(input: DeleteOneCarpetUsagePlaceInput!): CarpetUsagePlaceDeleteResponse!
+  deleteOneCarpetUsagePlaceInvoiceProduct(input: DeleteOneCarpetUsagePlaceInvoiceProductInput!): CarpetUsagePlaceInvoiceProductDeleteResponse!
+  deleteOneCarpetUsagePlaceUser(input: DeleteOneCarpetUsagePlaceUserInput!): CarpetUsagePlaceUserDeleteResponse!
+  deleteOneChaparSettlementStatus(input: DeleteOneChaparSettlementStatusInput!): ChaparSettlementStatusDeleteResponse!
+  deleteOneChaparTrackingHistory(input: DeleteOneChaparTrackingHistoryInput!): ChaparTrackingHistoryDeleteResponse!
+  deleteOneCitiesSepidar(input: DeleteOneCitiesSepidarInput!): CitiesSepidarDeleteResponse!
+  deleteOneCity(input: DeleteOneCityInput!): CityDeleteResponse!
+  deleteOneCity2(input: DeleteOneCity2Input!): City2DeleteResponse!
+  deleteOneColor(input: DeleteOneColorInput!): ColorDeleteResponse!
+  deleteOneColorCategory(input: DeleteOneColorCategoryInput!): ColorCategoryDeleteResponse!
+  deleteOneColorCategoryDetail(input: DeleteOneColorCategoryDetailInput!): ColorCategoryDetailDeleteResponse!
+  deleteOneColorCategorySubproduct(input: DeleteOneColorCategorySubproductInput!): ColorCategorySubproductDeleteResponse!
+  deleteOneConfig(input: DeleteOneConfigInput!): ConfigDeleteResponse!
+  deleteOneContactForm(input: DeleteOneContactFormInput!): ContactFormDeleteResponse!
+  deleteOneContactFormHistory(input: DeleteOneContactFormHistoryInput!): ContactFormHistoryDeleteResponse!
+  removeAttribute(id: Int!): Attribute!
+  removeAttributeAttributeGroup(id: Int!): AttributeAttributeGroup!
+  removeAttributeItem(id: Int!): AttributeItem!
+  removeAttributeProduct(id: Int!): AttributeProduct!
+  removeAttributeSubproduct(id: Int!): AttributeSubproduct!
+  removeChaparSettlementStatus(id: Int!): ChaparSettlementStatus!
+  removeCity(id: Int!): City!
+  removeColor(id: Int!): Color!
+  updateAttribute(updateAttributeInput: UpdateAttributeInput!): Attribute!
+  updateAttributeAttributeGroup(updateAttributeAttributeGroupInput: UpdateAttributeAttributeGroupInput!): AttributeAttributeGroup!
+  updateAttributeItem(updateAttributeItemInput: UpdateAttributeItemInput!): AttributeItem!
+  updateAttributeProduct(updateAttributeProductInput: UpdateAttributeProductInput!): AttributeProduct!
+  updateAttributeSubproduct(updateAttributeSubproductInput: UpdateAttributeSubproductInput!): AttributeSubproduct!
+  updateChaparSettlementStatus(updateChaparSettlementStatusInput: UpdateChaparSettlementStatusInput!): ChaparSettlementStatus!
+  updateCity(updateCityInput: UpdateCityInput!): City!
+  updateColor(updateColorInput: UpdateColorInput!): Color!
+  updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
+  updateManyAddresses(input: UpdateManyAddressesInput!): UpdateManyResponse!
+  updateManyAutomationEvents(input: UpdateManyAutomationEventsInput!): UpdateManyResponse!
+  updateManyAutomationRfmScores(input: UpdateManyAutomationRfmScoresInput!): UpdateManyResponse!
+  updateManyBasicCarpetBorders(input: UpdateManyBasicCarpetBordersInput!): UpdateManyResponse!
+  updateManyBasicCarpetColors(input: UpdateManyBasicCarpetColorsInput!): UpdateManyResponse!
+  updateManyBasicCarpetDesigners(input: UpdateManyBasicCarpetDesignersInput!): UpdateManyResponse!
+  updateManyBasicCarpetDesigns(input: UpdateManyBasicCarpetDesignsInput!): UpdateManyResponse!
+  updateManyBasicCarpetMaterials(input: UpdateManyBasicCarpetMaterialsInput!): UpdateManyResponse!
+  updateManyBasicCarpetSizeDetails(input: UpdateManyBasicCarpetSizeDetailsInput!): UpdateManyResponse!
+  updateManyBasicCarpetSizes(input: UpdateManyBasicCarpetSizesInput!): UpdateManyResponse!
+  updateManyBasicCarpetTypes(input: UpdateManyBasicCarpetTypesInput!): UpdateManyResponse!
+  updateManyBorders(input: UpdateManyBordersInput!): UpdateManyResponse!
+  updateManyCampaignFreeOfferSizes(input: UpdateManyCampaignFreeOfferSizesInput!): UpdateManyResponse!
+  updateManyCampaignFreeOffers(input: UpdateManyCampaignFreeOffersInput!): UpdateManyResponse!
+  updateManyCampaignGoldCoinSubs(input: UpdateManyCampaignGoldCoinSubsInput!): UpdateManyResponse!
+  updateManyCampaignInstagramFollows(input: UpdateManyCampaignInstagramFollowsInput!): UpdateManyResponse!
+  updateManyCampaignPetForms(input: UpdateManyCampaignPetFormsInput!): UpdateManyResponse!
+  updateManyCampaignRoomvoImages(input: UpdateManyCampaignRoomvoImagesInput!): UpdateManyResponse!
+  updateManyCampaignRoomvoVotes(input: UpdateManyCampaignRoomvoVotesInput!): UpdateManyResponse!
+  updateManyCampaignSubscriptions(input: UpdateManyCampaignSubscriptionsInput!): UpdateManyResponse!
+  updateManyCampaignUefaEuroSubscriberHistories(input: UpdateManyCampaignUefaEuroSubscriberHistoriesInput!): UpdateManyResponse!
+  updateManyCampaignUefaEuroSubscribers(input: UpdateManyCampaignUefaEuroSubscribersInput!): UpdateManyResponse!
+  updateManyCampaignVotingImages(input: UpdateManyCampaignVotingImagesInput!): UpdateManyResponse!
+  updateManyCarpetFeatureUsers(input: UpdateManyCarpetFeatureUsersInput!): UpdateManyResponse!
+  updateManyCarpetFeatures(input: UpdateManyCarpetFeaturesInput!): UpdateManyResponse!
+  updateManyCarpetMaterials(input: UpdateManyCarpetMaterialsInput!): UpdateManyResponse!
+  updateManyCarpetShapes(input: UpdateManyCarpetShapesInput!): UpdateManyResponse!
+  updateManyCarpetSizes(input: UpdateManyCarpetSizesInput!): UpdateManyResponse!
+  updateManyCarpetUsagePlaceInvoiceProducts(input: UpdateManyCarpetUsagePlaceInvoiceProductsInput!): UpdateManyResponse!
+  updateManyCarpetUsagePlaceUsers(input: UpdateManyCarpetUsagePlaceUsersInput!): UpdateManyResponse!
+  updateManyCarpetUsagePlaces(input: UpdateManyCarpetUsagePlacesInput!): UpdateManyResponse!
+  updateManyChaparSettlementStatuses(input: UpdateManyChaparSettlementStatusesInput!): UpdateManyResponse!
+  updateManyChaparTrackingHistories(input: UpdateManyChaparTrackingHistoriesInput!): UpdateManyResponse!
+  updateManyCities(input: UpdateManyCitiesInput!): UpdateManyResponse!
+  updateManyCitiesSepidars(input: UpdateManyCitiesSepidarsInput!): UpdateManyResponse!
+  updateManyCity2s(input: UpdateManyCity2sInput!): UpdateManyResponse!
+  updateManyColorCategories(input: UpdateManyColorCategoriesInput!): UpdateManyResponse!
+  updateManyColorCategoryDetails(input: UpdateManyColorCategoryDetailsInput!): UpdateManyResponse!
+  updateManyColorCategorySubproducts(input: UpdateManyColorCategorySubproductsInput!): UpdateManyResponse!
+  updateManyColors(input: UpdateManyColorsInput!): UpdateManyResponse!
+  updateManyConfigs(input: UpdateManyConfigsInput!): UpdateManyResponse!
+  updateManyContactFormHistories(input: UpdateManyContactFormHistoriesInput!): UpdateManyResponse!
+  updateManyContactForms(input: UpdateManyContactFormsInput!): UpdateManyResponse!
+  updateOneActivity(input: UpdateOneActivityInput!): Activity!
+  updateOneAddress(input: UpdateOneAddressInput!): Address!
+  updateOneAutomationEvent(input: UpdateOneAutomationEventInput!): AutomationEvent!
+  updateOneAutomationRfmScore(input: UpdateOneAutomationRfmScoreInput!): AutomationRfmScore!
+  updateOneBasicCarpetBorder(input: UpdateOneBasicCarpetBorderInput!): BasicCarpetBorder!
+  updateOneBasicCarpetColor(input: UpdateOneBasicCarpetColorInput!): BasicCarpetColor!
+  updateOneBasicCarpetDesign(input: UpdateOneBasicCarpetDesignInput!): BasicCarpetDesign!
+  updateOneBasicCarpetDesigner(input: UpdateOneBasicCarpetDesignerInput!): BasicCarpetDesigner!
+  updateOneBasicCarpetMaterial(input: UpdateOneBasicCarpetMaterialInput!): BasicCarpetMaterial!
+  updateOneBasicCarpetSize(input: UpdateOneBasicCarpetSizeInput!): BasicCarpetSize!
+  updateOneBasicCarpetSizeDetail(input: UpdateOneBasicCarpetSizeDetailInput!): BasicCarpetSizeDetail!
+  updateOneBasicCarpetType(input: UpdateOneBasicCarpetTypeInput!): BasicCarpetType!
+  updateOneBorder(input: UpdateOneBorderInput!): Border!
+  updateOneCampaignFreeOffer(input: UpdateOneCampaignFreeOfferInput!): CampaignFreeOffer!
+  updateOneCampaignFreeOfferSize(input: UpdateOneCampaignFreeOfferSizeInput!): CampaignFreeOfferSize!
+  updateOneCampaignGoldCoinSub(input: UpdateOneCampaignGoldCoinSubInput!): CampaignGoldCoinSub!
+  updateOneCampaignInstagramFollow(input: UpdateOneCampaignInstagramFollowInput!): CampaignInstagramFollow!
+  updateOneCampaignPetForm(input: UpdateOneCampaignPetFormInput!): CampaignPetForm!
+  updateOneCampaignRoomvoImage(input: UpdateOneCampaignRoomvoImageInput!): CampaignRoomvoImage!
+  updateOneCampaignRoomvoVote(input: UpdateOneCampaignRoomvoVoteInput!): CampaignRoomvoVote!
+  updateOneCampaignSubscription(input: UpdateOneCampaignSubscriptionInput!): CampaignSubscription!
+  updateOneCampaignUefaEuroSubscriber(input: UpdateOneCampaignUefaEuroSubscriberInput!): CampaignUefaEuroSubscriber!
+  updateOneCampaignUefaEuroSubscriberHistory(input: UpdateOneCampaignUefaEuroSubscriberHistoryInput!): CampaignUefaEuroSubscriberHistory!
+  updateOneCampaignVotingImage(input: UpdateOneCampaignVotingImageInput!): CampaignVotingImage!
+  updateOneCarpetFeature(input: UpdateOneCarpetFeatureInput!): CarpetFeature!
+  updateOneCarpetFeatureUser(input: UpdateOneCarpetFeatureUserInput!): CarpetFeatureUser!
+  updateOneCarpetMaterial(input: UpdateOneCarpetMaterialInput!): CarpetMaterial!
+  updateOneCarpetShape(input: UpdateOneCarpetShapeInput!): CarpetShape!
+  updateOneCarpetSize(input: UpdateOneCarpetSizeInput!): CarpetSize!
+  updateOneCarpetUsagePlace(input: UpdateOneCarpetUsagePlaceInput!): CarpetUsagePlace!
+  updateOneCarpetUsagePlaceInvoiceProduct(input: UpdateOneCarpetUsagePlaceInvoiceProductInput!): CarpetUsagePlaceInvoiceProduct!
+  updateOneCarpetUsagePlaceUser(input: UpdateOneCarpetUsagePlaceUserInput!): CarpetUsagePlaceUser!
+  updateOneChaparSettlementStatus(input: UpdateOneChaparSettlementStatusInput!): ChaparSettlementStatus!
+  updateOneChaparTrackingHistory(input: UpdateOneChaparTrackingHistoryInput!): ChaparTrackingHistory!
+  updateOneCitiesSepidar(input: UpdateOneCitiesSepidarInput!): CitiesSepidar!
+  updateOneCity(input: UpdateOneCityInput!): City!
+  updateOneCity2(input: UpdateOneCity2Input!): City2!
+  updateOneColor(input: UpdateOneColorInput!): Color!
+  updateOneColorCategory(input: UpdateOneColorCategoryInput!): ColorCategory!
+  updateOneColorCategoryDetail(input: UpdateOneColorCategoryDetailInput!): ColorCategoryDetail!
+  updateOneColorCategorySubproduct(input: UpdateOneColorCategorySubproductInput!): ColorCategorySubproduct!
+  updateOneConfig(input: UpdateOneConfigInput!): Config!
+  updateOneContactForm(input: UpdateOneContactFormInput!): ContactForm!
+  updateOneContactFormHistory(input: UpdateOneContactFormHistoryInput!): ContactFormHistory!
+}
+
+type PageInfo {
+  """The cursor of the last returned record."""
+  endCursor: ConnectionCursor
+
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+
+  """The cursor of the first returned record."""
+  startCursor: ConnectionCursor
+}
+
+type Query {
+  activities(
+    """Specify to filter the records returned."""
+    filter: ActivityFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ActivitySort!]! = []
+  ): ActivityConnection!
+  activity(
+    """The id of the record to find."""
+    id: ID!
+  ): Activity!
+  address(
+    """The id of the record to find."""
+    id: ID!
+  ): Address!
+  addresses(
+    """Specify to filter the records returned."""
+    filter: AddressFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [AddressSort!]! = []
+  ): AddressConnection!
+  attribute(id: Int!): Attribute!
+  attributeAttributeGroup(id: Int!): AttributeAttributeGroup!
+  attributeGroup(id: Int!): AttributeGroup!
+  attributeItem(id: Int!): AttributeItem!
+  attributeProduct(id: Int!): AttributeProduct!
+  attributeSubproduct(id: Int!): AttributeSubproduct!
+  automationEvent(
+    """The id of the record to find."""
+    id: ID!
+  ): AutomationEvent!
+  automationEvents(
+    """Specify to filter the records returned."""
+    filter: AutomationEventFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [AutomationEventSort!]! = []
+  ): AutomationEventConnection!
+  automationRfmScore(
+    """The id of the record to find."""
+    id: ID!
+  ): AutomationRfmScore!
+  automationRfmScores(
+    """Specify to filter the records returned."""
+    filter: AutomationRfmScoreFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [AutomationRfmScoreSort!]! = []
+  ): AutomationRfmScoreConnection!
+  basicCarpetBorder(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetBorder!
+  basicCarpetBorders(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetBorderFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetBorderSort!]! = []
+  ): BasicCarpetBorderConnection!
+  basicCarpetColor(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetColor!
+  basicCarpetColors(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetColorFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetColorSort!]! = []
+  ): BasicCarpetColorConnection!
+  basicCarpetDesign(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetDesign!
+  basicCarpetDesigner(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetDesigner!
+  basicCarpetDesigners(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetDesignerFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetDesignerSort!]! = []
+  ): BasicCarpetDesignerConnection!
+  basicCarpetDesigns(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetDesignFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetDesignSort!]! = []
+  ): BasicCarpetDesignConnection!
+  basicCarpetMaterial(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetMaterial!
+  basicCarpetMaterials(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetMaterialFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetMaterialSort!]! = []
+  ): BasicCarpetMaterialConnection!
+  basicCarpetSize(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetSize!
+  basicCarpetSizeDetail(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetSizeDetail!
+  basicCarpetSizeDetails(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetSizeDetailFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetSizeDetailSort!]! = []
+  ): BasicCarpetSizeDetailConnection!
+  basicCarpetSizes(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetSizeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetSizeSort!]! = []
+  ): BasicCarpetSizeConnection!
+  basicCarpetType(
+    """The id of the record to find."""
+    id: ID!
+  ): BasicCarpetType!
+  basicCarpetTypes(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetTypeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetTypeSort!]! = []
+  ): BasicCarpetTypeConnection!
+  border(
+    """The id of the record to find."""
+    id: ID!
+  ): Border!
+  borders(
+    """Specify to filter the records returned."""
+    filter: BorderFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [BorderSort!]! = []
+  ): BorderConnection!
+  campaignFreeOffer(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignFreeOffer!
+  campaignFreeOfferSize(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignFreeOfferSize!
+  campaignFreeOfferSizes(
+    """Specify to filter the records returned."""
+    filter: CampaignFreeOfferSizeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignFreeOfferSizeSort!]! = []
+  ): CampaignFreeOfferSizeConnection!
+  campaignFreeOffers(
+    """Specify to filter the records returned."""
+    filter: CampaignFreeOfferFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignFreeOfferSort!]! = []
+  ): CampaignFreeOfferConnection!
+  campaignGoldCoinSub(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignGoldCoinSub!
+  campaignGoldCoinSubs(
+    """Specify to filter the records returned."""
+    filter: CampaignGoldCoinSubFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignGoldCoinSubSort!]! = []
+  ): CampaignGoldCoinSubConnection!
+  campaignInstagramFollow(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignInstagramFollow!
+  campaignInstagramFollows(
+    """Specify to filter the records returned."""
+    filter: CampaignInstagramFollowFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignInstagramFollowSort!]! = []
+  ): CampaignInstagramFollowConnection!
+  campaignPetForm(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignPetForm!
+  campaignPetForms(
+    """Specify to filter the records returned."""
+    filter: CampaignPetFormFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignPetFormSort!]! = []
+  ): CampaignPetFormConnection!
+  campaignRoomvoImage(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignRoomvoImage!
+  campaignRoomvoImages(
+    """Specify to filter the records returned."""
+    filter: CampaignRoomvoImageFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignRoomvoImageSort!]! = []
+  ): CampaignRoomvoImageConnection!
+  campaignRoomvoVote(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignRoomvoVote!
+  campaignRoomvoVotes(
+    """Specify to filter the records returned."""
+    filter: CampaignRoomvoVoteFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignRoomvoVoteSort!]! = []
+  ): CampaignRoomvoVoteConnection!
+  campaignSubscription(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignSubscription!
+  campaignSubscriptions(
+    """Specify to filter the records returned."""
+    filter: CampaignSubscriptionFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignSubscriptionSort!]! = []
+  ): CampaignSubscriptionConnection!
+  campaignUefaEuroSubscriber(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignUefaEuroSubscriber!
+  campaignUefaEuroSubscriberHistories(
+    """Specify to filter the records returned."""
+    filter: CampaignUefaEuroSubscriberHistoryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignUefaEuroSubscriberHistorySort!]! = []
+  ): CampaignUefaEuroSubscriberHistoryConnection!
+  campaignUefaEuroSubscriberHistory(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignUefaEuroSubscriberHistory!
+  campaignUefaEuroSubscribers(
+    """Specify to filter the records returned."""
+    filter: CampaignUefaEuroSubscriberFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignUefaEuroSubscriberSort!]! = []
+  ): CampaignUefaEuroSubscriberConnection!
+  campaignVotingImage(
+    """The id of the record to find."""
+    id: ID!
+  ): CampaignVotingImage!
+  campaignVotingImages(
+    """Specify to filter the records returned."""
+    filter: CampaignVotingImageFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CampaignVotingImageSort!]! = []
+  ): CampaignVotingImageConnection!
+  carpetFeature(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetFeature!
+  carpetFeatureUser(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetFeatureUser!
+  carpetFeatureUsers(
+    """Specify to filter the records returned."""
+    filter: CarpetFeatureUserFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetFeatureUserSort!]! = []
+  ): CarpetFeatureUserConnection!
+  carpetFeatures(
+    """Specify to filter the records returned."""
+    filter: CarpetFeatureFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetFeatureSort!]! = []
+  ): CarpetFeatureConnection!
+  carpetMaterial(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetMaterial!
+  carpetMaterials(
+    """Specify to filter the records returned."""
+    filter: CarpetMaterialFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetMaterialSort!]! = []
+  ): CarpetMaterialConnection!
+  carpetShape(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetShape!
+  carpetShapes(
+    """Specify to filter the records returned."""
+    filter: CarpetShapeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetShapeSort!]! = []
+  ): CarpetShapeConnection!
+  carpetSize(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetSize!
+  carpetSizes(
+    """Specify to filter the records returned."""
+    filter: CarpetSizeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetSizeSort!]! = []
+  ): CarpetSizeConnection!
+  carpetUsagePlace(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetUsagePlace!
+  carpetUsagePlaceInvoiceProduct(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetUsagePlaceInvoiceProduct!
+  carpetUsagePlaceInvoiceProducts(
+    """Specify to filter the records returned."""
+    filter: CarpetUsagePlaceInvoiceProductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetUsagePlaceInvoiceProductSort!]! = []
+  ): CarpetUsagePlaceInvoiceProductConnection!
+  carpetUsagePlaceUser(
+    """The id of the record to find."""
+    id: ID!
+  ): CarpetUsagePlaceUser!
+  carpetUsagePlaceUsers(
+    """Specify to filter the records returned."""
+    filter: CarpetUsagePlaceUserFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetUsagePlaceUserSort!]! = []
+  ): CarpetUsagePlaceUserConnection!
+  carpetUsagePlaces(
+    """Specify to filter the records returned."""
+    filter: CarpetUsagePlaceFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CarpetUsagePlaceSort!]! = []
+  ): CarpetUsagePlaceConnection!
+  chaparSettlementStatus(
+    """The id of the record to find."""
+    id: ID!
+  ): ChaparSettlementStatus!
+  chaparSettlementStatuses(
+    """Specify to filter the records returned."""
+    filter: ChaparSettlementStatusFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ChaparSettlementStatusSort!]! = []
+  ): ChaparSettlementStatusConnection!
+  chaparTrackingHistories(
+    """Specify to filter the records returned."""
+    filter: ChaparTrackingHistoryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ChaparTrackingHistorySort!]! = []
+  ): ChaparTrackingHistoryConnection!
+  chaparTrackingHistory(
+    """The id of the record to find."""
+    id: ID!
+  ): ChaparTrackingHistory!
+  cities(
+    """Specify to filter the records returned."""
+    filter: CityFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CitySort!]! = []
+  ): CityConnection!
+  citiesSepidar(
+    """The id of the record to find."""
+    id: ID!
+  ): CitiesSepidar!
+  citiesSepidars(
+    """Specify to filter the records returned."""
+    filter: CitiesSepidarFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CitiesSepidarSort!]! = []
+  ): CitiesSepidarConnection!
+  city(
+    """The id of the record to find."""
+    id: ID!
+  ): City!
+  city2(
+    """The id of the record to find."""
+    id: ID!
+  ): City2!
+  city2s(
+    """Specify to filter the records returned."""
+    filter: City2Filter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [City2Sort!]! = []
+  ): City2Connection!
+  color(
+    """The id of the record to find."""
+    id: ID!
+  ): Color!
+  colorCategories(
+    """Specify to filter the records returned."""
+    filter: ColorCategoryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ColorCategorySort!]! = []
+  ): ColorCategoryConnection!
+  colorCategory(
+    """The id of the record to find."""
+    id: ID!
+  ): ColorCategory!
+  colorCategoryDetail(
+    """The id of the record to find."""
+    id: ID!
+  ): ColorCategoryDetail!
+  colorCategoryDetails(
+    """Specify to filter the records returned."""
+    filter: ColorCategoryDetailFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ColorCategoryDetailSort!]! = []
+  ): ColorCategoryDetailConnection!
+  colorCategorySubproduct(
+    """The id of the record to find."""
+    id: ID!
+  ): ColorCategorySubproduct!
+  colorCategorySubproducts(
+    """Specify to filter the records returned."""
+    filter: ColorCategorySubproductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ColorCategorySubproductSort!]! = []
+  ): ColorCategorySubproductConnection!
+  colors(
+    """Specify to filter the records returned."""
+    filter: ColorFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ColorSort!]! = []
+  ): ColorConnection!
+  config(
+    """The id of the record to find."""
+    id: ID!
+  ): Config!
+  configs(
+    """Specify to filter the records returned."""
+    filter: ConfigFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ConfigSort!]! = []
+  ): ConfigConnection!
+  contactForm(
+    """The id of the record to find."""
+    id: ID!
+  ): ContactForm!
+  contactFormHistories(
+    """Specify to filter the records returned."""
+    filter: ContactFormHistoryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ContactFormHistorySort!]! = []
+  ): ContactFormHistoryConnection!
+  contactFormHistory(
+    """The id of the record to find."""
+    id: ID!
+  ): ContactFormHistory!
+  contactForms(
+    """Specify to filter the records returned."""
+    filter: ContactFormFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ContactFormSort!]! = []
+  ): ContactFormConnection!
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input StringFieldComparison {
+  eq: String
+  gt: String
+  gte: String
+  iLike: String
+  in: [String!]
+  is: Boolean
+  isNot: Boolean
+  like: String
+  lt: String
+  lte: String
+  neq: String
+  notILike: String
+  notIn: [String!]
+  notLike: String
+}
+
+input UpdateActivity {
+  action: String
+  contentId: Float
+  contentType: String
+  createdAt: DateTime
+  deletedUserId: Float
+  description: String
+  details: String
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+  userName: String
+}
+
+input UpdateAddress {
+  address: String
+  address2: String
+  cityId: Float
+  countryId: Float
+  createdAt: DateTime
+  crmCompanyId: String
+  crmCompanyPersonId: String
+  deletedAt: DateTime
+  email: String
+  fullAddress: String
+  fullname: String
+  fullnameDescription: String
+  fullnameTrimmed: String
+  id: ID
+  latitude: String
+  longitude: String
+  nationalId: String
+  oldAddress: String
+  phone: String
+  phone2: String
+  sepidarId: Float
+  stateId: Float
+  updatedAt: DateTime
+  userId: Float
+  zipCode: String
+}
+
+input UpdateAttributeAttributeGroupInput {
+  attributeGroupId: Float
+  attributeId: Float
+  createdAt: DateTime
+  id: Int!
+  updatedAt: DateTime
+}
+
+input UpdateAttributeInput {
+  createdAt: DateTime
+  id: Int!
+  isActive: Float
+  name: String
+  sortOrder: Float
+  type: Float
+  updatedAt: DateTime
+}
+
+input UpdateAttributeItemInput {
+  attributeGroupId: Float
+  attributeId: Float
+  createdAt: DateTime
+  id: Int!
+  name: String
+  updatedAt: DateTime
+}
+
+input UpdateAttributeProductInput {
+  attributeId: Float
+  attributeItemId: Float
+  createdAt: DateTime
+  id: Int!
+  isChecked: Boolean
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+  value: String
+}
+
+input UpdateAttributeSubproductInput {
+  attributeId: Float
+  attributeItemId: Float
+  createdAt: DateTime
+  id: Int!
+  isChecked: Boolean
+  subproductId: Float
+  updatedAt: DateTime
+  value: String
+}
+
+input UpdateAutomationEvent {
+  createdAt: DateTime
+  deletedAt: DateTime
+  event: String
+  eventDate: String
+  eventDatetime: DateTime
+  eventTimestamp: String
+  id: ID
+  lastEec: String
+  messages: String
+  onlineSheetSaved: Boolean = false
+  rfmCat: String
+  rfmScore: String
+  smsSent: Boolean = false
+  status: String
+  triggerDatetime: DateTime
+  type: String
+  typeId: Float
+  updatedAt: DateTime
+  userContact: String
+  userId: Float
+  userName: String
+  userUid: Float
+}
+
+input UpdateAutomationRfmScore {
+  id: ID
+  rfmScore: String
+  rfmScoreCode: String
+  rfmScoreTitle: String
+}
+
+input UpdateBasicCarpetBorder {
+  code: String
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateBasicCarpetColor {
+  code: String
+  colorCode: String
+  createdAt: DateTime = "2025-03-14T16:58:40.691Z"
+  englishTitle: String
+  id: ID
+  isActive: Boolean = true
+  persianTitle: String
+  russianTitle: String
+  shortCode: String
+  sortOrder: Float
+  spanishTitle: String
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateBasicCarpetDesign {
+  code: String
+  createdAt: DateTime = "2025-03-14T16:58:40.696Z"
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateBasicCarpetDesigner {
+  cityId: Float
+  code: String
+  countryId: Float
+  createdAt: DateTime = "2025-03-14T16:58:40.702Z"
+  description: String
+  facebookId: String
+  headerImage: String
+  id: ID
+  instagramId: String
+  isActive: Boolean = true
+  linkedinId: String
+  pricePercentage: Float = 0
+  profilePicture: String
+  selfEmployed: Boolean = false
+  sortOrder: Float
+  stateId: Float
+  title: String
+  twitterId: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateBasicCarpetMaterial {
+  code: String
+  createdAt: DateTime = "2025-03-14T16:58:40.706Z"
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateBasicCarpetSize {
+  altText: String
+  altTextEn: String
+  carpetVolume: Float = 0
+  code: String
+  createdAt: DateTime = "2025-03-14T16:58:40.712Z"
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: ID
+  imageId: Float
+  isActive: Boolean = true
+  length: Float
+  lengthText: String
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  padVolume: Float = 0
+  pageTitle: String
+  pageTitleEn: String
+  sizeText: String
+  sizeTextEn: String
+  sortOrder: Float
+  title: String
+  titleEn: String
+  unitRatio: Float
+  updatedAt: DateTime
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float = 0
+  width: Float
+  widthText: String
+}
+
+input UpdateBasicCarpetSizeDetail {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+input UpdateBasicCarpetType {
+  code: String
+  createdAt: DateTime = "2025-03-14T16:58:40.724Z"
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateBorder {
+  code: String
+  count: Float
+  id: ID
+}
+
+input UpdateCampaignFreeOffer {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  minPrice: String
+  updatedAt: DateTime
+}
+
+input UpdateCampaignFreeOfferSize {
+  basicCarpetSizeId: Float
+  campaignFreeOfferId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+}
+
+input UpdateCampaignGoldCoinSub {
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateCampaignInstagramFollow {
+  answerNo: Int
+  birthYear: Int
+  createdAt: DateTime
+  id: ID
+  image1: String
+  image2: String
+  name: String
+  phone: String
+  phoneVerified: Boolean
+  sex: Int
+  updatedAt: DateTime
+  userId: Int
+  verificationCode: String
+}
+
+input UpdateCampaignPetForm {
+  couponId: Float
+  createdAt: DateTime
+  discountAmount: Float = 0
+  donationAmount: Float = 0
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String = "/"
+  petName: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateCampaignRoomvoImage {
+  createdAt: DateTime
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  userId: Float
+  votesCount: Float = 0
+}
+
+input UpdateCampaignRoomvoVote {
+  campaignRoomvoImageId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateCampaignSubscription {
+  campaignName: String
+  code: Int
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Int
+}
+
+input UpdateCampaignUefaEuroSubscriber {
+  contactFormStatusId: Float = 1
+  createdAt: DateTime
+  id: ID
+  mobile: String
+  status: Float = 1
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateCampaignUefaEuroSubscriberHistory {
+  campaignUefaEuroSubscriberId: Float
+  comment: String
+  contactFormStatusId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateCampaignVotingImage {
+  campaignNo: Float
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  isActive: Boolean = true
+  sortOrder: Float = 1
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateCarpetFeature {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateCarpetFeatureUser {
+  carpetFeatureId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateCarpetMaterial {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  name: String
+  pricePerInch: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateCarpetShape {
+  createdAt: DateTime
+  hasLength: Boolean = true
+  id: ID
+  isActive: Boolean = true
+  maxLength: Float
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  name: String
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateCarpetSize {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  length: Float
+  sortOrder: Float
+  updatedAt: DateTime
+  width: Float
+}
+
+input UpdateCarpetUsagePlace {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  sortOrder: Float
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateCarpetUsagePlaceInvoiceProduct {
+  carpetUsagePlaceId: Float
+  createdAt: DateTime
+  id: ID
+  invoiceProductId: Float
+  row: Float
+  updatedAt: DateTime
+}
+
+input UpdateCarpetUsagePlaceUser {
+  carpetUsagePlaceId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateChaparSettlementStatus {
+  createdAt: DateTime
+  id: ID
+  status: String
+  updatedAt: DateTime
+}
+
+input UpdateChaparSettlementStatusInput {
+  createdAt: DateTime
+  id: Int!
+  status: String
+  updatedAt: DateTime
+}
+
+input UpdateChaparTrackingHistory {
+  createdAt: DateTime
+  date: String
+  id: ID
+  invoiceId: Float
+  reference: String
+  status: String
+  statusNote: String
+  time: String
+  tracking: String
+  updatedAt: DateTime
+}
+
+input UpdateCitiesSepidar {
+  cityId: Float
+  id: ID
+  name: String
+  sepidarStateId: Float
+  stateId: Float
+  stateName: String
+}
+
+input UpdateCity {
+  chaparId: Float
+  code: String
+  createdAt: DateTime
+  id: ID
+  mahexCode: String
+  name: String
+  sepidarId: Float
+  stateId: Float
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+input UpdateCity2 {
+  id: ID
+  sepidarId: Float
+}
+
+input UpdateCityInput {
+  chaparId: Float
+  code: String
+  createdAt: DateTime
+  id: Int!
+  mahexCode: String
+  name: String
+  sepidarId: Float
+  stateId: Float
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+input UpdateColor {
+  colorCode: String
+  colorCodeOriginal: String
+  colorName: String
+  hexCode: String
+  id: ID
+}
+
+input UpdateColorCategory {
+  altText: String
+  altTextEn: String
+  color: String
+  createdAt: DateTime
+  description: String
+  descriptionEn: String
+  homepageImageId: Float
+  id: ID
+  imageId: Float
+  isActive: Boolean
+  metaTags: String
+  metaTagsEn: String
+  mobileImageId: Float
+  name: String
+  nameEn: String
+  pageTitle: String
+  pageTitleEn: String
+  sortOrder: Float
+  updatedAt: DateTime
+  urlSlug: String
+  urlSlugEn: String
+  viewCounter: Float
+}
+
+input UpdateColorCategoryDetail {
+  colorCategoryId: Float
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+input UpdateColorCategorySubproduct {
+  colorCategoryId: Float
+  createdAt: DateTime
+  id: ID
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+input UpdateColorInput {
+  colorCode: String
+  colorCodeOriginal: String
+  colorName: String
+  hexCode: String
+  id: Int!
+}
+
+input UpdateConfig {
+  createdAt: DateTime
+  id: ID
+  key: String
+  updatedAt: DateTime
+  value: String
+}
+
+input UpdateContactForm {
+  answer1: String
+  answer2: String
+  answer3: String
+  city: String
+  contactFormStatusId: Float
+  countryId: Float
+  createdAt: DateTime
+  departmentId: Float
+  email: String
+  id: ID
+  name: String
+  phone: String
+  text: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateContactFormHistory {
+  comment: String
+  contactFormId: Float
+  contactFormStatusId: Float
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateManyActivitiesInput {
+  """Filter used to find fields to update"""
+  filter: ActivityUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateActivity!
+}
+
+input UpdateManyAddressesInput {
+  """Filter used to find fields to update"""
+  filter: AddressUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateAddress!
+}
+
+input UpdateManyAutomationEventsInput {
+  """Filter used to find fields to update"""
+  filter: AutomationEventUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateAutomationEvent!
+}
+
+input UpdateManyAutomationRfmScoresInput {
+  """Filter used to find fields to update"""
+  filter: AutomationRfmScoreUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateAutomationRfmScore!
+}
+
+input UpdateManyBasicCarpetBordersInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetBorderUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetBorder!
+}
+
+input UpdateManyBasicCarpetColorsInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetColorUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetColor!
+}
+
+input UpdateManyBasicCarpetDesignersInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetDesignerUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetDesigner!
+}
+
+input UpdateManyBasicCarpetDesignsInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetDesignUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetDesign!
+}
+
+input UpdateManyBasicCarpetMaterialsInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetMaterialUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetMaterial!
+}
+
+input UpdateManyBasicCarpetSizeDetailsInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetSizeDetailUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetSizeDetail!
+}
+
+input UpdateManyBasicCarpetSizesInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetSizeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetSize!
+}
+
+input UpdateManyBasicCarpetTypesInput {
+  """Filter used to find fields to update"""
+  filter: BasicCarpetTypeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBasicCarpetType!
+}
+
+input UpdateManyBordersInput {
+  """Filter used to find fields to update"""
+  filter: BorderUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateBorder!
+}
+
+input UpdateManyCampaignFreeOfferSizesInput {
+  """Filter used to find fields to update"""
+  filter: CampaignFreeOfferSizeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignFreeOfferSize!
+}
+
+input UpdateManyCampaignFreeOffersInput {
+  """Filter used to find fields to update"""
+  filter: CampaignFreeOfferUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignFreeOffer!
+}
+
+input UpdateManyCampaignGoldCoinSubsInput {
+  """Filter used to find fields to update"""
+  filter: CampaignGoldCoinSubUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignGoldCoinSub!
+}
+
+input UpdateManyCampaignInstagramFollowsInput {
+  """Filter used to find fields to update"""
+  filter: CampaignInstagramFollowUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignInstagramFollow!
+}
+
+input UpdateManyCampaignPetFormsInput {
+  """Filter used to find fields to update"""
+  filter: CampaignPetFormUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignPetForm!
+}
+
+input UpdateManyCampaignRoomvoImagesInput {
+  """Filter used to find fields to update"""
+  filter: CampaignRoomvoImageUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignRoomvoImage!
+}
+
+input UpdateManyCampaignRoomvoVotesInput {
+  """Filter used to find fields to update"""
+  filter: CampaignRoomvoVoteUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignRoomvoVote!
+}
+
+input UpdateManyCampaignSubscriptionsInput {
+  """Filter used to find fields to update"""
+  filter: CampaignSubscriptionUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignSubscription!
+}
+
+input UpdateManyCampaignUefaEuroSubscriberHistoriesInput {
+  """Filter used to find fields to update"""
+  filter: CampaignUefaEuroSubscriberHistoryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignUefaEuroSubscriberHistory!
+}
+
+input UpdateManyCampaignUefaEuroSubscribersInput {
+  """Filter used to find fields to update"""
+  filter: CampaignUefaEuroSubscriberUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignUefaEuroSubscriber!
+}
+
+input UpdateManyCampaignVotingImagesInput {
+  """Filter used to find fields to update"""
+  filter: CampaignVotingImageUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCampaignVotingImage!
+}
+
+input UpdateManyCarpetFeatureUsersInput {
+  """Filter used to find fields to update"""
+  filter: CarpetFeatureUserUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetFeatureUser!
+}
+
+input UpdateManyCarpetFeaturesInput {
+  """Filter used to find fields to update"""
+  filter: CarpetFeatureUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetFeature!
+}
+
+input UpdateManyCarpetMaterialsInput {
+  """Filter used to find fields to update"""
+  filter: CarpetMaterialUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetMaterial!
+}
+
+input UpdateManyCarpetShapesInput {
+  """Filter used to find fields to update"""
+  filter: CarpetShapeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetShape!
+}
+
+input UpdateManyCarpetSizesInput {
+  """Filter used to find fields to update"""
+  filter: CarpetSizeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetSize!
+}
+
+input UpdateManyCarpetUsagePlaceInvoiceProductsInput {
+  """Filter used to find fields to update"""
+  filter: CarpetUsagePlaceInvoiceProductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetUsagePlaceInvoiceProduct!
+}
+
+input UpdateManyCarpetUsagePlaceUsersInput {
+  """Filter used to find fields to update"""
+  filter: CarpetUsagePlaceUserUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetUsagePlaceUser!
+}
+
+input UpdateManyCarpetUsagePlacesInput {
+  """Filter used to find fields to update"""
+  filter: CarpetUsagePlaceUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCarpetUsagePlace!
+}
+
+input UpdateManyChaparSettlementStatusesInput {
+  """Filter used to find fields to update"""
+  filter: ChaparSettlementStatusUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateChaparSettlementStatus!
+}
+
+input UpdateManyChaparTrackingHistoriesInput {
+  """Filter used to find fields to update"""
+  filter: ChaparTrackingHistoryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateChaparTrackingHistory!
+}
+
+input UpdateManyCitiesInput {
+  """Filter used to find fields to update"""
+  filter: CityUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCity!
+}
+
+input UpdateManyCitiesSepidarsInput {
+  """Filter used to find fields to update"""
+  filter: CitiesSepidarUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCitiesSepidar!
+}
+
+input UpdateManyCity2sInput {
+  """Filter used to find fields to update"""
+  filter: City2UpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCity2!
+}
+
+input UpdateManyColorCategoriesInput {
+  """Filter used to find fields to update"""
+  filter: ColorCategoryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateColorCategory!
+}
+
+input UpdateManyColorCategoryDetailsInput {
+  """Filter used to find fields to update"""
+  filter: ColorCategoryDetailUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateColorCategoryDetail!
+}
+
+input UpdateManyColorCategorySubproductsInput {
+  """Filter used to find fields to update"""
+  filter: ColorCategorySubproductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateColorCategorySubproduct!
+}
+
+input UpdateManyColorsInput {
+  """Filter used to find fields to update"""
+  filter: ColorUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateColor!
+}
+
+input UpdateManyConfigsInput {
+  """Filter used to find fields to update"""
+  filter: ConfigUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateConfig!
+}
+
+input UpdateManyContactFormHistoriesInput {
+  """Filter used to find fields to update"""
+  filter: ContactFormHistoryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateContactFormHistory!
+}
+
+input UpdateManyContactFormsInput {
+  """Filter used to find fields to update"""
+  filter: ContactFormUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateContactForm!
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+input UpdateOneActivityInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateActivity!
+}
+
+input UpdateOneAddressInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateAddress!
+}
+
+input UpdateOneAutomationEventInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateAutomationEvent!
+}
+
+input UpdateOneAutomationRfmScoreInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateAutomationRfmScore!
+}
+
+input UpdateOneBasicCarpetBorderInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetBorder!
+}
+
+input UpdateOneBasicCarpetColorInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetColor!
+}
+
+input UpdateOneBasicCarpetDesignInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetDesign!
+}
+
+input UpdateOneBasicCarpetDesignerInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetDesigner!
+}
+
+input UpdateOneBasicCarpetMaterialInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetMaterial!
+}
+
+input UpdateOneBasicCarpetSizeDetailInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetSizeDetail!
+}
+
+input UpdateOneBasicCarpetSizeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetSize!
+}
+
+input UpdateOneBasicCarpetTypeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBasicCarpetType!
+}
+
+input UpdateOneBorderInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateBorder!
+}
+
+input UpdateOneCampaignFreeOfferInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignFreeOffer!
+}
+
+input UpdateOneCampaignFreeOfferSizeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignFreeOfferSize!
+}
+
+input UpdateOneCampaignGoldCoinSubInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignGoldCoinSub!
+}
+
+input UpdateOneCampaignInstagramFollowInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignInstagramFollow!
+}
+
+input UpdateOneCampaignPetFormInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignPetForm!
+}
+
+input UpdateOneCampaignRoomvoImageInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignRoomvoImage!
+}
+
+input UpdateOneCampaignRoomvoVoteInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignRoomvoVote!
+}
+
+input UpdateOneCampaignSubscriptionInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignSubscription!
+}
+
+input UpdateOneCampaignUefaEuroSubscriberHistoryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignUefaEuroSubscriberHistory!
+}
+
+input UpdateOneCampaignUefaEuroSubscriberInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignUefaEuroSubscriber!
+}
+
+input UpdateOneCampaignVotingImageInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCampaignVotingImage!
+}
+
+input UpdateOneCarpetFeatureInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetFeature!
+}
+
+input UpdateOneCarpetFeatureUserInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetFeatureUser!
+}
+
+input UpdateOneCarpetMaterialInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetMaterial!
+}
+
+input UpdateOneCarpetShapeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetShape!
+}
+
+input UpdateOneCarpetSizeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetSize!
+}
+
+input UpdateOneCarpetUsagePlaceInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetUsagePlace!
+}
+
+input UpdateOneCarpetUsagePlaceInvoiceProductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetUsagePlaceInvoiceProduct!
+}
+
+input UpdateOneCarpetUsagePlaceUserInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCarpetUsagePlaceUser!
+}
+
+input UpdateOneChaparSettlementStatusInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateChaparSettlementStatus!
+}
+
+input UpdateOneChaparTrackingHistoryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateChaparTrackingHistory!
+}
+
+input UpdateOneCitiesSepidarInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCitiesSepidar!
+}
+
+input UpdateOneCity2Input {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCity2!
+}
+
+input UpdateOneCityInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCity!
+}
+
+input UpdateOneColorCategoryDetailInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateColorCategoryDetail!
+}
+
+input UpdateOneColorCategoryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateColorCategory!
+}
+
+input UpdateOneColorCategorySubproductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateColorCategorySubproduct!
+}
+
+input UpdateOneColorInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateColor!
+}
+
+input UpdateOneConfigInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateConfig!
+}
+
+input UpdateOneContactFormHistoryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateContactFormHistory!
+}
+
+input UpdateOneContactFormInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateContactForm!
+}
