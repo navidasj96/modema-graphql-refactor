@@ -3068,10 +3068,302 @@ enum ContactFormSortFields {
   id
 }
 
+type ContactFormStatus {
+  createdAt: DateTime
+  id: ID!
+  status: String!
+  updatedAt: DateTime
+}
+
+type ContactFormStatusConnection {
+  """Array of edges."""
+  edges: [ContactFormStatusEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ContactFormStatusDeleteFilter {
+  and: [ContactFormStatusDeleteFilter!]
+  id: IDFilterComparison
+  or: [ContactFormStatusDeleteFilter!]
+}
+
+type ContactFormStatusDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  status: String
+  updatedAt: DateTime
+}
+
+type ContactFormStatusEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ContactFormStatus"""
+  node: ContactFormStatus!
+}
+
+input ContactFormStatusFilter {
+  and: [ContactFormStatusFilter!]
+  id: IDFilterComparison
+  or: [ContactFormStatusFilter!]
+}
+
+input ContactFormStatusSort {
+  direction: SortDirection!
+  field: ContactFormStatusSortFields!
+  nulls: SortNulls
+}
+
+enum ContactFormStatusSortFields {
+  id
+}
+
+input ContactFormStatusUpdateFilter {
+  and: [ContactFormStatusUpdateFilter!]
+  id: IDFilterComparison
+  or: [ContactFormStatusUpdateFilter!]
+}
+
 input ContactFormUpdateFilter {
   and: [ContactFormUpdateFilter!]
   id: IDFilterComparison
   or: [ContactFormUpdateFilter!]
+}
+
+type Country {
+  chaparId: Float
+  createdAt: DateTime
+  id: ID!
+  name: String!
+  phoneCode: Float
+  sortName: String
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+type CountryConnection {
+  """Array of edges."""
+  edges: [CountryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CountryDeleteFilter {
+  and: [CountryDeleteFilter!]
+  id: IDFilterComparison
+  or: [CountryDeleteFilter!]
+}
+
+type CountryDeleteResponse {
+  chaparId: Float
+  createdAt: DateTime
+  id: ID
+  name: String
+  phoneCode: Float
+  sortName: String
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+type CountryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Country"""
+  node: Country!
+}
+
+input CountryFilter {
+  and: [CountryFilter!]
+  id: IDFilterComparison
+  or: [CountryFilter!]
+}
+
+input CountrySort {
+  direction: SortDirection!
+  field: CountrySortFields!
+  nulls: SortNulls
+}
+
+enum CountrySortFields {
+  id
+}
+
+input CountryUpdateFilter {
+  and: [CountryUpdateFilter!]
+  id: IDFilterComparison
+  or: [CountryUpdateFilter!]
+}
+
+type Coupon {
+  code: String!
+  createdAt: DateTime
+  createdBy: Float
+  discount: String!
+  endDate: DateTime!
+  forNewCustomersOnly: Boolean!
+  forOldCustomersOnly: Boolean!
+  forReadyProductsOnly: Boolean!
+  id: ID!
+  isActive: Float
+  isApplicableToDiscountedProducts: Float
+  maxDiscountPrice: String
+  maxPercent: Float
+  maxUsage: Float!
+  minInvoicePrice: String
+  name: String!
+  offType: Float!
+  onlyForOneItem: Boolean!
+  onlyForOutOfStocks: Float!
+  retargetingInvoiceId: Float
+  retargetingUserId: Float
+  sortOrder: Float
+  startDate: DateTime!
+  updatedAt: DateTime
+  updatedBy: Float
+  userId: Float
+}
+
+type CouponConnection {
+  """Array of edges."""
+  edges: [CouponEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CouponDeleteFilter {
+  and: [CouponDeleteFilter!]
+  id: IDFilterComparison
+  or: [CouponDeleteFilter!]
+}
+
+type CouponDeleteResponse {
+  code: String
+  createdAt: DateTime
+  createdBy: Float
+  discount: String
+  endDate: DateTime
+  forNewCustomersOnly: Boolean
+  forOldCustomersOnly: Boolean
+  forReadyProductsOnly: Boolean
+  id: ID
+  isActive: Float
+  isApplicableToDiscountedProducts: Float
+  maxDiscountPrice: String
+  maxPercent: Float
+  maxUsage: Float
+  minInvoicePrice: String
+  name: String
+  offType: Float
+  onlyForOneItem: Boolean
+  onlyForOutOfStocks: Float
+  retargetingInvoiceId: Float
+  retargetingUserId: Float
+  sortOrder: Float
+  startDate: DateTime
+  updatedAt: DateTime
+  updatedBy: Float
+  userId: Float
+}
+
+type CouponEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Coupon"""
+  node: Coupon!
+}
+
+input CouponFilter {
+  and: [CouponFilter!]
+  id: IDFilterComparison
+  or: [CouponFilter!]
+}
+
+input CouponSort {
+  direction: SortDirection!
+  field: CouponSortFields!
+  nulls: SortNulls
+}
+
+enum CouponSortFields {
+  id
+}
+
+type CouponSubject {
+  basicCarpetSizeId: Float
+  couponId: Float!
+  createdAt: DateTime
+  id: ID!
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+type CouponSubjectConnection {
+  """Array of edges."""
+  edges: [CouponSubjectEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CouponSubjectDeleteFilter {
+  and: [CouponSubjectDeleteFilter!]
+  id: IDFilterComparison
+  or: [CouponSubjectDeleteFilter!]
+}
+
+type CouponSubjectDeleteResponse {
+  basicCarpetSizeId: Float
+  couponId: Float
+  createdAt: DateTime
+  id: ID
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+type CouponSubjectEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CouponSubject"""
+  node: CouponSubject!
+}
+
+input CouponSubjectFilter {
+  and: [CouponSubjectFilter!]
+  id: IDFilterComparison
+  or: [CouponSubjectFilter!]
+}
+
+input CouponSubjectSort {
+  direction: SortDirection!
+  field: CouponSubjectSortFields!
+  nulls: SortNulls
+}
+
+enum CouponSubjectSortFields {
+  id
+}
+
+input CouponSubjectUpdateFilter {
+  and: [CouponSubjectUpdateFilter!]
+  id: IDFilterComparison
+  or: [CouponSubjectUpdateFilter!]
+}
+
+input CouponUpdateFilter {
+  and: [CouponUpdateFilter!]
+  id: IDFilterComparison
+  or: [CouponUpdateFilter!]
 }
 
 input CreateActivityInput {
@@ -3211,7 +3503,7 @@ input CreateBasicCarpetBorderInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-14T16:58:40.690Z"
+  createdAt: DateTime! = "2025-03-14T18:27:39.116Z"
   englishTitle: String
   id: Float!
   isActive: Boolean! = true
@@ -3226,7 +3518,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-14T16:58:40.697Z"
+  createdAt: DateTime! = "2025-03-14T18:27:39.123Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3238,7 +3530,7 @@ input CreateBasicCarpetDesignerInput {
   cityId: Float
   code: String!
   countryId: Float
-  createdAt: DateTime! = "2025-03-14T16:58:40.701Z"
+  createdAt: DateTime! = "2025-03-14T18:27:39.127Z"
   description: String
   facebookId: String
   headerImage: String
@@ -3259,7 +3551,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-14T16:58:40.707Z"
+  createdAt: DateTime! = "2025-03-14T18:27:39.134Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3285,7 +3577,7 @@ input CreateBasicCarpetSizeInput {
   altTextEn: String
   carpetVolume: Float = 0
   code: String!
-  createdAt: DateTime! = "2025-03-14T16:58:40.713Z"
+  createdAt: DateTime! = "2025-03-14T18:27:39.140Z"
   description: String
   descriptionEn: String
   homepageImageId: Float
@@ -3316,7 +3608,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-14T16:58:40.725Z"
+  createdAt: DateTime! = "2025-03-14T18:27:39.152Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3658,6 +3950,64 @@ input CreateContactFormInput {
   userId: Float
 }
 
+input CreateContactFormStatusInput {
+  createdAt: DateTime
+  id: Float!
+  status: String!
+  updatedAt: DateTime
+}
+
+input CreateCountryInput {
+  chaparId: Float
+  createdAt: DateTime
+  id: Float!
+  name: String!
+  phoneCode: Float
+  sortName: String
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+input CreateCouponInput {
+  code: String!
+  createdAt: DateTime
+  createdBy: Float
+  discount: String!
+  endDate: DateTime!
+  forNewCustomersOnly: Boolean!
+  forOldCustomersOnly: Boolean!
+  forReadyProductsOnly: Boolean!
+  id: Float!
+  isActive: Float
+  isApplicableToDiscountedProducts: Float
+  maxDiscountPrice: String
+  maxPercent: Float
+  maxUsage: Float!
+  minInvoicePrice: String
+  name: String!
+  offType: Float!
+  onlyForOneItem: Boolean!
+  onlyForOutOfStocks: Float!
+  retargetingInvoiceId: Float
+  retargetingUserId: Float
+  sortOrder: Float
+  startDate: DateTime!
+  updatedAt: DateTime
+  updatedBy: Float
+  userId: Float
+}
+
+input CreateCouponSubjectInput {
+  basicCarpetSizeId: Float
+  couponId: Float!
+  createdAt: DateTime
+  id: Float!
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
 input CreateManyActivitiesInput {
   """Array of records to create"""
   activities: [CreateActivityInput!]!
@@ -3873,9 +4223,29 @@ input CreateManyContactFormHistoriesInput {
   contactFormHistories: [CreateContactFormHistoryInput!]!
 }
 
+input CreateManyContactFormStatusesInput {
+  """Array of records to create"""
+  contactFormStatuses: [CreateContactFormStatusInput!]!
+}
+
 input CreateManyContactFormsInput {
   """Array of records to create"""
   contactForms: [CreateContactFormInput!]!
+}
+
+input CreateManyCountriesInput {
+  """Array of records to create"""
+  countries: [CreateCountryInput!]!
+}
+
+input CreateManyCouponSubjectsInput {
+  """Array of records to create"""
+  couponSubjects: [CreateCouponSubjectInput!]!
+}
+
+input CreateManyCouponsInput {
+  """Array of records to create"""
+  coupons: [CreateCouponInput!]!
 }
 
 input CreateOneActivityInput {
@@ -4096,6 +4466,26 @@ input CreateOneContactFormHistoryInput {
 input CreateOneContactFormInput {
   """The record to create"""
   contactForm: CreateContactFormInput!
+}
+
+input CreateOneContactFormStatusInput {
+  """The record to create"""
+  contactFormStatus: CreateContactFormStatusInput!
+}
+
+input CreateOneCountryInput {
+  """The record to create"""
+  country: CreateCountryInput!
+}
+
+input CreateOneCouponInput {
+  """The record to create"""
+  coupon: CreateCouponInput!
+}
+
+input CreateOneCouponSubjectInput {
+  """The record to create"""
+  couponSubject: CreateCouponSubjectInput!
 }
 
 input CursorPaging {
@@ -4332,9 +4722,29 @@ input DeleteManyContactFormHistoriesInput {
   filter: ContactFormHistoryDeleteFilter!
 }
 
+input DeleteManyContactFormStatusesInput {
+  """Filter to find records to delete"""
+  filter: ContactFormStatusDeleteFilter!
+}
+
 input DeleteManyContactFormsInput {
   """Filter to find records to delete"""
   filter: ContactFormDeleteFilter!
+}
+
+input DeleteManyCountriesInput {
+  """Filter to find records to delete"""
+  filter: CountryDeleteFilter!
+}
+
+input DeleteManyCouponSubjectsInput {
+  """Filter to find records to delete"""
+  filter: CouponSubjectDeleteFilter!
+}
+
+input DeleteManyCouponsInput {
+  """Filter to find records to delete"""
+  filter: CouponDeleteFilter!
 }
 
 type DeleteManyResponse {
@@ -4562,6 +4972,26 @@ input DeleteOneContactFormInput {
   id: ID!
 }
 
+input DeleteOneContactFormStatusInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCountryInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCouponInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCouponSubjectInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
 input IDFilterComparison {
   eq: ID
   gt: ID
@@ -4631,7 +5061,11 @@ type Mutation {
   createManyColors(input: CreateManyColorsInput!): [Color!]!
   createManyConfigs(input: CreateManyConfigsInput!): [Config!]!
   createManyContactFormHistories(input: CreateManyContactFormHistoriesInput!): [ContactFormHistory!]!
+  createManyContactFormStatuses(input: CreateManyContactFormStatusesInput!): [ContactFormStatus!]!
   createManyContactForms(input: CreateManyContactFormsInput!): [ContactForm!]!
+  createManyCountries(input: CreateManyCountriesInput!): [Country!]!
+  createManyCouponSubjects(input: CreateManyCouponSubjectsInput!): [CouponSubject!]!
+  createManyCoupons(input: CreateManyCouponsInput!): [Coupon!]!
   createOneActivity(input: CreateOneActivityInput!): Activity!
   createOneAddress(input: CreateOneAddressInput!): Address!
   createOneAutomationEvent(input: CreateOneAutomationEventInput!): AutomationEvent!
@@ -4676,6 +5110,10 @@ type Mutation {
   createOneConfig(input: CreateOneConfigInput!): Config!
   createOneContactForm(input: CreateOneContactFormInput!): ContactForm!
   createOneContactFormHistory(input: CreateOneContactFormHistoryInput!): ContactFormHistory!
+  createOneContactFormStatus(input: CreateOneContactFormStatusInput!): ContactFormStatus!
+  createOneCountry(input: CreateOneCountryInput!): Country!
+  createOneCoupon(input: CreateOneCouponInput!): Coupon!
+  createOneCouponSubject(input: CreateOneCouponSubjectInput!): CouponSubject!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
   deleteManyAddresses(input: DeleteManyAddressesInput!): DeleteManyResponse!
   deleteManyAutomationEvents(input: DeleteManyAutomationEventsInput!): DeleteManyResponse!
@@ -4719,7 +5157,11 @@ type Mutation {
   deleteManyColors(input: DeleteManyColorsInput!): DeleteManyResponse!
   deleteManyConfigs(input: DeleteManyConfigsInput!): DeleteManyResponse!
   deleteManyContactFormHistories(input: DeleteManyContactFormHistoriesInput!): DeleteManyResponse!
+  deleteManyContactFormStatuses(input: DeleteManyContactFormStatusesInput!): DeleteManyResponse!
   deleteManyContactForms(input: DeleteManyContactFormsInput!): DeleteManyResponse!
+  deleteManyCountries(input: DeleteManyCountriesInput!): DeleteManyResponse!
+  deleteManyCouponSubjects(input: DeleteManyCouponSubjectsInput!): DeleteManyResponse!
+  deleteManyCoupons(input: DeleteManyCouponsInput!): DeleteManyResponse!
   deleteOneActivity(input: DeleteOneActivityInput!): ActivityDeleteResponse!
   deleteOneAddress(input: DeleteOneAddressInput!): AddressDeleteResponse!
   deleteOneAutomationEvent(input: DeleteOneAutomationEventInput!): AutomationEventDeleteResponse!
@@ -4764,6 +5206,10 @@ type Mutation {
   deleteOneConfig(input: DeleteOneConfigInput!): ConfigDeleteResponse!
   deleteOneContactForm(input: DeleteOneContactFormInput!): ContactFormDeleteResponse!
   deleteOneContactFormHistory(input: DeleteOneContactFormHistoryInput!): ContactFormHistoryDeleteResponse!
+  deleteOneContactFormStatus(input: DeleteOneContactFormStatusInput!): ContactFormStatusDeleteResponse!
+  deleteOneCountry(input: DeleteOneCountryInput!): CountryDeleteResponse!
+  deleteOneCoupon(input: DeleteOneCouponInput!): CouponDeleteResponse!
+  deleteOneCouponSubject(input: DeleteOneCouponSubjectInput!): CouponSubjectDeleteResponse!
   removeAttribute(id: Int!): Attribute!
   removeAttributeAttributeGroup(id: Int!): AttributeAttributeGroup!
   removeAttributeItem(id: Int!): AttributeItem!
@@ -4823,7 +5269,11 @@ type Mutation {
   updateManyColors(input: UpdateManyColorsInput!): UpdateManyResponse!
   updateManyConfigs(input: UpdateManyConfigsInput!): UpdateManyResponse!
   updateManyContactFormHistories(input: UpdateManyContactFormHistoriesInput!): UpdateManyResponse!
+  updateManyContactFormStatuses(input: UpdateManyContactFormStatusesInput!): UpdateManyResponse!
   updateManyContactForms(input: UpdateManyContactFormsInput!): UpdateManyResponse!
+  updateManyCountries(input: UpdateManyCountriesInput!): UpdateManyResponse!
+  updateManyCouponSubjects(input: UpdateManyCouponSubjectsInput!): UpdateManyResponse!
+  updateManyCoupons(input: UpdateManyCouponsInput!): UpdateManyResponse!
   updateOneActivity(input: UpdateOneActivityInput!): Activity!
   updateOneAddress(input: UpdateOneAddressInput!): Address!
   updateOneAutomationEvent(input: UpdateOneAutomationEventInput!): AutomationEvent!
@@ -4868,6 +5318,10 @@ type Mutation {
   updateOneConfig(input: UpdateOneConfigInput!): Config!
   updateOneContactForm(input: UpdateOneContactFormInput!): ContactForm!
   updateOneContactFormHistory(input: UpdateOneContactFormHistoryInput!): ContactFormHistory!
+  updateOneContactFormStatus(input: UpdateOneContactFormStatusInput!): ContactFormStatus!
+  updateOneCountry(input: UpdateOneCountryInput!): Country!
+  updateOneCoupon(input: UpdateOneCouponInput!): Coupon!
+  updateOneCouponSubject(input: UpdateOneCouponSubjectInput!): CouponSubject!
 }
 
 type PageInfo {
@@ -5497,6 +5951,20 @@ type Query {
     """The id of the record to find."""
     id: ID!
   ): ContactFormHistory!
+  contactFormStatus(
+    """The id of the record to find."""
+    id: ID!
+  ): ContactFormStatus!
+  contactFormStatuses(
+    """Specify to filter the records returned."""
+    filter: ContactFormStatusFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ContactFormStatusSort!]! = []
+  ): ContactFormStatusConnection!
   contactForms(
     """Specify to filter the records returned."""
     filter: ContactFormFilter! = {}
@@ -5507,6 +5975,48 @@ type Query {
     """Specify to sort results."""
     sorting: [ContactFormSort!]! = []
   ): ContactFormConnection!
+  countries(
+    """Specify to filter the records returned."""
+    filter: CountryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CountrySort!]! = []
+  ): CountryConnection!
+  country(
+    """The id of the record to find."""
+    id: ID!
+  ): Country!
+  coupon(
+    """The id of the record to find."""
+    id: ID!
+  ): Coupon!
+  couponSubject(
+    """The id of the record to find."""
+    id: ID!
+  ): CouponSubject!
+  couponSubjects(
+    """Specify to filter the records returned."""
+    filter: CouponSubjectFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CouponSubjectSort!]! = []
+  ): CouponSubjectConnection!
+  coupons(
+    """Specify to filter the records returned."""
+    filter: CouponFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CouponSort!]! = []
+  ): CouponConnection!
 }
 
 """Sort Directions"""
@@ -5675,7 +6185,7 @@ input UpdateBasicCarpetBorder {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-14T16:58:40.691Z"
+  createdAt: DateTime = "2025-03-14T18:27:39.118Z"
   englishTitle: String
   id: ID
   isActive: Boolean = true
@@ -5690,7 +6200,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-14T16:58:40.696Z"
+  createdAt: DateTime = "2025-03-14T18:27:39.123Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -5702,7 +6212,7 @@ input UpdateBasicCarpetDesigner {
   cityId: Float
   code: String
   countryId: Float
-  createdAt: DateTime = "2025-03-14T16:58:40.702Z"
+  createdAt: DateTime = "2025-03-14T18:27:39.128Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5723,7 +6233,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-14T16:58:40.706Z"
+  createdAt: DateTime = "2025-03-14T18:27:39.133Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -5736,7 +6246,7 @@ input UpdateBasicCarpetSize {
   altTextEn: String
   carpetVolume: Float = 0
   code: String
-  createdAt: DateTime = "2025-03-14T16:58:40.712Z"
+  createdAt: DateTime = "2025-03-14T18:27:39.139Z"
   description: String
   descriptionEn: String
   homepageImageId: Float
@@ -5780,7 +6290,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-14T16:58:40.724Z"
+  createdAt: DateTime = "2025-03-14T18:27:39.151Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -6150,6 +6660,64 @@ input UpdateContactFormHistory {
   userId: Float
 }
 
+input UpdateContactFormStatus {
+  createdAt: DateTime
+  id: ID
+  status: String
+  updatedAt: DateTime
+}
+
+input UpdateCountry {
+  chaparId: Float
+  createdAt: DateTime
+  id: ID
+  name: String
+  phoneCode: Float
+  sortName: String
+  tipaxId: Float
+  updatedAt: DateTime
+}
+
+input UpdateCoupon {
+  code: String
+  createdAt: DateTime
+  createdBy: Float
+  discount: String
+  endDate: DateTime
+  forNewCustomersOnly: Boolean
+  forOldCustomersOnly: Boolean
+  forReadyProductsOnly: Boolean
+  id: ID
+  isActive: Float
+  isApplicableToDiscountedProducts: Float
+  maxDiscountPrice: String
+  maxPercent: Float
+  maxUsage: Float
+  minInvoicePrice: String
+  name: String
+  offType: Float
+  onlyForOneItem: Boolean
+  onlyForOutOfStocks: Float
+  retargetingInvoiceId: Float
+  retargetingUserId: Float
+  sortOrder: Float
+  startDate: DateTime
+  updatedAt: DateTime
+  updatedBy: Float
+  userId: Float
+}
+
+input UpdateCouponSubject {
+  basicCarpetSizeId: Float
+  couponId: Float
+  createdAt: DateTime
+  id: ID
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
 input UpdateManyActivitiesInput {
   """Filter used to find fields to update"""
   filter: ActivityUpdateFilter!
@@ -6494,12 +7062,44 @@ input UpdateManyContactFormHistoriesInput {
   update: UpdateContactFormHistory!
 }
 
+input UpdateManyContactFormStatusesInput {
+  """Filter used to find fields to update"""
+  filter: ContactFormStatusUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateContactFormStatus!
+}
+
 input UpdateManyContactFormsInput {
   """Filter used to find fields to update"""
   filter: ContactFormUpdateFilter!
 
   """The update to apply to all records found using the filter"""
   update: UpdateContactForm!
+}
+
+input UpdateManyCountriesInput {
+  """Filter used to find fields to update"""
+  filter: CountryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCountry!
+}
+
+input UpdateManyCouponSubjectsInput {
+  """Filter used to find fields to update"""
+  filter: CouponSubjectUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCouponSubject!
+}
+
+input UpdateManyCouponsInput {
+  """Filter used to find fields to update"""
+  filter: CouponUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCoupon!
 }
 
 type UpdateManyResponse {
@@ -6857,4 +7457,36 @@ input UpdateOneContactFormInput {
 
   """The update to apply."""
   update: UpdateContactForm!
+}
+
+input UpdateOneContactFormStatusInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateContactFormStatus!
+}
+
+input UpdateOneCountryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCountry!
+}
+
+input UpdateOneCouponInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCoupon!
+}
+
+input UpdateOneCouponSubjectInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCouponSubject!
 }

@@ -55,6 +55,10 @@ import { ColorCategorySubproductModule } from './module/color-category-subproduc
 import { ConfigModule } from './module/config/config.module';
 import { ContactFormModule } from './module/contact-form/contact-form.module';
 import { ContactFormHistoryModule } from './module/contact-form-history/contact-form-history.module';
+import { ContactFormStatusModule } from './module/contact-form-status/contact-form-status.module';
+import { CountryModule } from './module/country/country.module';
+import { CouponModule } from './module/coupon/coupon.module';
+import { CouponSubjectModule } from './module/coupon-subject/coupon-subject.module';
 
 @Module({
   imports: [
@@ -129,6 +133,10 @@ import { ContactFormHistoryModule } from './module/contact-form-history/contact-
     ConfigModule,
     ContactFormModule,
     ContactFormHistoryModule,
+    ContactFormStatusModule,
+    CountryModule,
+    CouponModule,
+    CouponSubjectModule,
   ],
   controllers: [AppController],
   providers: [AppService],
