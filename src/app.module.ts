@@ -91,20 +91,47 @@ import { HyperstarCodeModule } from './modules/hyperstar-code/hyperstar-code.mod
 import { ImageModule } from './modules/image/image.module';
 import { UserModule } from '@/modules/user/user.module';
 import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
+import databaseConfig from '@/configuration/database.config';
+import {
+  ConfigModule as ConfigModuleNest,
+  ConfigService as ConfigServiceNest,
+} from '@nestjs/config';
+
+import * as process from 'node:process';
+import { ImageProductModule } from '@/modules/image-product/image-product.module';
+import { ImageSizeModule } from '@/modules/image-size/image-size.module';
+import { ImageSubproductModule } from '@/modules/image-subproduct/image-subproduct.module';
+import { ImagesSizeGuidesDetailModule } from '@/modules/images-size-guides-detail/images-size-guides-detail.module';
+import { ImpersonateHistoryModule } from '@/modules/impersonate-history/impersonate-history.module';
+import { IncredibleOfferModule } from '@/modules/incredible-offer/incredible-offer.module';
+import { IncredibleOfferSentNotificationModule } from '@/modules/incredible-offer-sent-notification/incredible-offer-sent-notification.module';
+import { InstagramFeedModule } from '@/modules/instagram-feed/instagram-feed.module';
+
+const ENV = process.env.NODE_ENV;
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Navidasj228!',
-      database: 'modema',
-      autoLoadEntities: true,
-      synchronize: false,
-      retryAttempts: 0, // Disable retry
-      retryDelay: 0, // No delay
+    ConfigModuleNest.forRoot({
+      isGlobal: true,
+      envFilePath: [!ENV ? '.env' : `.env.${ENV}`],
+      load: [databaseConfig],
+    }),
+
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigServiceNest],
+      useFactory: (configService: ConfigServiceNest) => ({
+        type: 'mysql',
+        host: configService.get('database.host'),
+        port: +configService.get('database.port'),
+        username: configService.get('database.user'),
+        password: configService.get('database.password'),
+        database: configService.get('database.name'),
+        autoLoadEntities: true,
+        synchronize: false,
+        retryAttempts: 0, // Disable retry
+        retryDelay: 0, // No delay
+      }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -200,6 +227,14 @@ import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
     HyperstarCodeModule,
     ImageModule,
     ImageLayerModule,
+    ImageProductModule,
+    ImageSizeModule,
+    ImageSubproductModule,
+    ImagesSizeGuidesDetailModule,
+    ImpersonateHistoryModule,
+    IncredibleOfferModule,
+    IncredibleOfferSentNotificationModule,
+    InstagramFeedModule,
     UserModule,
   ],
   controllers: [AppController],

@@ -3521,7 +3521,7 @@ input CreateBasicCarpetBorderInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-15T11:40:11.886Z"
+  createdAt: DateTime! = "2025-03-15T17:32:46.480Z"
   englishTitle: String
   id: Float!
   isActive: Boolean! = true
@@ -3536,7 +3536,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-15T11:40:11.901Z"
+  createdAt: DateTime! = "2025-03-15T17:32:46.486Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3548,7 +3548,7 @@ input CreateBasicCarpetDesignerInput {
   cityId: Float
   code: String!
   countryId: Float
-  createdAt: DateTime! = "2025-03-15T11:40:11.912Z"
+  createdAt: DateTime! = "2025-03-15T17:32:46.490Z"
   description: String
   facebookId: String
   headerImage: String
@@ -3569,7 +3569,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-15T11:40:11.929Z"
+  createdAt: DateTime! = "2025-03-15T17:32:46.496Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3595,7 +3595,7 @@ input CreateBasicCarpetSizeInput {
   altTextEn: String
   carpetVolume: Float = 0
   code: String!
-  createdAt: DateTime! = "2025-03-15T11:40:11.947Z"
+  createdAt: DateTime! = "2025-03-15T17:32:46.502Z"
   description: String
   descriptionEn: String
   homepageImageId: Float
@@ -3626,7 +3626,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-15T11:40:11.989Z"
+  createdAt: DateTime! = "2025-03-15T17:32:46.518Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -4343,6 +4343,125 @@ input CreateImageLayerInput {
   updatedAt: DateTime
 }
 
+input CreateImageProductInput {
+  createdAt: DateTime
+  id: Float!
+  imageId: Float!
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input CreateImageSizeInput {
+  createdAt: DateTime
+  height: Float!
+  id: Float!
+  name: String!
+  shortName: String!
+  updatedAt: DateTime
+  width: Float!
+}
+
+input CreateImageSubproductInput {
+  createdAt: DateTime
+  id: Float!
+  imageId: Float!
+  sortOrder: Float
+  subproductId: Float!
+  updatedAt: DateTime
+}
+
+input CreateImagesSizeGuidesDetailInput {
+  createdAt: DateTime
+  id: Float!
+  imageId: Float
+  sizeGuidesDetailsId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input CreateImpersonateHistoryInput {
+  createdAt: DateTime
+  id: String!
+  impersonateUserId: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateIncredibleOfferInput {
+  basicCarpetColorId: Float!
+  count: Float!
+  createdAt: DateTime
+  discountId: Float
+  discountPercent: Float!
+  id: Float!
+  isFake: Boolean!
+  offerDate: String!
+  place: Float
+  productId: Float!
+  soldCount: Float!
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
+input CreateIncredibleOfferSentNotificationInput {
+  createdAt: DateTime
+  id: Float!
+  message: String
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateInstagramFeedInput {
+  altText: String
+  caption: String
+  carouselMedia: String
+  comments: String
+  commentsCount: Float
+  commentsDisabled: Boolean
+  commentsNextPage: String
+  createdAt: DateTime
+  createdTime: String
+  data: String
+  downloadedImageHighResolutionUrl: String
+  downloadedImageLowResolutionUrl: String
+  downloadedImageStandardResolutionUrl: String
+  downloadedImageThumbnailUrl: String
+  hasMoreComments: Boolean
+  id: Float!
+  imageHighResolutionUrl: String
+  imageLowResolutionUrl: String
+  imageStandardResolutionUrl: String
+  imageThumbnailUrl: String
+  instagramId: String!
+  isAd: Boolean
+  isAutoConstruct: Boolean
+  isCaptionEdited: Boolean
+  isFake: Boolean
+  isLoadEmpty: Boolean
+  isLoaded: Boolean
+  isNew: Boolean
+  likesCount: Float
+  link: String
+  locationAddressJson: String
+  locationId: String
+  locationName: String
+  locationSlug: String
+  modified: String
+  owner: String
+  ownerId: String
+  shortCode: String
+  sidecarMedias: String
+  squareImages: String
+  type: String
+  updatedAt: DateTime
+  videoDuration: String
+  videoLowBandwidthUrl: String
+  videoLowResolutionUrl: String
+  videoStandardResolutionUrl: String
+  videoViews: Float
+}
+
 input CreateManyActivitiesInput {
   """Array of records to create"""
   activities: [CreateActivityInput!]!
@@ -4733,9 +4852,49 @@ input CreateManyImageLayersInput {
   imageLayers: [CreateImageLayerInput!]!
 }
 
+input CreateManyImageProductsInput {
+  """Array of records to create"""
+  imageProducts: [CreateImageProductInput!]!
+}
+
+input CreateManyImageSizesInput {
+  """Array of records to create"""
+  imageSizes: [CreateImageSizeInput!]!
+}
+
+input CreateManyImageSubproductsInput {
+  """Array of records to create"""
+  imageSubproducts: [CreateImageSubproductInput!]!
+}
+
 input CreateManyImagesInput {
   """Array of records to create"""
   images: [CreateImageInput!]!
+}
+
+input CreateManyImagesSizeGuidesDetailsInput {
+  """Array of records to create"""
+  imagesSizeGuidesDetails: [CreateImagesSizeGuidesDetailInput!]!
+}
+
+input CreateManyImpersonateHistoriesInput {
+  """Array of records to create"""
+  impersonateHistories: [CreateImpersonateHistoryInput!]!
+}
+
+input CreateManyIncredibleOfferSentNotificationsInput {
+  """Array of records to create"""
+  incredibleOfferSentNotifications: [CreateIncredibleOfferSentNotificationInput!]!
+}
+
+input CreateManyIncredibleOffersInput {
+  """Array of records to create"""
+  incredibleOffers: [CreateIncredibleOfferInput!]!
+}
+
+input CreateManyInstagramFeedsInput {
+  """Array of records to create"""
+  instagramFeeds: [CreateInstagramFeedInput!]!
 }
 
 input CreateManyUsersInput {
@@ -5136,6 +5295,46 @@ input CreateOneImageInput {
 input CreateOneImageLayerInput {
   """The record to create"""
   imageLayer: CreateImageLayerInput!
+}
+
+input CreateOneImageProductInput {
+  """The record to create"""
+  imageProduct: CreateImageProductInput!
+}
+
+input CreateOneImageSizeInput {
+  """The record to create"""
+  imageSize: CreateImageSizeInput!
+}
+
+input CreateOneImageSubproductInput {
+  """The record to create"""
+  imageSubproduct: CreateImageSubproductInput!
+}
+
+input CreateOneImagesSizeGuidesDetailInput {
+  """The record to create"""
+  imagesSizeGuidesDetail: CreateImagesSizeGuidesDetailInput!
+}
+
+input CreateOneImpersonateHistoryInput {
+  """The record to create"""
+  impersonateHistory: CreateImpersonateHistoryInput!
+}
+
+input CreateOneIncredibleOfferInput {
+  """The record to create"""
+  incredibleOffer: CreateIncredibleOfferInput!
+}
+
+input CreateOneIncredibleOfferSentNotificationInput {
+  """The record to create"""
+  incredibleOfferSentNotification: CreateIncredibleOfferSentNotificationInput!
+}
+
+input CreateOneInstagramFeedInput {
+  """The record to create"""
+  instagramFeed: CreateInstagramFeedInput!
 }
 
 input CreateOneUserInput {
@@ -5988,9 +6187,49 @@ input DeleteManyImageLayersInput {
   filter: ImageLayerDeleteFilter!
 }
 
+input DeleteManyImageProductsInput {
+  """Filter to find records to delete"""
+  filter: ImageProductDeleteFilter!
+}
+
+input DeleteManyImageSizesInput {
+  """Filter to find records to delete"""
+  filter: ImageSizeDeleteFilter!
+}
+
+input DeleteManyImageSubproductsInput {
+  """Filter to find records to delete"""
+  filter: ImageSubproductDeleteFilter!
+}
+
 input DeleteManyImagesInput {
   """Filter to find records to delete"""
   filter: ImageDeleteFilter!
+}
+
+input DeleteManyImagesSizeGuidesDetailsInput {
+  """Filter to find records to delete"""
+  filter: ImagesSizeGuidesDetailDeleteFilter!
+}
+
+input DeleteManyImpersonateHistoriesInput {
+  """Filter to find records to delete"""
+  filter: ImpersonateHistoryDeleteFilter!
+}
+
+input DeleteManyIncredibleOfferSentNotificationsInput {
+  """Filter to find records to delete"""
+  filter: IncredibleOfferSentNotificationDeleteFilter!
+}
+
+input DeleteManyIncredibleOffersInput {
+  """Filter to find records to delete"""
+  filter: IncredibleOfferDeleteFilter!
+}
+
+input DeleteManyInstagramFeedsInput {
+  """Filter to find records to delete"""
+  filter: InstagramFeedDeleteFilter!
 }
 
 type DeleteManyResponse {
@@ -6394,6 +6633,46 @@ input DeleteOneImageInput {
 }
 
 input DeleteOneImageLayerInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImageProductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImageSizeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImageSubproductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImagesSizeGuidesDetailInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImpersonateHistoryInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneIncredibleOfferInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneIncredibleOfferSentNotificationInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneInstagramFeedInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -8036,6 +8315,132 @@ input ImageLayerUpdateFilter {
   or: [ImageLayerUpdateFilter!]
 }
 
+type ImageProduct {
+  createdAt: DateTime
+  id: ID!
+  imageId: Float!
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type ImageProductConnection {
+  """Array of edges."""
+  edges: [ImageProductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImageProductDeleteFilter {
+  and: [ImageProductDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImageProductDeleteFilter!]
+}
+
+type ImageProductDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type ImageProductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ImageProduct"""
+  node: ImageProduct!
+}
+
+input ImageProductFilter {
+  and: [ImageProductFilter!]
+  id: IDFilterComparison
+  or: [ImageProductFilter!]
+}
+
+input ImageProductSort {
+  direction: SortDirection!
+  field: ImageProductSortFields!
+  nulls: SortNulls
+}
+
+enum ImageProductSortFields {
+  id
+}
+
+input ImageProductUpdateFilter {
+  and: [ImageProductUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImageProductUpdateFilter!]
+}
+
+type ImageSize {
+  createdAt: DateTime
+  height: Float!
+  id: ID!
+  name: String!
+  shortName: String!
+  updatedAt: DateTime
+  width: Float!
+}
+
+type ImageSizeConnection {
+  """Array of edges."""
+  edges: [ImageSizeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImageSizeDeleteFilter {
+  and: [ImageSizeDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImageSizeDeleteFilter!]
+}
+
+type ImageSizeDeleteResponse {
+  createdAt: DateTime
+  height: Float
+  id: ID
+  name: String
+  shortName: String
+  updatedAt: DateTime
+  width: Float
+}
+
+type ImageSizeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ImageSize"""
+  node: ImageSize!
+}
+
+input ImageSizeFilter {
+  and: [ImageSizeFilter!]
+  id: IDFilterComparison
+  or: [ImageSizeFilter!]
+}
+
+input ImageSizeSort {
+  direction: SortDirection!
+  field: ImageSizeSortFields!
+  nulls: SortNulls
+}
+
+enum ImageSizeSortFields {
+  id
+}
+
+input ImageSizeUpdateFilter {
+  and: [ImageSizeUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImageSizeUpdateFilter!]
+}
+
 input ImageSort {
   direction: SortDirection!
   field: ImageSortFields!
@@ -8046,10 +8451,474 @@ enum ImageSortFields {
   id
 }
 
+type ImageSubproduct {
+  createdAt: DateTime
+  id: ID!
+  imageId: Float!
+  sortOrder: Float
+  subproductId: Float!
+  updatedAt: DateTime
+}
+
+type ImageSubproductConnection {
+  """Array of edges."""
+  edges: [ImageSubproductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImageSubproductDeleteFilter {
+  and: [ImageSubproductDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImageSubproductDeleteFilter!]
+}
+
+type ImageSubproductDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  sortOrder: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+type ImageSubproductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ImageSubproduct"""
+  node: ImageSubproduct!
+}
+
+input ImageSubproductFilter {
+  and: [ImageSubproductFilter!]
+  id: IDFilterComparison
+  or: [ImageSubproductFilter!]
+}
+
+input ImageSubproductSort {
+  direction: SortDirection!
+  field: ImageSubproductSortFields!
+  nulls: SortNulls
+}
+
+enum ImageSubproductSortFields {
+  id
+}
+
+input ImageSubproductUpdateFilter {
+  and: [ImageSubproductUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImageSubproductUpdateFilter!]
+}
+
 input ImageUpdateFilter {
   and: [ImageUpdateFilter!]
   id: IDFilterComparison
   or: [ImageUpdateFilter!]
+}
+
+type ImagesSizeGuidesDetail {
+  createdAt: DateTime
+  id: ID!
+  imageId: Float
+  sizeGuidesDetailsId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type ImagesSizeGuidesDetailConnection {
+  """Array of edges."""
+  edges: [ImagesSizeGuidesDetailEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImagesSizeGuidesDetailDeleteFilter {
+  and: [ImagesSizeGuidesDetailDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImagesSizeGuidesDetailDeleteFilter!]
+}
+
+type ImagesSizeGuidesDetailDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  sizeGuidesDetailsId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type ImagesSizeGuidesDetailEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ImagesSizeGuidesDetail"""
+  node: ImagesSizeGuidesDetail!
+}
+
+input ImagesSizeGuidesDetailFilter {
+  and: [ImagesSizeGuidesDetailFilter!]
+  id: IDFilterComparison
+  or: [ImagesSizeGuidesDetailFilter!]
+}
+
+input ImagesSizeGuidesDetailSort {
+  direction: SortDirection!
+  field: ImagesSizeGuidesDetailSortFields!
+  nulls: SortNulls
+}
+
+enum ImagesSizeGuidesDetailSortFields {
+  id
+}
+
+input ImagesSizeGuidesDetailUpdateFilter {
+  and: [ImagesSizeGuidesDetailUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImagesSizeGuidesDetailUpdateFilter!]
+}
+
+type ImpersonateHistory {
+  createdAt: DateTime
+  id: ID!
+  impersonateUserId: Float!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type ImpersonateHistoryConnection {
+  """Array of edges."""
+  edges: [ImpersonateHistoryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImpersonateHistoryDeleteFilter {
+  and: [ImpersonateHistoryDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImpersonateHistoryDeleteFilter!]
+}
+
+type ImpersonateHistoryDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  impersonateUserId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+type ImpersonateHistoryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ImpersonateHistory"""
+  node: ImpersonateHistory!
+}
+
+input ImpersonateHistoryFilter {
+  and: [ImpersonateHistoryFilter!]
+  id: IDFilterComparison
+  or: [ImpersonateHistoryFilter!]
+}
+
+input ImpersonateHistorySort {
+  direction: SortDirection!
+  field: ImpersonateHistorySortFields!
+  nulls: SortNulls
+}
+
+enum ImpersonateHistorySortFields {
+  id
+}
+
+input ImpersonateHistoryUpdateFilter {
+  and: [ImpersonateHistoryUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImpersonateHistoryUpdateFilter!]
+}
+
+type IncredibleOffer {
+  basicCarpetColorId: Float!
+  count: Float!
+  createdAt: DateTime
+  discountId: Float
+  discountPercent: Float!
+  id: ID!
+  isFake: Boolean!
+  offerDate: String!
+  place: Float
+  productId: Float!
+  soldCount: Float!
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
+type IncredibleOfferConnection {
+  """Array of edges."""
+  edges: [IncredibleOfferEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input IncredibleOfferDeleteFilter {
+  and: [IncredibleOfferDeleteFilter!]
+  id: IDFilterComparison
+  or: [IncredibleOfferDeleteFilter!]
+}
+
+type IncredibleOfferDeleteResponse {
+  basicCarpetColorId: Float
+  count: Float
+  createdAt: DateTime
+  discountId: Float
+  discountPercent: Float
+  id: ID
+  isFake: Boolean
+  offerDate: String
+  place: Float
+  productId: Float
+  soldCount: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type IncredibleOfferEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the IncredibleOffer"""
+  node: IncredibleOffer!
+}
+
+input IncredibleOfferFilter {
+  and: [IncredibleOfferFilter!]
+  id: IDFilterComparison
+  or: [IncredibleOfferFilter!]
+}
+
+type IncredibleOfferSentNotification {
+  createdAt: DateTime
+  id: ID!
+  message: String
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type IncredibleOfferSentNotificationConnection {
+  """Array of edges."""
+  edges: [IncredibleOfferSentNotificationEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input IncredibleOfferSentNotificationDeleteFilter {
+  and: [IncredibleOfferSentNotificationDeleteFilter!]
+  id: IDFilterComparison
+  or: [IncredibleOfferSentNotificationDeleteFilter!]
+}
+
+type IncredibleOfferSentNotificationDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  message: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type IncredibleOfferSentNotificationEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the IncredibleOfferSentNotification"""
+  node: IncredibleOfferSentNotification!
+}
+
+input IncredibleOfferSentNotificationFilter {
+  and: [IncredibleOfferSentNotificationFilter!]
+  id: IDFilterComparison
+  or: [IncredibleOfferSentNotificationFilter!]
+}
+
+input IncredibleOfferSentNotificationSort {
+  direction: SortDirection!
+  field: IncredibleOfferSentNotificationSortFields!
+  nulls: SortNulls
+}
+
+enum IncredibleOfferSentNotificationSortFields {
+  id
+}
+
+input IncredibleOfferSentNotificationUpdateFilter {
+  and: [IncredibleOfferSentNotificationUpdateFilter!]
+  id: IDFilterComparison
+  or: [IncredibleOfferSentNotificationUpdateFilter!]
+}
+
+input IncredibleOfferSort {
+  direction: SortDirection!
+  field: IncredibleOfferSortFields!
+  nulls: SortNulls
+}
+
+enum IncredibleOfferSortFields {
+  id
+}
+
+input IncredibleOfferUpdateFilter {
+  and: [IncredibleOfferUpdateFilter!]
+  id: IDFilterComparison
+  or: [IncredibleOfferUpdateFilter!]
+}
+
+type InstagramFeed {
+  altText: String
+  caption: String
+  carouselMedia: String
+  comments: String
+  commentsCount: Float
+  commentsDisabled: Boolean
+  commentsNextPage: String
+  createdAt: DateTime
+  createdTime: String
+  data: String
+  downloadedImageHighResolutionUrl: String
+  downloadedImageLowResolutionUrl: String
+  downloadedImageStandardResolutionUrl: String
+  downloadedImageThumbnailUrl: String
+  hasMoreComments: Boolean
+  id: ID!
+  imageHighResolutionUrl: String
+  imageLowResolutionUrl: String
+  imageStandardResolutionUrl: String
+  imageThumbnailUrl: String
+  instagramId: String!
+  isAd: Boolean
+  isAutoConstruct: Boolean
+  isCaptionEdited: Boolean
+  isFake: Boolean
+  isLoadEmpty: Boolean
+  isLoaded: Boolean
+  isNew: Boolean
+  likesCount: Float
+  link: String
+  locationAddressJson: String
+  locationId: String
+  locationName: String
+  locationSlug: String
+  modified: String
+  owner: String
+  ownerId: String
+  shortCode: String
+  sidecarMedias: String
+  squareImages: String
+  type: String
+  updatedAt: DateTime
+  videoDuration: String
+  videoLowBandwidthUrl: String
+  videoLowResolutionUrl: String
+  videoStandardResolutionUrl: String
+  videoViews: Float
+}
+
+type InstagramFeedConnection {
+  """Array of edges."""
+  edges: [InstagramFeedEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input InstagramFeedDeleteFilter {
+  and: [InstagramFeedDeleteFilter!]
+  id: IDFilterComparison
+  or: [InstagramFeedDeleteFilter!]
+}
+
+type InstagramFeedDeleteResponse {
+  altText: String
+  caption: String
+  carouselMedia: String
+  comments: String
+  commentsCount: Float
+  commentsDisabled: Boolean
+  commentsNextPage: String
+  createdAt: DateTime
+  createdTime: String
+  data: String
+  downloadedImageHighResolutionUrl: String
+  downloadedImageLowResolutionUrl: String
+  downloadedImageStandardResolutionUrl: String
+  downloadedImageThumbnailUrl: String
+  hasMoreComments: Boolean
+  id: ID
+  imageHighResolutionUrl: String
+  imageLowResolutionUrl: String
+  imageStandardResolutionUrl: String
+  imageThumbnailUrl: String
+  instagramId: String
+  isAd: Boolean
+  isAutoConstruct: Boolean
+  isCaptionEdited: Boolean
+  isFake: Boolean
+  isLoadEmpty: Boolean
+  isLoaded: Boolean
+  isNew: Boolean
+  likesCount: Float
+  link: String
+  locationAddressJson: String
+  locationId: String
+  locationName: String
+  locationSlug: String
+  modified: String
+  owner: String
+  ownerId: String
+  shortCode: String
+  sidecarMedias: String
+  squareImages: String
+  type: String
+  updatedAt: DateTime
+  videoDuration: String
+  videoLowBandwidthUrl: String
+  videoLowResolutionUrl: String
+  videoStandardResolutionUrl: String
+  videoViews: Float
+}
+
+type InstagramFeedEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the InstagramFeed"""
+  node: InstagramFeed!
+}
+
+input InstagramFeedFilter {
+  and: [InstagramFeedFilter!]
+  id: IDFilterComparison
+  or: [InstagramFeedFilter!]
+}
+
+input InstagramFeedSort {
+  direction: SortDirection!
+  field: InstagramFeedSortFields!
+  nulls: SortNulls
+}
+
+enum InstagramFeedSortFields {
+  id
+}
+
+input InstagramFeedUpdateFilter {
+  and: [InstagramFeedUpdateFilter!]
+  id: IDFilterComparison
+  or: [InstagramFeedUpdateFilter!]
 }
 
 type Mutation {
@@ -8073,6 +8942,13 @@ type Mutation {
   createHomePageCustomerImage(createHomePageCustomerImageInput: CreateHomePageCustomerImageInput!): HomePageCustomerImage!
   createHyper(createHyperInput: CreateHyperInput!): Hyper!
   createImageLayer(createImageLayerInput: CreateImageLayerInput!): ImageLayer!
+  createImageSize(createImageSizeInput: CreateImageSizeInput!): ImageSize!
+  createImageSubproduct(createImageSubproductInput: CreateImageSubproductInput!): ImageSubproduct!
+  createImagesSizeGuidesDetail(createImagesSizeGuidesDetailInput: CreateImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetail!
+  createImpersonateHistory(createImpersonateHistoryInput: CreateImpersonateHistoryInput!): ImpersonateHistory!
+  createIncredibleOffer(createIncredibleOfferInput: CreateIncredibleOfferInput!): IncredibleOffer!
+  createIncredibleOfferSentNotification(createIncredibleOfferSentNotificationInput: CreateIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotification!
+  createInstagramFeed(createInstagramFeedInput: CreateInstagramFeedInput!): InstagramFeed!
   createManyActivities(input: CreateManyActivitiesInput!): [Activity!]!
   createManyAddresses(input: CreateManyAddressesInput!): [Address!]!
   createManyAutomationEvents(input: CreateManyAutomationEventsInput!): [AutomationEvent!]!
@@ -8151,7 +9027,15 @@ type Mutation {
   createManyHypers(input: CreateManyHypersInput!): [Hyper!]!
   createManyHyperstarCodes(input: CreateManyHyperstarCodesInput!): [HyperstarCode!]!
   createManyImageLayers(input: CreateManyImageLayersInput!): [ImageLayer!]!
+  createManyImageProducts(input: CreateManyImageProductsInput!): [ImageProduct!]!
+  createManyImageSizes(input: CreateManyImageSizesInput!): [ImageSize!]!
+  createManyImageSubproducts(input: CreateManyImageSubproductsInput!): [ImageSubproduct!]!
   createManyImages(input: CreateManyImagesInput!): [Image!]!
+  createManyImagesSizeGuidesDetails(input: CreateManyImagesSizeGuidesDetailsInput!): [ImagesSizeGuidesDetail!]!
+  createManyImpersonateHistories(input: CreateManyImpersonateHistoriesInput!): [ImpersonateHistory!]!
+  createManyIncredibleOfferSentNotifications(input: CreateManyIncredibleOfferSentNotificationsInput!): [IncredibleOfferSentNotification!]!
+  createManyIncredibleOffers(input: CreateManyIncredibleOffersInput!): [IncredibleOffer!]!
+  createManyInstagramFeeds(input: CreateManyInstagramFeedsInput!): [InstagramFeed!]!
   createManyUsers(input: CreateManyUsersInput!): [User!]!
   createOneActivity(input: CreateOneActivityInput!): Activity!
   createOneAddress(input: CreateOneAddressInput!): Address!
@@ -8232,6 +9116,14 @@ type Mutation {
   createOneHyperstarCode(input: CreateOneHyperstarCodeInput!): HyperstarCode!
   createOneImage(input: CreateOneImageInput!): Image!
   createOneImageLayer(input: CreateOneImageLayerInput!): ImageLayer!
+  createOneImageProduct(input: CreateOneImageProductInput!): ImageProduct!
+  createOneImageSize(input: CreateOneImageSizeInput!): ImageSize!
+  createOneImageSubproduct(input: CreateOneImageSubproductInput!): ImageSubproduct!
+  createOneImagesSizeGuidesDetail(input: CreateOneImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetail!
+  createOneImpersonateHistory(input: CreateOneImpersonateHistoryInput!): ImpersonateHistory!
+  createOneIncredibleOffer(input: CreateOneIncredibleOfferInput!): IncredibleOffer!
+  createOneIncredibleOfferSentNotification(input: CreateOneIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotification!
+  createOneInstagramFeed(input: CreateOneInstagramFeedInput!): InstagramFeed!
   createOneUser(input: CreateOneUserInput!): User!
   createUser(createUserInput: CreateUserInput!): User!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
@@ -8312,7 +9204,15 @@ type Mutation {
   deleteManyHypers(input: DeleteManyHypersInput!): DeleteManyResponse!
   deleteManyHyperstarCodes(input: DeleteManyHyperstarCodesInput!): DeleteManyResponse!
   deleteManyImageLayers(input: DeleteManyImageLayersInput!): DeleteManyResponse!
+  deleteManyImageProducts(input: DeleteManyImageProductsInput!): DeleteManyResponse!
+  deleteManyImageSizes(input: DeleteManyImageSizesInput!): DeleteManyResponse!
+  deleteManyImageSubproducts(input: DeleteManyImageSubproductsInput!): DeleteManyResponse!
   deleteManyImages(input: DeleteManyImagesInput!): DeleteManyResponse!
+  deleteManyImagesSizeGuidesDetails(input: DeleteManyImagesSizeGuidesDetailsInput!): DeleteManyResponse!
+  deleteManyImpersonateHistories(input: DeleteManyImpersonateHistoriesInput!): DeleteManyResponse!
+  deleteManyIncredibleOfferSentNotifications(input: DeleteManyIncredibleOfferSentNotificationsInput!): DeleteManyResponse!
+  deleteManyIncredibleOffers(input: DeleteManyIncredibleOffersInput!): DeleteManyResponse!
+  deleteManyInstagramFeeds(input: DeleteManyInstagramFeedsInput!): DeleteManyResponse!
   deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
   deleteOneActivity(input: DeleteOneActivityInput!): ActivityDeleteResponse!
   deleteOneAddress(input: DeleteOneAddressInput!): AddressDeleteResponse!
@@ -8393,6 +9293,14 @@ type Mutation {
   deleteOneHyperstarCode(input: DeleteOneHyperstarCodeInput!): HyperstarCodeDeleteResponse!
   deleteOneImage(input: DeleteOneImageInput!): ImageDeleteResponse!
   deleteOneImageLayer(input: DeleteOneImageLayerInput!): ImageLayerDeleteResponse!
+  deleteOneImageProduct(input: DeleteOneImageProductInput!): ImageProductDeleteResponse!
+  deleteOneImageSize(input: DeleteOneImageSizeInput!): ImageSizeDeleteResponse!
+  deleteOneImageSubproduct(input: DeleteOneImageSubproductInput!): ImageSubproductDeleteResponse!
+  deleteOneImagesSizeGuidesDetail(input: DeleteOneImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetailDeleteResponse!
+  deleteOneImpersonateHistory(input: DeleteOneImpersonateHistoryInput!): ImpersonateHistoryDeleteResponse!
+  deleteOneIncredibleOffer(input: DeleteOneIncredibleOfferInput!): IncredibleOfferDeleteResponse!
+  deleteOneIncredibleOfferSentNotification(input: DeleteOneIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotificationDeleteResponse!
+  deleteOneInstagramFeed(input: DeleteOneInstagramFeedInput!): InstagramFeedDeleteResponse!
   deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
   removeAttribute(id: Int!): Attribute!
   removeAttributeAttributeGroup(id: Int!): AttributeAttributeGroup!
@@ -8413,6 +9321,13 @@ type Mutation {
   removeHomePageCustomerImage(id: Int!): HomePageCustomerImage!
   removeHyper(id: Int!): Hyper!
   removeImageLayer(id: Int!): ImageLayer!
+  removeImageSize(id: Int!): ImageSize!
+  removeImageSubproduct(id: Int!): ImageSubproduct!
+  removeImagesSizeGuidesDetail(id: Int!): ImagesSizeGuidesDetail!
+  removeImpersonateHistory(id: Int!): ImpersonateHistory!
+  removeIncredibleOffer(id: Int!): IncredibleOffer!
+  removeIncredibleOfferSentNotification(id: Int!): IncredibleOfferSentNotification!
+  removeInstagramFeed(id: Int!): InstagramFeed!
   removeUser(id: Int!): User!
   updateAttribute(updateAttributeInput: UpdateAttributeInput!): Attribute!
   updateAttributeAttributeGroup(updateAttributeAttributeGroupInput: UpdateAttributeAttributeGroupInput!): AttributeAttributeGroup!
@@ -8433,6 +9348,12 @@ type Mutation {
   updateHomePageCustomerImage(updateHomePageCustomerImageInput: UpdateHomePageCustomerImageInput!): HomePageCustomerImage!
   updateHyper(updateHyperInput: UpdateHyperInput!): Hyper!
   updateImageLayer(updateImageLayerInput: UpdateImageLayerInput!): ImageLayer!
+  updateImageSize(updateImageSizeInput: UpdateImageSizeInput!): ImageSize!
+  updateImageSubproduct(updateImageSubproductInput: UpdateImageSubproductInput!): ImageSubproduct!
+  updateImagesSizeGuidesDetail(updateImagesSizeGuidesDetailInput: UpdateImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetail!
+  updateIncredibleOffer(updateIncredibleOfferInput: UpdateIncredibleOfferInput!): IncredibleOffer!
+  updateIncredibleOfferSentNotification(updateIncredibleOfferSentNotificationInput: UpdateIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotification!
+  updateInstagramFeed(updateInstagramFeedInput: UpdateInstagramFeedInput!): InstagramFeed!
   updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
   updateManyAddresses(input: UpdateManyAddressesInput!): UpdateManyResponse!
   updateManyAutomationEvents(input: UpdateManyAutomationEventsInput!): UpdateManyResponse!
@@ -8511,7 +9432,15 @@ type Mutation {
   updateManyHypers(input: UpdateManyHypersInput!): UpdateManyResponse!
   updateManyHyperstarCodes(input: UpdateManyHyperstarCodesInput!): UpdateManyResponse!
   updateManyImageLayers(input: UpdateManyImageLayersInput!): UpdateManyResponse!
+  updateManyImageProducts(input: UpdateManyImageProductsInput!): UpdateManyResponse!
+  updateManyImageSizes(input: UpdateManyImageSizesInput!): UpdateManyResponse!
+  updateManyImageSubproducts(input: UpdateManyImageSubproductsInput!): UpdateManyResponse!
   updateManyImages(input: UpdateManyImagesInput!): UpdateManyResponse!
+  updateManyImagesSizeGuidesDetails(input: UpdateManyImagesSizeGuidesDetailsInput!): UpdateManyResponse!
+  updateManyImpersonateHistories(input: UpdateManyImpersonateHistoriesInput!): UpdateManyResponse!
+  updateManyIncredibleOfferSentNotifications(input: UpdateManyIncredibleOfferSentNotificationsInput!): UpdateManyResponse!
+  updateManyIncredibleOffers(input: UpdateManyIncredibleOffersInput!): UpdateManyResponse!
+  updateManyInstagramFeeds(input: UpdateManyInstagramFeedsInput!): UpdateManyResponse!
   updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
   updateOneActivity(input: UpdateOneActivityInput!): Activity!
   updateOneAddress(input: UpdateOneAddressInput!): Address!
@@ -8592,6 +9521,14 @@ type Mutation {
   updateOneHyperstarCode(input: UpdateOneHyperstarCodeInput!): HyperstarCode!
   updateOneImage(input: UpdateOneImageInput!): Image!
   updateOneImageLayer(input: UpdateOneImageLayerInput!): ImageLayer!
+  updateOneImageProduct(input: UpdateOneImageProductInput!): ImageProduct!
+  updateOneImageSize(input: UpdateOneImageSizeInput!): ImageSize!
+  updateOneImageSubproduct(input: UpdateOneImageSubproductInput!): ImageSubproduct!
+  updateOneImagesSizeGuidesDetail(input: UpdateOneImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetail!
+  updateOneImpersonateHistory(input: UpdateOneImpersonateHistoryInput!): ImpersonateHistory!
+  updateOneIncredibleOffer(input: UpdateOneIncredibleOfferInput!): IncredibleOffer!
+  updateOneIncredibleOfferSentNotification(input: UpdateOneIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotification!
+  updateOneInstagramFeed(input: UpdateOneInstagramFeedInput!): InstagramFeed!
   updateOneUser(input: UpdateOneUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
 }
@@ -9715,6 +10652,48 @@ type Query {
     """Specify to sort results."""
     sorting: [ImageLayerSort!]! = []
   ): ImageLayerConnection!
+  imageProduct(
+    """The id of the record to find."""
+    id: ID!
+  ): ImageProduct!
+  imageProducts(
+    """Specify to filter the records returned."""
+    filter: ImageProductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImageProductSort!]! = []
+  ): ImageProductConnection!
+  imageSize(
+    """The id of the record to find."""
+    id: ID!
+  ): ImageSize!
+  imageSizes(
+    """Specify to filter the records returned."""
+    filter: ImageSizeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImageSizeSort!]! = []
+  ): ImageSizeConnection!
+  imageSubproduct(
+    """The id of the record to find."""
+    id: ID!
+  ): ImageSubproduct!
+  imageSubproducts(
+    """Specify to filter the records returned."""
+    filter: ImageSubproductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImageSubproductSort!]! = []
+  ): ImageSubproductConnection!
   images(
     """Specify to filter the records returned."""
     filter: ImageFilter! = {}
@@ -9725,6 +10704,76 @@ type Query {
     """Specify to sort results."""
     sorting: [ImageSort!]! = []
   ): ImageConnection!
+  imagesSizeGuidesDetail(
+    """The id of the record to find."""
+    id: ID!
+  ): ImagesSizeGuidesDetail!
+  imagesSizeGuidesDetails(
+    """Specify to filter the records returned."""
+    filter: ImagesSizeGuidesDetailFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImagesSizeGuidesDetailSort!]! = []
+  ): ImagesSizeGuidesDetailConnection!
+  impersonateHistories(
+    """Specify to filter the records returned."""
+    filter: ImpersonateHistoryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImpersonateHistorySort!]! = []
+  ): ImpersonateHistoryConnection!
+  impersonateHistory(
+    """The id of the record to find."""
+    id: ID!
+  ): ImpersonateHistory!
+  incredibleOffer(
+    """The id of the record to find."""
+    id: ID!
+  ): IncredibleOffer!
+  incredibleOfferSentNotification(
+    """The id of the record to find."""
+    id: ID!
+  ): IncredibleOfferSentNotification!
+  incredibleOfferSentNotifications(
+    """Specify to filter the records returned."""
+    filter: IncredibleOfferSentNotificationFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [IncredibleOfferSentNotificationSort!]! = []
+  ): IncredibleOfferSentNotificationConnection!
+  incredibleOffers(
+    """Specify to filter the records returned."""
+    filter: IncredibleOfferFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [IncredibleOfferSort!]! = []
+  ): IncredibleOfferConnection!
+  instagramFeed(
+    """The id of the record to find."""
+    id: ID!
+  ): InstagramFeed!
+  instagramFeeds(
+    """Specify to filter the records returned."""
+    filter: InstagramFeedFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [InstagramFeedSort!]! = []
+  ): InstagramFeedConnection!
   user(
     """The id of the record to find."""
     id: ID!
@@ -9908,7 +10957,7 @@ input UpdateBasicCarpetBorder {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-15T11:40:11.887Z"
+  createdAt: DateTime = "2025-03-15T17:32:46.481Z"
   englishTitle: String
   id: ID
   isActive: Boolean = true
@@ -9923,7 +10972,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-15T11:40:11.900Z"
+  createdAt: DateTime = "2025-03-15T17:32:46.485Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -9935,7 +10984,7 @@ input UpdateBasicCarpetDesigner {
   cityId: Float
   code: String
   countryId: Float
-  createdAt: DateTime = "2025-03-15T11:40:11.914Z"
+  createdAt: DateTime = "2025-03-15T17:32:46.491Z"
   description: String
   facebookId: String
   headerImage: String
@@ -9956,7 +11005,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-15T11:40:11.927Z"
+  createdAt: DateTime = "2025-03-15T17:32:46.495Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -9969,7 +11018,7 @@ input UpdateBasicCarpetSize {
   altTextEn: String
   carpetVolume: Float = 0
   code: String
-  createdAt: DateTime = "2025-03-15T11:40:11.945Z"
+  createdAt: DateTime = "2025-03-15T17:32:46.501Z"
   description: String
   descriptionEn: String
   homepageImageId: Float
@@ -10013,7 +11062,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-15T11:40:11.987Z"
+  createdAt: DateTime = "2025-03-15T17:32:46.518Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -10887,6 +11936,227 @@ input UpdateImageLayerInput {
   updatedAt: DateTime
 }
 
+input UpdateImageProduct {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateImageSize {
+  createdAt: DateTime
+  height: Float
+  id: ID
+  name: String
+  shortName: String
+  updatedAt: DateTime
+  width: Float
+}
+
+input UpdateImageSizeInput {
+  createdAt: DateTime
+  height: Float
+  id: Int!
+  name: String
+  shortName: String
+  updatedAt: DateTime
+  width: Float
+}
+
+input UpdateImageSubproduct {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  sortOrder: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+input UpdateImageSubproductInput {
+  createdAt: DateTime
+  id: Int!
+  imageId: Float
+  sortOrder: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+input UpdateImagesSizeGuidesDetail {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  sizeGuidesDetailsId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateImagesSizeGuidesDetailInput {
+  createdAt: DateTime
+  id: Int!
+  imageId: Float
+  sizeGuidesDetailsId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateImpersonateHistory {
+  createdAt: DateTime
+  id: ID
+  impersonateUserId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateIncredibleOffer {
+  basicCarpetColorId: Float
+  count: Float
+  createdAt: DateTime
+  discountId: Float
+  discountPercent: Float
+  id: ID
+  isFake: Boolean
+  offerDate: String
+  place: Float
+  productId: Float
+  soldCount: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateIncredibleOfferInput {
+  basicCarpetColorId: Float
+  count: Float
+  createdAt: DateTime
+  discountId: Float
+  discountPercent: Float
+  id: Int!
+  isFake: Boolean
+  offerDate: String
+  place: Float
+  productId: Float
+  soldCount: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateIncredibleOfferSentNotification {
+  createdAt: DateTime
+  id: ID
+  message: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateIncredibleOfferSentNotificationInput {
+  createdAt: DateTime
+  id: Int!
+  message: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateInstagramFeed {
+  altText: String
+  caption: String
+  carouselMedia: String
+  comments: String
+  commentsCount: Float
+  commentsDisabled: Boolean
+  commentsNextPage: String
+  createdAt: DateTime
+  createdTime: String
+  data: String
+  downloadedImageHighResolutionUrl: String
+  downloadedImageLowResolutionUrl: String
+  downloadedImageStandardResolutionUrl: String
+  downloadedImageThumbnailUrl: String
+  hasMoreComments: Boolean
+  id: ID
+  imageHighResolutionUrl: String
+  imageLowResolutionUrl: String
+  imageStandardResolutionUrl: String
+  imageThumbnailUrl: String
+  instagramId: String
+  isAd: Boolean
+  isAutoConstruct: Boolean
+  isCaptionEdited: Boolean
+  isFake: Boolean
+  isLoadEmpty: Boolean
+  isLoaded: Boolean
+  isNew: Boolean
+  likesCount: Float
+  link: String
+  locationAddressJson: String
+  locationId: String
+  locationName: String
+  locationSlug: String
+  modified: String
+  owner: String
+  ownerId: String
+  shortCode: String
+  sidecarMedias: String
+  squareImages: String
+  type: String
+  updatedAt: DateTime
+  videoDuration: String
+  videoLowBandwidthUrl: String
+  videoLowResolutionUrl: String
+  videoStandardResolutionUrl: String
+  videoViews: Float
+}
+
+input UpdateInstagramFeedInput {
+  altText: String
+  caption: String
+  carouselMedia: String
+  comments: String
+  commentsCount: Float
+  commentsDisabled: Boolean
+  commentsNextPage: String
+  createdAt: DateTime
+  createdTime: String
+  data: String
+  downloadedImageHighResolutionUrl: String
+  downloadedImageLowResolutionUrl: String
+  downloadedImageStandardResolutionUrl: String
+  downloadedImageThumbnailUrl: String
+  hasMoreComments: Boolean
+  id: Int!
+  imageHighResolutionUrl: String
+  imageLowResolutionUrl: String
+  imageStandardResolutionUrl: String
+  imageThumbnailUrl: String
+  instagramId: String
+  isAd: Boolean
+  isAutoConstruct: Boolean
+  isCaptionEdited: Boolean
+  isFake: Boolean
+  isLoadEmpty: Boolean
+  isLoaded: Boolean
+  isNew: Boolean
+  likesCount: Float
+  link: String
+  locationAddressJson: String
+  locationId: String
+  locationName: String
+  locationSlug: String
+  modified: String
+  owner: String
+  ownerId: String
+  shortCode: String
+  sidecarMedias: String
+  squareImages: String
+  type: String
+  updatedAt: DateTime
+  videoDuration: String
+  videoLowBandwidthUrl: String
+  videoLowResolutionUrl: String
+  videoStandardResolutionUrl: String
+  videoViews: Float
+}
+
 input UpdateManyActivitiesInput {
   """Filter used to find fields to update"""
   filter: ActivityUpdateFilter!
@@ -11511,12 +12781,76 @@ input UpdateManyImageLayersInput {
   update: UpdateImageLayer!
 }
 
+input UpdateManyImageProductsInput {
+  """Filter used to find fields to update"""
+  filter: ImageProductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImageProduct!
+}
+
+input UpdateManyImageSizesInput {
+  """Filter used to find fields to update"""
+  filter: ImageSizeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImageSize!
+}
+
+input UpdateManyImageSubproductsInput {
+  """Filter used to find fields to update"""
+  filter: ImageSubproductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImageSubproduct!
+}
+
 input UpdateManyImagesInput {
   """Filter used to find fields to update"""
   filter: ImageUpdateFilter!
 
   """The update to apply to all records found using the filter"""
   update: UpdateImage!
+}
+
+input UpdateManyImagesSizeGuidesDetailsInput {
+  """Filter used to find fields to update"""
+  filter: ImagesSizeGuidesDetailUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImagesSizeGuidesDetail!
+}
+
+input UpdateManyImpersonateHistoriesInput {
+  """Filter used to find fields to update"""
+  filter: ImpersonateHistoryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImpersonateHistory!
+}
+
+input UpdateManyIncredibleOfferSentNotificationsInput {
+  """Filter used to find fields to update"""
+  filter: IncredibleOfferSentNotificationUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateIncredibleOfferSentNotification!
+}
+
+input UpdateManyIncredibleOffersInput {
+  """Filter used to find fields to update"""
+  filter: IncredibleOfferUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateIncredibleOffer!
+}
+
+input UpdateManyInstagramFeedsInput {
+  """Filter used to find fields to update"""
+  filter: InstagramFeedUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateInstagramFeed!
 }
 
 type UpdateManyResponse {
@@ -12162,6 +13496,70 @@ input UpdateOneImageLayerInput {
 
   """The update to apply."""
   update: UpdateImageLayer!
+}
+
+input UpdateOneImageProductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImageProduct!
+}
+
+input UpdateOneImageSizeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImageSize!
+}
+
+input UpdateOneImageSubproductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImageSubproduct!
+}
+
+input UpdateOneImagesSizeGuidesDetailInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImagesSizeGuidesDetail!
+}
+
+input UpdateOneImpersonateHistoryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImpersonateHistory!
+}
+
+input UpdateOneIncredibleOfferInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateIncredibleOffer!
+}
+
+input UpdateOneIncredibleOfferSentNotificationInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateIncredibleOfferSentNotification!
+}
+
+input UpdateOneInstagramFeedInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateInstagramFeed!
 }
 
 input UpdateOneUserInput {
