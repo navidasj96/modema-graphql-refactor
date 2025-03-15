@@ -6,12 +6,12 @@ import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateActivityInput } from './dto/create-activity.input';
 import { ActivityResolver } from '@/modules/activity/activity.resolver';
 import { ActivityService } from '@/modules/activity/activity.service';
-import { User } from '@/modules/user/entities/user.entity';
+import { UserModule } from '@/modules/user/user.module';
 
 @Module({
   imports: [
     NestjsQueryGraphQLModule.forFeature({
-      imports: [NestjsQueryTypeOrmModule.forFeature([Activity, User])],
+      imports: [NestjsQueryTypeOrmModule.forFeature([Activity])],
       resolvers: [
         {
           EntityClass: Activity,
@@ -20,7 +20,9 @@ import { User } from '@/modules/user/entities/user.entity';
         },
       ],
     }),
+    UserModule,
   ],
   providers: [ActivityResolver, ActivityService],
+  exports: [ActivityService],
 })
 export class ActivityModule {}

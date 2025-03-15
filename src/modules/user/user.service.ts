@@ -1,9 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { ActivityService } from '@/modules/activity/activity.service';
 
 @Injectable()
 export class UserService {
+  constructor(
+    @Inject(forwardRef(() => ActivityService))
+    private readonly activityService: ActivityService,
+  ) {}
+
   create(createUserInput: CreateUserInput) {
     return 'This action adds a new user';
   }
@@ -22,5 +28,9 @@ export class UserService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  test() {
+    return this.activityService.getActivityWithUser(1);
   }
 }

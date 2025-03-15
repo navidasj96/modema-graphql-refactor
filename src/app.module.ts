@@ -91,20 +91,116 @@ import { HyperstarCodeModule } from './modules/hyperstar-code/hyperstar-code.mod
 import { ImageModule } from './modules/image/image.module';
 import { UserModule } from '@/modules/user/user.module';
 import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
+import databaseConfig from '@/configuration/database.config';
+import {
+  ConfigModule as ConfigModuleNest,
+  ConfigService as ConfigServiceNest,
+} from '@nestjs/config';
+
+import * as process from 'node:process';
+import { ImageProductModule } from '@/modules/image-product/image-product.module';
+import { ImageSizeModule } from '@/modules/image-size/image-size.module';
+import { ImageSubproductModule } from '@/modules/image-subproduct/image-subproduct.module';
+import { ImagesSizeGuidesDetailModule } from '@/modules/images-size-guides-detail/images-size-guides-detail.module';
+import { ImpersonateHistoryModule } from '@/modules/impersonate-history/impersonate-history.module';
+import { IncredibleOfferModule } from '@/modules/incredible-offer/incredible-offer.module';
+import { IncredibleOfferSentNotificationModule } from '@/modules/incredible-offer-sent-notification/incredible-offer-sent-notification.module';
+import { InstagramFeedModule } from '@/modules/instagram-feed/instagram-feed.module';
+import { InvitationCodeModule } from '@/modules/invitation-code/invitation-code.module';
+import { InvoiceModule } from '@/modules/invoice/invoice.module';
+import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
+import { InvoiceBankGatewayHistoryModule } from '@/modules/invoice-bank-gateway-history/invoice-bank-gateway-history.module';
+import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
+import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
+import { InvoiceModeModule } from '@/modules/invoice-mode/invoice-mode.module';
+import { InvoiceNegotiationModule } from '@/modules/invoice-negotiation/invoice-negotiation.module';
+import { InvoicePaymentModule } from '@/modules/invoice-payment/invoice-payment.module';
+import { InvoicePaymentHistoryModule } from '@/modules/invoice-payment-history/invoice-payment-history.module';
+import { InvoicePaymentStatusModule } from '@/modules/invoice-payment-status/invoice-payment-status.module';
+import { InvoicePaymentTypeModule } from '@/modules/invoice-payment-type/invoice-payment-type.module';
+import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.module';
+import { InvoiceProductHistoryModule } from '@/modules/invoice-product-history/invoice-product-history.module';
+import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice-product-item.module';
+import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.module';
+import { InvoiceProductStatusModule } from '@/modules/invoice-product-status/invoice-product-status.module';
+import { InvoiceRatesResultModule } from '@/modules/invoice-rates-result/invoice-rates-result.module';
+import { InvoiceReversalModule } from '@/modules/invoice-reversal/invoice-reversal.module';
+import { InvoiceReversalItemModule } from '@/modules/invoice-reversal-item/invoice-reversal-item.module';
+import { InvoiceShippingRateModule } from '@/modules/invoice-shipping-rate/invoice-shipping-rate.module';
+import { InvoiceStatusModule } from '@/modules/invoice-status/invoice-status.module';
+import { InvoiceTypeModule } from '@/modules/invoice-type/invoice-type.module';
+import { LabelModule } from '@/modules/label/label.module';
+import { LabelProductModule } from '@/modules/label-product/label-product.module';
+import { MellatPaymentErrorModule } from '@/modules/mellat-payment-error/mellat-payment-error.module';
+import { ModelHasPermissionModule } from '@/modules/model-has-permission/model-has-permission.module';
+import { MigrationModule } from '@/modules/migration/migration.module';
+import { ModelHasRoleModule } from '@/modules/model-has-role/model-has-role.module';
+import { ModemaAcceleratorModule } from '@/modules/modema-accelerator/modema-accelerator.module';
+import { ModelVisitModule } from '@/modules/model-visit/model-visit.module';
+import { ModemaAcceleratorImageModule } from '@/modules/modema-accelerator-image/modema-accelerator-image.module';
+import { ModemaAcceleratorVideoModule } from '@/modules/modema-accelerator-video/modema-accelerator-video.module';
+import { NeedsPhotographySubproductModule } from '@/modules/needs-photography-subproduct/needs-photography-subproduct.module';
+import { NegotiationModule } from '@/modules/negotiation/negotiation.module';
+import { NegotiationHistoryModule } from '@/modules/negotiation-history/negotiation-history.module';
+import { NegotiationStatusModule } from '@/modules/negotiation-status/negotiation-status.module';
+import { NegotiationTypeModule } from '@/modules/negotiation-type/negotiation-type.module';
+import { NewBorderModule } from '@/modules/new-border/new-border.module';
+import { OauthAccessTokenModule } from '@/modules/oauth-access-token/oauth-access-token.module';
+import { OauthAuthCodeModule } from '@/modules/oauth-auth-code/oauth-auth-code.module';
+import { OauthClientModule } from '@/modules/oauth-client/oauth-client.module';
+import { OauthPersonalAccessClientModule } from '@/modules/oauth-personal-access-client/oauth-personal-access-client.module';
+import { OauthRefreshTokenModule } from '@/modules/oauth-refresh-token/oauth-refresh-token.module';
+import { OutOfStockButListedProductModule } from '@/modules/out-of-stock-but-listed-product/out-of-stock-but-listed-product.module';
+import { PasswordResetModule } from '@/modules/password-reset/password-reset.module';
+import { PatternModule } from '@/modules/pattern/pattern.module';
+import { PatternCategoryModule } from '@/modules/pattern-category/pattern-category.module';
+import { PatternLayerModule } from '@/modules/pattern-layer/pattern-layer.module';
+import { PaymentMethodModule } from '@/modules/payment-method/payment-method.module';
+import { PaymentMethodFieldModule } from '@/modules/payment-method-field/payment-method-field.module';
+import { PaymentRequestModule } from '@/modules/payment-request/payment-request.module';
+import { PaymentRequestStatusModule } from '@/modules/payment-request-status/payment-request-status.module';
+import { PermissionModule } from '@/modules/permission/permission.module';
+import { PermissionGroupModule } from '@/modules/permission-group/permission-group.module';
+import { PreorderPreorderStatusModule } from '@/modules/preorder-preorder-status/preorder-preorder-status.module';
+import { PreorderRegisterModule } from '@/modules/preorder-register/preorder-register.module';
+import { PreorderStatusModule } from '@/modules/preorder-status/preorder-status.module';
+import { PriceGroupModule } from '@/modules/price-group/price-group.module';
+import { PriceGroupSizeModule } from '@/modules/price-group-size/price-group-size.module';
+import { PrintProfileModule } from '@/modules/print-profile/print-profile.module';
+import { ProductModule } from '@/modules/product/product.module';
+import { ProductCategoryDetailModule } from '@/modules/product-category-detail/product-category-detail.module';
+import { ProductCategoryRateModule } from '@/modules/product-category-rate/product-category-rate.module';
+import { ProductColorImageModule } from '@/modules/product-color-image/product-color-image.module';
+import { ProductColorSaleModule } from '@/modules/product-color-sale/product-color-sale.module';
+import { ProductCommentModule } from '@/modules/product-comment/product-comment.module';
+import { ProductCommentLikeModule } from '@/modules/product-comment-like/product-comment-like.module';
+import { ProductLikeModule } from '@/modules/product-like/product-like.module';
+
+const ENV = process.env.NODE_ENV;
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Navidasj228!',
-      database: 'modema',
-      autoLoadEntities: true,
-      synchronize: false,
-      retryAttempts: 0, // Disable retry
-      retryDelay: 0, // No delay
+    ConfigModuleNest.forRoot({
+      isGlobal: true,
+      envFilePath: [!ENV ? '.env' : `.env.${ENV}`],
+      load: [databaseConfig],
+    }),
+
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigServiceNest],
+      useFactory: (configService: ConfigServiceNest) => ({
+        type: 'mysql',
+        host: configService.get('database.host'),
+        port: +configService.get('database.port'),
+        username: configService.get('database.user'),
+        password: configService.get('database.password'),
+        database: configService.get('database.name'),
+        autoLoadEntities: true,
+        synchronize: false,
+        retryAttempts: 0, // Disable retry
+        retryDelay: 0, // No delay
+      }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -200,6 +296,83 @@ import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
     HyperstarCodeModule,
     ImageModule,
     ImageLayerModule,
+    ImageProductModule,
+    ImageSizeModule,
+    ImageSubproductModule,
+    ImagesSizeGuidesDetailModule,
+    ImpersonateHistoryModule,
+    IncredibleOfferModule,
+    IncredibleOfferSentNotificationModule,
+    InstagramFeedModule,
+    InvitationCodeModule,
+    InvoiceModule,
+    InvoiceAddressModule,
+    InvoiceBankGatewayHistoryModule,
+    InvoiceHistoryModule,
+    InvoiceInvoiceStatusModule,
+    InvoiceModeModule,
+    InvoiceNegotiationModule,
+    InvoicePaymentModule,
+    InvoicePaymentHistoryModule,
+    InvoicePaymentStatusModule,
+    InvoicePaymentTypeModule,
+    InvoiceProductModule,
+    InvoiceProductHistoryModule,
+    InvoiceProductItemModule,
+    InvoiceProductItemInvoiceProductStatusModule,
+    InvoiceProductStatusModule,
+    InvoiceRatesResultModule,
+    InvoiceReversalModule,
+    InvoiceReversalItemModule,
+    InvoiceShippingRateModule,
+    InvoiceStatusModule,
+    InvoiceTypeModule,
+    LabelModule,
+    LabelProductModule,
+    MellatPaymentErrorModule,
+    MigrationModule,
+    ModelHasPermissionModule,
+    ModelHasRoleModule,
+    ModelVisitModule,
+    ModemaAcceleratorModule,
+    ModemaAcceleratorImageModule,
+    ModemaAcceleratorVideoModule,
+    NeedsPhotographySubproductModule,
+    NegotiationModule,
+    NegotiationHistoryModule,
+    NegotiationStatusModule,
+    NegotiationTypeModule,
+    NewBorderModule,
+    OauthAccessTokenModule,
+    OauthAuthCodeModule,
+    OauthClientModule,
+    OauthPersonalAccessClientModule,
+    OauthRefreshTokenModule,
+    OutOfStockButListedProductModule,
+    PasswordResetModule,
+    PatternModule,
+    PatternCategoryModule,
+    PatternLayerModule,
+    PaymentMethodModule,
+    PaymentMethodFieldModule,
+    PaymentRequestModule,
+    PaymentRequestStatusModule,
+    PermissionModule,
+    PermissionGroupModule,
+    PreorderPreorderStatusModule,
+    PreorderRegisterModule,
+    PreorderStatusModule,
+    PriceGroupModule,
+    PriceGroupSizeModule,
+    PrintProfileModule,
+    ProductModule,
+    ProductCategoryDetailModule,
+    ProductCategoryRateModule,
+    ProductColorImageModule,
+    ProductColorSaleModule,
+    ProductCommentModule,
+    ProductCommentLikeModule,
+    ProductLikeModule,
     UserModule,
   ],
   controllers: [AppController],

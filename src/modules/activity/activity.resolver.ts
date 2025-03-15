@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { ActivityService } from './activity.service';
 import { Activity } from './domain/activity';
 import { User } from '@/modules/user/domain/user';
@@ -6,11 +6,6 @@ import { User } from '@/modules/user/domain/user';
 @Resolver(() => Activity)
 export class ActivityResolver {
   constructor(private readonly activityService: ActivityService) {}
-
-  @Mutation(() => Activity)
-  activityCustomeResolver() {
-    return this.activityService.findAll();
-  }
 
   @Query(() => User)
   async getUserWithActivitiesResolver(@Args('userId') userId: number) {
