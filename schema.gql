@@ -12,6 +12,7 @@ type Activity {
   details: String!
   id: ID!
   updatedAt: DateTime
+  user: User!
   userId: Float
   userName: String!
 }
@@ -41,6 +42,7 @@ type ActivityDeleteResponse {
   details: String
   id: ID
   updatedAt: DateTime
+  user: User
   userId: Float
   userName: String
 }
@@ -58,6 +60,21 @@ input ActivityFilter {
   id: IDFilterComparison
   or: [ActivityFilter!]
   userName: StringFieldComparison
+}
+
+input ActivityInput {
+  action: String!
+  contentId: Float!
+  contentType: String!
+  createdAt: DateTime
+  deletedUserId: Float
+  description: String!
+  details: String!
+  id: ID!
+  updatedAt: DateTime
+  user: UserInput!
+  userId: Float
+  userName: String!
 }
 
 input ActivitySort {
@@ -3376,6 +3393,7 @@ input CreateActivityInput {
   details: String!
   id: Float!
   updatedAt: DateTime
+  user: UserInput!
   userId: Float
   userName: String!
 }
@@ -3503,7 +3521,7 @@ input CreateBasicCarpetBorderInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-14T18:27:39.116Z"
+  createdAt: DateTime! = "2025-03-15T11:40:11.886Z"
   englishTitle: String
   id: Float!
   isActive: Boolean! = true
@@ -3518,7 +3536,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-14T18:27:39.123Z"
+  createdAt: DateTime! = "2025-03-15T11:40:11.901Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3530,7 +3548,7 @@ input CreateBasicCarpetDesignerInput {
   cityId: Float
   code: String!
   countryId: Float
-  createdAt: DateTime! = "2025-03-14T18:27:39.127Z"
+  createdAt: DateTime! = "2025-03-15T11:40:11.912Z"
   description: String
   facebookId: String
   headerImage: String
@@ -3551,7 +3569,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-14T18:27:39.134Z"
+  createdAt: DateTime! = "2025-03-15T11:40:11.929Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3577,7 +3595,7 @@ input CreateBasicCarpetSizeInput {
   altTextEn: String
   carpetVolume: Float = 0
   code: String!
-  createdAt: DateTime! = "2025-03-14T18:27:39.140Z"
+  createdAt: DateTime! = "2025-03-15T11:40:11.947Z"
   description: String
   descriptionEn: String
   homepageImageId: Float
@@ -3608,7 +3626,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-14T18:27:39.152Z"
+  createdAt: DateTime! = "2025-03-15T11:40:11.989Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -4008,6 +4026,323 @@ input CreateCouponSubjectInput {
   updatedAt: DateTime
 }
 
+input CreateCrmPresentationInput {
+  mobile: String
+  optionId: Float
+}
+
+input CreateCustomerImageProductInput {
+  createdAt: DateTime
+  id: Float!
+  imageId: Float!
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input CreateCustomerRequestFileInput {
+  createdAt: DateTime
+  customerRequestId: Float!
+  filename: String!
+  id: Float!
+  mime: String!
+  originalFilename: String!
+  path: String! = "/"
+  updatedAt: DateTime
+}
+
+input CreateCustomerRequestInput {
+  createdAt: DateTime
+  id: Float!
+  name: String
+  phone: String
+  updatedAt: DateTime
+  userId: Float
+  uuid: String
+}
+
+input CreateCustomerVideoProductInput {
+  createdAt: DateTime
+  id: Float!
+  productId: Float!
+  sortOrder: Float = 0
+  updatedAt: DateTime
+  videoId: Float!
+}
+
+input CreateDamageReasonInput {
+  cause: String!
+  createdAt: DateTime
+  department: String!
+  id: Float!
+  name: String!
+  updatedAt: DateTime
+}
+
+input CreateDepartmentInput {
+  createdAt: DateTime
+  id: Float!
+  name: String!
+  nameEn: String
+  updatedAt: DateTime
+}
+
+input CreateDesignInput {
+  backgroundColor: String = "#FFFFFF"
+  borderColor: String = "#FFFFFF"
+  carpetMaterialId: Float
+  carpetShapeId: Float = 1
+  createdAt: DateTime
+  deletedAt: DateTime
+  filename: String
+  fringeColor: String = "#FFFFFF"
+  id: Float!
+  length: Float = 0
+  name: String
+  path: String = "/"
+  updatedAt: DateTime
+  userId: Float
+  width: Float = 0
+}
+
+input CreateDesignersProductPriceRangeInput {
+  basicCarpetSizeId: Float!
+  createdAt: DateTime
+  id: Float!
+  maxPrice: Float!
+  minPrice: Float!
+  updatedAt: DateTime
+}
+
+input CreateDiscountInput {
+  createdAt: DateTime
+  createdBy: Float
+  discount: String!
+  endDate: DateTime!
+  hasStockCountOnly: Boolean! = false
+  id: Float!
+  isActive: Float = 1
+  maxDiscountPrice: String
+  minProductPrice: String
+  name: String
+  redisForShowoffIsDeleted: Boolean! = false
+  redisIsDeleted: Boolean! = false
+  showoffEndDate: DateTime
+  showoffStartDate: DateTime
+  sortOrder: Float
+  startDate: DateTime!
+  type: Float!
+  updatedAt: DateTime
+  updatedBy: Float
+  withPad: Boolean! = false
+}
+
+input CreateDiscountNotificationInput {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: Float!
+  productId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+input CreateDiscountSubjectInput {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  discountId: Float!
+  id: Float!
+  priceGroupId: Float
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+input CreateExitControlInput {
+  createdAt: DateTime
+  driverName: String!
+  driverPhone: String!
+  exitDate: String!
+  id: Float!
+  isClosed: Boolean! = false
+  plateNo: String!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateExitControlItemInput {
+  boxNo: Float!
+  carpetPadScanned: Boolean! = false
+  carpetScanned: Boolean! = false
+  createdAt: DateTime
+  exitControlId: Float!
+  id: Float!
+  invoiceProductItemId: Float!
+  updatedAt: DateTime
+}
+
+input CreateExportProductInput {
+  code: String
+  id: String!
+  price: Float
+}
+
+input CreateFailedJobInput {
+  connection: String!
+  exception: String!
+  failedAt: DateTime!
+  id: String!
+  payload: String!
+  queue: String!
+}
+
+input CreateFavoriteProductInput {
+  createdAt: DateTime
+  id: Float!
+  productId: Float!
+  subproductId: Float
+  userId: Float!
+}
+
+input CreateFedexAddressValidationAttributeInput {
+  code: String!
+  correctValue: Boolean!
+  createdAt: DateTime!
+  description: String!
+  id: Float!
+  updatedAt: DateTime!
+}
+
+input CreateFetchSiteUrlInput {
+  createdAt: DateTime
+  date: DateTime!
+  id: Float!
+  isFetch: Boolean!
+  updatedAt: DateTime
+  url: String!
+}
+
+input CreateFileInput {
+  createdAt: DateTime
+  filename: String!
+  id: Float!
+  mime: String!
+  originalFilename: String!
+  path: String! = "/"
+  updatedAt: DateTime
+  uploadSource: String!
+}
+
+input CreateFileNegotiationInput {
+  createdAt: DateTime
+  fileId: Float!
+  id: Float!
+  negotiationId: Float!
+  updatedAt: DateTime
+}
+
+input CreateGhazalInput {
+  createdAt: DateTime
+  explanation: String
+  id: Float!
+  poem: String
+  updatedAt: DateTime
+}
+
+input CreateGoogleFormUtmInput {
+  createdAt: DateTime
+  formId: String!
+  id: Float!
+  status: Boolean! = false
+  updatedAt: DateTime
+  url: String!
+  userId: Float!
+  utm: String!
+}
+
+input CreateHeardAboutUsOptionInput {
+  createdAt: DateTime
+  id: Float!
+  isActive: Boolean! = true
+  name: String!
+  sortOrder: Float! = 1
+  updatedAt: DateTime
+}
+
+input CreateHelpDeskInput {
+  createdAt: DateTime
+  id: String!
+  imageId: Float
+  isActive: Float
+  isOnline: Float
+  phone: String
+  title: String
+  updatedAt: DateTime
+  userId: Float!
+}
+
+input CreateHolidayInput {
+  createdAt: DateTime
+  deletedAt: DateTime
+  holidayDate: String!
+  id: Float!
+  updatedAt: DateTime
+  userId: Float
+  weekday: Float!
+}
+
+input CreateHomePageCustomerImageInput {
+  createdAt: DateTime
+  desktopImageAlt: String
+  desktopImageId: Float
+  id: Float!
+  mobileImageAlt: String
+  mobileImageId: Float
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
+input CreateHyperInput {
+  code: String!
+  depot: Float
+  produce: Float
+}
+
+input CreateHyperstarCodeInput {
+  code: String!
+  subproductCode: String
+}
+
+input CreateImageInput {
+  altText: String
+  altTextEn: String
+  createdAt: DateTime
+  filename: String!
+  id: Float!
+  imageRecreated: Boolean!
+  mime: String!
+  originalFilename: String!
+  path: String!
+  updatedAt: DateTime
+  uploadSource: String!
+}
+
+input CreateImageLayerInput {
+  centerX: Float!
+  centerY: Float!
+  createdAt: DateTime
+  deletedAt: DateTime
+  designId: Float!
+  filename: String!
+  id: Float!
+  path: String!
+  rotation: Float!
+  scaleX: Float!
+  scaleY: Float!
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
 input CreateManyActivitiesInput {
   """Array of records to create"""
   activities: [CreateActivityInput!]!
@@ -4246,6 +4581,166 @@ input CreateManyCouponSubjectsInput {
 input CreateManyCouponsInput {
   """Array of records to create"""
   coupons: [CreateCouponInput!]!
+}
+
+input CreateManyCrmPresentationsInput {
+  """Array of records to create"""
+  crmPresentations: [CreateCrmPresentationInput!]!
+}
+
+input CreateManyCustomerImageProductsInput {
+  """Array of records to create"""
+  customerImageProducts: [CreateCustomerImageProductInput!]!
+}
+
+input CreateManyCustomerRequestFilesInput {
+  """Array of records to create"""
+  customerRequestFiles: [CreateCustomerRequestFileInput!]!
+}
+
+input CreateManyCustomerRequestsInput {
+  """Array of records to create"""
+  customerRequests: [CreateCustomerRequestInput!]!
+}
+
+input CreateManyCustomerVideoProductsInput {
+  """Array of records to create"""
+  customerVideoProducts: [CreateCustomerVideoProductInput!]!
+}
+
+input CreateManyDamageReasonsInput {
+  """Array of records to create"""
+  damageReasons: [CreateDamageReasonInput!]!
+}
+
+input CreateManyDepartmentsInput {
+  """Array of records to create"""
+  departments: [CreateDepartmentInput!]!
+}
+
+input CreateManyDesignersProductPriceRangesInput {
+  """Array of records to create"""
+  designersProductPriceRanges: [CreateDesignersProductPriceRangeInput!]!
+}
+
+input CreateManyDesignsInput {
+  """Array of records to create"""
+  designs: [CreateDesignInput!]!
+}
+
+input CreateManyDiscountNotificationsInput {
+  """Array of records to create"""
+  discountNotifications: [CreateDiscountNotificationInput!]!
+}
+
+input CreateManyDiscountSubjectsInput {
+  """Array of records to create"""
+  discountSubjects: [CreateDiscountSubjectInput!]!
+}
+
+input CreateManyDiscountsInput {
+  """Array of records to create"""
+  discounts: [CreateDiscountInput!]!
+}
+
+input CreateManyExitControlItemsInput {
+  """Array of records to create"""
+  exitControlItems: [CreateExitControlItemInput!]!
+}
+
+input CreateManyExitControlsInput {
+  """Array of records to create"""
+  exitControls: [CreateExitControlInput!]!
+}
+
+input CreateManyExportProductsInput {
+  """Array of records to create"""
+  exportProducts: [CreateExportProductInput!]!
+}
+
+input CreateManyFailedJobsInput {
+  """Array of records to create"""
+  failedJobs: [CreateFailedJobInput!]!
+}
+
+input CreateManyFavoriteProductsInput {
+  """Array of records to create"""
+  favoriteProducts: [CreateFavoriteProductInput!]!
+}
+
+input CreateManyFedexAddressValidationAttributesInput {
+  """Array of records to create"""
+  fedexAddressValidationAttributes: [CreateFedexAddressValidationAttributeInput!]!
+}
+
+input CreateManyFetchSiteUrlsInput {
+  """Array of records to create"""
+  fetchSiteUrls: [CreateFetchSiteUrlInput!]!
+}
+
+input CreateManyFileNegotiationsInput {
+  """Array of records to create"""
+  fileNegotiations: [CreateFileNegotiationInput!]!
+}
+
+input CreateManyFilesInput {
+  """Array of records to create"""
+  files: [CreateFileInput!]!
+}
+
+input CreateManyGhazalsInput {
+  """Array of records to create"""
+  ghazals: [CreateGhazalInput!]!
+}
+
+input CreateManyGoogleFormUtmsInput {
+  """Array of records to create"""
+  googleFormUtms: [CreateGoogleFormUtmInput!]!
+}
+
+input CreateManyHeardAboutUsOptionsInput {
+  """Array of records to create"""
+  heardAboutUsOptions: [CreateHeardAboutUsOptionInput!]!
+}
+
+input CreateManyHelpDesksInput {
+  """Array of records to create"""
+  helpDesks: [CreateHelpDeskInput!]!
+}
+
+input CreateManyHolidaysInput {
+  """Array of records to create"""
+  holidays: [CreateHolidayInput!]!
+}
+
+input CreateManyHomePageCustomerImagesInput {
+  """Array of records to create"""
+  homePageCustomerImages: [CreateHomePageCustomerImageInput!]!
+}
+
+input CreateManyHypersInput {
+  """Array of records to create"""
+  hypers: [CreateHyperInput!]!
+}
+
+input CreateManyHyperstarCodesInput {
+  """Array of records to create"""
+  hyperstarCodes: [CreateHyperstarCodeInput!]!
+}
+
+input CreateManyImageLayersInput {
+  """Array of records to create"""
+  imageLayers: [CreateImageLayerInput!]!
+}
+
+input CreateManyImagesInput {
+  """Array of records to create"""
+  images: [CreateImageInput!]!
+}
+
+input CreateManyUsersInput {
+  """Array of records to create"""
+  users: [CreateUserInput!]!
 }
 
 input CreateOneActivityInput {
@@ -4488,6 +4983,286 @@ input CreateOneCouponSubjectInput {
   couponSubject: CreateCouponSubjectInput!
 }
 
+input CreateOneCrmPresentationInput {
+  """The record to create"""
+  crmPresentation: CreateCrmPresentationInput!
+}
+
+input CreateOneCustomerImageProductInput {
+  """The record to create"""
+  customerImageProduct: CreateCustomerImageProductInput!
+}
+
+input CreateOneCustomerRequestFileInput {
+  """The record to create"""
+  customerRequestFile: CreateCustomerRequestFileInput!
+}
+
+input CreateOneCustomerRequestInput {
+  """The record to create"""
+  customerRequest: CreateCustomerRequestInput!
+}
+
+input CreateOneCustomerVideoProductInput {
+  """The record to create"""
+  customerVideoProduct: CreateCustomerVideoProductInput!
+}
+
+input CreateOneDamageReasonInput {
+  """The record to create"""
+  damageReason: CreateDamageReasonInput!
+}
+
+input CreateOneDepartmentInput {
+  """The record to create"""
+  department: CreateDepartmentInput!
+}
+
+input CreateOneDesignInput {
+  """The record to create"""
+  design: CreateDesignInput!
+}
+
+input CreateOneDesignersProductPriceRangeInput {
+  """The record to create"""
+  designersProductPriceRange: CreateDesignersProductPriceRangeInput!
+}
+
+input CreateOneDiscountInput {
+  """The record to create"""
+  discount: CreateDiscountInput!
+}
+
+input CreateOneDiscountNotificationInput {
+  """The record to create"""
+  discountNotification: CreateDiscountNotificationInput!
+}
+
+input CreateOneDiscountSubjectInput {
+  """The record to create"""
+  discountSubject: CreateDiscountSubjectInput!
+}
+
+input CreateOneExitControlInput {
+  """The record to create"""
+  exitControl: CreateExitControlInput!
+}
+
+input CreateOneExitControlItemInput {
+  """The record to create"""
+  exitControlItem: CreateExitControlItemInput!
+}
+
+input CreateOneExportProductInput {
+  """The record to create"""
+  exportProduct: CreateExportProductInput!
+}
+
+input CreateOneFailedJobInput {
+  """The record to create"""
+  failedJob: CreateFailedJobInput!
+}
+
+input CreateOneFavoriteProductInput {
+  """The record to create"""
+  favoriteProduct: CreateFavoriteProductInput!
+}
+
+input CreateOneFedexAddressValidationAttributeInput {
+  """The record to create"""
+  fedexAddressValidationAttribute: CreateFedexAddressValidationAttributeInput!
+}
+
+input CreateOneFetchSiteUrlInput {
+  """The record to create"""
+  fetchSiteUrl: CreateFetchSiteUrlInput!
+}
+
+input CreateOneFileInput {
+  """The record to create"""
+  file: CreateFileInput!
+}
+
+input CreateOneFileNegotiationInput {
+  """The record to create"""
+  fileNegotiation: CreateFileNegotiationInput!
+}
+
+input CreateOneGhazalInput {
+  """The record to create"""
+  ghazal: CreateGhazalInput!
+}
+
+input CreateOneGoogleFormUtmInput {
+  """The record to create"""
+  googleFormUtm: CreateGoogleFormUtmInput!
+}
+
+input CreateOneHeardAboutUsOptionInput {
+  """The record to create"""
+  heardAboutUsOption: CreateHeardAboutUsOptionInput!
+}
+
+input CreateOneHelpDeskInput {
+  """The record to create"""
+  helpDesk: CreateHelpDeskInput!
+}
+
+input CreateOneHolidayInput {
+  """The record to create"""
+  holiday: CreateHolidayInput!
+}
+
+input CreateOneHomePageCustomerImageInput {
+  """The record to create"""
+  homePageCustomerImage: CreateHomePageCustomerImageInput!
+}
+
+input CreateOneHyperInput {
+  """The record to create"""
+  hyper: CreateHyperInput!
+}
+
+input CreateOneHyperstarCodeInput {
+  """The record to create"""
+  hyperstarCode: CreateHyperstarCodeInput!
+}
+
+input CreateOneImageInput {
+  """The record to create"""
+  image: CreateImageInput!
+}
+
+input CreateOneImageLayerInput {
+  """The record to create"""
+  imageLayer: CreateImageLayerInput!
+}
+
+input CreateOneUserInput {
+  """The record to create"""
+  user: CreateUserInput!
+}
+
+input CreateUserInput {
+  activities: [ActivityInput!]!
+  apiToken: String
+  atmCardNo: String
+  avatar: String
+  campaignCartItems: String
+  campaignCartItemsStartDate: DateTime
+  campaignFindingCouponCode: String
+  campaignFindingCouponFoundParts: String!
+  campaignFindingCouponHidingPlace: String
+  campaignFindingCouponUsed: Boolean!
+  campaignFindingCouponWinnerPlace: Float
+  campaignId: Float
+  childrenCouponIsUsed: Boolean!
+  code: String
+  commentsChargedAmount: String!
+  createdAt: DateTime
+  discountNotificationSentDate: DateTime
+  email: String
+  emailVerified: Float
+  family: String!
+  hafezPoemCount: Float!
+  heardAboutUsOptionId: Float
+  id: Float!
+  invitationCodeId: Float
+  isActive: Float
+  isForeigner: Boolean!
+  isGuest: Float
+  isPasswordChanged: Boolean!
+  isPreorderApplicant: Boolean!
+  loginEmail: String
+  lotteryCode: String
+  mah: Float
+  monthlyRetargetingStartDate: DateTime
+  name: String!
+  nationalId: String
+  newUsersCampaignCharged: Boolean!
+  os: String
+  osVersion: String
+  password: String
+  phone: String
+  phoneVerified: Float
+  phoneVerifiedBy: Float
+  preorderPaid: Boolean!
+  preorderRegisterDate: DateTime
+  preorderTurnEndDate: String
+  preorderTurnStartDate: String
+  profilePicture: String
+  rememberToken: String
+  retargetingIsUsed: Boolean!
+  roz: Float
+  sal: Float
+  sepidarCode: Float
+  sepidarId: Float
+  spinnerIsUsed: Boolean!
+  spinnerVerificationCode: String
+  spinnerVerified: Boolean!
+  status: Float!
+  stripeId: String
+  temp: String
+  tempName: String!
+  updatedAt: DateTime
+  username: String
+  verificationCode: String
+}
+
+type CrmPresentation {
+  mobile: ID!
+  optionId: Float
+}
+
+type CrmPresentationConnection {
+  """Array of edges."""
+  edges: [CrmPresentationEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CrmPresentationDeleteFilter {
+  and: [CrmPresentationDeleteFilter!]
+  mobile: IDFilterComparison
+  or: [CrmPresentationDeleteFilter!]
+}
+
+type CrmPresentationDeleteResponse {
+  mobile: ID
+  optionId: Float
+}
+
+type CrmPresentationEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CrmPresentation"""
+  node: CrmPresentation!
+}
+
+input CrmPresentationFilter {
+  and: [CrmPresentationFilter!]
+  mobile: IDFilterComparison
+  or: [CrmPresentationFilter!]
+}
+
+input CrmPresentationSort {
+  direction: SortDirection!
+  field: CrmPresentationSortFields!
+  nulls: SortNulls
+}
+
+enum CrmPresentationSortFields {
+  mobile
+}
+
+input CrmPresentationUpdateFilter {
+  and: [CrmPresentationUpdateFilter!]
+  mobile: IDFilterComparison
+  or: [CrmPresentationUpdateFilter!]
+}
+
 input CursorPaging {
   """Paginate after opaque cursor"""
   after: ConnectionCursor
@@ -4500,6 +5275,322 @@ input CursorPaging {
 
   """Paginate last"""
   last: Int
+}
+
+type CustomerImageProduct {
+  createdAt: DateTime
+  id: ID!
+  imageId: Float!
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type CustomerImageProductConnection {
+  """Array of edges."""
+  edges: [CustomerImageProductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CustomerImageProductDeleteFilter {
+  and: [CustomerImageProductDeleteFilter!]
+  id: IDFilterComparison
+  or: [CustomerImageProductDeleteFilter!]
+}
+
+type CustomerImageProductDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type CustomerImageProductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CustomerImageProduct"""
+  node: CustomerImageProduct!
+}
+
+input CustomerImageProductFilter {
+  and: [CustomerImageProductFilter!]
+  id: IDFilterComparison
+  or: [CustomerImageProductFilter!]
+}
+
+input CustomerImageProductSort {
+  direction: SortDirection!
+  field: CustomerImageProductSortFields!
+  nulls: SortNulls
+}
+
+enum CustomerImageProductSortFields {
+  id
+}
+
+input CustomerImageProductUpdateFilter {
+  and: [CustomerImageProductUpdateFilter!]
+  id: IDFilterComparison
+  or: [CustomerImageProductUpdateFilter!]
+}
+
+type CustomerRequest {
+  createdAt: DateTime
+  id: ID!
+  name: String
+  phone: String
+  updatedAt: DateTime
+  userId: Float
+  uuid: String
+}
+
+type CustomerRequestConnection {
+  """Array of edges."""
+  edges: [CustomerRequestEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CustomerRequestDeleteFilter {
+  and: [CustomerRequestDeleteFilter!]
+  id: IDFilterComparison
+  or: [CustomerRequestDeleteFilter!]
+}
+
+type CustomerRequestDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  name: String
+  phone: String
+  updatedAt: DateTime
+  userId: Float
+  uuid: String
+}
+
+type CustomerRequestEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CustomerRequest"""
+  node: CustomerRequest!
+}
+
+type CustomerRequestFile {
+  createdAt: DateTime
+  customerRequestId: Float!
+  filename: String!
+  id: ID!
+  mime: String!
+  originalFilename: String!
+  path: String!
+  updatedAt: DateTime
+}
+
+type CustomerRequestFileConnection {
+  """Array of edges."""
+  edges: [CustomerRequestFileEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CustomerRequestFileDeleteFilter {
+  and: [CustomerRequestFileDeleteFilter!]
+  id: IDFilterComparison
+  or: [CustomerRequestFileDeleteFilter!]
+}
+
+type CustomerRequestFileDeleteResponse {
+  createdAt: DateTime
+  customerRequestId: Float
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+}
+
+type CustomerRequestFileEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CustomerRequestFile"""
+  node: CustomerRequestFile!
+}
+
+input CustomerRequestFileFilter {
+  and: [CustomerRequestFileFilter!]
+  id: IDFilterComparison
+  or: [CustomerRequestFileFilter!]
+}
+
+input CustomerRequestFileSort {
+  direction: SortDirection!
+  field: CustomerRequestFileSortFields!
+  nulls: SortNulls
+}
+
+enum CustomerRequestFileSortFields {
+  id
+}
+
+input CustomerRequestFileUpdateFilter {
+  and: [CustomerRequestFileUpdateFilter!]
+  id: IDFilterComparison
+  or: [CustomerRequestFileUpdateFilter!]
+}
+
+input CustomerRequestFilter {
+  and: [CustomerRequestFilter!]
+  id: IDFilterComparison
+  or: [CustomerRequestFilter!]
+}
+
+input CustomerRequestSort {
+  direction: SortDirection!
+  field: CustomerRequestSortFields!
+  nulls: SortNulls
+}
+
+enum CustomerRequestSortFields {
+  id
+}
+
+input CustomerRequestUpdateFilter {
+  and: [CustomerRequestUpdateFilter!]
+  id: IDFilterComparison
+  or: [CustomerRequestUpdateFilter!]
+}
+
+type CustomerVideoProduct {
+  createdAt: DateTime
+  id: ID!
+  productId: Float!
+  sortOrder: Float
+  updatedAt: DateTime
+  videoId: Float!
+}
+
+type CustomerVideoProductConnection {
+  """Array of edges."""
+  edges: [CustomerVideoProductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input CustomerVideoProductDeleteFilter {
+  and: [CustomerVideoProductDeleteFilter!]
+  id: IDFilterComparison
+  or: [CustomerVideoProductDeleteFilter!]
+}
+
+type CustomerVideoProductDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+  videoId: Float
+}
+
+type CustomerVideoProductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the CustomerVideoProduct"""
+  node: CustomerVideoProduct!
+}
+
+input CustomerVideoProductFilter {
+  and: [CustomerVideoProductFilter!]
+  id: IDFilterComparison
+  or: [CustomerVideoProductFilter!]
+}
+
+input CustomerVideoProductSort {
+  direction: SortDirection!
+  field: CustomerVideoProductSortFields!
+  nulls: SortNulls
+}
+
+enum CustomerVideoProductSortFields {
+  id
+}
+
+input CustomerVideoProductUpdateFilter {
+  and: [CustomerVideoProductUpdateFilter!]
+  id: IDFilterComparison
+  or: [CustomerVideoProductUpdateFilter!]
+}
+
+type DamageReason {
+  cause: String!
+  createdAt: DateTime
+  department: String!
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+}
+
+type DamageReasonConnection {
+  """Array of edges."""
+  edges: [DamageReasonEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DamageReasonDeleteFilter {
+  and: [DamageReasonDeleteFilter!]
+  id: IDFilterComparison
+  or: [DamageReasonDeleteFilter!]
+}
+
+type DamageReasonDeleteResponse {
+  cause: String
+  createdAt: DateTime
+  department: String
+  id: ID
+  name: String
+  updatedAt: DateTime
+}
+
+type DamageReasonEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the DamageReason"""
+  node: DamageReason!
+}
+
+input DamageReasonFilter {
+  and: [DamageReasonFilter!]
+  id: IDFilterComparison
+  or: [DamageReasonFilter!]
+}
+
+input DamageReasonSort {
+  direction: SortDirection!
+  field: DamageReasonSortFields!
+  nulls: SortNulls
+}
+
+enum DamageReasonSortFields {
+  id
+}
+
+input DamageReasonUpdateFilter {
+  and: [DamageReasonUpdateFilter!]
+  id: IDFilterComparison
+  or: [DamageReasonUpdateFilter!]
 }
 
 """
@@ -4747,9 +5838,169 @@ input DeleteManyCouponsInput {
   filter: CouponDeleteFilter!
 }
 
+input DeleteManyCrmPresentationsInput {
+  """Filter to find records to delete"""
+  filter: CrmPresentationDeleteFilter!
+}
+
+input DeleteManyCustomerImageProductsInput {
+  """Filter to find records to delete"""
+  filter: CustomerImageProductDeleteFilter!
+}
+
+input DeleteManyCustomerRequestFilesInput {
+  """Filter to find records to delete"""
+  filter: CustomerRequestFileDeleteFilter!
+}
+
+input DeleteManyCustomerRequestsInput {
+  """Filter to find records to delete"""
+  filter: CustomerRequestDeleteFilter!
+}
+
+input DeleteManyCustomerVideoProductsInput {
+  """Filter to find records to delete"""
+  filter: CustomerVideoProductDeleteFilter!
+}
+
+input DeleteManyDamageReasonsInput {
+  """Filter to find records to delete"""
+  filter: DamageReasonDeleteFilter!
+}
+
+input DeleteManyDepartmentsInput {
+  """Filter to find records to delete"""
+  filter: DepartmentDeleteFilter!
+}
+
+input DeleteManyDesignersProductPriceRangesInput {
+  """Filter to find records to delete"""
+  filter: DesignersProductPriceRangeDeleteFilter!
+}
+
+input DeleteManyDesignsInput {
+  """Filter to find records to delete"""
+  filter: DesignDeleteFilter!
+}
+
+input DeleteManyDiscountNotificationsInput {
+  """Filter to find records to delete"""
+  filter: DiscountNotificationDeleteFilter!
+}
+
+input DeleteManyDiscountSubjectsInput {
+  """Filter to find records to delete"""
+  filter: DiscountSubjectDeleteFilter!
+}
+
+input DeleteManyDiscountsInput {
+  """Filter to find records to delete"""
+  filter: DiscountDeleteFilter!
+}
+
+input DeleteManyExitControlItemsInput {
+  """Filter to find records to delete"""
+  filter: ExitControlItemDeleteFilter!
+}
+
+input DeleteManyExitControlsInput {
+  """Filter to find records to delete"""
+  filter: ExitControlDeleteFilter!
+}
+
+input DeleteManyExportProductsInput {
+  """Filter to find records to delete"""
+  filter: ExportProductDeleteFilter!
+}
+
+input DeleteManyFailedJobsInput {
+  """Filter to find records to delete"""
+  filter: FailedJobDeleteFilter!
+}
+
+input DeleteManyFavoriteProductsInput {
+  """Filter to find records to delete"""
+  filter: FavoriteProductDeleteFilter!
+}
+
+input DeleteManyFedexAddressValidationAttributesInput {
+  """Filter to find records to delete"""
+  filter: FedexAddressValidationAttributeDeleteFilter!
+}
+
+input DeleteManyFetchSiteUrlsInput {
+  """Filter to find records to delete"""
+  filter: FetchSiteUrlDeleteFilter!
+}
+
+input DeleteManyFileNegotiationsInput {
+  """Filter to find records to delete"""
+  filter: FileNegotiationDeleteFilter!
+}
+
+input DeleteManyFilesInput {
+  """Filter to find records to delete"""
+  filter: FileDeleteFilter!
+}
+
+input DeleteManyGhazalsInput {
+  """Filter to find records to delete"""
+  filter: GhazalDeleteFilter!
+}
+
+input DeleteManyGoogleFormUtmsInput {
+  """Filter to find records to delete"""
+  filter: GoogleFormUtmDeleteFilter!
+}
+
+input DeleteManyHeardAboutUsOptionsInput {
+  """Filter to find records to delete"""
+  filter: HeardAboutUsOptionDeleteFilter!
+}
+
+input DeleteManyHelpDesksInput {
+  """Filter to find records to delete"""
+  filter: HelpDeskDeleteFilter!
+}
+
+input DeleteManyHolidaysInput {
+  """Filter to find records to delete"""
+  filter: HolidayDeleteFilter!
+}
+
+input DeleteManyHomePageCustomerImagesInput {
+  """Filter to find records to delete"""
+  filter: HomePageCustomerImageDeleteFilter!
+}
+
+input DeleteManyHypersInput {
+  """Filter to find records to delete"""
+  filter: HyperDeleteFilter!
+}
+
+input DeleteManyHyperstarCodesInput {
+  """Filter to find records to delete"""
+  filter: HyperstarCodeDeleteFilter!
+}
+
+input DeleteManyImageLayersInput {
+  """Filter to find records to delete"""
+  filter: ImageLayerDeleteFilter!
+}
+
+input DeleteManyImagesInput {
+  """Filter to find records to delete"""
+  filter: ImageDeleteFilter!
+}
+
 type DeleteManyResponse {
   """The number of records deleted."""
   deletedCount: Int!
+}
+
+input DeleteManyUsersInput {
+  """Filter to find records to delete"""
+  filter: UserDeleteFilter!
 }
 
 input DeleteOneActivityInput {
@@ -4992,6 +6243,1650 @@ input DeleteOneCouponSubjectInput {
   id: ID!
 }
 
+input DeleteOneCrmPresentationInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCustomerImageProductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCustomerRequestFileInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCustomerRequestInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneCustomerVideoProductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDamageReasonInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDepartmentInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDesignInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDesignersProductPriceRangeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDiscountInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDiscountNotificationInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneDiscountSubjectInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneExitControlInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneExitControlItemInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneExportProductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneFailedJobInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneFavoriteProductInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneFedexAddressValidationAttributeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneFetchSiteUrlInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneFileInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneFileNegotiationInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneGhazalInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneGoogleFormUtmInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneHeardAboutUsOptionInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneHelpDeskInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneHolidayInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneHomePageCustomerImageInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneHyperInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneHyperstarCodeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImageInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneImageLayerInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneUserInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+type Department {
+  createdAt: DateTime
+  id: ID!
+  name: String!
+  nameEn: String
+  updatedAt: DateTime
+}
+
+type DepartmentConnection {
+  """Array of edges."""
+  edges: [DepartmentEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DepartmentDeleteFilter {
+  and: [DepartmentDeleteFilter!]
+  id: IDFilterComparison
+  or: [DepartmentDeleteFilter!]
+}
+
+type DepartmentDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  name: String
+  nameEn: String
+  updatedAt: DateTime
+}
+
+type DepartmentEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Department"""
+  node: Department!
+}
+
+input DepartmentFilter {
+  and: [DepartmentFilter!]
+  id: IDFilterComparison
+  or: [DepartmentFilter!]
+}
+
+input DepartmentSort {
+  direction: SortDirection!
+  field: DepartmentSortFields!
+  nulls: SortNulls
+}
+
+enum DepartmentSortFields {
+  id
+}
+
+input DepartmentUpdateFilter {
+  and: [DepartmentUpdateFilter!]
+  id: IDFilterComparison
+  or: [DepartmentUpdateFilter!]
+}
+
+type Design {
+  backgroundColor: String
+  borderColor: String
+  carpetMaterialId: Float
+  carpetShapeId: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  filename: String
+  fringeColor: String
+  id: ID!
+  length: Float
+  name: String
+  path: String
+  updatedAt: DateTime
+  userId: Float
+  width: Float
+}
+
+type DesignConnection {
+  """Array of edges."""
+  edges: [DesignEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DesignDeleteFilter {
+  and: [DesignDeleteFilter!]
+  id: IDFilterComparison
+  or: [DesignDeleteFilter!]
+}
+
+type DesignDeleteResponse {
+  backgroundColor: String
+  borderColor: String
+  carpetMaterialId: Float
+  carpetShapeId: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  filename: String
+  fringeColor: String
+  id: ID
+  length: Float
+  name: String
+  path: String
+  updatedAt: DateTime
+  userId: Float
+  width: Float
+}
+
+type DesignEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Design"""
+  node: Design!
+}
+
+input DesignFilter {
+  and: [DesignFilter!]
+  id: IDFilterComparison
+  or: [DesignFilter!]
+}
+
+input DesignSort {
+  direction: SortDirection!
+  field: DesignSortFields!
+  nulls: SortNulls
+}
+
+enum DesignSortFields {
+  id
+}
+
+input DesignUpdateFilter {
+  and: [DesignUpdateFilter!]
+  id: IDFilterComparison
+  or: [DesignUpdateFilter!]
+}
+
+type DesignersProductPriceRange {
+  basicCarpetSizeId: Float!
+  createdAt: DateTime
+  id: ID!
+  maxPrice: Float!
+  minPrice: Float!
+  updatedAt: DateTime
+}
+
+type DesignersProductPriceRangeConnection {
+  """Array of edges."""
+  edges: [DesignersProductPriceRangeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DesignersProductPriceRangeDeleteFilter {
+  and: [DesignersProductPriceRangeDeleteFilter!]
+  id: IDFilterComparison
+  or: [DesignersProductPriceRangeDeleteFilter!]
+}
+
+type DesignersProductPriceRangeDeleteResponse {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  id: ID
+  maxPrice: Float
+  minPrice: Float
+  updatedAt: DateTime
+}
+
+type DesignersProductPriceRangeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the DesignersProductPriceRange"""
+  node: DesignersProductPriceRange!
+}
+
+input DesignersProductPriceRangeFilter {
+  and: [DesignersProductPriceRangeFilter!]
+  id: IDFilterComparison
+  or: [DesignersProductPriceRangeFilter!]
+}
+
+input DesignersProductPriceRangeSort {
+  direction: SortDirection!
+  field: DesignersProductPriceRangeSortFields!
+  nulls: SortNulls
+}
+
+enum DesignersProductPriceRangeSortFields {
+  id
+}
+
+input DesignersProductPriceRangeUpdateFilter {
+  and: [DesignersProductPriceRangeUpdateFilter!]
+  id: IDFilterComparison
+  or: [DesignersProductPriceRangeUpdateFilter!]
+}
+
+type Discount {
+  createdAt: DateTime
+  createdBy: Float
+  discount: String!
+  endDate: DateTime!
+  hasStockCountOnly: Boolean!
+  id: ID!
+  isActive: Float
+  maxDiscountPrice: String
+  minProductPrice: String
+  name: String
+  redisForShowoffIsDeleted: Boolean!
+  redisIsDeleted: Boolean!
+  showoffEndDate: DateTime
+  showoffStartDate: DateTime
+  sortOrder: Float
+  startDate: DateTime!
+  type: Float!
+  updatedAt: DateTime
+  updatedBy: Float
+  withPad: Boolean!
+}
+
+type DiscountConnection {
+  """Array of edges."""
+  edges: [DiscountEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DiscountDeleteFilter {
+  and: [DiscountDeleteFilter!]
+  id: IDFilterComparison
+  or: [DiscountDeleteFilter!]
+}
+
+type DiscountDeleteResponse {
+  createdAt: DateTime
+  createdBy: Float
+  discount: String
+  endDate: DateTime
+  hasStockCountOnly: Boolean
+  id: ID
+  isActive: Float
+  maxDiscountPrice: String
+  minProductPrice: String
+  name: String
+  redisForShowoffIsDeleted: Boolean
+  redisIsDeleted: Boolean
+  showoffEndDate: DateTime
+  showoffStartDate: DateTime
+  sortOrder: Float
+  startDate: DateTime
+  type: Float
+  updatedAt: DateTime
+  updatedBy: Float
+  withPad: Boolean
+}
+
+type DiscountEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Discount"""
+  node: Discount!
+}
+
+input DiscountFilter {
+  and: [DiscountFilter!]
+  id: IDFilterComparison
+  or: [DiscountFilter!]
+}
+
+type DiscountNotification {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: ID!
+  productId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+type DiscountNotificationConnection {
+  """Array of edges."""
+  edges: [DiscountNotificationEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DiscountNotificationDeleteFilter {
+  and: [DiscountNotificationDeleteFilter!]
+  id: IDFilterComparison
+  or: [DiscountNotificationDeleteFilter!]
+}
+
+type DiscountNotificationDeleteResponse {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: ID
+  productId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+type DiscountNotificationEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the DiscountNotification"""
+  node: DiscountNotification!
+}
+
+input DiscountNotificationFilter {
+  and: [DiscountNotificationFilter!]
+  id: IDFilterComparison
+  or: [DiscountNotificationFilter!]
+}
+
+input DiscountNotificationSort {
+  direction: SortDirection!
+  field: DiscountNotificationSortFields!
+  nulls: SortNulls
+}
+
+enum DiscountNotificationSortFields {
+  id
+}
+
+input DiscountNotificationUpdateFilter {
+  and: [DiscountNotificationUpdateFilter!]
+  id: IDFilterComparison
+  or: [DiscountNotificationUpdateFilter!]
+}
+
+input DiscountSort {
+  direction: SortDirection!
+  field: DiscountSortFields!
+  nulls: SortNulls
+}
+
+enum DiscountSortFields {
+  id
+}
+
+type DiscountSubject {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  discountId: Float!
+  id: ID!
+  priceGroupId: Float
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+type DiscountSubjectConnection {
+  """Array of edges."""
+  edges: [DiscountSubjectEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input DiscountSubjectDeleteFilter {
+  and: [DiscountSubjectDeleteFilter!]
+  id: IDFilterComparison
+  or: [DiscountSubjectDeleteFilter!]
+}
+
+type DiscountSubjectDeleteResponse {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  discountId: Float
+  id: ID
+  priceGroupId: Float
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+type DiscountSubjectEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the DiscountSubject"""
+  node: DiscountSubject!
+}
+
+input DiscountSubjectFilter {
+  and: [DiscountSubjectFilter!]
+  id: IDFilterComparison
+  or: [DiscountSubjectFilter!]
+}
+
+input DiscountSubjectSort {
+  direction: SortDirection!
+  field: DiscountSubjectSortFields!
+  nulls: SortNulls
+}
+
+enum DiscountSubjectSortFields {
+  id
+}
+
+input DiscountSubjectUpdateFilter {
+  and: [DiscountSubjectUpdateFilter!]
+  id: IDFilterComparison
+  or: [DiscountSubjectUpdateFilter!]
+}
+
+input DiscountUpdateFilter {
+  and: [DiscountUpdateFilter!]
+  id: IDFilterComparison
+  or: [DiscountUpdateFilter!]
+}
+
+type ExitControl {
+  createdAt: DateTime
+  driverName: String!
+  driverPhone: String!
+  exitDate: String!
+  id: ID!
+  isClosed: Boolean!
+  plateNo: String!
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type ExitControlConnection {
+  """Array of edges."""
+  edges: [ExitControlEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ExitControlDeleteFilter {
+  and: [ExitControlDeleteFilter!]
+  id: IDFilterComparison
+  or: [ExitControlDeleteFilter!]
+}
+
+type ExitControlDeleteResponse {
+  createdAt: DateTime
+  driverName: String
+  driverPhone: String
+  exitDate: String
+  id: ID
+  isClosed: Boolean
+  plateNo: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type ExitControlEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ExitControl"""
+  node: ExitControl!
+}
+
+input ExitControlFilter {
+  and: [ExitControlFilter!]
+  id: IDFilterComparison
+  or: [ExitControlFilter!]
+}
+
+type ExitControlItem {
+  boxNo: Float!
+  carpetPadScanned: Boolean!
+  carpetScanned: Boolean!
+  createdAt: DateTime
+  exitControlId: Float!
+  id: ID!
+  invoiceProductItemId: Float!
+  updatedAt: DateTime
+}
+
+type ExitControlItemConnection {
+  """Array of edges."""
+  edges: [ExitControlItemEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ExitControlItemDeleteFilter {
+  and: [ExitControlItemDeleteFilter!]
+  id: IDFilterComparison
+  or: [ExitControlItemDeleteFilter!]
+}
+
+type ExitControlItemDeleteResponse {
+  boxNo: Float
+  carpetPadScanned: Boolean
+  carpetScanned: Boolean
+  createdAt: DateTime
+  exitControlId: Float
+  id: ID
+  invoiceProductItemId: Float
+  updatedAt: DateTime
+}
+
+type ExitControlItemEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ExitControlItem"""
+  node: ExitControlItem!
+}
+
+input ExitControlItemFilter {
+  and: [ExitControlItemFilter!]
+  id: IDFilterComparison
+  or: [ExitControlItemFilter!]
+}
+
+input ExitControlItemSort {
+  direction: SortDirection!
+  field: ExitControlItemSortFields!
+  nulls: SortNulls
+}
+
+enum ExitControlItemSortFields {
+  id
+}
+
+input ExitControlItemUpdateFilter {
+  and: [ExitControlItemUpdateFilter!]
+  id: IDFilterComparison
+  or: [ExitControlItemUpdateFilter!]
+}
+
+input ExitControlSort {
+  direction: SortDirection!
+  field: ExitControlSortFields!
+  nulls: SortNulls
+}
+
+enum ExitControlSortFields {
+  id
+}
+
+input ExitControlUpdateFilter {
+  and: [ExitControlUpdateFilter!]
+  id: IDFilterComparison
+  or: [ExitControlUpdateFilter!]
+}
+
+type ExportProduct {
+  code: String
+  id: ID!
+  price: Float
+}
+
+type ExportProductConnection {
+  """Array of edges."""
+  edges: [ExportProductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ExportProductDeleteFilter {
+  and: [ExportProductDeleteFilter!]
+  id: IDFilterComparison
+  or: [ExportProductDeleteFilter!]
+}
+
+type ExportProductDeleteResponse {
+  code: String
+  id: ID
+  price: Float
+}
+
+type ExportProductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ExportProduct"""
+  node: ExportProduct!
+}
+
+input ExportProductFilter {
+  and: [ExportProductFilter!]
+  id: IDFilterComparison
+  or: [ExportProductFilter!]
+}
+
+input ExportProductSort {
+  direction: SortDirection!
+  field: ExportProductSortFields!
+  nulls: SortNulls
+}
+
+enum ExportProductSortFields {
+  id
+}
+
+input ExportProductUpdateFilter {
+  and: [ExportProductUpdateFilter!]
+  id: IDFilterComparison
+  or: [ExportProductUpdateFilter!]
+}
+
+type FailedJob {
+  connection: String!
+  exception: String!
+  failedAt: DateTime!
+  id: ID!
+  payload: String!
+  queue: String!
+}
+
+type FailedJobConnection {
+  """Array of edges."""
+  edges: [FailedJobEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input FailedJobDeleteFilter {
+  and: [FailedJobDeleteFilter!]
+  id: IDFilterComparison
+  or: [FailedJobDeleteFilter!]
+}
+
+type FailedJobDeleteResponse {
+  connection: String
+  exception: String
+  failedAt: DateTime
+  id: ID
+  payload: String
+  queue: String
+}
+
+type FailedJobEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the FailedJob"""
+  node: FailedJob!
+}
+
+input FailedJobFilter {
+  and: [FailedJobFilter!]
+  id: IDFilterComparison
+  or: [FailedJobFilter!]
+}
+
+input FailedJobSort {
+  direction: SortDirection!
+  field: FailedJobSortFields!
+  nulls: SortNulls
+}
+
+enum FailedJobSortFields {
+  id
+}
+
+input FailedJobUpdateFilter {
+  and: [FailedJobUpdateFilter!]
+  id: IDFilterComparison
+  or: [FailedJobUpdateFilter!]
+}
+
+type FavoriteProduct {
+  createdAt: DateTime
+  id: ID!
+  productId: Float!
+  subproductId: Float
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type FavoriteProductConnection {
+  """Array of edges."""
+  edges: [FavoriteProductEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input FavoriteProductDeleteFilter {
+  and: [FavoriteProductDeleteFilter!]
+  id: IDFilterComparison
+  or: [FavoriteProductDeleteFilter!]
+}
+
+type FavoriteProductDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+type FavoriteProductEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the FavoriteProduct"""
+  node: FavoriteProduct!
+}
+
+input FavoriteProductFilter {
+  and: [FavoriteProductFilter!]
+  id: IDFilterComparison
+  or: [FavoriteProductFilter!]
+}
+
+input FavoriteProductSort {
+  direction: SortDirection!
+  field: FavoriteProductSortFields!
+  nulls: SortNulls
+}
+
+enum FavoriteProductSortFields {
+  id
+}
+
+input FavoriteProductUpdateFilter {
+  and: [FavoriteProductUpdateFilter!]
+  id: IDFilterComparison
+  or: [FavoriteProductUpdateFilter!]
+}
+
+type FedexAddressValidationAttribute {
+  code: String!
+  correctValue: Boolean!
+  createdAt: DateTime!
+  description: String!
+  id: ID!
+  updatedAt: DateTime!
+}
+
+type FedexAddressValidationAttributeConnection {
+  """Array of edges."""
+  edges: [FedexAddressValidationAttributeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input FedexAddressValidationAttributeDeleteFilter {
+  and: [FedexAddressValidationAttributeDeleteFilter!]
+  id: IDFilterComparison
+  or: [FedexAddressValidationAttributeDeleteFilter!]
+}
+
+type FedexAddressValidationAttributeDeleteResponse {
+  code: String
+  correctValue: Boolean
+  createdAt: DateTime
+  description: String
+  id: ID
+  updatedAt: DateTime
+}
+
+type FedexAddressValidationAttributeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the FedexAddressValidationAttribute"""
+  node: FedexAddressValidationAttribute!
+}
+
+input FedexAddressValidationAttributeFilter {
+  and: [FedexAddressValidationAttributeFilter!]
+  id: IDFilterComparison
+  or: [FedexAddressValidationAttributeFilter!]
+}
+
+input FedexAddressValidationAttributeSort {
+  direction: SortDirection!
+  field: FedexAddressValidationAttributeSortFields!
+  nulls: SortNulls
+}
+
+enum FedexAddressValidationAttributeSortFields {
+  id
+}
+
+input FedexAddressValidationAttributeUpdateFilter {
+  and: [FedexAddressValidationAttributeUpdateFilter!]
+  id: IDFilterComparison
+  or: [FedexAddressValidationAttributeUpdateFilter!]
+}
+
+type FetchSiteUrl {
+  createdAt: DateTime
+  date: DateTime!
+  id: ID!
+  isFetch: Boolean!
+  updatedAt: DateTime
+  url: String!
+}
+
+type FetchSiteUrlConnection {
+  """Array of edges."""
+  edges: [FetchSiteUrlEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input FetchSiteUrlDeleteFilter {
+  and: [FetchSiteUrlDeleteFilter!]
+  id: IDFilterComparison
+  or: [FetchSiteUrlDeleteFilter!]
+}
+
+type FetchSiteUrlDeleteResponse {
+  createdAt: DateTime
+  date: DateTime
+  id: ID
+  isFetch: Boolean
+  updatedAt: DateTime
+  url: String
+}
+
+type FetchSiteUrlEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the FetchSiteUrl"""
+  node: FetchSiteUrl!
+}
+
+input FetchSiteUrlFilter {
+  and: [FetchSiteUrlFilter!]
+  id: IDFilterComparison
+  or: [FetchSiteUrlFilter!]
+}
+
+input FetchSiteUrlSort {
+  direction: SortDirection!
+  field: FetchSiteUrlSortFields!
+  nulls: SortNulls
+}
+
+enum FetchSiteUrlSortFields {
+  id
+}
+
+input FetchSiteUrlUpdateFilter {
+  and: [FetchSiteUrlUpdateFilter!]
+  id: IDFilterComparison
+  or: [FetchSiteUrlUpdateFilter!]
+}
+
+type File {
+  createdAt: DateTime
+  filename: String!
+  id: ID!
+  mime: String!
+  originalFilename: String!
+  path: String!
+  updatedAt: DateTime
+  uploadSource: String!
+}
+
+type FileConnection {
+  """Array of edges."""
+  edges: [FileEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input FileDeleteFilter {
+  and: [FileDeleteFilter!]
+  id: IDFilterComparison
+  or: [FileDeleteFilter!]
+}
+
+type FileDeleteResponse {
+  createdAt: DateTime
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  uploadSource: String
+}
+
+type FileEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the File"""
+  node: File!
+}
+
+input FileFilter {
+  and: [FileFilter!]
+  id: IDFilterComparison
+  or: [FileFilter!]
+}
+
+type FileNegotiation {
+  createdAt: DateTime
+  fileId: Float!
+  id: ID!
+  negotiationId: Float!
+  updatedAt: DateTime
+}
+
+type FileNegotiationConnection {
+  """Array of edges."""
+  edges: [FileNegotiationEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input FileNegotiationDeleteFilter {
+  and: [FileNegotiationDeleteFilter!]
+  id: IDFilterComparison
+  or: [FileNegotiationDeleteFilter!]
+}
+
+type FileNegotiationDeleteResponse {
+  createdAt: DateTime
+  fileId: Float
+  id: ID
+  negotiationId: Float
+  updatedAt: DateTime
+}
+
+type FileNegotiationEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the FileNegotiation"""
+  node: FileNegotiation!
+}
+
+input FileNegotiationFilter {
+  and: [FileNegotiationFilter!]
+  id: IDFilterComparison
+  or: [FileNegotiationFilter!]
+}
+
+input FileNegotiationSort {
+  direction: SortDirection!
+  field: FileNegotiationSortFields!
+  nulls: SortNulls
+}
+
+enum FileNegotiationSortFields {
+  id
+}
+
+input FileNegotiationUpdateFilter {
+  and: [FileNegotiationUpdateFilter!]
+  id: IDFilterComparison
+  or: [FileNegotiationUpdateFilter!]
+}
+
+input FileSort {
+  direction: SortDirection!
+  field: FileSortFields!
+  nulls: SortNulls
+}
+
+enum FileSortFields {
+  id
+}
+
+input FileUpdateFilter {
+  and: [FileUpdateFilter!]
+  id: IDFilterComparison
+  or: [FileUpdateFilter!]
+}
+
+type Ghazal {
+  createdAt: DateTime
+  explanation: String
+  id: ID!
+  poem: String
+  updatedAt: DateTime
+}
+
+type GhazalConnection {
+  """Array of edges."""
+  edges: [GhazalEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input GhazalDeleteFilter {
+  and: [GhazalDeleteFilter!]
+  id: IDFilterComparison
+  or: [GhazalDeleteFilter!]
+}
+
+type GhazalDeleteResponse {
+  createdAt: DateTime
+  explanation: String
+  id: ID
+  poem: String
+  updatedAt: DateTime
+}
+
+type GhazalEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Ghazal"""
+  node: Ghazal!
+}
+
+input GhazalFilter {
+  and: [GhazalFilter!]
+  id: IDFilterComparison
+  or: [GhazalFilter!]
+}
+
+input GhazalSort {
+  direction: SortDirection!
+  field: GhazalSortFields!
+  nulls: SortNulls
+}
+
+enum GhazalSortFields {
+  id
+}
+
+input GhazalUpdateFilter {
+  and: [GhazalUpdateFilter!]
+  id: IDFilterComparison
+  or: [GhazalUpdateFilter!]
+}
+
+type GoogleFormUtm {
+  createdAt: DateTime
+  formId: String!
+  id: ID!
+  status: Boolean!
+  updatedAt: DateTime
+  url: String!
+  userId: Float!
+  utm: String!
+}
+
+type GoogleFormUtmConnection {
+  """Array of edges."""
+  edges: [GoogleFormUtmEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input GoogleFormUtmDeleteFilter {
+  and: [GoogleFormUtmDeleteFilter!]
+  id: IDFilterComparison
+  or: [GoogleFormUtmDeleteFilter!]
+}
+
+type GoogleFormUtmDeleteResponse {
+  createdAt: DateTime
+  formId: String
+  id: ID
+  status: Boolean
+  updatedAt: DateTime
+  url: String
+  userId: Float
+  utm: String
+}
+
+type GoogleFormUtmEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the GoogleFormUtm"""
+  node: GoogleFormUtm!
+}
+
+input GoogleFormUtmFilter {
+  and: [GoogleFormUtmFilter!]
+  id: IDFilterComparison
+  or: [GoogleFormUtmFilter!]
+}
+
+input GoogleFormUtmSort {
+  direction: SortDirection!
+  field: GoogleFormUtmSortFields!
+  nulls: SortNulls
+}
+
+enum GoogleFormUtmSortFields {
+  id
+}
+
+input GoogleFormUtmUpdateFilter {
+  and: [GoogleFormUtmUpdateFilter!]
+  id: IDFilterComparison
+  or: [GoogleFormUtmUpdateFilter!]
+}
+
+type HeardAboutUsOption {
+  createdAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  name: String!
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
+type HeardAboutUsOptionConnection {
+  """Array of edges."""
+  edges: [HeardAboutUsOptionEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input HeardAboutUsOptionDeleteFilter {
+  and: [HeardAboutUsOptionDeleteFilter!]
+  id: IDFilterComparison
+  or: [HeardAboutUsOptionDeleteFilter!]
+}
+
+type HeardAboutUsOptionDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean
+  name: String
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type HeardAboutUsOptionEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the HeardAboutUsOption"""
+  node: HeardAboutUsOption!
+}
+
+input HeardAboutUsOptionFilter {
+  and: [HeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [HeardAboutUsOptionFilter!]
+}
+
+input HeardAboutUsOptionSort {
+  direction: SortDirection!
+  field: HeardAboutUsOptionSortFields!
+  nulls: SortNulls
+}
+
+enum HeardAboutUsOptionSortFields {
+  id
+}
+
+input HeardAboutUsOptionUpdateFilter {
+  and: [HeardAboutUsOptionUpdateFilter!]
+  id: IDFilterComparison
+  or: [HeardAboutUsOptionUpdateFilter!]
+}
+
+type HelpDesk {
+  createdAt: DateTime
+  id: ID!
+  imageId: Float
+  isActive: Float
+  isOnline: Float
+  phone: String
+  title: String
+  updatedAt: DateTime
+  userId: Float!
+}
+
+type HelpDeskConnection {
+  """Array of edges."""
+  edges: [HelpDeskEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input HelpDeskDeleteFilter {
+  and: [HelpDeskDeleteFilter!]
+  id: IDFilterComparison
+  or: [HelpDeskDeleteFilter!]
+}
+
+type HelpDeskDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  isActive: Float
+  isOnline: Float
+  phone: String
+  title: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+type HelpDeskEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the HelpDesk"""
+  node: HelpDesk!
+}
+
+input HelpDeskFilter {
+  and: [HelpDeskFilter!]
+  id: IDFilterComparison
+  or: [HelpDeskFilter!]
+}
+
+input HelpDeskSort {
+  direction: SortDirection!
+  field: HelpDeskSortFields!
+  nulls: SortNulls
+}
+
+enum HelpDeskSortFields {
+  id
+}
+
+input HelpDeskUpdateFilter {
+  and: [HelpDeskUpdateFilter!]
+  id: IDFilterComparison
+  or: [HelpDeskUpdateFilter!]
+}
+
+type Holiday {
+  createdAt: DateTime
+  deletedAt: DateTime
+  holidayDate: String!
+  id: ID!
+  updatedAt: DateTime
+  userId: Float
+  weekday: Float!
+}
+
+type HolidayConnection {
+  """Array of edges."""
+  edges: [HolidayEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input HolidayDeleteFilter {
+  and: [HolidayDeleteFilter!]
+  id: IDFilterComparison
+  or: [HolidayDeleteFilter!]
+}
+
+type HolidayDeleteResponse {
+  createdAt: DateTime
+  deletedAt: DateTime
+  holidayDate: String
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+  weekday: Float
+}
+
+type HolidayEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Holiday"""
+  node: Holiday!
+}
+
+input HolidayFilter {
+  and: [HolidayFilter!]
+  id: IDFilterComparison
+  or: [HolidayFilter!]
+}
+
+input HolidaySort {
+  direction: SortDirection!
+  field: HolidaySortFields!
+  nulls: SortNulls
+}
+
+enum HolidaySortFields {
+  id
+}
+
+input HolidayUpdateFilter {
+  and: [HolidayUpdateFilter!]
+  id: IDFilterComparison
+  or: [HolidayUpdateFilter!]
+}
+
+type HomePageCustomerImage {
+  createdAt: DateTime
+  desktopImageAlt: String
+  desktopImageId: Float
+  id: ID!
+  mobileImageAlt: String
+  mobileImageId: Float
+  productId: Float
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
+type HomePageCustomerImageConnection {
+  """Array of edges."""
+  edges: [HomePageCustomerImageEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input HomePageCustomerImageDeleteFilter {
+  and: [HomePageCustomerImageDeleteFilter!]
+  id: IDFilterComparison
+  or: [HomePageCustomerImageDeleteFilter!]
+}
+
+type HomePageCustomerImageDeleteResponse {
+  createdAt: DateTime
+  desktopImageAlt: String
+  desktopImageId: Float
+  id: ID
+  mobileImageAlt: String
+  mobileImageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type HomePageCustomerImageEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the HomePageCustomerImage"""
+  node: HomePageCustomerImage!
+}
+
+input HomePageCustomerImageFilter {
+  and: [HomePageCustomerImageFilter!]
+  id: IDFilterComparison
+  or: [HomePageCustomerImageFilter!]
+}
+
+input HomePageCustomerImageSort {
+  direction: SortDirection!
+  field: HomePageCustomerImageSortFields!
+  nulls: SortNulls
+}
+
+enum HomePageCustomerImageSortFields {
+  id
+}
+
+input HomePageCustomerImageUpdateFilter {
+  and: [HomePageCustomerImageUpdateFilter!]
+  id: IDFilterComparison
+  or: [HomePageCustomerImageUpdateFilter!]
+}
+
+type Hyper {
+  code: ID!
+  depot: Float
+  produce: Float
+}
+
+type HyperConnection {
+  """Array of edges."""
+  edges: [HyperEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input HyperDeleteFilter {
+  and: [HyperDeleteFilter!]
+  code: IDFilterComparison
+  or: [HyperDeleteFilter!]
+}
+
+type HyperDeleteResponse {
+  code: ID
+  depot: Float
+  produce: Float
+}
+
+type HyperEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Hyper"""
+  node: Hyper!
+}
+
+input HyperFilter {
+  and: [HyperFilter!]
+  code: IDFilterComparison
+  or: [HyperFilter!]
+}
+
+input HyperSort {
+  direction: SortDirection!
+  field: HyperSortFields!
+  nulls: SortNulls
+}
+
+enum HyperSortFields {
+  code
+}
+
+input HyperUpdateFilter {
+  and: [HyperUpdateFilter!]
+  code: IDFilterComparison
+  or: [HyperUpdateFilter!]
+}
+
+type HyperstarCode {
+  code: ID!
+  subproductCode: String
+}
+
+type HyperstarCodeConnection {
+  """Array of edges."""
+  edges: [HyperstarCodeEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input HyperstarCodeDeleteFilter {
+  and: [HyperstarCodeDeleteFilter!]
+  code: IDFilterComparison
+  or: [HyperstarCodeDeleteFilter!]
+}
+
+type HyperstarCodeDeleteResponse {
+  code: ID
+  subproductCode: String
+}
+
+type HyperstarCodeEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the HyperstarCode"""
+  node: HyperstarCode!
+}
+
+input HyperstarCodeFilter {
+  and: [HyperstarCodeFilter!]
+  code: IDFilterComparison
+  or: [HyperstarCodeFilter!]
+}
+
+input HyperstarCodeSort {
+  direction: SortDirection!
+  field: HyperstarCodeSortFields!
+  nulls: SortNulls
+}
+
+enum HyperstarCodeSortFields {
+  code
+}
+
+input HyperstarCodeUpdateFilter {
+  and: [HyperstarCodeUpdateFilter!]
+  code: IDFilterComparison
+  or: [HyperstarCodeUpdateFilter!]
+}
+
 input IDFilterComparison {
   eq: ID
   gt: ID
@@ -5009,7 +7904,156 @@ input IDFilterComparison {
   notLike: ID
 }
 
+type Image {
+  altText: String
+  altTextEn: String
+  createdAt: DateTime
+  filename: String!
+  id: ID!
+  imageRecreated: Boolean!
+  mime: String!
+  originalFilename: String!
+  path: String!
+  updatedAt: DateTime
+  uploadSource: String!
+}
+
+type ImageConnection {
+  """Array of edges."""
+  edges: [ImageEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImageDeleteFilter {
+  and: [ImageDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImageDeleteFilter!]
+}
+
+type ImageDeleteResponse {
+  altText: String
+  altTextEn: String
+  createdAt: DateTime
+  filename: String
+  id: ID
+  imageRecreated: Boolean
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  uploadSource: String
+}
+
+type ImageEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Image"""
+  node: Image!
+}
+
+input ImageFilter {
+  and: [ImageFilter!]
+  id: IDFilterComparison
+  or: [ImageFilter!]
+}
+
+type ImageLayer {
+  centerX: Float!
+  centerY: Float!
+  createdAt: DateTime
+  deletedAt: DateTime
+  designId: Float!
+  filename: String!
+  id: ID!
+  path: String!
+  rotation: Float!
+  scaleX: Float!
+  scaleY: Float!
+  sortOrder: Float!
+  updatedAt: DateTime
+}
+
+type ImageLayerConnection {
+  """Array of edges."""
+  edges: [ImageLayerEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ImageLayerDeleteFilter {
+  and: [ImageLayerDeleteFilter!]
+  id: IDFilterComparison
+  or: [ImageLayerDeleteFilter!]
+}
+
+type ImageLayerDeleteResponse {
+  centerX: Float
+  centerY: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  designId: Float
+  filename: String
+  id: ID
+  path: String
+  rotation: Float
+  scaleX: Float
+  scaleY: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+type ImageLayerEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ImageLayer"""
+  node: ImageLayer!
+}
+
+input ImageLayerFilter {
+  and: [ImageLayerFilter!]
+  id: IDFilterComparison
+  or: [ImageLayerFilter!]
+}
+
+input ImageLayerSort {
+  direction: SortDirection!
+  field: ImageLayerSortFields!
+  nulls: SortNulls
+}
+
+enum ImageLayerSortFields {
+  id
+}
+
+input ImageLayerUpdateFilter {
+  and: [ImageLayerUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImageLayerUpdateFilter!]
+}
+
+input ImageSort {
+  direction: SortDirection!
+  field: ImageSortFields!
+  nulls: SortNulls
+}
+
+enum ImageSortFields {
+  id
+}
+
+input ImageUpdateFilter {
+  and: [ImageUpdateFilter!]
+  id: IDFilterComparison
+  or: [ImageUpdateFilter!]
+}
+
 type Mutation {
+  activityCustomeResolver: Activity!
   createAttribute(createAttributeInput: CreateAttributeInput!): Attribute!
   createAttributeAttributeGroup(createAttributeAttributeGroupInput: CreateAttributeAttributeGroupInput!): AttributeAttributeGroup!
   createAttributeItem(createAttributeItemInput: CreateAttributeItemInput!): AttributeItem!
@@ -5018,6 +8062,17 @@ type Mutation {
   createChaparSettlementStatus(createChaparSettlementStatusInput: CreateChaparSettlementStatusInput!): ChaparSettlementStatus!
   createCity(createCityInput: CreateCityInput!): City!
   createColor(createColorInput: CreateColorInput!): Color!
+  createCustomerImageProduct(createCustomerImageProductInput: CreateCustomerImageProductInput!): CustomerImageProduct!
+  createCustomerVideoProduct(createCustomerVideoProductInput: CreateCustomerVideoProductInput!): CustomerVideoProduct!
+  createDepartment(createDepartmentInput: CreateDepartmentInput!): Department!
+  createDiscount(createDiscountInput: CreateDiscountInput!): Discount!
+  createExitControl(createExitControlInput: CreateExitControlInput!): ExitControl!
+  createExitControlItem(createExitControlItemInput: CreateExitControlItemInput!): ExitControlItem!
+  createGoogleFormUtm(createGoogleFormUtmInput: CreateGoogleFormUtmInput!): GoogleFormUtm!
+  createHoliday(createHolidayInput: CreateHolidayInput!): Holiday!
+  createHomePageCustomerImage(createHomePageCustomerImageInput: CreateHomePageCustomerImageInput!): HomePageCustomerImage!
+  createHyper(createHyperInput: CreateHyperInput!): Hyper!
+  createImageLayer(createImageLayerInput: CreateImageLayerInput!): ImageLayer!
   createManyActivities(input: CreateManyActivitiesInput!): [Activity!]!
   createManyAddresses(input: CreateManyAddressesInput!): [Address!]!
   createManyAutomationEvents(input: CreateManyAutomationEventsInput!): [AutomationEvent!]!
@@ -5066,6 +8121,38 @@ type Mutation {
   createManyCountries(input: CreateManyCountriesInput!): [Country!]!
   createManyCouponSubjects(input: CreateManyCouponSubjectsInput!): [CouponSubject!]!
   createManyCoupons(input: CreateManyCouponsInput!): [Coupon!]!
+  createManyCrmPresentations(input: CreateManyCrmPresentationsInput!): [CrmPresentation!]!
+  createManyCustomerImageProducts(input: CreateManyCustomerImageProductsInput!): [CustomerImageProduct!]!
+  createManyCustomerRequestFiles(input: CreateManyCustomerRequestFilesInput!): [CustomerRequestFile!]!
+  createManyCustomerRequests(input: CreateManyCustomerRequestsInput!): [CustomerRequest!]!
+  createManyCustomerVideoProducts(input: CreateManyCustomerVideoProductsInput!): [CustomerVideoProduct!]!
+  createManyDamageReasons(input: CreateManyDamageReasonsInput!): [DamageReason!]!
+  createManyDepartments(input: CreateManyDepartmentsInput!): [Department!]!
+  createManyDesignersProductPriceRanges(input: CreateManyDesignersProductPriceRangesInput!): [DesignersProductPriceRange!]!
+  createManyDesigns(input: CreateManyDesignsInput!): [Design!]!
+  createManyDiscountNotifications(input: CreateManyDiscountNotificationsInput!): [DiscountNotification!]!
+  createManyDiscountSubjects(input: CreateManyDiscountSubjectsInput!): [DiscountSubject!]!
+  createManyDiscounts(input: CreateManyDiscountsInput!): [Discount!]!
+  createManyExitControlItems(input: CreateManyExitControlItemsInput!): [ExitControlItem!]!
+  createManyExitControls(input: CreateManyExitControlsInput!): [ExitControl!]!
+  createManyExportProducts(input: CreateManyExportProductsInput!): [ExportProduct!]!
+  createManyFailedJobs(input: CreateManyFailedJobsInput!): [FailedJob!]!
+  createManyFavoriteProducts(input: CreateManyFavoriteProductsInput!): [FavoriteProduct!]!
+  createManyFedexAddressValidationAttributes(input: CreateManyFedexAddressValidationAttributesInput!): [FedexAddressValidationAttribute!]!
+  createManyFetchSiteUrls(input: CreateManyFetchSiteUrlsInput!): [FetchSiteUrl!]!
+  createManyFileNegotiations(input: CreateManyFileNegotiationsInput!): [FileNegotiation!]!
+  createManyFiles(input: CreateManyFilesInput!): [File!]!
+  createManyGhazals(input: CreateManyGhazalsInput!): [Ghazal!]!
+  createManyGoogleFormUtms(input: CreateManyGoogleFormUtmsInput!): [GoogleFormUtm!]!
+  createManyHeardAboutUsOptions(input: CreateManyHeardAboutUsOptionsInput!): [HeardAboutUsOption!]!
+  createManyHelpDesks(input: CreateManyHelpDesksInput!): [HelpDesk!]!
+  createManyHolidays(input: CreateManyHolidaysInput!): [Holiday!]!
+  createManyHomePageCustomerImages(input: CreateManyHomePageCustomerImagesInput!): [HomePageCustomerImage!]!
+  createManyHypers(input: CreateManyHypersInput!): [Hyper!]!
+  createManyHyperstarCodes(input: CreateManyHyperstarCodesInput!): [HyperstarCode!]!
+  createManyImageLayers(input: CreateManyImageLayersInput!): [ImageLayer!]!
+  createManyImages(input: CreateManyImagesInput!): [Image!]!
+  createManyUsers(input: CreateManyUsersInput!): [User!]!
   createOneActivity(input: CreateOneActivityInput!): Activity!
   createOneAddress(input: CreateOneAddressInput!): Address!
   createOneAutomationEvent(input: CreateOneAutomationEventInput!): AutomationEvent!
@@ -5114,6 +8201,39 @@ type Mutation {
   createOneCountry(input: CreateOneCountryInput!): Country!
   createOneCoupon(input: CreateOneCouponInput!): Coupon!
   createOneCouponSubject(input: CreateOneCouponSubjectInput!): CouponSubject!
+  createOneCrmPresentation(input: CreateOneCrmPresentationInput!): CrmPresentation!
+  createOneCustomerImageProduct(input: CreateOneCustomerImageProductInput!): CustomerImageProduct!
+  createOneCustomerRequest(input: CreateOneCustomerRequestInput!): CustomerRequest!
+  createOneCustomerRequestFile(input: CreateOneCustomerRequestFileInput!): CustomerRequestFile!
+  createOneCustomerVideoProduct(input: CreateOneCustomerVideoProductInput!): CustomerVideoProduct!
+  createOneDamageReason(input: CreateOneDamageReasonInput!): DamageReason!
+  createOneDepartment(input: CreateOneDepartmentInput!): Department!
+  createOneDesign(input: CreateOneDesignInput!): Design!
+  createOneDesignersProductPriceRange(input: CreateOneDesignersProductPriceRangeInput!): DesignersProductPriceRange!
+  createOneDiscount(input: CreateOneDiscountInput!): Discount!
+  createOneDiscountNotification(input: CreateOneDiscountNotificationInput!): DiscountNotification!
+  createOneDiscountSubject(input: CreateOneDiscountSubjectInput!): DiscountSubject!
+  createOneExitControl(input: CreateOneExitControlInput!): ExitControl!
+  createOneExitControlItem(input: CreateOneExitControlItemInput!): ExitControlItem!
+  createOneExportProduct(input: CreateOneExportProductInput!): ExportProduct!
+  createOneFailedJob(input: CreateOneFailedJobInput!): FailedJob!
+  createOneFavoriteProduct(input: CreateOneFavoriteProductInput!): FavoriteProduct!
+  createOneFedexAddressValidationAttribute(input: CreateOneFedexAddressValidationAttributeInput!): FedexAddressValidationAttribute!
+  createOneFetchSiteUrl(input: CreateOneFetchSiteUrlInput!): FetchSiteUrl!
+  createOneFile(input: CreateOneFileInput!): File!
+  createOneFileNegotiation(input: CreateOneFileNegotiationInput!): FileNegotiation!
+  createOneGhazal(input: CreateOneGhazalInput!): Ghazal!
+  createOneGoogleFormUtm(input: CreateOneGoogleFormUtmInput!): GoogleFormUtm!
+  createOneHeardAboutUsOption(input: CreateOneHeardAboutUsOptionInput!): HeardAboutUsOption!
+  createOneHelpDesk(input: CreateOneHelpDeskInput!): HelpDesk!
+  createOneHoliday(input: CreateOneHolidayInput!): Holiday!
+  createOneHomePageCustomerImage(input: CreateOneHomePageCustomerImageInput!): HomePageCustomerImage!
+  createOneHyper(input: CreateOneHyperInput!): Hyper!
+  createOneHyperstarCode(input: CreateOneHyperstarCodeInput!): HyperstarCode!
+  createOneImage(input: CreateOneImageInput!): Image!
+  createOneImageLayer(input: CreateOneImageLayerInput!): ImageLayer!
+  createOneUser(input: CreateOneUserInput!): User!
+  createUser(createUserInput: CreateUserInput!): User!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
   deleteManyAddresses(input: DeleteManyAddressesInput!): DeleteManyResponse!
   deleteManyAutomationEvents(input: DeleteManyAutomationEventsInput!): DeleteManyResponse!
@@ -5162,6 +8282,38 @@ type Mutation {
   deleteManyCountries(input: DeleteManyCountriesInput!): DeleteManyResponse!
   deleteManyCouponSubjects(input: DeleteManyCouponSubjectsInput!): DeleteManyResponse!
   deleteManyCoupons(input: DeleteManyCouponsInput!): DeleteManyResponse!
+  deleteManyCrmPresentations(input: DeleteManyCrmPresentationsInput!): DeleteManyResponse!
+  deleteManyCustomerImageProducts(input: DeleteManyCustomerImageProductsInput!): DeleteManyResponse!
+  deleteManyCustomerRequestFiles(input: DeleteManyCustomerRequestFilesInput!): DeleteManyResponse!
+  deleteManyCustomerRequests(input: DeleteManyCustomerRequestsInput!): DeleteManyResponse!
+  deleteManyCustomerVideoProducts(input: DeleteManyCustomerVideoProductsInput!): DeleteManyResponse!
+  deleteManyDamageReasons(input: DeleteManyDamageReasonsInput!): DeleteManyResponse!
+  deleteManyDepartments(input: DeleteManyDepartmentsInput!): DeleteManyResponse!
+  deleteManyDesignersProductPriceRanges(input: DeleteManyDesignersProductPriceRangesInput!): DeleteManyResponse!
+  deleteManyDesigns(input: DeleteManyDesignsInput!): DeleteManyResponse!
+  deleteManyDiscountNotifications(input: DeleteManyDiscountNotificationsInput!): DeleteManyResponse!
+  deleteManyDiscountSubjects(input: DeleteManyDiscountSubjectsInput!): DeleteManyResponse!
+  deleteManyDiscounts(input: DeleteManyDiscountsInput!): DeleteManyResponse!
+  deleteManyExitControlItems(input: DeleteManyExitControlItemsInput!): DeleteManyResponse!
+  deleteManyExitControls(input: DeleteManyExitControlsInput!): DeleteManyResponse!
+  deleteManyExportProducts(input: DeleteManyExportProductsInput!): DeleteManyResponse!
+  deleteManyFailedJobs(input: DeleteManyFailedJobsInput!): DeleteManyResponse!
+  deleteManyFavoriteProducts(input: DeleteManyFavoriteProductsInput!): DeleteManyResponse!
+  deleteManyFedexAddressValidationAttributes(input: DeleteManyFedexAddressValidationAttributesInput!): DeleteManyResponse!
+  deleteManyFetchSiteUrls(input: DeleteManyFetchSiteUrlsInput!): DeleteManyResponse!
+  deleteManyFileNegotiations(input: DeleteManyFileNegotiationsInput!): DeleteManyResponse!
+  deleteManyFiles(input: DeleteManyFilesInput!): DeleteManyResponse!
+  deleteManyGhazals(input: DeleteManyGhazalsInput!): DeleteManyResponse!
+  deleteManyGoogleFormUtms(input: DeleteManyGoogleFormUtmsInput!): DeleteManyResponse!
+  deleteManyHeardAboutUsOptions(input: DeleteManyHeardAboutUsOptionsInput!): DeleteManyResponse!
+  deleteManyHelpDesks(input: DeleteManyHelpDesksInput!): DeleteManyResponse!
+  deleteManyHolidays(input: DeleteManyHolidaysInput!): DeleteManyResponse!
+  deleteManyHomePageCustomerImages(input: DeleteManyHomePageCustomerImagesInput!): DeleteManyResponse!
+  deleteManyHypers(input: DeleteManyHypersInput!): DeleteManyResponse!
+  deleteManyHyperstarCodes(input: DeleteManyHyperstarCodesInput!): DeleteManyResponse!
+  deleteManyImageLayers(input: DeleteManyImageLayersInput!): DeleteManyResponse!
+  deleteManyImages(input: DeleteManyImagesInput!): DeleteManyResponse!
+  deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
   deleteOneActivity(input: DeleteOneActivityInput!): ActivityDeleteResponse!
   deleteOneAddress(input: DeleteOneAddressInput!): AddressDeleteResponse!
   deleteOneAutomationEvent(input: DeleteOneAutomationEventInput!): AutomationEventDeleteResponse!
@@ -5210,6 +8362,38 @@ type Mutation {
   deleteOneCountry(input: DeleteOneCountryInput!): CountryDeleteResponse!
   deleteOneCoupon(input: DeleteOneCouponInput!): CouponDeleteResponse!
   deleteOneCouponSubject(input: DeleteOneCouponSubjectInput!): CouponSubjectDeleteResponse!
+  deleteOneCrmPresentation(input: DeleteOneCrmPresentationInput!): CrmPresentationDeleteResponse!
+  deleteOneCustomerImageProduct(input: DeleteOneCustomerImageProductInput!): CustomerImageProductDeleteResponse!
+  deleteOneCustomerRequest(input: DeleteOneCustomerRequestInput!): CustomerRequestDeleteResponse!
+  deleteOneCustomerRequestFile(input: DeleteOneCustomerRequestFileInput!): CustomerRequestFileDeleteResponse!
+  deleteOneCustomerVideoProduct(input: DeleteOneCustomerVideoProductInput!): CustomerVideoProductDeleteResponse!
+  deleteOneDamageReason(input: DeleteOneDamageReasonInput!): DamageReasonDeleteResponse!
+  deleteOneDepartment(input: DeleteOneDepartmentInput!): DepartmentDeleteResponse!
+  deleteOneDesign(input: DeleteOneDesignInput!): DesignDeleteResponse!
+  deleteOneDesignersProductPriceRange(input: DeleteOneDesignersProductPriceRangeInput!): DesignersProductPriceRangeDeleteResponse!
+  deleteOneDiscount(input: DeleteOneDiscountInput!): DiscountDeleteResponse!
+  deleteOneDiscountNotification(input: DeleteOneDiscountNotificationInput!): DiscountNotificationDeleteResponse!
+  deleteOneDiscountSubject(input: DeleteOneDiscountSubjectInput!): DiscountSubjectDeleteResponse!
+  deleteOneExitControl(input: DeleteOneExitControlInput!): ExitControlDeleteResponse!
+  deleteOneExitControlItem(input: DeleteOneExitControlItemInput!): ExitControlItemDeleteResponse!
+  deleteOneExportProduct(input: DeleteOneExportProductInput!): ExportProductDeleteResponse!
+  deleteOneFailedJob(input: DeleteOneFailedJobInput!): FailedJobDeleteResponse!
+  deleteOneFavoriteProduct(input: DeleteOneFavoriteProductInput!): FavoriteProductDeleteResponse!
+  deleteOneFedexAddressValidationAttribute(input: DeleteOneFedexAddressValidationAttributeInput!): FedexAddressValidationAttributeDeleteResponse!
+  deleteOneFetchSiteUrl(input: DeleteOneFetchSiteUrlInput!): FetchSiteUrlDeleteResponse!
+  deleteOneFile(input: DeleteOneFileInput!): FileDeleteResponse!
+  deleteOneFileNegotiation(input: DeleteOneFileNegotiationInput!): FileNegotiationDeleteResponse!
+  deleteOneGhazal(input: DeleteOneGhazalInput!): GhazalDeleteResponse!
+  deleteOneGoogleFormUtm(input: DeleteOneGoogleFormUtmInput!): GoogleFormUtmDeleteResponse!
+  deleteOneHeardAboutUsOption(input: DeleteOneHeardAboutUsOptionInput!): HeardAboutUsOptionDeleteResponse!
+  deleteOneHelpDesk(input: DeleteOneHelpDeskInput!): HelpDeskDeleteResponse!
+  deleteOneHoliday(input: DeleteOneHolidayInput!): HolidayDeleteResponse!
+  deleteOneHomePageCustomerImage(input: DeleteOneHomePageCustomerImageInput!): HomePageCustomerImageDeleteResponse!
+  deleteOneHyper(input: DeleteOneHyperInput!): HyperDeleteResponse!
+  deleteOneHyperstarCode(input: DeleteOneHyperstarCodeInput!): HyperstarCodeDeleteResponse!
+  deleteOneImage(input: DeleteOneImageInput!): ImageDeleteResponse!
+  deleteOneImageLayer(input: DeleteOneImageLayerInput!): ImageLayerDeleteResponse!
+  deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
   removeAttribute(id: Int!): Attribute!
   removeAttributeAttributeGroup(id: Int!): AttributeAttributeGroup!
   removeAttributeItem(id: Int!): AttributeItem!
@@ -5218,6 +8402,18 @@ type Mutation {
   removeChaparSettlementStatus(id: Int!): ChaparSettlementStatus!
   removeCity(id: Int!): City!
   removeColor(id: Int!): Color!
+  removeCustomerImageProduct(id: Int!): CustomerImageProduct!
+  removeCustomerVideoProduct(id: Int!): CustomerVideoProduct!
+  removeDepartment(id: Int!): Department!
+  removeDiscount(id: Int!): Discount!
+  removeExitControl(id: Int!): ExitControl!
+  removeExitControlItem(id: Int!): ExitControlItem!
+  removeGoogleFormUtm(id: Int!): GoogleFormUtm!
+  removeHoliday(id: Int!): Holiday!
+  removeHomePageCustomerImage(id: Int!): HomePageCustomerImage!
+  removeHyper(id: Int!): Hyper!
+  removeImageLayer(id: Int!): ImageLayer!
+  removeUser(id: Int!): User!
   updateAttribute(updateAttributeInput: UpdateAttributeInput!): Attribute!
   updateAttributeAttributeGroup(updateAttributeAttributeGroupInput: UpdateAttributeAttributeGroupInput!): AttributeAttributeGroup!
   updateAttributeItem(updateAttributeItemInput: UpdateAttributeItemInput!): AttributeItem!
@@ -5226,6 +8422,17 @@ type Mutation {
   updateChaparSettlementStatus(updateChaparSettlementStatusInput: UpdateChaparSettlementStatusInput!): ChaparSettlementStatus!
   updateCity(updateCityInput: UpdateCityInput!): City!
   updateColor(updateColorInput: UpdateColorInput!): Color!
+  updateCustomerImageProduct(updateCustomerImageProductInput: UpdateCustomerImageProductInput!): CustomerImageProduct!
+  updateCustomerVideoProduct(updateCustomerVideoProductInput: UpdateCustomerVideoProductInput!): CustomerVideoProduct!
+  updateDepartment(updateDepartmentInput: UpdateDepartmentInput!): Department!
+  updateDiscount(updateDiscountInput: UpdateDiscountInput!): Discount!
+  updateExitControl(updateExitControlInput: UpdateExitControlInput!): ExitControl!
+  updateExitControlItem(updateExitControlItemInput: UpdateExitControlItemInput!): ExitControlItem!
+  updateGoogleFormUtm(updateGoogleFormUtmInput: UpdateGoogleFormUtmInput!): GoogleFormUtm!
+  updateHoliday(updateHolidayInput: UpdateHolidayInput!): Holiday!
+  updateHomePageCustomerImage(updateHomePageCustomerImageInput: UpdateHomePageCustomerImageInput!): HomePageCustomerImage!
+  updateHyper(updateHyperInput: UpdateHyperInput!): Hyper!
+  updateImageLayer(updateImageLayerInput: UpdateImageLayerInput!): ImageLayer!
   updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
   updateManyAddresses(input: UpdateManyAddressesInput!): UpdateManyResponse!
   updateManyAutomationEvents(input: UpdateManyAutomationEventsInput!): UpdateManyResponse!
@@ -5274,6 +8481,38 @@ type Mutation {
   updateManyCountries(input: UpdateManyCountriesInput!): UpdateManyResponse!
   updateManyCouponSubjects(input: UpdateManyCouponSubjectsInput!): UpdateManyResponse!
   updateManyCoupons(input: UpdateManyCouponsInput!): UpdateManyResponse!
+  updateManyCrmPresentations(input: UpdateManyCrmPresentationsInput!): UpdateManyResponse!
+  updateManyCustomerImageProducts(input: UpdateManyCustomerImageProductsInput!): UpdateManyResponse!
+  updateManyCustomerRequestFiles(input: UpdateManyCustomerRequestFilesInput!): UpdateManyResponse!
+  updateManyCustomerRequests(input: UpdateManyCustomerRequestsInput!): UpdateManyResponse!
+  updateManyCustomerVideoProducts(input: UpdateManyCustomerVideoProductsInput!): UpdateManyResponse!
+  updateManyDamageReasons(input: UpdateManyDamageReasonsInput!): UpdateManyResponse!
+  updateManyDepartments(input: UpdateManyDepartmentsInput!): UpdateManyResponse!
+  updateManyDesignersProductPriceRanges(input: UpdateManyDesignersProductPriceRangesInput!): UpdateManyResponse!
+  updateManyDesigns(input: UpdateManyDesignsInput!): UpdateManyResponse!
+  updateManyDiscountNotifications(input: UpdateManyDiscountNotificationsInput!): UpdateManyResponse!
+  updateManyDiscountSubjects(input: UpdateManyDiscountSubjectsInput!): UpdateManyResponse!
+  updateManyDiscounts(input: UpdateManyDiscountsInput!): UpdateManyResponse!
+  updateManyExitControlItems(input: UpdateManyExitControlItemsInput!): UpdateManyResponse!
+  updateManyExitControls(input: UpdateManyExitControlsInput!): UpdateManyResponse!
+  updateManyExportProducts(input: UpdateManyExportProductsInput!): UpdateManyResponse!
+  updateManyFailedJobs(input: UpdateManyFailedJobsInput!): UpdateManyResponse!
+  updateManyFavoriteProducts(input: UpdateManyFavoriteProductsInput!): UpdateManyResponse!
+  updateManyFedexAddressValidationAttributes(input: UpdateManyFedexAddressValidationAttributesInput!): UpdateManyResponse!
+  updateManyFetchSiteUrls(input: UpdateManyFetchSiteUrlsInput!): UpdateManyResponse!
+  updateManyFileNegotiations(input: UpdateManyFileNegotiationsInput!): UpdateManyResponse!
+  updateManyFiles(input: UpdateManyFilesInput!): UpdateManyResponse!
+  updateManyGhazals(input: UpdateManyGhazalsInput!): UpdateManyResponse!
+  updateManyGoogleFormUtms(input: UpdateManyGoogleFormUtmsInput!): UpdateManyResponse!
+  updateManyHeardAboutUsOptions(input: UpdateManyHeardAboutUsOptionsInput!): UpdateManyResponse!
+  updateManyHelpDesks(input: UpdateManyHelpDesksInput!): UpdateManyResponse!
+  updateManyHolidays(input: UpdateManyHolidaysInput!): UpdateManyResponse!
+  updateManyHomePageCustomerImages(input: UpdateManyHomePageCustomerImagesInput!): UpdateManyResponse!
+  updateManyHypers(input: UpdateManyHypersInput!): UpdateManyResponse!
+  updateManyHyperstarCodes(input: UpdateManyHyperstarCodesInput!): UpdateManyResponse!
+  updateManyImageLayers(input: UpdateManyImageLayersInput!): UpdateManyResponse!
+  updateManyImages(input: UpdateManyImagesInput!): UpdateManyResponse!
+  updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
   updateOneActivity(input: UpdateOneActivityInput!): Activity!
   updateOneAddress(input: UpdateOneAddressInput!): Address!
   updateOneAutomationEvent(input: UpdateOneAutomationEventInput!): AutomationEvent!
@@ -5322,6 +8561,39 @@ type Mutation {
   updateOneCountry(input: UpdateOneCountryInput!): Country!
   updateOneCoupon(input: UpdateOneCouponInput!): Coupon!
   updateOneCouponSubject(input: UpdateOneCouponSubjectInput!): CouponSubject!
+  updateOneCrmPresentation(input: UpdateOneCrmPresentationInput!): CrmPresentation!
+  updateOneCustomerImageProduct(input: UpdateOneCustomerImageProductInput!): CustomerImageProduct!
+  updateOneCustomerRequest(input: UpdateOneCustomerRequestInput!): CustomerRequest!
+  updateOneCustomerRequestFile(input: UpdateOneCustomerRequestFileInput!): CustomerRequestFile!
+  updateOneCustomerVideoProduct(input: UpdateOneCustomerVideoProductInput!): CustomerVideoProduct!
+  updateOneDamageReason(input: UpdateOneDamageReasonInput!): DamageReason!
+  updateOneDepartment(input: UpdateOneDepartmentInput!): Department!
+  updateOneDesign(input: UpdateOneDesignInput!): Design!
+  updateOneDesignersProductPriceRange(input: UpdateOneDesignersProductPriceRangeInput!): DesignersProductPriceRange!
+  updateOneDiscount(input: UpdateOneDiscountInput!): Discount!
+  updateOneDiscountNotification(input: UpdateOneDiscountNotificationInput!): DiscountNotification!
+  updateOneDiscountSubject(input: UpdateOneDiscountSubjectInput!): DiscountSubject!
+  updateOneExitControl(input: UpdateOneExitControlInput!): ExitControl!
+  updateOneExitControlItem(input: UpdateOneExitControlItemInput!): ExitControlItem!
+  updateOneExportProduct(input: UpdateOneExportProductInput!): ExportProduct!
+  updateOneFailedJob(input: UpdateOneFailedJobInput!): FailedJob!
+  updateOneFavoriteProduct(input: UpdateOneFavoriteProductInput!): FavoriteProduct!
+  updateOneFedexAddressValidationAttribute(input: UpdateOneFedexAddressValidationAttributeInput!): FedexAddressValidationAttribute!
+  updateOneFetchSiteUrl(input: UpdateOneFetchSiteUrlInput!): FetchSiteUrl!
+  updateOneFile(input: UpdateOneFileInput!): File!
+  updateOneFileNegotiation(input: UpdateOneFileNegotiationInput!): FileNegotiation!
+  updateOneGhazal(input: UpdateOneGhazalInput!): Ghazal!
+  updateOneGoogleFormUtm(input: UpdateOneGoogleFormUtmInput!): GoogleFormUtm!
+  updateOneHeardAboutUsOption(input: UpdateOneHeardAboutUsOptionInput!): HeardAboutUsOption!
+  updateOneHelpDesk(input: UpdateOneHelpDeskInput!): HelpDesk!
+  updateOneHoliday(input: UpdateOneHolidayInput!): Holiday!
+  updateOneHomePageCustomerImage(input: UpdateOneHomePageCustomerImageInput!): HomePageCustomerImage!
+  updateOneHyper(input: UpdateOneHyperInput!): Hyper!
+  updateOneHyperstarCode(input: UpdateOneHyperstarCodeInput!): HyperstarCode!
+  updateOneImage(input: UpdateOneImageInput!): Image!
+  updateOneImageLayer(input: UpdateOneImageLayerInput!): ImageLayer!
+  updateOneUser(input: UpdateOneUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
 }
 
 type PageInfo {
@@ -6017,6 +9289,456 @@ type Query {
     """Specify to sort results."""
     sorting: [CouponSort!]! = []
   ): CouponConnection!
+  crmPresentation(
+    """The id of the record to find."""
+    id: ID!
+  ): CrmPresentation!
+  crmPresentations(
+    """Specify to filter the records returned."""
+    filter: CrmPresentationFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CrmPresentationSort!]! = []
+  ): CrmPresentationConnection!
+  customerImageProduct(
+    """The id of the record to find."""
+    id: ID!
+  ): CustomerImageProduct!
+  customerImageProducts(
+    """Specify to filter the records returned."""
+    filter: CustomerImageProductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CustomerImageProductSort!]! = []
+  ): CustomerImageProductConnection!
+  customerRequest(
+    """The id of the record to find."""
+    id: ID!
+  ): CustomerRequest!
+  customerRequestFile(
+    """The id of the record to find."""
+    id: ID!
+  ): CustomerRequestFile!
+  customerRequestFiles(
+    """Specify to filter the records returned."""
+    filter: CustomerRequestFileFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CustomerRequestFileSort!]! = []
+  ): CustomerRequestFileConnection!
+  customerRequests(
+    """Specify to filter the records returned."""
+    filter: CustomerRequestFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CustomerRequestSort!]! = []
+  ): CustomerRequestConnection!
+  customerVideoProduct(
+    """The id of the record to find."""
+    id: ID!
+  ): CustomerVideoProduct!
+  customerVideoProducts(
+    """Specify to filter the records returned."""
+    filter: CustomerVideoProductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [CustomerVideoProductSort!]! = []
+  ): CustomerVideoProductConnection!
+  damageReason(
+    """The id of the record to find."""
+    id: ID!
+  ): DamageReason!
+  damageReasons(
+    """Specify to filter the records returned."""
+    filter: DamageReasonFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DamageReasonSort!]! = []
+  ): DamageReasonConnection!
+  department(
+    """The id of the record to find."""
+    id: ID!
+  ): Department!
+  departments(
+    """Specify to filter the records returned."""
+    filter: DepartmentFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DepartmentSort!]! = []
+  ): DepartmentConnection!
+  design(
+    """The id of the record to find."""
+    id: ID!
+  ): Design!
+  designersProductPriceRange(
+    """The id of the record to find."""
+    id: ID!
+  ): DesignersProductPriceRange!
+  designersProductPriceRanges(
+    """Specify to filter the records returned."""
+    filter: DesignersProductPriceRangeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DesignersProductPriceRangeSort!]! = []
+  ): DesignersProductPriceRangeConnection!
+  designs(
+    """Specify to filter the records returned."""
+    filter: DesignFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DesignSort!]! = []
+  ): DesignConnection!
+  discount(
+    """The id of the record to find."""
+    id: ID!
+  ): Discount!
+  discountNotification(
+    """The id of the record to find."""
+    id: ID!
+  ): DiscountNotification!
+  discountNotifications(
+    """Specify to filter the records returned."""
+    filter: DiscountNotificationFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DiscountNotificationSort!]! = []
+  ): DiscountNotificationConnection!
+  discountSubject(
+    """The id of the record to find."""
+    id: ID!
+  ): DiscountSubject!
+  discountSubjects(
+    """Specify to filter the records returned."""
+    filter: DiscountSubjectFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DiscountSubjectSort!]! = []
+  ): DiscountSubjectConnection!
+  discounts(
+    """Specify to filter the records returned."""
+    filter: DiscountFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [DiscountSort!]! = []
+  ): DiscountConnection!
+  exitControl(
+    """The id of the record to find."""
+    id: ID!
+  ): ExitControl!
+  exitControlItem(
+    """The id of the record to find."""
+    id: ID!
+  ): ExitControlItem!
+  exitControlItems(
+    """Specify to filter the records returned."""
+    filter: ExitControlItemFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ExitControlItemSort!]! = []
+  ): ExitControlItemConnection!
+  exitControls(
+    """Specify to filter the records returned."""
+    filter: ExitControlFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ExitControlSort!]! = []
+  ): ExitControlConnection!
+  exportProduct(
+    """The id of the record to find."""
+    id: ID!
+  ): ExportProduct!
+  exportProducts(
+    """Specify to filter the records returned."""
+    filter: ExportProductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ExportProductSort!]! = []
+  ): ExportProductConnection!
+  failedJob(
+    """The id of the record to find."""
+    id: ID!
+  ): FailedJob!
+  failedJobs(
+    """Specify to filter the records returned."""
+    filter: FailedJobFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [FailedJobSort!]! = []
+  ): FailedJobConnection!
+  favoriteProduct(
+    """The id of the record to find."""
+    id: ID!
+  ): FavoriteProduct!
+  favoriteProducts(
+    """Specify to filter the records returned."""
+    filter: FavoriteProductFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [FavoriteProductSort!]! = []
+  ): FavoriteProductConnection!
+  fedexAddressValidationAttribute(
+    """The id of the record to find."""
+    id: ID!
+  ): FedexAddressValidationAttribute!
+  fedexAddressValidationAttributes(
+    """Specify to filter the records returned."""
+    filter: FedexAddressValidationAttributeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [FedexAddressValidationAttributeSort!]! = []
+  ): FedexAddressValidationAttributeConnection!
+  fetchSiteUrl(
+    """The id of the record to find."""
+    id: ID!
+  ): FetchSiteUrl!
+  fetchSiteUrls(
+    """Specify to filter the records returned."""
+    filter: FetchSiteUrlFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [FetchSiteUrlSort!]! = []
+  ): FetchSiteUrlConnection!
+  file(
+    """The id of the record to find."""
+    id: ID!
+  ): File!
+  fileNegotiation(
+    """The id of the record to find."""
+    id: ID!
+  ): FileNegotiation!
+  fileNegotiations(
+    """Specify to filter the records returned."""
+    filter: FileNegotiationFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [FileNegotiationSort!]! = []
+  ): FileNegotiationConnection!
+  files(
+    """Specify to filter the records returned."""
+    filter: FileFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [FileSort!]! = []
+  ): FileConnection!
+  getActivityWithUserResolver(activityId: Float!): Activity!
+  getUserWithActivitiesResolver(userId: Float!): User!
+  ghazal(
+    """The id of the record to find."""
+    id: ID!
+  ): Ghazal!
+  ghazals(
+    """Specify to filter the records returned."""
+    filter: GhazalFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [GhazalSort!]! = []
+  ): GhazalConnection!
+  googleFormUtm(
+    """The id of the record to find."""
+    id: ID!
+  ): GoogleFormUtm!
+  googleFormUtms(
+    """Specify to filter the records returned."""
+    filter: GoogleFormUtmFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [GoogleFormUtmSort!]! = []
+  ): GoogleFormUtmConnection!
+  heardAboutUsOption(
+    """The id of the record to find."""
+    id: ID!
+  ): HeardAboutUsOption!
+  heardAboutUsOptions(
+    """Specify to filter the records returned."""
+    filter: HeardAboutUsOptionFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [HeardAboutUsOptionSort!]! = []
+  ): HeardAboutUsOptionConnection!
+  helpDesk(
+    """The id of the record to find."""
+    id: ID!
+  ): HelpDesk!
+  helpDesks(
+    """Specify to filter the records returned."""
+    filter: HelpDeskFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [HelpDeskSort!]! = []
+  ): HelpDeskConnection!
+  holiday(
+    """The id of the record to find."""
+    id: ID!
+  ): Holiday!
+  holidays(
+    """Specify to filter the records returned."""
+    filter: HolidayFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [HolidaySort!]! = []
+  ): HolidayConnection!
+  homePageCustomerImage(
+    """The id of the record to find."""
+    id: ID!
+  ): HomePageCustomerImage!
+  homePageCustomerImages(
+    """Specify to filter the records returned."""
+    filter: HomePageCustomerImageFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [HomePageCustomerImageSort!]! = []
+  ): HomePageCustomerImageConnection!
+  hyper(
+    """The id of the record to find."""
+    id: ID!
+  ): Hyper!
+  hypers(
+    """Specify to filter the records returned."""
+    filter: HyperFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [HyperSort!]! = []
+  ): HyperConnection!
+  hyperstarCode(
+    """The id of the record to find."""
+    id: ID!
+  ): HyperstarCode!
+  hyperstarCodes(
+    """Specify to filter the records returned."""
+    filter: HyperstarCodeFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [HyperstarCodeSort!]! = []
+  ): HyperstarCodeConnection!
+  image(
+    """The id of the record to find."""
+    id: ID!
+  ): Image!
+  imageLayer(
+    """The id of the record to find."""
+    id: ID!
+  ): ImageLayer!
+  imageLayers(
+    """Specify to filter the records returned."""
+    filter: ImageLayerFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImageLayerSort!]! = []
+  ): ImageLayerConnection!
+  images(
+    """Specify to filter the records returned."""
+    filter: ImageFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ImageSort!]! = []
+  ): ImageConnection!
+  user(
+    """The id of the record to find."""
+    id: ID!
+  ): User!
+  users(
+    """Specify to filter the records returned."""
+    filter: UserFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [UserSort!]! = []
+  ): UserConnection!
 }
 
 """Sort Directions"""
@@ -6058,6 +9780,7 @@ input UpdateActivity {
   details: String
   id: ID
   updatedAt: DateTime
+  user: UserInput
   userId: Float
   userName: String
 }
@@ -6185,7 +9908,7 @@ input UpdateBasicCarpetBorder {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-14T18:27:39.118Z"
+  createdAt: DateTime = "2025-03-15T11:40:11.887Z"
   englishTitle: String
   id: ID
   isActive: Boolean = true
@@ -6200,7 +9923,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-14T18:27:39.123Z"
+  createdAt: DateTime = "2025-03-15T11:40:11.900Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -6212,7 +9935,7 @@ input UpdateBasicCarpetDesigner {
   cityId: Float
   code: String
   countryId: Float
-  createdAt: DateTime = "2025-03-14T18:27:39.128Z"
+  createdAt: DateTime = "2025-03-15T11:40:11.914Z"
   description: String
   facebookId: String
   headerImage: String
@@ -6233,7 +9956,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-14T18:27:39.133Z"
+  createdAt: DateTime = "2025-03-15T11:40:11.927Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -6246,7 +9969,7 @@ input UpdateBasicCarpetSize {
   altTextEn: String
   carpetVolume: Float = 0
   code: String
-  createdAt: DateTime = "2025-03-14T18:27:39.139Z"
+  createdAt: DateTime = "2025-03-15T11:40:11.945Z"
   description: String
   descriptionEn: String
   homepageImageId: Float
@@ -6290,7 +10013,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-14T18:27:39.151Z"
+  createdAt: DateTime = "2025-03-15T11:40:11.987Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -6718,6 +10441,452 @@ input UpdateCouponSubject {
   updatedAt: DateTime
 }
 
+input UpdateCrmPresentation {
+  mobile: ID
+  optionId: Float
+}
+
+input UpdateCustomerImageProduct {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateCustomerImageProductInput {
+  createdAt: DateTime
+  id: Int!
+  imageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateCustomerRequest {
+  createdAt: DateTime
+  id: ID
+  name: String
+  phone: String
+  updatedAt: DateTime
+  userId: Float
+  uuid: String
+}
+
+input UpdateCustomerRequestFile {
+  createdAt: DateTime
+  customerRequestId: Float
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String = "/"
+  updatedAt: DateTime
+}
+
+input UpdateCustomerVideoProduct {
+  createdAt: DateTime
+  id: ID
+  productId: Float
+  sortOrder: Float = 0
+  updatedAt: DateTime
+  videoId: Float
+}
+
+input UpdateCustomerVideoProductInput {
+  createdAt: DateTime
+  id: Int!
+  productId: Float
+  sortOrder: Float = 0
+  updatedAt: DateTime
+  videoId: Float
+}
+
+input UpdateDamageReason {
+  cause: String
+  createdAt: DateTime
+  department: String
+  id: ID
+  name: String
+  updatedAt: DateTime
+}
+
+input UpdateDepartment {
+  createdAt: DateTime
+  id: ID
+  name: String
+  nameEn: String
+  updatedAt: DateTime
+}
+
+input UpdateDepartmentInput {
+  createdAt: DateTime
+  id: Int!
+  name: String
+  nameEn: String
+  updatedAt: DateTime
+}
+
+input UpdateDesign {
+  backgroundColor: String = "#FFFFFF"
+  borderColor: String = "#FFFFFF"
+  carpetMaterialId: Float
+  carpetShapeId: Float = 1
+  createdAt: DateTime
+  deletedAt: DateTime
+  filename: String
+  fringeColor: String = "#FFFFFF"
+  id: ID
+  length: Float = 0
+  name: String
+  path: String = "/"
+  updatedAt: DateTime
+  userId: Float
+  width: Float = 0
+}
+
+input UpdateDesignersProductPriceRange {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  id: ID
+  maxPrice: Float
+  minPrice: Float
+  updatedAt: DateTime
+}
+
+input UpdateDiscount {
+  createdAt: DateTime
+  createdBy: Float
+  discount: String
+  endDate: DateTime
+  hasStockCountOnly: Boolean = false
+  id: ID
+  isActive: Float = 1
+  maxDiscountPrice: String
+  minProductPrice: String
+  name: String
+  redisForShowoffIsDeleted: Boolean = false
+  redisIsDeleted: Boolean = false
+  showoffEndDate: DateTime
+  showoffStartDate: DateTime
+  sortOrder: Float
+  startDate: DateTime
+  type: Float
+  updatedAt: DateTime
+  updatedBy: Float
+  withPad: Boolean = false
+}
+
+input UpdateDiscountInput {
+  createdAt: DateTime
+  createdBy: Float
+  discount: String
+  endDate: DateTime
+  hasStockCountOnly: Boolean = false
+  id: Int!
+  isActive: Float = 1
+  maxDiscountPrice: String
+  minProductPrice: String
+  name: String
+  redisForShowoffIsDeleted: Boolean = false
+  redisIsDeleted: Boolean = false
+  showoffEndDate: DateTime
+  showoffStartDate: DateTime
+  sortOrder: Float
+  startDate: DateTime
+  type: Float
+  updatedAt: DateTime
+  updatedBy: Float
+  withPad: Boolean = false
+}
+
+input UpdateDiscountNotification {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: ID
+  productId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateDiscountSubject {
+  basicCarpetSizeId: Float
+  createdAt: DateTime
+  discountId: Float
+  id: ID
+  priceGroupId: Float
+  productCategoryId: Float
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+}
+
+input UpdateExitControl {
+  createdAt: DateTime
+  driverName: String
+  driverPhone: String
+  exitDate: String
+  id: ID
+  isClosed: Boolean = false
+  plateNo: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateExitControlInput {
+  createdAt: DateTime
+  driverName: String
+  driverPhone: String
+  exitDate: String
+  id: Int!
+  isClosed: Boolean = false
+  plateNo: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateExitControlItem {
+  boxNo: Float
+  carpetPadScanned: Boolean = false
+  carpetScanned: Boolean = false
+  createdAt: DateTime
+  exitControlId: Float
+  id: ID
+  invoiceProductItemId: Float
+  updatedAt: DateTime
+}
+
+input UpdateExitControlItemInput {
+  boxNo: Float
+  carpetPadScanned: Boolean = false
+  carpetScanned: Boolean = false
+  createdAt: DateTime
+  exitControlId: Float
+  id: Int!
+  invoiceProductItemId: Float
+  updatedAt: DateTime
+}
+
+input UpdateExportProduct {
+  code: String
+  id: ID
+  price: Float
+}
+
+input UpdateFailedJob {
+  connection: String
+  exception: String
+  failedAt: DateTime
+  id: ID
+  payload: String
+  queue: String
+}
+
+input UpdateFavoriteProduct {
+  createdAt: DateTime
+  id: ID
+  productId: Float
+  subproductId: Float
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateFedexAddressValidationAttribute {
+  code: String
+  correctValue: Boolean
+  createdAt: DateTime
+  description: String
+  id: ID
+  updatedAt: DateTime
+}
+
+input UpdateFetchSiteUrl {
+  createdAt: DateTime
+  date: DateTime
+  id: ID
+  isFetch: Boolean
+  updatedAt: DateTime
+  url: String
+}
+
+input UpdateFile {
+  createdAt: DateTime
+  filename: String
+  id: ID
+  mime: String
+  originalFilename: String
+  path: String = "/"
+  updatedAt: DateTime
+  uploadSource: String
+}
+
+input UpdateFileNegotiation {
+  createdAt: DateTime
+  fileId: Float
+  id: ID
+  negotiationId: Float
+  updatedAt: DateTime
+}
+
+input UpdateGhazal {
+  createdAt: DateTime
+  explanation: String
+  id: ID
+  poem: String
+  updatedAt: DateTime
+}
+
+input UpdateGoogleFormUtm {
+  createdAt: DateTime
+  formId: String
+  id: ID
+  status: Boolean = false
+  updatedAt: DateTime
+  url: String
+  userId: Float
+  utm: String
+}
+
+input UpdateGoogleFormUtmInput {
+  createdAt: DateTime
+  formId: String
+  id: Int!
+  status: Boolean = false
+  updatedAt: DateTime
+  url: String
+  userId: Float
+  utm: String
+}
+
+input UpdateHeardAboutUsOption {
+  createdAt: DateTime
+  id: ID
+  isActive: Boolean = true
+  name: String
+  sortOrder: Float = 1
+  updatedAt: DateTime
+}
+
+input UpdateHelpDesk {
+  createdAt: DateTime
+  id: ID
+  imageId: Float
+  isActive: Float
+  isOnline: Float
+  phone: String
+  title: String
+  updatedAt: DateTime
+  userId: Float
+}
+
+input UpdateHoliday {
+  createdAt: DateTime
+  deletedAt: DateTime
+  holidayDate: String
+  id: ID
+  updatedAt: DateTime
+  userId: Float
+  weekday: Float
+}
+
+input UpdateHolidayInput {
+  createdAt: DateTime
+  deletedAt: DateTime
+  holidayDate: String
+  id: Int!
+  updatedAt: DateTime
+  userId: Float
+  weekday: Float
+}
+
+input UpdateHomePageCustomerImage {
+  createdAt: DateTime
+  desktopImageAlt: String
+  desktopImageId: Float
+  id: ID
+  mobileImageAlt: String
+  mobileImageId: Float
+  productId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateHomePageCustomerImageInput {
+  createdAt: DateTime
+  desktopImageAlt: String
+  desktopImageId: Float
+  id: Int!
+  mobileImageAlt: String
+  mobileImageId: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateHyper {
+  code: ID
+  depot: Float
+  produce: Float
+}
+
+input UpdateHyperInput {
+  code: String
+  depot: Float
+  id: Int!
+  produce: Float
+}
+
+input UpdateHyperstarCode {
+  code: ID
+  subproductCode: String
+}
+
+input UpdateImage {
+  altText: String
+  altTextEn: String
+  createdAt: DateTime
+  filename: String
+  id: ID
+  imageRecreated: Boolean
+  mime: String
+  originalFilename: String
+  path: String
+  updatedAt: DateTime
+  uploadSource: String
+}
+
+input UpdateImageLayer {
+  centerX: Float
+  centerY: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  designId: Float
+  filename: String
+  id: ID
+  path: String
+  rotation: Float
+  scaleX: Float
+  scaleY: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
+input UpdateImageLayerInput {
+  centerX: Float
+  centerY: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  designId: Float
+  filename: String
+  id: Int!
+  path: String
+  rotation: Float
+  scaleX: Float
+  scaleY: Float
+  sortOrder: Float
+  updatedAt: DateTime
+}
+
 input UpdateManyActivitiesInput {
   """Filter used to find fields to update"""
   filter: ActivityUpdateFilter!
@@ -7102,9 +11271,265 @@ input UpdateManyCouponsInput {
   update: UpdateCoupon!
 }
 
+input UpdateManyCrmPresentationsInput {
+  """Filter used to find fields to update"""
+  filter: CrmPresentationUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCrmPresentation!
+}
+
+input UpdateManyCustomerImageProductsInput {
+  """Filter used to find fields to update"""
+  filter: CustomerImageProductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCustomerImageProduct!
+}
+
+input UpdateManyCustomerRequestFilesInput {
+  """Filter used to find fields to update"""
+  filter: CustomerRequestFileUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCustomerRequestFile!
+}
+
+input UpdateManyCustomerRequestsInput {
+  """Filter used to find fields to update"""
+  filter: CustomerRequestUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCustomerRequest!
+}
+
+input UpdateManyCustomerVideoProductsInput {
+  """Filter used to find fields to update"""
+  filter: CustomerVideoProductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateCustomerVideoProduct!
+}
+
+input UpdateManyDamageReasonsInput {
+  """Filter used to find fields to update"""
+  filter: DamageReasonUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDamageReason!
+}
+
+input UpdateManyDepartmentsInput {
+  """Filter used to find fields to update"""
+  filter: DepartmentUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDepartment!
+}
+
+input UpdateManyDesignersProductPriceRangesInput {
+  """Filter used to find fields to update"""
+  filter: DesignersProductPriceRangeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDesignersProductPriceRange!
+}
+
+input UpdateManyDesignsInput {
+  """Filter used to find fields to update"""
+  filter: DesignUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDesign!
+}
+
+input UpdateManyDiscountNotificationsInput {
+  """Filter used to find fields to update"""
+  filter: DiscountNotificationUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDiscountNotification!
+}
+
+input UpdateManyDiscountSubjectsInput {
+  """Filter used to find fields to update"""
+  filter: DiscountSubjectUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDiscountSubject!
+}
+
+input UpdateManyDiscountsInput {
+  """Filter used to find fields to update"""
+  filter: DiscountUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateDiscount!
+}
+
+input UpdateManyExitControlItemsInput {
+  """Filter used to find fields to update"""
+  filter: ExitControlItemUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateExitControlItem!
+}
+
+input UpdateManyExitControlsInput {
+  """Filter used to find fields to update"""
+  filter: ExitControlUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateExitControl!
+}
+
+input UpdateManyExportProductsInput {
+  """Filter used to find fields to update"""
+  filter: ExportProductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateExportProduct!
+}
+
+input UpdateManyFailedJobsInput {
+  """Filter used to find fields to update"""
+  filter: FailedJobUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateFailedJob!
+}
+
+input UpdateManyFavoriteProductsInput {
+  """Filter used to find fields to update"""
+  filter: FavoriteProductUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateFavoriteProduct!
+}
+
+input UpdateManyFedexAddressValidationAttributesInput {
+  """Filter used to find fields to update"""
+  filter: FedexAddressValidationAttributeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateFedexAddressValidationAttribute!
+}
+
+input UpdateManyFetchSiteUrlsInput {
+  """Filter used to find fields to update"""
+  filter: FetchSiteUrlUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateFetchSiteUrl!
+}
+
+input UpdateManyFileNegotiationsInput {
+  """Filter used to find fields to update"""
+  filter: FileNegotiationUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateFileNegotiation!
+}
+
+input UpdateManyFilesInput {
+  """Filter used to find fields to update"""
+  filter: FileUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateFile!
+}
+
+input UpdateManyGhazalsInput {
+  """Filter used to find fields to update"""
+  filter: GhazalUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateGhazal!
+}
+
+input UpdateManyGoogleFormUtmsInput {
+  """Filter used to find fields to update"""
+  filter: GoogleFormUtmUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateGoogleFormUtm!
+}
+
+input UpdateManyHeardAboutUsOptionsInput {
+  """Filter used to find fields to update"""
+  filter: HeardAboutUsOptionUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateHeardAboutUsOption!
+}
+
+input UpdateManyHelpDesksInput {
+  """Filter used to find fields to update"""
+  filter: HelpDeskUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateHelpDesk!
+}
+
+input UpdateManyHolidaysInput {
+  """Filter used to find fields to update"""
+  filter: HolidayUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateHoliday!
+}
+
+input UpdateManyHomePageCustomerImagesInput {
+  """Filter used to find fields to update"""
+  filter: HomePageCustomerImageUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateHomePageCustomerImage!
+}
+
+input UpdateManyHypersInput {
+  """Filter used to find fields to update"""
+  filter: HyperUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateHyper!
+}
+
+input UpdateManyHyperstarCodesInput {
+  """Filter used to find fields to update"""
+  filter: HyperstarCodeUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateHyperstarCode!
+}
+
+input UpdateManyImageLayersInput {
+  """Filter used to find fields to update"""
+  filter: ImageLayerUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImageLayer!
+}
+
+input UpdateManyImagesInput {
+  """Filter used to find fields to update"""
+  filter: ImageUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateImage!
+}
+
 type UpdateManyResponse {
   """The number of records updated."""
   updatedCount: Int!
+}
+
+input UpdateManyUsersInput {
+  """Filter used to find fields to update"""
+  filter: UserUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateUser!
 }
 
 input UpdateOneActivityInput {
@@ -7489,4 +11914,634 @@ input UpdateOneCouponSubjectInput {
 
   """The update to apply."""
   update: UpdateCouponSubject!
+}
+
+input UpdateOneCrmPresentationInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCrmPresentation!
+}
+
+input UpdateOneCustomerImageProductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCustomerImageProduct!
+}
+
+input UpdateOneCustomerRequestFileInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCustomerRequestFile!
+}
+
+input UpdateOneCustomerRequestInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCustomerRequest!
+}
+
+input UpdateOneCustomerVideoProductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateCustomerVideoProduct!
+}
+
+input UpdateOneDamageReasonInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDamageReason!
+}
+
+input UpdateOneDepartmentInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDepartment!
+}
+
+input UpdateOneDesignInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDesign!
+}
+
+input UpdateOneDesignersProductPriceRangeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDesignersProductPriceRange!
+}
+
+input UpdateOneDiscountInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDiscount!
+}
+
+input UpdateOneDiscountNotificationInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDiscountNotification!
+}
+
+input UpdateOneDiscountSubjectInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateDiscountSubject!
+}
+
+input UpdateOneExitControlInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateExitControl!
+}
+
+input UpdateOneExitControlItemInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateExitControlItem!
+}
+
+input UpdateOneExportProductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateExportProduct!
+}
+
+input UpdateOneFailedJobInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateFailedJob!
+}
+
+input UpdateOneFavoriteProductInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateFavoriteProduct!
+}
+
+input UpdateOneFedexAddressValidationAttributeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateFedexAddressValidationAttribute!
+}
+
+input UpdateOneFetchSiteUrlInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateFetchSiteUrl!
+}
+
+input UpdateOneFileInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateFile!
+}
+
+input UpdateOneFileNegotiationInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateFileNegotiation!
+}
+
+input UpdateOneGhazalInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateGhazal!
+}
+
+input UpdateOneGoogleFormUtmInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateGoogleFormUtm!
+}
+
+input UpdateOneHeardAboutUsOptionInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateHeardAboutUsOption!
+}
+
+input UpdateOneHelpDeskInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateHelpDesk!
+}
+
+input UpdateOneHolidayInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateHoliday!
+}
+
+input UpdateOneHomePageCustomerImageInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateHomePageCustomerImage!
+}
+
+input UpdateOneHyperInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateHyper!
+}
+
+input UpdateOneHyperstarCodeInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateHyperstarCode!
+}
+
+input UpdateOneImageInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImage!
+}
+
+input UpdateOneImageLayerInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateImageLayer!
+}
+
+input UpdateOneUserInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateUser!
+}
+
+input UpdateUser {
+  activities: [ActivityInput!]
+  apiToken: String
+  atmCardNo: String
+  avatar: String
+  campaignCartItems: String
+  campaignCartItemsStartDate: DateTime
+  campaignFindingCouponCode: String
+  campaignFindingCouponFoundParts: String
+  campaignFindingCouponHidingPlace: String
+  campaignFindingCouponUsed: Boolean
+  campaignFindingCouponWinnerPlace: Float
+  campaignId: Float
+  childrenCouponIsUsed: Boolean
+  code: String
+  commentsChargedAmount: String
+  createdAt: DateTime
+  discountNotificationSentDate: DateTime
+  email: String
+  emailVerified: Float
+  family: String
+  hafezPoemCount: Float
+  heardAboutUsOptionId: Float
+  id: ID
+  invitationCodeId: Float
+  isActive: Float
+  isForeigner: Boolean
+  isGuest: Float
+  isPasswordChanged: Boolean
+  isPreorderApplicant: Boolean
+  loginEmail: String
+  lotteryCode: String
+  mah: Float
+  monthlyRetargetingStartDate: DateTime
+  name: String
+  nationalId: String
+  newUsersCampaignCharged: Boolean
+  os: String
+  osVersion: String
+  password: String
+  phone: String
+  phoneVerified: Float
+  phoneVerifiedBy: Float
+  preorderPaid: Boolean
+  preorderRegisterDate: DateTime
+  preorderTurnEndDate: String
+  preorderTurnStartDate: String
+  profilePicture: String
+  rememberToken: String
+  retargetingIsUsed: Boolean
+  roz: Float
+  sal: Float
+  sepidarCode: Float
+  sepidarId: Float
+  spinnerIsUsed: Boolean
+  spinnerVerificationCode: String
+  spinnerVerified: Boolean
+  status: Float
+  stripeId: String
+  temp: String
+  tempName: String
+  updatedAt: DateTime
+  username: String
+  verificationCode: String
+}
+
+input UpdateUserInput {
+  activities: [ActivityInput!]
+  apiToken: String
+  atmCardNo: String
+  avatar: String
+  campaignCartItems: String
+  campaignCartItemsStartDate: DateTime
+  campaignFindingCouponCode: String
+  campaignFindingCouponFoundParts: String
+  campaignFindingCouponHidingPlace: String
+  campaignFindingCouponUsed: Boolean
+  campaignFindingCouponWinnerPlace: Float
+  campaignId: Float
+  childrenCouponIsUsed: Boolean
+  code: String
+  commentsChargedAmount: String
+  createdAt: DateTime
+  discountNotificationSentDate: DateTime
+  email: String
+  emailVerified: Float
+  family: String
+  hafezPoemCount: Float
+  heardAboutUsOptionId: Float
+  id: Int!
+  invitationCodeId: Float
+  isActive: Float
+  isForeigner: Boolean
+  isGuest: Float
+  isPasswordChanged: Boolean
+  isPreorderApplicant: Boolean
+  loginEmail: String
+  lotteryCode: String
+  mah: Float
+  monthlyRetargetingStartDate: DateTime
+  name: String
+  nationalId: String
+  newUsersCampaignCharged: Boolean
+  os: String
+  osVersion: String
+  password: String
+  phone: String
+  phoneVerified: Float
+  phoneVerifiedBy: Float
+  preorderPaid: Boolean
+  preorderRegisterDate: DateTime
+  preorderTurnEndDate: String
+  preorderTurnStartDate: String
+  profilePicture: String
+  rememberToken: String
+  retargetingIsUsed: Boolean
+  roz: Float
+  sal: Float
+  sepidarCode: Float
+  sepidarId: Float
+  spinnerIsUsed: Boolean
+  spinnerVerificationCode: String
+  spinnerVerified: Boolean
+  status: Float
+  stripeId: String
+  temp: String
+  tempName: String
+  updatedAt: DateTime
+  username: String
+  verificationCode: String
+}
+
+type User {
+  activities: [Activity!]!
+  apiToken: String
+  atmCardNo: String
+  avatar: String
+  campaignCartItems: String
+  campaignCartItemsStartDate: DateTime
+  campaignFindingCouponCode: String
+  campaignFindingCouponFoundParts: String!
+  campaignFindingCouponHidingPlace: String
+  campaignFindingCouponUsed: Boolean!
+  campaignFindingCouponWinnerPlace: Float
+  campaignId: Float
+  childrenCouponIsUsed: Boolean!
+  code: String
+  commentsChargedAmount: String!
+  createdAt: DateTime
+  discountNotificationSentDate: DateTime
+  email: String
+  emailVerified: Float
+  family: String!
+  hafezPoemCount: Float!
+  heardAboutUsOptionId: Float
+  id: ID!
+  invitationCodeId: Float
+  isActive: Float
+  isForeigner: Boolean!
+  isGuest: Float
+  isPasswordChanged: Boolean!
+  isPreorderApplicant: Boolean!
+  loginEmail: String
+  lotteryCode: String
+  mah: Float
+  monthlyRetargetingStartDate: DateTime
+  name: String!
+  nationalId: String
+  newUsersCampaignCharged: Boolean!
+  os: String
+  osVersion: String
+  password: String
+  phone: String
+  phoneVerified: Float
+  phoneVerifiedBy: Float
+  preorderPaid: Boolean!
+  preorderRegisterDate: DateTime
+  preorderTurnEndDate: String
+  preorderTurnStartDate: String
+  profilePicture: String
+  rememberToken: String
+  retargetingIsUsed: Boolean!
+  roz: Float
+  sal: Float
+  sepidarCode: Float
+  sepidarId: Float
+  spinnerIsUsed: Boolean!
+  spinnerVerificationCode: String
+  spinnerVerified: Boolean!
+  status: Float!
+  stripeId: String
+  temp: String
+  tempName: String!
+  updatedAt: DateTime
+  username: String
+  verificationCode: String
+}
+
+type UserConnection {
+  """Array of edges."""
+  edges: [UserEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input UserDeleteFilter {
+  and: [UserDeleteFilter!]
+  id: IDFilterComparison
+  or: [UserDeleteFilter!]
+}
+
+type UserDeleteResponse {
+  activities: [Activity!]
+  apiToken: String
+  atmCardNo: String
+  avatar: String
+  campaignCartItems: String
+  campaignCartItemsStartDate: DateTime
+  campaignFindingCouponCode: String
+  campaignFindingCouponFoundParts: String
+  campaignFindingCouponHidingPlace: String
+  campaignFindingCouponUsed: Boolean
+  campaignFindingCouponWinnerPlace: Float
+  campaignId: Float
+  childrenCouponIsUsed: Boolean
+  code: String
+  commentsChargedAmount: String
+  createdAt: DateTime
+  discountNotificationSentDate: DateTime
+  email: String
+  emailVerified: Float
+  family: String
+  hafezPoemCount: Float
+  heardAboutUsOptionId: Float
+  id: ID
+  invitationCodeId: Float
+  isActive: Float
+  isForeigner: Boolean
+  isGuest: Float
+  isPasswordChanged: Boolean
+  isPreorderApplicant: Boolean
+  loginEmail: String
+  lotteryCode: String
+  mah: Float
+  monthlyRetargetingStartDate: DateTime
+  name: String
+  nationalId: String
+  newUsersCampaignCharged: Boolean
+  os: String
+  osVersion: String
+  password: String
+  phone: String
+  phoneVerified: Float
+  phoneVerifiedBy: Float
+  preorderPaid: Boolean
+  preorderRegisterDate: DateTime
+  preorderTurnEndDate: String
+  preorderTurnStartDate: String
+  profilePicture: String
+  rememberToken: String
+  retargetingIsUsed: Boolean
+  roz: Float
+  sal: Float
+  sepidarCode: Float
+  sepidarId: Float
+  spinnerIsUsed: Boolean
+  spinnerVerificationCode: String
+  spinnerVerified: Boolean
+  status: Float
+  stripeId: String
+  temp: String
+  tempName: String
+  updatedAt: DateTime
+  username: String
+  verificationCode: String
+}
+
+type UserEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the User"""
+  node: User!
+}
+
+input UserFilter {
+  and: [UserFilter!]
+  id: IDFilterComparison
+  or: [UserFilter!]
+}
+
+input UserInput {
+  activities: [ActivityInput!]!
+  apiToken: String
+  atmCardNo: String
+  avatar: String
+  campaignCartItems: String
+  campaignCartItemsStartDate: DateTime
+  campaignFindingCouponCode: String
+  campaignFindingCouponFoundParts: String!
+  campaignFindingCouponHidingPlace: String
+  campaignFindingCouponUsed: Boolean!
+  campaignFindingCouponWinnerPlace: Float
+  campaignId: Float
+  childrenCouponIsUsed: Boolean!
+  code: String
+  commentsChargedAmount: String!
+  createdAt: DateTime
+  discountNotificationSentDate: DateTime
+  email: String
+  emailVerified: Float
+  family: String!
+  hafezPoemCount: Float!
+  heardAboutUsOptionId: Float
+  id: ID!
+  invitationCodeId: Float
+  isActive: Float
+  isForeigner: Boolean!
+  isGuest: Float
+  isPasswordChanged: Boolean!
+  isPreorderApplicant: Boolean!
+  loginEmail: String
+  lotteryCode: String
+  mah: Float
+  monthlyRetargetingStartDate: DateTime
+  name: String!
+  nationalId: String
+  newUsersCampaignCharged: Boolean!
+  os: String
+  osVersion: String
+  password: String
+  phone: String
+  phoneVerified: Float
+  phoneVerifiedBy: Float
+  preorderPaid: Boolean!
+  preorderRegisterDate: DateTime
+  preorderTurnEndDate: String
+  preorderTurnStartDate: String
+  profilePicture: String
+  rememberToken: String
+  retargetingIsUsed: Boolean!
+  roz: Float
+  sal: Float
+  sepidarCode: Float
+  sepidarId: Float
+  spinnerIsUsed: Boolean!
+  spinnerVerificationCode: String
+  spinnerVerified: Boolean!
+  status: Float!
+  stripeId: String
+  temp: String
+  tempName: String!
+  updatedAt: DateTime
+  username: String
+  verificationCode: String
+}
+
+input UserSort {
+  direction: SortDirection!
+  field: UserSortFields!
+  nulls: SortNulls
+}
+
+enum UserSortFields {
+  id
+}
+
+input UserUpdateFilter {
+  and: [UserUpdateFilter!]
+  id: IDFilterComparison
+  or: [UserUpdateFilter!]
 }

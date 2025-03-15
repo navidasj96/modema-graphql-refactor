@@ -5,60 +5,92 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
-import { ActivityModule } from './module/activity/activity.module';
-import { AddressModule } from './module/address/address.module';
-import { AttributeAttributeGroupModule } from './module/attribute-attribute-group/attribute-attribute-group.module';
-import { AttributeGroupModule } from './module/attribute-group/attribute-group.module';
-import { AttributeItemModule } from './module/attribute-item/attribute-item.module';
-import { AttributeProductModule } from './module/attribute-product/attribute-product.module';
-import { AttributeSubproductModule } from './module/attribute-subproduct/attribute-subproduct.module';
-import { AttributeModule } from './module/attribute/attribute.module';
-import { AutomationEventModule } from './module/automation-event/automation-event.module';
-import { AutomationRfmScoreModule } from './module/automation-rfm-score/automation-rfm-score.module';
-import { BasicCarpetBorderModule } from './module/basic-carpet-border/basic-carpet-border.module';
-import { BasicCarpetColorModule } from './module/basic-carpet-color/basic-carpet-color.module';
-import { BasicCarpetDesignModule } from './module/basic-carpet-design/basic-carpet-design.module';
-import { BasicCarpetDesignerModule } from './module/basic-carpet-designer/basic-carpet-designer.module';
-import { BasicCarpetMaterialModule } from './module/basic-carpet-material/basic-carpet-material.module';
-import { BasicCarpetSizeModule } from './module/basic-carpet-size/basic-carpet-size.module';
-import { BasicCarpetSizeDetailModule } from './module/basic-carpet-size-detail/basic-carpet-size-detail.module';
-import { BasicCarpetTypeModule } from './module/basic-carpet-type/basic-carpet-type.module';
-import { BorderModule } from './module/border/border.module';
-import { CampaignFreeOfferModule } from './module/campaign-free-offer/campaign-free-offer.module';
-import { CampaignFreeOfferSizeModule } from './module/campaign-free-offer-size/campaign-free-offer-size.module';
-import { CampaignGoldCoinSubModule } from './module/campaign-gold-coin-sub/campaign-gold-coin-sub.module';
-import { CampaignInstagramFollowModule } from './module/campaign-instagram-follow/campaign-instagram-follow.module';
-import { CampaignPetFormModule } from './module/campaign-pet-form/campaign-pet-form.module';
-import { CampaignRoomvoImageModule } from './module/campaign-roomvo-image/campaign-roomvo-image.module';
-import { CampaignRoomvoVoteModule } from './module/campaign-roomvo-vote/campaign-roomvo-vote.module';
-import { CampaignSubscriptionModule } from './module/campaign-subscription/campaign-subscription.module';
-import { CampaignUefaEuroSubscriberModule } from './module/campaign-uefa-euro-subscriber/campaign-uefa-euro-subscriber.module';
-import { CampaignUefaEuroSubscriberHistoryModule } from './module/campaign-uefa-euro-subscriber-history/campaign-uefa-euro-subscriber-history.module';
-import { CampaignVotingImageModule } from './module/campaign-voting-image/campaign-voting-image.module';
-import { CarpetFeatureModule } from './module/carpet-feature/carpet-feature.module';
-import { CarpetFeatureUserModule } from './module/carpet-feature-user/carpet-feature-user.module';
-import { CarpetMaterialModule } from './module/carpet-material/carpet-material.module';
-import { CarpetShapeModule } from './module/carpet-shape/carpet-shape.module';
-import { CarpetSizeModule } from './module/carpet-size/carpet-size.module';
-import { CarpetUsagePlaceModule } from './module/carpet-usage-place/carpet-usage-place.module';
-import { CarpetUsagePlaceInvoiceProductModule } from './module/carpet-usage-place-invoice-product/carpet-usage-place-invoice-product.module';
-import { CarpetUsagePlaceUserModule } from './module/carpet-usage-place-user/carpet-usage-place-user.module';
-import { ChaparSettlementStatusModule } from './module/chapar-settlement-status/chapar-settlement-status.module';
-import { ChaparTrackingHistoryModule } from './module/chapar-tracking-history/chapar-tracking-history.module';
-import { CitiesSepidarModule } from './module/cities-sepidar/cities-sepidar.module';
-import { CityModule } from './module/city/city.module';
-import { City2Module } from './module/city2/city2.module';
-import { ColorModule } from './module/color/color.module';
-import { ColorCategoryModule } from './module/color-category/color-category.module';
-import { ColorCategoryDetailModule } from './module/color-category-detail/color-category-detail.module';
-import { ColorCategorySubproductModule } from './module/color-category-subproduct/color-category-subproduct.module';
-import { ConfigModule } from './module/config/config.module';
-import { ContactFormModule } from './module/contact-form/contact-form.module';
-import { ContactFormHistoryModule } from './module/contact-form-history/contact-form-history.module';
-import { ContactFormStatusModule } from './module/contact-form-status/contact-form-status.module';
-import { CountryModule } from './module/country/country.module';
-import { CouponModule } from './module/coupon/coupon.module';
-import { CouponSubjectModule } from './module/coupon-subject/coupon-subject.module';
+import { ActivityModule } from './modules/activity/activity.module';
+import { AddressModule } from './modules/address/address.module';
+import { AttributeAttributeGroupModule } from './modules/attribute-attribute-group/attribute-attribute-group.module';
+import { AttributeGroupModule } from './modules/attribute-group/attribute-group.module';
+import { AttributeItemModule } from './modules/attribute-item/attribute-item.module';
+import { AttributeProductModule } from './modules/attribute-product/attribute-product.module';
+import { AttributeSubproductModule } from './modules/attribute-subproduct/attribute-subproduct.module';
+import { AttributeModule } from './modules/attribute/attribute.module';
+import { AutomationEventModule } from './modules/automation-event/automation-event.module';
+import { AutomationRfmScoreModule } from './modules/automation-rfm-score/automation-rfm-score.module';
+import { BasicCarpetBorderModule } from './modules/basic-carpet-border/basic-carpet-border.module';
+import { BasicCarpetColorModule } from './modules/basic-carpet-color/basic-carpet-color.module';
+import { BasicCarpetDesignModule } from './modules/basic-carpet-design/basic-carpet-design.module';
+import { BasicCarpetDesignerModule } from './modules/basic-carpet-designer/basic-carpet-designer.module';
+import { BasicCarpetMaterialModule } from './modules/basic-carpet-material/basic-carpet-material.module';
+import { BasicCarpetSizeModule } from './modules/basic-carpet-size/basic-carpet-size.module';
+import { BasicCarpetSizeDetailModule } from './modules/basic-carpet-size-detail/basic-carpet-size-detail.module';
+import { BasicCarpetTypeModule } from './modules/basic-carpet-type/basic-carpet-type.module';
+import { BorderModule } from './modules/border/border.module';
+import { CampaignFreeOfferModule } from './modules/campaign-free-offer/campaign-free-offer.module';
+import { CampaignFreeOfferSizeModule } from './modules/campaign-free-offer-size/campaign-free-offer-size.module';
+import { CampaignGoldCoinSubModule } from './modules/campaign-gold-coin-sub/campaign-gold-coin-sub.module';
+import { CampaignInstagramFollowModule } from './modules/campaign-instagram-follow/campaign-instagram-follow.module';
+import { CampaignPetFormModule } from './modules/campaign-pet-form/campaign-pet-form.module';
+import { CampaignRoomvoImageModule } from './modules/campaign-roomvo-image/campaign-roomvo-image.module';
+import { CampaignRoomvoVoteModule } from './modules/campaign-roomvo-vote/campaign-roomvo-vote.module';
+import { CampaignSubscriptionModule } from './modules/campaign-subscription/campaign-subscription.module';
+import { CampaignUefaEuroSubscriberModule } from './modules/campaign-uefa-euro-subscriber/campaign-uefa-euro-subscriber.module';
+import { CampaignUefaEuroSubscriberHistoryModule } from './modules/campaign-uefa-euro-subscriber-history/campaign-uefa-euro-subscriber-history.module';
+import { CampaignVotingImageModule } from './modules/campaign-voting-image/campaign-voting-image.module';
+import { CarpetFeatureModule } from './modules/carpet-feature/carpet-feature.module';
+import { CarpetFeatureUserModule } from './modules/carpet-feature-user/carpet-feature-user.module';
+import { CarpetMaterialModule } from './modules/carpet-material/carpet-material.module';
+import { CarpetShapeModule } from './modules/carpet-shape/carpet-shape.module';
+import { CarpetSizeModule } from './modules/carpet-size/carpet-size.module';
+import { CarpetUsagePlaceModule } from './modules/carpet-usage-place/carpet-usage-place.module';
+import { CarpetUsagePlaceInvoiceProductModule } from './modules/carpet-usage-place-invoice-product/carpet-usage-place-invoice-product.module';
+import { CarpetUsagePlaceUserModule } from './modules/carpet-usage-place-user/carpet-usage-place-user.module';
+import { ChaparSettlementStatusModule } from './modules/chapar-settlement-status/chapar-settlement-status.module';
+import { ChaparTrackingHistoryModule } from './modules/chapar-tracking-history/chapar-tracking-history.module';
+import { CitiesSepidarModule } from './modules/cities-sepidar/cities-sepidar.module';
+import { CityModule } from './modules/city/city.module';
+import { City2Module } from './modules/city2/city2.module';
+import { ColorModule } from './modules/color/color.module';
+import { ColorCategoryModule } from './modules/color-category/color-category.module';
+import { ColorCategoryDetailModule } from './modules/color-category-detail/color-category-detail.module';
+import { ColorCategorySubproductModule } from './modules/color-category-subproduct/color-category-subproduct.module';
+import { ConfigModule } from './modules/config/config.module';
+import { ContactFormModule } from './modules/contact-form/contact-form.module';
+import { ContactFormHistoryModule } from './modules/contact-form-history/contact-form-history.module';
+import { ContactFormStatusModule } from './modules/contact-form-status/contact-form-status.module';
+import { CountryModule } from './modules/country/country.module';
+import { CouponModule } from './modules/coupon/coupon.module';
+import { CouponSubjectModule } from './modules/coupon-subject/coupon-subject.module';
+import { CrmPresentationModule } from './modules/crm-presentation/crm-presentation.module';
+import { CustomerImageProductModule } from './modules/customer-image-product/customer-image-product.module';
+import { CustomerRequestModule } from './modules/customer-request/customer-request.module';
+import { CustomerRequestFileModule } from './modules/customer-request-file/customer-request-file.module';
+import { CustomerVideoProductModule } from './modules/customer-video-product/customer-video-product.module';
+import { DamageReasonModule } from './modules/damage-reason/damage-reason.module';
+import { DepartmentModule } from './modules/department/department.module';
+import { DesignModule } from './modules/design/design.module';
+import { DesignersProductPriceRangeModule } from './modules/designers-product-price-range/designers-product-price-range.module';
+import { DiscountModule } from './modules/discount/discount.module';
+import { DiscountNotificationModule } from './modules/discount-notification/discount-notification.module';
+import { DiscountSubjectModule } from './modules/discount-subject/discount-subject.module';
+import { ExitControlModule } from './modules/exit-control/exit-control.module';
+import { ExitControlItemModule } from './modules/exit-control-item/exit-control-item.module';
+import { ExportProductModule } from './modules/export-product/export-product.module';
+import { FailedJobModule } from './modules/failed-job/failed-job.module';
+import { FavoriteProductModule } from './modules/favorite-product/favorite-product.module';
+import { FedexAddressValidationAttributeModule } from './modules/fedex-address-validation-attribute/fedex-address-validation-attribute.module';
+import { FetchSiteUrlModule } from './modules/fetch-site-url/fetch-site-url.module';
+import { FileNegotiationModule } from './modules/file-negotiation/file-negotiation.module';
+import { FileModule } from './modules/file/file.module';
+import { GhazalModule } from './modules/ghazal/ghazal.module';
+import { GoogleFormUtmModule } from './modules/google-form-utm/google-form-utm.module';
+import { HeardAboutUsOptionModule } from './modules/heard-about-us-option/heard-about-us-option.module';
+import { HelpDeskModule } from './modules/help-desk/help-desk.module';
+import { HolidayModule } from './modules/holiday/holiday.module';
+import { HomePageCustomerImageModule } from './modules/home-page-customer-image/home-page-customer-image.module';
+import { HyperModule } from './modules/hyper/hyper.module';
+import { HyperstarCodeModule } from './modules/hyperstar-code/hyperstar-code.module';
+import { ImageModule } from './modules/image/image.module';
+import { UserModule } from '@/modules/user/user.module';
+import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
 
 @Module({
   imports: [
@@ -67,8 +99,8 @@ import { CouponSubjectModule } from './module/coupon-subject/coupon-subject.modu
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '12345',
-      database: 'mydatabase',
+      password: 'Navidasj228!',
+      database: 'modema',
       autoLoadEntities: true,
       synchronize: false,
       retryAttempts: 0, // Disable retry
@@ -137,6 +169,38 @@ import { CouponSubjectModule } from './module/coupon-subject/coupon-subject.modu
     CountryModule,
     CouponModule,
     CouponSubjectModule,
+    CrmPresentationModule,
+    CustomerImageProductModule,
+    CustomerRequestModule,
+    CustomerRequestFileModule,
+    CustomerVideoProductModule,
+    DamageReasonModule,
+    DepartmentModule,
+    DesignModule,
+    DesignersProductPriceRangeModule,
+    DiscountModule,
+    DiscountNotificationModule,
+    DiscountSubjectModule,
+    ExitControlModule,
+    ExitControlItemModule,
+    ExportProductModule,
+    FailedJobModule,
+    FavoriteProductModule,
+    FedexAddressValidationAttributeModule,
+    FetchSiteUrlModule,
+    FileModule,
+    FileNegotiationModule,
+    GhazalModule,
+    GoogleFormUtmModule,
+    HeardAboutUsOptionModule,
+    HelpDeskModule,
+    HolidayModule,
+    HomePageCustomerImageModule,
+    HyperModule,
+    HyperstarCodeModule,
+    ImageModule,
+    ImageLayerModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
