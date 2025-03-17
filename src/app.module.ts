@@ -175,6 +175,85 @@ import { ProductColorSaleModule } from '@/modules/product-color-sale/product-col
 import { ProductCommentModule } from '@/modules/product-comment/product-comment.module';
 import { ProductCommentLikeModule } from '@/modules/product-comment-like/product-comment-like.module';
 import { ProductLikeModule } from '@/modules/product-like/product-like.module';
+import { ProductRateModule } from '@/modules/product-rate/product-rate.module';
+import { ProductRateAverageModule } from '@/modules/product-rate-average/product-rate-average.module';
+import { ProductTagModule } from '@/modules/product-tag/product-tag.module';
+import { ProductVideoModule } from '@/modules/product-video/product-video.module';
+import { ProductionPadModule } from '@/modules/production-pad/production-pad.module';
+import { ProductionPadProductionPadStatusModule } from '@/modules/production-pad-production-pad-status/production-pad-production-pad-status.module';
+import { ProductionPadStatusModule } from '@/modules/production-pad-status/production-pad-status.module';
+import { ProductionReceiptTypeModule } from '@/modules/production-receipt-type/production-receipt-type.module';
+import { ProductionRollModule } from '@/modules/production-roll/production-roll.module';
+import { RateModule } from '@/modules/rate/rate.module';
+import { ReadyToSendProductModule } from '@/modules/ready-to-send-product/ready-to-send-product.module';
+import { RecommendedSubproductModule } from '@/modules/recommended-subproduct/recommended-subproduct.module';
+import { RedisSavedKeyModule } from '@/modules/redis-saved-key/redis-saved-key.module';
+import { RelatedProductModule } from '@/modules/related-product/related-product.module';
+import { RetargetingWalletChargeModule } from '@/modules/retargeting-wallet-charge/retargeting-wallet-charge.module';
+import { ReturnItemStatusModule } from '@/modules/return-item-status/return-item-status.module';
+import { ReturnItemStatusReturnRequestItemModule } from '@/modules/return-item-status-return-request-item/return-item-status-return-request-item.module';
+import { ReturnReasonModule } from '@/modules/return-reason/return-reason.module';
+import { ReturnRequestModule } from '@/modules/return-request/return-request.module';
+import { ReturnRequestAddressModule } from '@/modules/return-request-address/return-request-address.module';
+import { ReturnRequestHistoryModule } from '@/modules/return-request-history/return-request-history.module';
+import { ReturnRequestItemModule } from '@/modules/return-request-item/return-request-item.module';
+import { ReturnRequestItemHistoryModule } from '@/modules/return-request-item-history/return-request-item-history.module';
+import { ReturnRequestItemImageModule } from '@/modules/return-request-item-image/return-request-item-image.module';
+import { ReturnRequestItemReturnItemStatusModule } from '@/modules/return-request-item-return-item-status/return-request-item-return-item-status.module';
+import { ReturnRequestItemVideoModule } from '@/modules/return-request-item-video/return-request-item-video.module';
+import { ReturnRequestReturnStatusModule } from '@/modules/return-request-return-status/return-request-return-status.module';
+import { ReturnStatusModule } from '@/modules/return-status/return-status.module';
+import { ReturnTypeModule } from '@/modules/return-type/return-type.module';
+import { ReturnedInvoiceModule } from '@/modules/returned-invoice/returned-invoice.module';
+import { ReturnedInvoiceProductModule } from '@/modules/returned-invoice-product/returned-invoice-product.module';
+import { RfmReportModule } from '@/modules/rfm-report/rfm-report.module';
+import { RipTemplateModule } from '@/modules/rip-template/rip-template.module';
+import { RipTemplateItemModule } from '@/modules/rip-template-item/rip-template-item.module';
+import { RoleModule } from '@/modules/role/role.module';
+import { RussianModule } from '@/modules/russian/russian.module';
+import { SenderInformationModule } from '@/modules/sender-information/sender-information.module';
+import { ShippingServiceModule } from '@/modules/shipping-service/shipping-service.module';
+import { SitemapStaticPageModule } from '@/modules/sitemap-static-page/sitemap-static-page.module';
+import { SizeGuideModule } from '@/modules/size-guide/size-guide.module';
+import { SizeGuidesDetailModule } from '@/modules/size-guides-detail/size-guides-detail.module';
+import { SocialFacebookAccountModule } from '@/modules/social-facebook-account/social-facebook-account.module';
+import { SocialGoogleAccountModule } from '@/modules/social-google-account/social-google-account.module';
+import { SpecialOfferModule } from '@/modules/special-offer/special-offer.module';
+import { StateModule } from '@/modules/state/state.module';
+import { SubcolorModule } from '@/modules/subcolor/subcolor.module';
+import { SubproductModule } from '@/modules/subproduct/subproduct.module';
+import { SubproductSpecialImageModule } from '@/modules/subproduct-special-image/subproduct-special-image.module';
+import { SubproductStockHistoryModule } from '@/modules/subproduct-stock-history/subproduct-stock-history.module';
+import { SubproductVideoModule } from '@/modules/subproduct-video/subproduct-video.module';
+import { SubscriberModule } from '@/modules/subscriber/subscriber.module';
+import { TagModule } from '@/modules/tag/tag.module';
+import { TempSubproductDiscountModule } from '@/modules/temp-subproduct-discount/temp-subproduct-discount.module';
+import { TestimonialModule } from '@/modules/testimonial/testimonial.module';
+import { TextLayerModule } from '@/modules/text-layer/text-layer.module';
+import { TmpRfmReportModule } from '@/modules/tmp-rfm-report/tmp-rfm-report.module';
+import { TmpRussiaProductModule } from '@/modules/tmp-russia-product/tmp-russia-product.module';
+import { TmpSpainOrderModule } from '@/modules/tmp-spain-order/tmp-spain-order.module';
+import { TmpSpanishNameModule } from '@/modules/tmp-spanish-name/tmp-spanish-name.module';
+import { TmpTagChangesPrintModule } from '@/modules/tmp-tag-changes-print/tmp-tag-changes-print.module';
+import { TorobProductModule } from '@/modules/torob-product/torob-product.module';
+import { TransactionModule } from '@/modules/transaction/transaction.module';
+import { UserUtmModule } from '@/modules/user-utm/user-utm.module';
+import { UtmModule } from '@/modules/utm/utm.module';
+import { UtmGoogleFormCouponModule } from '@/modules/utm-google-form-coupon/utm-google-form-coupon.module';
+import { VerifyUserModule } from '@/modules/verify-user/verify-user.module';
+import { VideoModule } from '@/modules/video/video.module';
+import { VisitorModule } from '@/modules/visitor/visitor.module';
+import { VisitorCouponModule } from '@/modules/visitor-coupon/visitor-coupon.module';
+import { VisitorGroupModule } from '@/modules/visitor-group/visitor-group.module';
+import { VisitorGroupRateModule } from '@/modules/visitor-group-rate/visitor-group-rate.module';
+import { VisitorSaleModule } from '@/modules/visitor-sale/visitor-sale.module';
+import { WalletModule } from '@/modules/wallet/wallet.module';
+import { WalletGiftChargeModule } from '@/modules/wallet-gift-charge/wallet-gift-charge.module';
+import { WalletHistoryModule } from '@/modules/wallet-history/wallet-history.module';
+import { WebsitePageModule } from '@/modules/website-page/website-page.module';
+import { WithdrawalRequestModule } from '@/modules/withdrawal-request/withdrawal-request.module';
+import { WithdrawalRequestStatusModule } from '@/modules/withdrawal-request-status/withdrawal-request-status.module';
+import { WonderfulOfferModule } from '@/modules/wonderful-offer/wonderful-offer.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -373,7 +452,86 @@ const ENV = process.env.NODE_ENV;
     ProductCommentModule,
     ProductCommentLikeModule,
     ProductLikeModule,
+    ProductRateModule,
+    ProductRateAverageModule,
+    ProductTagModule,
+    ProductVideoModule,
+    ProductionPadModule,
+    ProductionPadProductionPadStatusModule,
+    ProductionPadStatusModule,
+    ProductionReceiptTypeModule,
+    ProductionRollModule,
+    RateModule,
+    ReadyToSendProductModule,
+    RecommendedSubproductModule,
+    RedisSavedKeyModule,
+    RelatedProductModule,
+    RetargetingWalletChargeModule,
+    ReturnItemStatusModule,
+    ReturnItemStatusReturnRequestItemModule,
+    ReturnReasonModule,
+    ReturnRequestModule,
+    ReturnRequestAddressModule,
+    ReturnRequestHistoryModule,
+    ReturnRequestItemModule,
+    ReturnRequestItemHistoryModule,
+    ReturnRequestItemImageModule,
+    ReturnRequestItemReturnItemStatusModule,
+    ReturnRequestItemVideoModule,
+    ReturnRequestReturnStatusModule,
+    ReturnStatusModule,
+    ReturnTypeModule,
+    ReturnedInvoiceModule,
+    ReturnedInvoiceProductModule,
+    RfmReportModule,
+    RipTemplateModule,
+    RipTemplateItemModule,
+    RoleModule,
+    RussianModule,
+    SenderInformationModule,
+    ShippingServiceModule,
+    SitemapStaticPageModule,
+    SizeGuideModule,
+    SizeGuidesDetailModule,
+    SocialFacebookAccountModule,
+    SocialGoogleAccountModule,
+    SpecialOfferModule,
+    StateModule,
+    SubcolorModule,
+    SubproductModule,
+    SubproductSpecialImageModule,
+    SubproductStockHistoryModule,
+    SubproductVideoModule,
+    SubscriberModule,
+    TagModule,
+    TempSubproductDiscountModule,
+    TestimonialModule,
+    TextLayerModule,
+    TmpRfmReportModule,
+    TmpRussiaProductModule,
+    TmpSpainOrderModule,
+    TmpSpanishNameModule,
+    TmpTagChangesPrintModule,
+    TorobProductModule,
+    TransactionModule,
     UserModule,
+    UserUtmModule,
+    UtmModule,
+    UtmGoogleFormCouponModule,
+    VerifyUserModule,
+    VideoModule,
+    VisitorModule,
+    VisitorCouponModule,
+    VisitorGroupModule,
+    VisitorGroupRateModule,
+    VisitorSaleModule,
+    WalletModule,
+    WalletGiftChargeModule,
+    WalletHistoryModule,
+    WebsitePageModule,
+    WithdrawalRequestModule,
+    WithdrawalRequestStatusModule,
+    WonderfulOfferModule,
   ],
   controllers: [AppController],
   providers: [AppService],
