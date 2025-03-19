@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @ObjectType()
 export class BasicCarpetBorder {
@@ -23,4 +24,7 @@ export class BasicCarpetBorder {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
 }

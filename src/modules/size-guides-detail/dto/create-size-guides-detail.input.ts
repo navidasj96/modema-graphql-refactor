@@ -38,5 +38,12 @@ export class CreateSizeGuidesDetailInput {
   @Field({ nullable: true })
   updatedAt?: Date;
 
- ;
+  @Field(() => [ImagesSizeGuidesDetail])
+  imagesSizeGuidesDetails: ImagesSizeGuidesDetail[];
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => SizeGuide)
+  sizeGuide: SizeGuide;
 }

@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ContactForm } from '@/modules/contact-form/domain/contact-form';
 
 @ObjectType()
 export class Department {
@@ -17,4 +18,7 @@ export class Department {
 
   @Field({ nullable: true })
   nameEn?: string;
+
+  @Field(() => [ContactForm])
+  contactForms: ContactForm[];
 }

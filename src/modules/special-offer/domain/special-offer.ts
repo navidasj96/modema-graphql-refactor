@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
 
 @ObjectType()
 export class SpecialOffer {
@@ -26,4 +27,10 @@ export class SpecialOffer {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product, { nullable: true })
+  specialOfferProduct?: Product;
+
+  @Field(() => Product, { nullable: true })
+  wonderfulOfferProduct?: Product;
 }

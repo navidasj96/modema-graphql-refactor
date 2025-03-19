@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Address } from '@/modules/address/entities/address.entity';
+import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/entities/basic-carpet-designer.entity';
+import { State } from '@/modules/state/entities/state.entity';
+import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
+import { ReturnRequestAddress } from '@/modules/return-request-address/entities/return-request-address.entity';
+import { SenderInformation } from '@/modules/sender-information/entities/sender-information.entity';
 
 @Index('cities_chapar_id_index', ['chaparId'], {})
 @Index('cities_mahex_code_index', ['mahexCode'], {})
@@ -35,4 +49,35 @@ export class City {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => Address, (address) => address.city)
+  addresses: Address[];
+
+  @OneToMany(
+    () => BasicCarpetDesigner,
+    (basicCarpetDesigner) => basicCarpetDesigner.city,
+  )
+  basicCarpetDesigners: BasicCarpetDesigner[];
+
+  @ManyToOne(() => State, (state) => state.cities, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'state_id', referencedColumnName: 'id' }])
+  state: State;
+
+  @OneToMany(() => InvoiceAddress, (invoiceAddress) => invoiceAddress.city)
+  invoiceAddresses: InvoiceAddress[];
+
+  @OneToMany(
+    () => ReturnRequestAddress,
+    (returnRequestAddress) => returnRequestAddress.city,
+  )
+  returnRequestAddresses: ReturnRequestAddress[];
+
+  @OneToMany(
+    () => SenderInformation,
+    (senderInformation) => senderInformation.city,
+  )
+  senderInformations: SenderInformation[];
 }

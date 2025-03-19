@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Coupon } from '@/modules/coupon/domain/coupon';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class UtmGoogleFormCoupon {
@@ -38,4 +40,10 @@ export class UtmGoogleFormCoupon {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Coupon, { nullable: true })
+  coupon?: Coupon;
+
+  @Field(() => User)
+  user: User;
 }

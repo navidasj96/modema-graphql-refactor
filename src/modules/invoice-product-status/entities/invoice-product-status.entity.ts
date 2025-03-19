@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/entities/invoice-product-item-invoice-product-status.entity';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 
 @Entity('invoice_product_statuses', { schema: 'modema' })
 export class InvoiceProductStatus {
@@ -28,4 +30,17 @@ export class InvoiceProductStatus {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @OneToMany(
+    () => InvoiceProductItemInvoiceProductStatus,
+    (invoiceProductItemInvoiceProductStatus) =>
+      invoiceProductItemInvoiceProductStatus.invoiceProductStatus,
+  )
+  invoiceProductItemInvoiceProductStatuses: InvoiceProductItemInvoiceProductStatus[];
+
+  @OneToMany(
+    () => InvoiceProductItem,
+    (invoiceProductItem) => invoiceProductItem.currentStatus,
+  )
+  invoiceProductItems: InvoiceProductItem[];
 }

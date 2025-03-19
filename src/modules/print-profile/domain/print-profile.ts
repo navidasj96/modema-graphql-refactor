@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class PrintProfile {
@@ -80,4 +82,13 @@ export class PrintProfile {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoiceProductItem])
+  invoiceProductItems: InvoiceProductItem[];
+
+  @Field(() => User, { nullable: true })
+  createdBy2?: User;
+
+  @Field(() => User, { nullable: true })
+  updatedBy2?: User;
 }

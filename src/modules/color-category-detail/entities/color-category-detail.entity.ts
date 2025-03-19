@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ColorCategory } from '@/modules/color-category/entities/color-category.entity';
 
 @Index(
   'color_category_details_color_category_id_index',
@@ -36,4 +44,12 @@ export class ColorCategoryDetail {
 
   @Column('text', { name: 'detail_text_en', nullable: true })
   detailTextEn?: string;
+
+  @ManyToOne(
+    () => ColorCategory,
+    (colorCategory) => colorCategory.colorCategoryDetails,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'color_category_id', referencedColumnName: 'id' }])
+  colorCategory: ColorCategory;
 }

@@ -1,5 +1,40 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { AttributeSubproduct } from '@/modules/attribute-subproduct/entities/attribute-subproduct.entity';
+import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/entities/color-category-subproduct.entity';
+import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
+import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
+import { FavoriteProduct } from '@/modules/favorite-product/entities/favorite-product.entity';
+import { ImageSubproduct } from '@/modules/image-subproduct/entities/image-subproduct.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { NeedsPhotographySubproduct } from '@/modules/needs-photography-subproduct/entities/needs-photography-subproduct.entity';
+import { Preorder } from '@/modules/preorder/entities/preorder.entity';
+import { ProductComment } from '@/modules/product-comment/entities/product-comment.entity';
+import { ProductLike } from '@/modules/product-like/entities/product-like.entity';
+import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
+import { ProductRateAverage } from '@/modules/product-rate-average/entities/product-rate-average.entity';
+import { ProductTag } from '@/modules/product-tag/entities/product-tag.entity';
+import { RecommendedSubproduct } from '@/modules/recommended-subproduct/entities/recommended-subproduct.entity';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/entities/return-request-item-history.entity';
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/entities/returned-invoice-product.entity';
+import { SubproductSpecialImage } from '@/modules/subproduct-special-image/entities/subproduct-special-image.entity';
+import { SubproductStockHistory } from '@/modules/subproduct-stock-history/entities/subproduct-stock-history.entity';
+import { SubproductVideo } from '@/modules/subproduct-video/entities/subproduct-video.entity';
+import { BasicCarpetBorder } from '@/modules/basic-carpet-border/entities/basic-carpet-border.entity';
+import { BasicCarpetBrand } from '@/modules/basic-carpet-brand/entities/basic-carpet-brand.entity';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/entities/basic-carpet-color.entity';
+import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/entities/basic-carpet-designer.entity';
+import { BasicCarpetDesign } from '@/modules/basic-carpet-design/entities/basic-carpet-design.entity';
+import { BasicCarpetMaterial } from '@/modules/basic-carpet-material/entities/basic-carpet-material.entity';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { BasicCarpetType } from '@/modules/basic-carpet-type/entities/basic-carpet-type.entity';
+import { Image } from '@/modules/image/entities/image.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Video } from '@/modules/video/entities/video.entity';
+import { TorobProduct } from '@/modules/torob-product/entities/torob-product.entity';
+import { UserCart } from '@/modules/user-cart/entities/user-cart.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @ObjectType()
 export class Subproduct {
@@ -143,4 +178,112 @@ export class Subproduct {
 
   @Field({ nullable: true })
   colorNameEs?: string;
+
+  @Field(() => [AttributeSubproduct])
+  attributeSubproducts: AttributeSubproduct[];
+
+  @Field(() => [ColorCategorySubproduct])
+  colorCategorySubproducts: ColorCategorySubproduct[];
+
+  @Field(() => [CouponSubject])
+  couponSubjects: CouponSubject[];
+
+  @Field(() => [DiscountSubject])
+  discountSubjects: DiscountSubject[];
+
+  @Field(() => [FavoriteProduct])
+  favoriteProducts: FavoriteProduct[];
+
+  @Field(() => [ImageSubproduct])
+  imageSubproducts: ImageSubproduct[];
+
+  @Field(() => [InvoiceProductHistory])
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProduct])
+  invoiceProducts: InvoiceProduct[];
+
+  @Field(() => [NeedsPhotographySubproduct])
+  needsPhotographySubproducts: NeedsPhotographySubproduct[];
+
+  @Field(() => [Preorder])
+  preorders: Preorder[];
+
+  @Field(() => [ProductComment])
+  productComments: ProductComment[];
+
+  @Field(() => [ProductLike])
+  productLikes: ProductLike[];
+
+  @Field(() => [ProductRate])
+  productRates: ProductRate[];
+
+  @Field(() => [ProductRateAverage])
+  productRateAverages: ProductRateAverage[];
+
+  @Field(() => [ProductTag])
+  productTags: ProductTag[];
+
+  @Field(() => [RecommendedSubproduct])
+  recommendedSubproducts: RecommendedSubproduct[];
+
+  @Field(() => [ReturnRequestItemHistory])
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @Field(() => [ReturnRequestItem])
+  returnRequestItems: ReturnRequestItem[];
+
+  @Field(() => [ReturnedInvoiceProduct])
+  returnedInvoiceProducts: ReturnedInvoiceProduct[];
+
+  @Field(() => [SubproductSpecialImage])
+  subproductSpecialImages: SubproductSpecialImage[];
+
+  @Field(() => [SubproductStockHistory])
+  subproductStockHistories: SubproductStockHistory[];
+
+  @Field(() => [SubproductVideo])
+  subproductVideos: SubproductVideo[];
+
+  @Field(() => BasicCarpetBorder)
+  basicCarpetBorder: BasicCarpetBorder;
+
+  @Field(() => BasicCarpetBrand)
+  basicCarpetBrand: BasicCarpetBrand;
+
+  @Field(() => BasicCarpetColor)
+  basicCarpetColor: BasicCarpetColor;
+
+  @Field(() => BasicCarpetDesigner)
+  basicCarpetDesigner: BasicCarpetDesigner;
+
+  @Field(() => BasicCarpetDesign)
+  basicCarpetDesign: BasicCarpetDesign;
+
+  @Field(() => BasicCarpetMaterial)
+  basicCarpetMaterial: BasicCarpetMaterial;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => BasicCarpetType)
+  basicCarpetType: BasicCarpetType;
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Video)
+  video: Video;
+
+  @Field(() => [TorobProduct])
+  torobProducts: TorobProduct[];
+
+  @Field(() => [UserCart])
+  userCarts: UserCart[];
+
+  @Field(() => [UserCart])
+  userCarts2: UserCart[];
 }

@@ -1,4 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/entities/returned-invoice-product.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { ReturnReason } from '@/modules/return-reason/entities/return-reason.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('return_reason_id', ['returnReasonId'], {})
 @Index('returned_invoices_invoice_id_index', ['invoiceId'], {})
@@ -43,4 +55,39 @@ export class ReturnedInvoice {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ReturnedInvoiceProduct,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.returnedInvoice,
+  )
+  returnedInvoiceProducts: ReturnedInvoiceProduct[];
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.returnedInvoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.returnedInvoices2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'replacement_invoice_id', referencedColumnName: 'id' }])
+  replacementInvoice: Invoice;
+
+  @ManyToOne(
+    () => ReturnReason,
+    (returnReason) => returnReason.returnedInvoices,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'return_reason_id', referencedColumnName: 'id' }])
+  returnReason: ReturnReason;
+
+  @ManyToOne(() => User, (user) => user.returnedInvoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

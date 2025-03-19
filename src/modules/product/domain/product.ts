@@ -1,5 +1,44 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { AttributeProduct } from '@/modules/attribute-product/domain/attribute-product';
+import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
+import { CustomerImageProduct } from '@/modules/customer-image-product/domain/customer-image-product';
+import { CustomerVideoProduct } from '@/modules/customer-video-product/domain/customer-video-product';
+import { DiscountNotification } from '@/modules/discount-notification/domain/discount-notification';
+import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
+import { FavoriteProduct } from '@/modules/favorite-product/domain/favorite-product';
+import { HomePageCustomerImage } from '@/modules/home-page-customer-image/domain/home-page-customer-image';
+import { ImageProduct } from '@/modules/image-product/domain/image-product';
+import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-offer';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { LabelProduct } from '@/modules/label-product/domain/label-product';
+import { OutOfStockButListedProduct } from '@/modules/out-of-stock-but-listed-product/domain/out-of-stock-but-listed-product';
+import { Preorder } from '@/modules/preorder/domain/preorder';
+import { ProductColorImage } from '@/modules/product-color-image/domain/product-color-image';
+import { ProductColorSale } from '@/modules/product-color-sale/domain/product-color-sale';
+import { ProductComment } from '@/modules/product-comment/domain/product-comment';
+import { ProductLike } from '@/modules/product-like/domain/product-like';
+import { ProductProductCategory } from '@/modules/product-product-category/domain/product-product-category';
+import { ProductRate } from '@/modules/product-rate/domain/product-rate';
+import { ProductRateAverage } from '@/modules/product-rate-average/domain/product-rate-average';
+import { ProductTag } from '@/modules/product-tag/domain/product-tag';
+import { ProductVideo } from '@/modules/product-video/domain/product-video';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/domain/basic-carpet-color';
+import { Image } from '@/modules/image/domain/image';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { PriceGroup } from '@/modules/price-group/domain/price-group';
+import { ReadyToSendProduct } from '@/modules/ready-to-send-product/domain/ready-to-send-product';
+import { RecommendedProduct } from '@/modules/recommended-product/domain/recommended-product';
+import { RelatedProduct } from '@/modules/related-product/domain/related-product';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/domain/returned-invoice-product';
+import { SpecialOffer } from '@/modules/special-offer/domain/special-offer';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
+import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
+import { UserCart } from '@/modules/user-cart/domain/user-cart';
+import { WonderfulOffer } from '@/modules/wonderful-offer/domain/wonderful-offer';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
 @ObjectType()
 export class Product {
@@ -152,4 +191,142 @@ export class Product {
 
   @Field({ nullable: true })
   nameEs?: string;
+
+  @Field(() => [AttributeProduct])
+  attributeProducts: AttributeProduct[];
+
+  @Field(() => [CouponSubject])
+  couponSubjects: CouponSubject[];
+
+  @Field(() => [CustomerImageProduct])
+  customerImageProducts: CustomerImageProduct[];
+
+  @Field(() => [CustomerVideoProduct])
+  customerVideoProducts: CustomerVideoProduct[];
+
+  @Field(() => [DiscountNotification])
+  discountNotifications: DiscountNotification[];
+
+  @Field(() => [DiscountSubject])
+  discountSubjects: DiscountSubject[];
+
+  @Field(() => [FavoriteProduct])
+  favoriteProducts: FavoriteProduct[];
+
+  @Field(() => [HomePageCustomerImage])
+  homePageCustomerImages: HomePageCustomerImage[];
+
+  @Field(() => [ImageProduct])
+  imageProducts: ImageProduct[];
+
+  @Field(() => [IncredibleOffer])
+  incredibleOffers: IncredibleOffer[];
+
+  @Field(() => [InvoiceProductHistory])
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProductHistory])
+  invoiceProductHistories2: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProduct])
+  invoiceProducts: InvoiceProduct[];
+
+  @Field(() => [InvoiceProduct])
+  invoiceProducts2: InvoiceProduct[];
+
+  @Field(() => [LabelProduct])
+  labelProducts: LabelProduct[];
+
+  @Field(() => [OutOfStockButListedProduct])
+  outOfStockButListedProducts: OutOfStockButListedProduct[];
+
+  @Field(() => [Preorder])
+  preorders: Preorder[];
+
+  @Field(() => [ProductColorImage])
+  productColorImages: ProductColorImage[];
+
+  @Field(() => [ProductColorSale])
+  productColorSales: ProductColorSale[];
+
+  @Field(() => [ProductComment])
+  productComments: ProductComment[];
+
+  @Field(() => [ProductLike])
+  productLikes: ProductLike[];
+
+  @Field(() => [ProductProductCategory])
+  productProductCategories: ProductProductCategory[];
+
+  @Field(() => [ProductRate])
+  productRates: ProductRate[];
+
+  @Field(() => [ProductRateAverage])
+  productRateAverages: ProductRateAverage[];
+
+  @Field(() => [ProductTag])
+  productTags: ProductTag[];
+
+  @Field(() => [ProductVideo])
+  productVideos: ProductVideo[];
+
+  @Field(() => BasicCarpetColor)
+  bestSellerColor: BasicCarpetColor;
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => BasicCarpetSize)
+  minBasicCarpetSize: BasicCarpetSize;
+
+  @Field(() => Product)
+  parentProduct: Product;
+
+  @Field(() => [Product])
+  products: Product[];
+
+  @Field(() => PriceGroup)
+  priceGroup: PriceGroup;
+
+  @Field(() => [ReadyToSendProduct])
+  readyToSendProducts: ReadyToSendProduct[];
+
+  @Field(() => [RecommendedProduct])
+  recommendedProducts: RecommendedProduct[];
+
+  @Field(() => [RelatedProduct])
+  relatedProducts: RelatedProduct[];
+
+  @Field(() => [RelatedProduct])
+  relatedProducts2: RelatedProduct[];
+
+  @Field(() => [ReturnRequestItemHistory])
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @Field(() => [ReturnRequestItem])
+  returnRequestItems: ReturnRequestItem[];
+
+  @Field(() => [ReturnedInvoiceProduct])
+  returnedInvoiceProducts: ReturnedInvoiceProduct[];
+
+  @Field(() => [SpecialOffer])
+  specialOffers: SpecialOffer[];
+
+  @Field(() => [SpecialOffer])
+  specialOffers2: SpecialOffer[];
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
+
+  @Field(() => [TorobProduct])
+  torobProducts: TorobProduct[];
+
+  @Field(() => [UserCart])
+  userCarts: UserCart[];
+
+  @Field(() => [UserCart])
+  userCarts2: UserCart[];
+
+  @Field(() => [WonderfulOffer])
+  wonderfulOffers: WonderfulOffer[];
 }

@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Design } from '@/modules/design/domain/design';
 
 @InputType()
 export class CreateTextLayerInput {
@@ -49,4 +50,7 @@ export class CreateTextLayerInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Design)
+  design: Design;
 }

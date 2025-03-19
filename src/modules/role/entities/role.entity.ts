@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ModelHasRole } from '@/modules/model-has-role/entities/model-has-role.entity';
+import { Permission } from '@/modules/permission/entities/permission.entity';
 
 @Entity('roles', { schema: 'modema' })
 export class Role {
@@ -16,4 +24,10 @@ export class Role {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => ModelHasRole, (modelHasRole) => modelHasRole.role)
+  modelHasRoles: ModelHasRole[];
+
+  @ManyToMany(() => Permission, (permission) => permission.roles)
+  permissions: Permission[];
 }

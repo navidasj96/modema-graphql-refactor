@@ -1,4 +1,19 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
+import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
+import { Image } from '@/modules/image/entities/image.entity';
+import { ImageSize } from '@/modules/image-size/entities/image-size.entity';
+import { ProductCategoryRate } from '@/modules/product-category-rate/entities/product-category-rate.entity';
+import { ProductProductCategory } from '@/modules/product-product-category/entities/product-product-category.entity';
+import { AttributeGroup } from '@/modules/attribute-group/entities/attribute-group.entity';
 
 @Index('id', ['id'], {})
 @Index('id_2', ['id'], {})
@@ -112,4 +127,73 @@ export class ProductCategory {
 
   @Column('varchar', { name: 'url_slug_en', nullable: true, length: 191 })
   urlSlugEn?: string;
+
+  @OneToMany(
+    () => AttributeGroup,
+    (attributeGroup) => attributeGroup.productCategory,
+  )
+  attributeGroups: AttributeGroup[];
+
+  @OneToMany(
+    () => CouponSubject,
+    (couponSubject) => couponSubject.productCategory,
+  )
+  couponSubjects: CouponSubject[];
+
+  @OneToMany(
+    () => DiscountSubject,
+    (discountSubject) => discountSubject.productCategory,
+  )
+  discountSubjects: DiscountSubject[];
+
+  @ManyToOne(() => Image, (image) => image.productCategories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'homepage_image_id', referencedColumnName: 'id' }])
+  homepageImage: Image;
+
+  @ManyToOne(() => Image, (image) => image.productCategories2, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @ManyToOne(() => ImageSize, (imageSize) => imageSize.productCategories, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_size_id', referencedColumnName: 'id' }])
+  imageSize: ImageSize;
+
+  @ManyToOne(() => Image, (images) => images.productCategories3, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'mobile_image_id', referencedColumnName: 'id' }])
+  mobileImage: Image;
+
+  @ManyToOne(
+    () => ProductCategory,
+    (productCategory) => productCategory.productCategories,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'parent_id', referencedColumnName: 'id' }])
+  parent: ProductCategory;
+
+  @OneToMany(() => ProductCategory, (productCategory) => productCategory.parent)
+  productCategories: ProductCategory[];
+
+  @OneToMany(
+    () => ProductCategoryRate,
+    (productCategoryRate) => productCategoryRate.productCategory,
+  )
+  productCategoryRates: ProductCategoryRate[];
+
+  @OneToMany(
+    () => ProductProductCategory,
+    (productProductCategory) => productProductCategory.productCategory,
+  )
+  productProductCategory: ProductProductCategory[];
 }

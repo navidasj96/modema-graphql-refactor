@@ -4,6 +4,7 @@ import { Address as AddressGraphQL } from './domain/address';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateAddressInput } from './dto/create-address.input';
+import { UserModule } from '@/modules/user/user.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CreateAddressInput } from './dto/create-address.input';
         },
       ],
     }),
+    UserModule,
   ],
 })
 export class AddressModule {}

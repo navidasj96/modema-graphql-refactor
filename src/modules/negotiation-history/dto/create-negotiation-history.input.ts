@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Negotiation } from '@/modules/negotiation/domain/negotiation';
+import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiation-status';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateNegotiationHistoryInput {
@@ -25,4 +28,19 @@ export class CreateNegotiationHistoryInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Negotiation, { nullable: true })
+  negotiation?: Negotiation;
+
+  @Field(() => NegotiationStatus, { nullable: true })
+  negotiationStatus?: NegotiationStatus;
+
+  @Field(() => User, { nullable: true })
+  newNegotiator?: User;
+
+  @Field(() => User, { nullable: true })
+  oldNegotiator?: User;
+
+  @Field(() => User, { nullable: true })
+  submittedBy2?: User;
 }

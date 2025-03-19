@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { LabelProduct } from '@/modules/label-product/domain/label-product';
 
 @ObjectType()
 export class Label {
@@ -20,4 +21,7 @@ export class Label {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [LabelProduct], { nullable: true })
+  labelProducts?: LabelProduct[];
 }

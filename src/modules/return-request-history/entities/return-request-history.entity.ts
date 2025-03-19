@@ -1,4 +1,19 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { ReturnRequest } from '@/modules/return-request/entities/return-request.entity';
+import { ReturnStatus } from '@/modules/return-status/entities/return-status.entity';
+import { ReturnType } from '@/modules/return-type/entities/return-type.entity';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/entities/return-request-item-history.entity';
 
 @Index('return_request_histories_editor_user_id_index', ['editorUserId'], {})
 @Index('return_request_histories_invoice_id_index', ['invoiceId'], {})
@@ -118,4 +133,64 @@ export class ReturnRequestHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.returnRequestHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'editor_user_id', referencedColumnName: 'id' }])
+  editorUser: User;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.returnRequestHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @OneToOne(
+    () => ReturnRequest,
+    (returnRequest) => returnRequest.returnRequestHistories,
+    {
+      onDelete: 'NO ACTION',
+      onUpdate: 'CASCADE',
+    },
+  )
+  @JoinColumn([{ name: 'parent_id', referencedColumnName: 'id' }])
+  parent: ReturnRequest;
+
+  @ManyToOne(
+    () => ReturnStatus,
+    (returnStatus) => returnStatus.returnRequestHistories,
+    {
+      onDelete: 'NO ACTION',
+      onUpdate: 'CASCADE',
+    },
+  )
+  @JoinColumn([{ name: 'return_status_id', referencedColumnName: 'id' }])
+  returnStatus: ReturnStatus;
+
+  @ManyToOne(
+    () => ReturnType,
+    (returnType) => returnType.returnRequestHistories,
+    {
+      onDelete: 'NO ACTION',
+      onUpdate: 'CASCADE',
+    },
+  )
+  @JoinColumn([{ name: 'return_type_id', referencedColumnName: 'id' }])
+  returnType: ReturnType;
+
+  @ManyToOne(() => User, (user) => user.returnRequestHistories2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(
+    () => ReturnRequestItemHistory,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnRequestHistory,
+  )
+  returnRequestItemHistories: ReturnRequestItemHistory[];
 }

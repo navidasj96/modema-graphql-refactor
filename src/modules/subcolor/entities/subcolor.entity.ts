@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Color } from '@/modules/color/entities/color.entity';
 
 @Index('color_id', ['colorId'], {})
 @Entity('subcolors', { schema: 'modema' })
@@ -23,4 +31,11 @@ export class Subcolor {
 
   @Column('varchar', { name: 'colorCode_original', nullable: true, length: 20 })
   colorCodeOriginal?: string;
+
+  @ManyToOne(() => Color, (colors) => colors.subcolors, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'color_id', referencedColumnName: 'id' }])
+  color: Color;
 }

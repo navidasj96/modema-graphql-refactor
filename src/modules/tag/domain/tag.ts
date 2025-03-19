@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Image } from '@/modules/image/domain/image';
+import { ProductTag } from '@/modules/product-tag/domain/product-tag';
 
 @ObjectType()
 export class Tag {
@@ -74,4 +76,13 @@ export class Tag {
 
   @Field({ nullable: true })
   urlSlugEn?: string;
+
+  @Field(() => [ProductTag])
+  productTags: ProductTag[];
+
+  @Field(() => Image, { nullable: true })
+  sliderImage?: Image;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
 }

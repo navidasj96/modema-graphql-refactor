@@ -1,4 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { RetargetingWalletCharge } from '@/modules/retargeting-wallet-charge/entities/retargeting-wallet-charge.entity';
+import { WalletGiftCharge } from '@/modules/wallet-gift-charge/entities/wallet-gift-charge.entity';
+import { WalletHistory } from '@/modules/wallet-history/entities/wallet-history.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('wallets_user_id_index', ['userId'], { unique: true })
 @Entity('wallets', { schema: 'modema' })
@@ -48,4 +60,26 @@ export class Wallet {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => RetargetingWalletCharge,
+    (retargetingWalletCharge) => retargetingWalletCharge.wallet,
+  )
+  retargetingWalletCharges: RetargetingWalletCharge[];
+
+  @OneToMany(
+    () => WalletGiftCharge,
+    (walletGiftCharge) => walletGiftCharge.wallet,
+  )
+  walletGiftCharges: WalletGiftCharge[];
+
+  @OneToMany(() => WalletHistory, (walletHistory) => walletHistory.wallet)
+  walletHistories: WalletHistory[];
+
+  @OneToOne(() => User, (user) => user.wallets, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

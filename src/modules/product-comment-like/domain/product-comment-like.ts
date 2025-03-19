@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductComment } from '@/modules/product-comment/domain/product-comment';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class ProductCommentLike {
@@ -23,4 +25,10 @@ export class ProductCommentLike {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ProductComment)
+  productComment: ProductComment;
+
+  @Field(() => User)
+  user: User;
 }

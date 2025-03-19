@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
 
 @Index(
   'special_offers_special_offer_product_id_index',
@@ -55,4 +63,22 @@ export class SpecialOffer {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Product, (product) => product.specialOffers, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([
+    { name: 'special_offer_product_id', referencedColumnName: 'id' },
+  ])
+  specialOfferProduct: Product;
+
+  @ManyToOne(() => Product, (product) => product.specialOffers2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([
+    { name: 'wonderful_offer_product_id', referencedColumnName: 'id' },
+  ])
+  wonderfulOfferProduct: Product;
 }

@@ -1,4 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Design } from '@/modules/design/domain/design';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateUserCartInput {
@@ -46,4 +50,22 @@ export class CreateUserCartInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Design, { nullable: true })
+  design?: Design;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
+
+  @Field(() => Product, { nullable: true })
+  relatedProduct?: Product;
+
+  @Field(() => Subproduct, { nullable: true })
+  relatedSubproduct?: Subproduct;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
+
+  @Field(() => User)
+  user: User;
 }

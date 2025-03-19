@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Preorder } from '@/modules/preorder/entities/preorder.entity';
+import { PreorderStatus } from '@/modules/preorder-status/entities/preorder-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('preorder_preorder_status_preorder_id_index', ['preorderId'], {})
 @Index(
@@ -29,4 +39,26 @@ export class PreorderPreorderStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Preorder, (preorder) => preorder.preorderPreorderStatuses, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'preorder_id', referencedColumnName: 'id' }])
+  preorder: Preorder;
+
+  @ManyToOne(
+    () => PreorderStatus,
+    (preorderStatus) => preorderStatus.preorderPreorderStatuses,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'preorder_status_id', referencedColumnName: 'id' }])
+  preorderStatus: PreorderStatus;
+
+  @ManyToOne(() => User, (user) => user.preorderPreorderStatuses, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ColorCategoryDetail } from '@/modules/color-category-detail/entities/color-category-detail.entity';
+import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/entities/color-category-subproduct.entity';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('color_categories_homepage_image_id_index', ['homepageImageId'], {})
 @Index('color_categories_image_id_index', ['imageId'], {})
@@ -76,4 +87,37 @@ export class ColorCategory {
 
   @Column('varchar', { name: 'url_slug_en', nullable: true, length: 191 })
   urlSlugEn?: string;
+
+  @ManyToOne(() => Image, (image) => image.colorCategories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'homepage_image_id', referencedColumnName: 'id' }])
+  homepageImage: Image;
+
+  @ManyToOne(() => Image, (image) => image.colorCategories2, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @ManyToOne(() => Image, (image) => image.colorCategories3, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'mobile_image_id', referencedColumnName: 'id' }])
+  mobileImage: Image;
+
+  @OneToMany(
+    () => ColorCategoryDetail,
+    (colorCategoryDetails) => colorCategoryDetails.colorCategory,
+  )
+  colorCategoryDetails: ColorCategoryDetail[];
+
+  @OneToMany(
+    () => ColorCategorySubproduct,
+    (colorCategorySubproduct) => colorCategorySubproduct.colorCategory,
+  )
+  colorCategorySubproducts: ColorCategorySubproduct[];
 }

@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CustomerRequest } from '@/modules/customer-request/entities/customer-request.entity';
 
 @Index(
   'customer_request_files_customer_request_id_index',
@@ -30,4 +38,12 @@ export class CustomerRequestFile {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => CustomerRequest,
+    (customerRequest) => customerRequest.customerRequestFiles,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'customer_request_id', referencedColumnName: 'id' }])
+  customerRequest: CustomerRequest;
 }

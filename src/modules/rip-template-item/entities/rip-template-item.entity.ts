@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { RipTemplate } from '@/modules/rip-template/entities/rip-template.entity';
 
 @Index(
   'rip_template_items_basic_carpet_size_id_index',
@@ -28,4 +37,19 @@ export class RipTemplateItem {
 
   @Column('double', { name: 'length', precision: 10, scale: 2 }) // ✅ Fixed precision
   length: number;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.ripTemplateItems,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(() => RipTemplate, (ripTemplate) => ripTemplate.ripTemplateItems, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'rip_template_id', referencedColumnName: 'id' }])
+  ripTemplate: RipTemplate;
 }

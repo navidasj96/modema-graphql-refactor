@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ReturnRequestHistory } from '@/modules/return-request-history/entities/return-request-history.entity';
+import { ReturnRequestReturnStatus } from '@/modules/return-request-return-status/entities/return-request-return-status.entity';
+import { ReturnRequest } from '@/modules/return-request/entities/return-request.entity';
 
 @Index('return_statuses_name_unique', ['name'], { unique: true })
 @Entity('return_statuses', { schema: 'modema' })
@@ -26,4 +36,19 @@ export class ReturnStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ReturnRequestHistory,
+    (returnRequestHistory) => returnRequestHistory.returnStatus,
+  )
+  returnRequestHistories: ReturnRequestHistory[];
+
+  @OneToMany(
+    () => ReturnRequestReturnStatus,
+    (returnRequestReturnStatus) => returnRequestReturnStatus.returnStatus,
+  )
+  returnRequestReturnStatuses: ReturnRequestReturnStatus[];
+
+  @OneToMany(() => ReturnRequest, (returnRequest) => returnRequest.returnStatus)
+  returnRequests: ReturnRequest[];
 }

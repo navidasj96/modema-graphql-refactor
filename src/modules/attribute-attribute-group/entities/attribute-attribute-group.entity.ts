@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { AttributeGroup } from '@/modules/attribute-group/entities/attribute-group.entity';
+import { Attribute } from '@/modules/attribute/entities/attribute.entity';
 
 @Index(
   'attribute_attribute_group_attribute_group_id_index',
@@ -22,4 +31,20 @@ export class AttributeAttributeGroup {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => AttributeGroup,
+    (attributeGroups) => attributeGroups.attributeAttributeGroups,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'attribute_group_id', referencedColumnName: 'id' }])
+  attributeGroup: AttributeGroup;
+
+  @ManyToOne(
+    () => Attribute,
+    (attributes) => attributes.attributeAttributeGroups,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'attribute_id', referencedColumnName: 'id' }])
+  attribute: Attribute;
 }

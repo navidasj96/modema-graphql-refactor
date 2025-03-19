@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ColorCategory } from '@/modules/color-category/domain/color-category';
 
 @InputType()
 export class CreateColorCategoryDetailInput {
@@ -31,4 +32,7 @@ export class CreateColorCategoryDetailInput {
 
   @Field({ nullable: true })
   detailTextEn?: string;
+
+  @Field(() => ColorCategory)
+  colorCategory: ColorCategory;
 }

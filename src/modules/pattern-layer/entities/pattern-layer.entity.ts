@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Design } from '@/modules/design/entities/design.entity';
+import { Pattern } from '@/modules/pattern/entities/pattern.entity';
 
 @Index('pattern_layers_design_id_index', ['designId'], {})
 @Index('pattern_layers_pattern_id_index', ['patternId'], {})
@@ -70,4 +79,18 @@ export class PatternLayer {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Design, (designs) => designs.patternLayers, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'design_id', referencedColumnName: 'id' }])
+  design: Design;
+
+  @ManyToOne(() => Pattern, (pattern) => pattern.patternLayers, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'pattern_id', referencedColumnName: 'id' }])
+  pattern: Pattern;
 }

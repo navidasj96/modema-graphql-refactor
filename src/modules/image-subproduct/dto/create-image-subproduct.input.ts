@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @InputType()
 export class CreateImageSubproductInput {
@@ -19,4 +21,10 @@ export class CreateImageSubproductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

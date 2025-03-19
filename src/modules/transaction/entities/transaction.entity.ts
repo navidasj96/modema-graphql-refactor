@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { WalletHistory } from '@/modules/wallet-history/entities/wallet-history.entity';
 
 @Index('transactions_approved_by_index', ['approvedBy'], {})
 @Index('transactions_user_id_index', ['userId'], {})
@@ -65,4 +75,21 @@ export class Transaction {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.transactions, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'approved_by', referencedColumnName: 'id' }])
+  approvedBy2: User;
+
+  @ManyToOne(() => User, (user) => user.transactions2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(() => WalletHistory, (walletHistory) => walletHistory.transaction)
+  walletHistories: WalletHistory[];
 }

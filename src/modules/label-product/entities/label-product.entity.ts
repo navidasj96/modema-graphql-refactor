@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Label } from '@/modules/label/entities/label.entity';
 
 @Index('label_product_label_id_index', ['labelId'], {})
 @Index('label_product_product_id_index', ['productId'], {})
@@ -18,4 +27,18 @@ export class LabelProduct {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Label, (label) => label.labelProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'label_id', referencedColumnName: 'id' }])
+  label: Label;
+
+  @ManyToOne(() => Product, (product) => product.labelProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
 }

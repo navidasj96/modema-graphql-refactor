@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { FileNegotiation } from '@/modules/file-negotiation/entities/file-negotiation.entity';
+import { InvoiceNegotiation } from '@/modules/invoice-negotiation/entities/invoice-negotiation.entity';
+import { NegotiationHistory } from '@/modules/negotiation-history/entities/negotiation-history.entity';
+import { NegotiationStep } from '@/modules/negotiation-step/entities/negotiation-step.entity';
+import { NegotiationStatus } from '@/modules/negotiation-status/entities/negotiation-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('negotiations_customer_id_index', ['customerId'], {})
 @Index('negotiations_name_index', ['name'], {})
@@ -43,4 +57,50 @@ export class Negotiation {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => FileNegotiation,
+    (fileNegotiation) => fileNegotiation.negotiation,
+  )
+  fileNegotiations: FileNegotiation[];
+
+  @OneToMany(
+    () => InvoiceNegotiation,
+    (invoiceNegotiation) => invoiceNegotiation.negotiation,
+  )
+  invoiceNegotiations: InvoiceNegotiation[];
+
+  @OneToMany(
+    () => NegotiationHistory,
+    (negotiationHistories) => negotiationHistories.negotiation,
+  )
+  negotiationHistories: NegotiationHistory[];
+
+  @OneToMany(
+    () => NegotiationStep,
+    (negotiationStep) => negotiationStep.negotiation,
+  )
+  negotiationSteps: NegotiationStep[];
+
+  @ManyToOne(
+    () => NegotiationStatus,
+    (negotiationStatus) => negotiationStatus.negotiations,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'negotiation_status_id', referencedColumnName: 'id' }])
+  negotiationStatus: NegotiationStatus;
+
+  @ManyToOne(() => User, (user) => user.negotiations, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'negotiator_id', referencedColumnName: 'id' }])
+  negotiator: User;
+
+  @ManyToOne(() => User, (user) => user.negotiations2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'submitted_by', referencedColumnName: 'id' }])
+  submittedBy2: User;
 }

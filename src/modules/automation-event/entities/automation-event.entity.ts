@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('automation_events_user_id_index', ['userId'], {})
 @Entity('automation_events', { schema: 'modema' })
@@ -72,4 +80,11 @@ export class AutomationEvent {
 
   @Column('timestamp', { name: 'deleted_at', nullable: true })
   deletedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.automationEvents, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user?: User;
 }

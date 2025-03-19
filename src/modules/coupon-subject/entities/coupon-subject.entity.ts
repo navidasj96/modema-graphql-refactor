@@ -1,4 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { Coupon } from '@/modules/coupon/entities/coupon.entity';
+import { ProductCategory } from '@/modules/product-category/entities/product-category.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index('coupon_subjects_basic_carpet_size_id_index', ['basicCarpetSizeId'], {})
 @Index('coupon_subjects_coupon_id_index', ['couponId'], {})
@@ -38,4 +50,41 @@ export class CouponSubject {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.couponSubjects,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(() => Coupon, (coupon) => coupon.couponSubjects, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'coupon_id', referencedColumnName: 'id' }])
+  coupon: Coupon;
+
+  @ManyToOne(
+    () => ProductCategory,
+    (productCategory) => productCategory.couponSubjects,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
+  productCategory: ProductCategory;
+
+  @ManyToOne(() => Product, (products) => products.couponSubjects, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.couponSubjects, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
 }

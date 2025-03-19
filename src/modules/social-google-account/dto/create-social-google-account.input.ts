@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateSocialGoogleAccountInput {
@@ -19,4 +20,7 @@ export class CreateSocialGoogleAccountInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
 }

@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CustomerRequest } from '@/modules/customer-request/domain/customer-request';
 
 @ObjectType()
 export class CustomerRequestFile {
@@ -26,4 +27,7 @@ export class CustomerRequestFile {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => CustomerRequest)
+  customerRequest: CustomerRequest;
 }

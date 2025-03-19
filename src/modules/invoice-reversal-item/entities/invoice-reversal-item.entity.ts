@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { InvoiceReversal } from '@/modules/invoice-reversal/entities/invoice-reversal.entity';
 
 @Index(
   'invoice_reversal_items_invoice_product_id_index',
@@ -32,4 +41,20 @@ export class InvoiceReversalItem {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.invoiceReversalItems,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
+  invoiceProduct: InvoiceProduct;
+
+  @ManyToOne(
+    () => InvoiceReversal,
+    (invoiceReversal) => invoiceReversal.invoiceReversalItems,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_reversal_id', referencedColumnName: 'id' }])
+  invoiceReversal: InvoiceReversal;
 }

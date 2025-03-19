@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { OneToMany } from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @InputType()
 export class CreateBasicCarpetBrandInput {
@@ -22,4 +24,7 @@ export class CreateBasicCarpetBrandInput {
 
   @Field()
   updatedAt: Date;
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetBrand)
+  subproducts: Subproduct[];
 }

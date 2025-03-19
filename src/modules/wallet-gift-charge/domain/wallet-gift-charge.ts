@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductComment } from '@/modules/product-comment/domain/product-comment';
+import { User } from '@/modules/user/domain/user';
+import { Wallet } from '@/modules/wallet/domain/wallet';
 
 @ObjectType()
 export class WalletGiftCharge {
@@ -23,4 +26,13 @@ export class WalletGiftCharge {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ProductComment)
+  productComment: ProductComment;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => Wallet)
+  wallet: Wallet;
 }

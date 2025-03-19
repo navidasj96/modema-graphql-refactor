@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Design } from '@/modules/design/entities/design.entity';
 
 @Index('carpet_materials_name_unique', ['name'], { unique: true })
 @Entity('carpet_materials', { schema: 'modema' })
@@ -24,4 +31,7 @@ export class CarpetMaterial {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => Design, (design) => design.carpetMaterial)
+  designs: Design[];
 }

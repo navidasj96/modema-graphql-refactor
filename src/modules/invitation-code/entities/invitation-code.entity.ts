@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('invitation_codes_code_unique', ['code'], { unique: true })
 @Index('invitation_codes_email_unique', ['email'], { unique: true })
@@ -34,4 +41,7 @@ export class InvitationCode {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => User, (user) => user.invitationCode)
+  users: User[];
 }

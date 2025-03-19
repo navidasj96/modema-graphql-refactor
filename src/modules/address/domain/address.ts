@@ -1,7 +1,16 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { City } from '@/modules/city/domain/city';
+import { Country } from '@/modules/country/domain/country';
+import { State } from '@/modules/state/domain/state';
+import { User } from '@/modules/user/domain/user';
+import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/domain/invoice-address-validation-result';
+import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoice-rates-result';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
 
-@ObjectType()
+@ObjectType('Address')
 export class Address {
   @IDField(() => ID)
   id: number;
@@ -77,4 +86,31 @@ export class Address {
 
   @Field({ nullable: true })
   fullnameDescription?: string;
+
+  @Field()
+  city: City;
+
+  @Field()
+  country: Country;
+
+  @Field()
+  state: State;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [InvoiceAddressValidationResult])
+  invoiceAddressValidationResults: InvoiceAddressValidationResult[];
+
+  @Field(() => [InvoiceAddress])
+  invoiceAddresses: InvoiceAddress[];
+
+  @Field(() => [InvoiceRatesResult])
+  invoiceRatesResults: InvoiceRatesResult[];
+
+  @Field(() => [Invoice])
+  invoices: Invoice[];
+
+  @Field(() => [ReturnRequestAddress])
+  returnRequestAddresses: ReturnRequestAddress[];
 }

@@ -1,5 +1,10 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CustomerVideoProduct } from '@/modules/customer-video-product/domain/customer-video-product';
+import { ProductVideo } from '@/modules/product-video/domain/product-video';
+import { ReturnRequestItemVideo } from '@/modules/return-request-item-video/domain/return-request-item-video';
+import { SubproductVideo } from '@/modules/subproduct-video/domain/subproduct-video';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @ObjectType()
 export class Video {
@@ -29,4 +34,19 @@ export class Video {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [CustomerVideoProduct])
+  customerVideoProducts: CustomerVideoProduct[];
+
+  @Field(() => [ProductVideo])
+  productVideos: ProductVideo[];
+
+  @Field(() => [ReturnRequestItemVideo])
+  returnRequestItemVideos: ReturnRequestItemVideo[];
+
+  @Field(() => [SubproductVideo])
+  subproductVideos: SubproductVideo[];
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
 }

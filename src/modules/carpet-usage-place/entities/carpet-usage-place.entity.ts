@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CarpetUsagePlaceInvoiceProduct } from '@/modules/carpet-usage-place-invoice-product/entities/carpet-usage-place-invoice-product.entity';
+import { CarpetUsagePlaceUser } from '@/modules/carpet-usage-place-user/entities/carpet-usage-place-user.entity';
 
 @Index('carpet_usage_places_sort_order_index', ['sortOrder'], {})
 @Entity('carpet_usage_places', { schema: 'modema' })
@@ -20,4 +28,17 @@ export class CarpetUsagePlace {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => CarpetUsagePlaceInvoiceProduct,
+    (carpetUsagePlaceInvoiceProduct) =>
+      carpetUsagePlaceInvoiceProduct.carpetUsagePlace,
+  )
+  carpetUsagePlaceInvoiceProducts: CarpetUsagePlaceInvoiceProduct[];
+
+  @OneToMany(
+    () => CarpetUsagePlaceUser,
+    (carpetUsagePlaceUser) => carpetUsagePlaceUser.carpetUsagePlace,
+  )
+  carpetUsagePlaceUsers: CarpetUsagePlaceUser[];
 }

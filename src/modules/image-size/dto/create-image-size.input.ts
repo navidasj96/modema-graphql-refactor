@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
 
 @InputType()
 export class CreateImageSizeInput {
@@ -22,4 +23,7 @@ export class CreateImageSizeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ProductCategory])
+  productCategories: ProductCategory[];
 }

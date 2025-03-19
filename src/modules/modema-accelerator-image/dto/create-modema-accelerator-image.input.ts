@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ModemaAccelerator } from '@/modules/modema-accelerator/domain/modema-accelerator';
 
 @InputType()
 export class CreateModemaAcceleratorImageInput {
@@ -31,4 +32,7 @@ export class CreateModemaAcceleratorImageInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ModemaAccelerator, { nullable: true })
+  modemaAccelerator?: ModemaAccelerator;
 }

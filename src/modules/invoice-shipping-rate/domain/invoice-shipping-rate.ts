@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ShippingService } from '@/modules/shipping-service/domain/shipping-service';
 
 @ObjectType()
 export class InvoiceShippingRate {
@@ -23,4 +25,10 @@ export class InvoiceShippingRate {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => ShippingService, { nullable: true })
+  shippingService?: ShippingService;
 }

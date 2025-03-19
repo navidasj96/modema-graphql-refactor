@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Product } from '@/modules/product/domain/product';
 
 @InputType()
 export class CreateRelatedProductInput {
@@ -16,4 +17,10 @@ export class CreateRelatedProductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Product)
+  relatedProduct: Product;
 }

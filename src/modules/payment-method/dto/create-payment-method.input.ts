@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { PaymentMethodField } from '@/modules/payment-method-field/domain/payment-method-field';
 
 @InputType()
 export class CreatePaymentMethodInput {
@@ -7,4 +8,7 @@ export class CreatePaymentMethodInput {
 
   @Field()
   name: string;
+
+  @Field(() => [PaymentMethodField])
+  paymentMethodFields: PaymentMethodField[];
 }

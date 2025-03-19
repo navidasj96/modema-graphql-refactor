@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ProductComment } from '@/modules/product-comment/domain/product-comment';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateProductCommentLikeInput {
@@ -22,4 +24,10 @@ export class CreateProductCommentLikeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ProductComment)
+  productComment: ProductComment;
+
+  @Field(() => User)
+  user: User;
 }

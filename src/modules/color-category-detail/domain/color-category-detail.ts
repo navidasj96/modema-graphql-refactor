@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ColorCategory } from '@/modules/color-category/domain/color-category';
 
 @ObjectType()
 export class ColorCategoryDetail {
@@ -32,4 +33,7 @@ export class ColorCategoryDetail {
 
   @Field({ nullable: true })
   detailTextEn?: string;
+
+  @Field(() => ColorCategory)
+  colorCategory: ColorCategory;
 }

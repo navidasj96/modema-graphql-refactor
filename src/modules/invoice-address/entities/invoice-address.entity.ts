@@ -1,4 +1,19 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Address } from '@/modules/address/entities/address.entity';
+import { City } from '@/modules/city/entities/city.entity';
+import { Country } from '@/modules/country/entities/country.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { State } from '@/modules/state/entities/state.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
 
 @Index('invoice_addresses_address_id_index', ['addressId'], {})
 @Index('invoice_addresses_city_id_index', ['cityId'], {})
@@ -92,4 +107,52 @@ export class InvoiceAddress {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Address, (address) => address.invoiceAddresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'address_id', referencedColumnName: 'id' }])
+  address_2: Address;
+
+  @ManyToOne(() => City, (city) => city.invoiceAddresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'city_id', referencedColumnName: 'id' }])
+  city: City;
+
+  @ManyToOne(() => Country, (country) => country.invoiceAddresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'country_id', referencedColumnName: 'id' }])
+  country: Country;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceAddresses, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(() => State, (state) => state.invoiceAddresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'state_id', referencedColumnName: 'id' }])
+  state: State;
+
+  @ManyToOne(() => User, (user) => user.invoiceAddresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(
+    () => InvoiceHistory,
+    (invoiceHistory) => invoiceHistory.invoiceAddress,
+  )
+  invoiceHistories: InvoiceHistory[];
 }

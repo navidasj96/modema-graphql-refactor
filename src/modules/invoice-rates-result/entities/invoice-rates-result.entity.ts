@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Address } from '@/modules/address/entities/address.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
 
 @Index('invoice_rates_results_address_id_index', ['addressId'], {})
 @Index('invoice_rates_results_invoice_id_index', ['invoiceId'], {})
@@ -41,4 +51,26 @@ export class InvoiceRatesResult {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Address, (address) => address.invoiceRatesResults, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'address_id', referencedColumnName: 'id' }])
+  address: Address;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceRatesResults, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => ShippingService,
+    (shippingService) => shippingService.invoiceRatesResults,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'shipping_service_id', referencedColumnName: 'id' }])
+  shippingService: ShippingService;
 }

@@ -1,4 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { RetargetingWalletCharge } from '@/modules/retargeting-wallet-charge/domain/retargeting-wallet-charge';
+import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gift-charge';
+import { WalletHistory } from '@/modules/wallet-history/domain/wallet-history';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateWalletInput {
@@ -25,4 +29,16 @@ export class CreateWalletInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [RetargetingWalletCharge])
+  retargetingWalletCharges: RetargetingWalletCharge[];
+
+  @Field(() => [WalletGiftCharge])
+  walletGiftCharges: WalletGiftCharge[];
+
+  @Field(() => [WalletHistory])
+  walletHistories: WalletHistory[];
+
+  @Field(() => User)
+  user: User;
 }

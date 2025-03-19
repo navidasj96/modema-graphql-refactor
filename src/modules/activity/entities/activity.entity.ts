@@ -50,5 +50,5 @@ export class Activity {
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
-  user?: User;
+  user: User;
 }

@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CarpetFeature } from '@/modules/carpet-feature/domain/carpet-feature';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class CarpetFeatureUser {
@@ -17,4 +19,10 @@ export class CarpetFeatureUser {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => CarpetFeature)
+  carpetFeature: CarpetFeature;
+
+  @Field(() => User)
+  user: User;
 }

@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { Video } from '@/modules/video/entities/video.entity';
 
 @Index('subproduct_video_subproduct_id_index', ['subproductId'], {})
 @Index('subproduct_video_video_id_index', ['videoId'], {})
@@ -31,4 +40,18 @@ export class SubproductVideo {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.subproductVideos, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @ManyToOne(() => Video, (video) => video.subproductVideos, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'video_id', referencedColumnName: 'id' }])
+  video: Video;
 }

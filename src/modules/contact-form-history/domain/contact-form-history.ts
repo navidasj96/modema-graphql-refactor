@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ContactForm } from '@/modules/contact-form/domain/contact-form';
+import { ContactFormStatus } from '@/modules/contact-form-status/domain/contact-form-status';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class ContactFormHistory {
@@ -23,4 +26,13 @@ export class ContactFormHistory {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ContactForm)
+  contactForm: ContactForm;
+
+  @Field(() => ContactFormStatus)
+  contactFormStatus: ContactFormStatus;
+
+  @Field(() => User)
+  user: User;
 }

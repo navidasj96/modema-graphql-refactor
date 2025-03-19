@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('heard_about_us_options_name_unique', ['name'], { unique: true })
 @Entity('heard_about_us_options', { schema: 'modema' })
@@ -20,4 +27,7 @@ export class HeardAboutUsOption {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => User, (user) => user.heardAboutUsOption)
+  users: User[];
 }

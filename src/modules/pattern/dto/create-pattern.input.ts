@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { PatternLayer } from '@/modules/pattern-layer/domain/pattern-layer';
+import { PatternCategory } from '@/modules/pattern-category/domain/pattern-category';
 
 @InputType()
 export class CreatePatternInput {
@@ -43,4 +45,10 @@ export class CreatePatternInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [PatternLayer])
+  patternLayers: PatternLayer[];
+
+  @Field(() => PatternCategory)
+  patternCategory: PatternCategory;
 }

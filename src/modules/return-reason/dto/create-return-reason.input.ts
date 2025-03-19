@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
 
 @InputType()
 export class CreateReturnReasonInput {
@@ -19,4 +22,13 @@ export class CreateReturnReasonInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ReturnRequestItemHistory])
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @Field(() => [ReturnRequestItem])
+  returnRequestItems: ReturnRequestItem[];
+
+  @Field(() => [ReturnedInvoice])
+  returnedInvoices: ReturnedInvoice[];
 }

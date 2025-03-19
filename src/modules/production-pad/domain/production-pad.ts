@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/domain/production-pad-production-pad-status';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { ProductionPadStatus } from '@/modules/production-pad-status/domain/production-pad-status';
 
 @ObjectType()
 export class ProductionPad {
@@ -35,4 +38,13 @@ export class ProductionPad {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ProductionPadProductionPadStatus])
+  productionPadProductionPadStatuses: ProductionPadProductionPadStatus[];
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => ProductionPadStatus)
+  productionPadStatus: ProductionPadStatus;
 }

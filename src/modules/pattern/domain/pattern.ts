@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { PatternLayer } from '@/modules/pattern-layer/domain/pattern-layer';
+import { PatternCategory } from '@/modules/pattern-category/domain/pattern-category';
 
 @ObjectType()
 export class Pattern {
@@ -44,4 +46,10 @@ export class Pattern {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [PatternLayer])
+  patternLayers: PatternLayer[];
+
+  @Field(() => PatternCategory)
+  patternCategory: PatternCategory;
 }

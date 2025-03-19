@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Design } from '@/modules/design/domain/design';
 
 @InputType()
 export class CreateCarpetMaterialInput {
@@ -22,4 +23,7 @@ export class CreateCarpetMaterialInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Design])
+  designs: Design[];
 }

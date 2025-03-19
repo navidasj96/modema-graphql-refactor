@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ContactForm } from '@/modules/contact-form/entities/contact-form.entity';
 
 @Index('departments_name_unique', ['name'], { unique: true })
 @Entity('departments', { schema: 'modema' })
@@ -17,4 +24,7 @@ export class Department {
 
   @Column('varchar', { name: 'name_en', nullable: true, length: 191 })
   nameEn?: string;
+
+  @OneToMany(() => ContactForm, (contactForm) => contactForm.department)
+  contactForms: ContactForm[];
 }

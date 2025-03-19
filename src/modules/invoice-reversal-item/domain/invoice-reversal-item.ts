@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
 
 @ObjectType()
 export class InvoiceReversalItem {
@@ -23,4 +25,10 @@ export class InvoiceReversalItem {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => InvoiceProduct, { nullable: true })
+  invoiceProduct?: InvoiceProduct;
+
+  @Field(() => InvoiceReversal, { nullable: true })
+  invoiceReversal?: InvoiceReversal;
 }

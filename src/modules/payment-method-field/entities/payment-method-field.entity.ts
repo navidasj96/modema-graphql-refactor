@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { PaymentMethod } from '@/modules/payment-method/entities/payment-method.entity';
 
 @Index(
   'payment_method_fields_idx1',
@@ -32,4 +41,19 @@ export class PaymentMethodField {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.paymentMethodFields, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => PaymentMethod,
+    (paymentMethod) => paymentMethod.paymentMethodFields,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'payment_method_id', referencedColumnName: 'id' }])
+  paymentMethod: PaymentMethod;
 }

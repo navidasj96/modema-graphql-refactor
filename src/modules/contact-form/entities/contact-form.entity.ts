@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ContactFormHistory } from '@/modules/contact-form-history/entities/contact-form-history.entity';
+import { ContactFormStatus } from '@/modules/contact-form-status/entities/contact-form-status.entity';
+import { Country } from '@/modules/country/entities/country.entity';
+import { Department } from '@/modules/department/entities/department.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'contact_forms_contact_form_status_id_index',
@@ -58,4 +71,39 @@ export class ContactForm {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ContactFormHistory,
+    (contactFormHistory) => contactFormHistory.contactForm,
+  )
+  contactFormHistories: ContactFormHistory[];
+
+  @ManyToOne(
+    () => ContactFormStatus,
+    (contactFormStatus) => contactFormStatus.contactForms,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
+  contactFormStatus: ContactFormStatus;
+
+  @ManyToOne(() => Country, (country) => country.contactForms, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'country_id', referencedColumnName: 'id' }])
+  country: Country;
+
+  @ManyToOne(() => Department, (department) => department.contactForms, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'department_id', referencedColumnName: 'id' }])
+  department: Department;
+
+  @ManyToOne(() => User, (user) => user.contactForms, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

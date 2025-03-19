@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateIncredibleOfferSentNotificationInput {
@@ -16,4 +17,7 @@ export class CreateIncredibleOfferSentNotificationInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

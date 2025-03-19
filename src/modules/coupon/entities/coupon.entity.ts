@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CampaignPetForm } from '@/modules/campaign-pet-form/entities/campaign-pet-form.entity';
+import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { ReturnRequest } from '@/modules/return-request/entities/return-request.entity';
+import { UtmGoogleFormCoupon } from '@/modules/utm-google-form-coupon/entities/utm-google-form-coupon.entity';
 
 @Index('coupons_code_unique', ['code'], { unique: true })
 @Index('coupons_created_by_index', ['createdBy'], {})
@@ -134,4 +148,57 @@ export class Coupon {
     default: () => "'0'",
   })
   forNewCustomersOnly: boolean;
+
+  @OneToMany(() => CampaignPetForm, (campaignPetForm) => campaignPetForm.coupon)
+  campaignPetForms: CampaignPetForm[];
+
+  @OneToMany(() => CouponSubject, (couponSubject) => couponSubject.coupon)
+  couponSubjects: CouponSubject[];
+
+  @ManyToOne(() => User, (user) => user.coupons, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
+  createdBy2: User;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.coupons, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'retargeting_invoice_id', referencedColumnName: 'id' }])
+  retargetingInvoice: Invoice;
+
+  @ManyToOne(() => User, (user) => user.coupons2, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'retargeting_user_id', referencedColumnName: 'id' }])
+  retargetingUser: User;
+
+  @ManyToOne(() => User, (user) => user.coupons3, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'updated_by', referencedColumnName: 'id' }])
+  updatedBy2: User;
+
+  @ManyToOne(() => User, (user) => user.coupons4, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(() => Invoice, (invoices) => invoices.coupon)
+  invoices: Invoice[];
+
+  @OneToMany(() => ReturnRequest, (returnRequests) => returnRequests.coupon)
+  returnRequests: ReturnRequest[];
+
+  @OneToMany(
+    () => UtmGoogleFormCoupon,
+    (utmGoogleFormCoupons) => utmGoogleFormCoupons.coupon,
+  )
+  utmGoogleFormCoupons: UtmGoogleFormCoupon[];
 }

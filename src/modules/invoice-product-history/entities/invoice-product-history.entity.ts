@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
+import { Discount } from '@/modules/discount/entities/discount.entity';
+import { Design } from '@/modules/design/entities/design.entity';
 
 @Index('invoice_product_histories_design_id_index', ['designId'], {})
 @Index('invoice_product_histories_discount_id_index', ['discountId'], {})
@@ -161,4 +175,71 @@ export class InvoiceProductHistory {
 
   @Column('tinyint', { name: 'manually_added', width: 1, default: () => "'0'" })
   manuallyAdded: boolean;
+
+  @ManyToOne(() => Design, (design) => design.invoiceProductHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'design_id', referencedColumnName: 'id' }])
+  design: Design;
+
+  @ManyToOne(() => Discount, (discount) => discount.invoiceProductHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'discount_id', referencedColumnName: 'id' }])
+  discount_2: Discount;
+
+  @ManyToOne(
+    () => InvoiceHistory,
+    (invoiceHistory) => invoiceHistory.invoiceProductHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_history_id', referencedColumnName: 'id' }])
+  invoiceHistory: InvoiceHistory;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceProductHistories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.invoiceProductHistories,
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
+  invoiceProduct: InvoiceProduct;
+
+  @ManyToOne(() => Product, (product) => product.invoiceProductHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Product, (product) => product.invoiceProductHistories2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'related_product_id', referencedColumnName: 'id' }])
+  relatedProduct: Product;
+
+  @ManyToOne(
+    () => Subproduct,
+    (subproduct) => subproduct.invoiceProductHistories,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'related_subproduct_id', referencedColumnName: 'id' }])
+  relatedSubproduct: Subproduct;
+
+  @ManyToOne(
+    () => Subproduct,
+    (subproduct) => subproduct.invoiceProductHistories2,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
 }

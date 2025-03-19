@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { ReturnItemStatus } from '@/modules/return-item-status/entities/return-item-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'return_item_status_return_request_item_idx_item',
@@ -33,4 +43,27 @@ export class ReturnItemStatusReturnRequestItem {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => ReturnRequestItem,
+    (returnRequestItem) => returnRequestItem.returnItemStatusReturnRequestItems,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
+  returnRequestItem: ReturnRequestItem;
+
+  @ManyToOne(
+    () => ReturnItemStatus,
+    (returnItemStatus) => returnItemStatus.returnItemStatusReturnRequestItems,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'return_item_status_id', referencedColumnName: 'id' }])
+  returnItemStatus: ReturnItemStatus;
+
+  @ManyToOne(() => User, (user) => user.returnItemStatusReturnRequestItems, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

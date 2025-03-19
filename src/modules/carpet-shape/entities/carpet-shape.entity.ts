@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Design } from '@/modules/design/entities/design.entity';
 
 @Entity('carpet_shapes', { schema: 'modema' })
 export class CarpetShape {
@@ -35,4 +36,7 @@ export class CarpetShape {
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
   isActive: boolean;
+
+  @OneToMany(() => Design, (design) => design.carpetShape)
+  designs: Design[];
 }

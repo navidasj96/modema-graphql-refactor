@@ -1,4 +1,24 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/entities/campaign-free-offer-size.entity';
+import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
+import { DesignersProductPriceRange } from '@/modules/designers-product-price-range/entities/designers-product-price-range.entity';
+import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
+import { PriceGroupSize } from '@/modules/price-group-size/entities/price-group-size.entity';
+import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { RipTemplateItem } from '@/modules/rip-template-item/entities/rip-template-item.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { TorobProduct } from '@/modules/torob-product/entities/torob-product.entity';
+import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/entities/basic-carpet-size-detail.entity';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('basic_carpet_sizes_code_unique', ['code'], { unique: true })
 @Index('basic_carpet_sizes_image_id_foreign', ['imageId'], {})
@@ -122,4 +142,75 @@ export class BasicCarpetSize {
 
   @Column('varchar', { name: 'size_text_en', nullable: true, length: 191 })
   sizeTextEn?: string;
+
+  @OneToMany(
+    () => BasicCarpetSizeDetail,
+    (basicCarpetSizeDetail) => basicCarpetSizeDetail.basicCarpetSize,
+  )
+  basicCarpetSizeDetails: BasicCarpetSizeDetail[];
+
+  @ManyToOne(() => Image, (image) => image.basicCarpetSizes, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @ManyToOne(() => Image, (image) => image.basicCarpetSizes2, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'mobile_image_id', referencedColumnName: 'id' }])
+  mobileImage: Image;
+
+  @OneToMany(
+    () => CampaignFreeOfferSize,
+    (campaignFreeOfferSize) => campaignFreeOfferSize.basicCarpetSize,
+  )
+  campaignFreeOfferSizes: CampaignFreeOfferSize[];
+
+  @OneToMany(
+    () => CouponSubject,
+    (couponSubject) => couponSubject.basicCarpetSize,
+  )
+  couponSubjects: CouponSubject[];
+
+  @OneToMany(
+    () => DesignersProductPriceRange,
+    (designersProductPriceRange) => designersProductPriceRange.basicCarpetSize,
+  )
+  designersProductPriceRanges: DesignersProductPriceRange[];
+
+  @OneToMany(
+    () => DiscountSubject,
+    (discountSubject) => discountSubject.basicCarpetSize,
+  )
+  discountSubjects: DiscountSubject[];
+
+  @OneToMany(
+    () => PriceGroupSize,
+    (priceGroupSize) => priceGroupSize.basicCarpetSize,
+  )
+  priceGroupSizes: PriceGroupSize[];
+
+  @OneToMany(
+    () => ProductionPad,
+    (productionPad) => productionPad.basicCarpetSize,
+  )
+  productionPads: ProductionPad[];
+
+  @OneToMany(() => Product, (product) => product.minBasicCarpetSize)
+  products: Product[];
+
+  @OneToMany(
+    () => RipTemplateItem,
+    (ripTemplateItem) => ripTemplateItem.basicCarpetSize,
+  )
+  ripTemplateItems: RipTemplateItem[];
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetSize)
+  subproducts: Subproduct[];
+
+  @OneToMany(() => TorobProduct, (torobProduct) => torobProduct.basicCarpetSize)
+  torobProducts: TorobProduct[];
 }

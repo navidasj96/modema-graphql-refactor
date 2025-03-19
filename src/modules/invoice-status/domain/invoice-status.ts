@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/domain/invoice-invoice-status';
+import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
 @ObjectType()
 export class InvoiceStatus {
@@ -26,4 +29,16 @@ export class InvoiceStatus {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoiceInvoiceStatus], { nullable: true })
+  invoiceInvoiceStatuses?: InvoiceInvoiceStatus[];
+
+  @Field(() => [InvoiceReversal], { nullable: true })
+  invoiceReversals?: InvoiceReversal[];
+
+  @Field(() => [Invoice], { nullable: true })
+  invoices?: Invoice[];
+
+  @Field(() => [Invoice], { nullable: true })
+  invoices2?: Invoice[];
 }

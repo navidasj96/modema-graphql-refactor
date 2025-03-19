@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { FileNegotiation } from '@/modules/file-negotiation/entities/file-negotiation.entity';
 
 @Entity('files', { schema: 'modema' })
 export class File {
@@ -25,4 +26,7 @@ export class File {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => FileNegotiation, (fileNegotiation) => fileNegotiation.file)
+  fileNegotiations: FileNegotiation[];
 }

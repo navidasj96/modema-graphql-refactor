@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { Wallet } from '@/modules/wallet/domain/wallet';
 
 @ObjectType()
 export class RetargetingWalletCharge {
@@ -26,4 +28,10 @@ export class RetargetingWalletCharge {
 
   @Field({ nullable: true })
   chargedInvoices?: string;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => Wallet, { nullable: true })
+  wallet?: Wallet;
 }

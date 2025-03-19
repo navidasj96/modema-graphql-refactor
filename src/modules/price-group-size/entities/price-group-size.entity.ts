@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { PriceGroup } from '@/modules/price-group/entities/price-group.entity';
 
 @Index('price_group_size_basic_carpet_size_id_index', ['basicCarpetSizeId'], {})
 @Index('price_group_size_bundle_pad_price_index', ['bundlePadPrice'], {})
@@ -54,4 +63,19 @@ export class PriceGroupSize {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.priceGroupSizes,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(() => PriceGroup, (priceGroup) => priceGroup.priceGroupSizes, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'price_group_id', referencedColumnName: 'id' }])
+  priceGroup: PriceGroup;
 }

@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 
 @Index('visitor_coupons_code_unique', ['code'], { unique: true })
 @Index('visitor_coupons_visitor_id_index', ['visitorId'], {})
@@ -30,4 +40,14 @@ export class VisitorCoupon {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt?: Date;
+
+  @OneToMany(() => Invoice, (invoice) => invoice.visitorCoupon)
+  invoices: Invoice[];
+
+  @ManyToOne(() => Visitor, (visitor) => visitor.visitorCoupons, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_id', referencedColumnName: 'id' }])
+  visitor: Visitor;
 }

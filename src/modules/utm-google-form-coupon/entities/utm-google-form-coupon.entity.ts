@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Coupon } from '@/modules/coupon/entities/coupon.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('utm_google_form_coupons_coupon_id_index', ['couponId'], {})
 @Index('utm_google_form_coupons_user_id_index', ['userId'], {})
@@ -43,4 +52,18 @@ export class UtmGoogleFormCoupon {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Coupon, (coupon) => coupon.utmGoogleFormCoupons, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'coupon_id', referencedColumnName: 'id' }])
+  coupon: Coupon;
+
+  @ManyToOne(() => User, (user) => user.utmGoogleFormCoupons, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

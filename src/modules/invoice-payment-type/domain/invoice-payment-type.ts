@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoicePayment } from '@/modules/invoice-payment/domain/invoice-payment';
+import { PreorderRegister } from '@/modules/preorder-register/domain/preorder-register';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 
 @ObjectType()
 export class InvoicePaymentType {
@@ -14,4 +17,13 @@ export class InvoicePaymentType {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoicePaymentHistory], { nullable: true })
+  invoicePaymentHistories?: InvoicePaymentHistory[];
+
+  @Field(() => [InvoicePayment], { nullable: true })
+  invoicePayments?: InvoicePayment[];
+
+  @Field(() => [PreorderRegister], { nullable: true })
+  preorderRegisters?: PreorderRegister[];
 }

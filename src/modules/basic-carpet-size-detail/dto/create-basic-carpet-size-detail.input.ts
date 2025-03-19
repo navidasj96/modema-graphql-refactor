@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 
 @InputType()
 export class CreateBasicCarpetSizeDetailInput {
@@ -31,4 +32,7 @@ export class CreateBasicCarpetSizeDetailInput {
 
   @Field({ nullable: true })
   detailTextEn?: string;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
 }

@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/domain/campaign-free-offer-size';
 
 @InputType()
 export class CreateCampaignFreeOfferInput {
@@ -16,4 +17,7 @@ export class CreateCampaignFreeOfferInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [CampaignFreeOfferSize])
+  campaignFreeOfferSizes: CampaignFreeOfferSize[];
 }

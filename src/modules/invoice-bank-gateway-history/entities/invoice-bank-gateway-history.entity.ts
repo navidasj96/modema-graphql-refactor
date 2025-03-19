@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { PreorderRegister } from '@/modules/preorder-register/entities/preorder-register.entity';
 
 @Index('invoice_bank_gateway_histories_invoice_id_foreign', ['invoiceId'], {})
 @Index('invoice_bank_gateway_histories_invoice_id_index', ['invoiceId'], {})
@@ -44,4 +53,19 @@ export class InvoiceBankGatewayHistory {
     unsigned: true,
   })
   preorderRegisterId?: number;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceBankGatewayHistories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => PreorderRegister,
+    (preorderRegister) => preorderRegister.invoiceBankGatewayHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'preorder_register_id', referencedColumnName: 'id' }])
+  preorderRegister: PreorderRegister;
 }

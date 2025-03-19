@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @ObjectType()
 export class NeedsPhotographySubproduct {
@@ -29,4 +31,13 @@ export class NeedsPhotographySubproduct {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  announcedUser?: User;
+
+  @Field(() => User, { nullable: true })
+  photographyUser?: User;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

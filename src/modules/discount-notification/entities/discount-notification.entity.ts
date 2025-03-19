@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('discount_notifications_product_id_index', ['productId'], {})
 @Index('discount_notifications_user_id_index', ['userId'], {})
@@ -21,4 +30,18 @@ export class DiscountNotification {
 
   @Column('int', { name: 'product_id', nullable: true, unsigned: true })
   productId?: number;
+
+  @ManyToOne(() => Product, (product) => product.discountNotifications, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => User, (user) => user.discountNotifications, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

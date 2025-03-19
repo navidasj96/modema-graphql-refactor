@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { Discount } from '@/modules/discount/entities/discount.entity';
+import { PriceGroup } from '@/modules/price-group/entities/price-group.entity';
+import { ProductCategory } from '@/modules/product-category/entities/product-category.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index(
   'discount_subjects_basic_carpet_size_id_index',
@@ -71,4 +84,48 @@ export class DiscountSubject {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.discountSubjects,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(() => Discount, (discount) => discount.discountSubjects, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'discount_id', referencedColumnName: 'id' }])
+  discount: Discount;
+
+  @ManyToOne(() => PriceGroup, (priceGroup) => priceGroup.discountSubjects, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'price_group_id', referencedColumnName: 'id' }])
+  priceGroup: PriceGroup;
+
+  @ManyToOne(
+    () => ProductCategory,
+    (productCategory) => productCategory.discountSubjects,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
+  productCategory: ProductCategory;
+
+  @ManyToOne(() => Product, (product) => product.discountSubjects, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.discountSubjects, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
 }

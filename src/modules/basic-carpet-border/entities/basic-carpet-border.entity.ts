@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index('basic_carpet_borders_code_unique', ['code'], { unique: true })
 @Index('basic_carpet_borders_sort_order_index', ['sortOrder'], {})
@@ -25,4 +32,7 @@ export class BasicCarpetBorder {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetBorder)
+  subproducts: Subproduct[];
 }

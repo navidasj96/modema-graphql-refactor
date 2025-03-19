@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateSubproductStockHistoryInput {
@@ -25,4 +28,13 @@ export class CreateSubproductStockHistoryInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => InvoiceProduct, { nullable: true })
+  invoiceProduct?: InvoiceProduct;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

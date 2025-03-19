@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('campaign_voting_images_campaign_no_index', ['campaignNo'], {})
 @Index('campaign_voting_images_image_id_index', ['imageId'], {})
@@ -28,4 +36,11 @@ export class CampaignVotingImage {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Image, (image) => image.campaignVotingImages, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
 }

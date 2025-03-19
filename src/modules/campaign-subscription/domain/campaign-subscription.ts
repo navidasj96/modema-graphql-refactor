@@ -1,5 +1,6 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class CampaignSubscription {
@@ -20,4 +21,7 @@ export class CampaignSubscription {
 
   @Field(() => Int, { nullable: true })
   code?: number;
+
+  @Field(() => User)
+  user: User;
 }

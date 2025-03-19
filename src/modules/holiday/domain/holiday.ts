@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class Holiday {
@@ -23,4 +24,7 @@ export class Holiday {
 
   @Field({ nullable: true })
   userId?: number;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

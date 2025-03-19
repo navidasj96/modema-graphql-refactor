@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
 
 @InputType()
 export class CreateRipTemplateItemInput {
@@ -22,4 +24,10 @@ export class CreateRipTemplateItemInput {
 
   @Field()
   length: number;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => RipTemplate)
+  ripTemplate: RipTemplate;
 }

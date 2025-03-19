@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ProductCategoryRate } from '@/modules/product-category-rate/entities/product-category-rate.entity';
+import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
+import { ProductRateAverage } from '@/modules/product-rate-average/entities/product-rate-average.entity';
 
 @Entity('rates', { schema: 'modema' })
 export class Rate {
@@ -27,4 +30,19 @@ export class Rate {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ProductCategoryRate,
+    (productCategoryRate) => productCategoryRate.rate,
+  )
+  productCategoryRates: ProductCategoryRate[];
+
+  @OneToMany(() => ProductRate, (productRate) => productRate.rate)
+  productRates: ProductRate[];
+
+  @OneToMany(
+    () => ProductRateAverage,
+    (productRateAverage) => productRateAverage.rate,
+  )
+  productRateAverages: ProductRateAverage[];
 }

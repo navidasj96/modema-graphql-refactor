@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CustomerRequestFile } from '@/modules/customer-request-file/entities/customer-request-file.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('customer_requests_user_id_index', ['userId'], {})
 @Entity('customer_requests', { schema: 'modema' })
@@ -23,4 +33,17 @@ export class CustomerRequest {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => CustomerRequestFile,
+    (customerRequestFile) => customerRequestFile.customerRequest,
+  )
+  customerRequestFiles: CustomerRequestFile[];
+
+  @ManyToOne(() => User, (user) => user.customerRequests, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

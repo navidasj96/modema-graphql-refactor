@@ -1,4 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
+import { AttributeProduct } from '@/modules/attribute-product/domain/attribute-product';
+import { AttributeSubproduct } from '@/modules/attribute-subproduct/domain/attribute-subproduct';
+import { AttributeAttributeGroup } from '@/modules/attribute-attribute-group/domain/attribute-attribute-group';
 
 @ObjectType()
 export class Attribute {
@@ -22,4 +26,16 @@ export class Attribute {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [AttributeAttributeGroup])
+  attributeAttributeGroups: AttributeAttributeGroup[];
+
+  @Field(() => [AttributeItem])
+  attributeItems: AttributeItem[];
+
+  @Field(() => [AttributeProduct])
+  attributeProducts: AttributeProduct[];
+
+  @Field(() => [AttributeSubproduct])
+  attributeSubproducts: AttributeSubproduct[];
 }

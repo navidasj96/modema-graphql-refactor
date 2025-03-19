@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { AttributeGroup } from '@/modules/attribute-group/domain/attribute-group';
+import { Attribute } from '@/modules/attribute/domain/attribute';
 
 @InputType()
 export class CreateAttributeAttributeGroupInput {
@@ -16,4 +18,10 @@ export class CreateAttributeAttributeGroupInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => AttributeGroup)
+  attributeGroup: AttributeGroup;
+
+  @Field(() => Attribute)
+  attribute: Attribute;
 }

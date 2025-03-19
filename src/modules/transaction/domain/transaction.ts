@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { WalletHistory } from '@/modules/wallet-history/domain/wallet-history';
 
 @ObjectType()
 export class Transaction {
@@ -44,4 +46,13 @@ export class Transaction {
 
   @Field({ nullable: true })
   tempInvoiceNumber?: string;
+
+  @Field(() => User, { nullable: true })
+  approvedBy2?: User;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [WalletHistory])
+  walletHistories: WalletHistory[];
 }

@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/domain/basic-carpet-color';
+import { Image } from '@/modules/image/domain/image';
+import { Product } from '@/modules/product/domain/product';
 
 @InputType()
 export class CreateProductColorImageInput {
@@ -22,4 +25,13 @@ export class CreateProductColorImageInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => BasicCarpetColor, { nullable: true })
+  basicCarpetColor?: BasicCarpetColor;
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => Product)
+  product: Product;
 }

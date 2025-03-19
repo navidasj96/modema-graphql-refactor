@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'needs_photography_subproducts_announced_user_id_index',
@@ -47,4 +57,26 @@ export class NeedsPhotographySubproduct {
 
   @Column('timestamp', { name: 'deleted_at', nullable: true })
   deletedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.needsPhotographySubproducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'announced_user_id', referencedColumnName: 'id' }])
+  announcedUser?: User;
+
+  @ManyToOne(() => User, (user) => user.needsPhotographySubproducts2, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'photography_user_id', referencedColumnName: 'id' }])
+  photographyUser?: User;
+
+  @ManyToOne(
+    () => Subproduct,
+    (subproduct) => subproduct.needsPhotographySubproducts,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct?: Subproduct;
 }

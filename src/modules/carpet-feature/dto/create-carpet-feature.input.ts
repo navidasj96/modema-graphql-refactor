@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CarpetFeatureUser } from '@/modules/carpet-feature-user/domain/carpet-feature-user';
 
 @InputType()
 export class CreateCarpetFeatureInput {
@@ -19,4 +20,7 @@ export class CreateCarpetFeatureInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [CarpetFeatureUser])
+  carpetFeatureUsers: CarpetFeatureUser[];
 }

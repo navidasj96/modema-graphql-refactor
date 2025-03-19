@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CustomerRequest } from '@/modules/customer-request/domain/customer-request';
 
 @InputType()
 export class CreateCustomerRequestFileInput {
@@ -25,4 +26,7 @@ export class CreateCustomerRequestFileInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => CustomerRequest)
+  customerRequest: CustomerRequest;
 }

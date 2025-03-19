@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { CampaignRoomvoVote } from '@/modules/campaign-roomvo-vote/entities/campaign-roomvo-vote.entity';
 
 @Index('campaign_roomvo_images_user_id_index', ['userId'], {})
 @Index('campaign_roomvo_images_votes_count_index', ['votesCount'], {})
@@ -30,4 +40,17 @@ export class CampaignRoomvoImage {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.campaignRoomvoImages, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(
+    () => CampaignRoomvoVote,
+    (campaignRoomvoVote) => campaignRoomvoVote.campaignRoomvoImage,
+  )
+  campaignRoomvoVotes: CampaignRoomvoVote[];
 }

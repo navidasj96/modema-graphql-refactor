@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Address } from '@/modules/address/domain/address';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
 @ObjectType()
 export class InvoiceAddressValidationResult {
@@ -20,4 +22,10 @@ export class InvoiceAddressValidationResult {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Address, { nullable: true })
+  address?: Address;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
 }

@@ -1,4 +1,5 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateCampaignInstagramFollowInput {
@@ -40,4 +41,7 @@ export class CreateCampaignInstagramFollowInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
 }

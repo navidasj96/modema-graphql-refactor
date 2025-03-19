@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ModelHasPermission } from '@/modules/model-has-permission/domain/model-has-permission';
+import { PermissionGroup } from '@/modules/permission-group/domain/permission-group';
+import { Role } from '@/modules/role/domain/role';
 
 @ObjectType()
 export class Permission {
@@ -23,4 +26,19 @@ export class Permission {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ModelHasPermission])
+  modelHasPermissions: ModelHasPermission[];
+
+  @Field(() => Permission, { nullable: true })
+  parent?: Permission;
+
+  @Field(() => [Permission])
+  permissions: Permission[];
+
+  @Field(() => PermissionGroup, { nullable: true })
+  permissionGroup?: PermissionGroup;
+
+  @Field(() => [Role])
+  roles: Role[];
 }

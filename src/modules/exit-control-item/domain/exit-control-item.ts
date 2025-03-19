@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ExitControl } from '@/modules/exit-control/domain/exit-control';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 
 @ObjectType()
 export class ExitControlItem {
@@ -26,4 +28,10 @@ export class ExitControlItem {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ExitControl)
+  exitControl: ExitControl;
+
+  @Field(() => InvoiceProductItem)
+  invoiceProductItem: InvoiceProductItem;
 }

@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ContactFormStatus } from '@/modules/contact-form-status/domain/contact-form-status';
+import { User } from '@/modules/user/domain/user';
+import { CampaignUefaEuroSubscriberHistory } from '@/modules/campaign-uefa-euro-subscriber-history/domain/campaign-uefa-euro-subscriber-history';
 
 @ObjectType()
 export class CampaignUefaEuroSubscriber {
@@ -23,4 +26,13 @@ export class CampaignUefaEuroSubscriber {
 
   @Field({ defaultValue: 1 })
   contactFormStatusId: number;
+
+  @Field(() => [CampaignUefaEuroSubscriberHistory])
+  campaignUefaEuroSubscriberHistories: CampaignUefaEuroSubscriberHistory[];
+
+  @Field(() => ContactFormStatus)
+  contactFormStatus: ContactFormStatus;
+
+  @Field(() => User)
+  user: User;
 }

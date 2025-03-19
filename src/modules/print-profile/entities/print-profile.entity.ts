@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('print_profiles_created_by_index', ['createdBy'], {})
 @Index('print_profiles_updated_by_index', ['updatedBy'], {})
@@ -101,4 +111,24 @@ export class PrintProfile {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => InvoiceProductItem,
+    (invoiceProductItem) => invoiceProductItem.printProfile,
+  )
+  invoiceProductItems: InvoiceProductItem[];
+
+  @ManyToOne(() => User, (users) => users.printProfiles, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
+  createdBy2: User;
+
+  @ManyToOne(() => User, (users) => users.printProfiles2, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'updated_by', referencedColumnName: 'id' }])
+  updatedBy2: User;
 }

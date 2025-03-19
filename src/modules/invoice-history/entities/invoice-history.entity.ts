@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @Index('invoice_histories_editor_user_id_index', ['editorUserId'], {})
 @Index('invoice_histories_invoice_address_id_index', ['invoiceAddressId'], {})
@@ -357,4 +370,38 @@ export class InvoiceHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.invoiceHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'editor_user_id', referencedColumnName: 'id' }])
+  editorUser: User;
+
+  @ManyToOne(
+    () => InvoiceAddress,
+    (invoiceAddress) => invoiceAddress.invoiceHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_address_id', referencedColumnName: 'id' }])
+  invoiceAddress: InvoiceAddress;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceHistories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @OneToMany(
+    () => InvoicePaymentHistory,
+    (invoicePaymentHistory) => invoicePaymentHistory.invoiceHistory,
+  )
+  invoicePaymentHistories: InvoicePaymentHistory[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.invoiceHistory,
+  )
+  invoiceProductHistories: InvoiceProductHistory[];
 }

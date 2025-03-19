@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/domain/basic-carpet-color';
+import { Discount } from '@/modules/discount/domain/discount';
+import { Product } from '@/modules/product/domain/product';
 
 @InputType()
 export class CreateIncredibleOfferInput {
@@ -40,4 +43,13 @@ export class CreateIncredibleOfferInput {
 
   @Field({ nullable: true })
   place?: number;
+
+  @Field(() => BasicCarpetColor, { nullable: true })
+  basicCarpetColor?: BasicCarpetColor;
+
+  @Field(() => Discount, { nullable: true })
+  discount?: Discount;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
 }

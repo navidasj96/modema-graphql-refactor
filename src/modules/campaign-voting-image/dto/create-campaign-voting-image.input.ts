@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
 
 @InputType()
 export class CreateCampaignVotingImageInput {
@@ -25,4 +26,7 @@ export class CreateCampaignVotingImageInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image)
+  image: Image;
 }

@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { AttributeItem } from '@/modules/attribute-item/entities/attribute-item.entity';
+import { AttributeProduct } from '@/modules/attribute-product/entities/attribute-product.entity';
+import { AttributeSubproduct } from '@/modules/attribute-subproduct/entities/attribute-subproduct.entity';
+import { AttributeAttributeGroup } from '@/modules/attribute-attribute-group/entities/attribute-attribute-group.entity';
 
 @Index('attributes_name_unique', ['name'], { unique: true })
 @Entity('attributes', { schema: 'modema' })
@@ -32,4 +42,25 @@ export class Attribute {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => AttributeAttributeGroup,
+    (attributeAttributeGroup) => attributeAttributeGroup.attribute,
+  )
+  attributeAttributeGroups?: AttributeAttributeGroup[];
+
+  @OneToMany(() => AttributeItem, (attributeItem) => attributeItem.attribute)
+  attributeItems?: AttributeItem[];
+
+  @OneToMany(
+    () => AttributeProduct,
+    (attributeProduct) => attributeProduct.attribute,
+  )
+  attributeProducts?: AttributeProduct[];
+
+  @OneToMany(
+    () => AttributeSubproduct,
+    (attributeSubproduct) => attributeSubproduct.attribute,
+  )
+  attributeSubproducts?: AttributeSubproduct[];
 }

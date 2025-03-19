@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CarpetFeatureUser } from '@/modules/carpet-feature-user/entities/carpet-feature-user.entity';
 
 @Index('carpet_features_sort_order_index', ['sortOrder'], {})
 @Entity('carpet_features', { schema: 'modema' })
@@ -20,4 +27,10 @@ export class CarpetFeature {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => CarpetFeatureUser,
+    (carpetFeatureUser) => carpetFeatureUser.carpetFeature,
+  )
+  carpetFeatureUsers: CarpetFeatureUser[];
 }

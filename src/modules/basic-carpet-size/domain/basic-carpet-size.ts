@@ -1,5 +1,17 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/domain/basic-carpet-size-detail';
+import { Image } from '@/modules/image/domain/image';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/domain/campaign-free-offer-size';
+import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
+import { DesignersProductPriceRange } from '@/modules/designers-product-price-range/domain/designers-product-price-range';
+import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
+import { PriceGroupSize } from '@/modules/price-group-size/domain/price-group-size';
+import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
+import { Product } from '@/modules/product/domain/product';
+import { RipTemplateItem } from '@/modules/rip-template-item/domain/rip-template-item';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
 @ObjectType()
 export class BasicCarpetSize {
@@ -95,4 +107,43 @@ export class BasicCarpetSize {
 
   @Field({ nullable: true })
   sizeTextEn?: string;
+
+  @Field(() => [BasicCarpetSizeDetail])
+  basicCarpetSizeDetails: BasicCarpetSizeDetail[];
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => Image)
+  mobileImage: Image;
+
+  @Field(() => [CampaignFreeOfferSize])
+  campaignFreeOfferSizes: CampaignFreeOfferSize[];
+
+  @Field(() => [CouponSubject])
+  couponSubjects: CouponSubject[];
+
+  @Field(() => [DesignersProductPriceRange])
+  designersProductPriceRanges: DesignersProductPriceRange[];
+
+  @Field(() => [DiscountSubject])
+  discountSubjects: DiscountSubject[];
+
+  @Field(() => [PriceGroupSize])
+  priceGroupSizes: PriceGroupSize[];
+
+  @Field(() => [ProductionPad])
+  productionPads: ProductionPad[];
+
+  @Field(() => [Product])
+  products: Product[];
+
+  @Field(() => [RipTemplateItem])
+  ripTemplateItems: RipTemplateItem[];
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
+
+  @Field(() => [TorobProduct])
+  torobProducts: TorobProduct[];
 }

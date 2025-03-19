@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
+import { Rate } from '@/modules/rate/domain/rate';
 
 @ObjectType()
 export class ProductCategoryRate {
@@ -17,4 +19,10 @@ export class ProductCategoryRate {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ProductCategory)
+  productCategory: ProductCategory;
+
+  @Field(() => Rate)
+  rate: Rate;
 }

@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index('basic_carpet_materials_code_unique', ['code'], { unique: true })
 @Index('basic_carpet_materials_title_unique', ['title'], { unique: true })
@@ -34,4 +41,7 @@ export class BasicCarpetMaterial {
     default: () => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetMaterial)
+  subproducts: Subproduct[];
 }

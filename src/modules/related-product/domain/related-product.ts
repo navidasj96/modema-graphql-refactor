@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
 
 @ObjectType()
 export class RelatedProduct {
@@ -17,4 +18,10 @@ export class RelatedProduct {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Product)
+  relatedProduct: Product;
 }

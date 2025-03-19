@@ -1,4 +1,21 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ReturnRequestAddress } from '@/modules/return-request-address/entities/return-request-address.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/entities/invoice-rates-result.entity';
+import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
+import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/entities/invoice-address-validation-result.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { State } from '@/modules/state/entities/state.entity';
+import { Country } from '@/modules/country/entities/country.entity';
+import { City } from '@/modules/city/entities/city.entity';
 
 @Index('addresses_city_id_index', ['cityId'], {})
 @Index('addresses_country_id_index', ['countryId'], {})
@@ -99,4 +116,56 @@ export class Address {
     length: 255,
   })
   fullnameDescription?: string;
+
+  @ManyToOne(() => City, (city) => city.addresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'city_id', referencedColumnName: 'id' }])
+  city?: City;
+
+  @ManyToOne(() => Country, (country) => country.addresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'country_id', referencedColumnName: 'id' }])
+  country?: Country;
+
+  @ManyToOne(() => State, (state) => state.addresses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'state_id', referencedColumnName: 'id' }])
+  state?: State;
+
+  @ManyToOne(() => User, (user) => user.addresses, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user?: User;
+
+  @OneToMany(
+    () => InvoiceAddressValidationResult,
+    (invoiceAddressValidationResult) => invoiceAddressValidationResult.address,
+  )
+  invoiceAddressValidationResults?: InvoiceAddressValidationResult[];
+
+  @OneToMany(() => InvoiceAddress, (invoiceAddress) => invoiceAddress.address_2)
+  invoiceAddresses?: InvoiceAddress[];
+
+  @OneToMany(
+    () => InvoiceRatesResult,
+    (invoiceRatesResult) => invoiceRatesResult.address,
+  )
+  invoiceRatesResults?: InvoiceRatesResult[];
+
+  @OneToMany(() => Invoice, (invoices) => invoices.address)
+  invoices?: Invoice[];
+
+  @OneToMany(
+    () => ReturnRequestAddress,
+    (returnRequestAddress) => returnRequestAddress.address_2,
+  )
+  returnRequestAddresses?: ReturnRequestAddress[];
 }

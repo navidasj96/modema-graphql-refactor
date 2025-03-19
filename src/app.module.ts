@@ -254,6 +254,7 @@ import { WebsitePageModule } from '@/modules/website-page/website-page.module';
 import { WithdrawalRequestModule } from '@/modules/withdrawal-request/withdrawal-request.module';
 import { WithdrawalRequestStatusModule } from '@/modules/withdrawal-request-status/withdrawal-request-status.module';
 import { WonderfulOfferModule } from '@/modules/wonderful-offer/wonderful-offer.module';
+import { NegotiationStepModule } from '@/modules/negotiation-step/negotiation-step.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -420,6 +421,7 @@ const ENV = process.env.NODE_ENV;
     NegotiationModule,
     NegotiationHistoryModule,
     NegotiationStatusModule,
+    NegotiationStepModule,
     NegotiationTypeModule,
     NewBorderModule,
     OauthAccessTokenModule,

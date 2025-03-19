@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Permission } from '@/modules/permission/domain/permission';
 
 @InputType()
 export class CreatePermissionGroupInput {
@@ -13,4 +14,7 @@ export class CreatePermissionGroupInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Permission])
+  permissions: Permission[];
 }

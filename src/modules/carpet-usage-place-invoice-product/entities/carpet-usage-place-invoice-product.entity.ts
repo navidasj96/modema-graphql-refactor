@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CarpetUsagePlace } from '@/modules/carpet-usage-place/entities/carpet-usage-place.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
 
 @Index(
   'carpet_usage_place_invoice_product_carpet_usage_place_id_index',
@@ -29,4 +38,20 @@ export class CarpetUsagePlaceInvoiceProduct {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => CarpetUsagePlace,
+    (carpetUsagePlace) => carpetUsagePlace.carpetUsagePlaceInvoiceProducts,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'carpet_usage_place_id', referencedColumnName: 'id' }])
+  carpetUsagePlace: CarpetUsagePlace;
+
+  @ManyToOne(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.carpetUsagePlaceInvoiceProducts,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
+  invoiceProduct: InvoiceProduct;
 }

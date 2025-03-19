@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { CampaignRoomvoVote } from '@/modules/campaign-roomvo-vote/domain/campaign-roomvo-vote';
 
 @ObjectType()
 export class CampaignRoomvoImage {
@@ -29,4 +31,10 @@ export class CampaignRoomvoImage {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [CampaignRoomvoVote])
+  campaignRoomvoVotes: CampaignRoomvoVote[];
 }

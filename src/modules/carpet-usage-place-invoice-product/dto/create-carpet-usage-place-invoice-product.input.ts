@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CarpetUsagePlace } from '@/modules/carpet-usage-place/domain/carpet-usage-place';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
 
 @InputType()
 export class CreateCarpetUsagePlaceInvoiceProductInput {
@@ -19,4 +21,10 @@ export class CreateCarpetUsagePlaceInvoiceProductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => CarpetUsagePlace)
+  carpetUsagePlace: CarpetUsagePlace;
+
+  @Field(() => InvoiceProduct)
+  invoiceProduct: InvoiceProduct;
 }

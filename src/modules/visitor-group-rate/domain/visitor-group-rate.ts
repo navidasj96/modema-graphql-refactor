@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { VisitorGroup } from '@/modules/visitor-group/domain/visitor-group';
 
 @ObjectType()
 export class VisitorGroupRate {
@@ -23,4 +24,7 @@ export class VisitorGroupRate {
 
   @Field()
   updatedAt: Date;
+
+  @Field(() => VisitorGroup)
+  visitorGroup: VisitorGroup;
 }

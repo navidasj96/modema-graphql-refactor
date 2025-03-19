@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { Negotiation } from '@/modules/negotiation/entities/negotiation.entity';
 
 @Index('invoice_negotiation_invoice_id_index', ['invoiceId'], {})
 @Index('invoice_negotiation_negotiation_id_index', ['negotiationId'], {})
@@ -18,4 +27,19 @@ export class InvoiceNegotiation {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceNegotiations, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => Negotiation,
+    (negotiation) => negotiation.invoiceNegotiations,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'negotiation_id', referencedColumnName: 'id' }])
+  negotiation: Negotiation;
 }

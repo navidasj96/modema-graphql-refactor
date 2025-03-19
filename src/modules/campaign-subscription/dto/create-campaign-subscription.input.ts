@@ -1,4 +1,5 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateCampaignSubscriptionInput {
@@ -19,4 +20,7 @@ export class CreateCampaignSubscriptionInput {
 
   @Field(() => Int, { nullable: true })
   code?: number;
+
+  @Field(() => User)
+  user: User;
 }

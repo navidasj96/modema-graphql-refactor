@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateProductionRollInput {
@@ -43,4 +45,13 @@ export class CreateProductionRollInput {
 
   @Field({ nullable: true })
   closedBy?: number;
+
+  @Field(() => [InvoiceProductItem])
+  invoiceProductItems: InvoiceProductItem[];
+
+  @Field(() => User, { nullable: true })
+  closedBy2?: User;
+
+  @Field(() => User, { nullable: true })
+  createdBy2?: User;
 }

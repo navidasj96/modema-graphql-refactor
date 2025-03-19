@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 
 @InputType()
 export class CreateDesignersProductPriceRangeInput {
@@ -19,4 +20,7 @@ export class CreateDesignersProductPriceRangeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
 }

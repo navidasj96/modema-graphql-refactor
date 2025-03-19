@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { VisitorGroup } from '@/modules/visitor-group/domain/visitor-group';
 
 @InputType()
 export class CreateVisitorGroupRateInput {
@@ -22,4 +23,7 @@ export class CreateVisitorGroupRateInput {
 
   @Field()
   updatedAt: Date;
+
+  @Field(() => VisitorGroup)
+  visitorGroup: VisitorGroup;
 }

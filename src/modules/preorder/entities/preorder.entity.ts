@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { User } from '@/modules/user/entities/user.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { PreorderPreorderStatus } from '@/modules/preorder-preorder-status/entities/preorder-preorder-status.entity';
+import { PreorderStatus } from '@/modules/preorder-status/entities/preorder-status.entity';
+import { Product } from '@/modules/product/entities/product.entity';
 
 @Index('preorders_assigned_user_id_index', ['assignedUserId'], {})
 @Index('preorders_preorder_status_id_index', ['preorderStatusId'], {})
@@ -95,4 +109,53 @@ export class Preorder {
 
   @Column('timestamp', { name: 'deleted_at', nullable: true })
   deletedAt?: Date;
+
+  @OneToMany(
+    () => PreorderPreorderStatus,
+    (preorderPreorderStatus) => preorderPreorderStatus.preorder,
+  )
+  preorderPreorderStatuses: PreorderPreorderStatus[];
+
+  @ManyToOne(() => User, (user) => user.preorders, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'assigned_user_id', referencedColumnName: 'id' }])
+  assignedUser: User;
+
+  @ManyToOne(
+    () => PreorderStatus,
+    (preorderStatus) => preorderStatus.preorders,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'preorder_status_id', referencedColumnName: 'id' }])
+  preorderStatus: PreorderStatus;
+
+  @ManyToOne(() => Product, (product) => product.preorders, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => User, (user) => user.preorders2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'sales_person_id', referencedColumnName: 'id' }])
+  salesPerson: User;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.preorders, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @ManyToOne(() => User, (user) => user.preorders3, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

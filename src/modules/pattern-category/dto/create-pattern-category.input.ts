@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
+import { Pattern } from '@/modules/pattern/domain/pattern';
 
 @InputType()
 export class CreatePatternCategoryInput {
@@ -25,4 +27,10 @@ export class CreatePatternCategoryInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => [Pattern])
+  patterns: Pattern[];
 }

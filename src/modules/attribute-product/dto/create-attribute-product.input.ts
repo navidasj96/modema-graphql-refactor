@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Attribute } from '@/modules/attribute/domain/attribute';
+import { Product } from '@/modules/product/domain/product';
+import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
 
 @InputType()
 export class CreateAttributeProductInput {
@@ -28,4 +31,13 @@ export class CreateAttributeProductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Attribute)
+  attribute: Attribute;
+
+  @Field(() => AttributeItem)
+  attributeItem?: AttributeItem;
+
+  @Field(() => Product)
+  product: Product;
 }

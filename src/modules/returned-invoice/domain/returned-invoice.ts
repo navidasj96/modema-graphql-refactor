@@ -1,5 +1,9 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/domain/returned-invoice-product';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ReturnReason } from '@/modules/return-reason/domain/return-reason';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class ReturnedInvoice {
@@ -32,4 +36,19 @@ export class ReturnedInvoice {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ReturnedInvoiceProduct])
+  returnedInvoiceProducts: ReturnedInvoiceProduct[];
+
+  @Field(() => Invoice)
+  invoice: Invoice;
+
+  @Field(() => Invoice, { nullable: true })
+  replacementInvoice?: Invoice;
+
+  @Field(() => ReturnReason, { nullable: true })
+  returnReason?: ReturnReason;
+
+  @Field(() => User)
+  user: User;
 }

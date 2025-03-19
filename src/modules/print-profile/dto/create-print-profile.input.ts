@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreatePrintProfileInput {
@@ -79,4 +81,13 @@ export class CreatePrintProfileInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoiceProductItem])
+  invoiceProductItems: InvoiceProductItem[];
+
+  @Field(() => User, { nullable: true })
+  createdBy2?: User;
+
+  @Field(() => User, { nullable: true })
+  updatedBy2?: User;
 }

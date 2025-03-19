@@ -1,5 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { Transaction } from '@/modules/transaction/domain/transaction';
+import { Wallet } from '@/modules/wallet/domain/wallet';
 
 @ObjectType()
 export class WalletHistory {
@@ -29,4 +32,13 @@ export class WalletHistory {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  createdBy2: User;
+
+  @Field(() => Transaction)
+  transaction: Transaction;
+
+  @Field(() => Wallet)
+  wallet: Wallet;
 }

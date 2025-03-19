@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
 @InputType()
 export class CreateInvoiceModeInput {
@@ -13,4 +14,7 @@ export class CreateInvoiceModeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Invoice], { nullable: true })
+  invoices?: Invoice[];
 }

@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Attribute } from '@/modules/attribute/entities/attribute.entity';
+import { AttributeItem } from '@/modules/attribute-item/entities/attribute-item.entity';
+import { Product } from '@/modules/product/entities/product.entity';
 
 @Index('attribute_product_attribute_id_index', ['attributeId'], {})
 @Index('attribute_product_attribute_item_id_index', ['attributeItemId'], {})
@@ -36,4 +46,26 @@ export class AttributeProduct {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Attribute, (attribute) => attribute.attributeProducts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'attribute_id', referencedColumnName: 'id' }])
+  attribute: Attribute;
+
+  @ManyToOne(
+    () => AttributeItem,
+    (attributeItem) => attributeItem.attributeProducts,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'attribute_item_id', referencedColumnName: 'id' }])
+  attributeItem?: AttributeItem;
+
+  @ManyToOne(() => Product, (product) => product.attributeProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
 }

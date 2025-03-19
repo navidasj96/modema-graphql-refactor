@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index('basic_carpet_types_code_unique', ['code'], { unique: true })
 @Index('basic_carpet_types_title_unique', ['title'], { unique: true })
@@ -31,4 +38,7 @@ export class BasicCarpetType {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetType)
+  subproducts: Subproduct[];
 }

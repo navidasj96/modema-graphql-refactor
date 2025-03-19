@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { Video } from '@/modules/video/entities/video.entity';
 
 @Index('return_request_item_video_unique', ['returnRequestItemId', 'videoId'], {
   unique: true,
@@ -25,4 +34,19 @@ export class ReturnRequestItemVideo {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => ReturnRequestItem,
+    (returnRequestItem) => returnRequestItem.returnRequestItemVideos,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
+  returnRequestItem: ReturnRequestItem;
+
+  @ManyToOne(() => Video, (video) => video.returnRequestItemVideos, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'video_id', referencedColumnName: 'id' }])
+  video: Video;
 }

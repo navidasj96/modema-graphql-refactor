@@ -1,4 +1,17 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CarpetUsagePlaceInvoiceProduct } from '@/modules/carpet-usage-place-invoice-product/domain/carpet-usage-place-invoice-product';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { Design } from '@/modules/design/domain/design';
+import { Discount } from '@/modules/discount/domain/discount';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { Product } from '@/modules/product/domain/product';
+import { InvoiceReversalItem } from '@/modules/invoice-reversal-item/domain/invoice-reversal-item';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/domain/returned-invoice-product';
+import { SubproductStockHistory } from '@/modules/subproduct-stock-history/domain/subproduct-stock-history';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
 @InputType()
 export class CreateInvoiceProductInput {
@@ -106,4 +119,52 @@ export class CreateInvoiceProductInput {
 
   @Field()
   manuallyAdded: boolean;
+
+  @Field(() => [CarpetUsagePlaceInvoiceProduct], { nullable: true })
+  carpetUsagePlaceInvoiceProducts?: CarpetUsagePlaceInvoiceProduct[];
+
+  @Field(() => [InvoiceProductHistory], { nullable: true })
+  invoiceProductHistories?: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProductItem], { nullable: true })
+  invoiceProductItems?: InvoiceProductItem[];
+
+  @Field(() => Design, { nullable: true })
+  design?: Design;
+
+  @Field(() => Discount, { nullable: true })
+  discount_2?: Discount;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => Subproduct, { nullable: true })
+  pad?: Subproduct;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
+
+  @Field(() => Product, { nullable: true })
+  relatedProduct?: Product;
+
+  @Field(() => Subproduct, { nullable: true })
+  relatedSubproduct?: Subproduct;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
+
+  @Field(() => [InvoiceReversalItem], { nullable: true })
+  invoiceReversalItems?: InvoiceReversalItem[];
+
+  @Field(() => [ReturnRequestItemHistory], { nullable: true })
+  returnRequestItemHistories?: ReturnRequestItemHistory[];
+
+  @Field(() => [ReturnRequestItem], { nullable: true })
+  returnRequestItems?: ReturnRequestItem[];
+
+  @Field(() => [ReturnedInvoiceProduct], { nullable: true })
+  returnedInvoiceProducts?: ReturnedInvoiceProduct[];
+
+  @Field(() => [SubproductStockHistory], { nullable: true })
+  subproductStockHistories?: SubproductStockHistory[];
 }

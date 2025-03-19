@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('return_request_item_image_unique', ['returnRequestItemId', 'imageId'], {
   unique: true,
@@ -25,4 +35,19 @@ export class ReturnRequestItemImage {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Image, (images) => images.returnRequestItemImages, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @ManyToOne(
+    () => ReturnRequestItem,
+    (returnRequestItem) => returnRequestItem.returnRequestItemImages,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
+  returnRequestItem: ReturnRequestItem;
 }

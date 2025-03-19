@@ -1,5 +1,10 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { City } from '@/modules/city/domain/city';
+import { Country } from '@/modules/country/domain/country';
+import { State } from '@/modules/state/domain/state';
+import { User } from '@/modules/user/domain/user';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @ObjectType()
 export class BasicCarpetDesigner {
@@ -62,4 +67,19 @@ export class BasicCarpetDesigner {
 
   @Field({ nullable: true, defaultValue: 0 })
   pricePercentage?: number;
+
+  @Field(() => City)
+  city: City;
+
+  @Field(() => Country)
+  country: Country;
+
+  @Field(() => State)
+  state: State;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
 }

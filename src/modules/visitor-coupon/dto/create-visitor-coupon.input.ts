@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { Visitor } from '@/modules/visitor/domain/visitor';
 
 @InputType()
 export class CreateVisitorCouponInput {
@@ -22,4 +24,10 @@ export class CreateVisitorCouponInput {
 
   @Field()
   updatedAt: Date;
+
+  @Field(() => [Invoice])
+  invoices: Invoice[];
+
+  @Field(() => Visitor)
+  visitor: Visitor;
 }

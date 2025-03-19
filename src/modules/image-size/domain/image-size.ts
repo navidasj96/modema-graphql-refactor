@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
 
+@InputType('ImageSize')
 @ObjectType()
 export class ImageSize {
   @IDField(() => ID)
@@ -23,4 +25,7 @@ export class ImageSize {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ProductCategory])
+  productCategories: ProductCategory[];
 }

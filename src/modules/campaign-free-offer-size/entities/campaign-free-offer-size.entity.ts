@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { CampaignFreeOffer } from '@/modules/campaign-free-offer/entities/campaign-free-offer.entity';
 
 @Index(
   'campaign_free_offer_sizes_basic_carpet_size_id_index',
@@ -26,4 +35,20 @@ export class CampaignFreeOfferSize {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.campaignFreeOfferSizes,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(
+    () => CampaignFreeOffer,
+    (campaignFreeOffer) => campaignFreeOffer.campaignFreeOfferSizes,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'campaign_free_offer_id', referencedColumnName: 'id' }])
+  campaignFreeOffer: CampaignFreeOffer;
 }

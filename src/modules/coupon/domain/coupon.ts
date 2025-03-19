@@ -1,5 +1,11 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CampaignPetForm } from '@/modules/campaign-pet-form/domain/campaign-pet-form';
+import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
+import { User } from '@/modules/user/domain/user';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ReturnRequest } from '@/modules/return-request/domain/return-request';
+import { UtmGoogleFormCoupon } from '@/modules/utm-google-form-coupon/domain/utm-google-form-coupon';
 
 @ObjectType()
 export class Coupon {
@@ -80,4 +86,34 @@ export class Coupon {
 
   @Field()
   forNewCustomersOnly: boolean;
+
+  @Field(() => [CampaignPetForm])
+  campaignPetForms: CampaignPetForm[];
+
+  @Field(() => [CouponSubject])
+  couponSubjects: CouponSubject[];
+
+  @Field(() => User)
+  createdBy2: User;
+
+  @Field(() => Invoice)
+  retargetingInvoice: Invoice;
+
+  @Field(() => User)
+  retargetingUser: User;
+
+  @Field(() => User)
+  updatedBy2: User;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [Invoice])
+  invoices: Invoice[];
+
+  @Field(() => [ReturnRequest])
+  returnRequests: ReturnRequest[];
+
+  @Field(() => [UtmGoogleFormCoupon])
+  utmGoogleFormCoupons: UtmGoogleFormCoupon[];
 }

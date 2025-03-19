@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { LabelProduct } from '@/modules/label-product/entities/label-product.entity';
 
 @Entity('labels', { schema: 'modema' })
 export class Label {
@@ -23,4 +24,7 @@ export class Label {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => LabelProduct, (labelProduct) => labelProduct.label)
+  labelProducts: LabelProduct[];
 }

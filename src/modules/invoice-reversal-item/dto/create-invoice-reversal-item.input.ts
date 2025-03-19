@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
 
 @InputType()
 export class CreateInvoiceReversalItemInput {
@@ -22,4 +24,10 @@ export class CreateInvoiceReversalItemInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => InvoiceProduct, { nullable: true })
+  invoiceProduct?: InvoiceProduct;
+
+  @Field(() => InvoiceReversal, { nullable: true })
+  invoiceReversal?: InvoiceReversal;
 }

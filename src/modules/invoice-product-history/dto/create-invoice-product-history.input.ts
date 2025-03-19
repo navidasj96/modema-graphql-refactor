@@ -1,4 +1,11 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { Product } from '@/modules/product/domain/product';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history';
+import { Discount } from '@/modules/discount/domain/discount';
+import { Design } from '@/modules/design/domain/design';
 
 @InputType()
 export class CreateInvoiceProductHistoryInput {
@@ -103,4 +110,31 @@ export class CreateInvoiceProductHistoryInput {
 
   @Field()
   manuallyAdded: boolean;
+
+  @Field(() => Design, { nullable: true })
+  design?: Design;
+
+  @Field(() => Discount, { nullable: true })
+  discount_2?: Discount;
+
+  @Field(() => InvoiceHistory)
+  invoiceHistory: InvoiceHistory;
+
+  @Field(() => Invoice)
+  invoice: Invoice;
+
+  @Field(() => InvoiceProduct, { nullable: true })
+  invoiceProduct?: InvoiceProduct;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
+
+  @Field(() => Product, { nullable: true })
+  relatedProduct?: Product;
+
+  @Field(() => Subproduct, { nullable: true })
+  relatedSubproduct?: Subproduct;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

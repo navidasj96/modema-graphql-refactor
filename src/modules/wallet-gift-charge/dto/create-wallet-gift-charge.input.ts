@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ProductComment } from '@/modules/product-comment/domain/product-comment';
+import { User } from '@/modules/user/domain/user';
+import { Wallet } from '@/modules/wallet/domain/wallet';
 
 @InputType()
 export class CreateWalletGiftChargeInput {
@@ -22,4 +25,13 @@ export class CreateWalletGiftChargeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ProductComment)
+  productComment: ProductComment;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => Wallet)
+  wallet: Wallet;
 }

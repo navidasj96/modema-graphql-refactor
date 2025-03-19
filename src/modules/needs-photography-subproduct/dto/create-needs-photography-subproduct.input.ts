@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
 @InputType()
 export class CreateNeedsPhotographySubproductInput {
@@ -28,4 +30,13 @@ export class CreateNeedsPhotographySubproductInput {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  announcedUser?: User;
+
+  @Field(() => User, { nullable: true })
+  photographyUser?: User;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 
 @InputType()
 export class CreateReturnRequestItemImageInput {
@@ -16,4 +18,10 @@ export class CreateReturnRequestItemImageInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => ReturnRequestItem)
+  returnRequestItem: ReturnRequestItem;
 }

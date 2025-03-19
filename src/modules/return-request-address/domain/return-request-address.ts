@@ -1,5 +1,11 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Address } from '@/modules/address/domain/address';
+import { City } from '@/modules/city/domain/city';
+import { Country } from '@/modules/country/domain/country';
+import { ReturnRequest } from '@/modules/return-request/domain/return-request';
+import { State } from '@/modules/state/domain/state';
+import { User } from '@/modules/user/domain/user';
 
 @ObjectType()
 export class ReturnRequestAddress {
@@ -59,4 +65,22 @@ export class ReturnRequestAddress {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Address)
+  address_2: Address;
+
+  @Field(() => City)
+  city: City;
+
+  @Field(() => Country)
+  country: Country;
+
+  @Field(() => ReturnRequest)
+  returnRequest: ReturnRequest;
+
+  @Field(() => State)
+  state: State;
+
+  @Field(() => User)
+  user: User;
 }

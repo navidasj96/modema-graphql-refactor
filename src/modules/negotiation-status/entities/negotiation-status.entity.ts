@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { NegotiationHistory } from '@/modules/negotiation-history/entities/negotiation-history.entity';
+import { Negotiation } from '@/modules/negotiation/entities/negotiation.entity';
 
 @Index('negotiation_statuses_name_index', ['name'], {})
 @Entity('negotiation_statuses', { schema: 'modema' })
@@ -14,4 +22,13 @@ export class NegotiationStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => NegotiationHistory,
+    (negotiationHistory) => negotiationHistory.negotiationStatus,
+  )
+  negotiationHistories: NegotiationHistory[];
+
+  @OneToMany(() => Negotiation, (negotiation) => negotiation.negotiationStatus)
+  negotiations: Negotiation[];
 }

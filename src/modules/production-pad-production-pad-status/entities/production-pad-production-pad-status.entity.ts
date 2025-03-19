@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
+import { ProductionPadStatus } from '@/modules/production-pad-status/entities/production-pad-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('prod_pad_prod_pad_status_pad_id_foreign', ['productionPadId'], {})
 @Index(
@@ -26,4 +36,30 @@ export class ProductionPadProductionPadStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (users) => users.productionPadProductionPadStatuses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(
+    () => ProductionPad,
+    (productionPad) => productionPad.productionPadProductionPadStatuses,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'production_pad_id', referencedColumnName: 'id' }])
+  productionPad: ProductionPad;
+
+  @ManyToOne(
+    () => ProductionPadStatus,
+    (productionPadStatus) =>
+      productionPadStatus.productionPadProductionPadStatuses,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'production_pad_status_id', referencedColumnName: 'id' },
+  ])
+  productionPadStatus: ProductionPadStatus;
 }

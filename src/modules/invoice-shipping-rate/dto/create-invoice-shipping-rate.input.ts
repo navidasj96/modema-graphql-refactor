@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ShippingService } from '@/modules/shipping-service/domain/shipping-service';
 
 @InputType()
 export class CreateInvoiceShippingRateInput {
@@ -22,4 +24,10 @@ export class CreateInvoiceShippingRateInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => ShippingService, { nullable: true })
+  shippingService?: ShippingService;
 }

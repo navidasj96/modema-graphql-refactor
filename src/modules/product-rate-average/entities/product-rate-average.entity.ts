@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Rate } from '@/modules/rate/entities/rate.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index('product_rate_averages_product_id_index', ['productId'], {})
 @Index(
@@ -39,4 +49,25 @@ export class ProductRateAverage {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Product, (products) => products.productRateAverages, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Rate, (rate) => rate.productRateAverages, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'rate_id', referencedColumnName: 'id' }])
+  rate: Rate;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.productRateAverages, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
 }

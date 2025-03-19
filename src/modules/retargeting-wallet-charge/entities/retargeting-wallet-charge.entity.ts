@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { Wallet } from '@/modules/wallet/entities/wallet.entity';
 
 @Index('retargeting_wallet_charges_user_id_index', ['userId'], {})
 @Index('retargeting_wallet_charges_wallet_id_index', ['walletId'], {})
@@ -32,4 +41,18 @@ export class RetargetingWalletCharge {
 
   @Column('varchar', { name: 'charged_invoices', nullable: true, length: 191 })
   chargedInvoices?: string;
+
+  @ManyToOne(() => User, (user) => user.retargetingWalletCharges, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(() => Wallet, (wallet) => wallet.retargetingWalletCharges, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'wallet_id', referencedColumnName: 'id' }])
+  wallet: Wallet;
 }

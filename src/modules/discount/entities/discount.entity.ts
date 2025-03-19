@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { IncredibleOffer } from '@/modules/incredible-offer/entities/incredible-offer.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @Index('discounts_created_by_index', ['createdBy'], {})
 @Index('discounts_end_date_index', ['endDate'], {})
@@ -100,4 +113,42 @@ export class Discount {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => DiscountSubject,
+    (discountSubject) => discountSubject.discount,
+  )
+  discountSubjects: DiscountSubject[];
+
+  @ManyToOne(() => User, (user) => user.discounts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
+  createdBy2: User;
+
+  @ManyToOne(() => User, (user) => user.discounts2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'updated_by', referencedColumnName: 'id' }])
+  updatedBy2: User;
+
+  @OneToMany(
+    () => IncredibleOffer,
+    (incredibleOffer) => incredibleOffer.discount,
+  )
+  incredibleOffers: IncredibleOffer[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.discount_2,
+  )
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @OneToMany(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.discount_2,
+  )
+  invoiceProducts: InvoiceProduct[];
 }

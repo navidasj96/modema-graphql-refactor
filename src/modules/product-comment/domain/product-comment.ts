@@ -1,5 +1,11 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductCommentLike } from '@/modules/product-comment-like/domain/product-comment-like';
+import { User } from '@/modules/user/domain/user';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { ProductRate } from '@/modules/product-rate/domain/product-rate';
+import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gift-charge';
 
 @ObjectType()
 export class ProductComment {
@@ -47,4 +53,31 @@ export class ProductComment {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ProductCommentLike])
+  productCommentLikes: ProductCommentLike[];
+
+  @Field(() => User, { nullable: true })
+  approvedBy2?: User;
+
+  @Field(() => ProductComment, { nullable: true })
+  parentComment?: ProductComment;
+
+  @Field(() => [ProductComment])
+  productComments: ProductComment[];
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [ProductRate])
+  productRates: ProductRate[];
+
+  @Field(() => WalletGiftCharge, { nullable: true })
+  walletGiftCharges?: WalletGiftCharge;
 }

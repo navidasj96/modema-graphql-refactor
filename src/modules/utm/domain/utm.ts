@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { UserUtm } from '@/modules/user-utm/domain/user-utm';
 
 @ObjectType()
 export class Utm {
@@ -23,4 +24,7 @@ export class Utm {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [UserUtm])
+  userUtms: UserUtm[];
 }

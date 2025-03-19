@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Design } from '@/modules/design/domain/design';
 
 @InputType()
 export class CreateImageLayerInput {
@@ -40,4 +41,7 @@ export class CreateImageLayerInput {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => Design, { nullable: true })
+  design?: Design;
 }

@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductCategory } from '@/modules/product-category/entities/product-category.entity';
 
 @Index('image_sizes_name_unique', ['name'], { unique: true })
 @Index('image_sizes_short_name_unique', ['shortName'], { unique: true })
@@ -24,4 +31,10 @@ export class ImageSize {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ProductCategory,
+    (productCategory) => productCategory.imageSize,
+  )
+  productCategories: ProductCategory[];
 }

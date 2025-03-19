@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductComment } from '@/modules/product-comment/entities/product-comment.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { Wallet } from '@/modules/wallet/entities/wallet.entity';
 
 @Index('wallet_gift_charges_product_comment_id_unique', ['productCommentId'], {
   unique: true,
@@ -32,4 +43,26 @@ export class WalletGiftCharge {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToOne(
+    () => ProductComment,
+    (productComment) => productComment.walletGiftCharges,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_comment_id', referencedColumnName: 'id' }])
+  productComment: ProductComment;
+
+  @ManyToOne(() => User, (user) => user.walletGiftCharges, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(() => Wallet, (wallet) => wallet.walletGiftCharges, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'wallet_id', referencedColumnName: 'id' }])
+  wallet: Wallet;
 }

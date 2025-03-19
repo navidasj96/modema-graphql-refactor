@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Subcolor } from '@/modules/subcolor/entities/subcolor.entity';
 
 @Entity('colors', { schema: 'modema' })
 export class Color {
@@ -16,4 +17,7 @@ export class Color {
 
   @Column('varchar', { name: 'colorCode_original', nullable: true, length: 20 })
   colorCodeOriginal?: string;
+
+  @OneToMany(() => Subcolor, (subcolor) => subcolor.color)
+  subcolors: Subcolor[];
 }

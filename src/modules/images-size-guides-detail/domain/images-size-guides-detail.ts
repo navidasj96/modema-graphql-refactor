@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { SizeGuidesDetail } from '@/modules/size-guides-detail/domain/size-guides-detail';
+import { Image } from '@/modules/image/domain/image';
 
 @ObjectType()
 export class ImagesSizeGuidesDetail {
@@ -20,4 +22,10 @@ export class ImagesSizeGuidesDetail {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => SizeGuidesDetail, { nullable: true })
+  sizeGuidesDetails?: SizeGuidesDetail;
 }

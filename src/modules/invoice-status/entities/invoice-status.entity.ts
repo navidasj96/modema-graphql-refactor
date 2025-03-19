@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/entities/invoice-invoice-status.entity';
+import { InvoiceReversal } from '@/modules/invoice-reversal/entities/invoice-reversal.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 
 @Entity('invoice_statuses', { schema: 'modema' })
 export class InvoiceStatus {
@@ -30,4 +33,22 @@ export class InvoiceStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => InvoiceInvoiceStatus,
+    (invoiceInvoiceStatus) => invoiceInvoiceStatus.invoiceStatus,
+  )
+  invoiceInvoiceStatuses: InvoiceInvoiceStatus[];
+
+  @OneToMany(
+    () => InvoiceReversal,
+    (invoiceReversal) => invoiceReversal.invoiceStatus,
+  )
+  invoiceReversals: InvoiceReversal[];
+
+  @OneToMany(() => Invoice, (invoice) => invoice.currentInvoiceStatus)
+  invoices: Invoice[];
+
+  @OneToMany(() => Invoice, (invoice) => invoice.lockState2)
+  invoices2: Invoice[];
 }

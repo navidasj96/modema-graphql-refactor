@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ContactForm } from '@/modules/contact-form/domain/contact-form';
 
 @InputType()
 export class CreateDepartmentInput {
@@ -16,4 +17,7 @@ export class CreateDepartmentInput {
 
   @Field({ nullable: true })
   nameEn?: string;
+
+  @Field(() => [ContactForm])
+  contactForms: ContactForm[];
 }

@@ -1,4 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnItemStatus } from '@/modules/return-item-status/domain/return-item-status';
+import { User } from '@/modules/user/domain/user';
 
 @InputType()
 export class CreateReturnItemStatusReturnRequestItemInput {
@@ -22,4 +25,13 @@ export class CreateReturnItemStatusReturnRequestItemInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ReturnRequestItem)
+  returnRequestItem: ReturnRequestItem;
+
+  @Field(() => ReturnItemStatus)
+  returnItemStatus: ReturnItemStatus;
+
+  @Field(() => User)
+  user: User;
 }

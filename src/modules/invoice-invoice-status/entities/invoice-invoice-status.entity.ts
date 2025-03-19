@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { InvoiceStatus } from '@/modules/invoice-status/entities/invoice-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('invoice_invoice_status_idx1', ['invoiceId', 'invoiceStatusId'], {})
 @Index('invoice_invoice_status_invoice_id_index', ['invoiceId'], {})
@@ -35,4 +45,26 @@ export class InvoiceInvoiceStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceInvoiceStatuses, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => InvoiceStatus,
+    (invoiceStatus) => invoiceStatus.invoiceInvoiceStatuses,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_status_id', referencedColumnName: 'id' }])
+  invoiceStatus: InvoiceStatus;
+
+  @ManyToOne(() => User, (users) => users.invoiceInvoiceStatuses, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }
