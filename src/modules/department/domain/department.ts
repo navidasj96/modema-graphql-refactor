@@ -1,7 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ContactForm } from '@/modules/contact-form/domain/contact-form';
 
+@InputType('DepartmentDomain')
 @ObjectType()
 export class Department {
   @IDField(() => ID)

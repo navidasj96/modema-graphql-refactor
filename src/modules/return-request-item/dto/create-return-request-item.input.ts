@@ -11,7 +11,7 @@ import { ReturnReason } from '@/modules/return-reason/domain/return-reason';
 import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateReturnRequestItemInput')
 export class CreateReturnRequestItemInput {
   @Field()
   id: number;

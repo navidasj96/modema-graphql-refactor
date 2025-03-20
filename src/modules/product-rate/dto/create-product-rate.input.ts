@@ -5,7 +5,7 @@ import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { User } from '@/modules/user/domain/user';
 import { ProductComment } from '@/modules/product-comment/domain/product-comment';
 
-@InputType()
+@InputType('CreateProductRateInput')
 export class CreateProductRateInput {
   @Field()
   id: number;

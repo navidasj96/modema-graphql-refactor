@@ -1,6 +1,7 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 
+@InputType('JobDomain')
 @ObjectType()
 export class Job {
   @IDField(() => ID)

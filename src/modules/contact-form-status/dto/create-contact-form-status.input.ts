@@ -4,7 +4,7 @@ import { CampaignUefaEuroSubscriber } from '@/modules/campaign-uefa-euro-subscri
 import { ContactFormHistory } from '@/modules/contact-form-history/domain/contact-form-history';
 import { ContactForm } from '@/modules/contact-form/domain/contact-form';
 
-@InputType()
+@InputType('CreateContactFormStatusInputs')
 export class CreateContactFormStatusInput {
   @Field()
   id: number;

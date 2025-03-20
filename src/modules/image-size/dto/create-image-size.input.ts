@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { ProductCategory } from '@/modules/product-category/domain/product-category';
 
-@InputType()
+@InputType('CreateImageSizeInput')
 export class CreateImageSizeInput {
   @Field()
   id: number;

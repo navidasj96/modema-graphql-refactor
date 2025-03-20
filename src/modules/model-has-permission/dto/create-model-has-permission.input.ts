@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Permission } from '@/modules/permission/domain/permission';
 
-@InputType()
+@InputType('CreateModelHasPermissionInput')
 export class CreateModelHasPermissionInput {
   @Field()
   permissionId: number;

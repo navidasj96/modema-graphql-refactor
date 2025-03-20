@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { CustomerRequestFile } from '@/modules/customer-request-file/domain/customer-request-file';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateCustomerRequestInput')
 export class CreateCustomerRequestInput {
   @Field()
   id: number;

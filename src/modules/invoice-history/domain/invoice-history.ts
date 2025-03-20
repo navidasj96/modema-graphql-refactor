@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { User } from '@/modules/user/domain/user';
 import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
@@ -6,6 +6,7 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
+@InputType('InvoiceHistoryDomain')
 @ObjectType()
 export class InvoiceHistory {
   @IDField(() => ID)

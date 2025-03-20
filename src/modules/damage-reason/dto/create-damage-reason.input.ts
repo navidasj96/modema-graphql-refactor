@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 
-@InputType()
+@InputType('CreateDamageReasonInput')
 export class CreateDamageReasonInput {
   @Field()
   id: number;

@@ -3,7 +3,7 @@ import { BasicCarpetColor } from '@/modules/basic-carpet-color/domain/basic-carp
 import { Product } from '@/modules/product/domain/product';
 import { Video } from '@/modules/video/domain/video';
 
-@InputType()
+@InputType('CreateProductVideoInput')
 export class CreateProductVideoInput {
   @Field()
   id: number;

@@ -4,7 +4,7 @@ import { Product } from '@/modules/product/domain/product';
 import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateReturnedInvoiceProductInput')
 export class CreateReturnedInvoiceProductInput {
   @Field()
   id: number;

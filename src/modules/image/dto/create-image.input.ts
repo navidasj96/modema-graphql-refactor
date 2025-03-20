@@ -19,7 +19,7 @@ import { SubproductSpecialImage } from '@/modules/subproduct-special-image/domai
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { Tag } from '@/modules/tag/domain/tag';
 
-@InputType()
+@InputType('CreateImageInput')
 export class CreateImageInput {
   @Field()
   id: number;

@@ -1,10 +1,11 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
 import { Product } from '@/modules/product/domain/product';
 import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('ReturnedInvoiceProductDomain')
 @ObjectType()
 export class ReturnedInvoiceProduct {
   @IDField(() => ID)

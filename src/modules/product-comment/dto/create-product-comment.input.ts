@@ -7,7 +7,7 @@ import { ProductRate } from '@/modules/product-rate/domain/product-rate';
 import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gift-charge';
 import { ProductComment } from '@/modules/product-comment/domain/product-comment';
 
-@InputType()
+@InputType('CreateProductCommentInput')
 export class CreateProductCommentInput {
   @Field()
   id: number;

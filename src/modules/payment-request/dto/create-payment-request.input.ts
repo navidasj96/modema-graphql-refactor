@@ -3,7 +3,7 @@ import { PaymentRequestStatus } from '@/modules/payment-request-status/domain/pa
 import { Visitor } from '@/modules/visitor/domain/visitor';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreatePaymentRequestInput')
 export class CreatePaymentRequestInput {
   @Field()
   id: number;

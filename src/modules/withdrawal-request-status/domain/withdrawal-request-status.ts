@@ -1,7 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { WithdrawalRequest } from '@/modules/withdrawal-request/domain/withdrawal-request';
 
+@InputType('WithdrawalRequestStatusDomain')
 @ObjectType()
 export class WithdrawalRequestStatus {
   @IDField(() => ID)

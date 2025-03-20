@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateInvoiceModeInput')
 export class CreateInvoiceModeInput {
   @Field()
   id: number;

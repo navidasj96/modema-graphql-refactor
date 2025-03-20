@@ -1,10 +1,11 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { InvoiceReversalItem } from '@/modules/invoice-reversal-item/domain/invoice-reversal-item';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { InvoiceStatus } from '@/modules/invoice-status/domain/invoice-status';
 import { User } from '@/modules/user/domain/user';
 
+@InputType('InvoiceReversalDomain')
 @ObjectType()
 export class InvoiceReversal {
   @IDField(() => ID)

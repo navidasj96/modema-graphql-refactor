@@ -4,7 +4,7 @@ import { Attribute } from '@/modules/attribute/entities/attribute.entity';
 import { AttributeProduct } from '@/modules/attribute-product/entities/attribute-product.entity';
 import { AttributeSubproduct } from '@/modules/attribute-subproduct/entities/attribute-subproduct.entity';
 
-@InputType()
+@InputType('CreateAttributeItemInput')
 export class CreateAttributeItemInput {
   @Field()
   id: number;

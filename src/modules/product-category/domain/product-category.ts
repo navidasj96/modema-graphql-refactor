@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
 import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
 import { Image } from '@/modules/image/domain/image';
@@ -8,6 +8,7 @@ import { ProductProductCategory } from '@/modules/product-product-category/domai
 import { AttributeGroup } from '@/modules/attribute-group/domain/attribute-group';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 
+@InputType('ProductCategoryDomain')
 @ObjectType()
 export class ProductCategory {
   @IDField(() => ID)

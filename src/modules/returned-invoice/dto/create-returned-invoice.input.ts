@@ -4,7 +4,7 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ReturnReason } from '@/modules/return-reason/domain/return-reason';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateReturnedInvoiceInput')
 export class CreateReturnedInvoiceInput {
   @Field()
   id: number;

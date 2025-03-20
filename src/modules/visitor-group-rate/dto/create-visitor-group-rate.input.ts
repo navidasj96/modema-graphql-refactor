@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { VisitorGroup } from '@/modules/visitor-group/domain/visitor-group';
 
-@InputType()
+@InputType('CreateVisitorGroupRateInput')
 export class CreateVisitorGroupRateInput {
   @Field()
   id: number;

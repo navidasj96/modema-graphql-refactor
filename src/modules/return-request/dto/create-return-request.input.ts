@@ -11,7 +11,7 @@ import { User } from '@/modules/user/domain/user';
 import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
 import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 
-@InputType()
+@InputType('CreateReturnRequestInput')
 export class CreateReturnRequestInput {
   @Field()
   id: number;

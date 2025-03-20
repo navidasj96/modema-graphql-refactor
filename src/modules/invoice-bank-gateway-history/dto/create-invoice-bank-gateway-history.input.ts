@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { PreorderRegister } from '@/modules/preorder-register/domain/preorder-register';
 
-@InputType()
+@InputType('CreateInvoiceBankGatewayHistoryInput')
 export class CreateInvoiceBankGatewayHistoryInput {
   @Field()
   id: number;
@@ -30,7 +30,7 @@ export class CreateInvoiceBankGatewayHistoryInput {
 
   @Field({ nullable: true })
   preorderRegisterId?: number;
-  
+
   @Field(() => Invoice, { nullable: true })
   invoice?: Invoice;
 

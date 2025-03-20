@@ -79,7 +79,7 @@ import { User } from '@/modules/user/domain/user';
 import { Field, InputType } from '@nestjs/graphql';
 import { Activity } from '@/modules/activity/domain/activity';
 
-@InputType()
+@InputType('CreateUserInput')
 export class CreateUserInput {
   @Field()
   id: number;

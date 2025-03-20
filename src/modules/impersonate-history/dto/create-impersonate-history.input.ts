@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateImpersonateHistoryInput')
 export class CreateImpersonateHistoryInput {
   @Field()
   id: string;

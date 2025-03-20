@@ -3,7 +3,7 @@ import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/
 import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
 
-@InputType()
+@InputType('CreateReturnReasonInput')
 export class CreateReturnReasonInput {
   @Field()
   id: number;

@@ -8,7 +8,7 @@ import { PrintRip } from '@/modules/print-rip/domain/print-rip';
 import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
-@InputType()
+@InputType('CreateInvoiceProductItemInput')
 export class CreateInvoiceProductItemInput {
   @Field()
   id: number;

@@ -3,7 +3,7 @@ import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-histor
 import { User } from '@/modules/user/domain/user';
 import { InvoicePaymentType } from '@/modules/invoice-payment-type/domain/invoice-payment-type';
 
-@InputType()
+@InputType('CreatePreorderRegisterInput')
 export class CreatePreorderRegisterInput {
   @Field()
   id: number;

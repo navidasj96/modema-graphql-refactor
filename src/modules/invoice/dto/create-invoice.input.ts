@@ -30,7 +30,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateInvoiceInput')
 export class CreateInvoiceInput {
   @Field()
   id: number;

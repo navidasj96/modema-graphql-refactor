@@ -6,7 +6,7 @@ import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { State } from '@/modules/state/domain/state';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateReturnRequestAddressInput')
 export class CreateReturnRequestAddressInput {
   @Field()
   id: number;

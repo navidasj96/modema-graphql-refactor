@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateAutomationEventInput')
 export class CreateAutomationEventInput {
   @Field()
   id: number;

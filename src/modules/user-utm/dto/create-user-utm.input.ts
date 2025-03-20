@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { User } from '@/modules/user/domain/user';
 import { Utm } from '@/modules/utm/domain/utm';
 
-@InputType()
+@InputType('CreateUserUtmInput')
 export class CreateUserUtmInput {
   @Field()
   id: number;

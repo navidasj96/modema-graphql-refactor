@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-offer';
 import { ProductColorImage } from '@/modules/product-color-image/domain/product-color-image';
@@ -8,6 +8,7 @@ import { Product } from '@/modules/product/domain/product';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
+@InputType('BasicCarpetColorDomain')
 @ObjectType()
 export class BasicCarpetColor {
   @IDField(() => ID)

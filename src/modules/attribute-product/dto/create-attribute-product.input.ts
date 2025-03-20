@@ -3,7 +3,7 @@ import { Attribute } from '@/modules/attribute/domain/attribute';
 import { Product } from '@/modules/product/domain/product';
 import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
 
-@InputType()
+@InputType('CreateAttributeProductInput')
 export class CreateAttributeProductInput {
   @Field()
   id: number;

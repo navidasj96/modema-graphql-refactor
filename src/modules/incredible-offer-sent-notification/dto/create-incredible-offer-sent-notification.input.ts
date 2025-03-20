@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateIncredibleOfferSentNotificationInput')
 export class CreateIncredibleOfferSentNotificationInput {
   @Field()
   id: number;

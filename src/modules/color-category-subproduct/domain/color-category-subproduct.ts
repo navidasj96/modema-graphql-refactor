@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ColorCategory } from '@/modules/color-category/domain/color-category';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('ColorCategorySubproductDomain')
 @ObjectType()
 export class ColorCategorySubproduct {
   @IDField(() => ID)

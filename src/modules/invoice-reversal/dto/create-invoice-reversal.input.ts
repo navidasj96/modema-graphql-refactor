@@ -4,7 +4,7 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { InvoiceStatus } from '@/modules/invoice-status/domain/invoice-status';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateInvoiceReversalInput')
 export class CreateInvoiceReversalInput {
   @Field()
   id: number;

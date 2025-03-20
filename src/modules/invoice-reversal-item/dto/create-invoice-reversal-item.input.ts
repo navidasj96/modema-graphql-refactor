@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
 import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
 
-@InputType()
+@InputType('CreateInvoiceReversalItemInput')
 export class CreateInvoiceReversalItemInput {
   @Field()
   id: number;

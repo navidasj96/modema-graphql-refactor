@@ -3,7 +3,7 @@ import { ProductCategoryRate } from '@/modules/product-category-rate/entities/pr
 import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
 import { ProductRateAverage } from '@/modules/product-rate-average/entities/product-rate-average.entity';
 
-@InputType()
+@InputType('CreateRateInput')
 export class CreateRateInput {
   @Field()
   id: number;

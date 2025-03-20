@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/domain/basic-carpet-size-detail';
 import { Image } from '@/modules/image/domain/image';
@@ -13,6 +13,7 @@ import { RipTemplateItem } from '@/modules/rip-template-item/domain/rip-template
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
+@InputType('BasicCarpetSizeDomain')
 @ObjectType()
 export class BasicCarpetSize {
   @IDField(() => ID)

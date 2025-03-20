@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { CarpetMaterial } from '@/modules/carpet-material/domain/carpet-material';
 import { CarpetShape } from '@/modules/carpet-shape/domain/carpet-shape';
@@ -10,6 +10,7 @@ import { TextLayer } from '@/modules/text-layer/domain/text-layer';
 import { UserCart } from '@/modules/user-cart/domain/user-cart';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
+@InputType('DesignDomain')
 @ObjectType()
 export class Design {
   @IDField(() => ID)

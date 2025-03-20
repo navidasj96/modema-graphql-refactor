@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateSpecialOfferInput')
 export class CreateSpecialOfferInput {
   @Field()
   id: number;

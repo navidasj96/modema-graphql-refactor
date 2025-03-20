@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { OneToMany } from 'typeorm';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateBasicCarpetBrandInput')
 export class CreateBasicCarpetBrandInput {
   @Field()
   id: number;

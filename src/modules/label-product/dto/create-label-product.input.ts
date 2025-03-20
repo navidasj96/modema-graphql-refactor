@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Label } from '@/modules/label/domain/label';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateLabelProductInput')
 export class CreateLabelProductInput {
   @Field()
   id: number;

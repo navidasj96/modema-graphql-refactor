@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ContactFormHistory } from '@/modules/contact-form-history/domain/contact-form-history';
 import { ContactFormStatus } from '@/modules/contact-form-status/domain/contact-form-status';
@@ -6,6 +6,7 @@ import { Country } from '@/modules/country/domain/country';
 import { Department } from '@/modules/department/domain/department';
 import { User } from '@/modules/user/domain/user';
 
+@InputType('ContactFormDomain')
 @ObjectType()
 export class ContactForm {
   @IDField(() => ID)

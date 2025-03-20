@@ -3,7 +3,7 @@ import { User } from '@/modules/user/domain/user';
 import { Transaction } from '@/modules/transaction/domain/transaction';
 import { Wallet } from '@/modules/wallet/domain/wallet';
 
-@InputType()
+@InputType('CreateWalletHistoryInput')
 export class CreateWalletHistoryInput {
   @Field()
   id: number;

@@ -3,7 +3,7 @@ import { ProductComment } from '@/modules/product-comment/domain/product-comment
 import { User } from '@/modules/user/domain/user';
 import { Wallet } from '@/modules/wallet/domain/wallet';
 
-@InputType()
+@InputType('CreateWalletGiftChargeInput')
 export class CreateWalletGiftChargeInput {
   @Field()
   id: number;

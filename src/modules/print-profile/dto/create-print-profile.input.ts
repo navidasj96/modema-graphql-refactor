@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreatePrintProfileInput')
 export class CreatePrintProfileInput {
   @Field()
   id: number;

@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { AttributeSubproduct } from '@/modules/attribute-subproduct/entities/attribute-subproduct.entity';
 import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/entities/color-category-subproduct.entity';
@@ -36,6 +36,7 @@ import { TorobProduct } from '@/modules/torob-product/entities/torob-product.ent
 import { UserCart } from '@/modules/user-cart/entities/user-cart.entity';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
+@InputType('SubproductDomain')
 @ObjectType()
 export class Subproduct {
   @IDField(() => ID)

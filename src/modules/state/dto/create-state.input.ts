@@ -7,7 +7,7 @@ import { ReturnRequestAddress } from '@/modules/return-request-address/domain/re
 import { SenderInformation } from '@/modules/sender-information/domain/sender-information';
 import { Country } from '@/modules/country/domain/country';
 
-@InputType()
+@InputType('CreateStateInput')
 export class CreateStateInput {
   @Field()
   id: number;

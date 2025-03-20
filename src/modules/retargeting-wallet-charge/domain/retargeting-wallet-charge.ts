@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { User } from '@/modules/user/domain/user';
 import { Wallet } from '@/modules/wallet/domain/wallet';
 
+@InputType('RetargetingWalletChargeDomain')
 @ObjectType()
 export class RetargetingWalletCharge {
   @IDField(() => ID)

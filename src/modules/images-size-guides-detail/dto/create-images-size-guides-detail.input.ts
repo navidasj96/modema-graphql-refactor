@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { SizeGuidesDetail } from '@/modules/size-guides-detail/domain/size-guides-detail';
 import { Image } from '@/modules/image/domain/image';
 
-@InputType()
+@InputType('CreateImagesSizeGuidesDetailInput')
 export class CreateImagesSizeGuidesDetailInput {
   @Field()
   id: number;

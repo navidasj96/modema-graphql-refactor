@@ -3,7 +3,7 @@ import { ContactForm } from '@/modules/contact-form/domain/contact-form';
 import { ContactFormStatus } from '@/modules/contact-form-status/domain/contact-form-status';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateContactFormHistoryInput')
 export class CreateContactFormHistoryInput {
   @Field()
   id: number;

@@ -1,7 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { CustomerRequest } from '@/modules/customer-request/domain/customer-request';
 
+@InputType('CustomerRequestFileDomain')
 @ObjectType()
 export class CustomerRequestFile {
   @IDField(() => ID)

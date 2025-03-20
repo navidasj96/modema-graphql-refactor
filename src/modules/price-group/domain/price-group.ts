@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
 import { PriceGroupSize } from '@/modules/price-group-size/domain/price-group-size';
 import { Product } from '@/modules/product/domain/product';
 
+@InputType('PriceGroupDomain')
 @ObjectType()
 export class PriceGroup {
   @IDField(() => ID)

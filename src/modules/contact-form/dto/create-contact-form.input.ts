@@ -5,7 +5,7 @@ import { Country } from '@/modules/country/domain/country';
 import { Department } from '@/modules/department/domain/department';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateContactFormInput')
 export class CreateContactFormInput {
   @Field()
   id: number;

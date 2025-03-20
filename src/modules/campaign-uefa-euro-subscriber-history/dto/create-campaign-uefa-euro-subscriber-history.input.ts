@@ -3,7 +3,7 @@ import { User } from '@/modules/user/domain/user';
 import { ContactFormStatus } from '@/modules/contact-form-status/domain/contact-form-status';
 import { CampaignUefaEuroSubscriber } from '@/modules/campaign-uefa-euro-subscriber/domain/campaign-uefa-euro-subscriber';
 
-@InputType()
+@InputType('CreateCampaignUefaEuroSubscriberHistoryInput')
 export class CreateCampaignUefaEuroSubscriberHistoryInput {
   @Field()
   id: number;

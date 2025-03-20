@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { Image } from '@/modules/image/domain/image';
 import { SizeGuidesDetail } from '@/modules/size-guides-detail/domain/size-guides-detail';
 
+@InputType('SizeGuideDomain')
 @ObjectType()
 export class SizeGuide {
   @IDField(() => ID)

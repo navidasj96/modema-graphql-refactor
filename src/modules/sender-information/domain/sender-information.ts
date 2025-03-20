@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { City } from '@/modules/city/domain/city';
 import { Country } from '@/modules/country/domain/country';
 import { State } from '@/modules/state/domain/state';
 
+@InputType('SenderInformationDomain')
 @ObjectType()
 export class SenderInformation {
   @IDField(() => ID)

@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateBasicCarpetBorderInput')
 export class CreateBasicCarpetBorderInput {
   @Field()
   id: number;

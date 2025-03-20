@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/domain/production-pad-production-pad-status';
 import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
 
-@InputType()
+@InputType('CreateProductionPadStatusInput')
 export class CreateProductionPadStatusInput {
   @Field()
   id: number;

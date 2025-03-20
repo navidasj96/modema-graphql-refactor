@@ -3,7 +3,7 @@ import { ProductCategory } from '@/modules/product-category/domain/product-categ
 import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
 import { AttributeAttributeGroup } from '@/modules/attribute-attribute-group/domain/attribute-attribute-group';
 
-@InputType()
+@InputType('CreateAttributeGroupInput')
 export class CreateAttributeGroupInput {
   @Field()
   id: number;

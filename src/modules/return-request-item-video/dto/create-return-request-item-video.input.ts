@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 import { Video } from '@/modules/video/domain/video';
 
-@InputType()
+@InputType('CreateReturnRequestItemVideoInput')
 export class CreateReturnRequestItemVideoInput {
   @Field()
   id: number;

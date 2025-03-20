@@ -4,7 +4,7 @@ import { VisitorGroupRate } from '@/modules/visitor-group-rate/domain/visitor-gr
 import { VisitorSale } from '@/modules/visitor-sale/domain/visitor-sale';
 import { Visitor } from '@/modules/visitor/domain/visitor';
 
-@InputType()
+@InputType('CreateVisitorGroupInput')
 export class CreateVisitorGroupInput {
   @Field()
   id: number;

@@ -12,7 +12,7 @@ import { RipTemplateItem } from '@/modules/rip-template-item/domain/rip-template
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
-@InputType()
+@InputType('CreateBasicCarpetSizeInput')
 export class CreateBasicCarpetSizeInput {
   @Field()
   id: number;

@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ModelHasRole } from '@/modules/model-has-role/domain/model-has-role';
 import { Permission } from '@/modules/permission/domain/permission';
 
+@InputType('RoleDomain')
 @ObjectType()
 export class Role {
   @IDField(() => ID)

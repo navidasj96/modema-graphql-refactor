@@ -3,7 +3,7 @@ import { InvoicePayment } from '@/modules/invoice-payment/domain/invoice-payment
 import { PreorderRegister } from '@/modules/preorder-register/domain/preorder-register';
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 
-@InputType()
+@InputType('CreateInvoicePaymentTypeInput')
 export class CreateInvoicePaymentTypeInput {
   @Field()
   id: number;

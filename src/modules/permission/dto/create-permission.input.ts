@@ -4,7 +4,7 @@ import { PermissionGroup } from '@/modules/permission-group/domain/permission-gr
 import { Role } from '@/modules/role/domain/role';
 import { Permission } from '@/modules/permission/domain/permission';
 
-@InputType()
+@InputType('CreatePermissionInput')
 export class CreatePermissionInput {
   @Field()
   id: number;

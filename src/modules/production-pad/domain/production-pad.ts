@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/domain/production-pad-production-pad-status';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { ProductionPadStatus } from '@/modules/production-pad-status/domain/production-pad-status';
 
+@InputType('ProductionPadDomain')
 @ObjectType()
 export class ProductionPad {
   @IDField(() => ID)

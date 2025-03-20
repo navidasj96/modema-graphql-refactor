@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { ModemaAcceleratorImage } from '@/modules/modema-accelerator-image/domain/modema-accelerator-image';
 import { ModemaAcceleratorVideo } from '@/modules/modema-accelerator-video/domain/modema-accelerator-video';
 
-@InputType()
+@InputType('CreateModemaAcceleratorInput')
 export class CreateModemaAcceleratorInput {
   @Field()
   id: number;

@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
 
-@InputType()
+@InputType('CreateRipTemplateItemInput')
 export class CreateRipTemplateItemInput {
   @Field()
   id: number;

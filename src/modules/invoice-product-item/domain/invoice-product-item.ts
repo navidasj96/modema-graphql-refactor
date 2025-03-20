@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ExitControlItem } from '@/modules/exit-control-item/domain/exit-control-item';
 import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/domain/invoice-product-item-invoice-product-status';
@@ -9,6 +9,7 @@ import { PrintRip } from '@/modules/print-rip/domain/print-rip';
 import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
+@InputType('InvoiceProductItemDomain')
 @ObjectType()
 export class InvoiceProductItem {
   @IDField(() => ID)

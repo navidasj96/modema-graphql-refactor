@@ -5,7 +5,7 @@ import { State } from '@/modules/state/domain/state';
 import { User } from '@/modules/user/domain/user';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateBasicCarpetDesignerInput')
 export class CreateBasicCarpetDesignerInput {
   @Field()
   id: number;

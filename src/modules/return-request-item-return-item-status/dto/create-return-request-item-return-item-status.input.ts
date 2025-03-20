@@ -3,7 +3,7 @@ import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-r
 import { ReturnItemStatus } from '@/modules/return-item-status/domain/return-item-status';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateReturnRequestItemReturnItemStatusInput')
 export class CreateReturnRequestItemReturnItemStatusInput {
   @Field()
   id: number;

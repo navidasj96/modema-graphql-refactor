@@ -4,7 +4,7 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { InvoicePaymentType } from '@/modules/invoice-payment-type/domain/invoice-payment-type';
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 
-@InputType()
+@InputType('CreateInvoicePaymentInput')
 export class CreateInvoicePaymentInput {
   @Field()
   id: number;

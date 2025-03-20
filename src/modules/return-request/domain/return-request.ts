@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ReturnRequestHistory } from '@/modules/return-request-history/domain/return-request-history';
 import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
@@ -11,6 +11,7 @@ import { ReturnType } from '@/modules/return-type/domain/return-type';
 import { User } from '@/modules/user/domain/user';
 import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
 
+@InputType('ReturnRequestDomain')
 @ObjectType()
 export class ReturnRequest {
   @IDField(() => ID)

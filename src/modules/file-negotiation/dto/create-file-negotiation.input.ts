@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Negotiation } from '@/modules/negotiation/domain/negotiation';
 import { File } from '@/modules/file/domain/file';
 
-@InputType()
+@InputType('CreateFileNegotiationInput')
 export class CreateFileNegotiationInput {
   @Field()
   id: number;

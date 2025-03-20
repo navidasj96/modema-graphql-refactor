@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { Image } from '@/modules/image/domain/image';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('SubproductSpecialImageDomain')
 @ObjectType()
 export class SubproductSpecialImage {
   @IDField(() => ID)

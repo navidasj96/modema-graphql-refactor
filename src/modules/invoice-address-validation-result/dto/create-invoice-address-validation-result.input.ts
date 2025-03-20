@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Address } from '@/modules/address/domain/address';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateInvoiceAddressValidationResultInput')
 export class CreateInvoiceAddressValidationResultInput {
   @Field()
   id: number;

@@ -4,7 +4,7 @@ import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gif
 import { WalletHistory } from '@/modules/wallet-history/domain/wallet-history';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateWalletInputs')
 export class CreateWalletInput {
   @Field()
   id: number;

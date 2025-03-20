@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Role } from '@/modules/role/domain/role';
 
-@InputType()
+@InputType('CreateModelHasRoleInput')
 export class CreateModelHasRoleInput {
   @Field()
   roleId: number;

@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateTmpSpanishNameInput')
 export class CreateTmpSpanishNameInput {
   @Field({ nullable: true })
   name?: string;

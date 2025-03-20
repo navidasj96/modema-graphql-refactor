@@ -3,7 +3,7 @@ import { City } from '@/modules/city/domain/city';
 import { Country } from '@/modules/country/domain/country';
 import { State } from '@/modules/state/domain/state';
 
-@InputType()
+@InputType('CreateSenderInformationInput')
 export class CreateSenderInformationInput {
   @Field()
   id: number;

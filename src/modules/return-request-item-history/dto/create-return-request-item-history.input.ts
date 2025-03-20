@@ -8,7 +8,7 @@ import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateReturnRequestItemHistoryInput')
 export class CreateReturnRequestItemHistoryInput {
   @Field()
   id: number;

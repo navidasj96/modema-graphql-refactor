@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { CampaignVotingImage } from '@/modules/campaign-voting-image/domain/campaign-voting-image';
@@ -20,6 +20,7 @@ import { SubproductSpecialImage } from '@/modules/subproduct-special-image/domai
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { Tag } from '@/modules/tag/domain/tag';
 
+@InputType('ImageDomain')
 @ObjectType()
 export class Image {
   @IDField(() => ID)

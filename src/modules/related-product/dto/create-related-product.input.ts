@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateRelatedProductInput')
 export class CreateRelatedProductInput {
   @Field()
   id: number;

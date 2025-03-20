@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateHyperstarCodeInput')
 export class CreateHyperstarCodeInput {
   @Field()
   code: string;

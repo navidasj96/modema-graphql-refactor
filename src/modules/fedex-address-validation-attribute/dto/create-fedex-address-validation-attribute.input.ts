@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateFedexAddressValidationAttributeInput')
 export class CreateFedexAddressValidationAttributeInput {
   @Field()
   id: number;

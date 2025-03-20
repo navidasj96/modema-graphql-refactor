@@ -1,7 +1,7 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateCampaignSubscriptionInput')
 export class CreateCampaignSubscriptionInput {
   @Field(() => Int)
   id: number;

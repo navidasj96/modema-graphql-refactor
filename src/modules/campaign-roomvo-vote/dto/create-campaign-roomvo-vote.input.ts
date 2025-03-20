@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { CampaignRoomvoImage } from '@/modules/campaign-roomvo-image/domain/campaign-roomvo-image';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateCampaignRoomvoVoteInput')
 export class CreateCampaignRoomvoVoteInput {
   @Field()
   id: number;

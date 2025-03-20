@@ -6,7 +6,7 @@ import { VisitorSale } from '@/modules/visitor-sale/domain/visitor-sale';
 import { User } from '@/modules/user/domain/user';
 import { VisitorGroup } from '@/modules/visitor-group/domain/visitor-group';
 
-@InputType()
+@InputType('CreateVisitorInput')
 export class CreateVisitorInput {
   @Field()
   id: number;

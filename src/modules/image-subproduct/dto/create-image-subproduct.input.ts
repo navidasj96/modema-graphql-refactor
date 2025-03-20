@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Image } from '@/modules/image/domain/image';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateImageSubproductInput')
 export class CreateImageSubproductInput {
   @Field()
   id: number;

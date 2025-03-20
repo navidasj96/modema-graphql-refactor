@@ -5,7 +5,7 @@ import { ReturnRequestItemVideo } from '@/modules/return-request-item-video/doma
 import { SubproductVideo } from '@/modules/subproduct-video/domain/subproduct-video';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateVideoInput')
 export class CreateVideoInput {
   @Field()
   id: number;

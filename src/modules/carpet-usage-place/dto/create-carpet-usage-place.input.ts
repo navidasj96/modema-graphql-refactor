@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { CarpetUsagePlaceInvoiceProduct } from '@/modules/carpet-usage-place-invoice-product/domain/carpet-usage-place-invoice-product';
 import { CarpetUsagePlaceUser } from '@/modules/carpet-usage-place-user/domain/carpet-usage-place-user';
 
-@InputType()
+@InputType('CreateCarpetUsagePlaceInput')
 export class CreateCarpetUsagePlaceInput {
   @Field()
   id: number;

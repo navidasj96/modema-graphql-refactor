@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoice-rates-result';
 import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/domain/invoice-shipping-rate';
 
-@InputType()
+@InputType('CreateShippingServiceInput')
 export class CreateShippingServiceInput {
   @Field()
   id: number;

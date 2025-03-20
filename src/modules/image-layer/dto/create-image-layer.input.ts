@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Design } from '@/modules/design/domain/design';
 
-@InputType()
+@InputType('CreateImageLayerInput')
 export class CreateImageLayerInput {
   @Field()
   id: number;

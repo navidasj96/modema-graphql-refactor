@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { PaymentMethod } from '@/modules/payment-method/domain/payment-method';
 
-@InputType()
+@InputType('CreatePaymentMethodFieldInput')
 export class CreatePaymentMethodFieldInput {
   @Field()
   id: number;

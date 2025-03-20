@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotiation-history';
 import { Negotiation } from '@/modules/negotiation/domain/negotiation';
 
-@InputType()
+@InputType('CreateNegotiationStatusInput')
 export class CreateNegotiationStatusInput {
   @Field()
   id: number;

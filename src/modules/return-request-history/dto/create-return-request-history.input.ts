@@ -6,7 +6,7 @@ import { ReturnStatus } from '@/modules/return-status/domain/return-status';
 import { ReturnType } from '@/modules/return-type/domain/return-type';
 import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
 
-@InputType()
+@InputType('CreateReturnRequestHistoryInput')
 export class CreateReturnRequestHistoryInput {
   @Field()
   id: number;

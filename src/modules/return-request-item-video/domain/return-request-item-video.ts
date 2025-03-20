@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 import { Video } from '@/modules/video/domain/video';
 
+@InputType('ReturnRequestItemVideoDomain')
 @ObjectType()
 export class ReturnRequestItemVideo {
   @IDField(() => ID)

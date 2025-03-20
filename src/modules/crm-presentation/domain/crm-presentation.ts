@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 
+@InputType('CrmPresentationDomain')
 @ObjectType()
 export class CrmPresentation {
-  @IDField(()=>ID)
+  @IDField(() => ID)
   mobile?: string;
 
   @Field({ nullable: true })

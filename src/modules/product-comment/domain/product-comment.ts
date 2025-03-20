@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ProductCommentLike } from '@/modules/product-comment-like/domain/product-comment-like';
 import { User } from '@/modules/user/domain/user';
@@ -7,6 +7,7 @@ import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { ProductRate } from '@/modules/product-rate/domain/product-rate';
 import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gift-charge';
 
+@InputType('ProductCommentDomain')
 @ObjectType()
 export class ProductComment {
   @IDField(() => ID)

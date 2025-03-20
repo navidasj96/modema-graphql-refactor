@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { CarpetFeature } from '@/modules/carpet-feature/domain/carpet-feature';
 import { User } from '@/modules/user/domain/user';
 
+@InputType('CarpetFeatureUserDomain')
 @ObjectType()
 export class CarpetFeatureUser {
   @IDField(() => ID)

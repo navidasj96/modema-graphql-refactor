@@ -7,7 +7,7 @@ import { Product } from '@/modules/product/domain/product';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
-@InputType()
+@InputType('CreateBasicCarpetColorInput')
 export class CreateBasicCarpetColorInput {
   @Field()
   id: number;

@@ -4,7 +4,7 @@ import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet
 import { Product } from '@/modules/product/domain/product';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateTorobProductInput')
 export class CreateTorobProductInput {
   @Field()
   id: number;

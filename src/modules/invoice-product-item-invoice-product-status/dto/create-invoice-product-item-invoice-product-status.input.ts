@@ -3,7 +3,7 @@ import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoic
 import { User } from '@/modules/user/domain/user';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
-@InputType()
+@InputType('CreateInvoiceProductItemInvoiceProductStatusInput')
 export class CreateInvoiceProductItemInvoiceProductStatusInput {
   @Field()
   id: number;

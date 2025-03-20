@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Image } from '@/modules/image/domain/image';
 import { Pattern } from '@/modules/pattern/domain/pattern';
 
-@InputType()
+@InputType('CreatePatternCategoryInput')
 export class CreatePatternCategoryInput {
   @Field()
   id: number;

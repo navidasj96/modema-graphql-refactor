@@ -4,7 +4,7 @@ import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/
 import { ReturnRequestItemReturnItemStatus } from '@/modules/return-request-item-return-item-status/domain/return-request-item-return-item-status';
 import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 
-@InputType()
+@InputType('CreateReturnItemStatusInput')
 export class CreateReturnItemStatusInput {
   @Field()
   id: number;

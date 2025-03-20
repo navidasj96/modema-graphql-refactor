@@ -9,7 +9,7 @@ import { TextLayer } from '@/modules/text-layer/domain/text-layer';
 import { UserCart } from '@/modules/user-cart/domain/user-cart';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
-@InputType()
+@InputType('CreateDesignInput')
 export class CreateDesignInput {
   @Field()
   id: number;

@@ -5,7 +5,7 @@ import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-of
 import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
-@InputType()
+@InputType('CreateDiscountInput')
 export class CreateDiscountInput {
   @Field()
   id: number;

@@ -7,7 +7,7 @@ import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history
 import { Discount } from '@/modules/discount/domain/discount';
 import { Design } from '@/modules/design/domain/design';
 
-@InputType()
+@InputType('CreateInvoiceProductHistoryInput')
 export class CreateInvoiceProductHistoryInput {
   @Field()
   id: number;

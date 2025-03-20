@@ -3,7 +3,7 @@ import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subj
 import { PriceGroupSize } from '@/modules/price-group-size/domain/price-group-size';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreatePriceGroupInput')
 export class CreatePriceGroupInput {
   @Field()
   id: number;

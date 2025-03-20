@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ExitControlItem } from '@/modules/exit-control-item/domain/exit-control-item';
 import { User } from '@/modules/user/domain/user';
 
+@InputType('ExitControlDomain')
 @ObjectType()
 export class ExitControl {
   @IDField(() => ID)

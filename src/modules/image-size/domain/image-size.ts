@@ -2,7 +2,7 @@ import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ProductCategory } from '@/modules/product-category/domain/product-category';
 
-@InputType('ImageSize')
+@InputType('ImageSizeDomain')
 @ObjectType()
 export class ImageSize {
   @IDField(() => ID)

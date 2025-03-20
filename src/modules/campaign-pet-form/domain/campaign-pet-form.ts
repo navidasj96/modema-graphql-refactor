@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { Coupon } from '@/modules/coupon/domain/coupon';
 import { User } from '@/modules/user/domain/user';
 
+@InputType('CampaignPetFormDomain')
 @ObjectType()
 export class CampaignPetForm {
   @IDField(() => ID)

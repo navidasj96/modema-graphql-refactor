@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Image } from '@/modules/image/domain/image';
 
-@InputType()
+@InputType('CreateCampaignVotingImageInput')
 export class CreateCampaignVotingImageInput {
   @Field()
   id: number;

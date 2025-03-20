@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { OneToMany } from 'typeorm';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('BasicCarpetBrandDomain')
 @ObjectType()
 export class BasicCarpetBrand {
   @IDField(() => ID)

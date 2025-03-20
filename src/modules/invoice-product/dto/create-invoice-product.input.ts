@@ -13,7 +13,7 @@ import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/domai
 import { SubproductStockHistory } from '@/modules/subproduct-stock-history/domain/subproduct-stock-history';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
-@InputType()
+@InputType('CreateInvoiceProductInput')
 export class CreateInvoiceProductInput {
   @Field()
   id: number;

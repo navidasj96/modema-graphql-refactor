@@ -1,8 +1,9 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { Preorder } from '@/modules/preorder/domain/preorder';
 import { PreorderStatus } from '@/modules/preorder-status/domain/preorder-status';
 import { User } from '@/modules/user/domain/user';
 
+@InputType('PreorderPreorderStatusDomain')
 @ObjectType()
 export class PreorderPreorderStatus {
   @Field()

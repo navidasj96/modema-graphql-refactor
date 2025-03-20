@@ -40,7 +40,7 @@ import { WonderfulOffer } from '@/modules/wonderful-offer/domain/wonderful-offer
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateProductInput')
 export class CreateProductInput {
   @Field()
   id: number;

@@ -3,7 +3,7 @@ import { User } from '@/modules/user/domain/user';
 import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
 import { ProductionPadStatus } from '@/modules/production-pad-status/domain/production-pad-status';
 
-@InputType()
+@InputType('CreateProductionPadProductionPadStatusInput')
 export class CreateProductionPadProductionPadStatusInput {
   @Field()
   id: number;

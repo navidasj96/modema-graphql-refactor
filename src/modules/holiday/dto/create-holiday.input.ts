@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateHolidayInput')
 export class CreateHolidayInput {
   @Field()
   id: number;

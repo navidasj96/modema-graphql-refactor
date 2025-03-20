@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ProductCategory } from '@/modules/product-category/domain/product-category';
 import { Product } from '@/modules/product/domain/product';
 
+@InputType('ProductProductCategoryDomain')
 @ObjectType()
 export class ProductProductCategory {
   @IDField(() => ID)

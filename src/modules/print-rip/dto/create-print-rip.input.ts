@@ -3,7 +3,7 @@ import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoic
 import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreatePrintRipInput')
 export class CreatePrintRipInput {
   @Field()
   id: number;

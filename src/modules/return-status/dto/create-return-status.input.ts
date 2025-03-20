@@ -3,7 +3,7 @@ import { ReturnRequestHistory } from '@/modules/return-request-history/domain/re
 import { ReturnRequestReturnStatus } from '@/modules/return-request-return-status/domain/return-request-return-status';
 import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 
-@InputType()
+@InputType('CreateReturnStatusInput')
 export class CreateReturnStatusInput {
   @Field()
   id: number;

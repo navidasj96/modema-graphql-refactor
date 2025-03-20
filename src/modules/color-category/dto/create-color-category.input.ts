@@ -3,7 +3,7 @@ import { Image } from '@/modules/image/domain/image';
 import { ColorCategoryDetail } from '@/modules/color-category-detail/domain/color-category-detail';
 import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/domain/color-category-subproduct';
 
-@InputType()
+@InputType('CreateColorCategoryInput')
 export class CreateColorCategoryInput {
   @Field()
   id: number;

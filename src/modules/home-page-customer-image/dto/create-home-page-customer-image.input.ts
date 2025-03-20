@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Image } from '@/modules/image/domain/image';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateHomePageCustomerImageInput')
 export class CreateHomePageCustomerImageInput {
   @Field()
   id: number;

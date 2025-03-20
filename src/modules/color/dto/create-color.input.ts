@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Subcolor } from '@/modules/subcolor/domain/subcolor';
 
-@InputType()
+@InputType('CreateColorInput')
 export class CreateColorInput {
   @Field()
   id: number;

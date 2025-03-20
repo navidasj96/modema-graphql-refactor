@@ -6,7 +6,7 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { UtmGoogleFormCoupon } from '@/modules/utm-google-form-coupon/domain/utm-google-form-coupon';
 
-@InputType()
+@InputType('CreateCouponInput')
 export class CreateCouponInput {
   @Field()
   id: number;

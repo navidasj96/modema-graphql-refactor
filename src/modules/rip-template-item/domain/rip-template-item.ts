@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
 
+@InputType('RipTemplateItemDomain')
 @ObjectType()
 export class RipTemplateItem {
   @IDField(() => ID)

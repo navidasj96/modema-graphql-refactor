@@ -3,7 +3,7 @@ import { Product } from '@/modules/product/domain/product';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { Tag } from '@/modules/tag/domain/tag';
 
-@InputType()
+@InputType('CreateProductTagInput')
 export class CreateProductTagInput {
   @Field()
   id: number;

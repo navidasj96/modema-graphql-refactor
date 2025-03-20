@@ -255,6 +255,12 @@ import { WithdrawalRequestModule } from '@/modules/withdrawal-request/withdrawal
 import { WithdrawalRequestStatusModule } from '@/modules/withdrawal-request-status/withdrawal-request-status.module';
 import { WonderfulOfferModule } from '@/modules/wonderful-offer/wonderful-offer.module';
 import { NegotiationStepModule } from '@/modules/negotiation-step/negotiation-step.module';
+import { PreorderModule } from '@/modules/preorder/preorder.module';
+import { ProductProductCategoryModule } from '@/modules/product-product-category/product-product-category.module';
+import { RecommendedProductModule } from '@/modules/recommended-product/recommended-product.module';
+import { BasicCarpetBrandModule } from '@/modules/basic-carpet-brand/basic-carpet-brand.module';
+import { InvoiceAddressValidationResultModule } from '@/modules/invoice-address-validation-result/invoice-address-validation-result.module';
+import { CampaignVotingImageUserModule } from '@/modules/campaign-voting-image-user/campaign-voting-image-user.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -309,6 +315,7 @@ const ENV = process.env.NODE_ENV;
     BasicCarpetSizeModule,
     BasicCarpetSizeDetailModule,
     BasicCarpetTypeModule,
+    BasicCarpetBrandModule,
     BorderModule,
     CampaignFreeOfferModule,
     CampaignFreeOfferSizeModule,
@@ -407,6 +414,8 @@ const ENV = process.env.NODE_ENV;
     InvoiceShippingRateModule,
     InvoiceStatusModule,
     InvoiceTypeModule,
+    InvoiceAddressValidationResultModule,
+    CampaignVotingImageUserModule,
     LabelModule,
     LabelProductModule,
     MellatPaymentErrorModule,
@@ -440,6 +449,7 @@ const ENV = process.env.NODE_ENV;
     PaymentRequestStatusModule,
     PermissionModule,
     PermissionGroupModule,
+    PreorderModule,
     PreorderPreorderStatusModule,
     PreorderRegisterModule,
     PreorderStatusModule,
@@ -463,7 +473,9 @@ const ENV = process.env.NODE_ENV;
     ProductionPadStatusModule,
     ProductionReceiptTypeModule,
     ProductionRollModule,
+    ProductProductCategoryModule,
     RateModule,
+    RecommendedProductModule,
     ReadyToSendProductModule,
     RecommendedSubproductModule,
     RedisSavedKeyModule,

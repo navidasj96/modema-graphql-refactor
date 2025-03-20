@@ -6,7 +6,7 @@ import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address
 import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
 import { SenderInformation } from '@/modules/sender-information/domain/sender-information';
 
-@InputType()
+@InputType('CreateCityInput')
 export class CreateCityInput {
   @Field()
   id: number;

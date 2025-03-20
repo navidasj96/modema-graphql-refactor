@@ -7,7 +7,7 @@ import { State } from '@/modules/state/domain/state';
 import { User } from '@/modules/user/domain/user';
 import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history';
 
-@InputType()
+@InputType('CreateInvoiceAddressInput')
 export class CreateInvoiceAddressInput {
   @Field()
   id: number;

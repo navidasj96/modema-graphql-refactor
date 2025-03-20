@@ -3,7 +3,7 @@ import { BasicCarpetColor } from '@/modules/basic-carpet-color/domain/basic-carp
 import { Discount } from '@/modules/discount/domain/discount';
 import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateIncredibleOfferInput')
 export class CreateIncredibleOfferInput {
   @Field()
   id: number;

@@ -3,7 +3,7 @@ import { Negotiation } from '@/modules/negotiation/domain/negotiation';
 import { NegotiationType } from '@/modules/negotiation-type/domain/negotiation-type';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateNegotiationStepInput')
 export class CreateNegotiationStepInput {
   @Field()
   id: number;

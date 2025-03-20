@@ -3,7 +3,7 @@ import { Address } from '@/modules/address/domain/address';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ShippingService } from '@/modules/shipping-service/domain/shipping-service';
 
-@InputType()
+@InputType('CreateInvoiceRatesResultInput')
 export class CreateInvoiceRatesResultInput {
   @Field()
   id: number;

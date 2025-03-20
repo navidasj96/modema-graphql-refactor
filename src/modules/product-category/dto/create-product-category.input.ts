@@ -8,7 +8,7 @@ import { ProductProductCategory } from '@/modules/product-product-category/domai
 import { AttributeGroup } from '@/modules/attribute-group/domain/attribute-group';
 import { ProductCategory } from '@/modules/product-category/domain/product-category';
 
-@InputType()
+@InputType('CreateProductCategoryInput')
 export class CreateProductCategoryInput {
   @Field()
   id: number;

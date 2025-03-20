@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateWebsiteVisitInput')
 export class CreateWebsiteVisitInput {
   @Field()
   id: number;

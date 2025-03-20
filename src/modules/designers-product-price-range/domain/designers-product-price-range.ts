@@ -1,7 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 
+@InputType('DesignersProductPriceRangeDomain')
 @ObjectType()
 export class DesignersProductPriceRange {
   @IDField(() => ID)
@@ -21,7 +22,7 @@ export class DesignersProductPriceRange {
 
   @Field({ nullable: true })
   updatedAt?: Date;
-  
+
   @Field(() => BasicCarpetSize)
   basicCarpetSize: BasicCarpetSize;
 }

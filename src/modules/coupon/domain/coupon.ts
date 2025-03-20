@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { CampaignPetForm } from '@/modules/campaign-pet-form/domain/campaign-pet-form';
 import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
@@ -7,6 +7,7 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { UtmGoogleFormCoupon } from '@/modules/utm-google-form-coupon/domain/utm-google-form-coupon';
 
+@InputType('CouponDomain')
 @ObjectType()
 export class Coupon {
   @IDField(() => ID)

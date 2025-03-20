@@ -5,7 +5,7 @@ import { PreorderStatus } from '@/modules/preorder-status/domain/preorder-status
 import { Product } from '@/modules/product/domain/product';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreatePreorderInput')
 export class CreatePreorderInput {
   @Field()
   id: number;

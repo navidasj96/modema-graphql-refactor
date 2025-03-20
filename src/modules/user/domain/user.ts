@@ -79,7 +79,7 @@ import { Holiday } from '@/modules/holiday/domain/holiday';
 import { PaymentRequest } from '@/modules/payment-request/domain/payment-request';
 import { Activity } from '@/modules/activity/domain/activity';
 
-@InputType('UserInput')
+@InputType('UserDomain')
 @ObjectType()
 export class User {
   @IDField(() => ID)

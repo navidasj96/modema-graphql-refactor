@@ -35,7 +35,7 @@ import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 import { UserCart } from '@/modules/user-cart/domain/user-cart';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
-@InputType()
+@InputType('CreateSubproductInput')
 export class CreateSubproductInput {
   @Field()
   id: number;

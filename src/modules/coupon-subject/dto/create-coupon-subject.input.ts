@@ -5,7 +5,7 @@ import { ProductCategory } from '@/modules/product-category/domain/product-categ
 import { Product } from '@/modules/product/domain/product';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateCouponSubjectInput')
 export class CreateCouponSubjectInput {
   @Field()
   id: number;

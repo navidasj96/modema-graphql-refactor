@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ProductCategoryRate } from '@/modules/product-category-rate/entities/product-category-rate.entity';
 import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
 import { ProductRateAverage } from '@/modules/product-rate-average/entities/product-rate-average.entity';
 
+@InputType('RateDomain')
 @ObjectType()
 export class Rate {
   @IDField(() => ID)

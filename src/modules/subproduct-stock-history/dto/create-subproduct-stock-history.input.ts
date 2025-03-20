@@ -3,7 +3,7 @@ import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateSubproductStockHistoryInput')
 export class CreateSubproductStockHistoryInput {
   @Field()
   id: number;

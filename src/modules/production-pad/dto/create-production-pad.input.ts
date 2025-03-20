@@ -3,7 +3,7 @@ import { ProductionPadProductionPadStatus } from '@/modules/production-pad-produ
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { ProductionPadStatus } from '@/modules/production-pad-status/domain/production-pad-status';
 
-@InputType()
+@InputType('CreateProductionPadInput')
 export class CreateProductionPadInput {
   @Field()
   id: number;

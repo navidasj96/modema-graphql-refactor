@@ -6,7 +6,7 @@ import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-s
 import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiation-status';
 import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateNegotiationInput')
 export class CreateNegotiationInput {
   @Field()
   id: number;
