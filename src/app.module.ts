@@ -261,6 +261,10 @@ import { RecommendedProductModule } from '@/modules/recommended-product/recommen
 import { BasicCarpetBrandModule } from '@/modules/basic-carpet-brand/basic-carpet-brand.module';
 import { InvoiceAddressValidationResultModule } from '@/modules/invoice-address-validation-result/invoice-address-validation-result.module';
 import { CampaignVotingImageUserModule } from '@/modules/campaign-voting-image-user/campaign-voting-image-user.module';
+import { UserCartModule } from '@/modules/user-cart/user-cart.module';
+import { ProductCategoryModule } from '@/modules/product-category/product-category.module';
+import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
+import { WebsiteVisitModule } from '@/modules/website-visit/website-visit.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -457,6 +461,8 @@ const ENV = process.env.NODE_ENV;
     PriceGroupSizeModule,
     PrintProfileModule,
     ProductModule,
+    ProductCategoryModule,
+    PrintRipModule,
     ProductCategoryDetailModule,
     ProductCategoryRateModule,
     ProductColorImageModule,
@@ -501,6 +507,7 @@ const ENV = process.env.NODE_ENV;
     RipTemplateModule,
     RipTemplateItemModule,
     RoleModule,
+
     RussianModule,
     SenderInformationModule,
     ShippingServiceModule,
@@ -530,6 +537,7 @@ const ENV = process.env.NODE_ENV;
     TransactionModule,
     UserModule,
     UserUtmModule,
+    UserCartModule,
     UtmModule,
     UtmGoogleFormCouponModule,
     VerifyUserModule,
@@ -543,6 +551,7 @@ const ENV = process.env.NODE_ENV;
     WalletGiftChargeModule,
     WalletHistoryModule,
     WebsitePageModule,
+    WebsiteVisitModule,
     WithdrawalRequestModule,
     WithdrawalRequestStatusModule,
     WonderfulOfferModule,

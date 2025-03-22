@@ -4,8 +4,8 @@ import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 
-@ObjectType()
 @InputType('AttributeSubproductDomain')
+@ObjectType()
 export class AttributeSubproduct {
   @IDField(() => ID)
   id: number;

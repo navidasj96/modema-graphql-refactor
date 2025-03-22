@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { City } from '@/modules/city/domain/city';
 import { Country } from '@/modules/country/domain/country';
@@ -10,7 +10,8 @@ import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoic
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
 
-@ObjectType('AddressDomain')
+@InputType('AddressDomain')
+@ObjectType()
 export class Address {
   @IDField(() => ID)
   id: number;

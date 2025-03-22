@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
 
 @InputType('AutomationEventDomain')
 @ObjectType()
@@ -69,4 +70,7 @@ export class AutomationEvent {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

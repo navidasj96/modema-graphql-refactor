@@ -1,8 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { AttributeGroup } from '@/modules/attribute-group/entities/attribute-group.entity';
-import { Attribute } from '@/modules/attribute/entities/attribute.entity';
-import { AttributeProduct } from '@/modules/attribute-product/entities/attribute-product.entity';
-import { AttributeSubproduct } from '@/modules/attribute-subproduct/entities/attribute-subproduct.entity';
+import { AttributeGroup } from '@/modules/attribute-group/domain/attribute-group';
+import { Attribute } from '@/modules/attribute/domain/attribute';
+import { AttributeProduct } from '@/modules/attribute-product/domain/attribute-product';
+import { AttributeSubproduct } from '@/modules/attribute-subproduct/domain/attribute-subproduct';
 
 @InputType('CreateAttributeItemInput')
 export class CreateAttributeItemInput {

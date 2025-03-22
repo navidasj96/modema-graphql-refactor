@@ -4,7 +4,6 @@ import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { Design } from './entities/design.entity';
 import { Design as DesignGraphQL } from './domain/design';
 import { CreateDesignInput } from './dto/create-design.input';
-import { UserCartModule } from '@/modules/user-cart/user-cart.module';
 
 @Module({
   imports: [
@@ -18,7 +17,6 @@ import { UserCartModule } from '@/modules/user-cart/user-cart.module';
         },
       ],
     }),
-    UserCartModule,
   ],
 })
 export class DesignModule {}

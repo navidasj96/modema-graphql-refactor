@@ -28,6 +28,7 @@ export class CreateAttributeSubproductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
   @Field(() => Attribute)
   attribute: Attribute;
 

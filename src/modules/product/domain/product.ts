@@ -280,11 +280,11 @@ export class Product {
   @Field(() => BasicCarpetSize)
   minBasicCarpetSize: BasicCarpetSize;
 
-  @Field(() => Product)
-  parentProduct: Product;
+  @Field(() => Product, { nullable: true })
+  parentProduct?: Product;
 
-  @Field(() => [Product])
-  products: Product[];
+  @Field(() => [Product], { nullable: true })
+  products?: Product[];
 
   @Field(() => PriceGroup)
   priceGroup: PriceGroup;

@@ -17,6 +17,6 @@ export class CampaignGoldCoinSub {
   @Field()
   userId: number;
 
-  @Field(() => User)
-  user: User;
+  @Field(() => User, { nullable: true })
+  user?: User;
 }
