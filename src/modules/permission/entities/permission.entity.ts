@@ -12,6 +12,7 @@ import {
 import { ModelHasPermission } from '@/modules/model-has-permission/entities/model-has-permission.entity';
 import { PermissionGroup } from '@/modules/permission-group/entities/permission-group.entity';
 import { Role } from '@/modules/role/entities/role.entity';
+import { RoleHasPermission } from '@/modules/role-has-permission/entities/role-has-permission.entity';
 
 @Index('permissions_parent_id_index', ['parentId'], {})
 @Index('permissions_permission_group_id_index', ['permissionGroupId'], {})
@@ -74,4 +75,10 @@ export class Permission {
     schema: 'modema',
   })
   roles: Role[];
+
+  @OneToMany(
+    () => RoleHasPermission,
+    (RoleHasPermission) => RoleHasPermission.permission,
+  )
+  roleHasPermission: RoleHasPermission[];
 }

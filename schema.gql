@@ -12,7 +12,6 @@ type Activity {
   details: String!
   id: ID!
   updatedAt: DateTime
-  user: User!
   userId: Float
   userName: String!
 }
@@ -42,7 +41,6 @@ type ActivityDeleteResponse {
   details: String
   id: ID
   updatedAt: DateTime
-  user: User
   userId: Float
   userName: String
 }
@@ -72,7 +70,6 @@ input ActivityInput {
   details: String!
   id: ID!
   updatedAt: DateTime
-  user: UserDomain!
   userId: Float
   userName: String!
 }
@@ -251,10 +248,6 @@ input AddressUpdateFilter {
 }
 
 type Attribute {
-  attributeAttributeGroups: [AttributeAttributeGroup!]!
-  attributeItems: [AttributeItem!]!
-  attributeProducts: [AttributeProduct!]!
-  attributeSubproducts: [AttributeSubproduct!]!
   createdAt: DateTime
   id: ID!
   isActive: Float
@@ -353,10 +346,6 @@ input AttributeDeleteFilter {
 }
 
 type AttributeDeleteResponse {
-  attributeAttributeGroups: [AttributeAttributeGroup!]
-  attributeItems: [AttributeItem!]
-  attributeProducts: [AttributeProduct!]
-  attributeSubproducts: [AttributeSubproduct!]
   createdAt: DateTime
   id: ID
   isActive: Float
@@ -367,10 +356,6 @@ type AttributeDeleteResponse {
 }
 
 input AttributeDomain {
-  attributeAttributeGroups: [AttributeAttributeGroupDomain!]!
-  attributeItems: [AttributeItemDomain!]!
-  attributeProducts: [AttributeProductDomain!]!
-  attributeSubproducts: [AttributeSubproductDomain!]!
   createdAt: DateTime
   id: ID!
   isActive: Float
@@ -1155,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-22T06:10:50.796Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.529Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1243,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-22T06:10:50.804Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.540Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1358,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-22T06:10:50.834Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.573Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1448,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-22T06:10:50.804Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.541Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1689,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-22T06:10:50.814Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.551Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1796,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-22T06:10:50.805Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.542Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -4922,13 +4907,9 @@ input CreateActivityInput {
   action: String!
   contentId: Float!
   contentType: String!
-  createdAt: DateTime
   deletedUserId: Float
   description: String!
   details: String!
-  id: Float!
-  updatedAt: DateTime
-  user: UserDomain!
   userId: Float
   userName: String!
 }
@@ -4995,17 +4976,10 @@ input CreateAttributeGroupInput {
 }
 
 input CreateAttributeInput {
-  attributeAttributeGroups: [AttributeAttributeGroupDomain!]!
-  attributeItems: [AttributeItemDomain!]!
-  attributeProducts: [AttributeProductDomain!]!
-  attributeSubproducts: [AttributeSubproductDomain!]!
-  createdAt: DateTime
-  id: Float!
   isActive: Float
   name: String!
   sortOrder: Float
   type: Float!
-  updatedAt: DateTime
 }
 
 input CreateAttributeItemInput {
@@ -5107,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-22T06:10:50.962Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.692Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5129,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-22T06:10:50.966Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.696Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5144,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-22T06:10:50.969Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.699Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5168,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-22T06:10:50.973Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.703Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5199,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-22T06:10:50.977Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.708Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5240,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-22T06:10:50.989Z"
+  createdAt: DateTime! = "2025-03-28T06:06:27.719Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -7931,9 +7905,14 @@ input CreateManyRipTemplatesInput {
   ripTemplates: [CreateRfmReportInput!]!
 }
 
-input CreateManyRolesInput {
+input CreateManyRoleDomainsInput {
   """Array of records to create"""
-  roles: [CreateRoleInput!]!
+  roleDomains: [CreateRoleInput!]!
+}
+
+input CreateManyRoleHasPermissionsInput {
+  """Array of records to create"""
+  roleHasPermissions: [CreateRoleHasPermissionInput!]!
 }
 
 input CreateManyRussiansInput {
@@ -8195,7 +8174,7 @@ input CreateModelHasPermissionInput {
 input CreateModelHasRoleInput {
   modelId: String!
   modelType: String!
-  role: RoleDomain
+  role: RoleDomainInput
   roleId: Float!
 }
 
@@ -9426,9 +9405,14 @@ input CreateOneRipTemplateItemInput {
   ripTemplateItem: CreateRipTemplateItemInput!
 }
 
-input CreateOneRoleInput {
+input CreateOneRoleDomainInput {
   """The record to create"""
-  role: CreateRoleInput!
+  roleDomain: CreateRoleInput!
+}
+
+input CreateOneRoleHasPermissionInput {
+  """The record to create"""
+  roleHasPermission: CreateRoleHasPermissionInput!
 }
 
 input CreateOneRussianInput {
@@ -9792,7 +9776,7 @@ input CreatePermissionInput {
   permissionGroup: PermissionGroupDomain
   permissionGroupId: Float
   permissions: [PermissionDomain!]!
-  roles: [RoleDomain!]!
+  roles: [RoleDomainInput!]!
   updatedAt: DateTime
 }
 
@@ -10736,6 +10720,11 @@ input CreateRipTemplateItemInput {
   ripTemplateId: Float!
   updatedAt: DateTime
   width: Float!
+}
+
+input CreateRoleHasPermissionInput {
+  permissionId: Float!
+  roleId: String!
 }
 
 input CreateRoleInput {
@@ -13124,9 +13113,14 @@ input DeleteManyRipTemplatesInput {
   filter: RipTemplateDeleteFilter!
 }
 
-input DeleteManyRolesInput {
+input DeleteManyRoleDomainsInput {
   """Filter to find records to delete"""
-  filter: RoleDeleteFilter!
+  filter: RoleDomainDeleteFilter!
+}
+
+input DeleteManyRoleHasPermissionsInput {
+  """Filter to find records to delete"""
+  filter: RoleHasPermissionDeleteFilter!
 }
 
 input DeleteManyRussiansInput {
@@ -14389,7 +14383,12 @@ input DeleteOneRipTemplateItemInput {
   id: ID!
 }
 
-input DeleteOneRoleInput {
+input DeleteOneRoleDomainInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneRoleHasPermissionInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -20782,7 +20781,7 @@ input ModelHasPermissionUpdateFilter {
 type ModelHasRole {
   modelId: String!
   modelType: String!
-  role: Role
+  role: RoleDomain
   roleId: ID!
 }
 
@@ -20803,14 +20802,14 @@ input ModelHasRoleDeleteFilter {
 type ModelHasRoleDeleteResponse {
   modelId: String
   modelType: String
-  role: Role
+  role: RoleDomain
   roleId: ID
 }
 
 input ModelHasRoleDomain {
   modelId: String!
   modelType: String!
-  role: RoleDomain
+  role: RoleDomainInput
   roleId: ID!
 }
 
@@ -21443,7 +21442,8 @@ type Mutation {
   createManyRfmReports(input: CreateManyRfmReportsInput!): [RfmReport!]!
   createManyRipTemplateItems(input: CreateManyRipTemplateItemsInput!): [RipTemplateItem!]!
   createManyRipTemplates(input: CreateManyRipTemplatesInput!): [RipTemplate!]!
-  createManyRoles(input: CreateManyRolesInput!): [Role!]!
+  createManyRoleDomains(input: CreateManyRoleDomainsInput!): [RoleDomain!]!
+  createManyRoleHasPermissions(input: CreateManyRoleHasPermissionsInput!): [RoleHasPermission!]!
   createManyRussians(input: CreateManyRussiansInput!): [Russian!]!
   createManySenderInformations(input: CreateManySenderInformationsInput!): [SenderInformation!]!
   createManyShippingServices(input: CreateManyShippingServicesInput!): [ShippingService!]!
@@ -21716,7 +21716,8 @@ type Mutation {
   createOneRfmReport(input: CreateOneRfmReportInput!): RfmReport!
   createOneRipTemplate(input: CreateOneRipTemplateInput!): RipTemplate!
   createOneRipTemplateItem(input: CreateOneRipTemplateItemInput!): RipTemplateItem!
-  createOneRole(input: CreateOneRoleInput!): Role!
+  createOneRoleDomain(input: CreateOneRoleDomainInput!): RoleDomain!
+  createOneRoleHasPermission(input: CreateOneRoleHasPermissionInput!): RoleHasPermission!
   createOneRussian(input: CreateOneRussianInput!): Russian!
   createOneSenderInformation(input: CreateOneSenderInformationInput!): SenderInformation!
   createOneShippingService(input: CreateOneShippingServiceInput!): ShippingService!
@@ -21828,7 +21829,7 @@ type Mutation {
   createRfmReport(createRfmReportInput: CreateRfmReportInput!): RfmReport!
   createRipTemplate(createRipTemplateInput: CreateRipTemplateInput!): RipTemplate!
   createRipTemplateItem(createRipTemplateItemInput: CreateRipTemplateItemInput!): RipTemplateItem!
-  createRole(createRoleInput: CreateRoleInput!): Role!
+  createRole(createRoleInput: CreateRoleInput!): RoleDomain!
   createRussian(createRussianInput: CreateRussianInput!): Russian!
   createSenderInformation(createSenderInformationInput: CreateSenderInformationInput!): SenderInformation!
   createShippingService(createShippingServiceInput: CreateShippingServiceInput!): ShippingService!
@@ -22081,7 +22082,8 @@ type Mutation {
   deleteManyRfmReports(input: DeleteManyRfmReportsInput!): DeleteManyResponse!
   deleteManyRipTemplateItems(input: DeleteManyRipTemplateItemsInput!): DeleteManyResponse!
   deleteManyRipTemplates(input: DeleteManyRipTemplatesInput!): DeleteManyResponse!
-  deleteManyRoles(input: DeleteManyRolesInput!): DeleteManyResponse!
+  deleteManyRoleDomains(input: DeleteManyRoleDomainsInput!): DeleteManyResponse!
+  deleteManyRoleHasPermissions(input: DeleteManyRoleHasPermissionsInput!): DeleteManyResponse!
   deleteManyRussians(input: DeleteManyRussiansInput!): DeleteManyResponse!
   deleteManySenderInformations(input: DeleteManySenderInformationsInput!): DeleteManyResponse!
   deleteManyShippingServices(input: DeleteManyShippingServicesInput!): DeleteManyResponse!
@@ -22334,7 +22336,8 @@ type Mutation {
   deleteOneRfmReport(input: DeleteOneRfmReportInput!): RfmReportDeleteResponse!
   deleteOneRipTemplate(input: DeleteOneRipTemplateInput!): RipTemplateDeleteResponse!
   deleteOneRipTemplateItem(input: DeleteOneRipTemplateItemInput!): RipTemplateItemDeleteResponse!
-  deleteOneRole(input: DeleteOneRoleInput!): RoleDeleteResponse!
+  deleteOneRoleDomain(input: DeleteOneRoleDomainInput!): RoleDomainDeleteResponse!
+  deleteOneRoleHasPermission(input: DeleteOneRoleHasPermissionInput!): RoleHasPermissionDeleteResponse!
   deleteOneRussian(input: DeleteOneRussianInput!): RussianDeleteResponse!
   deleteOneSenderInformation(input: DeleteOneSenderInformationInput!): SenderInformationDeleteResponse!
   deleteOneShippingService(input: DeleteOneShippingServiceInput!): ShippingServiceDeleteResponse!
@@ -22518,7 +22521,7 @@ type Mutation {
   removeRfmReport(id: Int!): RfmReport!
   removeRipTemplate(id: Int!): RipTemplate!
   removeRipTemplateItem(id: Int!): RipTemplateItem!
-  removeRole(id: Int!): Role!
+  removeRole(id: Int!): RoleDomain!
   removeRussian(id: Int!): Russian!
   removeSenderInformation(id: Int!): SenderInformation!
   removeShippingService(id: Int!): ShippingService!
@@ -22822,7 +22825,8 @@ type Mutation {
   updateManyRfmReports(input: UpdateManyRfmReportsInput!): UpdateManyResponse!
   updateManyRipTemplateItems(input: UpdateManyRipTemplateItemsInput!): UpdateManyResponse!
   updateManyRipTemplates(input: UpdateManyRipTemplatesInput!): UpdateManyResponse!
-  updateManyRoles(input: UpdateManyRolesInput!): UpdateManyResponse!
+  updateManyRoleDomains(input: UpdateManyRoleDomainsInput!): UpdateManyResponse!
+  updateManyRoleHasPermissions(input: UpdateManyRoleHasPermissionsInput!): UpdateManyResponse!
   updateManyRussians(input: UpdateManyRussiansInput!): UpdateManyResponse!
   updateManySenderInformations(input: UpdateManySenderInformationsInput!): UpdateManyResponse!
   updateManyShippingServices(input: UpdateManyShippingServicesInput!): UpdateManyResponse!
@@ -23091,7 +23095,8 @@ type Mutation {
   updateOneRfmReport(input: UpdateOneRfmReportInput!): RfmReport!
   updateOneRipTemplate(input: UpdateOneRipTemplateInput!): RipTemplate!
   updateOneRipTemplateItem(input: UpdateOneRipTemplateItemInput!): RipTemplateItem!
-  updateOneRole(input: UpdateOneRoleInput!): Role!
+  updateOneRoleDomain(input: UpdateOneRoleDomainInput!): RoleDomain!
+  updateOneRoleHasPermission(input: UpdateOneRoleHasPermissionInput!): RoleHasPermission!
   updateOneRussian(input: UpdateOneRussianInput!): Russian!
   updateOneSenderInformation(input: UpdateOneSenderInformationInput!): SenderInformation!
   updateOneShippingService(input: UpdateOneShippingServiceInput!): ShippingService!
@@ -23202,7 +23207,7 @@ type Mutation {
   updateRfmReport(updateRfmReportInput: UpdateRfmReportInput!): RfmReport!
   updateRipTemplate(updateRipTemplateInput: UpdateRipTemplateInput!): RipTemplate!
   updateRipTemplateItem(updateRipTemplateItemInput: UpdateRipTemplateItemInput!): RipTemplateItem!
-  updateRole(updateRoleInput: UpdateRoleInput!): Role!
+  updateRole(updateRoleInput: UpdateRoleInput!): RoleDomain!
   updateRussian(updateRussianInput: UpdateRussianInput!): Russian!
   updateSenderInformation(updateSenderInformationInput: UpdateSenderInformationInput!): SenderInformation!
   updateShippingService(updateShippingServiceInput: UpdateShippingServiceInput!): ShippingService!
@@ -24220,6 +24225,22 @@ input OauthRefreshTokenUpdateFilter {
   or: [OauthRefreshTokenUpdateFilter!]
 }
 
+type OffsetPageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+}
+
+input OffsetPaging {
+  """Limit the number of records returned"""
+  limit: Int
+
+  """Offset to start returning records from"""
+  offset: Int
+}
+
 type OutOfStockButListedProduct {
   createdAt: DateTime
   id: ID!
@@ -24962,7 +24983,7 @@ type Permission {
   permissionGroup: PermissionGroup
   permissionGroupId: Float
   permissions: [Permission!]!
-  roles: [Role!]!
+  roles: [RoleDomain!]!
   updatedAt: DateTime
 }
 
@@ -24991,7 +25012,7 @@ type PermissionDeleteResponse {
   permissionGroup: PermissionGroup
   permissionGroupId: Float
   permissions: [Permission!]
-  roles: [Role!]
+  roles: [RoleDomain!]
   updatedAt: DateTime
 }
 
@@ -25006,7 +25027,7 @@ input PermissionDomain {
   permissionGroup: PermissionGroupDomain
   permissionGroupId: Float
   permissions: [PermissionDomain!]!
-  roles: [RoleDomain!]!
+  roles: [RoleDomainInput!]!
   updatedAt: DateTime
 }
 
@@ -30750,20 +30771,35 @@ type Query {
     """Specify to sort results."""
     sorting: [RipTemplateSort!]! = []
   ): RipTemplateConnection!
-  role(
+  role(id: Int!): RoleDomain!
+  roleDomain(
     """The id of the record to find."""
     id: ID!
-  ): Role!
-  roles(
+  ): RoleDomain!
+  roleDomains(
     """Specify to filter the records returned."""
-    filter: RoleFilter! = {}
+    filter: RoleDomainFilter! = {}
 
     """Limit or page results."""
     paging: CursorPaging! = {first: 10}
 
     """Specify to sort results."""
-    sorting: [RoleSort!]! = []
-  ): RoleConnection!
+    sorting: [RoleDomainSort!]! = []
+  ): RoleDomainConnection!
+  roleHasPermission(
+    """The id of the record to find."""
+    id: ID!
+  ): RoleHasPermission!
+  roleHasPermissions(
+    """Specify to filter the records returned."""
+    filter: RoleHasPermissionFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [RoleHasPermissionSort!]! = []
+  ): RoleHasPermissionConnection!
   russian(
     """The id of the record to find."""
     id: ID!
@@ -31179,7 +31215,7 @@ type Query {
     filter: UserFilter! = {}
 
     """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
+    paging: OffsetPaging! = {limit: 10}
 
     """Specify to sort results."""
     sorting: [UserSort!]! = []
@@ -33813,78 +33849,153 @@ input RipTemplateUpdateFilter {
   or: [RipTemplateUpdateFilter!]
 }
 
-type Role {
+type RoleDomain {
   createdAt: DateTime
   guardName: String!
   id: ID!
-  modelHasRoles: [ModelHasRole!]!
+  modelHasRoles(
+    """Specify to filter the records returned."""
+    filter: ModelHasRoleFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ModelHasRoleSort!]! = []
+  ): [ModelHasRole!]!
   name: String!
-  permissions: [Permission!]!
+  permissions(
+    """Specify to filter the records returned."""
+    filter: PermissionFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [PermissionSort!]! = []
+  ): [Permission!]!
   updatedAt: DateTime
 }
 
-type RoleConnection {
+type RoleDomainConnection {
   """Array of edges."""
-  edges: [RoleEdge!]!
+  edges: [RoleDomainEdge!]!
 
   """Paging information"""
   pageInfo: PageInfo!
 }
 
-input RoleDeleteFilter {
-  and: [RoleDeleteFilter!]
+input RoleDomainDeleteFilter {
+  and: [RoleDomainDeleteFilter!]
+  guardName: StringFieldComparison
   id: IDFilterComparison
-  or: [RoleDeleteFilter!]
+  name: StringFieldComparison
+  or: [RoleDomainDeleteFilter!]
 }
 
-type RoleDeleteResponse {
+type RoleDomainDeleteResponse {
   createdAt: DateTime
   guardName: String
   id: ID
-  modelHasRoles: [ModelHasRole!]
   name: String
-  permissions: [Permission!]
   updatedAt: DateTime
 }
 
-input RoleDomain {
-  createdAt: DateTime
-  guardName: String!
-  id: ID!
-  modelHasRoles: [ModelHasRoleDomain!]!
-  name: String!
-  permissions: [PermissionDomain!]!
-  updatedAt: DateTime
-}
-
-type RoleEdge {
+type RoleDomainEdge {
   """Cursor for this node."""
   cursor: ConnectionCursor!
 
-  """The node containing the Role"""
-  node: Role!
+  """The node containing the RoleDomain"""
+  node: RoleDomain!
 }
 
-input RoleFilter {
-  and: [RoleFilter!]
+input RoleDomainFilter {
+  and: [RoleDomainFilter!]
+  guardName: StringFieldComparison
   id: IDFilterComparison
-  or: [RoleFilter!]
+  name: StringFieldComparison
+  or: [RoleDomainFilter!]
 }
 
-input RoleSort {
+input RoleDomainInput {
+  createdAt: DateTime
+  guardName: String!
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+}
+
+input RoleDomainSort {
   direction: SortDirection!
-  field: RoleSortFields!
+  field: RoleDomainSortFields!
   nulls: SortNulls
 }
 
-enum RoleSortFields {
+enum RoleDomainSortFields {
+  guardName
   id
+  name
 }
 
-input RoleUpdateFilter {
-  and: [RoleUpdateFilter!]
+input RoleDomainUpdateFilter {
+  and: [RoleDomainUpdateFilter!]
+  guardName: StringFieldComparison
   id: IDFilterComparison
-  or: [RoleUpdateFilter!]
+  name: StringFieldComparison
+  or: [RoleDomainUpdateFilter!]
+}
+
+type RoleHasPermission {
+  permissionId: ID!
+  roleId: String!
+}
+
+type RoleHasPermissionConnection {
+  """Array of edges."""
+  edges: [RoleHasPermissionEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input RoleHasPermissionDeleteFilter {
+  and: [RoleHasPermissionDeleteFilter!]
+  or: [RoleHasPermissionDeleteFilter!]
+  permissionId: IDFilterComparison
+}
+
+type RoleHasPermissionDeleteResponse {
+  permissionId: ID
+  roleId: String
+}
+
+input RoleHasPermissionDomain {
+  permissionId: ID!
+  roleId: String!
+}
+
+type RoleHasPermissionEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the RoleHasPermission"""
+  node: RoleHasPermission!
+}
+
+input RoleHasPermissionFilter {
+  and: [RoleHasPermissionFilter!]
+  or: [RoleHasPermissionFilter!]
+  permissionId: IDFilterComparison
+}
+
+input RoleHasPermissionSort {
+  direction: SortDirection!
+  field: RoleHasPermissionSortFields!
+  nulls: SortNulls
+}
+
+enum RoleHasPermissionSortFields {
+  permissionId
+}
+
+input RoleHasPermissionUpdateFilter {
+  and: [RoleHasPermissionUpdateFilter!]
+  or: [RoleHasPermissionUpdateFilter!]
+  permissionId: IDFilterComparison
 }
 
 type Russian {
@@ -36476,7 +36587,6 @@ input UpdateActivity {
   details: String
   id: ID
   updatedAt: DateTime
-  user: UserDomain
   userId: Float
   userName: String
 }
@@ -36519,10 +36629,6 @@ input UpdateAddress {
 }
 
 input UpdateAttribute {
-  attributeAttributeGroups: [AttributeAttributeGroupDomain!]
-  attributeItems: [AttributeItemDomain!]
-  attributeProducts: [AttributeProductDomain!]
-  attributeSubproducts: [AttributeSubproductDomain!]
   createdAt: DateTime
   id: ID
   isActive: Float
@@ -36567,17 +36673,11 @@ input UpdateAttributeGroup {
 }
 
 input UpdateAttributeInput {
-  attributeAttributeGroups: [AttributeAttributeGroupDomain!]
-  attributeItems: [AttributeItemDomain!]
-  attributeProducts: [AttributeProductDomain!]
-  attributeSubproducts: [AttributeSubproductDomain!]
-  createdAt: DateTime
   id: Int!
   isActive: Float
   name: String
   sortOrder: Float
   type: Float
-  updatedAt: DateTime
 }
 
 input UpdateAttributeItem {
@@ -36721,7 +36821,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-22T06:10:50.796Z"
+  createdAt: DateTime = "2025-03-28T06:06:27.529Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36743,7 +36843,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-22T06:10:50.804Z"
+  createdAt: DateTime = "2025-03-28T06:06:27.540Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36758,7 +36858,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-03-22T06:10:50.834Z"
+  createdAt: DateTime = "2025-03-28T06:06:27.573Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36782,7 +36882,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-22T06:10:50.804Z"
+  createdAt: DateTime = "2025-03-28T06:06:27.541Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36799,7 +36899,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-03-22T06:10:50.814Z"
+  createdAt: DateTime = "2025-03-28T06:06:27.551Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36854,7 +36954,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-22T06:10:50.805Z"
+  createdAt: DateTime = "2025-03-28T06:06:27.542Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -41108,12 +41208,20 @@ input UpdateManyRipTemplatesInput {
   update: UpdateRipTemplate!
 }
 
-input UpdateManyRolesInput {
+input UpdateManyRoleDomainsInput {
   """Filter used to find fields to update"""
-  filter: RoleUpdateFilter!
+  filter: RoleDomainUpdateFilter!
 
   """The update to apply to all records found using the filter"""
-  update: UpdateRole!
+  update: UpdateRoleDomain!
+}
+
+input UpdateManyRoleHasPermissionsInput {
+  """Filter used to find fields to update"""
+  filter: RoleHasPermissionUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateRoleHasPermission!
 }
 
 input UpdateManyRussiansInput {
@@ -41530,7 +41638,7 @@ input UpdateModelHasPermissionInput {
 input UpdateModelHasRole {
   modelId: String
   modelType: String
-  role: RoleDomain
+  role: RoleDomainInput
   roleId: ID
 }
 
@@ -41538,7 +41646,7 @@ input UpdateModelHasRoleInput {
   id: Int!
   modelId: String
   modelType: String
-  role: RoleDomain
+  role: RoleDomainInput
   roleId: Float
 }
 
@@ -43558,12 +43666,20 @@ input UpdateOneRipTemplateItemInput {
   update: UpdateRipTemplateItem!
 }
 
-input UpdateOneRoleInput {
+input UpdateOneRoleDomainInput {
   """The id of the record to update"""
   id: ID!
 
   """The update to apply."""
-  update: UpdateRole!
+  update: UpdateRoleDomain!
+}
+
+input UpdateOneRoleHasPermissionInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateRoleHasPermission!
 }
 
 input UpdateOneRussianInput {
@@ -44168,7 +44284,7 @@ input UpdatePermission {
   permissionGroup: PermissionGroupDomain
   permissionGroupId: Float
   permissions: [PermissionDomain!]
-  roles: [RoleDomain!]
+  roles: [RoleDomainInput!]
   updatedAt: DateTime
 }
 
@@ -44199,7 +44315,7 @@ input UpdatePermissionInput {
   permissionGroup: PermissionGroupDomain
   permissionGroupId: Float
   permissions: [PermissionDomain!]
-  roles: [RoleDomain!]
+  roles: [RoleDomainInput!]
   updatedAt: DateTime
 }
 
@@ -46078,14 +46194,17 @@ input UpdateRipTemplateItemInput {
   width: Float
 }
 
-input UpdateRole {
+input UpdateRoleDomain {
   createdAt: DateTime
   guardName: String
   id: ID
-  modelHasRoles: [ModelHasRoleDomain!]
   name: String
-  permissions: [PermissionDomain!]
   updatedAt: DateTime
+}
+
+input UpdateRoleHasPermission {
+  permissionId: ID
+  roleId: String
 }
 
 input UpdateRoleInput {
@@ -48123,16 +48242,20 @@ input UserCartUpdateFilter {
 }
 
 type UserConnection {
-  """Array of edges."""
-  edges: [UserEdge!]!
+  """Array of nodes."""
+  nodes: [User!]!
 
   """Paging information"""
-  pageInfo: PageInfo!
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
 }
 
 input UserDeleteFilter {
   and: [UserDeleteFilter!]
   id: IDFilterComparison
+  name: StringFieldComparison
   or: [UserDeleteFilter!]
 }
 
@@ -48468,17 +48591,10 @@ input UserDomain {
   withdrawalRequests2: [WithdrawalRequestDomain!]
 }
 
-type UserEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the User"""
-  node: User!
-}
-
 input UserFilter {
   and: [UserFilter!]
   id: IDFilterComparison
+  name: StringFieldComparison
   or: [UserFilter!]
 }
 
@@ -48490,11 +48606,13 @@ input UserSort {
 
 enum UserSortFields {
   id
+  name
 }
 
 input UserUpdateFilter {
   and: [UserUpdateFilter!]
   id: IDFilterComparison
+  name: StringFieldComparison
   or: [UserUpdateFilter!]
 }
 

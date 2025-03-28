@@ -1,5 +1,10 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { Address } from '@/modules/address/domain/address';
 import { AutomationEvent } from '@/modules/automation-event/domain/automation-event';
 import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/domain/basic-carpet-designer';
@@ -80,12 +85,16 @@ import { PaymentRequest } from '@/modules/payment-request/domain/payment-request
 import { Activity } from '@/modules/activity/domain/activity';
 
 @InputType('UserDomain')
+@QueryOptions({
+  pagingStrategy: PagingStrategies.OFFSET,
+  enableTotalCount: true,
+})
 @ObjectType()
 export class User {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   name: string;
 
   @Field()

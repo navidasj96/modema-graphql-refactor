@@ -1,18 +1,24 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  IDField,
+  UnPagedRelation,
+} from '@ptc-org/nestjs-query-graphql';
 import { ModelHasRole } from '@/modules/model-has-role/domain/model-has-role';
 import { Permission } from '@/modules/permission/domain/permission';
 
-@InputType('RoleDomain')
-@ObjectType()
+@InputType('RoleDomainInput')
+@ObjectType('RoleDomain')
+@UnPagedRelation('modelHasRoles', () => ModelHasRole)
+@UnPagedRelation('permissions', () => Permission)
 export class Role {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   name: string;
 
-  @Field()
+  @FilterableField()
   guardName: string;
 
   @Field({ nullable: true })
@@ -21,9 +27,8 @@ export class Role {
   @Field({ nullable: true })
   updatedAt?: Date;
 
-  @Field(() => [ModelHasRole])
-  modelHasRoles: ModelHasRole[];
+  // These fields will be resolved via relation decorators above
+  modelHasRoles?: ModelHasRole[];
 
-  @Field(() => [Permission])
-  permissions: Permission[];
+  permissions?: Permission[];
 }

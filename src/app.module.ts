@@ -265,6 +265,7 @@ import { UserCartModule } from '@/modules/user-cart/user-cart.module';
 import { ProductCategoryModule } from '@/modules/product-category/product-category.module';
 import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
 import { WebsiteVisitModule } from '@/modules/website-visit/website-visit.module';
+import { RoleHasPermissionModule } from '@/modules/role-has-permission/role-has-permission.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -507,7 +508,7 @@ const ENV = process.env.NODE_ENV;
     RipTemplateModule,
     RipTemplateItemModule,
     RoleModule,
-
+    RoleHasPermissionModule,
     RussianModule,
     SenderInformationModule,
     ShippingServiceModule,
