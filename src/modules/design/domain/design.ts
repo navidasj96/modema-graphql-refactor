@@ -1,6 +1,16 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CarpetMaterial } from '@/modules/carpet-material/domain/carpet-material';
+import { CarpetShape } from '@/modules/carpet-shape/domain/carpet-shape';
+import { User } from '@/modules/user/domain/user';
+import { ImageLayer } from '@/modules/image-layer/domain/image-layer';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { PatternLayer } from '@/modules/pattern-layer/domain/pattern-layer';
+import { TextLayer } from '@/modules/text-layer/domain/text-layer';
+import { UserCart } from '@/modules/user-cart/domain/user-cart';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
+@InputType('DesignDomain')
 @ObjectType()
 export class Design {
   @IDField(() => ID)
@@ -47,4 +57,31 @@ export class Design {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => CarpetMaterial)
+  carpetMaterial: CarpetMaterial;
+
+  @Field(() => CarpetShape)
+  carpetShape: CarpetShape;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [ImageLayer])
+  imageLayers: ImageLayer[];
+
+  @Field(() => [InvoiceProductHistory])
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProduct])
+  invoiceProducts: InvoiceProduct[];
+
+  @Field(() => [PatternLayer])
+  patternLayers: PatternLayer[];
+
+  @Field(() => [TextLayer])
+  textLayers: TextLayer[];
+
+  @Field(() => [UserCart])
+  userCarts: UserCart[];
 }

@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { InvoiceProductStatus } from '@/modules/invoice-product-status/entities/invoice-product-status.entity';
 
 @Index('created_at', ['createdAt'], {})
 @Index('invoice_product_item_index', ['invoiceProductItemId'], {})
@@ -36,4 +46,32 @@ export class InvoiceProductItemInvoiceProductStatus {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @ManyToOne(
+    () => InvoiceProductItem,
+    (invoiceProductItem) =>
+      invoiceProductItem.invoiceProductItemInvoiceProductStatuses,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_item_id', referencedColumnName: 'id' }])
+  invoiceProductItem: InvoiceProductItem;
+
+  @ManyToOne(
+    () => InvoiceProductStatus,
+    (invoiceProductStatuse) =>
+      invoiceProductStatuse.invoiceProductItemInvoiceProductStatuses,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'invoice_product_status_id', referencedColumnName: 'id' },
+  ])
+  invoiceProductStatus: InvoiceProductStatus;
+
+  @ManyToOne(
+    () => User,
+    (user) => user.invoiceProductItemInvoiceProductStatuses,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('subproduct_special_images_image_id_index', ['imageId'], {})
 @Index('subproduct_special_images_subproduct_id_index', ['subproductId'], {})
@@ -26,4 +35,19 @@ export class SubproductSpecialImage {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Image, (image) => image.subproductSpecialImages, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @ManyToOne(
+    () => Subproduct,
+    (subproduct) => subproduct.subproductSpecialImages,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
 }

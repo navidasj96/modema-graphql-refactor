@@ -1,6 +1,12 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
+import { User } from '@/modules/user/domain/user';
+import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-offer';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
+@InputType('DiscountDomain')
 @ObjectType()
 export class Discount {
   @IDField(() => ID)
@@ -62,4 +68,22 @@ export class Discount {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [DiscountSubject])
+  discountSubjects: DiscountSubject[];
+
+  @Field(() => User)
+  createdBy2: User;
+
+  @Field(() => User)
+  updatedBy2: User;
+
+  @Field(() => [IncredibleOffer])
+  incredibleOffers: IncredibleOffer[];
+
+  @Field(() => [InvoiceProductHistory])
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProduct])
+  invoiceProducts: InvoiceProduct[];
 }

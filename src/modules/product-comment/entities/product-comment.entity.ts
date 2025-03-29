@@ -1,4 +1,19 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductCommentLike } from '@/modules/product-comment-like/entities/product-comment-like.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
+import { WalletGiftCharge } from '@/modules/wallet-gift-charge/entities/wallet-gift-charge.entity';
 
 @Index('product_comments_approved_by_index', ['approvedBy'], {})
 @Index('product_comments_parent_comment_id_index', ['parentCommentId'], {})
@@ -56,4 +71,61 @@ export class ProductComment {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ProductCommentLike,
+    (productCommentLikes) => productCommentLikes.productComment,
+  )
+  productCommentLikes: ProductCommentLike[];
+
+  @ManyToOne(() => User, (user) => user.productComments, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'approved_by', referencedColumnName: 'id' }])
+  approvedBy2: User;
+
+  @ManyToOne(
+    () => ProductComment,
+    (productComment) => productComment.productComments,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'parent_comment_id', referencedColumnName: 'id' }])
+  parentComment: ProductComment;
+
+  @OneToMany(
+    () => ProductComment,
+    (productComment) => productComment.parentComment,
+  )
+  productComments: ProductComment[];
+
+  @ManyToOne(() => Product, (product) => product.productComments, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.productComments, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @ManyToOne(() => User, (user) => user.productComments2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(() => ProductRate, (productRate) => productRate.productComment)
+  productRates: ProductRate[];
+
+  @OneToOne(
+    () => WalletGiftCharge,
+    (walletGiftCharges) => walletGiftCharges.productComment,
+  )
+  walletGiftCharges: WalletGiftCharge;
 }

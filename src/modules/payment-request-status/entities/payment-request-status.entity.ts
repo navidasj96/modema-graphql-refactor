@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PaymentRequest } from '@/modules/payment-request/entities/payment-request.entity';
 
 @Entity('payment_request_statuses', { schema: 'modema' })
 export class PaymentRequestStatus {
@@ -19,4 +20,10 @@ export class PaymentRequestStatus {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @OneToMany(
+    () => PaymentRequest,
+    (paymentRequest) => paymentRequest.paymentRequestStatus,
+  )
+  paymentRequests: PaymentRequest[];
 }

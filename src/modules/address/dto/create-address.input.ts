@@ -1,6 +1,15 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoice-rates-result';
+import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
+import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/domain/invoice-address-validation-result';
+import { User } from '@/modules/user/domain/user';
+import { State } from '@/modules/state/domain/state';
+import { Country } from '@/modules/country/domain/country';
+import { City } from '@/modules/city/domain/city';
 
-@InputType()
+@InputType('CreateAddressInput')
 export class CreateAddressInput {
   @Field()
   id: number;
@@ -76,4 +85,31 @@ export class CreateAddressInput {
 
   @Field({ nullable: true })
   fullnameDescription?: string;
+
+  @Field()
+  city: City;
+
+  @Field()
+  country: Country;
+
+  @Field()
+  state: State;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [InvoiceAddressValidationResult])
+  invoiceAddressValidationResults: InvoiceAddressValidationResult[];
+
+  @Field(() => [InvoiceAddress])
+  invoiceAddresses: InvoiceAddress[];
+
+  @Field(() => [InvoiceRatesResult])
+  invoiceRatesResults: InvoiceRatesResult[];
+
+  @Field(() => [Invoice])
+  invoices: Invoice[];
+
+  @Field(() => [ReturnRequestAddress])
+  returnRequestAddresses: ReturnRequestAddress[];
 }

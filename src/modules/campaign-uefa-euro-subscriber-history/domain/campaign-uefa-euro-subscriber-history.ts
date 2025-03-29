@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { ContactFormStatus } from '@/modules/contact-form-status/domain/contact-form-status';
+import { CampaignUefaEuroSubscriber } from '@/modules/campaign-uefa-euro-subscriber/domain/campaign-uefa-euro-subscriber';
 
+@InputType('CampaignUefaEuroSubscriberHistoryDomain')
 @ObjectType()
 export class CampaignUefaEuroSubscriberHistory {
   @IDField(() => ID)
@@ -23,4 +27,13 @@ export class CampaignUefaEuroSubscriberHistory {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => ContactFormStatus)
+  contactFormStatus: ContactFormStatus;
+
+  @Field(() => CampaignUefaEuroSubscriber)
+  campaignUefaEuroSubscriber: CampaignUefaEuroSubscriber;
 }

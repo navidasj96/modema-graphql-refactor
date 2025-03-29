@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Design } from '@/modules/design/domain/design';
 
-@InputType()
+@InputType('CreateCarpetShapeInput')
 export class CreateCarpetShapeInput {
   @Field()
   id: number;
@@ -34,4 +35,7 @@ export class CreateCarpetShapeInput {
 
   @Field({ defaultValue: true })
   isActive: boolean;
+
+  @Field(() => [Design])
+  designs: Design[];
 }

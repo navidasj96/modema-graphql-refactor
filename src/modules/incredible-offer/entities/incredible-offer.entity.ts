@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/entities/basic-carpet-color.entity';
+import { Discount } from '@/modules/discount/entities/discount.entity';
+import { Product } from '@/modules/product/entities/product.entity';
 
 @Index(
   'incredible_offers_basic_carpet_color_id_index',
@@ -51,4 +61,26 @@ export class IncredibleOffer {
     comment: '0: -, 1: آشپزخانه, 2: راهرو, 3: اتاق خواب, 4: پذیرایی',
   })
   place?: number;
+
+  @ManyToOne(
+    () => BasicCarpetColor,
+    (basicCarpetColor) => basicCarpetColor.incredibleOffers,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
+  basicCarpetColor: BasicCarpetColor;
+
+  @ManyToOne(() => Discount, (discount) => discount.incredibleOffers, {
+    onDelete: 'CASCADE',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'discount_id', referencedColumnName: 'id' }])
+  discount: Discount;
+
+  @ManyToOne(() => Product, (product) => product.incredibleOffers, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
 }

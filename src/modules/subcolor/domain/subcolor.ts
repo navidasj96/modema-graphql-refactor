@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Color } from '@/modules/color/domain/color';
 
+@InputType('SubcolorDomain')
 @ObjectType()
 export class Subcolor {
   @IDField(() => ID)
@@ -23,4 +25,7 @@ export class Subcolor {
 
   @Field({ nullable: true })
   colorCodeOriginal?: string;
+
+  @Field(() => Color, { nullable: true })
+  color?: Color;
 }

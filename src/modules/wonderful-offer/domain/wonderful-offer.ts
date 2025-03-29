@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
 
+@InputType('WonderfulOfferDomain')
 @ObjectType()
 export class WonderfulOffer {
   @IDField(() => ID)
@@ -17,4 +19,7 @@ export class WonderfulOffer {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
 }

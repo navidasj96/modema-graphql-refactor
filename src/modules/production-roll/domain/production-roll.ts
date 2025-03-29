@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('ProductionRollDomain')
 @ObjectType()
 export class ProductionRoll {
   @IDField(() => ID)
@@ -44,4 +47,13 @@ export class ProductionRoll {
 
   @Field({ nullable: true })
   closedBy?: number;
+
+  @Field(() => [InvoiceProductItem])
+  invoiceProductItems: InvoiceProductItem[];
+
+  @Field(() => User, { nullable: true })
+  closedBy2?: User;
+
+  @Field(() => User, { nullable: true })
+  createdBy2?: User;
 }

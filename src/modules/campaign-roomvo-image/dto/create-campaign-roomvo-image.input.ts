@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { CampaignRoomvoVote } from '@/modules/campaign-roomvo-vote/domain/campaign-roomvo-vote';
 
-@InputType()
+@InputType('CreateCampaignRoomvoImageInput')
 export class CreateCampaignRoomvoImageInput {
   @Field()
   id: number;
@@ -28,4 +30,10 @@ export class CreateCampaignRoomvoImageInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [CampaignRoomvoVote])
+  campaignRoomvoVotes: CampaignRoomvoVote[];
 }

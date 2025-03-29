@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ContactForm } from '@/modules/contact-form/entities/contact-form.entity';
+import { ContactFormStatus } from '@/modules/contact-form-status/entities/contact-form-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('contact_form_histories_contact_form_id_index', ['contactFormId'], {})
 @Index(
@@ -29,4 +39,27 @@ export class ContactFormHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => ContactForm,
+    (contactForm) => contactForm.contactFormHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'contact_form_id', referencedColumnName: 'id' }])
+  contactForm: ContactForm;
+
+  @ManyToOne(
+    () => ContactFormStatus,
+    (contactFormStatus) => contactFormStatus.contactFormHistories,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
+  contactFormStatus: ContactFormStatus;
+
+  @ManyToOne(() => User, (user) => user.contactFormHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

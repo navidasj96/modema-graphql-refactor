@@ -1,6 +1,13 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Address } from '@/modules/address/domain/address';
+import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/domain/basic-carpet-designer';
+import { City } from '@/modules/city/domain/city';
+import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
+import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
+import { SenderInformation } from '@/modules/sender-information/domain/sender-information';
+import { Country } from '@/modules/country/domain/country';
 
-@InputType()
+@InputType('CreateStateInput')
 export class CreateStateInput {
   @Field()
   id: number;
@@ -28,4 +35,25 @@ export class CreateStateInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Address])
+  addresses: Address[];
+
+  @Field(() => [BasicCarpetDesigner])
+  basicCarpetDesigners: BasicCarpetDesigner[];
+
+  @Field(() => [City])
+  cities: City[];
+
+  @Field(() => [InvoiceAddress])
+  invoiceAddresses: InvoiceAddress[];
+
+  @Field(() => [ReturnRequestAddress])
+  returnRequestAddresses: ReturnRequestAddress[];
+
+  @Field(() => [SenderInformation])
+  senderInformations: SenderInformation[];
+
+  @Field(() => Country)
+  country: Country;
 }

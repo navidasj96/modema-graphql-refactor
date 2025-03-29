@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ExitControlItem } from '@/modules/exit-control-item/entities/exit-control-item.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('exit_controls_user_id_index', ['userId'], {})
 @Entity('exit_controls', { schema: 'modema' })
@@ -29,4 +39,17 @@ export class ExitControl {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ExitControlItem,
+    (exitControlItem) => exitControlItem.exitControl,
+  )
+  exitControlItems: ExitControlItem[];
+
+  @ManyToOne(() => User, (user) => user.exitControls, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

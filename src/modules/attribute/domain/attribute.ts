@@ -1,8 +1,10 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { IDField } from '@ptc-org/nestjs-query-graphql';
 
+@InputType('AttributeDomain')
 @ObjectType()
 export class Attribute {
-  @Field()
+  @IDField(() => ID)
   id: number;
 
   @Field()

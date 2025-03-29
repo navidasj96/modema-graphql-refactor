@@ -1,6 +1,11 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { City } from '@/modules/city/domain/city';
+import { Country } from '@/modules/country/domain/country';
+import { State } from '@/modules/state/domain/state';
+import { User } from '@/modules/user/domain/user';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateBasicCarpetDesignerInput')
 export class CreateBasicCarpetDesignerInput {
   @Field()
   id: number;
@@ -61,4 +66,19 @@ export class CreateBasicCarpetDesignerInput {
 
   @Field({ nullable: true, defaultValue: 0 })
   pricePercentage?: number;
+
+  @Field(() => City)
+  city: City;
+
+  @Field(() => Country)
+  country: Country;
+
+  @Field(() => State)
+  state: State;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
 }

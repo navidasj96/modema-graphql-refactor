@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Video } from '@/modules/video/entities/video.entity';
 
 @Index('customer_video_product_product_id_index', ['productId'], {})
 @Index('customer_video_product_video_id_index', ['videoId'], {})
@@ -26,4 +35,18 @@ export class CustomerVideoProduct {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Product, (product) => product.customerVideoProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Video, (video) => video.customerVideoProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'video_id', referencedColumnName: 'id' }])
+  video: Video;
 }

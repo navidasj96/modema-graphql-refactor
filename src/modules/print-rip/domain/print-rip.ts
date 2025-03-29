@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('PrintRipDomain')
 @ObjectType()
 export class PrintRip {
   @IDField(() => ID)
@@ -20,4 +24,13 @@ export class PrintRip {
 
   @Field({ nullable: true })
   userId?: number;
+
+  @Field(() => [InvoiceProductItem])
+  invoiceProductItems: InvoiceProductItem[];
+
+  @Field(() => RipTemplate)
+  ripTemplate: RipTemplate;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

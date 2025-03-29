@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { WithdrawalRequestStatus } from '@/modules/withdrawal-request-status/domain/withdrawal-request-status';
 
-@InputType()
+@InputType('CreateWithdrawalRequestInput')
 export class CreateWithdrawalRequestInput {
   @Field()
   id: number;
@@ -37,4 +39,10 @@ export class CreateWithdrawalRequestInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => WithdrawalRequestStatus)
+  withdrawalRequestStatus: WithdrawalRequestStatus;
 }

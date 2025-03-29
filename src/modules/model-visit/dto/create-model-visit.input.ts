@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateModelVisitInput')
 export class CreateModelVisitInput {
   @Field()
   id: number;
@@ -19,4 +20,7 @@ export class CreateModelVisitInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

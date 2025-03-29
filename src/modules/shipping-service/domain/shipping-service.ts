@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoice-rates-result';
+import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/domain/invoice-shipping-rate';
 
+@InputType('ShippingServiceDomain')
 @ObjectType()
 export class ShippingService {
   @IDField(() => ID)
@@ -20,4 +23,10 @@ export class ShippingService {
 
   @Field()
   isActive: boolean;
+
+  @Field(() => [InvoiceRatesResult])
+  invoiceRatesResults: InvoiceRatesResult[];
+
+  @Field(() => [InvoiceShippingRate])
+  invoiceShippingRates: InvoiceShippingRate[];
 }

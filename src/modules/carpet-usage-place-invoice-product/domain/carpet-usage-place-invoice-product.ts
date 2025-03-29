@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CarpetUsagePlace } from '@/modules/carpet-usage-place/domain/carpet-usage-place';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
 
+@InputType('CarpetUsagePlaceInvoiceProductDomain')
 @ObjectType()
 export class CarpetUsagePlaceInvoiceProduct {
   @IDField(() => ID)
@@ -20,4 +23,10 @@ export class CarpetUsagePlaceInvoiceProduct {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => CarpetUsagePlace)
+  carpetUsagePlace: CarpetUsagePlace;
+
+  @Field(() => InvoiceProduct)
+  invoiceProduct: InvoiceProduct;
 }

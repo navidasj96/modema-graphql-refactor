@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
 
+@InputType('ReturnReasonDomain')
 @ObjectType()
 export class ReturnReason {
   @IDField(() => ID)
@@ -20,4 +24,13 @@ export class ReturnReason {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ReturnRequestItemHistory])
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @Field(() => [ReturnRequestItem])
+  returnRequestItems: ReturnRequestItem[];
+
+  @Field(() => [ReturnedInvoice])
+  returnedInvoices: ReturnedInvoice[];
 }

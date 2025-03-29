@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Address } from '@/modules/address/domain/address';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateInvoiceAddressValidationResultInput')
 export class CreateInvoiceAddressValidationResultInput {
   @Field()
   id: number;
@@ -19,4 +21,10 @@ export class CreateInvoiceAddressValidationResultInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+  س;
+  @Field(() => Address, { nullable: true })
+  address?: Address;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
 }

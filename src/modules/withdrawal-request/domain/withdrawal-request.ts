@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { WithdrawalRequestStatus } from '@/modules/withdrawal-request-status/domain/withdrawal-request-status';
 
+@InputType('WithdrawalRequestDomain')
 @ObjectType()
 export class WithdrawalRequest {
   @IDField(() => ID)
@@ -38,4 +41,10 @@ export class WithdrawalRequest {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => WithdrawalRequestStatus)
+  withdrawalRequestStatus: WithdrawalRequestStatus;
 }

@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateChaparSettlementStatusInput')
 export class CreateChaparSettlementStatusInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreateChaparSettlementStatusInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Invoice])
+  invoices: Invoice[];
 }

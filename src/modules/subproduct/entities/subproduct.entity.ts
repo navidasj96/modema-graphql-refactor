@@ -1,4 +1,47 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { AttributeSubproduct } from '@/modules/attribute-subproduct/entities/attribute-subproduct.entity';
+import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/entities/color-category-subproduct.entity';
+import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
+import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
+import { FavoriteProduct } from '@/modules/favorite-product/entities/favorite-product.entity';
+import { ImageSubproduct } from '@/modules/image-subproduct/entities/image-subproduct.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { NeedsPhotographySubproduct } from '@/modules/needs-photography-subproduct/entities/needs-photography-subproduct.entity';
+import { Preorder } from '@/modules/preorder/entities/preorder.entity';
+import { ProductComment } from '@/modules/product-comment/entities/product-comment.entity';
+import { ProductLike } from '@/modules/product-like/entities/product-like.entity';
+import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
+import { ProductRateAverage } from '@/modules/product-rate-average/entities/product-rate-average.entity';
+import { ProductTag } from '@/modules/product-tag/entities/product-tag.entity';
+import { RecommendedSubproduct } from '@/modules/recommended-subproduct/entities/recommended-subproduct.entity';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/entities/return-request-item-history.entity';
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/entities/returned-invoice-product.entity';
+import { SubproductSpecialImage } from '@/modules/subproduct-special-image/entities/subproduct-special-image.entity';
+import { SubproductStockHistory } from '@/modules/subproduct-stock-history/entities/subproduct-stock-history.entity';
+import { SubproductVideo } from '@/modules/subproduct-video/entities/subproduct-video.entity';
+import { BasicCarpetBorder } from '@/modules/basic-carpet-border/entities/basic-carpet-border.entity';
+import { BasicCarpetBrand } from '@/modules/basic-carpet-brand/entities/basic-carpet-brand.entity';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/entities/basic-carpet-color.entity';
+import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/entities/basic-carpet-designer.entity';
+import { BasicCarpetDesign } from '@/modules/basic-carpet-design/entities/basic-carpet-design.entity';
+import { BasicCarpetMaterial } from '@/modules/basic-carpet-material/entities/basic-carpet-material.entity';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { BasicCarpetType } from '@/modules/basic-carpet-type/entities/basic-carpet-type.entity';
+import { Image } from '@/modules/image/entities/image.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Video } from '@/modules/video/entities/video.entity';
+import { TorobProduct } from '@/modules/torob-product/entities/torob-product.entity';
+import { UserCart } from '@/modules/user-cart/entities/user-cart.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @Index('basic_carpet_brand_id', ['basicCarpetBrandId'], {})
 @Index('basic_carpet_color_id', ['basicCarpetColorId'], {})
@@ -288,4 +331,234 @@ export class Subproduct {
 
   @Column('varchar', { name: 'color_name_es', nullable: true, length: 191 })
   colorNameEs?: string;
+
+  @OneToMany(
+    () => AttributeSubproduct,
+    (attributeSubproduct) => attributeSubproduct.subproduct,
+  )
+  attributeSubproducts: AttributeSubproduct[];
+
+  @OneToMany(
+    () => ColorCategorySubproduct,
+    (colorCategorySubproduct) => colorCategorySubproduct.subproduct,
+  )
+  colorCategorySubproducts: ColorCategorySubproduct[];
+
+  @OneToMany(() => CouponSubject, (couponSubject) => couponSubject.subproduct)
+  couponSubjects: CouponSubject[];
+
+  @OneToMany(
+    () => DiscountSubject,
+    (discountSubject) => discountSubject.subproduct,
+  )
+  discountSubjects: DiscountSubject[];
+
+  @OneToMany(
+    () => FavoriteProduct,
+    (favoriteProduct) => favoriteProduct.subproduct,
+  )
+  favoriteProducts: FavoriteProduct[];
+
+  @OneToMany(
+    () => ImageSubproduct,
+    (imageSubproduct) => imageSubproduct.subproduct,
+  )
+  imageSubproducts: ImageSubproduct[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.relatedSubproduct,
+  )
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.subproduct,
+  )
+  invoiceProductHistories2: InvoiceProductHistory[];
+
+  @OneToMany(() => InvoiceProduct, (invoiceProduct) => invoiceProduct.pad)
+  invoiceProducts: InvoiceProduct[];
+
+  @OneToMany(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.relatedSubproduct,
+  )
+  invoiceProducts2: InvoiceProduct[];
+
+  @OneToMany(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.subproduct,
+  )
+  invoiceProducts3: InvoiceProduct[];
+
+  @OneToMany(
+    () => NeedsPhotographySubproduct,
+    (needsPhotographySubproduct) => needsPhotographySubproduct.subproduct,
+  )
+  needsPhotographySubproducts: NeedsPhotographySubproduct[];
+
+  @OneToMany(() => Preorder, (preorder) => preorder.subproduct)
+  preorders: Preorder[];
+
+  @OneToMany(
+    () => ProductComment,
+    (productComment) => productComment.subproduct,
+  )
+  productComments: ProductComment[];
+
+  @OneToMany(() => ProductLike, (productLike) => productLike.subproduct)
+  productLikes: ProductLike[];
+
+  @OneToMany(() => ProductRate, (productRate) => productRate.subproduct)
+  productRates: ProductRate[];
+
+  @OneToMany(
+    () => ProductRateAverage,
+    (productRateAverage) => productRateAverage.subproduct,
+  )
+  productRateAverages: ProductRateAverage[];
+
+  @OneToMany(() => ProductTag, (productTag) => productTag.subproduct)
+  productTags: ProductTag[];
+
+  @OneToMany(
+    () => RecommendedSubproduct,
+    (recommendedSubproduct) => recommendedSubproduct.subproduct,
+  )
+  recommendedSubproducts: RecommendedSubproduct[];
+
+  @OneToMany(
+    () => ReturnRequestItemHistory,
+    (returnRequestItemHistory) => returnRequestItemHistory.subproduct,
+  )
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @OneToMany(
+    () => ReturnRequestItem,
+    (returnRequestItem) => returnRequestItem.subproduct,
+  )
+  returnRequestItems: ReturnRequestItem[];
+
+  @OneToMany(
+    () => ReturnedInvoiceProduct,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.subproduct,
+  )
+  returnedInvoiceProducts: ReturnedInvoiceProduct[];
+
+  @OneToMany(
+    () => SubproductSpecialImage,
+    (subproductSpecialImage) => subproductSpecialImage.subproduct,
+  )
+  subproductSpecialImages: SubproductSpecialImage[];
+
+  @OneToMany(
+    () => SubproductStockHistory,
+    (subproductStockHistory) => subproductStockHistory.subproduct,
+  )
+  subproductStockHistories: SubproductStockHistory[];
+
+  @OneToMany(
+    () => SubproductVideo,
+    (subproductVideo) => subproductVideo.subproduct,
+  )
+  subproductVideos: SubproductVideo[];
+
+  @ManyToOne(
+    () => BasicCarpetBorder,
+    (basicCarpetBorder) => basicCarpetBorder.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_border_id', referencedColumnName: 'id' }])
+  basicCarpetBorder: BasicCarpetBorder;
+
+  @ManyToOne(
+    () => BasicCarpetBrand,
+    (basicCarpetBrand) => basicCarpetBrand.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_brand_id', referencedColumnName: 'id' }])
+  basicCarpetBrand: BasicCarpetBrand;
+
+  @ManyToOne(
+    () => BasicCarpetColor,
+    (basicCarpetColor) => basicCarpetColor.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
+  basicCarpetColor: BasicCarpetColor;
+
+  @ManyToOne(
+    () => BasicCarpetDesigner,
+    (basicCarpetDesigner) => basicCarpetDesigner.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([
+    { name: 'basic_carpet_designer_id', referencedColumnName: 'id' },
+  ])
+  basicCarpetDesigner: BasicCarpetDesigner;
+
+  @ManyToOne(
+    () => BasicCarpetDesign,
+    (basicCarpetDesign) => basicCarpetDesign.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_design_id', referencedColumnName: 'id' }])
+  basicCarpetDesign: BasicCarpetDesign;
+
+  @ManyToOne(
+    () => BasicCarpetMaterial,
+    (basicCarpetMaterial) => basicCarpetMaterial.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([
+    { name: 'basic_carpet_material_id', referencedColumnName: 'id' },
+  ])
+  basicCarpetMaterial: BasicCarpetMaterial;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(
+    () => BasicCarpetType,
+    (basicCarpetType) => basicCarpetType.subproducts,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_type_id', referencedColumnName: 'id' }])
+  basicCarpetType: BasicCarpetType;
+
+  @ManyToOne(() => Image, (image) => image.subproducts, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @ManyToOne(() => Product, (product) => product.subproducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Video, (video) => video.subproducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'video_id', referencedColumnName: 'id' }])
+  video: Video;
+
+  @OneToMany(() => TorobProduct, (torobProduct) => torobProduct.subproduct)
+  torobProducts: TorobProduct[];
+
+  @OneToMany(() => UserCart, (userCart) => userCart.relatedSubproduct)
+  userCarts: UserCart[];
+
+  @OneToMany(() => UserCart, (userCart) => userCart.subproduct)
+  userCarts2: UserCart[];
 }

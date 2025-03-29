@@ -1,6 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Preorder } from '@/modules/preorder/domain/preorder';
+import { PreorderStatus } from '@/modules/preorder-status/domain/preorder-status';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreatePreorderPreorderStatusInput')
 export class CreatePreorderPreorderStatusInput {
   @Field()
   id: number;
@@ -22,4 +25,13 @@ export class CreatePreorderPreorderStatusInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Preorder)
+  preorder: Preorder;
+
+  @Field(() => PreorderStatus)
+  preorderStatus: PreorderStatus;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

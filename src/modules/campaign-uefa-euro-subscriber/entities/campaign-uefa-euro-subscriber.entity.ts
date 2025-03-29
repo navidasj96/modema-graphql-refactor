@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CampaignUefaEuroSubscriberHistory } from '@/modules/campaign-uefa-euro-subscriber-history/entities/campaign-uefa-euro-subscriber-history.entity';
+import { ContactFormStatus } from '@/modules/contact-form-status/entities/contact-form-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'campaign_uefa_euro_subscribers_contact_form_status_id_index',
@@ -35,4 +46,26 @@ export class CampaignUefaEuroSubscriber {
     default: () => "'1'",
   })
   contactFormStatusId: number;
+
+  @OneToMany(
+    () => CampaignUefaEuroSubscriberHistory,
+    (campaignUefaEuroSubscriberHistory) =>
+      campaignUefaEuroSubscriberHistory.campaignUefaEuroSubscriber,
+  )
+  campaignUefaEuroSubscriberHistories: CampaignUefaEuroSubscriberHistory[];
+
+  @ManyToOne(
+    () => ContactFormStatus,
+    (contactFormStatus) => contactFormStatus.campaignUefaEuroSubscribers,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
+  contactFormStatus: ContactFormStatus;
+
+  @ManyToOne(() => User, (user) => user.campaignUefaEuroSubscribers, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

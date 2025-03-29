@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index(
   'home_page_customer_images_desktop_image_id_foreign',
@@ -39,4 +48,25 @@ export class HomePageCustomerImage {
 
   @Column('int', { name: 'product_id', nullable: true, unsigned: true })
   productId?: number;
+
+  @ManyToOne(() => Image, (image) => image.homePageCustomerImages, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'desktop_image_id', referencedColumnName: 'id' }])
+  desktopImage: Image;
+
+  @ManyToOne(() => Image, (image) => image.homePageCustomerImages2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'mobile_image_id', referencedColumnName: 'id' }])
+  mobileImage: Image;
+
+  @ManyToOne(() => Product, (product) => product.homePageCustomerImages, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
 }

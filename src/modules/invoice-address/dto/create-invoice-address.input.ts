@@ -1,6 +1,13 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Address } from '@/modules/address/domain/address';
+import { City } from '@/modules/city/domain/city';
+import { Country } from '@/modules/country/domain/country';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { State } from '@/modules/state/domain/state';
+import { User } from '@/modules/user/domain/user';
+import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history';
 
-@InputType()
+@InputType('CreateInvoiceAddressInput')
 export class CreateInvoiceAddressInput {
   @Field()
   id: number;
@@ -67,4 +74,25 @@ export class CreateInvoiceAddressInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Address, { nullable: true })
+  address_2?: Address;
+
+  @Field(() => City, { nullable: true })
+  city?: City;
+
+  @Field(() => Country, { nullable: true })
+  country?: Country;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => State, { nullable: true })
+  state?: State;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
+
+  @Field(() => [InvoiceHistory], { nullable: true })
+  invoiceHistories?: InvoiceHistory[];
 }

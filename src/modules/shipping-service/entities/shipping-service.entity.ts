@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/entities/invoice-rates-result.entity';
+import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/entities/invoice-shipping-rate.entity';
 
 @Index('fedex_services_code_unique', ['code'], { unique: true })
 @Entity('shipping_services', { schema: 'modema' })
@@ -20,4 +28,16 @@ export class ShippingService {
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
   isActive: boolean;
+
+  @OneToMany(
+    () => InvoiceRatesResult,
+    (invoiceRatesResult) => invoiceRatesResult.shippingService,
+  )
+  invoiceRatesResults: InvoiceRatesResult[];
+
+  @OneToMany(
+    () => InvoiceShippingRate,
+    (invoiceShippingRate) => invoiceShippingRate.shippingService,
+  )
+  invoiceShippingRates: InvoiceShippingRate[];
 }

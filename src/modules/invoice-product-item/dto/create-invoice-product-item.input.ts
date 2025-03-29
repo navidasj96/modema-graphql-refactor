@@ -1,6 +1,14 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ExitControlItem } from '@/modules/exit-control-item/domain/exit-control-item';
+import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/domain/invoice-product-item-invoice-product-status';
+import { DamageReason } from '@/modules/damage-reason/domain/damage-reason';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { PrintProfile } from '@/modules/print-profile/domain/print-profile';
+import { PrintRip } from '@/modules/print-rip/domain/print-rip';
+import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
+import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
-@InputType()
+@InputType('CreateInvoiceProductItemInput')
 export class CreateInvoiceProductItemInput {
   @Field()
   id: number;
@@ -73,4 +81,28 @@ export class CreateInvoiceProductItemInput {
 
   @Field({ nullable: true })
   tagSortOrder?: number;
+
+  @Field(() => [ExitControlItem], { nullable: true })
+  exitControlItems?: ExitControlItem[];
+
+  @Field(() => [InvoiceProductItemInvoiceProductStatus], { nullable: true })
+  invoiceProductItemInvoiceProductStatuses?: InvoiceProductItemInvoiceProductStatus[];
+
+  @Field(() => InvoiceProductStatus, { nullable: true })
+  currentStatus?: InvoiceProductStatus;
+
+  @Field(() => DamageReason, { nullable: true })
+  damageReason?: DamageReason;
+
+  @Field(() => InvoiceProduct, { nullable: true })
+  invoiceProduct?: InvoiceProduct;
+
+  @Field(() => PrintProfile, { nullable: true })
+  printProfile?: PrintProfile;
+
+  @Field(() => PrintRip, { nullable: true })
+  printRip?: PrintRip;
+
+  @Field(() => ProductionRoll, { nullable: true })
+  productionRoll?: ProductionRoll;
 }

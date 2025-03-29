@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { Wallet } from '@/modules/wallet/domain/wallet';
 
-@InputType()
+@InputType('CreateRetargetingWalletChargeInput')
 export class CreateRetargetingWalletChargeInput {
   @Field()
   id: number;
@@ -25,4 +27,10 @@ export class CreateRetargetingWalletChargeInput {
 
   @Field({ nullable: true })
   chargedInvoices?: string;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => Wallet, { nullable: true })
+  wallet?: Wallet;
 }

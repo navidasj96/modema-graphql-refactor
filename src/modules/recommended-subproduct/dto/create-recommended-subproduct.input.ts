@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateRecommendedSubproductInput')
 export class CreateRecommendedSubproductInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreateRecommendedSubproductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
 }

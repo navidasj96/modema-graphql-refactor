@@ -1,4 +1,42 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ChaparTrackingHistory } from '@/modules/chapar-tracking-history/entities/chapar-tracking-history.entity';
+import { Coupon } from '@/modules/coupon/entities/coupon.entity';
+import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/entities/invoice-address-validation-result.entity';
+import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
+import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-history/entities/invoice-bank-gateway-history.entity';
+import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
+import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/entities/invoice-invoice-status.entity';
+import { InvoiceNegotiation } from '@/modules/invoice-negotiation/entities/invoice-negotiation.entity';
+import { InvoicePayment } from '@/modules/invoice-payment/entities/invoice-payment.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/entities/invoice-rates-result.entity';
+import { InvoiceReversal } from '@/modules/invoice-reversal/entities/invoice-reversal.entity';
+import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/entities/invoice-shipping-rate.entity';
+import { Address } from '@/modules/address/entities/address.entity';
+import { ChaparSettlementStatus } from '@/modules/chapar-settlement-status/entities/chapar-settlement-status.entity';
+import { InvoiceStatus } from '@/modules/invoice-status/entities/invoice-status.entity';
+import { InvoiceMode } from '@/modules/invoice-mode/entities/invoice-mode.entity';
+import { InvoicePaymentStatus } from '@/modules/invoice-payment-status/entities/invoice-payment-status.entity';
+import { InvoiceType } from '@/modules/invoice-type/entities/invoice-type.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { VisitorCoupon } from '@/modules/visitor-coupon/entities/visitor-coupon.entity';
+import { VisitorGroup } from '@/modules/visitor-group/entities/visitor-group.entity';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
+import { PaymentMethodField } from '@/modules/payment-method-field/entities/payment-method-field.entity';
+import { ReturnRequestHistory } from '@/modules/return-request-history/entities/return-request-history.entity';
+import { ReturnRequest } from '@/modules/return-request/entities/return-request.entity';
+import { ReturnedInvoice } from '@/modules/returned-invoice/entities/returned-invoice.entity';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @Index('invoice_number', ['invoiceNumber'], { unique: true })
 @Index('invoices_address_id_index', ['addressId'], {})
@@ -446,4 +484,227 @@ export class Invoice {
 
   @Column('tinyint', { name: 'roz', nullable: true, unsigned: true })
   roz: number | null;
+
+  @OneToMany(
+    () => ChaparTrackingHistory,
+    (chaparTrackingHistory) => chaparTrackingHistory.invoice,
+  )
+  chaparTrackingHistories: ChaparTrackingHistory[];
+
+  @OneToMany(() => Coupon, (coupon) => coupon.retargetingInvoice)
+  coupons: Coupon[];
+
+  @OneToMany(
+    () => InvoiceAddressValidationResult,
+    (invoiceAddressValidationResult) => invoiceAddressValidationResult.invoice,
+  )
+  invoiceAddressValidationResults: InvoiceAddressValidationResult[];
+
+  @OneToMany(() => InvoiceAddress, (invoiceAddress) => invoiceAddress.invoice)
+  invoiceAddresses: InvoiceAddress[];
+
+  @OneToMany(
+    () => InvoiceBankGatewayHistory,
+    (invoiceBankGatewayHistory) => invoiceBankGatewayHistory.invoice,
+  )
+  invoiceBankGatewayHistories: InvoiceBankGatewayHistory[];
+
+  @OneToMany(() => InvoiceHistory, (invoiceHistory) => invoiceHistory.invoice)
+  invoiceHistories: InvoiceHistory[];
+
+  @OneToMany(
+    () => InvoiceInvoiceStatus,
+    (invoiceInvoiceStatus) => invoiceInvoiceStatus.invoice,
+  )
+  invoiceInvoiceStatuses: InvoiceInvoiceStatus[];
+
+  @OneToMany(
+    () => InvoiceNegotiation,
+    (invoiceNegotiation) => invoiceNegotiation.invoice,
+  )
+  invoiceNegotiations: InvoiceNegotiation[];
+
+  @OneToMany(
+    () => InvoicePaymentHistory,
+    (invoicePaymentHistory) => invoicePaymentHistory.invoice,
+  )
+  invoicePaymentHistories: InvoicePaymentHistory[];
+
+  @OneToMany(() => InvoicePayment, (invoicePayment) => invoicePayment.invoice)
+  invoicePayments: InvoicePayment[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.invoice,
+  )
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @OneToMany(() => InvoiceProduct, (invoiceProduct) => invoiceProduct.invoice)
+  invoiceProducts: InvoiceProduct[];
+
+  @OneToMany(
+    () => InvoiceRatesResult,
+    (invoiceRatesResults) => invoiceRatesResults.invoice,
+  )
+  invoiceRatesResults: InvoiceRatesResult[];
+
+  @OneToMany(
+    () => InvoiceReversal,
+    (invoiceReversal) => invoiceReversal.invoice,
+  )
+  invoiceReversals: InvoiceReversal[];
+
+  @OneToMany(
+    () => InvoiceShippingRate,
+    (invoiceShippingRate) => invoiceShippingRate.invoice,
+  )
+  invoiceShippingRates: InvoiceShippingRate[];
+
+  @ManyToOne(() => Address, (addresses) => addresses.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'address_id', referencedColumnName: 'id' }])
+  address: Address;
+
+  @ManyToOne(
+    () => ChaparSettlementStatus,
+    (chaparSettlementStatus) => chaparSettlementStatus.invoices,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([
+    { name: 'chapar_settlement_status_id', referencedColumnName: 'id' },
+  ])
+  chaparSettlementStatus: ChaparSettlementStatus;
+
+  @ManyToOne(() => Coupon, (coupon) => coupon.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'coupon_id', referencedColumnName: 'id' }])
+  coupon: Coupon;
+
+  @ManyToOne(() => InvoiceStatus, (invoiceStatus) => invoiceStatus.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([
+    { name: 'current_invoice_status_id', referencedColumnName: 'id' },
+  ])
+  currentInvoiceStatus: InvoiceStatus;
+
+  @ManyToOne(() => InvoiceMode, (invoiceMode) => invoiceMode.invoices, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_mode_id', referencedColumnName: 'id' }])
+  invoiceMode: InvoiceMode;
+
+  @ManyToOne(
+    () => InvoicePaymentStatus,
+    (invoicePaymentStatus) => invoicePaymentStatus.invoices,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'invoice_payment_status_id', referencedColumnName: 'id' },
+  ])
+  invoicePaymentStatus: InvoicePaymentStatus;
+
+  @ManyToOne(() => InvoiceType, (invoiceType) => invoiceType.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_type_id', referencedColumnName: 'id' }])
+  invoiceType: InvoiceType;
+
+  @ManyToOne(() => InvoiceStatus, (invoiceStatus) => invoiceStatus.invoices2, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'lock_state', referencedColumnName: 'id' }])
+  lockState2: InvoiceStatus;
+
+  @ManyToOne(() => User, (user) => user.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([
+    { name: 'money_transfer_confirmed_by', referencedColumnName: 'id' },
+  ])
+  moneyTransferConfirmedBy2: User;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'parent_invoice_id', referencedColumnName: 'id' }])
+  parentInvoice: Invoice;
+
+  @OneToMany(() => Invoice, (invoice) => invoice.parentInvoice)
+  invoices: Invoice[];
+
+  @ManyToOne(
+    () => InvoicePaymentStatus,
+    (invoicePaymentStatus) => invoicePaymentStatus.invoices2,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'replacement_payment_status_id', referencedColumnName: 'id' },
+  ])
+  replacementPaymentStatus: InvoicePaymentStatus;
+
+  @ManyToOne(() => User, (user) => user.invoices2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(() => VisitorCoupon, (visitorCoupon) => visitorCoupon.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_coupon_id', referencedColumnName: 'id' }])
+  visitorCoupon: VisitorCoupon;
+
+  @ManyToOne(() => VisitorGroup, (visitorGroup) => visitorGroup.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_group_id', referencedColumnName: 'id' }])
+  visitorGroup: VisitorGroup;
+
+  @ManyToOne(() => Visitor, (visitor) => visitor.invoices, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_id', referencedColumnName: 'id' }])
+  visitor: Visitor;
+
+  @OneToMany(
+    () => PaymentMethodField,
+    (paymentMethodField) => paymentMethodField.invoice,
+  )
+  paymentMethodFields: PaymentMethodField[];
+
+  @OneToMany(
+    () => ReturnRequestHistory,
+    (returnRequestHistory) => returnRequestHistory.invoice,
+  )
+  returnRequestHistories: ReturnRequestHistory[];
+
+  @OneToMany(() => ReturnRequest, (returnRequest) => returnRequest.invoice)
+  returnRequests: ReturnRequest[];
+
+  @OneToMany(
+    () => ReturnedInvoice,
+    (returnedInvoices) => returnedInvoices.invoice,
+  )
+  returnedInvoices: ReturnedInvoice[];
+
+  @OneToMany(
+    () => ReturnedInvoice,
+    (returnedInvoices) => returnedInvoices.replacementInvoice,
+  )
+  returnedInvoices2: ReturnedInvoice[];
 }

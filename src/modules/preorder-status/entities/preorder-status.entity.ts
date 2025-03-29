@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Preorder } from '@/modules/preorder/entities/preorder.entity';
+import { PreorderPreorderStatus } from '@/modules/preorder-preorder-status/entities/preorder-preorder-status.entity';
 
 @Entity('preorder_statuses', { schema: 'modema' })
 export class PreorderStatus {
@@ -13,4 +15,13 @@ export class PreorderStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => PreorderPreorderStatus,
+    (preorderPreorderStatus) => preorderPreorderStatus.preorderStatus,
+  )
+  preorderPreorderStatuses: PreorderPreorderStatus[];
+
+  @OneToMany(() => Preorder, (preorder) => preorder.preorderStatus)
+  preorders: Preorder[];
 }

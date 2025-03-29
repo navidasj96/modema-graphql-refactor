@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { FileNegotiation } from '@/modules/file-negotiation/domain/file-negotiation';
 
-@InputType()
+@InputType('CreateFileInput')
 export class CreateFileInput {
   @Field()
   id: number;
@@ -25,4 +26,7 @@ export class CreateFileInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [FileNegotiation])
+  fileNegotiations: FileNegotiation[];
 }

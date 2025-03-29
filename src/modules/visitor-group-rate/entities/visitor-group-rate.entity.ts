@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { VisitorGroup } from '@/modules/visitor-group/entities/visitor-group.entity';
 
 @Index('visitor_group_rates_visitor_group_id_index', ['visitorGroupId'], {})
 @Entity('visitor_group_rates', { schema: 'modema' })
@@ -37,4 +45,12 @@ export class VisitorGroupRate {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => VisitorGroup,
+    (visitorGroup) => visitorGroup.visitorGroupRates,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'visitor_group_id', referencedColumnName: 'id' }])
+  visitorGroup: VisitorGroup;
 }

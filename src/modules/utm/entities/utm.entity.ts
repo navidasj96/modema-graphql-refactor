@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { UserUtm } from '@/modules/user-utm/entities/user-utm.entity';
 
 @Index(
   'utms_utm_source_utm_medium_unique',
@@ -27,4 +34,7 @@ export class Utm {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => UserUtm, (userUtm) => userUtm.utm)
+  userUtms: UserUtm[];
 }

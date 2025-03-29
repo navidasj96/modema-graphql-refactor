@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 
+@InputType('BasicCarpetSizeDetailDomain')
 @ObjectType()
 export class BasicCarpetSizeDetail {
   @IDField(() => ID)
@@ -32,4 +34,7 @@ export class BasicCarpetSizeDetail {
 
   @Field({ nullable: true })
   detailTextEn?: string;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
 }

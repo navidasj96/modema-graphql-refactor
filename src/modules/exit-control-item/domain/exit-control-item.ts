@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ExitControl } from '@/modules/exit-control/domain/exit-control';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 
+@InputType('ExitControlItemDomain')
 @ObjectType()
 export class ExitControlItem {
   @IDField(() => ID)
@@ -26,4 +29,10 @@ export class ExitControlItem {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ExitControl)
+  exitControl: ExitControl;
+
+  @Field(() => InvoiceProductItem)
+  invoiceProductItem: InvoiceProductItem;
 }

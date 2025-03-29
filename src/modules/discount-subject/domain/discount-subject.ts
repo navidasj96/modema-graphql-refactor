@@ -1,6 +1,13 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { Discount } from '@/modules/discount/domain/discount';
+import { PriceGroup } from '@/modules/price-group/domain/price-group';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('DiscountSubjectDomain')
 @ObjectType()
 export class DiscountSubject {
   @IDField(() => ID)
@@ -29,4 +36,22 @@ export class DiscountSubject {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => Discount)
+  discount: Discount;
+
+  @Field(() => PriceGroup)
+  priceGroup: PriceGroup;
+
+  @Field(() => ProductCategory)
+  productCategory: ProductCategory;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
 }

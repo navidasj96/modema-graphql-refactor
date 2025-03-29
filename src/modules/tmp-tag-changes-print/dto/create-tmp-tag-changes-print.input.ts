@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateTmpTagChangesPrintInput')
 export class CreateTmpTagChangesPrintInput {
   @Field()
   id: number;

@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 
 @Index('chapar_tracking_histories_invoice_id_index', ['invoiceId'], {})
 @Entity('chapar_tracking_histories', { schema: 'modema' })
@@ -32,4 +40,11 @@ export class ChaparTrackingHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.chaparTrackingHistories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
 }

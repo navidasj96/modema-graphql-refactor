@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ModemaAcceleratorImage } from '@/modules/modema-accelerator-image/domain/modema-accelerator-image';
+import { ModemaAcceleratorVideo } from '@/modules/modema-accelerator-video/domain/modema-accelerator-video';
 
+@InputType('ModemaAcceleratorDomain')
 @ObjectType()
 export class ModemaAccelerator {
   @IDField(() => ID)
@@ -35,4 +38,10 @@ export class ModemaAccelerator {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ModemaAcceleratorImage], { nullable: true })
+  modemaAcceleratorImages?: ModemaAcceleratorImage[];
+
+  @Field(() => [ModemaAcceleratorVideo], { nullable: true })
+  modemaAcceleratorVideos?: ModemaAcceleratorVideo[];
 }

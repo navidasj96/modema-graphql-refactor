@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/entities/production-pad-production-pad-status.entity';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { ProductionPadStatus } from '@/modules/production-pad-status/entities/production-pad-status.entity';
 
 @Index('production_pads_basic_carpet_size_id_index', ['basicCarpetSizeId'], {})
 @Index(
@@ -40,4 +51,29 @@ export class ProductionPad {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ProductionPadProductionPadStatus,
+    (productionPadProductionPadStatus) =>
+      productionPadProductionPadStatus.productionPad,
+  )
+  productionPadProductionPadStatuses: ProductionPadProductionPadStatus[];
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSizes) => basicCarpetSizes.productionPads,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(
+    () => ProductionPadStatus,
+    (productionPadStatus) => productionPadStatus.productionPads,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'production_pad_status_id', referencedColumnName: 'id' },
+  ])
+  productionPadStatus: ProductionPadStatus;
 }

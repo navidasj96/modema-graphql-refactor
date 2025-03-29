@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { VisitorGroupRate } from '@/modules/visitor-group-rate/entities/visitor-group-rate.entity';
+import { VisitorSale } from '@/modules/visitor-sale/entities/visitor-sale.entity';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 
 @Index('visitor_groups_name_unique', ['name'], { unique: true })
 @Entity('visitor_groups', { schema: 'modema' })
@@ -27,4 +37,19 @@ export class VisitorGroup {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt?: Date;
+
+  @OneToMany(() => Invoice, (invoice) => invoice.visitorGroup)
+  invoices: Invoice[];
+
+  @OneToMany(
+    () => VisitorGroupRate,
+    (visitorGroupRate) => visitorGroupRate.visitorGroup,
+  )
+  visitorGroupRates: VisitorGroupRate[];
+
+  @OneToMany(() => VisitorSale, (visitorSale) => visitorSale.visitorGroup)
+  visitorSales: VisitorSale[];
+
+  @OneToMany(() => Visitor, (visitor) => visitor.visitorGroup)
+  visitors: Visitor[];
 }

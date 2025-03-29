@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateFetchSiteUrlInput')
 export class CreateFetchSiteUrlInput {
   @Field()
   id: number;

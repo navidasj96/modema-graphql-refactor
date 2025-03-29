@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-history/domain/invoice-bank-gateway-history';
+import { User } from '@/modules/user/domain/user';
+import { InvoicePaymentType } from '@/modules/invoice-payment-type/domain/invoice-payment-type';
 
+@InputType('PreorderRegisterDomain')
 @ObjectType()
 export class PreorderRegister {
   @IDField(() => ID)
@@ -53,4 +57,16 @@ export class PreorderRegister {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoiceBankGatewayHistory])
+  invoiceBankGatewayHistories: InvoiceBankGatewayHistory[];
+
+  @Field(() => User, { nullable: true })
+  moneyTransferConfirmedBy2?: User;
+
+  @Field(() => InvoicePaymentType, { nullable: true })
+  paymentType?: InvoicePaymentType;
+
+  @Field(() => User)
+  user: User;
 }

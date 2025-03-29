@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ColorCategory } from '@/modules/color-category/domain/color-category';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateColorCategorySubproductInput')
 export class CreateColorCategorySubproductInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateColorCategorySubproductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ColorCategory)
+  colorCategory: ColorCategory;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
 }

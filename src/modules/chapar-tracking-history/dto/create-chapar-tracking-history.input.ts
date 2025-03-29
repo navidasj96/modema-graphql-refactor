@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateChaparTrackingHistoryInput')
 export class CreateChaparTrackingHistoryInput {
   @Field()
   id: number;
@@ -31,4 +32,7 @@ export class CreateChaparTrackingHistoryInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Invoice)
+  invoice: Invoice;
 }

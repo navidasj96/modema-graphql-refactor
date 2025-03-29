@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateOutOfStockButListedProductInput')
 export class CreateOutOfStockButListedProductInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreateOutOfStockButListedProductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
 }

@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'subproduct_stock_histories_invoice_product_id_index',
@@ -32,4 +42,27 @@ export class SubproductStockHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.subproductStockHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
+  invoiceProduct: InvoiceProduct;
+
+  @ManyToOne(
+    () => Subproduct,
+    (subproduct) => subproduct.subproductStockHistories,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @ManyToOne(() => User, (user) => user.subproductStockHistories, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

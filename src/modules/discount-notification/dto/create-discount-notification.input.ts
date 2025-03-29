@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Product } from '@/modules/product/domain/product';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateDiscountNotificationInput')
 export class CreateDiscountNotificationInput {
   @Field()
   id: number;
@@ -19,4 +21,10 @@ export class CreateDiscountNotificationInput {
 
   @Field({ nullable: true })
   productId?: number;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => User)
+  user: User;
 }

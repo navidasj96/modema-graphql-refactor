@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'impersonate_histories_impersonate_user_id_index',
@@ -22,4 +30,18 @@ export class ImpersonateHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.impersonateHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'impersonate_user_id', referencedColumnName: 'id' }])
+  impersonateUser: User;
+
+  @ManyToOne(() => User, (user) => user.impersonateHistories2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

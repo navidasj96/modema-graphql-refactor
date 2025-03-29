@@ -1,6 +1,12 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { Discount } from '@/modules/discount/domain/discount';
+import { PriceGroup } from '@/modules/price-group/domain/price-group';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateDiscountSubjectInput')
 export class CreateDiscountSubjectInput {
   @Field()
   id: number;
@@ -28,4 +34,22 @@ export class CreateDiscountSubjectInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => Discount)
+  discount: Discount;
+
+  @Field(() => PriceGroup)
+  priceGroup: PriceGroup;
+
+  @Field(() => ProductCategory)
+  productCategory: ProductCategory;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
 }

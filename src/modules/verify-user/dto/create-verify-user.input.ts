@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateVerifyUserInput')
 export class CreateVerifyUserInput {
   @Field()
   id: number;
@@ -16,4 +17,7 @@ export class CreateVerifyUserInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
 }

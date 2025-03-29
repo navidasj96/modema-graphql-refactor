@@ -1,6 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
+import { PriceGroupSize } from '@/modules/price-group-size/domain/price-group-size';
+import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreatePriceGroupInput')
 export class CreatePriceGroupInput {
   @Field()
   id: number;
@@ -13,4 +16,13 @@ export class CreatePriceGroupInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [DiscountSubject])
+  discountSubjects: DiscountSubject[];
+
+  @Field(() => [PriceGroupSize])
+  priceGroupSizes: PriceGroupSize[];
+
+  @Field(() => [Product])
+  products: Product[];
 }

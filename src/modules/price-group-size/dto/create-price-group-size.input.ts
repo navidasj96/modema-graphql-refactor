@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { PriceGroup } from '@/modules/price-group/domain/price-group';
 
-@InputType()
+@InputType('CreatePriceGroupSizeInput')
 export class CreatePriceGroupSizeInput {
   @Field()
   id: number;
@@ -28,4 +30,10 @@ export class CreatePriceGroupSizeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => PriceGroup)
+  priceGroup: PriceGroup;
 }

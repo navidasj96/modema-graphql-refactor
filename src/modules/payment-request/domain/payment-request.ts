@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { PaymentRequestStatus } from '@/modules/payment-request-status/domain/payment-request-status';
+import { Visitor } from '@/modules/visitor/domain/visitor';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('PaymentRequestDomain')
 @ObjectType()
 export class PaymentRequest {
   @IDField(() => ID)
@@ -29,4 +33,13 @@ export class PaymentRequest {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  adminUser?: User;
+
+  @Field(() => PaymentRequestStatus)
+  paymentRequestStatus: PaymentRequestStatus;
+
+  @Field(() => Visitor)
+  visitor: Visitor;
 }

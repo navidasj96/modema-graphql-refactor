@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
 
 @Index('invoice_shipping_rates_invoice_id_index', ['invoiceId'], {})
 @Index(
@@ -38,4 +47,19 @@ export class InvoiceShippingRate {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceShippingRates, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => ShippingService,
+    (shippingService) => shippingService.invoiceShippingRates,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'shipping_service_id', referencedColumnName: 'id' }])
+  shippingService: ShippingService;
 }

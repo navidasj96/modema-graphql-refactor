@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { Utm } from '@/modules/utm/domain/utm';
 
-@InputType()
+@InputType('CreateUserUtmInput')
 export class CreateUserUtmInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateUserUtmInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => Utm)
+  utm: Utm;
 }

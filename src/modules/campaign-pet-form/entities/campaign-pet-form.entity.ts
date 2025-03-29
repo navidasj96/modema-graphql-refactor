@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Coupon } from '@/modules/coupon/entities/coupon.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('campaign_pet_forms_coupon_id_index', ['couponId'], {})
 @Index('campaign_pet_forms_user_id_index', ['userId'], {})
@@ -52,4 +61,18 @@ export class CampaignPetForm {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Coupon, (coupon) => coupon.campaignPetForms, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'coupon_id', referencedColumnName: 'id' }])
+  coupon: Coupon;
+
+  @ManyToOne(() => User, (user) => user.campaignPetForms, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

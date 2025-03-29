@@ -1,7 +1,11 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
+import { Rate } from '@/modules/rate/domain/rate';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@ObjectType('ProductRateAverage')
+@InputType('ProductRateAverageDomain')
+@ObjectType()
 export class ProductRateAverage {
   @IDField(() => ID)
   id: number;
@@ -26,4 +30,13 @@ export class ProductRateAverage {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Rate)
+  rate: Rate;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

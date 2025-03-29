@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductComment } from '@/modules/product-comment/entities/product-comment.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'product_comment_likes_product_comment_id_index',
@@ -28,4 +37,19 @@ export class ProductCommentLike {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => ProductComment,
+    (productComment) => productComment.productCommentLikes,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_comment_id', referencedColumnName: 'id' }])
+  productComment: ProductComment;
+
+  @ManyToOne(() => User, (users) => users.productCommentLikes, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

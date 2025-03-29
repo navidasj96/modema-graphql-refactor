@@ -1,6 +1,5 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
-import { User } from '@/modules/user/domain/user';
 
 @InputType('ActivityInput')
 @ObjectType()
@@ -37,7 +36,4 @@ export class Activity {
 
   @Field({ nullable: true })
   deletedUserId?: number;
-
-  @Field(() => User)
-  user: User;
 }

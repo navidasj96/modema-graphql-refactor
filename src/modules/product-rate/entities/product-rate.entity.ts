@@ -1,4 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Rate } from '@/modules/rate/entities/rate.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { ProductComment } from '@/modules/product-comment/entities/product-comment.entity';
 
 @Index('product_rate_product_comment_id_index', ['productCommentId'], {})
 @Index(
@@ -51,4 +63,40 @@ export class ProductRate {
     scale: 2,
   })
   oldRate?: number;
+
+  @ManyToOne(() => Product, (product) => product.productRates, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Rate, (rate) => rate.productRates, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'rate_id', referencedColumnName: 'id' }])
+  rate: Rate;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.productRates, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @ManyToOne(() => User, (user) => user.productRates, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(
+    () => ProductComment,
+    (productComment) => productComment.productRates,
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_comment_id', referencedColumnName: 'id' }])
+  productComment: ProductComment;
 }

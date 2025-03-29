@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Design } from '@/modules/design/domain/design';
 
+@InputType('CarpetShapeDomain')
 @ObjectType()
 export class CarpetShape {
   @IDField(() => ID)
@@ -35,4 +37,7 @@ export class CarpetShape {
 
   @Field({ defaultValue: true })
   isActive: boolean;
+
+  @Field(() => [Design])
+  designs: Design[];
 }

@@ -1,6 +1,36 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ChaparTrackingHistory } from '@/modules/chapar-tracking-history/domain/chapar-tracking-history';
+import { Coupon } from '@/modules/coupon/domain/coupon';
+import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/domain/invoice-address-validation-result';
+import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
+import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-history/domain/invoice-bank-gateway-history';
+import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history';
+import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/domain/invoice-invoice-status';
+import { InvoiceNegotiation } from '@/modules/invoice-negotiation/domain/invoice-negotiation';
+import { InvoicePayment } from '@/modules/invoice-payment/domain/invoice-payment';
+import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
+import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoice-rates-result';
+import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
+import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/domain/invoice-shipping-rate';
+import { Address } from '@/modules/address/domain/address';
+import { ChaparSettlementStatus } from '@/modules/chapar-settlement-status/domain/chapar-settlement-status';
+import { InvoiceStatus } from '@/modules/invoice-status/domain/invoice-status';
+import { InvoiceMode } from '@/modules/invoice-mode/domain/invoice-mode';
+import { InvoicePaymentStatus } from '@/modules/invoice-payment-status/domain/invoice-payment-status';
+import { InvoiceType } from '@/modules/invoice-type/domain/invoice-type';
+import { User } from '@/modules/user/domain/user';
+import { VisitorCoupon } from '@/modules/visitor-coupon/domain/visitor-coupon';
+import { VisitorGroup } from '@/modules/visitor-group/domain/visitor-group';
+import { Visitor } from '@/modules/visitor/domain/visitor';
+import { PaymentMethodField } from '@/modules/payment-method-field/domain/payment-method-field';
+import { ReturnRequestHistory } from '@/modules/return-request-history/domain/return-request-history';
+import { ReturnRequest } from '@/modules/return-request/domain/return-request';
+import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
+import { Invoice } from '@/modules/invoice/domain/invoice';
 
-@InputType()
+@InputType('CreateInvoiceInput')
 export class CreateInvoiceInput {
   @Field()
   id: number;
@@ -250,4 +280,112 @@ export class CreateInvoiceInput {
 
   @Field({ nullable: true })
   roz?: number;
+
+  @Field(() => [ChaparTrackingHistory], { nullable: true })
+  chaparTrackingHistories?: ChaparTrackingHistory[];
+
+  @Field(() => [Coupon], { nullable: true })
+  coupons?: Coupon[];
+
+  @Field(() => [InvoiceAddressValidationResult], { nullable: true })
+  invoiceAddressValidationResults?: InvoiceAddressValidationResult[];
+
+  @Field(() => [InvoiceAddress], { nullable: true })
+  invoiceAddresses?: InvoiceAddress[];
+
+  @Field(() => [InvoiceBankGatewayHistory], { nullable: true })
+  invoiceBankGatewayHistories?: InvoiceBankGatewayHistory[];
+
+  @Field(() => [InvoiceHistory], { nullable: true })
+  invoiceHistories?: InvoiceHistory[];
+
+  @Field(() => [InvoiceInvoiceStatus], { nullable: true })
+  invoiceInvoiceStatuses?: InvoiceInvoiceStatus[];
+
+  @Field(() => [InvoiceNegotiation], { nullable: true })
+  invoiceNegotiations?: InvoiceNegotiation[];
+
+  @Field(() => [InvoicePaymentHistory], { nullable: true })
+  invoicePaymentHistories?: InvoicePaymentHistory[];
+
+  @Field(() => [InvoicePayment], { nullable: true })
+  invoicePayments?: InvoicePayment[];
+
+  @Field(() => [InvoiceProductHistory], { nullable: true })
+  invoiceProductHistories?: InvoiceProductHistory[];
+
+  @Field(() => [InvoiceProduct], { nullable: true })
+  invoiceProducts?: InvoiceProduct[];
+
+  @Field(() => [InvoiceRatesResult], { nullable: true })
+  invoiceRatesResults?: InvoiceRatesResult[];
+
+  @Field(() => [InvoiceReversal], { nullable: true })
+  invoiceReversals?: InvoiceReversal[];
+
+  @Field(() => [InvoiceShippingRate], { nullable: true })
+  invoiceShippingRates?: InvoiceShippingRate[];
+
+  @Field(() => Address, { nullable: true })
+  address?: Address;
+
+  @Field(() => ChaparSettlementStatus, { nullable: true })
+  chaparSettlementStatus?: ChaparSettlementStatus;
+
+  @Field(() => Coupon, { nullable: true })
+  coupon?: Coupon;
+
+  @Field(() => InvoiceStatus, { nullable: true })
+  currentInvoiceStatus?: InvoiceStatus;
+
+  @Field(() => InvoiceMode, { nullable: true })
+  invoiceMode?: InvoiceMode;
+
+  @Field(() => InvoicePaymentStatus, { nullable: true })
+  invoicePaymentStatus?: InvoicePaymentStatus;
+
+  @Field(() => InvoiceType, { nullable: true })
+  invoiceType?: InvoiceType;
+
+  @Field(() => InvoiceStatus, { nullable: true })
+  lockState2?: InvoiceStatus;
+
+  @Field(() => User, { nullable: true })
+  moneyTransferConfirmedBy2?: User;
+
+  @Field(() => Invoice, { nullable: true })
+  parentInvoice?: Invoice;
+
+  @Field(() => [Invoice], { nullable: true })
+  invoices?: Invoice[];
+
+  @Field(() => InvoicePaymentStatus, { nullable: true })
+  replacementPaymentStatus?: InvoicePaymentStatus;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
+
+  @Field(() => VisitorCoupon, { nullable: true })
+  visitorCoupon?: VisitorCoupon;
+
+  @Field(() => VisitorGroup, { nullable: true })
+  visitorGroup?: VisitorGroup;
+
+  @Field(() => Visitor, { nullable: true })
+  visitor?: Visitor;
+
+  @Field(() => [PaymentMethodField], { nullable: true })
+  paymentMethodFields?: PaymentMethodField[];
+
+  @Field(() => [ReturnRequestHistory], { nullable: true })
+  returnRequestHistories?: ReturnRequestHistory[];
+
+  @Field(() => [ReturnRequest], { nullable: true })
+  returnRequests?: ReturnRequest[];
+
+  @Field(() => [ReturnedInvoice], { nullable: true })
+  returnedInvoices?: ReturnedInvoice[];
+
+  @Field(() => [ReturnedInvoice], { nullable: true })
+  returnedInvoices2?: ReturnedInvoice[];
 }

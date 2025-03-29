@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateAutomationEventInput')
 export class CreateAutomationEventInput {
   @Field()
   id: number;
@@ -67,4 +68,7 @@ export class CreateAutomationEventInput {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

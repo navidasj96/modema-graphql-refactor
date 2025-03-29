@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Design } from '@/modules/design/entities/design.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('user_carts_design_id_index', ['designId'], {})
 @Index(
@@ -72,4 +83,46 @@ export class UserCart {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Design, (design) => design.userCarts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'design_id', referencedColumnName: 'id' }])
+  design: Design;
+
+  @ManyToOne(() => Product, (product) => product.userCarts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Product, (product) => product.userCarts2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'related_product_id', referencedColumnName: 'id' }])
+  relatedProduct: Product;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.userCarts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'related_subproduct_id', referencedColumnName: 'id' }])
+  relatedSubproduct: Subproduct;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.userCarts2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @ManyToOne(() => User, (user) => user.userCarts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

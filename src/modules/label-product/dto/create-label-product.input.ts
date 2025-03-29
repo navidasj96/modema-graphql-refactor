@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Label } from '@/modules/label/domain/label';
+import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateLabelProductInput')
 export class CreateLabelProductInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateLabelProductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Label, { nullable: true })
+  label?: Label;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
 }

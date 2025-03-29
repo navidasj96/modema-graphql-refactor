@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { WithdrawalRequest } from '@/modules/withdrawal-request/entities/withdrawal-request.entity';
 
 @Entity('withdrawal_request_statuses', { schema: 'modema' })
 export class WithdrawalRequestStatus {
@@ -13,4 +14,10 @@ export class WithdrawalRequestStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => WithdrawalRequest,
+    (withdrawalRequest) => withdrawalRequest.withdrawalRequestStatus,
+  )
+  withdrawalRequests: WithdrawalRequest[];
 }

@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { City } from '@/modules/city/entities/city.entity';
+import { Country } from '@/modules/country/entities/country.entity';
+import { State } from '@/modules/state/entities/state.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index('basic_carpet_designers_city_id_index', ['cityId'], {})
 @Index('basic_carpet_designers_code_unique', ['code'], { unique: true })
@@ -85,4 +98,35 @@ export class BasicCarpetDesigner {
     default: () => "'0'",
   })
   pricePercentage?: number;
+
+  @ManyToOne(() => City, (city) => city.basicCarpetDesigners, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'city_id', referencedColumnName: 'id' }])
+  city: City;
+
+  @ManyToOne(() => Country, (country) => country.basicCarpetDesigners, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'country_id', referencedColumnName: 'id' }])
+  country: Country;
+
+  @ManyToOne(() => State, (state) => state.basicCarpetDesigners, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'state_id', referencedColumnName: 'id' }])
+  state: State;
+
+  @ManyToOne(() => User, (user) => user.basicCarpetDesigners, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetDesigner)
+  subproducts: Subproduct[];
 }

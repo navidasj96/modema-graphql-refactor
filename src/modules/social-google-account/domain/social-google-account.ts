@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('SocialGoogleAccountDomain')
 @ObjectType()
 export class SocialGoogleAccount {
   @IDField(() => ID)
@@ -20,4 +22,7 @@ export class SocialGoogleAccount {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
 }

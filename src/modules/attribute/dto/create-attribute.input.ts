@@ -1,10 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateAttributeInput')
 export class CreateAttributeInput {
-  @Field()
-  id: number;
-
   @Field()
   name: string;
 
@@ -16,10 +13,4 @@ export class CreateAttributeInput {
 
   @Field({ nullable: true })
   isActive?: number;
-
-  @Field({ nullable: true })
-  createdAt?: Date;
-
-  @Field({ nullable: true })
-  updatedAt?: Date;
 }

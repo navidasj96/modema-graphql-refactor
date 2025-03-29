@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-history/entities/invoice-bank-gateway-history.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { InvoicePaymentType } from '@/modules/invoice-payment-type/entities/invoice-payment-type.entity';
 
 @Index(
   'preorder_registers_money_transfer_confirmed_by_index',
@@ -78,4 +89,34 @@ export class PreorderRegister {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => InvoiceBankGatewayHistory,
+    (invoiceBankGatewayHistory) => invoiceBankGatewayHistory.preorderRegister,
+  )
+  invoiceBankGatewayHistories: InvoiceBankGatewayHistory[];
+
+  @ManyToOne(() => User, (user) => user.preorderRegisters, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([
+    { name: 'money_transfer_confirmed_by', referencedColumnName: 'id' },
+  ])
+  moneyTransferConfirmedBy2: User;
+
+  @ManyToOne(
+    () => InvoicePaymentType,
+    (invoicePaymentType) => invoicePaymentType.preorderRegisters,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'payment_type_id', referencedColumnName: 'id' }])
+  paymentType: InvoicePaymentType;
+
+  @ManyToOne(() => User, (users) => users.preorderRegisters2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

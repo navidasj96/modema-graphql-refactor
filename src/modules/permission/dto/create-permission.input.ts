@@ -1,6 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ModelHasPermission } from '@/modules/model-has-permission/domain/model-has-permission';
+import { PermissionGroup } from '@/modules/permission-group/domain/permission-group';
+import { Role } from '@/modules/role/domain/role';
+import { Permission } from '@/modules/permission/domain/permission';
 
-@InputType()
+@InputType('CreatePermissionInput')
 export class CreatePermissionInput {
   @Field()
   id: number;
@@ -22,4 +26,19 @@ export class CreatePermissionInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ModelHasPermission])
+  modelHasPermissions: ModelHasPermission[];
+
+  @Field(() => Permission, { nullable: true })
+  parent?: Permission;
+
+  @Field(() => [Permission])
+  permissions: Permission[];
+
+  @Field(() => PermissionGroup, { nullable: true })
+  permissionGroup?: PermissionGroup;
+
+  @Field(() => [Role])
+  roles: Role[];
 }

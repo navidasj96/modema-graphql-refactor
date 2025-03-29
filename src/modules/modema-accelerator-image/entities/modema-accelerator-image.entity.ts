@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ModemaAccelerator } from '@/modules/modema-accelerator/entities/modema-accelerator.entity';
 
 @Index(
   'modema_accelerator_images_modema_accelerator_id_index',
@@ -40,4 +48,12 @@ export class ModemaAcceleratorImage {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => ModemaAccelerator,
+    (modemaAccelerator) => modemaAccelerator.modemaAcceleratorImages,
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'modema_accelerator_id', referencedColumnName: 'id' }])
+  modemaAccelerator?: ModemaAccelerator;
 }

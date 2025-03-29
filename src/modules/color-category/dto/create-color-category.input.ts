@@ -1,6 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
+import { ColorCategoryDetail } from '@/modules/color-category-detail/domain/color-category-detail';
+import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/domain/color-category-subproduct';
 
-@InputType()
+@InputType('CreateColorCategoryInput')
 export class CreateColorCategoryInput {
   @Field()
   id: number;
@@ -67,4 +70,19 @@ export class CreateColorCategoryInput {
 
   @Field({ nullable: true })
   urlSlugEn?: string;
+
+  @Field(() => Image)
+  homepageImage: Image;
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => Image)
+  mobileImage: Image;
+
+  @Field(() => [ColorCategoryDetail])
+  colorCategoryDetails: ColorCategoryDetail[];
+
+  @Field(() => [ColorCategorySubproduct])
+  colorCategorySubproducts: ColorCategorySubproduct[];
 }

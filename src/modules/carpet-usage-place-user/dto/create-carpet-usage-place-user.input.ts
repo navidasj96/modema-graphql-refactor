@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CarpetUsagePlace } from '@/modules/carpet-usage-place/domain/carpet-usage-place';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateCarpetUsagePlaceUserInput')
 export class CreateCarpetUsagePlaceUserInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateCarpetUsagePlaceUserInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => CarpetUsagePlace)
+  carpetUsagePlace: CarpetUsagePlace;
+
+  @Field(() => User)
+  user: User;
 }

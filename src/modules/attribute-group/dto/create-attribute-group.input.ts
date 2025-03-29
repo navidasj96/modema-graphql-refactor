@@ -1,6 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
+import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
+import { AttributeAttributeGroup } from '@/modules/attribute-attribute-group/domain/attribute-attribute-group';
 
-@InputType()
+@InputType('CreateAttributeGroupInput')
 export class CreateAttributeGroupInput {
   @Field()
   id: number;
@@ -25,4 +28,13 @@ export class CreateAttributeGroupInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [AttributeAttributeGroup])
+  attributeAttributeGroups: AttributeAttributeGroup[];
+
+  @Field(() => ProductCategory)
+  productCategory: ProductCategory;
+
+  @Field(() => [AttributeItem])
+  attributeItems: AttributeItem[];
 }

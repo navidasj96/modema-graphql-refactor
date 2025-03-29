@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { VisitorGroup } from '@/modules/visitor-group/entities/visitor-group.entity';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 
 @Index('visitor_sales_visitor_group_id_index', ['visitorGroupId'], {})
 @Index('visitor_sales_visitor_id_index', ['visitorId'], {})
@@ -55,4 +64,18 @@ export class VisitorSale {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt?: Date;
+
+  @ManyToOne(() => VisitorGroup, (visitorGroup) => visitorGroup.visitorSales, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_group_id', referencedColumnName: 'id' }])
+  visitorGroup: VisitorGroup;
+
+  @ManyToOne(() => Visitor, (visitor) => visitor.visitorSales, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_id', referencedColumnName: 'id' }])
+  visitor: Visitor;
 }

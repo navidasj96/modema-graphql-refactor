@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('DiscountNotificationDomain')
 @ObjectType()
 export class DiscountNotification {
   @IDField(() => ID)
@@ -20,4 +23,10 @@ export class DiscountNotification {
 
   @Field({ nullable: true })
   productId?: number;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => User)
+  user: User;
 }

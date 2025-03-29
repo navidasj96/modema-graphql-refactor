@@ -1,4 +1,25 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CarpetUsagePlaceInvoiceProduct } from '@/modules/carpet-usage-place-invoice-product/entities/carpet-usage-place-invoice-product.entity';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { Design } from '@/modules/design/entities/design.entity';
+import { Discount } from '@/modules/discount/entities/discount.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { InvoiceReversalItem } from '@/modules/invoice-reversal-item/entities/invoice-reversal-item.entity';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/entities/return-request-item-history.entity';
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { SubproductStockHistory } from '@/modules/subproduct-stock-history/entities/subproduct-stock-history.entity';
+import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/entities/returned-invoice-product.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @Index('invoice_products_design_id_index', ['designId'], {})
 @Index('invoice_products_discount_id_index', ['discountId'], {})
@@ -190,4 +211,109 @@ export class InvoiceProduct {
 
   @Column('tinyint', { name: 'manually_added', width: 1, default: () => "'0'" })
   manuallyAdded: boolean;
+
+  @OneToMany(
+    () => CarpetUsagePlaceInvoiceProduct,
+    (carpetUsagePlaceInvoiceProduct) =>
+      carpetUsagePlaceInvoiceProduct.invoiceProduct,
+  )
+  carpetUsagePlaceInvoiceProducts: CarpetUsagePlaceInvoiceProduct[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.invoiceProduct,
+  )
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @OneToMany(
+    () => InvoiceProductItem,
+    (invoiceProductItem) => invoiceProductItem.invoiceProduct,
+  )
+  invoiceProductItems: InvoiceProductItem[];
+
+  @ManyToOne(() => Design, (design) => design.invoiceProducts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'design_id', referencedColumnName: 'id' }])
+  design: Design;
+
+  @ManyToOne(() => Discount, (discount) => discount.invoiceProducts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'discount_id', referencedColumnName: 'id' }])
+  discount_2: Discount;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'pad_id', referencedColumnName: 'id' }])
+  pad: Subproduct;
+
+  @ManyToOne(() => Product, (product) => product.invoiceProducts, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Product, (product) => product.invoiceProducts2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'related_product_id', referencedColumnName: 'id' }])
+  relatedProduct: Product;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'related_subproduct_id', referencedColumnName: 'id' }])
+  relatedSubproduct: Subproduct;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts3, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
+
+  @OneToMany(
+    () => InvoiceReversalItem,
+    (invoiceReversalItem) => invoiceReversalItem.invoiceProduct,
+  )
+  invoiceReversalItems: InvoiceReversalItem[];
+
+  @OneToMany(
+    () => ReturnRequestItemHistory,
+    (returnRequestItemHistory) => returnRequestItemHistory.invoiceProduct,
+  )
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @OneToMany(
+    () => ReturnRequestItem,
+    (returnRequestItem) => returnRequestItem.invoiceProduct,
+  )
+  returnRequestItems: ReturnRequestItem[];
+
+  @OneToMany(
+    () => ReturnedInvoiceProduct,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.invoiceProduct,
+  )
+  returnedInvoiceProducts: ReturnedInvoiceProduct[];
+
+  @OneToMany(
+    () => SubproductStockHistory,
+    (subproductStockHistory) => subproductStockHistory.invoiceProduct,
+  )
+  subproductStockHistories: SubproductStockHistory[];
 }

@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Design } from '@/modules/design/domain/design';
 
+@InputType('ImageLayerDomain')
 @ObjectType()
 export class ImageLayer {
   @IDField(() => ID)
@@ -41,4 +43,7 @@ export class ImageLayer {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => Design, { nullable: true })
+  design?: Design;
 }

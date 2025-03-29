@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Image } from '@/modules/image/entities/image.entity';
+import { Pattern } from '@/modules/pattern/entities/pattern.entity';
 
 @Index('pattern_categories_image_id_index', ['imageId'], {})
 @Entity('pattern_categories', { schema: 'modema' })
@@ -36,4 +46,14 @@ export class PatternCategory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Image, (image) => image.patternCategories, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @OneToMany(() => Pattern, (pattern) => pattern.patternCategory)
+  patterns: Pattern[];
 }

@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('FavoriteProductDomain')
 @ObjectType()
 export class FavoriteProduct {
   @IDField(() => ID)
@@ -20,4 +24,13 @@ export class FavoriteProduct {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
+
+  @Field(() => User)
+  user: User;
 }

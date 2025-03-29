@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/entities/basic-carpet-color.entity';
+import { Product } from '@/modules/product/entities/product.entity';
 
 @Index(
   'product_color_sales_basic_carpet_color_id_index',
@@ -42,4 +51,19 @@ export class ProductColorSale {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => BasicCarpetColor,
+    (basicCarpetColor) => basicCarpetColor.productColorSales,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
+  basicCarpetColor: BasicCarpetColor;
+
+  @ManyToOne(() => Product, (product) => product.productColorSales, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
 }

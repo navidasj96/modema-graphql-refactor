@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/domain/production-pad-production-pad-status';
+import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
 
+@InputType('ProductionPadStatusDomain')
 @ObjectType()
 export class ProductionPadStatus {
   @IDField(() => ID)
@@ -17,4 +20,10 @@ export class ProductionPadStatus {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ProductionPadProductionPadStatus])
+  productionPadProductionPadStatuses: ProductionPadProductionPadStatus[];
+
+  @Field(() => [ProductionPad])
+  productionPads: ProductionPad[];
 }

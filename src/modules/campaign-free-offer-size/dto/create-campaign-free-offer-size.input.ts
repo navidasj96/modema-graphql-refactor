@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { CampaignFreeOffer } from '@/modules/campaign-free-offer/domain/campaign-free-offer';
 
-@InputType()
+@InputType('CreateCampaignFreeOfferSizeInput')
 export class CreateCampaignFreeOfferSizeInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateCampaignFreeOfferSizeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => BasicCarpetSize)
+  basicCarpetSize: BasicCarpetSize;
+
+  @Field(() => CampaignFreeOffer)
+  campaignFreeOffer: CampaignFreeOffer;
 }

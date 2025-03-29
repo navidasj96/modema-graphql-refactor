@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('IncredibleOfferSentNotificationDomain')
 @ObjectType()
 export class IncredibleOfferSentNotification {
   @IDField(() => ID)
@@ -17,4 +19,7 @@ export class IncredibleOfferSentNotification {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

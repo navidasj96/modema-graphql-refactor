@@ -1,6 +1,12 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ReturnRequest } from '@/modules/return-request/domain/return-request';
+import { ReturnStatus } from '@/modules/return-status/domain/return-status';
+import { ReturnType } from '@/modules/return-type/domain/return-type';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/domain/return-request-item-history';
 
-@InputType()
+@InputType('CreateReturnRequestHistoryInput')
 export class CreateReturnRequestHistoryInput {
   @Field()
   id: number;
@@ -61,4 +67,25 @@ export class CreateReturnRequestHistoryInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  editorUser: User;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => ReturnRequest, { nullable: true })
+  parent?: ReturnRequest;
+
+  @Field(() => ReturnStatus)
+  returnStatus: ReturnStatus;
+
+  @Field(() => ReturnType)
+  returnType: ReturnType;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [ReturnRequestItemHistory])
+  returnRequestItemHistories: ReturnRequestItemHistory[];
 }

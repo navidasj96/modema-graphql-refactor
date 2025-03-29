@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Coupon } from '@/modules/coupon/domain/coupon';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateCampaignPetFormInput')
 export class CreateCampaignPetFormInput {
   @Field()
   id: number;
@@ -37,4 +39,10 @@ export class CreateCampaignPetFormInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Coupon)
+  coupon: Coupon;
+
+  @Field(() => User)
+  user: User;
 }

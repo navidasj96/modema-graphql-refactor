@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ExitControl } from '@/modules/exit-control/entities/exit-control.entity';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 
 @Index('exit_control_items_exit_control_id_index', ['exitControlId'], {})
 @Index(
@@ -35,4 +44,19 @@ export class ExitControlItem {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => ExitControl, (exitControl) => exitControl.exitControlItems, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'exit_control_id', referencedColumnName: 'id' }])
+  exitControl: ExitControl;
+
+  @ManyToOne(
+    () => InvoiceProductItem,
+    (invoiceProductItem) => invoiceProductItem.exitControlItems,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_item_id', referencedColumnName: 'id' }])
+  invoiceProductItem: InvoiceProductItem;
 }

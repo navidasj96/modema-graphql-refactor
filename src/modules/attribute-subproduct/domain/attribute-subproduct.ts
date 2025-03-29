@@ -1,8 +1,13 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { Attribute } from '@/modules/attribute/domain/attribute';
+import { AttributeItem } from '@/modules/attribute-item/domain/attribute-item';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { IDField } from '@ptc-org/nestjs-query-graphql';
 
+@InputType('AttributeSubproductDomain')
 @ObjectType()
 export class AttributeSubproduct {
-  @Field()
+  @IDField(() => ID)
   id: number;
 
   @Field()
@@ -25,4 +30,13 @@ export class AttributeSubproduct {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Attribute)
+  attribute: Attribute;
+
+  @Field(() => AttributeItem)
+  attributeItem?: AttributeItem;
+
+  @Field(() => Subproduct)
+  subproduct: Subproduct;
 }

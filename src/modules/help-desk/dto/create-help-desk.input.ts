@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateHelpDeskInput')
 export class CreateHelpDeskInput {
   @Field()
   id: string;
@@ -28,4 +30,10 @@ export class CreateHelpDeskInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => User)
+  user: User;
 }

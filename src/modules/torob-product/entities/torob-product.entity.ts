@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/entities/basic-carpet-color.entity';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 
 @Index(
   'torob_products_basic_carpet_color_id_foreign',
@@ -60,4 +71,34 @@ export class TorobProduct {
 
   @Column('timestamp', { name: 'deleted_at', nullable: true })
   deletedAt?: Date;
+
+  @ManyToOne(
+    () => BasicCarpetColor,
+    (basicCarpetColor) => basicCarpetColor.torobProducts,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
+  basicCarpetColor: BasicCarpetColor;
+
+  @ManyToOne(
+    () => BasicCarpetSize,
+    (basicCarpetSize) => basicCarpetSize.torobProducts,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
+  basicCarpetSize: BasicCarpetSize;
+
+  @ManyToOne(() => Product, (product) => product.torobProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
+
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.torobProducts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
+  subproduct: Subproduct;
 }

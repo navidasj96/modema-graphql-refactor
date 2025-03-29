@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ModelHasPermission } from '@/modules/model-has-permission/entities/model-has-permission.entity';
+import { PermissionGroup } from '@/modules/permission-group/entities/permission-group.entity';
+import { Role } from '@/modules/role/entities/role.entity';
+import { RoleHasPermission } from '@/modules/role-has-permission/entities/role-has-permission.entity';
 
 @Index('permissions_parent_id_index', ['parentId'], {})
 @Index('permissions_permission_group_id_index', ['permissionGroupId'], {})
@@ -28,4 +42,43 @@ export class Permission {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ModelHasPermission,
+    (modelHasPermission) => modelHasPermission.permission,
+  )
+  modelHasPermissions: ModelHasPermission[];
+
+  @ManyToOne(() => Permission, (permission) => permission.permissions, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'parent_id', referencedColumnName: 'id' }])
+  parent: Permission;
+
+  @OneToMany(() => Permission, (permission) => permission.parent)
+  permissions: Permission[];
+
+  @ManyToOne(
+    () => PermissionGroup,
+    (permissionGroups) => permissionGroups.permissions,
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'permission_group_id', referencedColumnName: 'id' }])
+  permissionGroup: PermissionGroup;
+
+  @ManyToMany(() => Role, (role) => role.permissions)
+  @JoinTable({
+    name: 'role_has_permissions',
+    joinColumns: [{ name: 'permission_id', referencedColumnName: 'id' }],
+    inverseJoinColumns: [{ name: 'role_id', referencedColumnName: 'id' }],
+    schema: 'modema',
+  })
+  roles: Role[];
+
+  @OneToMany(
+    () => RoleHasPermission,
+    (RoleHasPermission) => RoleHasPermission.permission,
+  )
+  roleHasPermission: RoleHasPermission[];
 }

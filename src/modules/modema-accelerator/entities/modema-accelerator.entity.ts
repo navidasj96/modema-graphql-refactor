@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ModemaAcceleratorImage } from '@/modules/modema-accelerator-image/entities/modema-accelerator-image.entity';
+import { ModemaAcceleratorVideo } from '@/modules/modema-accelerator-video/entities/modema-accelerator-video.entity';
 
 @Entity('modema_accelerators', { schema: 'modema' })
 export class ModemaAccelerator {
@@ -34,4 +36,16 @@ export class ModemaAccelerator {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ModemaAcceleratorImage,
+    (modemaAcceleratorImage) => modemaAcceleratorImage.modemaAccelerator,
+  )
+  modemaAcceleratorImages: ModemaAcceleratorImage[];
+
+  @OneToMany(
+    () => ModemaAcceleratorVideo,
+    (modemaAcceleratorVideo) => modemaAcceleratorVideo.modemaAccelerator,
+  )
+  modemaAcceleratorVideos: ModemaAcceleratorVideo[];
 }

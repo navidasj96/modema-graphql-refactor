@@ -1,4 +1,11 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { NegotiationStep } from '@/modules/negotiation-step/entities/negotiation-step.entity';
 
 @Index('negotiation_types_name_index', ['name'], {})
 @Entity('negotiation_types', { schema: 'modema' })
@@ -14,4 +21,10 @@ export class NegotiationType {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => NegotiationStep,
+    (negotiationStep) => negotiationStep.negotiationType,
+  )
+  negotiationSteps: NegotiationStep[];
 }

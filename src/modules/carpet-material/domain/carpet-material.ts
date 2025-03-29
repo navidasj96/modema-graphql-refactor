@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Design } from '@/modules/design/domain/design';
 
+@InputType('CarpetMaterialDomain')
 @ObjectType()
 export class CarpetMaterial {
   @IDField(() => ID)
@@ -23,4 +25,7 @@ export class CarpetMaterial {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [Design])
+  designs: Design[];
 }

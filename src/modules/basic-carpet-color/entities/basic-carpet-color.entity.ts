@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { IncredibleOffer } from '@/modules/incredible-offer/entities/incredible-offer.entity';
+import { ProductColorImage } from '@/modules/product-color-image/entities/product-color-image.entity';
+import { ProductColorSale } from '@/modules/product-color-sale/entities/product-color-sale.entity';
+import { ProductVideo } from '@/modules/product-video/entities/product-video.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { TorobProduct } from '@/modules/torob-product/entities/torob-product.entity';
 
 @Index('basic_carpet_colors_code_unique', ['code'], { unique: true })
 @Index('basic_carpet_colors_russian_title_unique', ['russianTitle'], {
@@ -71,4 +84,40 @@ export class BasicCarpetColor {
     length: 191,
   })
   spanishTitle?: string;
+
+  @OneToMany(
+    () => IncredibleOffer,
+    (incredibleOffer) => incredibleOffer.basicCarpetColor,
+  )
+  incredibleOffers: IncredibleOffer[];
+
+  @OneToMany(
+    () => ProductColorImage,
+    (productColorImage) => productColorImage.basicCarpetColor,
+  )
+  productColorImages: ProductColorImage[];
+
+  @OneToMany(
+    () => ProductColorSale,
+    (productColorSale) => productColorSale.basicCarpetColor,
+  )
+  productColorSales: ProductColorSale[];
+
+  @OneToMany(
+    () => ProductVideo,
+    (productVideo) => productVideo.basicCarpetColor,
+  )
+  productVideos: ProductVideo[];
+
+  @OneToMany(() => Product, (products) => products.bestSellerColor)
+  products: Product[];
+
+  @OneToMany(() => Subproduct, (subproduct) => subproduct.basicCarpetColor)
+  subproducts: Subproduct[];
+
+  @OneToMany(
+    () => TorobProduct,
+    (torobProduct) => torobProduct.basicCarpetColor,
+  )
+  torobProducts: TorobProduct[];
 }

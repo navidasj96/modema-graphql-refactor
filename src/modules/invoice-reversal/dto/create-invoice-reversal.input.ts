@@ -1,6 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { InvoiceReversalItem } from '@/modules/invoice-reversal-item/domain/invoice-reversal-item';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { InvoiceStatus } from '@/modules/invoice-status/domain/invoice-status';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateInvoiceReversalInput')
 export class CreateInvoiceReversalInput {
   @Field()
   id: number;
@@ -28,4 +32,17 @@ export class CreateInvoiceReversalInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoiceReversalItem], { nullable: true })
+  invoiceReversalItems?: InvoiceReversalItem[];
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => InvoiceStatus, { nullable: true })
+  invoiceStatus?: InvoiceStatus;
+
+  @Field(() => User, { nullable: true })
+  reviewedBy2?: User;
+  s;
 }

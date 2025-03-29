@@ -3,7 +3,7 @@ import { ImagesSizeGuidesDetail } from '@/modules/images-size-guides-detail/doma
 import { Image } from '@/modules/image/domain/image';
 import { SizeGuide } from '@/modules/size-guide/domain/size-guide';
 
-@InputType()
+@InputType('CreateSizeGuidesDetailInput')
 export class CreateSizeGuidesDetailInput {
   @Field()
   id: number;
@@ -38,5 +38,12 @@ export class CreateSizeGuidesDetailInput {
   @Field({ nullable: true })
   updatedAt?: Date;
 
- ;
+  @Field(() => [ImagesSizeGuidesDetail])
+  imagesSizeGuidesDetails: ImagesSizeGuidesDetail[];
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => SizeGuide)
+  sizeGuide: SizeGuide;
 }

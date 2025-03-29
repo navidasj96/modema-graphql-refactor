@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Image } from '@/modules/image/domain/image';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('HelpDeskDomain')
 @ObjectType()
 export class HelpDesk {
   @IDField(() => ID)
@@ -29,4 +32,10 @@ export class HelpDesk {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => User)
+  user: User;
 }

@@ -1,6 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnItemStatus } from '@/modules/return-item-status/domain/return-item-status';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('ReturnItemStatusReturnRequestItemDomain')
 @ObjectType()
 export class ReturnItemStatusReturnRequestItem {
   @IDField(() => ID)
@@ -23,4 +27,13 @@ export class ReturnItemStatusReturnRequestItem {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ReturnRequestItem)
+  returnRequestItem: ReturnRequestItem;
+
+  @Field(() => ReturnItemStatus)
+  returnItemStatus: ReturnItemStatus;
+
+  @Field(() => User)
+  user: User;
 }

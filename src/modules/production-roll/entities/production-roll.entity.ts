@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('production_rolls_bill_number_index', ['billNumber'], {})
 @Index('production_rolls_closed_by_index', ['closedBy'], {})
@@ -55,4 +65,24 @@ export class ProductionRoll {
 
   @Column('int', { name: 'closed_by', nullable: true, unsigned: true })
   closedBy?: number;
+
+  @OneToMany(
+    () => InvoiceProductItem,
+    (invoiceProductItems) => invoiceProductItems.productionRoll,
+  )
+  invoiceProductItems: InvoiceProductItem[];
+
+  @ManyToOne(() => User, (users) => users.productionRolls, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'closed_by', referencedColumnName: 'id' }])
+  closedBy2: User;
+
+  @ManyToOne(() => User, (users) => users.productionRolls2, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
+  createdBy2: User;
 }

@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Design } from '@/modules/design/domain/design';
 
+@InputType('TextLayerDomain')
 @ObjectType()
 export class TextLayer {
   @IDField(() => ID)
@@ -50,4 +52,7 @@ export class TextLayer {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Design)
+  design: Design;
 }

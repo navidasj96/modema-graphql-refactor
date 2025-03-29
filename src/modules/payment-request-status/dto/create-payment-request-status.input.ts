@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { PaymentRequest } from '@/modules/payment-request/domain/payment-request';
 
-@InputType()
+@InputType('CreatePaymentRequestStatusInput')
 export class CreatePaymentRequestStatusInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreatePaymentRequestStatusInput {
 
   @Field()
   updatedAt: Date;
+
+  @Field(() => [PaymentRequest])
+  paymentRequests: PaymentRequest[];
 }

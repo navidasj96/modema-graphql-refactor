@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('CampaignGoldCoinSubDomain')
 @ObjectType()
 export class CampaignGoldCoinSub {
   @IDField(() => ID)
@@ -14,4 +16,7 @@ export class CampaignGoldCoinSub {
 
   @Field()
   userId: number;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

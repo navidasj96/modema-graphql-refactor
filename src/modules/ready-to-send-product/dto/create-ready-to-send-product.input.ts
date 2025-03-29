@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Product } from '@/modules/product/domain/product';
 
-@InputType()
+@InputType('CreateReadyToSendProductInput')
 export class CreateReadyToSendProductInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreateReadyToSendProductInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Product)
+  product: Product;
 }

@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FileNegotiation } from '@/modules/file-negotiation/domain/file-negotiation';
 
+@InputType('FileDomain')
 @ObjectType()
 export class File {
   @IDField(() => ID)
@@ -26,4 +28,7 @@ export class File {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [FileNegotiation])
+  fileNegotiations: FileNegotiation[];
 }

@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Image } from '@/modules/image/domain/image';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
 
+@InputType('ReturnRequestItemImageDomain')
 @ObjectType()
 export class ReturnRequestItemImage {
   @IDField(() => ID)
@@ -17,4 +20,10 @@ export class ReturnRequestItemImage {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image)
+  image: Image;
+
+  @Field(() => ReturnRequestItem)
+  returnRequestItem: ReturnRequestItem;
 }

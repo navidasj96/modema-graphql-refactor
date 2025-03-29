@@ -1,6 +1,12 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
+@InputType('InvoiceHistoryDomain')
 @ObjectType()
 export class InvoiceHistory {
   @IDField(() => ID)
@@ -260,4 +266,19 @@ export class InvoiceHistory {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User, { nullable: true })
+  editorUser?: User;
+
+  @Field(() => InvoiceAddress, { nullable: true })
+  invoiceAddress?: InvoiceAddress;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => [InvoicePaymentHistory], { nullable: true })
+  invoicePaymentHistories?: InvoicePaymentHistory[];
+
+  @Field(() => [InvoiceProductHistory], { nullable: true })
+  invoiceProductHistories?: InvoiceProductHistory[];
 }

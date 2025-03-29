@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { PaymentRequestStatus } from '@/modules/payment-request-status/entities/payment-request-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 
 @Index('payment_requests_admin_user_id_index', ['adminUserId'], {})
 @Index(
@@ -51,4 +61,28 @@ export class PaymentRequest {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.paymentRequests, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'admin_user_id', referencedColumnName: 'id' }])
+  adminUser: User;
+
+  @ManyToOne(
+    () => PaymentRequestStatus,
+    (paymentRequestStatus) => paymentRequestStatus.paymentRequests,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'payment_request_status_id', referencedColumnName: 'id' },
+  ])
+  paymentRequestStatus: PaymentRequestStatus;
+
+  @ManyToOne(() => Visitor, (visitor) => visitor.paymentRequests, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_id', referencedColumnName: 'id' }])
+  visitor: Visitor;
 }

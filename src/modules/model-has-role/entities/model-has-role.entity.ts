@@ -1,4 +1,5 @@
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
+import { Role } from '@/modules/role/entities/role.entity';
 
 @Index(
   'model_has_roles_model_type_model_id_index',
@@ -15,4 +16,11 @@ export class ModelHasRole {
 
   @Column('bigint', { primary: true, name: 'model_id', unsigned: true })
   modelId: string;
+
+  @ManyToOne(() => Role, (role) => role.modelHasRoles, {
+    onDelete: 'CASCADE',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'role_id', referencedColumnName: 'id' }])
+  role: Role;
 }

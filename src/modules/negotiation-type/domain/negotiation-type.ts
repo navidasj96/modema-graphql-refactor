@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-step';
 
+@InputType('NegotiationTypeDomain')
 @ObjectType()
 export class NegotiationType {
   @IDField(() => ID)
@@ -14,4 +16,7 @@ export class NegotiationType {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [NegotiationStep], { nullable: true })
+  negotiationSteps?: NegotiationStep[];
 }

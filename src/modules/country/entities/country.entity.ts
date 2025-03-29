@@ -1,4 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Address } from '@/modules/address/entities/address.entity';
+import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/entities/basic-carpet-designer.entity';
+import { ContactForm } from '@/modules/contact-form/entities/contact-form.entity';
+import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
+import { ReturnRequestAddress } from '@/modules/return-request-address/entities/return-request-address.entity';
+import { SenderInformation } from '@/modules/sender-information/entities/sender-information.entity';
+import { State } from '@/modules/state/entities/state.entity';
 
 @Index('countries_chapar_id_index', ['chaparId'], {})
 @Index('countries_phone_code_index', ['phoneCode'], {})
@@ -34,4 +47,34 @@ export class Country {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => Address, (address) => address.country)
+  addresses: Address[];
+
+  @OneToMany(
+    () => BasicCarpetDesigner,
+    (basicCarpetDesigner) => basicCarpetDesigner.country,
+  )
+  basicCarpetDesigners: BasicCarpetDesigner[];
+
+  @OneToMany(() => ContactForm, (contactForm) => contactForm.country)
+  contactForms: ContactForm[];
+
+  @OneToMany(() => InvoiceAddress, (invoiceAddress) => invoiceAddress.country)
+  invoiceAddresses: InvoiceAddress[];
+
+  @OneToMany(
+    () => ReturnRequestAddress,
+    (returnRequestAddress) => returnRequestAddress.country,
+  )
+  returnRequestAddresses: ReturnRequestAddress[];
+
+  @OneToMany(
+    () => SenderInformation,
+    (senderInformation) => senderInformation.country,
+  )
+  senderInformations: SenderInformation[];
+
+  @OneToMany(() => State, (state) => state.country)
+  states: State[];
 }

@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'campaign_subscriptions_campaign_name_user_id_unique',
@@ -31,4 +39,11 @@ export class CampaignSubscription {
     default: () => "'1001'",
   })
   code?: number;
+
+  @ManyToOne(() => User, (user) => user.campaignSubscriptions, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

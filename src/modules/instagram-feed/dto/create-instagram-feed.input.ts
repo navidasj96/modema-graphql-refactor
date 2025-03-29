@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateInstagramFeedInput')
 export class CreateInstagramFeedInput {
   @Field()
   id: number;

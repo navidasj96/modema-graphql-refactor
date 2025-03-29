@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateCampaignGoldCoinSubInput')
 export class CreateCampaignGoldCoinSubInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreateCampaignGoldCoinSubInput {
 
   @Field()
   userId: number;
+
+  @Field(() => User)
+  user: User;
 }

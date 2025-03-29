@@ -254,6 +254,18 @@ import { WebsitePageModule } from '@/modules/website-page/website-page.module';
 import { WithdrawalRequestModule } from '@/modules/withdrawal-request/withdrawal-request.module';
 import { WithdrawalRequestStatusModule } from '@/modules/withdrawal-request-status/withdrawal-request-status.module';
 import { WonderfulOfferModule } from '@/modules/wonderful-offer/wonderful-offer.module';
+import { NegotiationStepModule } from '@/modules/negotiation-step/negotiation-step.module';
+import { PreorderModule } from '@/modules/preorder/preorder.module';
+import { ProductProductCategoryModule } from '@/modules/product-product-category/product-product-category.module';
+import { RecommendedProductModule } from '@/modules/recommended-product/recommended-product.module';
+import { BasicCarpetBrandModule } from '@/modules/basic-carpet-brand/basic-carpet-brand.module';
+import { InvoiceAddressValidationResultModule } from '@/modules/invoice-address-validation-result/invoice-address-validation-result.module';
+import { CampaignVotingImageUserModule } from '@/modules/campaign-voting-image-user/campaign-voting-image-user.module';
+import { UserCartModule } from '@/modules/user-cart/user-cart.module';
+import { ProductCategoryModule } from '@/modules/product-category/product-category.module';
+import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
+import { WebsiteVisitModule } from '@/modules/website-visit/website-visit.module';
+import { RoleHasPermissionModule } from '@/modules/role-has-permission/role-has-permission.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -308,6 +320,7 @@ const ENV = process.env.NODE_ENV;
     BasicCarpetSizeModule,
     BasicCarpetSizeDetailModule,
     BasicCarpetTypeModule,
+    BasicCarpetBrandModule,
     BorderModule,
     CampaignFreeOfferModule,
     CampaignFreeOfferSizeModule,
@@ -406,6 +419,8 @@ const ENV = process.env.NODE_ENV;
     InvoiceShippingRateModule,
     InvoiceStatusModule,
     InvoiceTypeModule,
+    InvoiceAddressValidationResultModule,
+    CampaignVotingImageUserModule,
     LabelModule,
     LabelProductModule,
     MellatPaymentErrorModule,
@@ -420,6 +435,7 @@ const ENV = process.env.NODE_ENV;
     NegotiationModule,
     NegotiationHistoryModule,
     NegotiationStatusModule,
+    NegotiationStepModule,
     NegotiationTypeModule,
     NewBorderModule,
     OauthAccessTokenModule,
@@ -438,6 +454,7 @@ const ENV = process.env.NODE_ENV;
     PaymentRequestStatusModule,
     PermissionModule,
     PermissionGroupModule,
+    PreorderModule,
     PreorderPreorderStatusModule,
     PreorderRegisterModule,
     PreorderStatusModule,
@@ -445,6 +462,8 @@ const ENV = process.env.NODE_ENV;
     PriceGroupSizeModule,
     PrintProfileModule,
     ProductModule,
+    ProductCategoryModule,
+    PrintRipModule,
     ProductCategoryDetailModule,
     ProductCategoryRateModule,
     ProductColorImageModule,
@@ -461,7 +480,9 @@ const ENV = process.env.NODE_ENV;
     ProductionPadStatusModule,
     ProductionReceiptTypeModule,
     ProductionRollModule,
+    ProductProductCategoryModule,
     RateModule,
+    RecommendedProductModule,
     ReadyToSendProductModule,
     RecommendedSubproductModule,
     RedisSavedKeyModule,
@@ -487,6 +508,7 @@ const ENV = process.env.NODE_ENV;
     RipTemplateModule,
     RipTemplateItemModule,
     RoleModule,
+    RoleHasPermissionModule,
     RussianModule,
     SenderInformationModule,
     ShippingServiceModule,
@@ -516,6 +538,7 @@ const ENV = process.env.NODE_ENV;
     TransactionModule,
     UserModule,
     UserUtmModule,
+    UserCartModule,
     UtmModule,
     UtmGoogleFormCouponModule,
     VerifyUserModule,
@@ -529,6 +552,7 @@ const ENV = process.env.NODE_ENV;
     WalletGiftChargeModule,
     WalletHistoryModule,
     WebsitePageModule,
+    WebsiteVisitModule,
     WithdrawalRequestModule,
     WithdrawalRequestStatusModule,
     WonderfulOfferModule,

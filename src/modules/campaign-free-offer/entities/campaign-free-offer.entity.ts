@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/entities/campaign-free-offer-size.entity';
 
 @Entity('campaign_free_offers', { schema: 'modema' })
 export class CampaignFreeOffer {
@@ -16,4 +17,10 @@ export class CampaignFreeOffer {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => CampaignFreeOfferSize,
+    (campaignFreeOfferSize) => campaignFreeOfferSize.campaignFreeOffer,
+  )
+  campaignFreeOfferSizes: CampaignFreeOfferSize[];
 }

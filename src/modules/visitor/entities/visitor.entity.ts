@@ -1,4 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { PaymentRequest } from '@/modules/payment-request/entities/payment-request.entity';
+import { VisitorCoupon } from '@/modules/visitor-coupon/entities/visitor-coupon.entity';
+import { VisitorSale } from '@/modules/visitor-sale/entities/visitor-sale.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { VisitorGroup } from '@/modules/visitor-group/entities/visitor-group.entity';
 
 @Index('visitors_sort_order_index', ['sortOrder'], {})
 @Index('visitors_title_unique', ['title'], { unique: true })
@@ -65,4 +79,30 @@ export class Visitor {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @OneToMany(() => Invoice, (invoice) => invoice.visitor)
+  invoices: Invoice[];
+
+  @OneToMany(() => PaymentRequest, (paymentRequest) => paymentRequest.visitor)
+  paymentRequests: PaymentRequest[];
+
+  @OneToMany(() => VisitorCoupon, (visitorCoupon) => visitorCoupon.visitor)
+  visitorCoupons: VisitorCoupon[];
+
+  @OneToMany(() => VisitorSale, (visitorSale) => visitorSale.visitor)
+  visitorSales: VisitorSale[];
+
+  @ManyToOne(() => User, (user) => user.visitors, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(() => VisitorGroup, (visitorGroup) => visitorGroup.visitors, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'visitor_group_id', referencedColumnName: 'id' }])
+  visitorGroup: VisitorGroup;
 }

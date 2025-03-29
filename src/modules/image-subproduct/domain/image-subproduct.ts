@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Image } from '@/modules/image/domain/image';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('ImageSubproductDomain')
 @ObjectType()
 export class ImageSubproduct {
   @IDField(() => ID)
@@ -20,4 +23,10 @@ export class ImageSubproduct {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

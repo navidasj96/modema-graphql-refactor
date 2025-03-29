@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-step';
 
-@InputType()
+@InputType('CreateNegotiationTypeInput')
 export class CreateNegotiationTypeInput {
   @Field()
   id: number;
@@ -13,4 +14,7 @@ export class CreateNegotiationTypeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [NegotiationStep], { nullable: true })
+  negotiationSteps?: NegotiationStep[];
 }

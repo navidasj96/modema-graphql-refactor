@@ -1,4 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceReversalItem } from '@/modules/invoice-reversal-item/entities/invoice-reversal-item.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { InvoiceStatus } from '@/modules/invoice-status/entities/invoice-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('invoice_reversals_invoice_id_index', ['invoiceId'], {})
 @Index('invoice_reversals_invoice_status_id_index', ['invoiceStatusId'], {})
@@ -31,4 +43,32 @@ export class InvoiceReversal {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => InvoiceReversalItem,
+    (invoiceReversalItem) => invoiceReversalItem.invoiceReversal,
+  )
+  invoiceReversalItems: InvoiceReversalItem[];
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoiceReversals, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => InvoiceStatus,
+    (invoiceStatus) => invoiceStatus.invoiceReversals,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_status_id', referencedColumnName: 'id' }])
+  invoiceStatus: InvoiceStatus;
+
+  @ManyToOne(() => User, (user) => user.invoiceReversals, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'reviewed_by', referencedColumnName: 'id' }])
+  reviewedBy2: User;
 }

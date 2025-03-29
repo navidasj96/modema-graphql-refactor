@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Permission } from '@/modules/permission/entities/permission.entity';
 
 @Entity('permission_groups', { schema: 'modema' })
 export class PermissionGroup {
@@ -13,4 +14,7 @@ export class PermissionGroup {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => Permission, (permission) => permission.permissionGroup)
+  permissions: Permission[];
 }

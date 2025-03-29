@@ -1,4 +1,5 @@
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
+import { Permission } from '@/modules/permission/entities/permission.entity';
 
 @Index(
   'model_has_permissions_model_type_model_id_index',
@@ -15,4 +16,11 @@ export class ModelHasPermission {
 
   @Column('bigint', { primary: true, name: 'model_id', unsigned: true })
   modelId: string;
+
+  @ManyToOne(() => Permission, (permission) => permission.modelHasPermissions, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'permission_id', referencedColumnName: 'id' }])
+  permission: Permission;
 }

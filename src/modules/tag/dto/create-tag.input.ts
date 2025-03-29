@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Image } from '@/modules/image/domain/image';
+import { ProductTag } from '@/modules/product-tag/domain/product-tag';
 
-@InputType()
+@InputType('CreateTagInput')
 export class CreateTagInput {
   @Field()
   id: number;
@@ -73,4 +75,13 @@ export class CreateTagInput {
 
   @Field({ nullable: true })
   urlSlugEn?: string;
+
+  @Field(() => [ProductTag])
+  productTags: ProductTag[];
+
+  @Field(() => Image, { nullable: true })
+  sliderImage?: Image;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
 }

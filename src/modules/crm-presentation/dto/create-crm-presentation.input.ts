@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateCrmPresentationInput')
 export class CreateCrmPresentationInput {
   @Field({ nullable: true })
   mobile?: string;

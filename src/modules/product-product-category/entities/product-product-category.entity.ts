@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ProductCategory } from '@/modules/product-category/entities/product-category.entity';
+import { Product } from '@/modules/product/entities/product.entity';
 
 @Index(
   'product_product_category_product_category_id_index',
@@ -22,4 +32,19 @@ export class ProductProductCategory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => ProductCategory,
+    (productCategory) => productCategory.productProductCategory,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
+  productCategory: ProductCategory;
+
+  @ManyToOne(() => Product, (products) => products.productProductCategories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Product;
 }

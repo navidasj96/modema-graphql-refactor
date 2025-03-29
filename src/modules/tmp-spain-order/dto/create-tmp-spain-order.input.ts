@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateTmpSpainOrderInput')
 export class CreateTmpSpainOrderInput {
   @Field()
   row: number;

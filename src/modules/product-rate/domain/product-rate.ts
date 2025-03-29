@@ -1,6 +1,12 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { Product } from '@/modules/product/domain/product';
+import { Rate } from '@/modules/rate/domain/rate';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { User } from '@/modules/user/domain/user';
+import { ProductComment } from '@/modules/product-comment/domain/product-comment';
 
+@InputType('ProductRateDomain')
 @ObjectType()
 export class ProductRate {
   @IDField(() => ID)
@@ -32,4 +38,19 @@ export class ProductRate {
 
   @Field({ nullable: true })
   oldRate?: number;
+
+  @Field(() => Product)
+  product: Product;
+
+  @Field(() => Rate, { nullable: true })
+  rate?: Rate;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => ProductComment, { nullable: true })
+  productComment?: ProductComment;
 }

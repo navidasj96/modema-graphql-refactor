@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { User } from '@/modules/user/entities/user.entity';
+import { Transaction } from '@/modules/transaction/entities/transaction.entity';
+import { Wallet } from '@/modules/wallet/entities/wallet.entity';
 
 @Index('wallet_histories_created_by_index', ['createdBy'], {})
 @Index('wallet_histories_transaction_id_index', ['transactionId'], {})
@@ -49,4 +60,25 @@ export class WalletHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.walletHistories, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
+  createdBy2: User;
+
+  @ManyToOne(() => Transaction, (transaction) => transaction.walletHistories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'transaction_id', referencedColumnName: 'id' }])
+  transaction: Transaction;
+
+  @ManyToOne(() => Wallet, (wallet) => wallet.walletHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'wallet_id', referencedColumnName: 'id' }])
+  wallet: Wallet;
 }

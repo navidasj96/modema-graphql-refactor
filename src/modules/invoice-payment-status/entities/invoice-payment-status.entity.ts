@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 
 @Entity('invoice_payment_statuses', { schema: 'modema' })
 export class InvoicePaymentStatus {
@@ -13,4 +14,10 @@ export class InvoicePaymentStatus {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(() => Invoice, (invoice) => invoice.invoicePaymentStatus)
+  invoices: Invoice[];
+
+  @OneToMany(() => Invoice, (invoice) => invoice.replacementPaymentStatus)
+  invoices2: Invoice[];
 }

@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { Video } from '@/modules/video/domain/video';
 
-@InputType()
+@InputType('CreateReturnRequestItemVideoInput')
 export class CreateReturnRequestItemVideoInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateReturnRequestItemVideoInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ReturnRequestItem)
+  returnRequestItem: ReturnRequestItem;
+
+  @Field(() => Video)
+  video: Video;
 }

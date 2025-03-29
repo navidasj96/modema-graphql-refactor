@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateTempSubproductDiscountInput')
 export class CreateTempSubproductDiscountInput {
   @Field()
   viewSubproductId: number;

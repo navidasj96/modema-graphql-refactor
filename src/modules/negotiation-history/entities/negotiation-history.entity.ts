@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { Negotiation } from '@/modules/negotiation/entities/negotiation.entity';
+import { NegotiationStatus } from '@/modules/negotiation-status/entities/negotiation-status.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index('negotiation_histories_negotiation_id_index', ['negotiationId'], {})
 @Index(
@@ -34,4 +45,42 @@ export class NegotiationHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => Negotiation,
+    (negotiation: Negotiation) => negotiation.negotiationHistories,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'negotiation_id', referencedColumnName: 'id' }])
+  negotiation: Negotiation;
+
+  @ManyToOne(
+    () => NegotiationStatus,
+    (negotiationStatus: NegotiationStatus) =>
+      negotiationStatus.negotiationHistories,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+  )
+  @JoinColumn([{ name: 'negotiation_status_id', referencedColumnName: 'id' }])
+  negotiationStatus: NegotiationStatus;
+
+  @ManyToOne(() => User, (user: User) => user.negotiationHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'new_negotiator_id', referencedColumnName: 'id' }])
+  newNegotiator: User;
+
+  @ManyToOne(() => User, (user: User) => user.negotiationHistories2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'old_negotiator_id', referencedColumnName: 'id' }])
+  oldNegotiator: User;
+
+  @ManyToOne(() => User, (user: User) => user.negotiationHistories3, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'submitted_by', referencedColumnName: 'id' }])
+  submittedBy2: User;
 }

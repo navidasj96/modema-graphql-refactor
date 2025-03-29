@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreateBasicCarpetMaterialInput')
 export class CreateBasicCarpetMaterialInput {
   @Field()
   id: number;
@@ -22,4 +23,7 @@ export class CreateBasicCarpetMaterialInput {
 
   @Field()
   updatedAt: Date;
+
+  @Field(() => [Subproduct])
+  subproducts: Subproduct[];
 }

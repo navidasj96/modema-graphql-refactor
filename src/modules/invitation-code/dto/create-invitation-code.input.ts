@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateInvitationCodeInput')
 export class CreateInvitationCodeInput {
   @Field()
   id: number;
@@ -22,4 +23,7 @@ export class CreateInvitationCodeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [User], { nullable: true })
+  users?: User[];
 }

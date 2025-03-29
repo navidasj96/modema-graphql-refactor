@@ -1,6 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { AttributeGroup } from '@/modules/attribute-group/domain/attribute-group';
+import { Attribute } from '@/modules/attribute/domain/attribute';
+import { AttributeProduct } from '@/modules/attribute-product/domain/attribute-product';
+import { AttributeSubproduct } from '@/modules/attribute-subproduct/domain/attribute-subproduct';
 
-@InputType()
+@InputType('CreateAttributeItemInput')
 export class CreateAttributeItemInput {
   @Field()
   id: number;
@@ -19,4 +23,16 @@ export class CreateAttributeItemInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => AttributeGroup)
+  attributeGroup: AttributeGroup;
+
+  @Field(() => Attribute)
+  attribute: Attribute;
+
+  @Field(() => [AttributeProduct])
+  attributeProducts: AttributeProduct[];
+
+  @Field(() => [AttributeSubproduct])
+  attributeSubproducts: AttributeSubproduct[];
 }

@@ -1,4 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { InvoicePayment } from '@/modules/invoice-payment/entities/invoice-payment.entity';
+import { InvoicePaymentType } from '@/modules/invoice-payment-type/entities/invoice-payment-type.entity';
 
 @Index('invoice_payment_histories_confirmed_by_index', ['confirmedBy'], {})
 @Index(
@@ -84,4 +96,49 @@ export class InvoicePaymentHistory {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (users) => users.invoicePaymentHistories, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'confirmed_by', referencedColumnName: 'id' }])
+  confirmedBy2: User;
+
+  @ManyToOne(
+    () => InvoiceHistory,
+    (invoiceHistory) => invoiceHistory.invoicePaymentHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_history_id', referencedColumnName: 'id' }])
+  invoiceHistory: InvoiceHistory;
+
+  @ManyToOne(() => Invoice, (invoice) => invoice.invoicePaymentHistories, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Invoice;
+
+  @ManyToOne(
+    () => InvoicePayment,
+    (invoicePayment) => invoicePayment.invoicePaymentHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_payment_id', referencedColumnName: 'id' }])
+  invoicePayment: InvoicePayment;
+
+  @ManyToOne(
+    () => InvoicePaymentType,
+    (invoicePaymentType) => invoicePaymentType.invoicePaymentHistories,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_payment_type_id', referencedColumnName: 'id' }])
+  invoicePaymentType: InvoicePaymentType;
+
+  @ManyToOne(() => User, (users) => users.invoicePaymentHistories2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

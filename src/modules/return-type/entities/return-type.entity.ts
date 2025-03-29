@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ReturnRequestHistory } from '@/modules/return-request-history/entities/return-request-history.entity';
+import { ReturnRequest } from '@/modules/return-request/entities/return-request.entity';
 
 @Index('return_types_name_unique', ['name'], { unique: true })
 @Entity('return_types', { schema: 'modema' })
@@ -17,4 +25,13 @@ export class ReturnType {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ReturnRequestHistory,
+    (returnRequestHistory) => returnRequestHistory.returnType,
+  )
+  returnRequestHistories: ReturnRequestHistory[];
+
+  @OneToMany(() => ReturnRequest, (returnRequest) => returnRequest.returnType)
+  returnRequests: ReturnRequest[];
 }

@@ -1,4 +1,21 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CarpetMaterial } from '@/modules/carpet-material/entities/carpet-material.entity';
+import { CarpetShape } from '@/modules/carpet-shape/entities/carpet-shape.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { ImageLayer } from '@/modules/image-layer/entities/image-layer.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { PatternLayer } from '@/modules/pattern-layer/entities/pattern-layer.entity';
+import { TextLayer } from '@/modules/text-layer/entities/text-layer.entity';
+import { UserCart } from '@/modules/user-cart/entities/user-cart.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 
 @Index('carpet_material_id', ['carpetMaterialId'], {})
 @Index('designs_carpet_shape_id_index', ['carpetShapeId'], {})
@@ -92,4 +109,46 @@ export class Design {
 
   @Column('timestamp', { name: 'deleted_at', nullable: true })
   deletedAt?: Date;
+
+  @ManyToOne(() => CarpetMaterial, (carpetMaterial) => carpetMaterial.designs, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'carpet_material_id', referencedColumnName: 'id' }])
+  carpetMaterial: CarpetMaterial;
+
+  @ManyToOne(() => CarpetShape, (carpetShape) => carpetShape.designs, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'carpet_shape_id', referencedColumnName: 'id' }])
+  carpetShape: CarpetShape;
+
+  @ManyToOne(() => User, (user) => user.designs, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @OneToMany(() => ImageLayer, (imageLayer) => imageLayer.design)
+  imageLayers: ImageLayer[];
+
+  @OneToMany(
+    () => InvoiceProductHistory,
+    (invoiceProductHistory) => invoiceProductHistory.design,
+  )
+  invoiceProductHistories: InvoiceProductHistory[];
+
+  @OneToMany(() => InvoiceProduct, (invoiceProduct) => invoiceProduct.design)
+  invoiceProducts: InvoiceProduct[];
+
+  @OneToMany(() => PatternLayer, (patternLayer) => patternLayer.design)
+  patternLayers: PatternLayer[];
+
+  @OneToMany(() => TextLayer, (textLayer) => textLayer.design)
+  textLayers: TextLayer[];
+
+  @OneToMany(() => UserCart, (userCarts) => userCarts.design)
+  userCarts: UserCart[];
 }

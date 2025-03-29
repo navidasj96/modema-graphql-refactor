@@ -1,6 +1,11 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { PreorderPreorderStatus } from '@/modules/preorder-preorder-status/domain/preorder-preorder-status';
+import { User } from '@/modules/user/domain/user';
+import { PreorderStatus } from '@/modules/preorder-status/domain/preorder-status';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
-@InputType()
+@InputType('CreatePreorderInput')
 export class CreatePreorderInput {
   @Field()
   id: number;
@@ -85,4 +90,25 @@ export class CreatePreorderInput {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => [PreorderPreorderStatus])
+  preorderPreorderStatuses: PreorderPreorderStatus[];
+
+  @Field(() => User, { nullable: true })
+  assignedUser?: User;
+
+  @Field(() => PreorderStatus)
+  preorderStatus: PreorderStatus;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
+
+  @Field(() => User, { nullable: true })
+  salesPerson?: User;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

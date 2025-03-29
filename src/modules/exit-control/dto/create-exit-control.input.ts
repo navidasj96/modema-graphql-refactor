@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ExitControlItem } from '@/modules/exit-control-item/domain/exit-control-item';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateExitControlInput')
 export class CreateExitControlInput {
   @Field()
   id: number;
@@ -28,4 +30,10 @@ export class CreateExitControlInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ExitControlItem])
+  exitControlItems: ExitControlItem[];
+
+  @Field(() => User)
+  user: User;
 }

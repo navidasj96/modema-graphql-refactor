@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ReturnRequestHistory } from '@/modules/return-request-history/domain/return-request-history';
+import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 
-@InputType()
+@InputType('CreateReturnTypeInput')
 export class CreateReturnTypeInput {
   @Field()
   id: number;
@@ -16,4 +18,10 @@ export class CreateReturnTypeInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ReturnRequestHistory])
+  returnRequestHistories: ReturnRequestHistory[];
+
+  @Field(() => [ReturnRequest])
+  returnRequests: ReturnRequest[];
 }

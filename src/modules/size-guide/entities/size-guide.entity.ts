@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Image } from '@/modules/image/entities/image.entity';
+import { SizeGuidesDetail } from '@/modules/size-guides-detail/entities/size-guides-detail.entity';
 
 @Index('size_guides_image_id_index', ['imageId'], {})
 @Index('size_guides_title_index', ['title'], {})
@@ -21,4 +31,17 @@ export class SizeGuide {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => Image, (image) => image.sizeGuides, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
+
+  @OneToMany(
+    () => SizeGuidesDetail,
+    (sizeGuidesDetail) => sizeGuidesDetail.sizeGuide,
+  )
+  sizeGuidesDetails: SizeGuidesDetail[];
 }

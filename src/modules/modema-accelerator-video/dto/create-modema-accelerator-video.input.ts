@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ModemaAccelerator } from '@/modules/modema-accelerator/domain/modema-accelerator';
 
-@InputType()
+@InputType('CreateModemaAcceleratorVideoInput')
 export class CreateModemaAcceleratorVideoInput {
   @Field()
   id: number;
@@ -34,4 +35,7 @@ export class CreateModemaAcceleratorVideoInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => ModemaAccelerator, { nullable: true })
+  modemaAccelerator?: ModemaAccelerator;
 }

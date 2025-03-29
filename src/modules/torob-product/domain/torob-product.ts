@@ -1,6 +1,11 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { BasicCarpetColor } from '@/modules/basic-carpet-color/domain/basic-carpet-color';
+import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
+import { Product } from '@/modules/product/domain/product';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 
+@InputType('TorobProductDomain')
 @ObjectType()
 export class TorobProduct {
   @IDField(() => ID)
@@ -41,4 +46,16 @@ export class TorobProduct {
 
   @Field({ nullable: true })
   deletedAt?: Date;
+
+  @Field(() => BasicCarpetColor, { nullable: true })
+  basicCarpetColor?: BasicCarpetColor;
+
+  @Field(() => BasicCarpetSize, { nullable: true })
+  basicCarpetSize?: BasicCarpetSize;
+
+  @Field(() => Product, { nullable: true })
+  product?: Product;
+
+  @Field(() => Subproduct, { nullable: true })
+  subproduct?: Subproduct;
 }

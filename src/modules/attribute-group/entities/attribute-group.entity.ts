@@ -1,4 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductCategory } from '@/modules/product-category/entities/product-category.entity';
+import { AttributeItem } from '@/modules/attribute-item/entities/attribute-item.entity';
+import { AttributeAttributeGroup } from '@/modules/attribute-attribute-group/entities/attribute-attribute-group.entity';
 
 @Index('attribute_groups_product_category_id_index', ['productCategoryId'], {})
 @Entity('attribute_groups', { schema: 'modema' })
@@ -35,4 +46,24 @@ export class AttributeGroup {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => AttributeAttributeGroup,
+    (attributeAttributeGroup) => attributeAttributeGroup.attributeGroup,
+  )
+  attributeAttributeGroups?: AttributeAttributeGroup[];
+
+  @ManyToOne(
+    () => ProductCategory,
+    (productCategory) => productCategory.attributeGroups,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
+  productCategory?: ProductCategory;
+
+  @OneToMany(
+    () => AttributeItem,
+    (attributeItem) => attributeItem.attributeGroup,
+  )
+  attributeItems?: AttributeItem[];
 }

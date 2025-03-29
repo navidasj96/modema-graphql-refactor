@@ -1,6 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { Invoice } from '@/modules/invoice/domain/invoice';
+import { InvoicePaymentType } from '@/modules/invoice-payment-type/domain/invoice-payment-type';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 
-@InputType()
+@InputType('CreateInvoicePaymentInput')
 export class CreateInvoicePaymentInput {
   @Field()
   id: number;
@@ -55,4 +59,19 @@ export class CreateInvoicePaymentInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [InvoicePaymentHistory], { nullable: true })
+  invoicePaymentHistories?: InvoicePaymentHistory[];
+
+  @Field(() => User, { nullable: true })
+  confirmedBy2?: User;
+
+  @Field(() => Invoice, { nullable: true })
+  invoice?: Invoice;
+
+  @Field(() => InvoicePaymentType, { nullable: true })
+  invoicePaymentType?: InvoicePaymentType;
+
+  @Field(() => User, { nullable: true })
+  user?: User;
 }

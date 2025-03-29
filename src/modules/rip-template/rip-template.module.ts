@@ -6,6 +6,7 @@ import { RipTemplate as RipTemplateGraphQL } from '@/modules/rip-template/domain
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateRfmReportInput } from '@/modules/rfm-report/dto/create-rfm-report.input';
+import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
 
 @Module({
   providers: [RipTemplateResolver, RipTemplateService],
@@ -20,6 +21,7 @@ import { CreateRfmReportInput } from '@/modules/rfm-report/dto/create-rfm-report
         },
       ],
     }),
+    PrintRipModule,
   ],
 })
 export class RipTemplateModule {}

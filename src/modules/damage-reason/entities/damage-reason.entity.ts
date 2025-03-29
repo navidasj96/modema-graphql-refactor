@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 
 @Entity('damage_reasons', { schema: 'modema' })
 export class DamageReason {
@@ -19,4 +20,10 @@ export class DamageReason {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => InvoiceProductItem,
+    (invoiceProductItem) => invoiceProductItem.damageReason,
+  )
+  invoiceProductItems: InvoiceProductItem[];
 }

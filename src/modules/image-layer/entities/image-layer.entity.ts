@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Design } from '@/modules/design/entities/design.entity';
 
 @Index('image_layers_design_id_index', ['designId'], {})
 @Entity('image_layers', { schema: 'modema' })
@@ -66,4 +74,11 @@ export class ImageLayer {
 
   @Column('timestamp', { name: 'deleted_at', nullable: true })
   deletedAt?: Date;
+
+  @ManyToOne(() => Design, (design) => design.imageLayers, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'design_id', referencedColumnName: 'id' }])
+  design: Design;
 }

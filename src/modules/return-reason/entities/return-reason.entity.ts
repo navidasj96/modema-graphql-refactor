@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/entities/return-request-item-history.entity';
+import { ReturnRequestItem } from '@/modules/return-request-item/entities/return-request-item.entity';
+import { ReturnedInvoice } from '@/modules/returned-invoice/entities/returned-invoice.entity';
 
 @Entity('return_reasons', { schema: 'modema' })
 export class ReturnReason {
@@ -19,4 +22,22 @@ export class ReturnReason {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ReturnRequestItemHistory,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnReason,
+  )
+  returnRequestItemHistories: ReturnRequestItemHistory[];
+
+  @OneToMany(
+    () => ReturnRequestItem,
+    (returnRequestItem) => returnRequestItem.returnReason,
+  )
+  returnRequestItems: ReturnRequestItem[];
+
+  @OneToMany(
+    () => ReturnedInvoice,
+    (returnedInvoice) => returnedInvoice.returnReason,
+  )
+  returnedInvoices: ReturnedInvoice[];
 }

@@ -1,6 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { ProductCategoryRate } from '@/modules/product-category-rate/domain/product-category-rate';
+import { ProductRate } from '@/modules/product-rate/domain/product-rate';
+import { ProductRateAverage } from '@/modules/product-rate-average/domain/product-rate-average';
 
-@InputType()
+@InputType('CreateRateInput')
 export class CreateRateInput {
   @Field()
   id: number;
@@ -22,4 +25,13 @@ export class CreateRateInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [ProductCategoryRate])
+  productCategoryRates: ProductCategoryRate[];
+
+  @Field(() => [ProductRate])
+  productRates: ProductRate[];
+
+  @Field(() => [ProductRateAverage])
+  productRateAverages: ProductRateAverage[];
 }

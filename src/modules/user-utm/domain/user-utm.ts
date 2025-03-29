@@ -1,6 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { User } from '@/modules/user/domain/user';
+import { Utm } from '@/modules/utm/domain/utm';
 
+@InputType('UserUtmDomain')
 @ObjectType()
 export class UserUtm {
   @IDField(() => ID)
@@ -17,4 +20,10 @@ export class UserUtm {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => Utm)
+  utm: Utm;
 }

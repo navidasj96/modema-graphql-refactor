@@ -1,4 +1,20 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/entities/invoice-product-item-invoice-product-status.entity';
+import { ExitControlItem } from '@/modules/exit-control-item/entities/exit-control-item.entity';
+import { DamageReason } from '@/modules/damage-reason/entities/damage-reason.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { PrintProfile } from '@/modules/print-profile/entities/print-profile.entity';
+import { PrintRip } from '@/modules/print-rip/entities/print-rip.entity';
+import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
+import { InvoiceProductStatus } from '@/modules/invoice-product-status/entities/invoice-product-status.entity';
 
 @Index('code', ['code'], { unique: true })
 @Index('invoice_product_items_current_status_id_index', ['currentStatusId'], {})
@@ -115,4 +131,64 @@ export class InvoiceProductItem {
 
   @Column('smallint', { name: 'tag_sort_order', nullable: true })
   tagSortOrder?: number;
+
+  @OneToMany(
+    () => ExitControlItem,
+    (exitControlItem) => exitControlItem.invoiceProductItem,
+  )
+  exitControlItems: ExitControlItem[];
+
+  @OneToMany(
+    () => InvoiceProductItemInvoiceProductStatus,
+    (invoiceProductItemInvoiceProductStatus) =>
+      invoiceProductItemInvoiceProductStatus.invoiceProductItem,
+  )
+  invoiceProductItemInvoiceProductStatuses: InvoiceProductItemInvoiceProductStatus[];
+
+  @ManyToOne(
+    () => InvoiceProductStatus,
+    (invoiceProductStatus) => invoiceProductStatus.invoiceProductItems,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'current_status_id', referencedColumnName: 'id' }])
+  currentStatus: InvoiceProductStatus;
+
+  @ManyToOne(
+    () => DamageReason,
+    (damageReason) => damageReason.invoiceProductItems,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'damage_reason_id', referencedColumnName: 'id' }])
+  damageReason: DamageReason;
+
+  @ManyToOne(
+    () => InvoiceProduct,
+    (invoiceProduct) => invoiceProduct.invoiceProductItems,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
+  invoiceProduct: InvoiceProduct;
+
+  @ManyToOne(
+    () => PrintProfile,
+    (printProfile) => printProfile.invoiceProductItems,
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'print_profile_id', referencedColumnName: 'id' }])
+  printProfile: PrintProfile;
+
+  @ManyToOne(() => PrintRip, (printRip) => printRip.invoiceProductItems, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'print_rip_id', referencedColumnName: 'id' }])
+  printRip: PrintRip;
+
+  @ManyToOne(
+    () => ProductionRoll,
+    (productionRoll) => productionRoll.invoiceProductItems,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'production_roll_id', referencedColumnName: 'id' }])
+  productionRoll: ProductionRoll;
 }

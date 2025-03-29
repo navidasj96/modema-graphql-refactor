@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductTag } from '@/modules/product-tag/entities/product-tag.entity';
+import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('slider_image_id', ['sliderImageId'], {})
 @Index('tags_image_id_index', ['imageId'], {})
@@ -92,4 +102,21 @@ export class Tag {
 
   @Column('varchar', { name: 'url_slug_en', nullable: true, length: 191 })
   urlSlugEn?: string;
+
+  @OneToMany(() => ProductTag, (productTag) => productTag.tag)
+  productTags: ProductTag[];
+
+  @ManyToOne(() => Image, (image) => image.tags, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'slider_image_id', referencedColumnName: 'id' }])
+  sliderImage: Image;
+
+  @ManyToOne(() => Image, (image) => image.tags2, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
+  image: Image;
 }

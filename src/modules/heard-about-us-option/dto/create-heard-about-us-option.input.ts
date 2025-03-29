@@ -1,6 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
 
-@InputType()
+@InputType('CreateHeardAboutUsOptionInput')
 export class CreateHeardAboutUsOptionInput {
   @Field()
   id: number;
@@ -19,4 +20,7 @@ export class CreateHeardAboutUsOptionInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [User])
+  users: User[];
 }

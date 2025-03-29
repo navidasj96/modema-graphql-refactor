@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CarpetUsagePlace } from '@/modules/carpet-usage-place/entities/carpet-usage-place.entity';
+import { User } from '@/modules/user/entities/user.entity';
 
 @Index(
   'carpet_usage_place_user_carpet_usage_place_id_index',
@@ -22,4 +31,19 @@ export class CarpetUsagePlaceUser {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(
+    () => CarpetUsagePlace,
+    (carpetUsagePlace) => carpetUsagePlace.carpetUsagePlaceUsers,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([{ name: 'carpet_usage_place_id', referencedColumnName: 'id' }])
+  carpetUsagePlace: CarpetUsagePlace;
+
+  @ManyToOne(() => User, (user) => user.carpetUsagePlaceUsers, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
 }

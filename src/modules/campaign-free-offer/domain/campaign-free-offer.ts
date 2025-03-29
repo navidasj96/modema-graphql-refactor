@@ -1,6 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/domain/campaign-free-offer-size';
 
+@InputType('CampaignFreeOfferDomain')
 @ObjectType()
 export class CampaignFreeOffer {
   @IDField(() => ID)
@@ -17,4 +19,7 @@ export class CampaignFreeOffer {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [CampaignFreeOfferSize])
+  campaignFreeOfferSizes: CampaignFreeOfferSize[];
 }

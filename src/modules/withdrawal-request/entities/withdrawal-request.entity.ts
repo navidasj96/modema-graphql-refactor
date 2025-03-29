@@ -1,4 +1,13 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@/modules/user/entities/user.entity';
+import { WithdrawalRequestStatus } from '@/modules/withdrawal-request-status/entities/withdrawal-request-status.entity';
 
 @Index('withdrawal_requests_confirmed_by_index', ['confirmedBy'], {})
 @Index('withdrawal_requests_user_id_index', ['userId'], {})
@@ -52,4 +61,28 @@ export class WithdrawalRequest {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => User, (user) => user.withdrawalRequests, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'confirmed_by', referencedColumnName: 'id' }])
+  confirmedBy2: User;
+
+  @ManyToOne(() => User, (user) => user.withdrawalRequests2, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  user: User;
+
+  @ManyToOne(
+    () => WithdrawalRequestStatus,
+    (withdrawalRequestStatus) => withdrawalRequestStatus.withdrawalRequests,
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+  )
+  @JoinColumn([
+    { name: 'withdrawal_request_status_id', referencedColumnName: 'id' },
+  ])
+  withdrawalRequestStatus: WithdrawalRequestStatus;
 }

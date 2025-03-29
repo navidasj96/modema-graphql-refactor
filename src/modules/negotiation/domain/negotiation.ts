@@ -1,6 +1,13 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FileNegotiation } from '@/modules/file-negotiation/domain/file-negotiation';
+import { InvoiceNegotiation } from '@/modules/invoice-negotiation/domain/invoice-negotiation';
+import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotiation-history';
+import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-step';
+import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiation-status';
+import { User } from '@/modules/user/domain/user';
 
+@InputType('NegotiationDomain')
 @ObjectType()
 export class Negotiation {
   @IDField(() => ID)
@@ -38,4 +45,25 @@ export class Negotiation {
 
   @Field({ nullable: true })
   updatedAt?: Date;
+
+  @Field(() => [FileNegotiation], { nullable: true })
+  fileNegotiations?: FileNegotiation[];
+
+  @Field(() => [InvoiceNegotiation], { nullable: true })
+  invoiceNegotiations?: InvoiceNegotiation[];
+
+  @Field(() => [NegotiationHistory], { nullable: true })
+  negotiationHistories?: NegotiationHistory[];
+
+  @Field(() => [NegotiationStep], { nullable: true })
+  negotiationSteps?: NegotiationStep[];
+
+  @Field(() => NegotiationStatus, { nullable: true })
+  negotiationStatus?: NegotiationStatus;
+
+  @Field(() => User, { nullable: true })
+  negotiator?: User;
+
+  @Field(() => User, { nullable: true })
+  submittedBy2?: User;
 }

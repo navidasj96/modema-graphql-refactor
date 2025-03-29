@@ -1,4 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { City } from '@/modules/city/entities/city.entity';
+import { Country } from '@/modules/country/entities/country.entity';
+import { State } from '@/modules/state/entities/state.entity';
 
 @Index('sender_informations_city_id_foreign', ['cityId'], {})
 @Index('sender_informations_country_id_foreign', ['countryId'], {})
@@ -82,4 +92,25 @@ export class SenderInformation {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @ManyToOne(() => City, (city) => city.senderInformations, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'city_id', referencedColumnName: 'id' }])
+  city: City;
+
+  @ManyToOne(() => Country, (country) => country.senderInformations, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'country_id', referencedColumnName: 'id' }])
+  country: Country;
+
+  @ManyToOne(() => State, (state) => state.senderInformations, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'state_id', referencedColumnName: 'id' }])
+  state: State;
 }

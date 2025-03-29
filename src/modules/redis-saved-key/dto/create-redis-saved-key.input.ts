@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 
-@InputType()
+@InputType('CreateRedisSavedKeyInputs')
 export class CreateRedisSavedKeyInput {
   @Field()
   id: string;

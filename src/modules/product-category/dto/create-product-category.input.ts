@@ -1,6 +1,14 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
+import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
+import { Image } from '@/modules/image/domain/image';
+import { ImageSize } from '@/modules/image-size/domain/image-size';
+import { ProductCategoryRate } from '@/modules/product-category-rate/domain/product-category-rate';
+import { ProductProductCategory } from '@/modules/product-product-category/domain/product-product-category';
+import { AttributeGroup } from '@/modules/attribute-group/domain/attribute-group';
+import { ProductCategory } from '@/modules/product-category/domain/product-category';
 
-@InputType()
+@InputType('CreateProductCategoryInput')
 export class CreateProductCategoryInput {
   @Field()
   id: number;
@@ -85,4 +93,37 @@ export class CreateProductCategoryInput {
 
   @Field({ nullable: true })
   urlSlugEn?: string;
+
+  @Field(() => [AttributeGroup])
+  attributeGroups: AttributeGroup[];
+
+  @Field(() => [CouponSubject])
+  couponSubjects: CouponSubject[];
+
+  @Field(() => [DiscountSubject])
+  discountSubjects: DiscountSubject[];
+
+  @Field(() => Image)
+  homepageImage: Image;
+
+  @Field(() => Image, { nullable: true })
+  image?: Image;
+
+  @Field(() => ImageSize, { nullable: true })
+  imageSize?: ImageSize;
+
+  @Field(() => Image)
+  mobileImage: Image;
+
+  @Field(() => ProductCategory, { nullable: true })
+  parent?: ProductCategory;
+
+  @Field(() => [ProductCategory])
+  productCategories: ProductCategory[];
+
+  @Field(() => [ProductCategoryRate])
+  productCategoryRates: ProductCategoryRate[];
+
+  @Field(() => [ProductProductCategory])
+  productProductCategories: ProductProductCategory[];
 }

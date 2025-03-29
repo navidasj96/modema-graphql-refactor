@@ -1,6 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { User } from '@/modules/user/domain/user';
+import { WalletHistory } from '@/modules/wallet-history/domain/wallet-history';
 
-@InputType()
+@InputType('CreateTransactionInput')
 export class CreateTransactionInput {
   @Field()
   id: number;
@@ -43,4 +45,13 @@ export class CreateTransactionInput {
 
   @Field({ nullable: true })
   tempInvoiceNumber?: string;
+
+  @Field(() => User, { nullable: true })
+  approvedBy2?: User;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [WalletHistory])
+  walletHistories: WalletHistory[];
 }
