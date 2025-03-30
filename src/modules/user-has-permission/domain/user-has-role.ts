@@ -2,15 +2,15 @@ import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IDField, UnPagedRelation } from '@ptc-org/nestjs-query-graphql';
 import { User } from '@/modules/user/domain/user';
 
-@InputType('UserHasRoleDomain')
+@InputType('UserHasPermissionDomain')
 @UnPagedRelation('user', () => User)
 @ObjectType()
-export class UserHasRole {
+export class UserHasPermission {
   @IDField(() => ID)
   userId: number;
 
   @Field()
-  roleId: number;
+  permissionId: number;
 
   @Field(() => User)
   user: User;

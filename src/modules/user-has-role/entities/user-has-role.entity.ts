@@ -10,7 +10,7 @@ export class UserHasRole {
   @Column('int', { primary: true, name: 'role_id', unsigned: true })
   roleId: number;
 
-  @ManyToOne(() => Role, (role) => role.modelHasRoles, {
+  @ManyToOne(() => Role, (role) => role.roleHasPermission, {
     onDelete: 'CASCADE',
     onUpdate: 'NO ACTION',
   })

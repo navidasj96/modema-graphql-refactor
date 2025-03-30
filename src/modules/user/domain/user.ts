@@ -4,6 +4,7 @@ import {
   IDField,
   PagingStrategies,
   QueryOptions,
+  UnPagedRelation,
 } from '@ptc-org/nestjs-query-graphql';
 import { Address } from '@/modules/address/domain/address';
 import { AutomationEvent } from '@/modules/automation-event/domain/automation-event';
@@ -83,12 +84,16 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 import { Holiday } from '@/modules/holiday/domain/holiday';
 import { PaymentRequest } from '@/modules/payment-request/domain/payment-request';
 import { Activity } from '@/modules/activity/domain/activity';
+import { UserHasRole } from '@/modules/user-has-role/domain/user-has-role';
+import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has-role';
 
 @InputType('UserDomain')
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
 })
+@UnPagedRelation('userHasRole', () => UserHasRole)
+@UnPagedRelation('userHasPermission', () => UserHasPermission)
 @ObjectType()
 export class User {
   @IDField(() => ID)
@@ -579,4 +584,10 @@ export class User {
 
   @Field(() => [WithdrawalRequest], { nullable: true })
   withdrawalRequests2?: WithdrawalRequest[];
+
+  @Field(() => [UserHasRole])
+  userHasRole: UserHasRole[];
+
+  @Field(() => [UserHasPermission])
+  userHasPermission: UserHasPermission[];
 }

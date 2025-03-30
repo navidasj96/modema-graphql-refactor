@@ -267,6 +267,7 @@ import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
 import { WebsiteVisitModule } from '@/modules/website-visit/website-visit.module';
 import { RoleHasPermissionModule } from '@/modules/role-has-permission/role-has-permission.module';
 import { UserHasRoleModule } from './modules/user-has-role/user-has-role.module';
+import { UserHasPermissionModule } from '@/modules/user-has-permission/user-has-role.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -558,6 +559,7 @@ const ENV = process.env.NODE_ENV;
     WithdrawalRequestStatusModule,
     WonderfulOfferModule,
     UserHasRoleModule,
+    UserHasPermissionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

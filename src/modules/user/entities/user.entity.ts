@@ -87,6 +87,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entitie
 import { Holiday } from '@/modules/holiday/entities/holiday.entity';
 import { Activity } from '@/modules/activity/entities/activity.entity';
 import { UserHasRole } from '@/modules/user-has-role/entities/user-has-role.entity';
+import { UserHasPermission } from '@/modules/user-has-permission/entities/user-has-role.entity';
 
 @Index(
   'campaign_finding_coupon_winner_place',
@@ -899,4 +900,10 @@ export class User {
 
   @OneToMany(() => UserHasRole, (userHasRole) => userHasRole.user)
   userHasRole: UserHasRole[];
+
+  @OneToMany(
+    () => UserHasPermission,
+    (userHasPermission) => userHasPermission.user,
+  )
+  userHasPermission: UserHasPermission[];
 }

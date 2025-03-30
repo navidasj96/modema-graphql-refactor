@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-30T11:44:54.418Z"
+  createdAt: DateTime! = "2025-03-30T15:32:01.913Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-30T11:44:54.429Z"
+  createdAt: DateTime! = "2025-03-30T15:32:01.921Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-30T11:44:54.489Z"
+  createdAt: DateTime! = "2025-03-30T15:32:01.950Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-30T11:44:54.430Z"
+  createdAt: DateTime! = "2025-03-30T15:32:01.922Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-30T11:44:54.442Z"
+  createdAt: DateTime! = "2025-03-30T15:32:01.930Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-30T11:44:54.431Z"
+  createdAt: DateTime! = "2025-03-30T15:32:01.923Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-30T11:44:54.701Z"
+  createdAt: DateTime! = "2025-03-30T15:32:02.054Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-30T11:44:54.708Z"
+  createdAt: DateTime! = "2025-03-30T15:32:02.057Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-30T11:44:54.714Z"
+  createdAt: DateTime! = "2025-03-30T15:32:02.061Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-30T11:44:54.723Z"
+  createdAt: DateTime! = "2025-03-30T15:32:02.064Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-30T11:44:54.732Z"
+  createdAt: DateTime! = "2025-03-30T15:32:02.068Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-30T11:44:54.758Z"
+  createdAt: DateTime! = "2025-03-30T15:32:02.080Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -8055,6 +8055,11 @@ input CreateManyUserCartsInput {
   userCarts: [CreateUserCartInput!]!
 }
 
+input CreateManyUserHasPermissionsInput {
+  """Array of records to create"""
+  userHasPermissions: [CreateUserHasPermissionInput!]!
+}
+
 input CreateManyUserHasRolesInput {
   """Array of records to create"""
   userHasRoles: [CreateUserHasRoleInput!]!
@@ -9558,6 +9563,11 @@ input CreateOneTransactionInput {
 input CreateOneUserCartInput {
   """The record to create"""
   userCart: CreateUserCartInput!
+}
+
+input CreateOneUserHasPermissionInput {
+  """The record to create"""
+  userHasPermission: CreateUserHasPermissionInput!
 }
 
 input CreateOneUserHasRoleInput {
@@ -11199,6 +11209,13 @@ input CreateUserCartInput {
   userId: Float!
   width: Float
   withPad: Boolean!
+}
+
+input CreateUserHasPermissionInput {
+  permissionId: Float!
+
+  """Example field (placeholder)"""
+  userId: Int!
 }
 
 input CreateUserHasRoleInput {
@@ -13256,6 +13273,11 @@ input DeleteManyUserCartsInput {
   filter: UserCartDeleteFilter!
 }
 
+input DeleteManyUserHasPermissionsInput {
+  """Filter to find records to delete"""
+  filter: UserHasPermissionDeleteFilter!
+}
+
 input DeleteManyUserHasRolesInput {
   """Filter to find records to delete"""
   filter: UserHasRoleDeleteFilter!
@@ -14527,6 +14549,11 @@ input DeleteOneTransactionInput {
 }
 
 input DeleteOneUserCartInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneUserHasPermissionInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -21423,6 +21450,7 @@ type Mutation {
   createManyTorobProducts(input: CreateManyTorobProductsInput!): [TorobProduct!]!
   createManyTransactions(input: CreateManyTransactionsInput!): [Transaction!]!
   createManyUserCarts(input: CreateManyUserCartsInput!): [UserCart!]!
+  createManyUserHasPermissions(input: CreateManyUserHasPermissionsInput!): [UserHasPermission!]!
   createManyUserHasRoles(input: CreateManyUserHasRolesInput!): [UserHasRole!]!
   createManyUserUtms(input: CreateManyUserUtmsInput!): [UserUtm!]!
   createManyUsers(input: CreateManyUsersInput!): [User!]!
@@ -21680,6 +21708,7 @@ type Mutation {
   createOneTransaction(input: CreateOneTransactionInput!): Transaction!
   createOneUser(input: CreateOneUserInput!): User!
   createOneUserCart(input: CreateOneUserCartInput!): UserCart!
+  createOneUserHasPermission(input: CreateOneUserHasPermissionInput!): UserHasPermission!
   createOneUserHasRole(input: CreateOneUserHasRoleInput!): UserHasRole!
   createOneUserUtm(input: CreateOneUserUtmInput!): UserUtm!
   createOneUtm(input: CreateOneUtmInput!): Utm!
@@ -21935,6 +21964,7 @@ type Mutation {
   deleteManyTorobProducts(input: DeleteManyTorobProductsInput!): DeleteManyResponse!
   deleteManyTransactions(input: DeleteManyTransactionsInput!): DeleteManyResponse!
   deleteManyUserCarts(input: DeleteManyUserCartsInput!): DeleteManyResponse!
+  deleteManyUserHasPermissions(input: DeleteManyUserHasPermissionsInput!): DeleteManyResponse!
   deleteManyUserHasRoles(input: DeleteManyUserHasRolesInput!): DeleteManyResponse!
   deleteManyUserUtms(input: DeleteManyUserUtmsInput!): DeleteManyResponse!
   deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
@@ -22191,6 +22221,7 @@ type Mutation {
   deleteOneTransaction(input: DeleteOneTransactionInput!): TransactionDeleteResponse!
   deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
   deleteOneUserCart(input: DeleteOneUserCartInput!): UserCartDeleteResponse!
+  deleteOneUserHasPermission(input: DeleteOneUserHasPermissionInput!): UserHasPermissionDeleteResponse!
   deleteOneUserHasRole(input: DeleteOneUserHasRoleInput!): UserHasRoleDeleteResponse!
   deleteOneUserUtm(input: DeleteOneUserUtmInput!): UserUtmDeleteResponse!
   deleteOneUtm(input: DeleteOneUtmInput!): UtmDeleteResponse!
@@ -22447,6 +22478,7 @@ type Mutation {
   updateManyTorobProducts(input: UpdateManyTorobProductsInput!): UpdateManyResponse!
   updateManyTransactions(input: UpdateManyTransactionsInput!): UpdateManyResponse!
   updateManyUserCarts(input: UpdateManyUserCartsInput!): UpdateManyResponse!
+  updateManyUserHasPermissions(input: UpdateManyUserHasPermissionsInput!): UpdateManyResponse!
   updateManyUserHasRoles(input: UpdateManyUserHasRolesInput!): UpdateManyResponse!
   updateManyUserUtms(input: UpdateManyUserUtmsInput!): UpdateManyResponse!
   updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
@@ -22704,6 +22736,7 @@ type Mutation {
   updateOneTransaction(input: UpdateOneTransactionInput!): Transaction!
   updateOneUser(input: UpdateOneUserInput!): User!
   updateOneUserCart(input: UpdateOneUserCartInput!): UserCart!
+  updateOneUserHasPermission(input: UpdateOneUserHasPermissionInput!): UserHasPermission!
   updateOneUserHasRole(input: UpdateOneUserHasRoleInput!): UserHasRole!
   updateOneUserUtm(input: UpdateOneUserUtmInput!): UserUtm!
   updateOneUtm(input: UpdateOneUtmInput!): Utm!
@@ -30665,6 +30698,20 @@ type Query {
     """Specify to sort results."""
     sorting: [UserCartSort!]! = []
   ): UserCartConnection!
+  userHasPermission(
+    """The id of the record to find."""
+    id: ID!
+  ): UserHasPermission!
+  userHasPermissions(
+    """Specify to filter the records returned."""
+    filter: UserHasPermissionFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [UserHasPermissionSort!]! = []
+  ): UserHasPermissionConnection!
   userHasRole(
     """The id of the record to find."""
     id: ID!
@@ -36244,7 +36291,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-30T11:44:54.418Z"
+  createdAt: DateTime = "2025-03-30T15:32:01.913Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36266,7 +36313,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-30T11:44:54.429Z"
+  createdAt: DateTime = "2025-03-30T15:32:01.921Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36281,7 +36328,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-03-30T11:44:54.489Z"
+  createdAt: DateTime = "2025-03-30T15:32:01.950Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36305,7 +36352,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-30T11:44:54.430Z"
+  createdAt: DateTime = "2025-03-30T15:32:01.922Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36322,7 +36369,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-03-30T11:44:54.442Z"
+  createdAt: DateTime = "2025-03-30T15:32:01.930Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36377,7 +36424,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-30T11:44:54.431Z"
+  createdAt: DateTime = "2025-03-30T15:32:01.923Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -39930,6 +39977,14 @@ input UpdateManyUserCartsInput {
   update: UpdateUserCart!
 }
 
+input UpdateManyUserHasPermissionsInput {
+  """Filter used to find fields to update"""
+  filter: UserHasPermissionUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateUserHasPermission!
+}
+
 input UpdateManyUserHasRolesInput {
   """Filter used to find fields to update"""
   filter: UserHasRoleUpdateFilter!
@@ -42214,6 +42269,14 @@ input UpdateOneUserCartInput {
   update: UpdateUserCart!
 }
 
+input UpdateOneUserHasPermissionInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateUserHasPermission!
+}
+
 input UpdateOneUserHasRoleInput {
   """The id of the record to update"""
   id: ID!
@@ -44065,6 +44128,8 @@ input UpdateUser {
   transactions2: [TransactionDomain!]
   updatedAt: DateTime
   userCarts: [UserCartDomain!]
+  userHasPermission: [UserHasPermissionDomain!]
+  userHasRole: [UserHasRoleDomain!]
   userUtms: [UserUtmDomain!]
   username: String
   users: [UserDomain!]
@@ -44103,8 +44168,15 @@ input UpdateUserCart {
   withPad: Boolean
 }
 
+input UpdateUserHasPermission {
+  permissionId: Float
+  user: UserDomain
+  userId: ID
+}
+
 input UpdateUserHasRole {
   roleId: Float
+  user: UserDomain
   userId: ID
 }
 
@@ -44662,6 +44734,20 @@ type User {
   transactions2: [Transaction!]
   updatedAt: DateTime
   userCarts: [UserCart!]
+  userHasPermission(
+    """Specify to filter the records returned."""
+    filter: UserHasPermissionFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [UserHasPermissionSort!]! = []
+  ): [UserHasPermission!]!
+  userHasRole(
+    """Specify to filter the records returned."""
+    filter: UserHasRoleFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [UserHasRoleSort!]! = []
+  ): [UserHasRole!]!
   userUtms: [UserUtm!]
   username: String
   users: [User!]
@@ -44962,6 +45048,8 @@ type UserDeleteResponse {
   transactions2: [Transaction!]
   updatedAt: DateTime
   userCarts: [UserCart!]
+  userHasPermission: [UserHasPermission!]
+  userHasRole: [UserHasRole!]
   userUtms: [UserUtm!]
   username: String
   users: [User!]
@@ -45128,6 +45216,8 @@ input UserDomain {
   transactions2: [TransactionDomain!]
   updatedAt: DateTime
   userCarts: [UserCartDomain!]
+  userHasPermission: [UserHasPermissionDomain!]!
+  userHasRole: [UserHasRoleDomain!]!
   userUtms: [UserUtmDomain!]
   username: String
   users: [UserDomain!]
@@ -45149,8 +45239,83 @@ input UserFilter {
   or: [UserFilter!]
 }
 
+type UserHasPermission {
+  permissionId: Float!
+  user(
+    """Specify to filter the records returned."""
+    filter: UserFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [UserSort!]! = []
+  ): [User!]!
+  userId: ID!
+}
+
+type UserHasPermissionConnection {
+  """Array of edges."""
+  edges: [UserHasPermissionEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input UserHasPermissionDeleteFilter {
+  and: [UserHasPermissionDeleteFilter!]
+  or: [UserHasPermissionDeleteFilter!]
+  userId: IDFilterComparison
+}
+
+type UserHasPermissionDeleteResponse {
+  permissionId: Float
+  user: User
+  userId: ID
+}
+
+input UserHasPermissionDomain {
+  permissionId: Float!
+  user: UserDomain!
+  userId: ID!
+}
+
+type UserHasPermissionEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the UserHasPermission"""
+  node: UserHasPermission!
+}
+
+input UserHasPermissionFilter {
+  and: [UserHasPermissionFilter!]
+  or: [UserHasPermissionFilter!]
+  userId: IDFilterComparison
+}
+
+input UserHasPermissionSort {
+  direction: SortDirection!
+  field: UserHasPermissionSortFields!
+  nulls: SortNulls
+}
+
+enum UserHasPermissionSortFields {
+  userId
+}
+
+input UserHasPermissionUpdateFilter {
+  and: [UserHasPermissionUpdateFilter!]
+  or: [UserHasPermissionUpdateFilter!]
+  userId: IDFilterComparison
+}
+
 type UserHasRole {
   roleId: Float!
+  user(
+    """Specify to filter the records returned."""
+    filter: UserFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [UserSort!]! = []
+  ): [User!]!
   userId: ID!
 }
 
@@ -45170,11 +45335,13 @@ input UserHasRoleDeleteFilter {
 
 type UserHasRoleDeleteResponse {
   roleId: Float
+  user: User
   userId: ID
 }
 
 input UserHasRoleDomain {
   roleId: Float!
+  user: UserDomain!
   userId: ID!
 }
 
