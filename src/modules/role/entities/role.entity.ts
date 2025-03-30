@@ -8,6 +8,7 @@ import {
 import { ModelHasRole } from '@/modules/model-has-role/entities/model-has-role.entity';
 import { Permission } from '@/modules/permission/entities/permission.entity';
 import { RoleHasPermission } from '@/modules/role-has-permission/entities/role-has-permission.entity';
+import { UserHasRole } from '@/modules/user-has-role/entities/user-has-role.entity';
 
 @Entity('roles', { schema: 'modema' })
 export class Role {
@@ -28,6 +29,9 @@ export class Role {
 
   @OneToMany(() => ModelHasRole, (modelHasRole) => modelHasRole.role)
   modelHasRoles: ModelHasRole[];
+
+  @OneToMany(() => UserHasRole, (UserHasRole) => UserHasRole.role)
+  userHasRole: UserHasRole[];
 
   @ManyToMany(() => Permission, (permission) => permission.roles)
   permissions: Permission[];

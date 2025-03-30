@@ -86,6 +86,7 @@ import { PaymentRequest } from '@/modules/payment-request/entities/payment-reque
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
 import { Holiday } from '@/modules/holiday/entities/holiday.entity';
 import { Activity } from '@/modules/activity/entities/activity.entity';
+import { UserHasRole } from '@/modules/user-has-role/entities/user-has-role.entity';
 
 @Index(
   'campaign_finding_coupon_winner_place',
@@ -895,4 +896,7 @@ export class User {
     (withdrawalRequest) => withdrawalRequest.user,
   )
   withdrawalRequests2?: WithdrawalRequest[];
+
+  @OneToMany(() => UserHasRole, (userHasRole) => userHasRole.user)
+  userHasRole: UserHasRole[];
 }

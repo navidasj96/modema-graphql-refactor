@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-28T06:06:27.529Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.418Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-28T06:06:27.540Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.429Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-28T06:06:27.573Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.489Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-28T06:06:27.541Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.430Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-28T06:06:27.551Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.442Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-28T06:06:27.542Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.431Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-28T06:06:27.692Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.701Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-28T06:06:27.696Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.708Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-28T06:06:27.699Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.714Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-28T06:06:27.703Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.723Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-28T06:06:27.708Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.732Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-28T06:06:27.719Z"
+  createdAt: DateTime! = "2025-03-30T11:44:54.758Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -8055,6 +8055,11 @@ input CreateManyUserCartsInput {
   userCarts: [CreateUserCartInput!]!
 }
 
+input CreateManyUserHasRolesInput {
+  """Array of records to create"""
+  userHasRoles: [CreateUserHasRoleInput!]!
+}
+
 input CreateManyUserUtmsInput {
   """Array of records to create"""
   userUtms: [CreateUserUtmInput!]!
@@ -9555,6 +9560,11 @@ input CreateOneUserCartInput {
   userCart: CreateUserCartInput!
 }
 
+input CreateOneUserHasRoleInput {
+  """The record to create"""
+  userHasRole: CreateUserHasRoleInput!
+}
+
 input CreateOneUserInput {
   """The record to create"""
   user: CreateUserInput!
@@ -9813,19 +9823,6 @@ input CreatePreorderInput {
   subproduct: SubproductDomain
   subproductId: Float
   trackingCode: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input CreatePreorderPreorderStatusInput {
-  companyDescription: String
-  createdAt: DateTime
-  id: Float!
-  preorder: PreorderDomain!
-  preorderId: Float!
-  preorderStatus: PreorderStatusDomain!
-  preorderStatusId: Float!
   updatedAt: DateTime
   user: UserDomain
   userId: Float
@@ -10699,17 +10696,6 @@ input CreateRfmReportInput {
   phone: String
 }
 
-input CreateRipTemplateInput {
-  createdAt: DateTime
-  id: Float!
-  name: String!
-  printRips: [PrintRipDomain!]!
-  ripTemplateItems: [RipTemplateItemDomain!]!
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input CreateRipTemplateItemInput {
   basicCarpetSize: BasicCarpetSizeDomain!
   basicCarpetSizeId: Float!
@@ -11213,6 +11199,13 @@ input CreateUserCartInput {
   userId: Float!
   width: Float
   withPad: Boolean!
+}
+
+input CreateUserHasRoleInput {
+  roleId: Float!
+
+  """Example field (placeholder)"""
+  userId: Int!
 }
 
 input CreateUserInput {
@@ -13263,6 +13256,11 @@ input DeleteManyUserCartsInput {
   filter: UserCartDeleteFilter!
 }
 
+input DeleteManyUserHasRolesInput {
+  """Filter to find records to delete"""
+  filter: UserHasRoleDeleteFilter!
+}
+
 input DeleteManyUserUtmsInput {
   """Filter to find records to delete"""
   filter: UserUtmDeleteFilter!
@@ -14529,6 +14527,11 @@ input DeleteOneTransactionInput {
 }
 
 input DeleteOneUserCartInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneUserHasRoleInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -21185,58 +21188,6 @@ input ModemaAcceleratorVideoUpdateFilter {
 }
 
 type Mutation {
-  createAttribute(createAttributeInput: CreateAttributeInput!): Attribute!
-  createAttributeAttributeGroup(createAttributeAttributeGroupInput: CreateAttributeAttributeGroupInput!): AttributeAttributeGroup!
-  createAttributeItem(createAttributeItemInput: CreateAttributeItemInput!): AttributeItem!
-  createAttributeProduct(createAttributeProductInput: CreateAttributeProductInput!): AttributeProduct!
-  createAttributeSubproduct(createAttributeSubproductInput: CreateAttributeSubproductInput!): AttributeSubproduct!
-  createChaparSettlementStatus(createChaparSettlementStatusInput: CreateChaparSettlementStatusInput!): ChaparSettlementStatus!
-  createCity(createCityInput: CreateCityInput!): City!
-  createColor(createColorInput: CreateColorInput!): Color!
-  createCustomerImageProduct(createCustomerImageProductInput: CreateCustomerImageProductInput!): CustomerImageProduct!
-  createCustomerVideoProduct(createCustomerVideoProductInput: CreateCustomerVideoProductInput!): CustomerVideoProduct!
-  createDepartment(createDepartmentInput: CreateDepartmentInput!): Department!
-  createDiscount(createDiscountInput: CreateDiscountInput!): Discount!
-  createExitControl(createExitControlInput: CreateExitControlInput!): ExitControl!
-  createExitControlItem(createExitControlItemInput: CreateExitControlItemInput!): ExitControlItem!
-  createGoogleFormUtm(createGoogleFormUtmInput: CreateGoogleFormUtmInput!): GoogleFormUtm!
-  createHoliday(createHolidayInput: CreateHolidayInput!): Holiday!
-  createHomePageCustomerImage(createHomePageCustomerImageInput: CreateHomePageCustomerImageInput!): HomePageCustomerImage!
-  createHyper(createHyperInput: CreateHyperInput!): Hyper!
-  createImageLayer(createImageLayerInput: CreateImageLayerInput!): ImageLayer!
-  createImageSize(createImageSizeInput: CreateImageSizeInput!): ImageSize!
-  createImageSubproduct(createImageSubproductInput: CreateImageSubproductInput!): ImageSubproduct!
-  createImagesSizeGuidesDetail(createImagesSizeGuidesDetailInput: CreateImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetail!
-  createImpersonateHistory(createImpersonateHistoryInput: CreateImpersonateHistoryInput!): ImpersonateHistory!
-  createIncredibleOffer(createIncredibleOfferInput: CreateIncredibleOfferInput!): IncredibleOffer!
-  createIncredibleOfferSentNotification(createIncredibleOfferSentNotificationInput: CreateIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotification!
-  createInstagramFeed(createInstagramFeedInput: CreateInstagramFeedInput!): InstagramFeed!
-  createInvitationCode(createInvitationCodeInput: CreateInvitationCodeInput!): InvitationCode!
-  createInvoice(createInvoiceInput: CreateInvoiceInput!): Invoice!
-  createInvoiceAddress(createInvoiceAddressInput: CreateInvoiceAddressInput!): InvoiceAddress!
-  createInvoiceAddressValidationResult(createInvoiceAddressValidationResultInput: CreateInvoiceAddressValidationResultInput!): InvoiceAddressValidationResult!
-  createInvoiceBankGatewayHistory(createInvoiceBankGatewayHistoryInput: CreateInvoiceBankGatewayHistoryInput!): InvoiceBankGatewayHistory!
-  createInvoiceHistory(createInvoiceHistoryInput: CreateInvoiceHistoryInput!): InvoiceHistory!
-  createInvoiceInvoiceStatus(createInvoiceInvoiceStatusInput: CreateInvoiceInvoiceStatusInput!): InvoiceInvoiceStatus!
-  createInvoiceMode(createInvoiceModeInput: CreateInvoiceModeInput!): InvoiceMode!
-  createInvoiceNegotiation(createInvoiceNegotiationInput: CreateInvoiceNegotiationInput!): InvoiceNegotiation!
-  createInvoicePayment(createInvoicePaymentInput: CreateInvoicePaymentInput!): InvoicePayment!
-  createInvoicePaymentHistory(createInvoicePaymentHistoryInput: CreateInvoicePaymentHistoryInput!): InvoicePaymentHistory!
-  createInvoicePaymentStatus(createInvoicePaymentStatusInput: CreateInvoicePaymentStatusInput!): InvoicePaymentStatus!
-  createInvoicePaymentType(createInvoicePaymentTypeInput: CreateInvoicePaymentTypeInput!): InvoicePaymentType!
-  createInvoiceProduct(createInvoiceProductInput: CreateInvoiceProductInput!): InvoiceProduct!
-  createInvoiceProductHistory(createInvoiceProductHistoryInput: CreateInvoiceProductHistoryInput!): InvoiceProductHistory!
-  createInvoiceProductItem(createInvoiceProductItemInput: CreateInvoiceProductItemInput!): InvoiceProductItem!
-  createInvoiceProductItemInvoiceProductStatus(createInvoiceProductItemInvoiceProductStatusInput: CreateInvoiceProductItemInvoiceProductStatusInput!): InvoiceProductItemInvoiceProductStatus!
-  createInvoiceProductStatus(createInvoiceProductStatusInput: CreateInvoiceProductStatusInput!): InvoiceProductStatus!
-  createInvoiceRatesResult(createInvoiceRatesResultInput: CreateInvoiceRatesResultInput!): InvoiceRatesResult!
-  createInvoiceReversal(createInvoiceReversalInput: CreateInvoiceReversalInput!): InvoiceReversal!
-  createInvoiceReversalItem(createInvoiceReversalItemInput: CreateInvoiceReversalItemInput!): InvoiceReversalItem!
-  createInvoiceShippingRate(createInvoiceShippingRateInput: CreateInvoiceShippingRateInput!): InvoiceShippingRate!
-  createInvoiceStatus(createInvoiceStatusInput: CreateInvoiceStatusInput!): InvoiceStatus!
-  createInvoiceType(createInvoiceTypeInput: CreateInvoiceTypeInput!): InvoiceType!
-  createLabel(createLabelInput: CreateLabelInput!): Label!
-  createLabelProduct(createLabelProductInput: CreateLabelProductInput!): LabelProduct!
   createManyActivities(input: CreateManyActivitiesInput!): [Activity!]!
   createManyAddresses(input: CreateManyAddressesInput!): [Address!]!
   createManyAttributeAttributeGroups(input: CreateManyAttributeAttributeGroupsInput!): [AttributeAttributeGroup!]!
@@ -21472,6 +21423,7 @@ type Mutation {
   createManyTorobProducts(input: CreateManyTorobProductsInput!): [TorobProduct!]!
   createManyTransactions(input: CreateManyTransactionsInput!): [Transaction!]!
   createManyUserCarts(input: CreateManyUserCartsInput!): [UserCart!]!
+  createManyUserHasRoles(input: CreateManyUserHasRolesInput!): [UserHasRole!]!
   createManyUserUtms(input: CreateManyUserUtmsInput!): [UserUtm!]!
   createManyUsers(input: CreateManyUsersInput!): [User!]!
   createManyUtmGoogleFormCoupons(input: CreateManyUtmGoogleFormCouponsInput!): [UtmGoogleFormCoupon!]!
@@ -21491,26 +21443,7 @@ type Mutation {
   createManyWithdrawalRequestStatuses(input: CreateManyWithdrawalRequestStatusesInput!): [WithdrawalRequestStatus!]!
   createManyWithdrawalRequests(input: CreateManyWithdrawalRequestsInput!): [WithdrawalRequest!]!
   createManyWonderfulOffers(input: CreateManyWonderfulOffersInput!): [WonderfulOffer!]!
-  createMellatPaymentError(createMellatPaymentErrorInput: CreateMellatPaymentErrorInput!): MellatPaymentError!
-  createMigration(createMigrationInput: CreateMigrationInput!): Migration!
-  createModelHasPermission(createModelHasPermissionInput: CreateModelHasPermissionInput!): ModelHasPermission!
-  createModelHasRole(createModelHasRoleInput: CreateModelHasRoleInput!): ModelHasRole!
-  createModelVisit(createModelVisitInput: CreateModelVisitInput!): ModelVisit!
-  createModemaAccelerator(createModemaAcceleratorInput: CreateModemaAcceleratorInput!): ModemaAccelerator!
-  createModemaAcceleratorImage(createModemaAcceleratorImageInput: CreateModemaAcceleratorImageInput!): ModemaAcceleratorImage!
-  createModemaAcceleratorVideo(createModemaAcceleratorVideoInput: CreateModemaAcceleratorVideoInput!): ModemaAcceleratorVideo!
-  createNeedsPhotographySubproduct(createNeedsPhotographySubproductInput: CreateNeedsPhotographySubproductInput!): NeedsPhotographySubproduct!
-  createNegotiation(createNegotiationInput: CreateNegotiationInput!): Negotiation!
-  createNegotiationHistory(createNegotiationHistoryInput: CreateNegotiationHistoryInput!): NegotiationHistory!
-  createNegotiationStatus(createNegotiationStatusInput: CreateNegotiationStatusInput!): NegotiationStatus!
   createNegotiationStep(createNegotiationStepInput: CreateNegotiationStepInput!): NegotiationStep!
-  createNegotiationType(createNegotiationTypeInput: CreateNegotiationTypeInput!): NegotiationType!
-  createNewBorder(createNewBorderInput: CreateNewBorderInput!): NewBorder!
-  createOauthAccessToken(createOauthAccessTokenInput: CreateOauthAccessTokenInput!): OauthAccessToken!
-  createOauthAuthCode(createOauthAuthCodeInput: CreateOauthAuthCodeInput!): OauthAuthCode!
-  createOauthClient(createOauthClientInput: CreateOauthClientInput!): OauthClient!
-  createOauthPersonalAccessClient(createOauthPersonalAccessClientInput: CreateOauthPersonalAccessClientInputs!): OauthPersonalAccessClient!
-  createOauthRefreshToken(createOauthRefreshTokenInput: CreateOauthRefreshTokenInput!): OauthRefreshToken!
   createOneActivity(input: CreateOneActivityInput!): Activity!
   createOneAddress(input: CreateOneAddressInput!): Address!
   createOneAttribute(input: CreateOneAttributeInput!): Attribute!
@@ -21747,6 +21680,7 @@ type Mutation {
   createOneTransaction(input: CreateOneTransactionInput!): Transaction!
   createOneUser(input: CreateOneUserInput!): User!
   createOneUserCart(input: CreateOneUserCartInput!): UserCart!
+  createOneUserHasRole(input: CreateOneUserHasRoleInput!): UserHasRole!
   createOneUserUtm(input: CreateOneUserUtmInput!): UserUtm!
   createOneUtm(input: CreateOneUtmInput!): Utm!
   createOneUtmGoogleFormCoupon(input: CreateOneUtmGoogleFormCouponInput!): UtmGoogleFormCoupon!
@@ -21765,118 +21699,7 @@ type Mutation {
   createOneWithdrawalRequest(input: CreateOneWithdrawalRequestInput!): WithdrawalRequest!
   createOneWithdrawalRequestStatus(input: CreateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   createOneWonderfulOffer(input: CreateOneWonderfulOfferInput!): WonderfulOffer!
-  createOutOfStockButListedProduct(createOutOfStockButListedProductInput: CreateOutOfStockButListedProductInput!): OutOfStockButListedProduct!
-  createPasswordReset(createPasswordResetInput: CreatePasswordResetInput!): PasswordReset!
-  createPattern(createPatternInput: CreatePatternInput!): Pattern!
-  createPatternCategory(createPatternCategoryInput: CreatePatternCategoryInput!): PatternCategory!
-  createPatternLayer(createPatternLayerInput: CreatePatternLayerInput!): PatternLayer!
-  createPaymentMethod(createPaymentMethodInput: CreatePaymentMethodInput!): PaymentMethod!
-  createPaymentMethodField(createPaymentMethodFieldInput: CreatePaymentMethodFieldInput!): PaymentMethodField!
-  createPaymentRequest(createPaymentRequestInput: CreatePaymentRequestInput!): PaymentRequest!
-  createPaymentRequestStatus(createPaymentRequestStatusInput: CreatePaymentRequestStatusInput!): PaymentRequestStatus!
-  createPermission(createPermissionInput: CreatePermissionInput!): Permission!
-  createPermissionGroup(createPermissionGroupInput: CreatePermissionGroupInput!): PermissionGroup!
-  createPreorder(createPreorderInput: CreatePreorderInput!): Preorder!
-  createPreorderPreorderStatus(createPreorderPreorderStatusInput: CreatePreorderPreorderStatusInput!): PreorderPreorderStatus!
-  createPreorderRegister(createPreorderRegisterInput: CreatePreorderRegisterInput!): PreorderRegister!
-  createPreorderStatus(createPreorderStatusInput: CreatePreorderStatusInput!): PreorderStatus!
-  createPriceGroup(createPriceGroupInput: CreatePriceGroupInput!): PriceGroup!
-  createPriceGroupSize(createPriceGroupSizeInput: CreatePriceGroupSizeInput!): PriceGroupSize!
-  createPrintProfile(createPrintProfileInput: CreatePrintProfileInput!): PrintProfile!
-  createPrintRip(createPrintRipInput: CreatePrintRipInput!): PrintRip!
-  createProduct(createProductInput: CreateProductInput!): Product!
-  createProductCategory(createProductCategoryInput: CreateProductCategoryInput!): ProductCategory!
-  createProductCategoryDetail(createProductCategoryDetailInput: CreateProductCategoryDetailInput!): ProductCategoryDetail!
-  createProductCategoryRate(createProductCategoryRateInput: CreateProductCategoryRateInput!): ProductCategoryRate!
-  createProductColorImage(createProductColorImageInput: CreateProductColorImageInput!): ProductColorImage!
-  createProductColorSale(createProductColorSaleInput: CreateProductColorSaleInput!): ProductColorSale!
-  createProductComment(createProductCommentInput: CreateProductCommentInput!): ProductComment!
-  createProductCommentLike(createProductCommentLikeInput: CreateProductCommentLikeInput!): ProductCommentLike!
-  createProductLike(createProductLikeInput: CreateProductLikeInput!): ProductLike!
-  createProductProductCategory(createProductProductCategoryInput: CreateProductProductCategoryInput!): ProductProductCategory!
-  createProductRate(createProductRateInput: CreateProductRateInput!): ProductRate!
-  createProductRateAverage(createProductRateAverageInput: CreateProductRateAverageInput!): ProductRateAverage!
-  createProductTag(createProductTagInput: CreateProductTagInput!): ProductTag!
-  createProductVideo(createProductVideoInput: CreateProductVideoInput!): ProductVideo!
-  createProductionPad(createProductionPadInput: CreateProductionPadInput!): ProductionPad!
-  createProductionPadProductionPadStatus(createProductionPadProductionPadStatusInput: CreateProductionPadProductionPadStatusInput!): ProductionPadProductionPadStatus!
-  createProductionPadStatus(createProductionPadStatusInput: CreateProductionPadStatusInput!): ProductionPadStatus!
-  createProductionReceiptType(createProductionReceiptTypeInput: CreateProductionReceiptTypeInput!): ProductionReceiptType!
-  createProductionRoll(createProductionRollInput: CreateProductionRollInput!): ProductionRoll!
-  createRate(createRateInput: CreateRateInput!): Rate!
-  createReadyToSendProduct(createReadyToSendProductInput: CreateReadyToSendProductInput!): ReadyToSendProduct!
-  createRecommendedProduct(createRecommendedProductInput: CreateRecommendedProductInput!): RecommendedProduct!
-  createRecommendedSubproduct(createRecommendedSubproductInput: CreateRecommendedSubproductInput!): RecommendedSubproduct!
-  createRedisSavedKey(createRedisSavedKeyInput: CreateRedisSavedKeyInputs!): RedisSavedKey!
-  createRelatedProduct(createRelatedProductInput: CreateRelatedProductInput!): RelatedProduct!
-  createRetargetingWalletCharge(createRetargetingWalletChargeInput: CreateRetargetingWalletChargeInput!): RetargetingWalletCharge!
-  createReturnItemStatus(createReturnItemStatusInput: CreateReturnItemStatusInput!): ReturnItemStatus!
-  createReturnItemStatusReturnRequestItem(createReturnItemStatusReturnRequestItemInput: CreateReturnItemStatusReturnRequestItemInput!): ReturnItemStatusReturnRequestItem!
-  createReturnReason(createReturnReasonInput: CreateReturnReasonInput!): ReturnReason!
-  createReturnRequest(createReturnRequestInput: CreateReturnRequestInput!): ReturnRequest!
-  createReturnRequestAddress(createReturnRequestAddressInput: CreateReturnRequestAddressInput!): ReturnRequestAddress!
-  createReturnRequestHistory(createReturnRequestHistoryInput: CreateReturnRequestHistoryInput!): ReturnRequestHistory!
-  createReturnRequestItem(createReturnRequestItemInput: CreateReturnRequestItemInput!): ReturnRequestItem!
-  createReturnRequestItemHistory(createReturnRequestItemHistoryInput: CreateReturnRequestItemHistoryInput!): ReturnRequestItemHistory!
-  createReturnRequestItemImage(createReturnRequestItemImageInput: CreateReturnRequestItemImageInput!): ReturnRequestItemImage!
-  createReturnRequestItemReturnItemStatus(createReturnRequestItemReturnItemStatusInput: CreateReturnRequestItemReturnItemStatusInput!): ReturnRequestItemReturnItemStatus!
-  createReturnRequestItemVideo(createReturnRequestItemVideoInput: CreateReturnRequestItemVideoInput!): ReturnRequestItemVideo!
-  createReturnRequestReturnStatus(createReturnRequestReturnStatusInput: CreateReturnRequestReturnStatusInput!): ReturnRequestReturnStatus!
-  createReturnStatus(createReturnStatusInput: CreateReturnStatusInput!): ReturnStatus!
-  createReturnType(createReturnTypeInput: CreateReturnTypeInput!): ReturnType!
-  createReturnedInvoice(createReturnedInvoiceInput: CreateReturnedInvoiceInput!): ReturnedInvoice!
-  createReturnedInvoiceProduct(createReturnedInvoiceProductInput: CreateReturnedInvoiceProductInput!): ReturnedInvoiceProduct!
-  createRfmReport(createRfmReportInput: CreateRfmReportInput!): RfmReport!
-  createRipTemplate(createRipTemplateInput: CreateRipTemplateInput!): RipTemplate!
-  createRipTemplateItem(createRipTemplateItemInput: CreateRipTemplateItemInput!): RipTemplateItem!
-  createRole(createRoleInput: CreateRoleInput!): RoleDomain!
-  createRussian(createRussianInput: CreateRussianInput!): Russian!
-  createSenderInformation(createSenderInformationInput: CreateSenderInformationInput!): SenderInformation!
-  createShippingService(createShippingServiceInput: CreateShippingServiceInput!): ShippingService!
-  createSitemapStaticPage(createSitemapStaticPageInput: CreateSitemapStaticPageInput!): SitemapStaticPage!
-  createSizeGuide(createSizeGuideInput: CreateSizeGuideInput!): SizeGuide!
-  createSizeGuidesDetail(createSizeGuidesDetailInput: CreateSizeGuidesDetailInput!): SizeGuidesDetail!
-  createSocialFacebookAccount(createSocialFacebookAccountInput: CreateSocialFacebookAccountInput!): SocialFacebookAccount!
-  createSocialGoogleAccount(createSocialGoogleAccountInput: CreateSocialGoogleAccountInput!): SocialGoogleAccount!
-  createSpecialOffer(createSpecialOfferInput: CreateSpecialOfferInput!): SpecialOffer!
-  createState(createStateInput: CreateStateInput!): State!
-  createSubcolor(createSubcolorInput: CreateSubcolorInput!): Subcolor!
-  createSubproduct(createSubproductInput: CreateSubproductInput!): Subproduct!
-  createSubproductSpecialImage(createSubproductSpecialImageInput: CreateSubproductSpecialImageInput!): SubproductSpecialImage!
-  createSubproductStockHistory(createSubproductStockHistoryInput: CreateSubproductStockHistoryInput!): SubproductStockHistory!
-  createSubproductVideo(createSubproductVideoInput: CreateSubproductVideoInput!): SubproductVideo!
-  createSubscriber(createSubscriberInput: CreateSubscriberInput!): Subscriber!
-  createTag(createTagInput: CreateTagInput!): Tag!
-  createTempSubproductDiscount(createTempSubproductDiscountInput: CreateTempSubproductDiscountInput!): TempSubproductDiscount!
-  createTestimonial(createTestimonialInput: CreateTestimonialInput!): Testimonial!
-  createTextLayer(createTextLayerInput: CreateTextLayerInput!): TextLayer!
-  createTmpRfmReport(createTmpRfmReportInput: CreateTmpRfmReportInput!): TmpRfmReport!
-  createTmpRussiaProduct(createTmpRussiaProductInput: CreateTmpRussiaProductInput!): TmpRussiaProduct!
-  createTmpSpainOrder(createTmpSpainOrderInput: CreateTmpSpainOrderInput!): TmpSpainOrder!
-  createTmpSpanishName(createTmpSpanishNameInput: CreateTmpSpanishNameInput!): TmpSpanishName!
-  createTmpTagChangesPrint(createTmpTagChangesPrintInput: CreateTmpTagChangesPrintInput!): TmpTagChangesPrint!
-  createTorobProduct(createTorobProductInput: CreateTorobProductInput!): TorobProduct!
-  createTransaction(createTransactionInput: CreateTransactionInput!): Transaction!
   createUser(createUserInput: CreateUserInput!): User!
-  createUserCart(createUserCartInput: CreateUserCartInput!): UserCart!
-  createUserUtm(createUserUtmInput: CreateUserUtmInput!): UserUtm!
-  createUtm(createUtmInput: CreateUtmInput!): Utm!
-  createUtmGoogleFormCoupon(createUtmGoogleFormCouponInput: CreateUtmGoogleFormCouponInput!): UtmGoogleFormCoupon!
-  createVerifyUser(createVerifyUserInput: CreateVerifyUserInput!): VerifyUser!
-  createVideo(createVideoInput: CreateVideoInput!): Video!
-  createVisitor(createVisitorInput: CreateVisitorInput!): Visitor!
-  createVisitorCoupon(createVisitorCouponInput: CreateVisitorCouponInput!): VisitorCoupon!
-  createVisitorGroup(createVisitorGroupInput: CreateVisitorGroupInput!): VisitorGroup!
-  createVisitorGroupRate(createVisitorGroupRateInput: CreateVisitorGroupRateInput!): VisitorGroupRate!
-  createVisitorSale(createVisitorSaleInput: CreateVisitorSaleInput!): VisitorSale!
-  createWallet(createWalletInput: CreateWalletInputs!): Wallet!
-  createWalletGiftCharge(createWalletGiftChargeInput: CreateWalletGiftChargeInput!): WalletGiftCharge!
-  createWalletHistory(createWalletHistoryInput: CreateWalletHistoryInput!): WalletHistory!
-  createWebsitePage(createWebsitePageInput: CreateWebsitePageInput!): WebsitePage!
-  createWebsiteVisit(createWebsiteVisitInput: CreateWebsiteVisitInput!): WebsiteVisit!
-  createWithdrawalRequest(createWithdrawalRequestInput: CreateWithdrawalRequestInput!): WithdrawalRequest!
-  createWithdrawalRequestStatus(createWithdrawalRequestStatusInput: CreateWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
-  createWonderfulOffer(createWonderfulOfferInput: CreateWonderfulOfferInput!): WonderfulOffer!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
   deleteManyAddresses(input: DeleteManyAddressesInput!): DeleteManyResponse!
   deleteManyAttributeAttributeGroups(input: DeleteManyAttributeAttributeGroupsInput!): DeleteManyResponse!
@@ -22112,6 +21935,7 @@ type Mutation {
   deleteManyTorobProducts(input: DeleteManyTorobProductsInput!): DeleteManyResponse!
   deleteManyTransactions(input: DeleteManyTransactionsInput!): DeleteManyResponse!
   deleteManyUserCarts(input: DeleteManyUserCartsInput!): DeleteManyResponse!
+  deleteManyUserHasRoles(input: DeleteManyUserHasRolesInput!): DeleteManyResponse!
   deleteManyUserUtms(input: DeleteManyUserUtmsInput!): DeleteManyResponse!
   deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
   deleteManyUtmGoogleFormCoupons(input: DeleteManyUtmGoogleFormCouponsInput!): DeleteManyResponse!
@@ -22367,6 +22191,7 @@ type Mutation {
   deleteOneTransaction(input: DeleteOneTransactionInput!): TransactionDeleteResponse!
   deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
   deleteOneUserCart(input: DeleteOneUserCartInput!): UserCartDeleteResponse!
+  deleteOneUserHasRole(input: DeleteOneUserHasRoleInput!): UserHasRoleDeleteResponse!
   deleteOneUserUtm(input: DeleteOneUserUtmInput!): UserUtmDeleteResponse!
   deleteOneUtm(input: DeleteOneUtmInput!): UtmDeleteResponse!
   deleteOneUtmGoogleFormCoupon(input: DeleteOneUtmGoogleFormCouponInput!): UtmGoogleFormCouponDeleteResponse!
@@ -22385,241 +22210,8 @@ type Mutation {
   deleteOneWithdrawalRequest(input: DeleteOneWithdrawalRequestInput!): WithdrawalRequestDeleteResponse!
   deleteOneWithdrawalRequestStatus(input: DeleteOneWithdrawalRequestStatusInput!): WithdrawalRequestStatusDeleteResponse!
   deleteOneWonderfulOffer(input: DeleteOneWonderfulOfferInput!): WonderfulOfferDeleteResponse!
-  removeAttribute(id: Int!): Attribute!
-  removeAttributeAttributeGroup(id: Int!): AttributeAttributeGroup!
-  removeAttributeItem(id: Int!): AttributeItem!
-  removeAttributeProduct(id: Int!): AttributeProduct!
-  removeAttributeSubproduct(id: Int!): AttributeSubproduct!
-  removeChaparSettlementStatus(id: Int!): ChaparSettlementStatus!
-  removeCity(id: Int!): City!
-  removeColor(id: Int!): Color!
-  removeCustomerImageProduct(id: Int!): CustomerImageProduct!
-  removeCustomerVideoProduct(id: Int!): CustomerVideoProduct!
-  removeDepartment(id: Int!): Department!
-  removeDiscount(id: Int!): Discount!
-  removeExitControl(id: Int!): ExitControl!
-  removeExitControlItem(id: Int!): ExitControlItem!
-  removeGoogleFormUtm(id: Int!): GoogleFormUtm!
-  removeHoliday(id: Int!): Holiday!
-  removeHomePageCustomerImage(id: Int!): HomePageCustomerImage!
-  removeHyper(id: Int!): Hyper!
-  removeImageLayer(id: Int!): ImageLayer!
-  removeImageSize(id: Int!): ImageSize!
-  removeImageSubproduct(id: Int!): ImageSubproduct!
-  removeImagesSizeGuidesDetail(id: Int!): ImagesSizeGuidesDetail!
-  removeImpersonateHistory(id: Int!): ImpersonateHistory!
-  removeIncredibleOffer(id: Int!): IncredibleOffer!
-  removeIncredibleOfferSentNotification(id: Int!): IncredibleOfferSentNotification!
-  removeInstagramFeed(id: Int!): InstagramFeed!
-  removeInvitationCode(id: Int!): InvitationCode!
-  removeInvoice(id: Int!): Invoice!
-  removeInvoiceAddress(id: Int!): InvoiceAddress!
-  removeInvoiceAddressValidationResult(id: Int!): InvoiceAddressValidationResult!
-  removeInvoiceBankGatewayHistory(id: Int!): InvoiceBankGatewayHistory!
-  removeInvoiceHistory(id: Int!): InvoiceHistory!
-  removeInvoiceInvoiceStatus(id: Int!): InvoiceInvoiceStatus!
-  removeInvoiceMode(id: Int!): InvoiceMode!
-  removeInvoiceNegotiation(id: Int!): InvoiceNegotiation!
-  removeInvoicePayment(id: Int!): InvoicePayment!
-  removeInvoicePaymentHistory(id: Int!): InvoicePaymentHistory!
-  removeInvoicePaymentStatus(id: Int!): InvoicePaymentStatus!
-  removeInvoicePaymentType(id: Int!): InvoicePaymentType!
-  removeInvoiceProduct(id: Int!): InvoiceProduct!
-  removeInvoiceProductHistory(id: Int!): InvoiceProductHistory!
-  removeInvoiceProductItem(id: Int!): InvoiceProductItem!
-  removeInvoiceProductItemInvoiceProductStatus(id: Int!): InvoiceProductItemInvoiceProductStatus!
-  removeInvoiceProductStatus(id: Int!): InvoiceProductStatus!
-  removeInvoiceRatesResult(id: Int!): InvoiceRatesResult!
-  removeInvoiceReversal(id: Int!): InvoiceReversal!
-  removeInvoiceReversalItem(id: Int!): InvoiceReversalItem!
-  removeInvoiceShippingRate(id: Int!): InvoiceShippingRate!
-  removeInvoiceStatus(id: Int!): InvoiceStatus!
-  removeInvoiceType(id: Int!): InvoiceType!
-  removeLabel(id: Int!): Label!
-  removeLabelProduct(id: Int!): LabelProduct!
-  removeMellatPaymentError(id: Int!): MellatPaymentError!
-  removeMigration(id: Int!): Migration!
-  removeModelHasPermission(id: Int!): ModelHasPermission!
-  removeModelHasRole(id: Int!): ModelHasRole!
-  removeModelVisit(id: Int!): ModelVisit!
-  removeModemaAccelerator(id: Int!): ModemaAccelerator!
-  removeModemaAcceleratorImage(id: Int!): ModemaAcceleratorImage!
-  removeModemaAcceleratorVideo(id: Int!): ModemaAcceleratorVideo!
-  removeNeedsPhotographySubproduct(id: Int!): NeedsPhotographySubproduct!
-  removeNegotiation(id: Int!): Negotiation!
-  removeNegotiationHistory(id: Int!): NegotiationHistory!
-  removeNegotiationStatus(id: Int!): NegotiationStatus!
   removeNegotiationStep(id: Int!): NegotiationStep!
-  removeNegotiationType(id: Int!): NegotiationType!
-  removeNewBorder(id: Int!): NewBorder!
-  removeOauthAccessToken(id: Int!): OauthAccessToken!
-  removeOauthAuthCode(id: Int!): OauthAuthCode!
-  removeOauthClient(id: Int!): OauthClient!
-  removeOauthPersonalAccessClient(id: Int!): OauthPersonalAccessClient!
-  removeOauthRefreshToken(id: Int!): OauthRefreshToken!
-  removeOutOfStockButListedProduct(id: Int!): OutOfStockButListedProduct!
-  removePasswordReset(id: Int!): PasswordReset!
-  removePattern(id: Int!): Pattern!
-  removePatternCategory(id: Int!): PatternCategory!
-  removePatternLayer(id: Int!): PatternLayer!
-  removePaymentMethod(id: Int!): PaymentMethod!
-  removePaymentMethodField(id: Int!): PaymentMethodField!
-  removePaymentRequest(id: Int!): PaymentRequest!
-  removePaymentRequestStatus(id: Int!): PaymentRequestStatus!
-  removePermission(id: Int!): Permission!
-  removePermissionGroup(id: Int!): PermissionGroup!
-  removePreorder(id: Int!): Preorder!
-  removePreorderPreorderStatus(id: Int!): PreorderPreorderStatus!
-  removePreorderRegister(id: Int!): PreorderRegister!
-  removePreorderStatus(id: Int!): PreorderStatus!
-  removePriceGroup(id: Int!): PriceGroup!
-  removePriceGroupSize(id: Int!): PriceGroupSize!
-  removePrintProfile(id: Int!): PrintProfile!
-  removePrintRip(id: Int!): PrintRip!
-  removeProduct(id: Int!): Product!
-  removeProductCategory(id: Int!): ProductCategory!
-  removeProductCategoryDetail(id: Int!): ProductCategoryDetail!
-  removeProductCategoryRate(id: Int!): ProductCategoryRate!
-  removeProductColorImage(id: Int!): ProductColorImage!
-  removeProductColorSale(id: Int!): ProductColorSale!
-  removeProductComment(id: Int!): ProductComment!
-  removeProductCommentLike(id: Int!): ProductCommentLike!
-  removeProductLike(id: Int!): ProductLike!
-  removeProductProductCategory(id: Int!): ProductProductCategory!
-  removeProductRate(id: Int!): ProductRate!
-  removeProductRateAverage(id: Int!): ProductRateAverage!
-  removeProductTag(id: Int!): ProductTag!
-  removeProductVideo(id: Int!): ProductVideo!
-  removeProductionPad(id: Int!): ProductionPad!
-  removeProductionPadProductionPadStatus(id: Int!): ProductionPadProductionPadStatus!
-  removeProductionPadStatus(id: Int!): ProductionPadStatus!
-  removeProductionReceiptType(id: Int!): ProductionReceiptType!
-  removeProductionRoll(id: Int!): ProductionRoll!
-  removeRate(id: Int!): Rate!
-  removeReadyToSendProduct(id: Int!): ReadyToSendProduct!
-  removeRecommendedProduct(id: Int!): RecommendedProduct!
-  removeRecommendedSubproduct(id: Int!): RecommendedSubproduct!
-  removeRedisSavedKey(id: Int!): RedisSavedKey!
-  removeRelatedProduct(id: Int!): RelatedProduct!
-  removeRetargetingWalletCharge(id: Int!): RetargetingWalletCharge!
-  removeReturnItemStatus(id: Int!): ReturnItemStatus!
-  removeReturnItemStatusReturnRequestItem(id: Int!): ReturnItemStatusReturnRequestItem!
-  removeReturnReason(id: Int!): ReturnReason!
-  removeReturnRequest(id: Int!): ReturnRequest!
-  removeReturnRequestAddress(id: Int!): ReturnRequestAddress!
-  removeReturnRequestHistory(id: Int!): ReturnRequestHistory!
-  removeReturnRequestItem(id: Int!): ReturnRequestItem!
-  removeReturnRequestItemHistory(id: Int!): ReturnRequestItemHistory!
-  removeReturnRequestItemImage(id: Int!): ReturnRequestItemImage!
-  removeReturnRequestItemReturnItemStatus(id: Int!): ReturnRequestItemReturnItemStatus!
-  removeReturnRequestItemVideo(id: Int!): ReturnRequestItemVideo!
-  removeReturnRequestReturnStatus(id: Int!): ReturnRequestReturnStatus!
-  removeReturnStatus(id: Int!): ReturnStatus!
-  removeReturnType(id: Int!): ReturnType!
-  removeReturnedInvoice(id: Int!): ReturnedInvoice!
-  removeReturnedInvoiceProduct(id: Int!): ReturnedInvoiceProduct!
-  removeRfmReport(id: Int!): RfmReport!
-  removeRipTemplate(id: Int!): RipTemplate!
-  removeRipTemplateItem(id: Int!): RipTemplateItem!
-  removeRole(id: Int!): RoleDomain!
-  removeRussian(id: Int!): Russian!
-  removeSenderInformation(id: Int!): SenderInformation!
-  removeShippingService(id: Int!): ShippingService!
-  removeSitemapStaticPage(id: Int!): SitemapStaticPage!
-  removeSizeGuide(id: Int!): SizeGuide!
-  removeSizeGuidesDetail(id: Int!): SizeGuidesDetail!
-  removeSocialFacebookAccount(id: Int!): SocialFacebookAccount!
-  removeSocialGoogleAccount(id: Int!): SocialGoogleAccount!
-  removeSpecialOffer(id: Int!): SpecialOffer!
-  removeState(id: Int!): State!
-  removeSubcolor(id: Int!): Subcolor!
-  removeSubproduct(id: Int!): Subproduct!
-  removeSubproductSpecialImage(id: Int!): SubproductSpecialImage!
-  removeSubproductStockHistory(id: Int!): SubproductStockHistory!
-  removeSubproductVideo(id: Int!): SubproductVideo!
-  removeSubscriber(id: Int!): Subscriber!
-  removeTag(id: Int!): Tag!
-  removeTempSubproductDiscount(id: Int!): TempSubproductDiscount!
-  removeTestimonial(id: Int!): Testimonial!
-  removeTextLayer(id: Int!): TextLayer!
-  removeTmpRfmReport(id: Int!): TmpRfmReport!
-  removeTmpRussiaProduct(id: Int!): TmpRussiaProduct!
-  removeTmpSpainOrder(id: Int!): TmpSpainOrder!
-  removeTmpSpanishName(id: Int!): TmpSpanishName!
-  removeTmpTagChangesPrint(id: Int!): TmpTagChangesPrint!
-  removeTorobProduct(id: Int!): TorobProduct!
-  removeTransaction(id: Int!): Transaction!
   removeUser(id: Int!): User!
-  removeUserCart(id: Int!): UserCart!
-  removeUserUtm(id: Int!): UserUtm!
-  removeUtm(id: Int!): Utm!
-  removeUtmGoogleFormCoupon(id: Int!): UtmGoogleFormCoupon!
-  removeVerifyUser(id: Int!): VerifyUser!
-  removeVideo(id: Int!): Video!
-  removeVisitor(id: Int!): Visitor!
-  removeVisitorCoupon(id: Int!): VisitorCoupon!
-  removeVisitorGroup(id: Int!): VisitorGroup!
-  removeVisitorGroupRate(id: Int!): VisitorGroupRate!
-  removeVisitorSale(id: Int!): VisitorSale!
-  removeWallet(id: Int!): Wallet!
-  removeWalletGiftCharge(id: Int!): WalletGiftCharge!
-  removeWalletHistory(id: Int!): WalletHistory!
-  removeWebsitePage(id: Int!): WebsitePage!
-  removeWebsiteVisit(id: Int!): WebsiteVisit!
-  removeWithdrawalRequest(id: Int!): WithdrawalRequest!
-  removeWithdrawalRequestStatus(id: Int!): WithdrawalRequestStatus!
-  removeWonderfulOffer(id: Int!): WonderfulOffer!
-  updateAttribute(updateAttributeInput: UpdateAttributeInput!): Attribute!
-  updateAttributeAttributeGroup(updateAttributeAttributeGroupInput: UpdateAttributeAttributeGroupInput!): AttributeAttributeGroup!
-  updateAttributeItem(updateAttributeItemInput: UpdateAttributeItemInput!): AttributeItem!
-  updateAttributeProduct(updateAttributeProductInput: UpdateAttributeProductInput!): AttributeProduct!
-  updateAttributeSubproduct(updateAttributeSubproductInput: UpdateAttributeSubproductInput!): AttributeSubproduct!
-  updateChaparSettlementStatus(updateChaparSettlementStatusInput: UpdateChaparSettlementStatusInput!): ChaparSettlementStatus!
-  updateCity(updateCityInput: UpdateCityInput!): City!
-  updateColor(updateColorInput: UpdateColorInput!): Color!
-  updateCustomerImageProduct(updateCustomerImageProductInput: UpdateCustomerImageProductInput!): CustomerImageProduct!
-  updateCustomerVideoProduct(updateCustomerVideoProductInput: UpdateCustomerVideoProductInput!): CustomerVideoProduct!
-  updateDepartment(updateDepartmentInput: UpdateDepartmentInput!): Department!
-  updateDiscount(updateDiscountInput: UpdateDiscountInput!): Discount!
-  updateExitControl(updateExitControlInput: UpdateExitControlInput!): ExitControl!
-  updateExitControlItem(updateExitControlItemInput: UpdateExitControlItemInput!): ExitControlItem!
-  updateGoogleFormUtm(updateGoogleFormUtmInput: UpdateGoogleFormUtmInput!): GoogleFormUtm!
-  updateHoliday(updateHolidayInput: UpdateHolidayInput!): Holiday!
-  updateHomePageCustomerImage(updateHomePageCustomerImageInput: UpdateHomePageCustomerImageInput!): HomePageCustomerImage!
-  updateHyper(updateHyperInput: UpdateHyperInput!): Hyper!
-  updateImageLayer(updateImageLayerInput: UpdateImageLayerInput!): ImageLayer!
-  updateImageSize(updateImageSizeInput: UpdateImageSizeInput!): ImageSize!
-  updateImageSubproduct(updateImageSubproductInput: UpdateImageSubproductInput!): ImageSubproduct!
-  updateImagesSizeGuidesDetail(updateImagesSizeGuidesDetailInput: UpdateImagesSizeGuidesDetailInput!): ImagesSizeGuidesDetail!
-  updateIncredibleOffer(updateIncredibleOfferInput: UpdateIncredibleOfferInput!): IncredibleOffer!
-  updateIncredibleOfferSentNotification(updateIncredibleOfferSentNotificationInput: UpdateIncredibleOfferSentNotificationInput!): IncredibleOfferSentNotification!
-  updateInstagramFeed(updateInstagramFeedInput: UpdateInstagramFeedInput!): InstagramFeed!
-  updateInvitationCode(updateInvitationCodeInput: UpdateInvitationCodeInput!): InvitationCode!
-  updateInvoice(updateInvoiceInput: UpdateInvoiceInput!): Invoice!
-  updateInvoiceAddress(updateInvoiceAddressInput: UpdateInvoiceAddressInput!): InvoiceAddress!
-  updateInvoiceAddressValidationResult(updateInvoiceAddressValidationResultInput: UpdateInvoiceAddressValidationResultInput!): InvoiceAddressValidationResult!
-  updateInvoiceBankGatewayHistory(updateInvoiceBankGatewayHistoryInput: UpdateInvoiceBankGatewayHistoryInput!): InvoiceBankGatewayHistory!
-  updateInvoiceHistory(updateInvoiceHistoryInput: UpdateInvoiceHistoryInput!): InvoiceHistory!
-  updateInvoiceInvoiceStatus(updateInvoiceInvoiceStatusInput: UpdateInvoiceInvoiceStatusInput!): InvoiceInvoiceStatus!
-  updateInvoiceMode(updateInvoiceModeInput: UpdateInvoiceModeInput!): InvoiceMode!
-  updateInvoiceNegotiation(updateInvoiceNegotiationInput: UpdateInvoiceNegotiationInput!): InvoiceNegotiation!
-  updateInvoicePayment(updateInvoicePaymentInput: UpdateInvoicePaymentInput!): InvoicePayment!
-  updateInvoicePaymentHistory(updateInvoicePaymentHistoryInput: UpdateInvoicePaymentHistoryInput!): InvoicePaymentHistory!
-  updateInvoicePaymentStatus(updateInvoicePaymentStatusInput: UpdateInvoicePaymentStatusInput!): InvoicePaymentStatus!
-  updateInvoicePaymentType(updateInvoicePaymentTypeInput: UpdateInvoicePaymentTypeInput!): InvoicePaymentType!
-  updateInvoiceProduct(updateInvoiceProductInput: UpdateInvoiceProductInput!): InvoiceProduct!
-  updateInvoiceProductHistory(updateInvoiceProductHistoryInput: UpdateInvoiceProductHistoryInput!): InvoiceProductHistory!
-  updateInvoiceProductItem(updateInvoiceProductItemInput: UpdateInvoiceProductItemInput!): InvoiceProductItem!
-  updateInvoiceProductItemInvoiceProductStatus(updateInvoiceProductItemInvoiceProductStatusInput: UpdateInvoiceProductItemInvoiceProductStatusInput!): InvoiceProductItemInvoiceProductStatus!
-  updateInvoiceProductStatus(updateInvoiceProductStatusInput: UpdateInvoiceProductStatusInput!): InvoiceProductStatus!
-  updateInvoiceRatesResult(updateInvoiceRatesResultInput: UpdateInvoiceRatesResultInput!): InvoiceRatesResult!
-  updateInvoiceReversal(updateInvoiceReversalInput: UpdateInvoiceReversalInput!): InvoiceReversal!
-  updateInvoiceReversalItem(updateInvoiceReversalItemInput: UpdateInvoiceReversalItemInput!): InvoiceReversalItem!
-  updateInvoiceShippingRate(updateInvoiceShippingRateInput: UpdateInvoiceShippingRateInput!): InvoiceShippingRate!
-  updateInvoiceStatus(updateInvoiceStatusInput: UpdateInvoiceStatusInput!): InvoiceStatus!
-  updateInvoiceType(updateInvoiceTypeInput: UpdateInvoiceTypeInput!): InvoiceType!
-  updateLabel(updateLabelInput: UpdateLabelInput!): Label!
-  updateLabelProduct(updateLabelProductInput: UpdateLabelProductInput!): LabelProduct!
   updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
   updateManyAddresses(input: UpdateManyAddressesInput!): UpdateManyResponse!
   updateManyAttributeAttributeGroups(input: UpdateManyAttributeAttributeGroupsInput!): UpdateManyResponse!
@@ -22855,6 +22447,7 @@ type Mutation {
   updateManyTorobProducts(input: UpdateManyTorobProductsInput!): UpdateManyResponse!
   updateManyTransactions(input: UpdateManyTransactionsInput!): UpdateManyResponse!
   updateManyUserCarts(input: UpdateManyUserCartsInput!): UpdateManyResponse!
+  updateManyUserHasRoles(input: UpdateManyUserHasRolesInput!): UpdateManyResponse!
   updateManyUserUtms(input: UpdateManyUserUtmsInput!): UpdateManyResponse!
   updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
   updateManyUtmGoogleFormCoupons(input: UpdateManyUtmGoogleFormCouponsInput!): UpdateManyResponse!
@@ -22874,22 +22467,7 @@ type Mutation {
   updateManyWithdrawalRequestStatuses(input: UpdateManyWithdrawalRequestStatusesInput!): UpdateManyResponse!
   updateManyWithdrawalRequests(input: UpdateManyWithdrawalRequestsInput!): UpdateManyResponse!
   updateManyWonderfulOffers(input: UpdateManyWonderfulOffersInput!): UpdateManyResponse!
-  updateMigration(updateMigrationInput: UpdateMigrationInput!): Migration!
-  updateModelHasPermission(updateModelHasPermissionInput: UpdateModelHasPermissionInput!): ModelHasPermission!
-  updateModelHasRole(updateModelHasRoleInput: UpdateModelHasRoleInput!): ModelHasRole!
-  updateModelVisit(updateModelVisitInput: UpdateModelVisitInput!): ModelVisit!
-  updateModemaAccelerator(updateModemaAcceleratorInput: UpdateModemaAcceleratorInput!): ModemaAccelerator!
-  updateModemaAcceleratorImage(updateModemaAcceleratorImageInput: UpdateModemaAcceleratorImageInput!): ModemaAcceleratorImage!
-  updateModemaAcceleratorVideo(updateModemaAcceleratorVideoInput: UpdateModemaAcceleratorVideoInput!): ModemaAcceleratorVideo!
-  updateNeedsPhotographySubproduct(updateNeedsPhotographySubproductInput: UpdateNeedsPhotographySubproductInput!): NeedsPhotographySubproduct!
-  updateNegotiation(updateNegotiationInput: UpdateNegotiationInput!): Negotiation!
-  updateNegotiationHistory(updateNegotiationHistoryInput: UpdateNegotiationHistoryInput!): NegotiationHistory!
-  updateNegotiationStatus(updateNegotiationStatusInput: UpdateNegotiationStatusInput!): NegotiationStatus!
   updateNegotiationStep(updateNegotiationStepInput: UpdateNegotiationStepInput!): NegotiationStep!
-  updateNegotiationType(updateNegotiationTypeInput: UpdateNegotiationTypeInput!): NegotiationType!
-  updateNewBorder(updateNewBorderInput: UpdateNewBorderInput!): NewBorder!
-  updateOauthClient(updateOauthClientInput: UpdateOauthClientInput!): OauthClient!
-  updateOauthPersonalAccessClient(updateOauthPersonalAccessClientInput: UpdateOauthPersonalAccessClientInput!): OauthPersonalAccessClient!
   updateOneActivity(input: UpdateOneActivityInput!): Activity!
   updateOneAddress(input: UpdateOneAddressInput!): Address!
   updateOneAttribute(input: UpdateOneAttributeInput!): Attribute!
@@ -23126,6 +22704,7 @@ type Mutation {
   updateOneTransaction(input: UpdateOneTransactionInput!): Transaction!
   updateOneUser(input: UpdateOneUserInput!): User!
   updateOneUserCart(input: UpdateOneUserCartInput!): UserCart!
+  updateOneUserHasRole(input: UpdateOneUserHasRoleInput!): UserHasRole!
   updateOneUserUtm(input: UpdateOneUserUtmInput!): UserUtm!
   updateOneUtm(input: UpdateOneUtmInput!): Utm!
   updateOneUtmGoogleFormCoupon(input: UpdateOneUtmGoogleFormCouponInput!): UtmGoogleFormCoupon!
@@ -23144,116 +22723,7 @@ type Mutation {
   updateOneWithdrawalRequest(input: UpdateOneWithdrawalRequestInput!): WithdrawalRequest!
   updateOneWithdrawalRequestStatus(input: UpdateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   updateOneWonderfulOffer(input: UpdateOneWonderfulOfferInput!): WonderfulOffer!
-  updateOutOfStockButListedProduct(updateOutOfStockButListedProductInput: UpdateOutOfStockButListedProductInput!): OutOfStockButListedProduct!
-  updatePasswordReset(updatePasswordResetInput: UpdatePasswordResetInput!): PasswordReset!
-  updatePattern(updatePatternInput: UpdatePatternInput!): Pattern!
-  updatePatternCategory(updatePatternCategoryInput: UpdatePatternCategoryInput!): PatternCategory!
-  updatePatternLayer(updatePatternLayerInput: UpdatePatternLayerInput!): PatternLayer!
-  updatePaymentMethod(updatePaymentMethodInput: UpdatePaymentMethodInput!): PaymentMethod!
-  updatePaymentMethodField(updatePaymentMethodFieldInput: UpdatePaymentMethodFieldInput!): PaymentMethodField!
-  updatePaymentRequest(updatePaymentRequestInput: UpdatePaymentRequestInput!): PaymentRequest!
-  updatePaymentRequestStatus(updatePaymentRequestStatusInput: UpdatePaymentRequestStatusInput!): PaymentRequestStatus!
-  updatePermission(updatePermissionInput: UpdatePermissionInput!): Permission!
-  updatePermissionGroup(updatePermissionGroupInput: UpdatePermissionGroupInput!): PermissionGroup!
-  updatePreorder(updatePreorderInput: UpdatePreorderInput!): Preorder!
-  updatePreorderPreorderStatus(updatePreorderPreorderStatusInput: UpdatePreorderPreorderStatusInput!): PreorderPreorderStatus!
-  updatePreorderRegister(updatePreorderRegisterInput: UpdatePreorderRegisterInput!): PreorderRegister!
-  updatePreorderStatus(updatePreorderStatusInput: UpdatePreorderStatusInput!): PreorderStatus!
-  updatePriceGroup(updatePriceGroupInput: UpdatePriceGroupInput!): PriceGroup!
-  updatePriceGroupSize(updatePriceGroupSizeInput: UpdatePriceGroupSizeInput!): PriceGroupSize!
-  updatePrintProfile(updatePrintProfileInput: UpdatePrintProfileInput!): PrintProfile!
-  updatePrintRip(updatePrintRipInput: UpdatePrintRipInput!): PrintRip!
-  updateProduct(updateProductInput: UpdateProductInput!): Product!
-  updateProductCategory(updateProductCategoryInput: UpdateProductCategoryInput!): ProductCategory!
-  updateProductCategoryDetail(updateProductCategoryDetailInput: UpdateProductCategoryDetailInput!): ProductCategoryDetail!
-  updateProductCategoryRate(updateProductCategoryRateInput: UpdateProductCategoryRateInput!): ProductCategoryRate!
-  updateProductColorImage(updateProductColorImageInput: UpdateProductColorImageInput!): ProductColorImage!
-  updateProductColorSale(updateProductColorSaleInput: UpdateProductColorSaleInput!): ProductColorSale!
-  updateProductComment(updateProductCommentInput: UpdateProductCommentInput!): ProductComment!
-  updateProductCommentLike(updateProductCommentLikeInput: UpdateProductCommentLikeInput!): ProductCommentLike!
-  updateProductLike(updateProductLikeInput: UpdateProductLikeInput!): ProductLike!
-  updateProductProductCategory(updateProductProductCategoryInput: UpdateProductProductCategoryInput!): ProductProductCategory!
-  updateProductRate(updateProductRateInput: UpdateProductRateInput!): ProductRate!
-  updateProductRateAverage(updateProductRateAverageInput: UpdateProductRateAverageInput!): ProductRateAverage!
-  updateProductTag(updateProductTagInput: UpdateProductTagInput!): ProductTag!
-  updateProductVideo(updateProductVideoInput: UpdateProductVideoInput!): ProductVideo!
-  updateProductionPad(updateProductionPadInput: UpdateProductionPadInput!): ProductionPad!
-  updateProductionPadProductionPadStatus(updateProductionPadProductionPadStatusInput: UpdateProductionPadProductionPadStatusInput!): ProductionPadProductionPadStatus!
-  updateProductionPadStatus(updateProductionPadStatusInput: UpdateProductionPadStatusInput!): ProductionPadStatus!
-  updateProductionReceiptType(updateProductionReceiptTypeInput: UpdateProductionReceiptTypeInput!): ProductionReceiptType!
-  updateProductionRoll(updateProductionRollInput: UpdateProductionRollInput!): ProductionRoll!
-  updateRate(updateRateInput: UpdateRateInput!): Rate!
-  updateReadyToSendProduct(updateReadyToSendProductInput: UpdateReadyToSendProductInput!): ReadyToSendProduct!
-  updateRecommendedProduct(updateRecommendedProductInput: UpdateRecommendedProductInput!): RecommendedProduct!
-  updateRecommendedSubproduct(updateRecommendedSubproductInput: UpdateRecommendedSubproductInput!): RecommendedSubproduct!
-  updateRelatedProduct(updateRelatedProductInput: UpdateRelatedProductInput!): RelatedProduct!
-  updateRetargetingWalletCharge(updateRetargetingWalletChargeInput: UpdateRetargetingWalletChargeInput!): RetargetingWalletCharge!
-  updateReturnItemStatus(updateReturnItemStatusInput: UpdateReturnItemStatusInput!): ReturnItemStatus!
-  updateReturnItemStatusReturnRequestItem(updateReturnItemStatusReturnRequestItemInput: UpdateReturnItemStatusReturnRequestItemInput!): ReturnItemStatusReturnRequestItem!
-  updateReturnReason(updateReturnReasonInput: UpdateReturnReasonInput!): ReturnReason!
-  updateReturnRequest(updateReturnRequestInput: UpdateReturnRequestInput!): ReturnRequest!
-  updateReturnRequestAddress(updateReturnRequestAddressInput: UpdateReturnRequestAddressInput!): ReturnRequestAddress!
-  updateReturnRequestHistory(updateReturnRequestHistoryInput: UpdateReturnRequestHistoryInput!): ReturnRequestHistory!
-  updateReturnRequestItem(updateReturnRequestItemInput: UpdateReturnRequestItemInput!): ReturnRequestItem!
-  updateReturnRequestItemHistory(updateReturnRequestItemHistoryInput: UpdateReturnRequestItemHistoryInput!): ReturnRequestItemHistory!
-  updateReturnRequestItemImage(updateReturnRequestItemImageInput: UpdateReturnRequestItemImageInput!): ReturnRequestItemImage!
-  updateReturnRequestItemReturnItemStatus(updateReturnRequestItemReturnItemStatusInput: UpdateReturnRequestItemReturnItemStatusInput!): ReturnRequestItemReturnItemStatus!
-  updateReturnRequestItemVideo(updateReturnRequestItemVideoInput: UpdateReturnRequestItemVideoInput!): ReturnRequestItemVideo!
-  updateReturnRequestReturnStatus(updateReturnRequestReturnStatusInput: UpdateReturnRequestReturnStatusInput!): ReturnRequestReturnStatus!
-  updateReturnStatus(updateReturnStatusInput: UpdateReturnStatusInput!): ReturnStatus!
-  updateReturnType(updateReturnTypeInput: UpdateReturnTypeInput!): ReturnType!
-  updateReturnedInvoice(updateReturnedInvoiceInput: UpdateReturnedInvoiceInput!): ReturnedInvoice!
-  updateReturnedInvoiceProduct(updateReturnedInvoiceProductInput: UpdateReturnedInvoiceProductInput!): ReturnedInvoiceProduct!
-  updateRfmReport(updateRfmReportInput: UpdateRfmReportInput!): RfmReport!
-  updateRipTemplate(updateRipTemplateInput: UpdateRipTemplateInput!): RipTemplate!
-  updateRipTemplateItem(updateRipTemplateItemInput: UpdateRipTemplateItemInput!): RipTemplateItem!
-  updateRole(updateRoleInput: UpdateRoleInput!): RoleDomain!
-  updateRussian(updateRussianInput: UpdateRussianInput!): Russian!
-  updateSenderInformation(updateSenderInformationInput: UpdateSenderInformationInput!): SenderInformation!
-  updateShippingService(updateShippingServiceInput: UpdateShippingServiceInput!): ShippingService!
-  updateSitemapStaticPage(updateSitemapStaticPageInput: UpdateSitemapStaticPageInput!): SitemapStaticPage!
-  updateSizeGuide(updateSizeGuideInput: UpdateSizeGuideInput!): SizeGuide!
-  updateSizeGuidesDetail(updateSizeGuidesDetailInput: UpdateSizeGuidesDetailInput!): SizeGuidesDetail!
-  updateSocialFacebookAccount(updateSocialFacebookAccountInput: UpdateSocialFacebookAccountInput!): SocialFacebookAccount!
-  updateSocialGoogleAccount(updateSocialGoogleAccountInput: UpdateSocialGoogleAccountInput!): SocialGoogleAccount!
-  updateSpecialOffer(updateSpecialOfferInput: UpdateSpecialOfferInput!): SpecialOffer!
-  updateState(updateStateInput: UpdateStateInput!): State!
-  updateSubcolor(updateSubcolorInput: UpdateSubcolorInput!): Subcolor!
-  updateSubproduct(updateSubproductInput: UpdateSubproductInput!): Subproduct!
-  updateSubproductSpecialImage(updateSubproductSpecialImageInput: UpdateSubproductSpecialImageInput!): SubproductSpecialImage!
-  updateSubproductStockHistory(updateSubproductStockHistoryInput: UpdateSubproductStockHistoryInput!): SubproductStockHistory!
-  updateSubproductVideo(updateSubproductVideoInput: UpdateSubproductVideoInput!): SubproductVideo!
-  updateSubscriber(updateSubscriberInput: UpdateSubscriberInput!): Subscriber!
-  updateTag(updateTagInput: UpdateTagInput!): Tag!
-  updateTempSubproductDiscount(updateTempSubproductDiscountInput: UpdateTempSubproductDiscountInput!): TempSubproductDiscount!
-  updateTestimonial(updateTestimonialInput: UpdateTestimonialInput!): Testimonial!
-  updateTmpRfmReport(updateTmpRfmReportInput: UpdateTmpRfmReportInput!): TmpRfmReport!
-  updateTmpRussiaProduct(updateTmpRussiaProductInput: UpdateTmpRussiaProductInput!): TmpRussiaProduct!
-  updateTmpSpainOrder(updateTmpSpainOrderInput: UpdateTmpSpainOrderInput!): TmpSpainOrder!
-  updateTmpSpanishName(updateTmpSpanishNameInput: UpdateTmpSpanishNameInput!): TmpSpanishName!
-  updateTmpTagChangesPrint(updateTmpTagChangesPrintInput: UpdateTmpTagChangesPrintInput!): TmpTagChangesPrint!
-  updateTorobProduct(updateTorobProductInput: UpdateTorobProductInput!): TorobProduct!
-  updateTransaction(updateTransactionInput: UpdateTransactionInput!): Transaction!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  updateUserCart(updateUserCartInput: UpdateUserCartInput!): UserCart!
-  updateUserUtm(updateUserUtmInput: UpdateUserUtmInput!): UserUtm!
-  updateUtm(updateUtmInput: UpdateUtmInput!): Utm!
-  updateUtmGoogleFormCoupon(updateUtmGoogleFormCouponInput: UpdateUtmGoogleFormCouponInput!): UtmGoogleFormCoupon!
-  updateVerifyUser(updateVerifyUserInput: UpdateVerifyUserInput!): VerifyUser!
-  updateVideo(updateVideoInput: UpdateVideoInput!): Video!
-  updateVisitor(updateVisitorInput: UpdateVisitorInput!): Visitor!
-  updateVisitorCoupon(updateVisitorCouponInput: UpdateVisitorCouponInput!): VisitorCoupon!
-  updateVisitorGroup(updateVisitorGroupInput: UpdateVisitorGroupInput!): VisitorGroup!
-  updateVisitorGroupRate(updateVisitorGroupRateInput: UpdateVisitorGroupRateInput!): VisitorGroupRate!
-  updateVisitorSale(updateVisitorSaleInput: UpdateVisitorSaleInput!): VisitorSale!
-  updateWallet(updateWalletInput: UpdateWalletInput!): Wallet!
-  updateWalletGiftCharge(updateWalletGiftChargeInput: UpdateWalletGiftChargeInput!): WalletGiftCharge!
-  updateWalletHistory(updateWalletHistoryInput: UpdateWalletHistoryInput!): WalletHistory!
-  updateWebsitePage(updateWebsitePageInput: UpdateWebsitePageInput!): WebsitePage!
-  updateWebsiteVisit(updateWebsiteVisitInput: UpdateWebsiteVisitInput!): WebsiteVisit!
-  updateWithdrawalRequest(updateWithdrawalRequestInput: UpdateWithdrawalRequestInput!): WithdrawalRequest!
-  updateWithdrawalRequestStatus(updateWithdrawalRequestStatusInput: UpdateWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
-  updateWonderfulOffer(updateWonderfulOfferInput: UpdateWonderfulOfferInput!): WonderfulOffer!
 }
 
 type NeedsPhotographySubproduct {
@@ -30771,7 +30241,6 @@ type Query {
     """Specify to sort results."""
     sorting: [RipTemplateSort!]! = []
   ): RipTemplateConnection!
-  role(id: Int!): RoleDomain!
   roleDomain(
     """The id of the record to find."""
     id: ID!
@@ -31196,6 +30665,20 @@ type Query {
     """Specify to sort results."""
     sorting: [UserCartSort!]! = []
   ): UserCartConnection!
+  userHasRole(
+    """The id of the record to find."""
+    id: ID!
+  ): UserHasRole!
+  userHasRoles(
+    """Specify to filter the records returned."""
+    filter: UserHasRoleFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [UserHasRoleSort!]! = []
+  ): UserHasRoleConnection!
   userUtm(
     """The id of the record to find."""
     id: ID!
@@ -36648,16 +36131,6 @@ input UpdateAttributeAttributeGroup {
   updatedAt: DateTime
 }
 
-input UpdateAttributeAttributeGroupInput {
-  attribute: AttributeDomain
-  attributeGroup: AttributeGroupDomain
-  attributeGroupId: Float
-  attributeId: Float
-  createdAt: DateTime
-  id: Int!
-  updatedAt: DateTime
-}
-
 input UpdateAttributeGroup {
   attributeAttributeGroups: [AttributeAttributeGroupDomain!]
   attributeItems: [AttributeItemDomain!]
@@ -36672,14 +36145,6 @@ input UpdateAttributeGroup {
   updatedAt: DateTime
 }
 
-input UpdateAttributeInput {
-  id: Int!
-  isActive: Float
-  name: String
-  sortOrder: Float
-  type: Float
-}
-
 input UpdateAttributeItem {
   attribute: AttributeDomain
   attributeGroup: AttributeGroupDomain
@@ -36689,19 +36154,6 @@ input UpdateAttributeItem {
   attributeSubproducts: [AttributeSubproductDomain!]
   createdAt: DateTime
   id: ID
-  name: String
-  updatedAt: DateTime
-}
-
-input UpdateAttributeItemInput {
-  attribute: AttributeDomain
-  attributeGroup: AttributeGroupDomain
-  attributeGroupId: Float
-  attributeId: Float
-  attributeProducts: [AttributeProductDomain!]
-  attributeSubproducts: [AttributeSubproductDomain!]
-  createdAt: DateTime
-  id: Int!
   name: String
   updatedAt: DateTime
 }
@@ -36721,21 +36173,6 @@ input UpdateAttributeProduct {
   value: String
 }
 
-input UpdateAttributeProductInput {
-  attribute: AttributeDomain
-  attributeId: Float
-  attributeItem: AttributeItemDomain
-  attributeItemId: Float
-  createdAt: DateTime
-  id: Int!
-  isChecked: Boolean
-  product: ProductDomain
-  productId: Float
-  sortOrder: Float
-  updatedAt: DateTime
-  value: String
-}
-
 input UpdateAttributeSubproduct {
   attribute: AttributeDomain
   attributeId: Float
@@ -36743,20 +36180,6 @@ input UpdateAttributeSubproduct {
   attributeItemId: Float
   createdAt: DateTime
   id: ID
-  isChecked: Boolean
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-  value: String
-}
-
-input UpdateAttributeSubproductInput {
-  attribute: AttributeDomain
-  attributeId: Float
-  attributeItem: AttributeItemDomain
-  attributeItemId: Float
-  createdAt: DateTime
-  id: Int!
   isChecked: Boolean
   subproduct: SubproductDomain
   subproductId: Float
@@ -36821,7 +36244,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-28T06:06:27.529Z"
+  createdAt: DateTime = "2025-03-30T11:44:54.418Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36843,7 +36266,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-28T06:06:27.540Z"
+  createdAt: DateTime = "2025-03-30T11:44:54.429Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36858,7 +36281,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-03-28T06:06:27.573Z"
+  createdAt: DateTime = "2025-03-30T11:44:54.489Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36882,7 +36305,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-28T06:06:27.541Z"
+  createdAt: DateTime = "2025-03-30T11:44:54.430Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36899,7 +36322,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-03-28T06:06:27.551Z"
+  createdAt: DateTime = "2025-03-30T11:44:54.442Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36954,7 +36377,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-28T06:06:27.542Z"
+  createdAt: DateTime = "2025-03-30T11:44:54.431Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -37209,14 +36632,6 @@ input UpdateChaparSettlementStatus {
   updatedAt: DateTime
 }
 
-input UpdateChaparSettlementStatusInput {
-  createdAt: DateTime
-  id: Int!
-  invoices: [InvoiceDomain!]
-  status: String
-  updatedAt: DateTime
-}
-
 input UpdateChaparTrackingHistory {
   createdAt: DateTime
   date: String
@@ -37262,25 +36677,6 @@ input UpdateCity {
 input UpdateCity2 {
   id: ID
   sepidarId: Float
-}
-
-input UpdateCityInput {
-  addresses: [AddressDomain!]
-  basicCarpetDesigners: [BasicCarpetDesignerDomain!]
-  chaparId: Float
-  code: String
-  createdAt: DateTime
-  id: Int!
-  invoiceAddresses: [InvoiceAddressDomain!]
-  mahexCode: String
-  name: String
-  returnRequestAddresses: [ReturnRequestAddressDomain!]
-  senderInformations: [SenderInformationDomain!]
-  sepidarId: Float
-  state: StateDomain
-  stateId: Float
-  tipaxId: Float
-  updatedAt: DateTime
 }
 
 input UpdateColor {
@@ -37344,15 +36740,6 @@ input UpdateColorCategorySubproduct {
   subproduct: SubproductDomain
   subproductId: Float
   updatedAt: DateTime
-}
-
-input UpdateColorInput {
-  colorCode: String
-  colorCodeOriginal: String
-  colorName: String
-  hexCode: String
-  id: Int!
-  subcolors: [SubcolorDomain!]
 }
 
 input UpdateConfig {
@@ -37499,17 +36886,6 @@ input UpdateCustomerImageProduct {
   updatedAt: DateTime
 }
 
-input UpdateCustomerImageProductInput {
-  createdAt: DateTime
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  product: ProductDomain
-  productId: Float
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
 input UpdateCustomerRequest {
   createdAt: DateTime
   customerRequestFiles: [CustomerRequestFileDomain!]
@@ -37545,17 +36921,6 @@ input UpdateCustomerVideoProduct {
   videoId: Float
 }
 
-input UpdateCustomerVideoProductInput {
-  createdAt: DateTime
-  id: Int!
-  product: ProductDomain
-  productId: Float
-  sortOrder: Float = 0
-  updatedAt: DateTime
-  video: VideoDomain
-  videoId: Float
-}
-
 input UpdateDamageReason {
   cause: String
   createdAt: DateTime
@@ -37570,15 +36935,6 @@ input UpdateDepartment {
   contactForms: [ContactFormDomain!]
   createdAt: DateTime
   id: ID
-  name: String
-  nameEn: String
-  updatedAt: DateTime
-}
-
-input UpdateDepartmentInput {
-  contactForms: [ContactFormDomain!]
-  createdAt: DateTime
-  id: Int!
   name: String
   nameEn: String
   updatedAt: DateTime
@@ -37650,35 +37006,6 @@ input UpdateDiscount {
   withPad: Boolean = false
 }
 
-input UpdateDiscountInput {
-  createdAt: DateTime
-  createdBy: Float
-  createdBy2: UserDomain
-  discount: String
-  discountSubjects: [DiscountSubjectDomain!]
-  endDate: DateTime
-  hasStockCountOnly: Boolean = false
-  id: Int!
-  incredibleOffers: [IncredibleOfferDomain!]
-  invoiceProductHistories: [InvoiceProductHistoryDomain!]
-  invoiceProducts: [InvoiceProductDomain!]
-  isActive: Float = 1
-  maxDiscountPrice: String
-  minProductPrice: String
-  name: String
-  redisForShowoffIsDeleted: Boolean = false
-  redisIsDeleted: Boolean = false
-  showoffEndDate: DateTime
-  showoffStartDate: DateTime
-  sortOrder: Float
-  startDate: DateTime
-  type: Float
-  updatedAt: DateTime
-  updatedBy: Float
-  updatedBy2: UserDomain
-  withPad: Boolean = false
-}
-
 input UpdateDiscountNotification {
   createdAt: DateTime
   deletedAt: DateTime
@@ -37722,20 +37049,6 @@ input UpdateExitControl {
   userId: Float
 }
 
-input UpdateExitControlInput {
-  createdAt: DateTime
-  driverName: String
-  driverPhone: String
-  exitControlItems: [ExitControlItemDomain!]
-  exitDate: String
-  id: Int!
-  isClosed: Boolean = false
-  plateNo: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateExitControlItem {
   boxNo: Float
   carpetPadScanned: Boolean = false
@@ -37744,19 +37057,6 @@ input UpdateExitControlItem {
   exitControl: ExitControlDomain
   exitControlId: Float
   id: ID
-  invoiceProductItem: InvoiceProductItemDomain
-  invoiceProductItemId: Float
-  updatedAt: DateTime
-}
-
-input UpdateExitControlItemInput {
-  boxNo: Float
-  carpetPadScanned: Boolean = false
-  carpetScanned: Boolean = false
-  createdAt: DateTime
-  exitControl: ExitControlDomain
-  exitControlId: Float
-  id: Int!
   invoiceProductItem: InvoiceProductItemDomain
   invoiceProductItemId: Float
   updatedAt: DateTime
@@ -37849,18 +37149,6 @@ input UpdateGoogleFormUtm {
   utm: String
 }
 
-input UpdateGoogleFormUtmInput {
-  createdAt: DateTime
-  formId: String
-  id: Int!
-  status: Boolean = false
-  updatedAt: DateTime
-  url: String
-  user: UserDomain
-  userId: Float
-  utm: String
-}
-
 input UpdateHeardAboutUsOption {
   createdAt: DateTime
   id: ID
@@ -37896,17 +37184,6 @@ input UpdateHoliday {
   weekday: Float
 }
 
-input UpdateHolidayInput {
-  createdAt: DateTime
-  deletedAt: DateTime
-  holidayDate: String
-  id: Int!
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  weekday: Float
-}
-
 input UpdateHomePageCustomerImage {
   createdAt: DateTime
   desktopImage: ImageDomain
@@ -37922,30 +37199,9 @@ input UpdateHomePageCustomerImage {
   updatedAt: DateTime
 }
 
-input UpdateHomePageCustomerImageInput {
-  createdAt: DateTime
-  desktopImage: ImageDomain
-  desktopImageAlt: String
-  desktopImageId: Float
-  id: Int!
-  mobileImage: ImageDomain
-  mobileImageAlt: String
-  mobileImageId: Float
-  product: ProductDomain
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
 input UpdateHyper {
   code: ID
   depot: Float
-  produce: Float
-}
-
-input UpdateHyperInput {
-  code: String
-  depot: Float
-  id: Int!
   produce: Float
 }
 
@@ -38011,23 +37267,6 @@ input UpdateImageLayer {
   updatedAt: DateTime
 }
 
-input UpdateImageLayerInput {
-  centerX: Float
-  centerY: Float
-  createdAt: DateTime
-  deletedAt: DateTime
-  design: DesignDomain
-  designId: Float
-  filename: String
-  id: Int!
-  path: String
-  rotation: Float
-  scaleX: Float
-  scaleY: Float
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
 input UpdateImageProduct {
   createdAt: DateTime
   id: ID
@@ -38050,17 +37289,6 @@ input UpdateImageSize {
   width: Float
 }
 
-input UpdateImageSizeInput {
-  createdAt: DateTime
-  height: Float
-  id: Int!
-  name: String
-  productCategories: [ProductCategoryDomain!]
-  shortName: String
-  updatedAt: DateTime
-  width: Float
-}
-
 input UpdateImageSubproduct {
   createdAt: DateTime
   id: ID
@@ -38072,31 +37300,9 @@ input UpdateImageSubproduct {
   updatedAt: DateTime
 }
 
-input UpdateImageSubproductInput {
-  createdAt: DateTime
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  sortOrder: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
 input UpdateImagesSizeGuidesDetail {
   createdAt: DateTime
   id: ID
-  image: ImageDomain
-  imageId: Float
-  sizeGuidesDetails: SizeGuidesDetailDomain
-  sizeGuidesDetailsId: Float
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
-input UpdateImagesSizeGuidesDetailInput {
-  createdAt: DateTime
-  id: Int!
   image: ImageDomain
   imageId: Float
   sizeGuidesDetails: SizeGuidesDetailDomain
@@ -38134,37 +37340,9 @@ input UpdateIncredibleOffer {
   updatedAt: DateTime
 }
 
-input UpdateIncredibleOfferInput {
-  basicCarpetColor: BasicCarpetColorDomain
-  basicCarpetColorId: Float
-  count: Float
-  createdAt: DateTime
-  discount: DiscountDomain
-  discountId: Float
-  discountPercent: Float
-  id: Int!
-  isFake: Boolean
-  offerDate: String
-  place: Float
-  product: ProductDomain
-  productId: Float
-  soldCount: Float
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
 input UpdateIncredibleOfferSentNotification {
   createdAt: DateTime
   id: ID
-  message: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateIncredibleOfferSentNotificationInput {
-  createdAt: DateTime
-  id: Int!
   message: String
   updatedAt: DateTime
   user: UserDomain
@@ -38221,72 +37399,11 @@ input UpdateInstagramFeed {
   videoViews: Float
 }
 
-input UpdateInstagramFeedInput {
-  altText: String
-  caption: String
-  carouselMedia: String
-  comments: String
-  commentsCount: Float
-  commentsDisabled: Boolean
-  commentsNextPage: String
-  createdAt: DateTime
-  createdTime: String
-  data: String
-  downloadedImageHighResolutionUrl: String
-  downloadedImageLowResolutionUrl: String
-  downloadedImageStandardResolutionUrl: String
-  downloadedImageThumbnailUrl: String
-  hasMoreComments: Boolean
-  id: Int!
-  imageHighResolutionUrl: String
-  imageLowResolutionUrl: String
-  imageStandardResolutionUrl: String
-  imageThumbnailUrl: String
-  instagramId: String
-  isAd: Boolean
-  isAutoConstruct: Boolean
-  isCaptionEdited: Boolean
-  isFake: Boolean
-  isLoadEmpty: Boolean
-  isLoaded: Boolean
-  isNew: Boolean
-  likesCount: Float
-  link: String
-  locationAddressJson: String
-  locationId: String
-  locationName: String
-  locationSlug: String
-  modified: String
-  owner: String
-  ownerId: String
-  shortCode: String
-  sidecarMedias: String
-  squareImages: String
-  type: String
-  updatedAt: DateTime
-  videoDuration: String
-  videoLowBandwidthUrl: String
-  videoLowResolutionUrl: String
-  videoStandardResolutionUrl: String
-  videoViews: Float
-}
-
 input UpdateInvitationCode {
   code: String
   createdAt: DateTime
   email: String
   id: ID
-  isActive: Boolean
-  maxUsage: Float
-  updatedAt: DateTime
-  users: [UserDomain!]
-}
-
-input UpdateInvitationCodeInput {
-  code: String
-  createdAt: DateTime
-  email: String
-  id: Int!
   isActive: Boolean
   maxUsage: Float
   updatedAt: DateTime
@@ -38447,38 +37564,6 @@ input UpdateInvoiceAddress {
   zipCode: String
 }
 
-input UpdateInvoiceAddressInput {
-  address: String
-  address2: String
-  addressId: Float
-  address_2: AddressDomain
-  city: CityDomain
-  cityId: Float
-  country: CountryDomain
-  countryId: Float
-  createdAt: DateTime
-  crmCompanyId: String
-  crmCompanyPersonId: String
-  email: String
-  fullAddress: String
-  fullname: String
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceHistories: [InvoiceHistoryDomain!]
-  invoiceId: Float
-  latitude: String
-  longitude: String
-  nationalId: String
-  phone: String
-  phone2: String
-  state: StateDomain
-  stateId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  zipCode: String
-}
-
 input UpdateInvoiceAddressValidationResult {
   address: AddressDomain
   addressId: Float
@@ -38490,35 +37575,10 @@ input UpdateInvoiceAddressValidationResult {
   updatedAt: DateTime
 }
 
-input UpdateInvoiceAddressValidationResultInput {
-  address: AddressDomain
-  addressId: Float
-  addressValidationResult: String
-  createdAt: DateTime
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  updatedAt: DateTime
-}
-
 input UpdateInvoiceBankGatewayHistory {
   amount: String
   createdAt: DateTime
   id: ID
-  invoice: InvoiceDomain
-  invoiceId: Float
-  orderId: String
-  preorderRegister: PreorderRegisterDomain
-  preorderRegisterId: Float
-  refId: String
-  saleRefId: String
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceBankGatewayHistoryInput {
-  amount: String
-  createdAt: DateTime
-  id: Int!
   invoice: InvoiceDomain
   invoiceId: Float
   orderId: String
@@ -38623,239 +37683,10 @@ input UpdateInvoiceHistory {
   zipCode: String
 }
 
-input UpdateInvoiceHistoryInput {
-  accountingDescription: String
-  additions: String
-  address: String
-  address2: String
-  addressId: Float
-  cashOnDelivery: Float
-  chaparSettlementStatusId: Float
-  chaparStatus: String
-  cityId: Float
-  countryId: Float
-  couponId: Float
-  createdAt: DateTime
-  crmCompanyId: String
-  crmCompanyPersonId: String
-  crmPreOrderId: String
-  currentInvoiceStatusId: Float
-  deliveredDate: DateTime
-  description: String
-  digikalaShare: Float
-  digikalaSharePercent: Float
-  editorUser: UserDomain
-  editorUserId: Float
-  email: String
-  forDigikala: Boolean
-  freeDelivery: Float
-  fullAddress: String
-  fullname: String
-  hasPriority: Boolean
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceAddress: InvoiceAddressDomain
-  invoiceAddressId: Float
-  invoiceId: Float
-  invoiceModeId: Float
-  invoiceNumber: String
-  invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
-  invoicePaymentStatusId: Float
-  invoiceProductHistories: [InvoiceProductHistoryDomain!]
-  invoiceTypeId: Float
-  isChaparDelivery: Float
-  isDepot: Boolean
-  isForAdvertisement: Boolean
-  isReversible: Boolean
-  issueDate: DateTime
-  lastName: String
-  latitude: String
-  lockState: Float
-  longitude: String
-  moneyTransferConfirmed: Boolean
-  moneyTransferConfirmedBy: Float
-  moneyTransferRefCode: String
-  name: String
-  needsReview: Boolean
-  orderId: String
-  packageCount: Float
-  parentInvoiceId: Float
-  partnerCode: String
-  paymentCreditable: Boolean
-  paymentErrorMessage: String
-  phone: String
-  phone2: String
-  refId: String
-  replacementAdditionalPrice: String
-  replacementPaymentStatusId: Float
-  replacementPriceMoneyTransferCode: String
-  saleRefId: String
-  selectedShippingServiceId: Float
-  shippingRate: String
-  shippingRateCod: String
-  stateId: Float
-  subtotalPrice: String
-  taxRate: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: String
-  totalPriceOld: Float
-  totalTax: String
-  totalVisitorShare: Float
-  totalWalletCharged: String
-  trackingCode: String
-  updatedAt: DateTime
-  useWallet: Boolean
-  userId: Float
-  visitorCouponId: Float
-  visitorCouponRate: Float
-  visitorGroupId: Float
-  visitorId: Float
-  visitorRate: Float
-  visitorShareCalculated: Float
-  wholesaleRemainingMoneyTransferRefCode: String
-  zipCode: String
-}
-
-input UpdateInvoiceInput {
-  accountingDescription: String
-  additions: String
-  address: AddressDomain
-  addressId: Float
-  canReturn: Boolean
-  cashOnDelivery: Boolean
-  chaparSettlementStatus: ChaparSettlementStatusDomain
-  chaparSettlementStatusId: Float
-  chaparStatus: String
-  chaparTrackingHistories: [ChaparTrackingHistoryDomain!]
-  containsPadsOnly: Boolean
-  coupon: CouponDomain
-  couponId: Float
-  coupons: [CouponDomain!]
-  createdAt: DateTime
-  crmCompanyId: String
-  crmCompanyPersonId: String
-  crmPreOrderId: String
-  currentInvoiceStatus: InvoiceStatusDomain
-  currentInvoiceStatusId: Float
-  deadlineDate: String
-  deadlineDateOld: String
-  deliveredDate: DateTime
-  description: String
-  digikalaShare: Float
-  digikalaSharePercent: Float
-  forDigikala: Boolean
-  freeDelivery: Boolean
-  hasPriority: Boolean
-  id: Int!
-  invoiceAddressValidationResults: [InvoiceAddressValidationResultDomain!]
-  invoiceAddresses: [InvoiceAddressDomain!]
-  invoiceBankGatewayHistories: [InvoiceBankGatewayHistoryDomain!]
-  invoiceHistories: [InvoiceHistoryDomain!]
-  invoiceInvoiceStatuses: [InvoiceInvoiceStatusDomain!]
-  invoiceMode: InvoiceModeDomain
-  invoiceModeId: Float
-  invoiceNegotiations: [InvoiceNegotiationDomain!]
-  invoiceNumber: String
-  invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
-  invoicePaymentStatus: InvoicePaymentStatusDomain
-  invoicePaymentStatusId: Float
-  invoicePayments: [InvoicePaymentDomain!]
-  invoiceProductHistories: [InvoiceProductHistoryDomain!]
-  invoiceProducts: [InvoiceProductDomain!]
-  invoiceRatesResults: [InvoiceRatesResultDomain!]
-  invoiceReversals: [InvoiceReversalDomain!]
-  invoiceShippingRates: [InvoiceShippingRateDomain!]
-  invoiceType: InvoiceTypeDomain
-  invoiceTypeId: Float
-  invoices: [InvoiceDomain!]
-  isChaparDelivery: Boolean
-  isDepot: Boolean
-  isForAdvertisement: Boolean
-  isReversible: Boolean
-  issueDate: DateTime
-  lastName: String
-  lockState: Float
-  lockState2: InvoiceStatusDomain
-  lockStateDescription: String
-  mah: Float
-  moneyTransferConfirmed: Boolean
-  moneyTransferConfirmedBy: Float
-  moneyTransferConfirmedBy2: UserDomain
-  moneyTransferRefCode: String
-  name: String
-  needsReview: Boolean
-  orderId: String
-  packageCount: Float
-  paidCodShippingRate: Float
-  parentInvoice: InvoiceDomain
-  parentInvoiceId: Float
-  partnerCode: String
-  paymentCreditable: Boolean
-  paymentErrorMessage: String
-  paymentMethodFields: [PaymentMethodFieldDomain!]
-  refId: String
-  replacementAdditionalPrice: String
-  replacementPaymentStatus: InvoicePaymentStatusDomain
-  replacementPaymentStatusId: Float
-  replacementPriceMoneyTransferCode: String
-  returnRequestHistories: [ReturnRequestHistoryDomain!]
-  returnRequests: [ReturnRequestDomain!]
-  returnedInvoices: [ReturnedInvoiceDomain!]
-  returnedInvoices2: [ReturnedInvoiceDomain!]
-  roz: Float
-  sal: Float
-  saleRefId: String
-  seenAt: DateTime
-  selectedShippingServiceId: Float
-  sepidarCode: Float
-  sepidarId: Float
-  shipmentUuid: String
-  shippingRate: String
-  shippingRateCod: String
-  subtotalPrice: String
-  taxRate: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: String
-  totalPriceOld: Float
-  totalTax: String
-  totalVisitorShare: Float
-  totalWalletCharged: String
-  trackingCode: String
-  updatedAt: DateTime
-  useWallet: Boolean
-  user: UserDomain
-  userId: Float
-  visitor: VisitorDomain
-  visitorCoupon: VisitorCouponDomain
-  visitorCouponId: Float
-  visitorCouponRate: Float
-  visitorGroup: VisitorGroupDomain
-  visitorGroupId: Float
-  visitorId: Float
-  visitorRate: Float
-  visitorShareCalculated: Boolean
-  wholesaleRemainingMoneyTransferRefCode: String
-}
-
 input UpdateInvoiceInvoiceStatus {
   comment: String
   createdAt: DateTime
   id: ID
-  invoice: InvoiceDomain
-  invoiceId: Float
-  invoiceStatus: InvoiceStatusDomain
-  invoiceStatusId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateInvoiceInvoiceStatusInput {
-  comment: String
-  createdAt: DateTime
-  id: Int!
   invoice: InvoiceDomain
   invoiceId: Float
   invoiceStatus: InvoiceStatusDomain
@@ -38873,27 +37704,9 @@ input UpdateInvoiceMode {
   updatedAt: DateTime
 }
 
-input UpdateInvoiceModeInput {
-  createdAt: DateTime
-  id: Int!
-  invoices: [InvoiceDomain!]
-  name: String
-  updatedAt: DateTime
-}
-
 input UpdateInvoiceNegotiation {
   createdAt: DateTime
   id: ID
-  invoice: InvoiceDomain
-  invoiceId: Float
-  negotiation: NegotiationDomain
-  negotiationId: Float
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceNegotiationInput {
-  createdAt: DateTime
-  id: Int!
   invoice: InvoiceDomain
   invoiceId: Float
   negotiation: NegotiationDomain
@@ -38956,61 +37769,6 @@ input UpdateInvoicePaymentHistory {
   userId: Float
 }
 
-input UpdateInvoicePaymentHistoryInput {
-  amount: String
-  chequeBank: String
-  chequeDate: String
-  chequeNumber: String
-  chequePayee: String
-  confirmedBy: Float
-  confirmedBy2: UserDomain
-  createdAt: DateTime
-  description: String
-  forShipping: Boolean
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceHistory: InvoiceHistoryDomain
-  invoiceHistoryId: Float
-  invoiceId: Float
-  invoicePayment: InvoicePaymentDomain
-  invoicePaymentId: Float
-  invoicePaymentType: InvoicePaymentTypeDomain
-  invoicePaymentTypeId: Float
-  isConfirmed: Boolean
-  paymentDate: String
-  refCode: String
-  refCodeSales: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateInvoicePaymentInput {
-  amount: String
-  chequeBank: String
-  chequeDate: String
-  chequeNumber: String
-  chequePayee: String
-  confirmedBy: Float
-  confirmedBy2: UserDomain
-  createdAt: DateTime
-  description: String
-  forShipping: Boolean
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
-  invoicePaymentType: InvoicePaymentTypeDomain
-  invoicePaymentTypeId: Float
-  isConfirmed: Boolean
-  paymentDate: String
-  refCode: String
-  refCodeSales: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateInvoicePaymentStatus {
   createdAt: DateTime
   id: ID
@@ -39020,28 +37778,9 @@ input UpdateInvoicePaymentStatus {
   updatedAt: DateTime
 }
 
-input UpdateInvoicePaymentStatusInput {
-  createdAt: DateTime
-  id: Int!
-  invoices: [InvoiceDomain!]
-  invoices2: [InvoiceDomain!]
-  name: String
-  updatedAt: DateTime
-}
-
 input UpdateInvoicePaymentType {
   createdAt: DateTime
   id: ID
-  invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
-  invoicePayments: [InvoicePaymentDomain!]
-  name: String
-  preorderRegisters: [PreorderRegisterDomain!]
-  updatedAt: DateTime
-}
-
-input UpdateInvoicePaymentTypeInput {
-  createdAt: DateTime
-  id: Int!
   invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
   invoicePayments: [InvoicePaymentDomain!]
   name: String
@@ -39149,106 +37888,6 @@ input UpdateInvoiceProductHistory {
   withPad: Boolean
 }
 
-input UpdateInvoiceProductHistoryInput {
-  bundleCount: Float
-  bundlePrice: String
-  count: Float
-  createdAt: DateTime
-  description: String
-  design: DesignDomain
-  designId: Float
-  designerPricePercentage: Float
-  designerPriceShare: Float
-  discount: String
-  discountId: Float
-  discount_2: DiscountDomain
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceHistory: InvoiceHistoryDomain
-  invoiceHistoryId: Float
-  invoiceId: Float
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  invoiceProductItemsCreated: Boolean
-  isCouponApplicable: Boolean
-  itemsFromDepot: Float
-  itemsToProduce: Float
-  length: Float
-  manuallyAdded: Boolean
-  padId: Float
-  price: String
-  pricePerInch: Float
-  product: ProductDomain
-  productId: Float
-  relatedProduct: ProductDomain
-  relatedProductId: Float
-  relatedSubproduct: SubproductDomain
-  relatedSubproductId: Float
-  stockCount: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: Float
-  updatedAt: DateTime
-  width: Float
-  withPad: Boolean
-}
-
-input UpdateInvoiceProductInput {
-  bundleCount: Float
-  bundlePrice: String
-  carpetUsagePlaceInvoiceProducts: [CarpetUsagePlaceInvoiceProductDomain!]
-  count: Float
-  createdAt: DateTime
-  description: String
-  design: DesignDomain
-  designId: Float
-  designerPricePercentage: Float
-  designerPriceShare: Float
-  discount: String
-  discountId: Float
-  discount_2: DiscountDomain
-  gift: Float
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  invoiceProductHistories: [InvoiceProductHistoryDomain!]
-  invoiceProductItems: [InvoiceProductItemDomain!]
-  invoiceProductItemsCreated: Boolean
-  invoiceReversalItems: [InvoiceReversalItemDomain!]
-  isCouponApplicable: Boolean
-  itemsFromDepot: Float
-  itemsToProduce: Float
-  length: Float
-  manuallyAdded: Boolean
-  pad: SubproductDomain
-  padId: Float
-  price: String
-  pricePerInch: Float
-  product: ProductDomain
-  productId: Float
-  relatedProduct: ProductDomain
-  relatedProductId: Float
-  relatedSubproduct: SubproductDomain
-  relatedSubproductId: Float
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItems: [ReturnRequestItemDomain!]
-  returnedInvoiceProducts: [ReturnedInvoiceProductDomain!]
-  sepidarId: Float
-  stockCount: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  subproductStockHistories: [SubproductStockHistoryDomain!]
-  tempDepotItemsCreated: Boolean
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: Float
-  updatedAt: DateTime
-  width: Float
-  withPad: Boolean
-}
-
 input UpdateInvoiceProductItem {
   code: String
   createdAt: DateTime
@@ -39261,41 +37900,6 @@ input UpdateInvoiceProductItem {
   exitControlItems: [ExitControlItemDomain!]
   fromDepot: Boolean
   id: ID
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  invoiceProductItemInvoiceProductStatuses: [InvoiceProductItemInvoiceProductStatusDomain!]
-  isInsertedIntoSepidar: Boolean
-  isPrintedAndHeated: Boolean
-  isReversed: Boolean
-  isTagPrinted: Boolean
-  padCode: String
-  predictedDateForReceivedByRepository: String
-  printProfile: PrintProfileDomain
-  printProfileId: Float
-  printRip: PrintRipDomain
-  printRipId: Float
-  productionRoll: ProductionRollDomain
-  productionRollId: Float
-  rollReferenceCode: String
-  row: Float
-  sortOrder: Float
-  tagSortOrder: Float
-  tempStatusId: Float
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceProductItemInput {
-  code: String
-  createdAt: DateTime
-  currentStatus: InvoiceProductStatusDomain
-  currentStatusId: Float
-  damageCause: String
-  damageReason: DamageReasonDomain
-  damageReasonId: Float
-  damageType: Float
-  exitControlItems: [ExitControlItemDomain!]
-  fromDepot: Boolean
-  id: Int!
   invoiceProduct: InvoiceProductDomain
   invoiceProductId: Float
   invoiceProductItemInvoiceProductStatuses: [InvoiceProductItemInvoiceProductStatusDomain!]
@@ -39332,35 +37936,10 @@ input UpdateInvoiceProductItemInvoiceProductStatus {
   userId: Float
 }
 
-input UpdateInvoiceProductItemInvoiceProductStatusInput {
-  comment: String
-  createdAt: DateTime
-  id: Int!
-  invoiceProductItem: InvoiceProductItemDomain
-  invoiceProductItemId: Float
-  invoiceProductStatus: InvoiceProductStatusDomain
-  invoiceProductStatusId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateInvoiceProductStatus {
   color: String
   createdAt: DateTime
   id: ID
-  invoiceProductItemInvoiceProductStatuses: [InvoiceProductItemInvoiceProductStatusDomain!]
-  invoiceProductItems: [InvoiceProductItemDomain!]
-  status: String
-  step: Float
-  stepShaggy: Float
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceProductStatusInput {
-  color: String
-  createdAt: DateTime
-  id: Int!
   invoiceProductItemInvoiceProductStatuses: [InvoiceProductItemInvoiceProductStatusDomain!]
   invoiceProductItems: [InvoiceProductItemDomain!]
   status: String
@@ -39374,20 +37953,6 @@ input UpdateInvoiceRatesResult {
   addressId: Float
   createdAt: DateTime
   id: ID
-  invoice: InvoiceDomain
-  invoiceId: Float
-  ratesReplyCodResult: String
-  ratesReplyResult: String
-  shippingService: ShippingServiceDomain
-  shippingServiceId: Float
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceRatesResultInput {
-  address: AddressDomain
-  addressId: Float
-  createdAt: DateTime
-  id: Int!
   invoice: InvoiceDomain
   invoiceId: Float
   ratesReplyCodResult: String
@@ -39413,22 +37978,6 @@ input UpdateInvoiceReversal {
   wholeInvoice: Boolean
 }
 
-input UpdateInvoiceReversalInput {
-  createdAt: DateTime
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  invoiceReversalItems: [InvoiceReversalItemDomain!]
-  invoiceStatus: InvoiceStatusDomain
-  invoiceStatusId: Float
-  isReviewed: Boolean
-  reviewedBy: Float
-  reviewedBy2: UserDomain
-  reviewedDate: DateTime
-  updatedAt: DateTime
-  wholeInvoice: Boolean
-}
-
 input UpdateInvoiceReversalItem {
   count: Float
   createdAt: DateTime
@@ -39441,33 +37990,9 @@ input UpdateInvoiceReversalItem {
   withPad: Boolean
 }
 
-input UpdateInvoiceReversalItemInput {
-  count: Float
-  createdAt: DateTime
-  id: Int!
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  invoiceReversal: InvoiceReversalDomain
-  invoiceReversalId: Float
-  updatedAt: DateTime
-  withPad: Boolean
-}
-
 input UpdateInvoiceShippingRate {
   createdAt: DateTime
   id: ID
-  invoice: InvoiceDomain
-  invoiceId: Float
-  shippingRate: String
-  shippingRateCod: String
-  shippingService: ShippingServiceDomain
-  shippingServiceId: Float
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceShippingRateInput {
-  createdAt: DateTime
-  id: Int!
   invoice: InvoiceDomain
   invoiceId: Float
   shippingRate: String
@@ -39492,32 +38017,9 @@ input UpdateInvoiceStatus {
   updatedAt: DateTime
 }
 
-input UpdateInvoiceStatusInput {
-  color: String
-  createdAt: DateTime
-  id: Int!
-  invoiceInvoiceStatuses: [InvoiceInvoiceStatusDomain!]
-  invoiceReversals: [InvoiceReversalDomain!]
-  invoices: [InvoiceDomain!]
-  invoices2: [InvoiceDomain!]
-  notificationEmails: String
-  notificationNumbers: String
-  smsToCustomer: Boolean
-  status: String
-  updatedAt: DateTime
-}
-
 input UpdateInvoiceType {
   createdAt: DateTime
   id: ID
-  invoices: [InvoiceDomain!]
-  name: String
-  updatedAt: DateTime
-}
-
-input UpdateInvoiceTypeInput {
-  createdAt: DateTime
-  id: Int!
   invoices: [InvoiceDomain!]
   name: String
   updatedAt: DateTime
@@ -39533,29 +38035,9 @@ input UpdateLabel {
   updatedAt: DateTime
 }
 
-input UpdateLabelInput {
-  color: String
-  createdAt: DateTime
-  id: Int!
-  labelProducts: [LabelProductDomain!]
-  name: String
-  textColor: String
-  updatedAt: DateTime
-}
-
 input UpdateLabelProduct {
   createdAt: DateTime
   id: ID
-  label: LabelDomain
-  labelId: Float
-  product: ProductDomain
-  productId: Float
-  updatedAt: DateTime
-}
-
-input UpdateLabelProductInput {
-  createdAt: DateTime
-  id: Int!
   label: LabelDomain
   labelId: Float
   product: ProductDomain
@@ -41448,6 +39930,14 @@ input UpdateManyUserCartsInput {
   update: UpdateUserCart!
 }
 
+input UpdateManyUserHasRolesInput {
+  """Filter used to find fields to update"""
+  filter: UserHasRoleUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateUserHasRole!
+}
+
 input UpdateManyUserUtmsInput {
   """Filter used to find fields to update"""
   filter: UserUtmUpdateFilter!
@@ -41614,25 +40104,11 @@ input UpdateMigration {
   migration: String
 }
 
-input UpdateMigrationInput {
-  batch: Float
-  id: Int!
-  migration: String
-}
-
 input UpdateModelHasPermission {
   modelId: String
   modelType: String
   permission: PermissionDomain
   permissionId: ID
-}
-
-input UpdateModelHasPermissionInput {
-  id: Int!
-  modelId: String
-  modelType: String
-  permission: PermissionDomain
-  permissionId: Float
 }
 
 input UpdateModelHasRole {
@@ -41642,27 +40118,9 @@ input UpdateModelHasRole {
   roleId: ID
 }
 
-input UpdateModelHasRoleInput {
-  id: Int!
-  modelId: String
-  modelType: String
-  role: RoleDomainInput
-  roleId: Float
-}
-
 input UpdateModelVisit {
   createdAt: DateTime
   id: ID
-  modelId: Float
-  modelName: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateModelVisitInput {
-  createdAt: DateTime
-  id: Int!
   modelId: Float
   modelName: String
   updatedAt: DateTime
@@ -41700,56 +40158,11 @@ input UpdateModemaAcceleratorImage {
   uploadSource: String
 }
 
-input UpdateModemaAcceleratorImageInput {
-  createdAt: DateTime
-  filename: String
-  id: Int!
-  mime: String
-  modemaAccelerator: ModemaAcceleratorDomain
-  modemaAcceleratorId: Float
-  originalFilename: String
-  path: String
-  type: String
-  updatedAt: DateTime
-  uploadSource: String
-}
-
-input UpdateModemaAcceleratorInput {
-  city: String
-  createdAt: DateTime
-  details: String
-  hasOffice: String
-  id: Int!
-  instagram: String
-  jobCategory: String
-  modemaAcceleratorImages: [ModemaAcceleratorImageDomain!]
-  modemaAcceleratorVideos: [ModemaAcceleratorVideoDomain!]
-  name: String
-  phone: String
-  pro: String
-  updatedAt: DateTime
-}
-
 input UpdateModemaAcceleratorVideo {
   altText: String
   createdAt: DateTime
   filename: String
   id: ID
-  mime: String
-  modemaAccelerator: ModemaAcceleratorDomain
-  modemaAcceleratorId: Float
-  originalFilename: String
-  path: String
-  type: String
-  updatedAt: DateTime
-  uploadSource: String
-}
-
-input UpdateModemaAcceleratorVideoInput {
-  altText: String
-  createdAt: DateTime
-  filename: String
-  id: Int!
   mime: String
   modemaAccelerator: ModemaAcceleratorDomain
   modemaAcceleratorId: Float
@@ -41767,21 +40180,6 @@ input UpdateNeedsPhotographySubproduct {
   createdAt: DateTime
   deletedAt: DateTime
   id: ID
-  photographyDate: DateTime
-  photographyUser: UserDomain
-  photographyUserId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
-input UpdateNeedsPhotographySubproductInput {
-  announcedDate: DateTime
-  announcedUser: UserDomain
-  announcedUserId: Float
-  createdAt: DateTime
-  deletedAt: DateTime
-  id: Int!
   photographyDate: DateTime
   photographyUser: UserDomain
   photographyUserId: Float
@@ -41828,56 +40226,9 @@ input UpdateNegotiationHistory {
   updatedAt: DateTime
 }
 
-input UpdateNegotiationHistoryInput {
-  createdAt: DateTime
-  id: Int!
-  negotiation: NegotiationDomain
-  negotiationId: Float
-  negotiationStatus: NegotiationStatusDomain
-  negotiationStatusId: Float
-  newNegotiator: UserDomain
-  newNegotiatorId: Float
-  oldNegotiator: UserDomain
-  oldNegotiatorId: Float
-  submittedBy: Float
-  submittedBy2: UserDomain
-  updatedAt: DateTime
-}
-
-input UpdateNegotiationInput {
-  createdAt: DateTime
-  customerId: Float
-  dateTime: DateTime
-  fileNegotiations: [FileNegotiationDomain!]
-  id: Int!
-  invoiceNegotiations: [InvoiceNegotiationDomain!]
-  isRead: Boolean
-  name: String
-  negotiationHistories: [NegotiationHistoryDomain!]
-  negotiationStatus: NegotiationStatusDomain
-  negotiationStatusId: Float
-  negotiationSteps: [NegotiationStepDomain!]
-  negotiator: UserDomain
-  negotiatorId: Float
-  priority: Float
-  submittedBy: Float
-  submittedBy2: UserDomain
-  tel: String
-  updatedAt: DateTime
-}
-
 input UpdateNegotiationStatus {
   createdAt: DateTime
   id: ID
-  name: String
-  negotiationHistories: [NegotiationHistoryDomain!]
-  negotiations: [NegotiationDomain!]
-  updatedAt: DateTime
-}
-
-input UpdateNegotiationStatusInput {
-  createdAt: DateTime
-  id: Int!
   name: String
   negotiationHistories: [NegotiationHistoryDomain!]
   negotiations: [NegotiationDomain!]
@@ -41920,34 +40271,12 @@ input UpdateNegotiationType {
   updatedAt: DateTime
 }
 
-input UpdateNegotiationTypeInput {
-  createdAt: DateTime
-  id: Int!
-  name: String
-  negotiationSteps: [NegotiationStepDomain!]
-  updatedAt: DateTime
-}
-
 input UpdateNewBorder {
   brand: String
   color: String
   design: String
   designer: String
   id: ID
-  material: String
-  name: String
-  newBorder: String
-  oldBorder: String
-  sizes: String
-  type: String
-}
-
-input UpdateNewBorderInput {
-  brand: String
-  color: String
-  design: String
-  designer: String
-  id: Int!
   material: String
   name: String
   newBorder: String
@@ -41991,31 +40320,10 @@ input UpdateOauthClient {
   userId: Float
 }
 
-input UpdateOauthClientInput {
-  createdAt: DateTime
-  id: Int!
-  name: String
-  passwordClient: Boolean
-  personalAccessClient: Boolean
-  provider: String
-  redirect: String
-  revoked: Boolean
-  secret: String
-  updatedAt: DateTime
-  userId: Float
-}
-
 input UpdateOauthPersonalAccessClient {
   clientId: Float
   createdAt: DateTime
   id: ID
-  updatedAt: DateTime
-}
-
-input UpdateOauthPersonalAccessClientInput {
-  clientId: Float
-  createdAt: DateTime
-  id: Int!
   updatedAt: DateTime
 }
 
@@ -43906,6 +42214,14 @@ input UpdateOneUserCartInput {
   update: UpdateUserCart!
 }
 
+input UpdateOneUserHasRoleInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateUserHasRole!
+}
+
 input UpdateOneUserInput {
   """The id of the record to update"""
   id: ID!
@@ -44066,24 +42382,9 @@ input UpdateOutOfStockButListedProduct {
   updatedAt: DateTime
 }
 
-input UpdateOutOfStockButListedProductInput {
-  createdAt: DateTime
-  id: Int!
-  product: ProductDomain
-  productId: Float
-  updatedAt: DateTime
-}
-
 input UpdatePasswordReset {
   createdAt: DateTime
   email: ID
-  token: String
-}
-
-input UpdatePasswordResetInput {
-  createdAt: DateTime
-  email: String
-  id: Int!
   token: String
 }
 
@@ -44119,38 +42420,6 @@ input UpdatePatternCategory {
   viewCounter: Float
 }
 
-input UpdatePatternCategoryInput {
-  createdAt: DateTime
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  isActive: Float
-  name: String
-  patterns: [PatternDomain!]
-  sortOrder: Float
-  updatedAt: DateTime
-  viewCounter: Float
-}
-
-input UpdatePatternInput {
-  createdAt: DateTime
-  filename: String
-  id: Int!
-  isActive: Float
-  keywords: String
-  mime: String
-  name: String
-  originalFilename: String
-  path: String
-  patternCategory: PatternCategoryDomain
-  patternCategoryId: Float
-  patternLayers: [PatternLayerDomain!]
-  sortOrder: Float
-  thumbnailFilename: String
-  updatedAt: DateTime
-  viewCounter: Float
-}
-
 input UpdatePatternLayer {
   centerX: Float
   centerY: Float
@@ -44159,25 +42428,6 @@ input UpdatePatternLayer {
   designId: Float
   filename: String
   id: ID
-  path: String
-  pattern: PatternDomain
-  patternId: Float
-  repeat: Float
-  rotation: Float
-  scaleX: Float
-  scaleY: Float
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
-input UpdatePatternLayerInput {
-  centerX: Float
-  centerY: Float
-  createdAt: DateTime
-  design: DesignDomain
-  designId: Float
-  filename: String
-  id: Int!
   path: String
   pattern: PatternDomain
   patternId: Float
@@ -44208,25 +42458,6 @@ input UpdatePaymentMethodField {
   value: String
 }
 
-input UpdatePaymentMethodFieldInput {
-  createdAt: DateTime
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  name: String
-  paymentIdentifier: String
-  paymentMethod: PaymentMethodDomain
-  paymentMethodId: Float
-  updatedAt: DateTime
-  value: String
-}
-
-input UpdatePaymentMethodInput {
-  id: Int!
-  name: String
-  paymentMethodFields: [PaymentMethodFieldDomain!]
-}
-
 input UpdatePaymentRequest {
   adminUser: UserDomain
   adminUserId: Float
@@ -44242,32 +42473,9 @@ input UpdatePaymentRequest {
   visitorId: Float
 }
 
-input UpdatePaymentRequestInput {
-  adminUser: UserDomain
-  adminUserId: Float
-  amount: String
-  bankAccountNumber: String
-  createdAt: DateTime
-  id: Int!
-  message: String
-  paymentRequestStatus: PaymentRequestStatusDomain
-  paymentRequestStatusId: Float
-  updatedAt: DateTime
-  visitor: VisitorDomain
-  visitorId: Float
-}
-
 input UpdatePaymentRequestStatus {
   createdAt: DateTime
   id: ID
-  name: String
-  paymentRequests: [PaymentRequestDomain!]
-  updatedAt: DateTime
-}
-
-input UpdatePaymentRequestStatusInput {
-  createdAt: DateTime
-  id: Int!
   name: String
   paymentRequests: [PaymentRequestDomain!]
   updatedAt: DateTime
@@ -44293,29 +42501,6 @@ input UpdatePermissionGroup {
   id: ID
   name: String
   permissions: [PermissionDomain!]
-  updatedAt: DateTime
-}
-
-input UpdatePermissionGroupInput {
-  createdAt: DateTime
-  id: Int!
-  name: String
-  permissions: [PermissionDomain!]
-  updatedAt: DateTime
-}
-
-input UpdatePermissionInput {
-  createdAt: DateTime
-  guardName: String
-  id: Int!
-  modelHasPermissions: [ModelHasPermissionDomain!]
-  name: String
-  parent: PermissionDomain
-  parentId: Float
-  permissionGroup: PermissionGroupDomain
-  permissionGroupId: Float
-  permissions: [PermissionDomain!]
-  roles: [RoleDomainInput!]
   updatedAt: DateTime
 }
 
@@ -44357,61 +42542,10 @@ input UpdatePreorder {
   userId: Float
 }
 
-input UpdatePreorderInput {
-  activationCode: String
-  activationSendDate: DateTime
-  activationSendDateP: String
-  activationSendTurn: Float
-  assignedUser: UserDomain
-  assignedUserId: Float
-  companyDescription: String
-  createdAt: DateTime
-  createdAtP: String
-  customerDescription: String
-  dateOfTurn: String
-  dateOfTurnP: String
-  deletedAt: DateTime
-  expirationDate: DateTime
-  expirationDateP: String
-  id: Int!
-  isActivated: Boolean
-  lastCallDate: DateTime
-  lastCallDateP: String
-  name: String
-  phone: String
-  phone2: String
-  preorderPreorderStatuses: [PreorderPreorderStatusDomain!]
-  preorderStatus: PreorderStatusDomain
-  preorderStatusId: Float
-  product: ProductDomain
-  productId: Float
-  salesPerson: UserDomain
-  salesPersonId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  trackingCode: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdatePreorderPreorderStatus {
   companyDescription: String
   createdAt: DateTime
   id: ID
-  preorder: PreorderDomain
-  preorderId: Float
-  preorderStatus: PreorderStatusDomain
-  preorderStatusId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdatePreorderPreorderStatusInput {
-  companyDescription: String
-  createdAt: DateTime
-  id: Int!
   preorder: PreorderDomain
   preorderId: Float
   preorderStatus: PreorderStatusDomain
@@ -44445,42 +42579,9 @@ input UpdatePreorderRegister {
   withdrawnAmount: String
 }
 
-input UpdatePreorderRegisterInput {
-  createdAt: DateTime
-  id: Int!
-  invoiceBankGatewayHistories: [InvoiceBankGatewayHistoryDomain!]
-  isConfirmed: Boolean
-  isPaid: Boolean
-  moneyTransferConfirmedBy: Float
-  moneyTransferConfirmedBy2: UserDomain
-  moneyTransferRefCode: String
-  orderId: String
-  paymentAmount: String
-  paymentType: InvoicePaymentTypeDomain
-  paymentTypeId: Float
-  preorderDate: DateTime
-  preorderNumber: String
-  refCodeSales: String
-  refId: String
-  saleRefId: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  withdrawnAmount: String
-}
-
 input UpdatePreorderStatus {
   createdAt: DateTime
   id: ID
-  preorderPreorderStatuses: [PreorderPreorderStatusDomain!]
-  preorders: [PreorderDomain!]
-  status: String
-  updatedAt: DateTime
-}
-
-input UpdatePreorderStatusInput {
-  createdAt: DateTime
-  id: Int!
   preorderPreorderStatuses: [PreorderPreorderStatusDomain!]
   preorders: [PreorderDomain!]
   status: String
@@ -44497,16 +42598,6 @@ input UpdatePriceGroup {
   updatedAt: DateTime
 }
 
-input UpdatePriceGroupInput {
-  createdAt: DateTime
-  discountSubjects: [DiscountSubjectDomain!]
-  id: Int!
-  name: String
-  priceGroupSizes: [PriceGroupSizeDomain!]
-  products: [ProductDomain!]
-  updatedAt: DateTime
-}
-
 input UpdatePriceGroupSize {
   basicCarpetSize: BasicCarpetSizeDomain
   basicCarpetSizeId: Float
@@ -44514,20 +42605,6 @@ input UpdatePriceGroupSize {
   bundlePrice: String
   createdAt: DateTime
   id: ID
-  padPrice: String
-  price: String
-  priceGroup: PriceGroupDomain
-  priceGroupId: Float
-  updatedAt: DateTime
-}
-
-input UpdatePriceGroupSizeInput {
-  basicCarpetSize: BasicCarpetSizeDomain
-  basicCarpetSizeId: Float
-  bundlePadPrice: String
-  bundlePrice: String
-  createdAt: DateTime
-  id: Int!
   padPrice: String
   price: String
   priceGroup: PriceGroupDomain
@@ -44567,53 +42644,9 @@ input UpdatePrintProfile {
   yellowGain: String
 }
 
-input UpdatePrintProfileInput {
-  blackCurve: String
-  blackGain: String
-  createdAt: DateTime
-  createdBy: Float
-  createdBy2: UserDomain
-  cyanCurve: String
-  cyanGain: String
-  fabricsBackgroundColor: String
-  fabricsPerSquareMeterWeight: String
-  fabricsTextureGrade: String
-  headHeight: String
-  heatSpeed: String
-  heatTemperature: String
-  id: Int!
-  inkCode: String
-  invoiceProductItems: [InvoiceProductItemDomain!]
-  isActive: Boolean
-  laminateGlueType: String
-  magentaCurve: String
-  magentaGain: String
-  passCount: String
-  totalInkLimit: String
-  updatedAt: DateTime
-  updatedBy: Float
-  updatedBy2: UserDomain
-  versionChangeDate: DateTime
-  versionNo: String
-  yellowCurve: String
-  yellowGain: String
-}
-
 input UpdatePrintRip {
   createdAt: DateTime
   id: ID
-  invoiceProductItems: [InvoiceProductItemDomain!]
-  ripNumber: String
-  ripTemplate: RipTemplateDomain
-  ripTemplateId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdatePrintRipInput {
-  createdAt: DateTime
-  id: Int!
   invoiceProductItems: [InvoiceProductItemDomain!]
   ripNumber: String
   ripTemplate: RipTemplateDomain
@@ -44777,74 +42810,9 @@ input UpdateProductCategoryDetail {
   updatedAt: DateTime
 }
 
-input UpdateProductCategoryDetailInput {
-  createdAt: DateTime
-  detailText: String
-  detailTextEn: String
-  id: Int!
-  isActive: Boolean
-  productCategoryId: Float
-  sortOrder: Float
-  title: String
-  titleEn: String
-  updatedAt: DateTime
-}
-
-input UpdateProductCategoryInput {
-  attributeGroups: [AttributeGroupDomain!]
-  couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime
-  description: String
-  descriptionEn: String
-  descriptionSingleSize: String
-  discountSubjects: [DiscountSubjectDomain!]
-  hierarchyCode: String
-  homepageImage: ImageDomain
-  homepageImageId: Float
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  imageSize: ImageSizeDomain
-  imageSizeId: Float
-  isActive: Boolean
-  metaTags: String
-  metaTagsEn: String
-  metaTagsSingleSize: String
-  mobileImage: ImageDomain
-  mobileImageId: Float
-  name: String
-  nameEn: String
-  pageTitle: String
-  pageTitleEn: String
-  pageTitleSingleSize: String
-  parent: ProductCategoryDomain
-  parentId: Float
-  productCategories: [ProductCategoryDomain!]
-  productCategoryRates: [ProductCategoryRateDomain!]
-  productProductCategories: [ProductProductCategoryDomain!]
-  searchName: String
-  searchNameEn: String
-  showOnHomepage: Boolean
-  sortOrder: Float
-  updatedAt: DateTime
-  urlSlug: String
-  urlSlugEn: String
-  viewCounter: Float
-}
-
 input UpdateProductCategoryRate {
   createdAt: DateTime
   id: ID
-  productCategory: ProductCategoryDomain
-  productCategoryId: Float
-  rate: RateDomain
-  rateId: Float
-  updatedAt: DateTime
-}
-
-input UpdateProductCategoryRateInput {
-  createdAt: DateTime
-  id: Int!
   productCategory: ProductCategoryDomain
   productCategoryId: Float
   rate: RateDomain
@@ -44865,38 +42833,12 @@ input UpdateProductColorImage {
   updatedAt: DateTime
 }
 
-input UpdateProductColorImageInput {
-  basicCarpetColor: BasicCarpetColorDomain
-  basicCarpetColorId: Float
-  createdAt: DateTime
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  product: ProductDomain
-  productId: Float
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
 input UpdateProductColorSale {
   averageSaleCount: Float
   basicCarpetColor: BasicCarpetColorDomain
   basicCarpetColorId: Float
   createdAt: DateTime
   id: ID
-  product: ProductDomain
-  productId: Float
-  saleCount: Float
-  saleCountYear: Float
-  updatedAt: DateTime
-}
-
-input UpdateProductColorSaleInput {
-  averageSaleCount: Float
-  basicCarpetColor: BasicCarpetColorDomain
-  basicCarpetColorId: Float
-  createdAt: DateTime
-  id: Int!
   product: ProductDomain
   productId: Float
   saleCount: Float
@@ -44931,33 +42873,6 @@ input UpdateProductComment {
   walletGiftCharges: WalletGiftChargeDomain
 }
 
-input UpdateProductCommentInput {
-  approved: Boolean
-  approvedBy: Float
-  approvedBy2: UserDomain
-  comment: String
-  createdAt: DateTime
-  id: Int!
-  isBuyer: Boolean
-  parentComment: ProductCommentDomain
-  parentCommentId: Float
-  product: ProductDomain
-  productCommentLikes: [ProductCommentLikeDomain!]
-  productComments: [ProductCommentDomain!]
-  productId: Float
-  productRates: [ProductRateDomain!]
-  recommended: Boolean
-  starred: Boolean
-  subproduct: SubproductDomain
-  subproductId: Float
-  totalDislikes: Float
-  totalLikes: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  walletGiftCharges: WalletGiftChargeDomain
-}
-
 input UpdateProductCommentLike {
   createdAt: DateTime
   id: ID
@@ -44968,117 +42883,6 @@ input UpdateProductCommentLike {
   updatedAt: DateTime
   user: UserDomain
   userId: Float
-}
-
-input UpdateProductCommentLikeInput {
-  createdAt: DateTime
-  id: Int!
-  isDisliked: Boolean
-  isLiked: Boolean
-  productComment: ProductCommentDomain
-  productCommentId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateProductInput {
-  activeUpdatedAt: DateTime
-  attributeProducts: [AttributeProductDomain!]
-  bestSellerColor: BasicCarpetColorDomain
-  bestSellerColorId: Float
-  carpetHasRoots: Boolean
-  code: String
-  collectionName: String
-  colors: String
-  couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime
-  customerImageProducts: [CustomerImageProductDomain!]
-  customerVideoProducts: [CustomerVideoProductDomain!]
-  description: String
-  descriptionEn: String
-  designerIsGeneral: Float
-  discountNotifications: [DiscountNotificationDomain!]
-  discountSubjects: [DiscountSubjectDomain!]
-  emallsActive: Boolean
-  emallsTitle: String
-  favoriteProducts: [FavoriteProductDomain!]
-  homePageCustomerImages: [HomePageCustomerImageDomain!]
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  imageProducts: [ImageProductDomain!]
-  incredibleOffers: [IncredibleOfferDomain!]
-  invoiceProductHistories: [InvoiceProductHistoryDomain!]
-  invoiceProductHistories2: [InvoiceProductHistoryDomain!]
-  invoiceProducts: [InvoiceProductDomain!]
-  invoiceProducts2: [InvoiceProductDomain!]
-  isActive: Boolean
-  isCarpetPad: Boolean
-  isSelfEmployedDesigner: Float
-  isShaggy: Boolean
-  labelProducts: [LabelProductDomain!]
-  length: Float
-  metaTags: String
-  metaTagsEn: String
-  minBasicCarpetSize: BasicCarpetSizeDomain
-  minBasicCarpetSizeId: Float
-  name: String
-  nameEn: String
-  nameEs: String
-  newSubproductsCreated: Float
-  outOfStockButListedProducts: [OutOfStockButListedProductDomain!]
-  pageTitle: String
-  pageTitleEn: String
-  parentProduct: ProductDomain
-  parentProductId: Float
-  preorders: [PreorderDomain!]
-  price: String
-  priceGroup: PriceGroupDomain
-  priceGroupId: Float
-  productColorImages: [ProductColorImageDomain!]
-  productColorSales: [ProductColorSaleDomain!]
-  productComments: [ProductCommentDomain!]
-  productLikes: [ProductLikeDomain!]
-  productProductCategories: [ProductProductCategoryDomain!]
-  productRateAverages: [ProductRateAverageDomain!]
-  productRates: [ProductRateDomain!]
-  productTags: [ProductTagDomain!]
-  productVideos: [ProductVideoDomain!]
-  products: [ProductDomain!]
-  rate: Float
-  rateCount: Float
-  readyToSendProducts: [ReadyToSendProductDomain!]
-  recommendedProducts: [RecommendedProductDomain!]
-  relatedProducts: [RelatedProductDomain!]
-  relatedProducts2: [RelatedProductDomain!]
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItems: [ReturnRequestItemDomain!]
-  returnedInvoiceProducts: [ReturnedInvoiceProductDomain!]
-  russianName: String
-  saleCount: Float
-  saleCountDaily: Float
-  searchName: String
-  searchNameEn: String
-  size: Float
-  sizeIsCustomizable: Float
-  snapppayActive: Boolean
-  snapppaySortOrder: Boolean
-  sortOrder: Float
-  specialOffers: [SpecialOfferDomain!]
-  specialOffers2: [SpecialOfferDomain!]
-  subproducts: [SubproductDomain!]
-  torobProducts: [TorobProductDomain!]
-  totalDislike: Float
-  totalLike: Float
-  updatedAt: DateTime
-  urlSlug: String
-  urlSlugEn: String
-  userCarts: [UserCartDomain!]
-  userCarts2: [UserCartDomain!]
-  viewCounter: Float
-  width: Float
-  wonderfulOffers: [WonderfulOfferDomain!]
 }
 
 input UpdateProductLike {
@@ -45094,32 +42898,9 @@ input UpdateProductLike {
   userId: Float
 }
 
-input UpdateProductLikeInput {
-  createdAt: DateTime
-  id: Int!
-  isLike: Boolean
-  product: ProductDomain
-  productId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateProductProductCategory {
   createdAt: DateTime
   id: ID
-  product: ProductDomain
-  productCategory: ProductCategoryDomain
-  productCategoryId: Float
-  productId: Float
-  updatedAt: DateTime
-}
-
-input UpdateProductProductCategoryInput {
-  createdAt: DateTime
-  id: Int!
   product: ProductDomain
   productCategory: ProductCategoryDomain
   productCategoryId: Float
@@ -45159,53 +42940,9 @@ input UpdateProductRateAverage {
   updatedAt: DateTime
 }
 
-input UpdateProductRateAverageInput {
-  averageRate: Float
-  createdAt: DateTime
-  id: Int!
-  product: ProductDomain
-  productId: Float
-  rate: RateDomain
-  rateCount: Float
-  rateId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
-input UpdateProductRateInput {
-  createdAt: DateTime
-  id: Int!
-  oldRate: Float
-  product: ProductDomain
-  productComment: ProductCommentDomain
-  productCommentId: Float
-  productId: Float
-  rate: RateDomain
-  rateId: Float
-  rateValue: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateProductTag {
   createdAt: DateTime
   id: ID
-  product: ProductDomain
-  productId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  tag: TagDomain
-  tagId: Float
-  updatedAt: DateTime
-}
-
-input UpdateProductTagInput {
-  createdAt: DateTime
-  id: Int!
   product: ProductDomain
   productId: Float
   subproduct: SubproductDomain
@@ -45220,19 +42957,6 @@ input UpdateProductVideo {
   basicCarpetColorId: Float
   createdAt: DateTime
   id: ID
-  product: ProductDomain
-  productId: Float
-  sortOrder: Float
-  updatedAt: DateTime
-  video: VideoDomain
-  videoId: Float
-}
-
-input UpdateProductVideoInput {
-  basicCarpetColor: BasicCarpetColorDomain
-  basicCarpetColorId: Float
-  createdAt: DateTime
-  id: Int!
   product: ProductDomain
   productId: Float
   sortOrder: Float
@@ -45258,38 +42982,9 @@ input UpdateProductionPad {
   updatedAt: DateTime
 }
 
-input UpdateProductionPadInput {
-  basicCarpetSize: BasicCarpetSizeDomain
-  basicCarpetSizeId: Float
-  code: String
-  createdAt: DateTime
-  id: Int!
-  isTagPrinted: Boolean
-  isUsed: Boolean
-  productionPadProductionPadStatuses: [ProductionPadProductionPadStatusDomain!]
-  productionPadStatus: ProductionPadStatusDomain
-  productionPadStatusId: Float
-  requestDate: DateTime
-  rollRefCode: String
-  rowNo: Float
-  updatedAt: DateTime
-}
-
 input UpdateProductionPadProductionPadStatus {
   createdAt: DateTime
   id: ID
-  productionPad: ProductionPadDomain
-  productionPadId: Float
-  productionPadStatus: ProductionPadStatusDomain
-  productionPadStatusId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateProductionPadProductionPadStatusInput {
-  createdAt: DateTime
-  id: Int!
   productionPad: ProductionPadDomain
   productionPadId: Float
   productionPadStatus: ProductionPadStatusDomain
@@ -45309,26 +43004,9 @@ input UpdateProductionPadStatus {
   updatedAt: DateTime
 }
 
-input UpdateProductionPadStatusInput {
-  createdAt: DateTime
-  id: Int!
-  name: String
-  productionPadProductionPadStatuses: [ProductionPadProductionPadStatusDomain!]
-  productionPads: [ProductionPadDomain!]
-  step: Float
-  updatedAt: DateTime
-}
-
 input UpdateProductionReceiptType {
   createdAt: DateTime
   id: ID
-  name: String
-  updatedAt: DateTime
-}
-
-input UpdateProductionReceiptTypeInput {
-  createdAt: DateTime
-  id: Int!
   name: String
   updatedAt: DateTime
 }
@@ -45353,43 +43031,10 @@ input UpdateProductionRoll {
   width: Float
 }
 
-input UpdateProductionRollInput {
-  billNumber: String
-  closeDate: DateTime
-  closedBy: Float
-  closedBy2: UserDomain
-  createdAt: DateTime
-  createdBy: Float
-  createdBy2: UserDomain
-  id: Int!
-  invoiceProductItems: [InvoiceProductItemDomain!]
-  isClosed: Boolean
-  isShaggy: Boolean
-  length: Float
-  rollNumber: String
-  shaggyColor: String
-  updatedAt: DateTime
-  weight: Float
-  width: Float
-}
-
 input UpdateRate {
   createdAt: DateTime
   description: String
   id: ID
-  isActive: Float
-  name: String
-  productCategoryRates: [ProductCategoryRateDomain!]
-  productRateAverages: [ProductRateAverageDomain!]
-  productRates: [ProductRateDomain!]
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
-input UpdateRateInput {
-  createdAt: DateTime
-  description: String
-  id: Int!
   isActive: Float
   name: String
   productCategoryRates: [ProductCategoryRateDomain!]
@@ -45407,14 +43052,6 @@ input UpdateReadyToSendProduct {
   updatedAt: DateTime
 }
 
-input UpdateReadyToSendProductInput {
-  createdAt: DateTime
-  id: Int!
-  product: ProductDomain
-  productId: Float
-  updatedAt: DateTime
-}
-
 input UpdateRecommendedProduct {
   createdAt: DateTime
   id: ID
@@ -45423,25 +43060,9 @@ input UpdateRecommendedProduct {
   updatedAt: DateTime
 }
 
-input UpdateRecommendedProductInput {
-  createdAt: DateTime
-  id: Int!
-  product: ProductDomain
-  productId: Float
-  updatedAt: DateTime
-}
-
 input UpdateRecommendedSubproduct {
   createdAt: DateTime
   id: ID
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
-input UpdateRecommendedSubproductInput {
-  createdAt: DateTime
-  id: Int!
   subproduct: SubproductDomain
   subproductId: Float
   updatedAt: DateTime
@@ -45466,16 +43087,6 @@ input UpdateRelatedProduct {
   updatedAt: DateTime
 }
 
-input UpdateRelatedProductInput {
-  createdAt: DateTime
-  id: Int!
-  product: ProductDomain
-  productId: Float
-  relatedProduct: ProductDomain
-  relatedProductId: Float
-  updatedAt: DateTime
-}
-
 input UpdateRetargetingWalletCharge {
   amount: String
   chargedInvoices: String
@@ -45489,37 +43100,9 @@ input UpdateRetargetingWalletCharge {
   walletId: Float
 }
 
-input UpdateRetargetingWalletChargeInput {
-  amount: String
-  chargedInvoices: String
-  createdAt: DateTime
-  id: Int!
-  lastChargedAt: DateTime
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  wallet: WalletDomain
-  walletId: Float
-}
-
 input UpdateReturnItemStatus {
   createdAt: DateTime
   id: ID
-  isActive: Boolean
-  name: String
-  returnItemStatusReturnRequestItems: [ReturnItemStatusReturnRequestItemDomain!]
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItemReturnItemStatuses: [ReturnRequestItemReturnItemStatusDomain!]
-  returnRequestItems: [ReturnRequestItemDomain!]
-  sortOrder: Float
-  stepGuarantee: Float
-  stepTest: Float
-  updatedAt: DateTime
-}
-
-input UpdateReturnItemStatusInput {
-  createdAt: DateTime
-  id: Int!
   isActive: Boolean
   name: String
   returnItemStatusReturnRequestItems: [ReturnItemStatusReturnRequestItemDomain!]
@@ -45545,34 +43128,9 @@ input UpdateReturnItemStatusReturnRequestItem {
   userId: Float
 }
 
-input UpdateReturnItemStatusReturnRequestItemInput {
-  createdAt: DateTime
-  description: String
-  id: Int!
-  returnItemStatus: ReturnItemStatusDomain
-  returnItemStatusId: Float
-  returnRequestItem: ReturnRequestItemDomain
-  returnRequestItemId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateReturnReason {
   createdAt: DateTime
   id: ID
-  isActive: Boolean
-  reason: String
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItems: [ReturnRequestItemDomain!]
-  returnedInvoices: [ReturnedInvoiceDomain!]
-  sortOrder: Float
-  updatedAt: DateTime
-}
-
-input UpdateReturnReasonInput {
-  createdAt: DateTime
-  id: Int!
   isActive: Boolean
   reason: String
   returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
@@ -45646,34 +43204,6 @@ input UpdateReturnRequestAddress {
   zipCode: String
 }
 
-input UpdateReturnRequestAddressInput {
-  address: String
-  address2: String
-  addressId: Float
-  address_2: AddressDomain
-  city: CityDomain
-  cityId: Float
-  country: CountryDomain
-  countryId: Float
-  createdAt: DateTime
-  email: String
-  fullAddress: String
-  fullname: String
-  id: Int!
-  latitude: String
-  longitude: String
-  phone: String
-  phone2: String
-  returnRequest: ReturnRequestDomain
-  returnRequestId: Float
-  state: StateDomain
-  stateId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  zipCode: String
-}
-
 input UpdateReturnRequestHistory {
   createdAt: DateTime
   description: String
@@ -45695,72 +43225,6 @@ input UpdateReturnRequestHistory {
   returnTypeId: Float
   shippingServiceCustomer: String
   shippingServiceModema: String
-  trackingCodeCustomer: String
-  trackingCodeModema: String
-  updatedAt: DateTime
-  user: UserDomain
-  userBlocked: String
-  userId: Float
-  withdrawable: String
-}
-
-input UpdateReturnRequestHistoryInput {
-  createdAt: DateTime
-  description: String
-  editorUser: UserDomain
-  editorUserId: Float
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  modemaBlocked: String
-  parent: ReturnRequestDomain
-  parentId: Float
-  requestDate: String
-  requestNumber: String
-  returnRequestId: Float
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnStatus: ReturnStatusDomain
-  returnStatusId: Float
-  returnType: ReturnTypeDomain
-  returnTypeId: Float
-  shippingServiceCustomer: String
-  shippingServiceModema: String
-  trackingCodeCustomer: String
-  trackingCodeModema: String
-  updatedAt: DateTime
-  user: UserDomain
-  userBlocked: String
-  userId: Float
-  withdrawable: String
-}
-
-input UpdateReturnRequestInput {
-  coupon: CouponDomain
-  couponAmount: String
-  couponId: Float
-  createdAt: DateTime
-  description: String
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  modemaBlocked: String
-  parent: ReturnRequestDomain
-  parentId: Float
-  requestDate: String
-  requestNumber: String
-  returnRequestAddresses: [ReturnRequestAddressDomain!]
-  returnRequestHistories: ReturnRequestHistoryDomain
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItems: [ReturnRequestItemDomain!]
-  returnRequestReturnStatuses: [ReturnRequestReturnStatusDomain!]
-  returnRequests: ReturnRequestDomain
-  returnStatus: ReturnStatusDomain
-  returnStatusId: Float
-  returnType: ReturnTypeDomain
-  returnTypeId: Float
-  shippingServiceCustomer: String
-  shippingServiceModema: String
-  submittedByFactory: Boolean
   trackingCodeCustomer: String
   trackingCodeModema: String
   updatedAt: DateTime
@@ -45829,35 +43293,6 @@ input UpdateReturnRequestItemHistory {
   updatedAt: DateTime
 }
 
-input UpdateReturnRequestItemHistoryInput {
-  code: String
-  count: Float
-  createdAt: DateTime
-  description: String
-  descriptionAccounting: String
-  descriptionFactory: String
-  descriptionSales: String
-  id: Int!
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  product: ProductDomain
-  productId: Float
-  returnItemStatus: ReturnItemStatusDomain
-  returnItemStatusId: Float
-  returnReason: ReturnReasonDomain
-  returnReasonId: Float
-  returnRequest: ReturnRequestDomain
-  returnRequestHistory: ReturnRequestHistoryDomain
-  returnRequestHistoryId: Float
-  returnRequestId: Float
-  returnRequestItem: ReturnRequestItemDomain
-  returnRequestItemId: Float
-  rowNo: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
 input UpdateReturnRequestItemImage {
   createdAt: DateTime
   id: ID
@@ -45868,63 +43303,10 @@ input UpdateReturnRequestItemImage {
   updatedAt: DateTime
 }
 
-input UpdateReturnRequestItemImageInput {
-  createdAt: DateTime
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  returnRequestItem: ReturnRequestItemDomain
-  returnRequestItemId: Float
-  updatedAt: DateTime
-}
-
-input UpdateReturnRequestItemInput {
-  code: String
-  count: Float
-  createdAt: DateTime
-  description: String
-  descriptionAccounting: String
-  descriptionFactory: String
-  descriptionSales: String
-  id: Int!
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  product: ProductDomain
-  productId: Float
-  returnItemStatus: ReturnItemStatusDomain
-  returnItemStatusId: Float
-  returnItemStatusReturnRequestItems: [ReturnItemStatusReturnRequestItemDomain!]
-  returnReason: ReturnReasonDomain
-  returnReasonId: Float
-  returnRequest: ReturnRequestDomain
-  returnRequestId: Float
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItemImages: [ReturnRequestItemImageDomain!]
-  returnRequestItemReturnItemStatuses: [ReturnRequestItemReturnItemStatusDomain!]
-  returnRequestItemVideos: [ReturnRequestItemVideoDomain!]
-  rowNo: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
 input UpdateReturnRequestItemReturnItemStatus {
   createdAt: DateTime
   description: String
   id: ID
-  returnItemStatus: ReturnItemStatusDomain
-  returnItemStatusId: Float
-  returnRequestItem: ReturnRequestItemDomain
-  returnRequestItemId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateReturnRequestItemReturnItemStatusInput {
-  createdAt: DateTime
-  description: String
-  id: Int!
   returnItemStatus: ReturnItemStatusDomain
   returnItemStatusId: Float
   returnRequestItem: ReturnRequestItemDomain
@@ -45944,33 +43326,10 @@ input UpdateReturnRequestItemVideo {
   videoId: Float
 }
 
-input UpdateReturnRequestItemVideoInput {
-  createdAt: DateTime
-  id: Int!
-  returnRequestItem: ReturnRequestItemDomain
-  returnRequestItemId: Float
-  updatedAt: DateTime
-  video: VideoDomain
-  videoId: Float
-}
-
 input UpdateReturnRequestReturnStatus {
   createdAt: DateTime
   description: String
   id: ID
-  returnRequest: ReturnRequestDomain
-  returnRequestId: Float
-  returnStatus: ReturnStatusDomain
-  returnStatusId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateReturnRequestReturnStatusInput {
-  createdAt: DateTime
-  description: String
-  id: Int!
   returnRequest: ReturnRequestDomain
   returnRequestId: Float
   returnStatus: ReturnStatusDomain
@@ -45994,33 +43353,9 @@ input UpdateReturnStatus {
   updatedAt: DateTime
 }
 
-input UpdateReturnStatusInput {
-  createdAt: DateTime
-  id: Int!
-  isActive: Boolean
-  name: String
-  returnRequestHistories: [ReturnRequestHistoryDomain!]
-  returnRequestReturnStatuses: [ReturnRequestReturnStatusDomain!]
-  returnRequests: [ReturnRequestDomain!]
-  sortOrder: Float
-  stepGuarantee: Float
-  stepTest: Float
-  updatedAt: DateTime
-}
-
 input UpdateReturnType {
   createdAt: DateTime
   id: ID
-  isActive: Boolean
-  name: String
-  returnRequestHistories: [ReturnRequestHistoryDomain!]
-  returnRequests: [ReturnRequestDomain!]
-  updatedAt: DateTime
-}
-
-input UpdateReturnTypeInput {
-  createdAt: DateTime
-  id: Int!
   isActive: Boolean
   name: String
   returnRequestHistories: [ReturnRequestHistoryDomain!]
@@ -46046,45 +43381,11 @@ input UpdateReturnedInvoice {
   userId: Float
 }
 
-input UpdateReturnedInvoiceInput {
-  createdAt: DateTime
-  description: String
-  id: Int!
-  invoice: InvoiceDomain
-  invoiceId: Float
-  replacementInvoice: InvoiceDomain
-  replacementInvoiceId: Float
-  returnDate: DateTime
-  returnReason: ReturnReasonDomain
-  returnReasonId: Float
-  returnedInvoiceProducts: [ReturnedInvoiceProductDomain!]
-  snappInformed: Boolean
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateReturnedInvoiceProduct {
   count: Float
   createdAt: DateTime
   description: String
   id: ID
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  product: ProductDomain
-  productId: Float
-  returnedInvoice: ReturnedInvoiceDomain
-  returnedInvoiceId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
-input UpdateReturnedInvoiceProductInput {
-  count: Float
-  createdAt: DateTime
-  description: String
-  id: Int!
   invoiceProduct: InvoiceProductDomain
   invoiceProductId: Float
   product: ProductDomain
@@ -46122,46 +43423,9 @@ input UpdateRfmReport {
   phone: String
 }
 
-input UpdateRfmReportInput {
-  id: Int!
-  kharid1: String
-  kharid2: String
-  kharid3: String
-  kharid4: String
-  kharid5: String
-  kharid6: String
-  kharid7: String
-  kharid8: String
-  kharid9: String
-  kharid10: String
-  kharid11: String
-  kharid12: String
-  kharid13: String
-  kharid14: String
-  kharid15: String
-  kharid16: String
-  kharid17: String
-  kharid18: String
-  kharid19: String
-  kharid20: String
-  name: String
-  phone: String
-}
-
 input UpdateRipTemplate {
   createdAt: DateTime
   id: ID
-  name: String
-  printRips: [PrintRipDomain!]
-  ripTemplateItems: [RipTemplateItemDomain!]
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateRipTemplateInput {
-  createdAt: DateTime
-  id: Int!
   name: String
   printRips: [PrintRipDomain!]
   ripTemplateItems: [RipTemplateItemDomain!]
@@ -46182,18 +43446,6 @@ input UpdateRipTemplateItem {
   width: Float
 }
 
-input UpdateRipTemplateItemInput {
-  basicCarpetSize: BasicCarpetSizeDomain
-  basicCarpetSizeId: Float
-  createdAt: DateTime
-  id: Int!
-  length: Float
-  ripTemplate: RipTemplateDomain
-  ripTemplateId: Float
-  updatedAt: DateTime
-  width: Float
-}
-
 input UpdateRoleDomain {
   createdAt: DateTime
   guardName: String
@@ -46207,24 +43459,8 @@ input UpdateRoleHasPermission {
   roleId: String
 }
 
-input UpdateRoleInput {
-  createdAt: DateTime
-  guardName: String
-  id: Int!
-  modelHasRoles: [ModelHasRoleDomain!]
-  name: String
-  permissions: [PermissionDomain!]
-  updatedAt: DateTime
-}
-
 input UpdateRussian {
   id: ID
-  name: String
-  russianName: String
-}
-
-input UpdateRussianInput {
-  id: Int!
   name: String
   russianName: String
 }
@@ -46261,54 +43497,11 @@ input UpdateSenderInformation {
   updatedAt: DateTime
 }
 
-input UpdateSenderInformationInput {
-  buildingPart: String
-  buildingPartDescription: String
-  city: CityDomain
-  cityId: Float
-  commodityDescription: String
-  companyName: String
-  contactId: Float
-  country: CountryDomain
-  countryId: Float
-  createdAt: DateTime
-  emailAddress: String
-  faxNumber: String
-  id: Int!
-  isActive: Boolean
-  latitude: String
-  location: String
-  longitude: String
-  packageLocation: String
-  pagerNumber: String
-  personName: String
-  phoneExtension: String
-  phoneNumber: String
-  postalCode: String
-  remarks: String
-  state: StateDomain
-  stateId: Float
-  streetLines: String
-  title: String
-  updatedAt: DateTime
-}
-
 input UpdateShippingService {
   code: String
   description: String
   fullDescription: String
   id: ID
-  invoiceRatesResults: [InvoiceRatesResultDomain!]
-  invoiceShippingRates: [InvoiceShippingRateDomain!]
-  isActive: Boolean
-  name: String
-}
-
-input UpdateShippingServiceInput {
-  code: String
-  description: String
-  fullDescription: String
-  id: Int!
   invoiceRatesResults: [InvoiceRatesResultDomain!]
   invoiceShippingRates: [InvoiceShippingRateDomain!]
   isActive: Boolean
@@ -46324,29 +43517,9 @@ input UpdateSitemapStaticPage {
   updatedAt: DateTime
 }
 
-input UpdateSitemapStaticPageInput {
-  changefreq: String
-  createdAt: DateTime
-  id: Int!
-  loc: String
-  priority: Float
-  updatedAt: DateTime
-}
-
 input UpdateSizeGuide {
   createdAt: DateTime
   id: ID
-  image: ImageDomain
-  imageId: Float
-  sizeGuidesDetails: [SizeGuidesDetailDomain!]
-  text: String
-  title: String
-  updatedAt: DateTime
-}
-
-input UpdateSizeGuideInput {
-  createdAt: DateTime
-  id: Int!
   image: ImageDomain
   imageId: Float
   sizeGuidesDetails: [SizeGuidesDetailDomain!]
@@ -46372,36 +43545,9 @@ input UpdateSizeGuidesDetail {
   updatedAt: DateTime
 }
 
-input UpdateSizeGuidesDetailInput {
-  createdAt: DateTime
-  detailsText: String
-  detailsTitle: String
-  iconText: String
-  iconTitle: String
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  imagesSizeGuidesDetails: [ImagesSizeGuidesDetailDomain!]
-  sizeGuide: SizeGuideDomain
-  sizeGuideId: Float
-  text: String
-  title: String
-  updatedAt: DateTime
-}
-
 input UpdateSocialFacebookAccount {
   createdAt: DateTime
   id: ID
-  provider: String
-  providerUserId: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateSocialFacebookAccountInput {
-  createdAt: DateTime
-  id: Int!
   provider: String
   providerUserId: String
   updatedAt: DateTime
@@ -46419,32 +43565,9 @@ input UpdateSocialGoogleAccount {
   userId: Float
 }
 
-input UpdateSocialGoogleAccountInput {
-  createdAt: DateTime
-  id: Int!
-  provider: String
-  providerUserId: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateSpecialOffer {
   createdAt: DateTime
   id: ID
-  specialOfferImageUrl: String
-  specialOfferProduct: ProductDomain
-  specialOfferProductId: Float
-  specialOfferSubtitle: String
-  specialOfferTitle: String
-  updatedAt: DateTime
-  wonderfulOfferProduct: ProductDomain
-  wonderfulOfferProductId: Float
-}
-
-input UpdateSpecialOfferInput {
-  createdAt: DateTime
-  id: Int!
   specialOfferImageUrl: String
   specialOfferProduct: ProductDomain
   specialOfferProductId: Float
@@ -46474,25 +43597,6 @@ input UpdateState {
   updatedAt: DateTime
 }
 
-input UpdateStateInput {
-  addresses: [AddressDomain!]
-  basicCarpetDesigners: [BasicCarpetDesignerDomain!]
-  chaparId: Float
-  cities: [CityDomain!]
-  code: String
-  country: CountryDomain
-  countryId: Float
-  createdAt: DateTime
-  id: Int!
-  invoiceAddresses: [InvoiceAddressDomain!]
-  name: String
-  returnRequestAddresses: [ReturnRequestAddressDomain!]
-  senderInformations: [SenderInformationDomain!]
-  sepidarId: Float
-  tipaxId: Float
-  updatedAt: DateTime
-}
-
 input UpdateSubcolor {
   color: ColorDomain
   colorCode: String
@@ -46501,17 +43605,6 @@ input UpdateSubcolor {
   colorName: String
   hexCode: String
   id: ID
-  order: Float
-}
-
-input UpdateSubcolorInput {
-  color: ColorDomain
-  colorCode: String
-  colorCodeOriginal: String
-  colorId: Float
-  colorName: String
-  hexCode: String
-  id: Int!
   order: Float
 }
 
@@ -46601,106 +43694,9 @@ input UpdateSubproduct {
   width: Float
 }
 
-input UpdateSubproductInput {
-  attributeSubproducts: [AttributeSubproductDomain!]
-  basicCarpetBorder: BasicCarpetBorderDomain
-  basicCarpetBorderId: Float
-  basicCarpetBrand: BasicCarpetBrandDomain
-  basicCarpetBrandId: Float
-  basicCarpetColor: BasicCarpetColorDomain
-  basicCarpetColorId: Float
-  basicCarpetDesign: BasicCarpetDesignDomain
-  basicCarpetDesignId: Float
-  basicCarpetDesigner: BasicCarpetDesignerDomain
-  basicCarpetDesignerId: Float
-  basicCarpetMaterial: BasicCarpetMaterialDomain
-  basicCarpetMaterialId: Float
-  basicCarpetSize: BasicCarpetSizeDomain
-  basicCarpetSizeId: Float
-  basicCarpetType: BasicCarpetTypeDomain
-  basicCarpetTypeId: Float
-  borderColor: String
-  bundlePadPrice: String
-  bundlePrice: String
-  code: String
-  colorCategoriesChanged: Float
-  colorCategorySubproducts: [ColorCategorySubproductDomain!]
-  colorName: String
-  colorNameEs: String
-  colors: String
-  couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime
-  description: String
-  discountSubjects: [DiscountSubjectDomain!]
-  favoriteProducts: [FavoriteProductDomain!]
-  getStockCountFromSepidar: Boolean
-  id: Int!
-  image: ImageDomain
-  imageId: Float
-  imageSubproducts: [ImageSubproductDomain!]
-  invoiceProductHistories: [InvoiceProductHistoryDomain!]
-  invoiceProducts: [InvoiceProductDomain!]
-  isActive: Boolean
-  isOutOfStock: Boolean
-  length: Float
-  mainImageChanged: Boolean
-  name: String
-  nameEn: String
-  needsPhotographySubproducts: [NeedsPhotographySubproductDomain!]
-  otherImagesChanged: Boolean
-  padPrice: String
-  preorders: [PreorderDomain!]
-  price: String
-  product: ProductDomain
-  productComments: [ProductCommentDomain!]
-  productId: Float
-  productLikes: [ProductLikeDomain!]
-  productRateAverages: [ProductRateAverageDomain!]
-  productRates: [ProductRateDomain!]
-  productTags: [ProductTagDomain!]
-  rate: Float
-  rateCount: Float
-  recommendedSubproducts: [RecommendedSubproductDomain!]
-  returnRequestItemHistories: [ReturnRequestItemHistoryDomain!]
-  returnRequestItems: [ReturnRequestItemDomain!]
-  returnedInvoiceProducts: [ReturnedInvoiceProductDomain!]
-  saleCount: Float
-  searchName: String
-  searchNameEn: String
-  sepidarId: Float
-  shortCode: String
-  size: Float
-  sizeIsCustomizable: Float
-  sortOrder: Float
-  stockCount: Float
-  subproductSpecialImages: [SubproductSpecialImageDomain!]
-  subproductStockHistories: [SubproductStockHistoryDomain!]
-  subproductVideos: [SubproductVideoDomain!]
-  torobProducts: [TorobProductDomain!]
-  totalDislike: Float
-  totalLike: Float
-  updatedAt: DateTime
-  userCarts: [UserCartDomain!]
-  userCarts2: [UserCartDomain!]
-  video: VideoDomain
-  videoId: Float
-  width: Float
-}
-
 input UpdateSubproductSpecialImage {
   createdAt: DateTime
   id: ID
-  image: ImageDomain
-  imageId: Float
-  sortOrder: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-}
-
-input UpdateSubproductSpecialImageInput {
-  createdAt: DateTime
-  id: Int!
   image: ImageDomain
   imageId: Float
   sortOrder: Float
@@ -46723,34 +43719,9 @@ input UpdateSubproductStockHistory {
   userId: Float
 }
 
-input UpdateSubproductStockHistoryInput {
-  createdAt: DateTime
-  id: Int!
-  invoiceProduct: InvoiceProductDomain
-  invoiceProductId: Float
-  newValue: Float
-  oldValue: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
 input UpdateSubproductVideo {
   createdAt: DateTime
   id: ID
-  sortOrder: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-  video: VideoDomain
-  videoId: Float
-}
-
-input UpdateSubproductVideoInput {
-  createdAt: DateTime
-  id: Int!
   sortOrder: Float
   subproduct: SubproductDomain
   subproductId: Float
@@ -46767,14 +43738,6 @@ input UpdateSubscriber {
   updatedAt: DateTime
 }
 
-input UpdateSubscriberInput {
-  createdAt: DateTime
-  email: String
-  id: Int!
-  mobile: String
-  updatedAt: DateTime
-}
-
 input UpdateTag {
   columnOrder: Float
   columnWidth: Float
@@ -46783,36 +43746,6 @@ input UpdateTag {
   descriptionEn: String
   discount: Float
   id: ID
-  image: ImageDomain
-  imageId: Float
-  isActive: Float
-  metaTags: String
-  metaTagsEn: String
-  pageTitle: String
-  pageTitleEn: String
-  productTags: [ProductTagDomain!]
-  searchTitle: String
-  searchTitleEn: String
-  sliderImage: ImageDomain
-  sliderImageId: Float
-  sortOrder: Float
-  specialOffer: Boolean
-  title: String
-  titleEn: String
-  updatedAt: DateTime
-  urlSlug: String
-  urlSlugEn: String
-  viewCounter: Float
-}
-
-input UpdateTagInput {
-  columnOrder: Float
-  columnWidth: Float
-  createdAt: DateTime
-  description: String
-  descriptionEn: String
-  discount: Float
-  id: Int!
   image: ImageDomain
   imageId: Float
   isActive: Float
@@ -46854,42 +43787,10 @@ input UpdateTempSubproductDiscount {
   viewSubproductId: ID
 }
 
-input UpdateTempSubproductDiscountInput {
-  allDiscountId: Float
-  allWithStockDiscountId: Float
-  categoryDiscountId: Float
-  createdAt: DateTime
-  discountPercent: Float
-  id: Int!
-  padDiscountPercent: Float
-  padPriceMinusDiscount: String
-  priceGroupDiscountId: Float
-  priceMinusDiscount: String
-  productDiscountId: Float
-  sizeDiscountId: Float
-  subproductDiscountId: Float
-  totalDiscountPercent: Float
-  updatedAt: DateTime
-  viewProductId: Float
-  viewSubproductId: Float
-}
-
 input UpdateTestimonial {
   createdAt: DateTime
   description: String
   id: ID
-  isActive: Boolean
-  link: String
-  logoImage: String
-  sortOrder: Float
-  title: String
-  updatedAt: DateTime
-}
-
-input UpdateTestimonialInput {
-  createdAt: DateTime
-  description: String
-  id: Int!
   isActive: Boolean
   link: String
   logoImage: String
@@ -46929,33 +43830,12 @@ input UpdateTmpRfmReport {
   phone: String
 }
 
-input UpdateTmpRfmReportInput {
-  id: Int!
-  kharid1: String
-  kharid2: String
-  kharid3: String
-  kharid4: String
-  kharid5: String
-  name: String
-  phone: String
-}
-
 input UpdateTmpRussiaProduct {
   borderCode: String
   code: String
   colorCode: String
   count: Float
   id: ID
-  productCode: String
-  sizeCode: String
-}
-
-input UpdateTmpRussiaProductInput {
-  borderCode: String
-  code: String
-  colorCode: String
-  count: Float
-  id: Int!
   productCode: String
   sizeCode: String
 }
@@ -46976,35 +43856,9 @@ input UpdateTmpSpainOrder {
   row: ID
 }
 
-input UpdateTmpSpainOrderInput {
-  cnt_02: Float
-  cnt_03: Float
-  cnt_06: Float
-  cnt_25: Float
-  cnt_28: Float
-  cnt_60: Float
-  cnt_75: Float
-  cnt_80: Float
-  color: String
-  colorCode: String
-  design: String
-  id: Int!
-  row: Float
-}
-
 input UpdateTmpSpanishName {
   colorId: Float
   name: ID
-  nameEs: String
-  productId: Float
-  spanishTitle: String
-  title: String
-}
-
-input UpdateTmpSpanishNameInput {
-  colorId: Float
-  id: Int!
-  name: String
   nameEs: String
   productId: Float
   spanishTitle: String
@@ -47015,14 +43869,6 @@ input UpdateTmpTagChangesPrint {
   code: String
   count: Float
   id: ID
-  oldCode: String
-  size: String
-}
-
-input UpdateTmpTagChangesPrintInput {
-  code: String
-  count: Float
-  id: Int!
   oldCode: String
   size: String
 }
@@ -47047,26 +43893,6 @@ input UpdateTorobProduct {
   updatedAt: DateTime
 }
 
-input UpdateTorobProductInput {
-  basicCarpetColor: BasicCarpetColorDomain
-  basicCarpetColorId: Float
-  basicCarpetSize: BasicCarpetSizeDomain
-  basicCarpetSizeId: Float
-  colorTitle: String
-  createdAt: DateTime
-  deletedAt: DateTime
-  id: Int!
-  name: String
-  product: ProductDomain
-  productCategoryId: Float
-  productId: Float
-  sizeTitle: String
-  subproduct: SubproductDomain
-  subproductId: Float
-  torobCategory: String
-  updatedAt: DateTime
-}
-
 input UpdateTransaction {
   amount: String
   approved: Boolean
@@ -47075,26 +43901,6 @@ input UpdateTransaction {
   createdAt: DateTime
   description: String
   id: ID
-  modelId: Float
-  modelType: String
-  modemaBlocked: String
-  tempInvoiceNumber: String
-  updatedAt: DateTime
-  user: UserDomain
-  userBlocked: String
-  userId: Float
-  walletHistories: [WalletHistoryDomain!]
-  withdrawable: String
-}
-
-input UpdateTransactionInput {
-  amount: String
-  approved: Boolean
-  approvedBy: Float
-  approvedBy2: UserDomain
-  createdAt: DateTime
-  description: String
-  id: Int!
   modelId: Float
   modelType: String
   modemaBlocked: String
@@ -47297,28 +44103,9 @@ input UpdateUserCart {
   withPad: Boolean
 }
 
-input UpdateUserCartInput {
-  bundleCount: Float
-  count: Float
-  createdAt: DateTime
-  description: String
-  design: DesignDomain
-  designId: Float
-  id: Int!
-  length: Float
-  product: ProductDomain
-  productId: Float
-  relatedProduct: ProductDomain
-  relatedProductId: Float
-  relatedSubproduct: SubproductDomain
-  relatedSubproductId: Float
-  subproduct: SubproductDomain
-  subproductId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  width: Float
-  withPad: Boolean
+input UpdateUserHasRole {
+  roleId: Float
+  userId: ID
 }
 
 input UpdateUserInput {
@@ -47497,16 +44284,6 @@ input UpdateUserUtm {
   utmId: Float
 }
 
-input UpdateUserUtmInput {
-  createdAt: DateTime
-  id: Int!
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  utm: UtmDomain
-  utmId: Float
-}
-
 input UpdateUtm {
   createdAt: DateTime
   id: ID
@@ -47535,46 +44312,9 @@ input UpdateUtmGoogleFormCoupon {
   utmLink: String
 }
 
-input UpdateUtmGoogleFormCouponInput {
-  coupon: CouponDomain
-  couponId: Float
-  createdAt: DateTime
-  id: Int!
-  lastPurchaseDate: DateTime
-  registerDate: DateTime
-  returnDate: DateTime
-  row: Float
-  shortLink: String
-  type: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  utmLink: String
-}
-
-input UpdateUtmInput {
-  createdAt: DateTime
-  id: Int!
-  updatedAt: DateTime
-  userUtms: [UserUtmDomain!]
-  utmCampaign: String
-  utmContent: String
-  utmMedium: String
-  utmSource: String
-}
-
 input UpdateVerifyUser {
   createdAt: DateTime
   id: ID
-  token: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-}
-
-input UpdateVerifyUserInput {
-  createdAt: DateTime
-  id: Int!
   token: String
   updatedAt: DateTime
   user: UserDomain
@@ -47587,23 +44327,6 @@ input UpdateVideo {
   customerVideoProducts: [CustomerVideoProductDomain!]
   filename: String
   id: ID
-  mime: String
-  originalFilename: String
-  path: String
-  productVideos: [ProductVideoDomain!]
-  returnRequestItemVideos: [ReturnRequestItemVideoDomain!]
-  subproductVideos: [SubproductVideoDomain!]
-  subproducts: [SubproductDomain!]
-  updatedAt: DateTime
-  uploadSource: String
-}
-
-input UpdateVideoInput {
-  altText: String
-  createdAt: DateTime
-  customerVideoProducts: [CustomerVideoProductDomain!]
-  filename: String
-  id: Int!
   mime: String
   originalFilename: String
   path: String
@@ -47649,34 +44372,10 @@ input UpdateVisitorCoupon {
   visitorId: Float
 }
 
-input UpdateVisitorCouponInput {
-  code: String
-  createdAt: DateTime
-  id: Int!
-  invoices: [InvoiceDomain!]
-  isActive: Boolean
-  name: String
-  updatedAt: DateTime
-  visitor: VisitorDomain
-  visitorId: Float
-}
-
 input UpdateVisitorGroup {
   couponDiscountRate: Float
   createdAt: DateTime
   id: ID
-  invoices: [InvoiceDomain!]
-  name: String
-  updatedAt: DateTime
-  visitorGroupRates: [VisitorGroupRateDomain!]
-  visitorSales: [VisitorSaleDomain!]
-  visitors: [VisitorDomain!]
-}
-
-input UpdateVisitorGroupInput {
-  couponDiscountRate: Float
-  createdAt: DateTime
-  id: Int!
   invoices: [InvoiceDomain!]
   name: String
   updatedAt: DateTime
@@ -47696,60 +44395,10 @@ input UpdateVisitorGroupRate {
   visitorGroupId: Float
 }
 
-input UpdateVisitorGroupRateInput {
-  createdAt: DateTime
-  id: Int!
-  maxRevenue: Float
-  minRevenue: Float
-  rate: Float
-  updatedAt: DateTime
-  visitorGroup: VisitorGroupDomain
-  visitorGroupId: Float
-}
-
-input UpdateVisitorInput {
-  balance: Float
-  cardNumber: String
-  code: String
-  createdAt: DateTime
-  id: Int!
-  invoices: [InvoiceDomain!]
-  isActive: Boolean
-  isPartner: Boolean
-  partnerCode: String
-  paymentRequests: [PaymentRequestDomain!]
-  sortOrder: Float
-  title: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  visitorCoupons: [VisitorCouponDomain!]
-  visitorGroup: VisitorGroupDomain
-  visitorGroupId: Float
-  visitorSales: [VisitorSaleDomain!]
-}
-
 input UpdateVisitorSale {
   createdAt: DateTime
   endDate: DateTime
   id: ID
-  monthSh: Float
-  rate: Float
-  startDate: DateTime
-  totalSale: Float
-  totalShare: Float
-  updatedAt: DateTime
-  visitor: VisitorDomain
-  visitorGroup: VisitorGroupDomain
-  visitorGroupId: Float
-  visitorId: Float
-  yearSh: Float
-}
-
-input UpdateVisitorSaleInput {
-  createdAt: DateTime
-  endDate: DateTime
-  id: Int!
   monthSh: Float
   rate: Float
   startDate: DateTime
@@ -47791,19 +44440,6 @@ input UpdateWalletGiftCharge {
   walletId: Float
 }
 
-input UpdateWalletGiftChargeInput {
-  amount: String
-  createdAt: DateTime
-  id: Int!
-  productComment: ProductCommentDomain
-  productCommentId: Float
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  wallet: WalletDomain
-  walletId: Float
-}
-
 input UpdateWalletHistory {
   createdAt: DateTime
   createdBy: Float
@@ -47819,48 +44455,9 @@ input UpdateWalletHistory {
   withdrawable: String
 }
 
-input UpdateWalletHistoryInput {
-  createdAt: DateTime
-  createdBy: Float
-  createdBy2: UserDomain
-  id: Int!
-  modemaBlocked: String
-  transaction: TransactionDomain
-  transactionId: Float
-  updatedAt: DateTime
-  userBlocked: String
-  wallet: WalletDomain
-  walletId: Float
-  withdrawable: String
-}
-
-input UpdateWalletInput {
-  createdAt: DateTime
-  id: Int!
-  modemaBlocked: String
-  notUsableForLowTotalPrices: Boolean
-  retargetingWalletCharges: [RetargetingWalletChargeDomain!]
-  updatedAt: DateTime
-  user: UserDomain
-  userBlocked: String
-  userId: Float
-  walletGiftCharges: [WalletGiftChargeDomain!]
-  walletHistories: [WalletHistoryDomain!]
-  withdrawable: String
-}
-
 input UpdateWebsitePage {
   createdAt: DateTime
   id: ID
-  key: String
-  page: String
-  updatedAt: DateTime
-  value: String
-}
-
-input UpdateWebsitePageInput {
-  createdAt: DateTime
-  id: Int!
   key: String
   page: String
   updatedAt: DateTime
@@ -47874,18 +44471,6 @@ input UpdateWebsiteVisit {
   dateSh: String
   daySh: Float
   id: ID
-  monthSh: Float
-  updatedAt: DateTime
-  yearSh: Float
-}
-
-input UpdateWebsiteVisitInput {
-  createdAt: DateTime
-  dailyVisits: Float
-  dateM: String
-  dateSh: String
-  daySh: Float
-  id: Int!
   monthSh: Float
   updatedAt: DateTime
   yearSh: Float
@@ -47908,34 +44493,9 @@ input UpdateWithdrawalRequest {
   withdrawalRequestStatusId: Float
 }
 
-input UpdateWithdrawalRequestInput {
-  amount: String
-  cardNo: String
-  confirmedAt: DateTime
-  confirmedBy: Float
-  createdAt: DateTime
-  id: Int!
-  moneyTransferFromBank: String
-  moneyTransferRefCode: String
-  name: String
-  updatedAt: DateTime
-  user: UserDomain
-  userId: Float
-  withdrawalRequestStatus: WithdrawalRequestStatusDomain
-  withdrawalRequestStatusId: Float
-}
-
 input UpdateWithdrawalRequestStatus {
   createdAt: DateTime
   id: ID
-  status: String
-  updatedAt: DateTime
-  withdrawalRequests: [WithdrawalRequestDomain!]
-}
-
-input UpdateWithdrawalRequestStatusInput {
-  createdAt: DateTime
-  id: Int!
   status: String
   updatedAt: DateTime
   withdrawalRequests: [WithdrawalRequestDomain!]
@@ -47945,15 +44505,6 @@ input UpdateWonderfulOffer {
   createdAt: DateTime
   dayOfWeek: Float
   id: ID
-  product: ProductDomain
-  productId: Float
-  updatedAt: DateTime
-}
-
-input UpdateWonderfulOfferInput {
-  createdAt: DateTime
-  dayOfWeek: Float
-  id: Int!
   product: ProductDomain
   productId: Float
   updatedAt: DateTime
@@ -48596,6 +45147,65 @@ input UserFilter {
   id: IDFilterComparison
   name: StringFieldComparison
   or: [UserFilter!]
+}
+
+type UserHasRole {
+  roleId: Float!
+  userId: ID!
+}
+
+type UserHasRoleConnection {
+  """Array of edges."""
+  edges: [UserHasRoleEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input UserHasRoleDeleteFilter {
+  and: [UserHasRoleDeleteFilter!]
+  or: [UserHasRoleDeleteFilter!]
+  userId: IDFilterComparison
+}
+
+type UserHasRoleDeleteResponse {
+  roleId: Float
+  userId: ID
+}
+
+input UserHasRoleDomain {
+  roleId: Float!
+  userId: ID!
+}
+
+type UserHasRoleEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the UserHasRole"""
+  node: UserHasRole!
+}
+
+input UserHasRoleFilter {
+  and: [UserHasRoleFilter!]
+  or: [UserHasRoleFilter!]
+  userId: IDFilterComparison
+}
+
+input UserHasRoleSort {
+  direction: SortDirection!
+  field: UserHasRoleSortFields!
+  nulls: SortNulls
+}
+
+enum UserHasRoleSortFields {
+  userId
+}
+
+input UserHasRoleUpdateFilter {
+  and: [UserHasRoleUpdateFilter!]
+  or: [UserHasRoleUpdateFilter!]
+  userId: IDFilterComparison
 }
 
 input UserSort {
