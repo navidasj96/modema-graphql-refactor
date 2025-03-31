@@ -11,7 +11,4 @@ export class UserHasPermission {
 
   @Field()
   permissionId: number;
-
-  @Field(() => User)
-  user: User;
 }

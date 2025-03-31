@@ -11,7 +11,4 @@ export class UserHasRole {
 
   @Field()
   roleId: number;
-
-  @Field(() => User)
-  user: User;
 }

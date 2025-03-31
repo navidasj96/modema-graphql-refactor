@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-30T15:32:01.913Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.051Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-30T15:32:01.921Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.059Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-30T15:32:01.950Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.095Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-30T15:32:01.922Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.060Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-30T15:32:01.930Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.069Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-03-30T15:32:01.923Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.061Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-03-30T15:32:02.054Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.198Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-03-30T15:32:02.057Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.202Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-03-30T15:32:02.061Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.205Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-03-30T15:32:02.064Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.212Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-03-30T15:32:02.068Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.220Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-03-30T15:32:02.080Z"
+  createdAt: DateTime! = "2025-03-31T05:40:12.229Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -36291,7 +36291,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-03-30T15:32:01.913Z"
+  createdAt: DateTime = "2025-03-31T05:40:12.051Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36313,7 +36313,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-03-30T15:32:01.921Z"
+  createdAt: DateTime = "2025-03-31T05:40:12.059Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36328,7 +36328,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-03-30T15:32:01.950Z"
+  createdAt: DateTime = "2025-03-31T05:40:12.095Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36352,7 +36352,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-03-30T15:32:01.922Z"
+  createdAt: DateTime = "2025-03-31T05:40:12.060Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36369,7 +36369,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-03-30T15:32:01.930Z"
+  createdAt: DateTime = "2025-03-31T05:40:12.069Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36424,7 +36424,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-03-30T15:32:01.923Z"
+  createdAt: DateTime = "2025-03-31T05:40:12.061Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -44170,13 +44170,11 @@ input UpdateUserCart {
 
 input UpdateUserHasPermission {
   permissionId: Float
-  user: UserDomain
   userId: ID
 }
 
 input UpdateUserHasRole {
   roleId: Float
-  user: UserDomain
   userId: ID
 }
 
@@ -45267,13 +45265,11 @@ input UserHasPermissionDeleteFilter {
 
 type UserHasPermissionDeleteResponse {
   permissionId: Float
-  user: User
   userId: ID
 }
 
 input UserHasPermissionDomain {
   permissionId: Float!
-  user: UserDomain!
   userId: ID!
 }
 
@@ -45335,13 +45331,11 @@ input UserHasRoleDeleteFilter {
 
 type UserHasRoleDeleteResponse {
   roleId: Float
-  user: User
   userId: ID
 }
 
 input UserHasRoleDomain {
   roleId: Float!
-  user: UserDomain!
   userId: ID!
 }
 
