@@ -13,6 +13,7 @@ import { Auth } from '@/modules/auth/decorators/auth.decorators';
 import { AuthType } from '@/modules/auth/enums/app-type.enum';
 import { SignInDto } from '@/modules/auth/dtos/sigin.dto';
 import { RefreshTokenDto } from '@/modules/auth/dtos/refresh-token.dto';
+import { RuntimeException } from '@nestjs/core/errors/exceptions';
 
 @Controller('auth')
 export class AuthController {
@@ -25,23 +26,12 @@ export class AuthController {
     @Body() signInDto: SignInDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { refreshToken, accessToken } =
-      await this.authService.signIn(signInDto);
-    // const token = this.authService.getTokenForUser(user);
-    res.cookie('access_token', accessToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
-      maxAge: 8000 * 60 * 60, // 8 hour
-    });
-    res.cookie('refresh_token', refreshToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
-      maxAge: 8000 * 60 * 60, // 8 hour
-    });
-
-    return true;
+    try {
+      const { username, id } = await this.authService.signIn(signInDto, res);
+      return { username, id };
+    } catch {
+      throw new RuntimeException('Error signing in');
+    }
   }
 
   @Auth(AuthType.None)
@@ -53,23 +43,19 @@ export class AuthController {
     @Req() request: Request,
   ) {
     const refreshTokenFromReq = request.cookies.refresh_token;
-    const { refreshToken, accessToken } = await this.authService.refreshTokens({
-      refreshToken: refreshTokenFromReq,
-    });
-    res.cookie('access_token', accessToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
-      maxAge: 8000 * 60 * 60, // 8 hour
-    });
-    res.cookie('refresh_token', refreshToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
-      maxAge: 8000 * 60 * 60, // 8 hour
-    });
 
-    return true;
+    try {
+      await this.authService.refreshTokens(
+        {
+          refreshToken: refreshTokenFromReq,
+        },
+        res,
+      );
+    } catch {
+      throw new RuntimeException('Error signing in');
+    }
+
+    return { message: 'tokens generated successfully' };
   }
 
   @Auth(AuthType.None)

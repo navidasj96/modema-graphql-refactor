@@ -1,8 +1,9 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { IDField, UnPagedRelation } from '@ptc-org/nestjs-query-graphql';
 import { Permission } from '@/modules/permission/domain/permission';
 
 @InputType('PermissionGroupDomain')
+@UnPagedRelation('permissions', () => Permission)
 @ObjectType()
 export class PermissionGroup {
   @IDField(() => ID)

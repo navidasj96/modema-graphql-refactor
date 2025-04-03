@@ -5,6 +5,7 @@ import { SignInProvider } from '@/modules/auth/providers/sign-in.provider';
 import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.provider';
 import { SignInDto } from '@/modules/auth/dtos/sigin.dto';
 import { RefreshTokenDto } from '@/modules/auth/dtos/refresh-token.dto';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -24,14 +25,14 @@ export class AuthService {
     private readonly signInInOtpGenerator: SignInOtpGeneratorService,
   ) {}
 
-  public async signIn(singInDto: SignInDto) {
+  public async signIn(singInDto: SignInDto, res: Response) {
     //find the user using email ID
     //throw exception user not found
-    return await this.signInProvider.signIn(singInDto);
+    return await this.signInProvider.signIn(singInDto, res);
   }
 
-  public async refreshTokens(refreshTokenDto: RefreshTokenDto) {
-    return await this.refreshTokensProvider.refreshTokens(refreshTokenDto);
+  public async refreshTokens(refreshTokenDto: RefreshTokenDto, res: Response) {
+    return await this.refreshTokensProvider.refreshTokens(refreshTokenDto, res);
   }
 
   public async signInOtp(username: string) {

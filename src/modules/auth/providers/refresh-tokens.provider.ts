@@ -6,6 +6,8 @@ import { GenerateTokenProvider } from './generate-token.provider';
 import { ActiveUserData } from '../interfaces/active-user-data.interface';
 import { UserService } from '@/modules/user/user.service';
 import { RefreshTokenDto } from '@/modules/auth/dtos/refresh-token.dto';
+import { Response } from 'express';
+import { TokensName } from '@/modules/auth/enums/tokens-name.enum';
 
 @Injectable()
 export class RefreshTokensProvider {
@@ -30,7 +32,7 @@ export class RefreshTokensProvider {
     private readonly userService: UserService,
   ) {}
 
-  public async refreshTokens(refreshTokenDto: RefreshTokenDto) {
+  public async refreshTokens(refreshTokenDto: RefreshTokenDto, res: Response) {
     try {
       //verify the refresh token using jwtService
       const { sub } = await this.jwtService.verifyAsync<
@@ -44,7 +46,21 @@ export class RefreshTokensProvider {
       const user = await this.userService.findOneById(sub);
 
       //generate the tokens
-      return await this.generateTokenProvider.generateTokens(user);
+      const { refreshToken, accessToken } =
+        await this.generateTokenProvider.generateTokens(user);
+      res.cookie(TokensName.access_token, accessToken, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
+        maxAge: 8000 * 60 * 60, // 8 hour
+      });
+      res.cookie(TokensName.refresh_token, refreshToken, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
+        maxAge: 8000 * 60 * 60, // 8 hour
+      });
+      return { accessToken, refreshToken };
     } catch (err) {
       throw new UnauthorizedException(err);
     }
