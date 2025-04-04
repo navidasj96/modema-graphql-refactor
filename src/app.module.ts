@@ -318,7 +318,7 @@ const ENV = process.env.NODE_ENV;
 
         return {
           req,
-          token, // You can now access token in resolver/guard context
+          token,
         };
       },
 

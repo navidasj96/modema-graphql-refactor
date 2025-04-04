@@ -1,10 +1,19 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+  UnPagedRelation,
+} from '@ptc-org/nestjs-query-graphql';
 import { ModelHasPermission } from '@/modules/model-has-permission/domain/model-has-permission';
 import { PermissionGroup } from '@/modules/permission-group/domain/permission-group';
 import { Role } from '@/modules/role/domain/role';
 
 @InputType('PermissionDomain')
+@UnPagedRelation('parent', () => Permission)
+@UnPagedRelation('roles', () => Role)
+@QueryOptions({ pagingStrategy: PagingStrategies.NONE })
 @ObjectType()
 export class Permission {
   @IDField(() => ID)
@@ -16,10 +25,10 @@ export class Permission {
   @Field()
   guardName: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   permissionGroupId?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   parentId?: number;
 
   @Field({ nullable: true })

@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-03T10:03:26.113Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.547Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-03T10:03:26.124Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.556Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-03T10:03:26.163Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.588Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-03T10:03:26.125Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.556Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-03T10:03:26.137Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.566Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-03T10:03:26.125Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.557Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-03T10:03:26.347Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.696Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-03T10:03:26.353Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.699Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-03T10:03:26.358Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.703Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-03T10:03:26.364Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.707Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-03T10:03:26.371Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.714Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-03T10:03:26.398Z"
+  createdAt: DateTime! = "2025-04-04T10:03:07.722Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -23361,6 +23361,26 @@ input NewBorderUpdateFilter {
   or: [NewBorderUpdateFilter!]
 }
 
+input NumberFieldComparison {
+  between: NumberFieldComparisonBetween
+  eq: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  is: Boolean
+  isNot: Boolean
+  lt: Float
+  lte: Float
+  neq: Float
+  notBetween: NumberFieldComparisonBetween
+  notIn: [Float!]
+}
+
+input NumberFieldComparisonBetween {
+  lower: Float!
+  upper: Float!
+}
+
 type OauthAccessToken {
   clientId: Float!
   createdAt: DateTime
@@ -24481,27 +24501,33 @@ type Permission {
   id: ID!
   modelHasPermissions: [ModelHasPermission!]!
   name: String!
-  parent: Permission
+  parent(
+    """Specify to filter the records returned."""
+    filter: PermissionFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [PermissionSort!]! = []
+  ): [Permission!]!
   parentId: Float
   permissionGroup: PermissionGroup
   permissionGroupId: Float
   permissions: [Permission!]!
-  roles: [RoleDomain!]!
+  roles(
+    """Specify to filter the records returned."""
+    filter: RoleDomainFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [RoleDomainSort!]! = []
+  ): [RoleDomain!]!
   updatedAt: DateTime
-}
-
-type PermissionConnection {
-  """Array of edges."""
-  edges: [PermissionEdge!]!
-
-  """Paging information"""
-  pageInfo: PageInfo!
 }
 
 input PermissionDeleteFilter {
   and: [PermissionDeleteFilter!]
   id: IDFilterComparison
   or: [PermissionDeleteFilter!]
+  parentId: NumberFieldComparison
+  permissionGroupId: NumberFieldComparison
 }
 
 type PermissionDeleteResponse {
@@ -24534,18 +24560,12 @@ input PermissionDomain {
   updatedAt: DateTime
 }
 
-type PermissionEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the Permission"""
-  node: Permission!
-}
-
 input PermissionFilter {
   and: [PermissionFilter!]
   id: IDFilterComparison
   or: [PermissionFilter!]
+  parentId: NumberFieldComparison
+  permissionGroupId: NumberFieldComparison
 }
 
 type PermissionGroup {
@@ -24630,12 +24650,16 @@ input PermissionSort {
 
 enum PermissionSortFields {
   id
+  parentId
+  permissionGroupId
 }
 
 input PermissionUpdateFilter {
   and: [PermissionUpdateFilter!]
   id: IDFilterComparison
   or: [PermissionUpdateFilter!]
+  parentId: NumberFieldComparison
+  permissionGroupId: NumberFieldComparison
 }
 
 type Preorder {
@@ -29532,12 +29556,9 @@ type Query {
     """Specify to filter the records returned."""
     filter: PermissionFilter! = {}
 
-    """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
-
     """Specify to sort results."""
     sorting: [PermissionSort!]! = []
-  ): PermissionConnection!
+  ): [Permission!]!
   preorder(
     """The id of the record to find."""
     id: ID!
@@ -36297,7 +36318,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-03T10:03:26.113Z"
+  createdAt: DateTime = "2025-04-04T10:03:07.547Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36319,7 +36340,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-03T10:03:26.124Z"
+  createdAt: DateTime = "2025-04-04T10:03:07.556Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36334,7 +36355,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-03T10:03:26.163Z"
+  createdAt: DateTime = "2025-04-04T10:03:07.588Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36358,7 +36379,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-03T10:03:26.125Z"
+  createdAt: DateTime = "2025-04-04T10:03:07.556Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36375,7 +36396,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-03T10:03:26.137Z"
+  createdAt: DateTime = "2025-04-04T10:03:07.566Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36430,7 +36451,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-03T10:03:26.125Z"
+  createdAt: DateTime = "2025-04-04T10:03:07.557Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
