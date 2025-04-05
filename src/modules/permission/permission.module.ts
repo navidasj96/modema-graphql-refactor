@@ -21,5 +21,6 @@ import { CreatePermissionInput } from '@/modules/permission/dto/create-permissio
       ],
     }),
   ],
+  exports: [PermissionService],
 })
 export class PermissionModule {}

@@ -23,6 +23,10 @@ export class AuthService {
      * inject signInInOtpGenerator
      */
     private readonly signInInOtpGenerator: SignInOtpGeneratorService,
+    /**
+     * inject userService
+     */
+    private readonly userService: UserService,
   ) {}
 
   public async signIn(singInDto: SignInDto, res: Response) {
@@ -37,5 +41,9 @@ export class AuthService {
 
   public async signInOtp(username: string) {
     return await this.signInInOtpGenerator.otpGeneratorAndSetter(username);
+  }
+
+  public async getUserPermissions(userId: number) {
+    return this.userService.findRolesAndPermissionsById(userId);
   }
 }

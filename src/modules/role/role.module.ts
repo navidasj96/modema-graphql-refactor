@@ -23,5 +23,6 @@ import { CreateRoleInput } from '@/modules/role/dto/create-role.input';
       ],
     }),
   ],
+  exports: [RoleService],
 })
 export class RoleModule {}

@@ -8,6 +8,7 @@ import { ModelHasRole } from '@/modules/model-has-role/domain/model-has-role';
 import { Permission } from '@/modules/permission/domain/permission';
 
 @InputType('RoleDomainInput')
+// @Authorize(PermissionsAuthorizer(['123']))
 @ObjectType('RoleDomain')
 @UnPagedRelation('modelHasRoles', () => ModelHasRole)
 @UnPagedRelation('permissions', () => Permission)

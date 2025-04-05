@@ -13,6 +13,7 @@ import { UserModule } from '@/modules/user/user.module';
 import { SignInProvider } from '@/modules/auth/providers/sign-in.provider';
 import { GenerateTokenProvider } from '@/modules/auth/providers/generate-token.provider';
 import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.provider';
+import { PermissionHelperService } from '@/modules/auth/providers/permission-helper-service';
 
 @Module({
   imports: [
@@ -31,7 +32,9 @@ import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.p
     SignInProvider,
     GenerateTokenProvider,
     RefreshTokensProvider,
+    PermissionHelperService,
   ],
+  exports: [AuthService],
   controllers: [AuthController],
 })
 export class AuthModule {}

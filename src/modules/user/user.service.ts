@@ -12,6 +12,8 @@ import { ActivityService } from '@/modules/activity/activity.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '@/modules/user/entities/user.entity';
 import { Repository } from 'typeorm';
+import { PermissionService } from '@/modules/permission/permission.service';
+import { RoleService } from '@/modules/role/role.service';
 
 @Injectable()
 export class UserService {
@@ -23,6 +25,14 @@ export class UserService {
      */
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    /**
+     * inject permissionService
+     */
+    private readonly permissionService: PermissionService,
+    /**
+     * inject roleService
+     */
+    private readonly roleService: RoleService,
   ) {}
 
   create(createUserInput: CreateUserInput) {
@@ -100,5 +110,30 @@ export class UserService {
       throw new BadRequestException('User does not exist');
     }
     return user;
+  }
+
+  async findRolesAndPermissionsById(userId: number) {
+    const permissions = await this.permissionService.findAllBasic();
+    const roles = await this.roleService.findAllWithPermissions();
+
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+      relations: ['userHasPermission', 'userHasRole'],
+      select: {
+        id: true,
+        userHasPermission: {
+          permissionId: true,
+        },
+        userHasRole: {
+          roleId: true,
+        },
+      },
+    });
+    if (!user) {
+      throw new BadRequestException('User does not exist');
+    }
+    console.log('user', user);
+
+    return { permissions, roles };
   }
 }
