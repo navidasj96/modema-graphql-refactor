@@ -1,14 +1,16 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  Authorize,
   FilterableField,
   IDField,
   UnPagedRelation,
 } from '@ptc-org/nestjs-query-graphql';
 import { ModelHasRole } from '@/modules/model-has-role/domain/model-has-role';
 import { Permission } from '@/modules/permission/domain/permission';
+import { PermissionsAuthorizer } from '@/utils/permission.authorizer';
 
 @InputType('RoleDomainInput')
-// @Authorize(PermissionsAuthorizer(['123']))
+@Authorize(PermissionsAuthorizer(['123']))
 @ObjectType('RoleDomain')
 @UnPagedRelation('modelHasRoles', () => ModelHasRole)
 @UnPagedRelation('permissions', () => Permission)

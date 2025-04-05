@@ -113,8 +113,9 @@ export class UserService {
   }
 
   async findRolesAndPermissionsById(userId: number) {
-    const permissions = await this.permissionService.findAllBasic();
-    const roles = await this.roleService.findAllWithPermissions();
+    //total permissions and roles available in database
+    const totalPermissions = await this.permissionService.findAllBasic();
+    const totalRoles = await this.roleService.findAllWithPermissions();
 
     const user = await this.userRepository.findOne({
       where: { id: userId },
@@ -132,8 +133,28 @@ export class UserService {
     if (!user) {
       throw new BadRequestException('User does not exist');
     }
-    console.log('user', user);
 
-    return { permissions, roles };
+    //roles and permissions of the user
+    const userPermission = user.userHasPermission;
+    const userRoles = user.userHasRole;
+
+    //extract name of every permissions of the roles assigned to the user
+    const rolePermissionsNameArray = userRoles.map((userRole) => {
+      const rolePermissions = totalRoles.find(
+        (role) => role.id === userRole.roleId,
+      );
+      return rolePermissions?.permissions.map((role) => role.name);
+    });
+
+    //extract permissions assign to the user
+    const permissionsNameArray = userPermission.map((perm) => {
+      return totalPermissions.find((totalPerm) => {
+        return totalPerm.id === perm.permissionId;
+      })?.name;
+    });
+
+    return [
+      ...new Set([...rolePermissionsNameArray.flat(), ...permissionsNameArray]),
+    ];
   }
 }
