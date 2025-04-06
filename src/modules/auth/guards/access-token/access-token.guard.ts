@@ -52,9 +52,10 @@ export class AccessTokenGuard implements CanActivate {
 
       // add the payload to Request body to be able to grab the user in any controller by this
       request[REQUEST_USER_KEY] = payload;
-      const permisions = await this.authService.getUserPermissions(payload.sub);
-      // console.log('permisions', permisions);
-      request[REQUEST_USER_KEY].permissions = permisions;
+
+      //add users permissions to the request
+      request[REQUEST_USER_KEY].permissions =
+        await this.authService.getUserPermissions(payload.sub);
 
       // console.log('request', request.user.sub);
     } catch (error) {
