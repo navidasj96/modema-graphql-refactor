@@ -269,8 +269,6 @@ import { RoleHasPermissionModule } from '@/modules/role-has-permission/role-has-
 import { UserHasRoleModule } from './modules/user-has-role/user-has-role.module';
 import { UserHasPermissionModule } from '@/modules/user-has-permission/user-has-role.module';
 import { AuthModule } from '@/modules/auth/auth.module';
-import { APP_GUARD } from '@nestjs/core';
-import { AuthenticationGuard } from '@/modules/auth/guards/authentication/authentication.gurad';
 import { AccessTokenGuard } from '@/modules/auth/guards/access-token/access-token.guard';
 import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from '@/modules/auth/config/jwt.config';
@@ -598,10 +596,10 @@ const ENV = process.env.NODE_ENV;
   controllers: [AppController],
   providers: [
     AppService,
-    {
-      provide: APP_GUARD,
-      useClass: AuthenticationGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthenticationGuard,
+    // },
     AccessTokenGuard,
   ],
 })

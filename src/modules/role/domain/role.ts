@@ -8,9 +8,10 @@ import {
 import { ModelHasRole } from '@/modules/model-has-role/domain/model-has-role';
 import { Permission } from '@/modules/permission/domain/permission';
 import { PermissionsAuthorizer } from '@/utils/permission.authorizer';
+import { RolePermissions } from '@/utils/permissions';
 
 @InputType('RoleDomainInput')
-@Authorize(PermissionsAuthorizer(['123']))
+@Authorize(PermissionsAuthorizer([RolePermissions.PERMISSION_TO_VIEW]))
 @ObjectType('RoleDomain')
 @UnPagedRelation('modelHasRoles', () => ModelHasRole)
 @UnPagedRelation('permissions', () => Permission)
