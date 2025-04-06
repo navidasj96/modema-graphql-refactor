@@ -113,23 +113,26 @@ export class UserService {
   }
 
   async findRolesAndPermissionsById(userId: number) {
-    //total permissions and roles available in database
-    const totalPermissions = await this.permissionService.findAllBasic();
-    const totalRoles = await this.roleService.findAllWithPermissions();
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.userHasPermission', 'userHasPermission')
+      .leftJoinAndSelect('userHasPermission.permission', 'permission')
+      .leftJoinAndSelect('user.userHasRole', 'userHasRole')
+      .leftJoinAndSelect('userHasRole.role', 'role')
+      .leftJoinAndSelect('role.roleHasPermission', 'roleHasPermission')
+      .leftJoinAndSelect('roleHasPermission.permission', 'rolePermission')
+      .where('user.id = :id', { id: userId })
+      .select([
+        'user.id',
+        'userHasPermission.permissionId',
+        'permission.name',
+        'userHasRole.roleId',
+        'role.id',
+        'roleHasPermission.permissionId',
+        'rolePermission.name',
+      ])
+      .getOne();
 
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      relations: ['userHasPermission', 'userHasRole'],
-      select: {
-        id: true,
-        userHasPermission: {
-          permissionId: true,
-        },
-        userHasRole: {
-          roleId: true,
-        },
-      },
-    });
     if (!user) {
       throw new BadRequestException('User does not exist');
     }
@@ -138,21 +141,26 @@ export class UserService {
     const userPermission = user.userHasPermission;
     const userRoles = user.userHasRole;
 
+    // console.log(
+    //   'userRoles',
+    //   userRoles.map((roles) =>
+    //     roles.role.roleHasPermission.map((roles2) => roles2.permission.name),
+    //   ),
+    // );
     //extract name of every permissions of the roles assigned to the user
     const rolePermissionsNameArray = userRoles.map((userRole) => {
-      const rolePermissions = totalRoles.find(
-        (role) => role.id === userRole.roleId,
+      return userRole.role.roleHasPermission.map(
+        (perm) => perm.permission.name,
       );
-      return rolePermissions?.permissions.map((role) => role.name);
     });
 
     //extract permissions assign to the user
-    const permissionsNameArray = userPermission.map((perm) => {
-      return totalPermissions.find((totalPerm) => {
-        return totalPerm.id === perm.permissionId;
-      })?.name;
-    });
+    const permissionsNameArray = userPermission.map(
+      (perm) => perm.permission.name,
+    );
 
+    // console.log('rolePermissionsNameArray', rolePermissionsNameArray.flat());
+    // console.log('permissionsNameArray', permissionsNameArray);
     return [
       ...new Set([...rolePermissionsNameArray.flat(), ...permissionsNameArray]),
     ];
