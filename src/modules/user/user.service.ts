@@ -141,12 +141,6 @@ export class UserService {
     const userPermission = user.userHasPermission;
     const userRoles = user.userHasRole;
 
-    // console.log(
-    //   'userRoles',
-    //   userRoles.map((roles) =>
-    //     roles.role.roleHasPermission.map((roles2) => roles2.permission.name),
-    //   ),
-    // );
     //extract name of every permissions of the roles assigned to the user
     const rolePermissionsNameArray = userRoles.map((userRole) => {
       return userRole.role.roleHasPermission.map(
@@ -159,8 +153,6 @@ export class UserService {
       (perm) => perm.permission.name,
     );
 
-    // console.log('rolePermissionsNameArray', rolePermissionsNameArray.flat());
-    // console.log('permissionsNameArray', permissionsNameArray);
     return [
       ...new Set([...rolePermissionsNameArray.flat(), ...permissionsNameArray]),
     ];

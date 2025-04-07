@@ -13,6 +13,7 @@ import { Role } from '@/modules/role/domain/role';
 @InputType('PermissionDomain')
 @UnPagedRelation('parent', () => Permission)
 @UnPagedRelation('roles', () => Role)
+@UnPagedRelation('Permissions', () => Permission)
 @QueryOptions({ pagingStrategy: PagingStrategies.NONE })
 @ObjectType()
 export class Permission {
