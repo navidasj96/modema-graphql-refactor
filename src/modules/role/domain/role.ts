@@ -17,6 +17,7 @@ import { RolePermissions } from '@/utils/permissions';
 @UnPagedRelation('permissions', () => Permission)
 export class Role {
   @IDField(() => ID)
+  @FilterableField()
   id: number;
 
   @FilterableField()
