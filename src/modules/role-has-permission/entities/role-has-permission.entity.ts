@@ -1,23 +1,17 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { Role } from '@/modules/role/entities/role.entity';
 import { Permission } from '@/modules/permission/entities/permission.entity';
 
 @Entity('role_has_permissions', { schema: 'modema' })
 export class RoleHasPermission {
-  @PrimaryGeneratedColumn({
+  @PrimaryColumn({
     type: 'int',
     name: 'permission_id',
     unsigned: true,
   })
   permissionId: number;
 
-  @Column('int', { name: 'role_id' })
+  @PrimaryColumn('int', { name: 'role_id' })
   roleId: string;
 
   @ManyToOne(() => Role, (role) => role.roleHasPermission, {

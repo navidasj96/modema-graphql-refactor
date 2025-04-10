@@ -105,7 +105,7 @@ export class User {
   @Field()
   family: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   phone?: string;
 
   @Field({ nullable: true })
@@ -129,7 +129,7 @@ export class User {
   @Field()
   status: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   username?: string;
 
   @Field({ nullable: true })

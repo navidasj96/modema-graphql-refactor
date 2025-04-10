@@ -1,6 +1,4 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { ModelHasRole } from '@/modules/model-has-role/domain/model-has-role';
-import { Permission } from '@/modules/permission/domain/permission';
 
 @InputType('CreateRoleInput')
 export class CreateRoleInput {
@@ -18,10 +16,4 @@ export class CreateRoleInput {
 
   @Field({ nullable: true })
   updatedAt?: Date;
-
-  @Field(() => [ModelHasRole])
-  modelHasRoles: ModelHasRole[];
-
-  @Field(() => [Permission])
-  permissions: Permission[];
 }
