@@ -9,10 +9,13 @@ import { CreateUserInput } from './dto/create-user.input';
 import { ActivityModule } from '@/modules/activity/activity.module';
 import { RoleModule } from '@/modules/role/role.module';
 import { PermissionModule } from '@/modules/permission/permission.module';
+import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { UserController } from '@/modules/user/user.controller';
 
 @Module({
-  providers: [UserResolver, UserService],
-  exports: [UserService],
+  providers: [UserResolver, UserService, CreateUserProvider],
+  exports: [UserService, CreateUserProvider],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([User])],
@@ -27,6 +30,8 @@ import { PermissionModule } from '@/modules/permission/permission.module';
     forwardRef(() => ActivityModule),
     RoleModule,
     PermissionModule,
+    forwardRef(() => AuthModule),
   ],
+  controllers: [UserController],
 })
 export class UserModule {}

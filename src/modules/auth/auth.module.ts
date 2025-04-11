@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@/modules/user/entities/user.entity';
 import { AuthController } from '@/modules/auth/auth.controller';
@@ -19,7 +19,7 @@ import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.p
     TypeOrmModule.forFeature([User]),
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
-    UserModule,
+    forwardRef(() => UserModule),
   ],
   providers: [
     AuthService,
@@ -32,7 +32,7 @@ import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.p
     GenerateTokenProvider,
     RefreshTokensProvider,
   ],
-  exports: [AuthService],
+  exports: [AuthService, HashingProvider],
   controllers: [AuthController],
 })
 export class AuthModule {}

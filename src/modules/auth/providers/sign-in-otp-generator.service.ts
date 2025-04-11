@@ -1,4 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { HashingProvider } from '@/modules/auth/providers/hashing.provider';
 import { UserService } from '@/modules/user/user.service';
 
@@ -8,6 +13,7 @@ export class SignInOtpGeneratorService {
     /**
      * inject userService
      */
+    @Inject(forwardRef(() => UserService))
     private readonly userService: UserService,
     /**
      * inject hashingProvider

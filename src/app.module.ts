@@ -275,6 +275,7 @@ import jwtConfig from '@/modules/auth/config/jwt.config';
 import { GraphQLError } from 'graphql/error';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthenticationGuard } from '@/modules/auth/guards/authentication/authentication.gurad';
+import { UserController } from '@/modules/user/user.controller';
 
 const ENV = process.env.NODE_ENV;
 
@@ -595,7 +596,7 @@ const ENV = process.env.NODE_ENV;
     JwtModule.registerAsync(jwtConfig.asProvider()),
     ConfigModuleNest.forFeature(jwtConfig),
   ],
-  controllers: [AppController],
+  controllers: [AppController, UserController],
   providers: [
     AppService,
     {

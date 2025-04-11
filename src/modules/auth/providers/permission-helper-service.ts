@@ -1,10 +1,13 @@
 // src/modules/auth/services/permission-helper.service.ts
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { UserService } from '@/modules/user/user.service';
 
 @Injectable()
 export class PermissionHelperService {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    @Inject(forwardRef(() => UserService))
+    private readonly userService: UserService,
+  ) {}
 
   async userHasPermissions(
     userId: number,

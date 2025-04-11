@@ -1,4 +1,9 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import jwtConfig from '../config/jwt.config';
 import { ConfigType } from '@nestjs/config';
@@ -28,7 +33,7 @@ export class RefreshTokensProvider {
     /**
      * Inject userService
      */
-
+    @Inject(forwardRef(() => UserService))
     private readonly userService: UserService,
   ) {}
 
