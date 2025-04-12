@@ -12,10 +12,16 @@ import { PermissionModule } from '@/modules/permission/permission.module';
 import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { UserController } from '@/modules/user/user.controller';
+import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
 
 @Module({
-  providers: [UserResolver, UserService, CreateUserProvider],
-  exports: [UserService, CreateUserProvider],
+  providers: [
+    UserResolver,
+    UserService,
+    CreateUserProvider,
+    UpdateUserProvider,
+  ],
+  exports: [UserService, CreateUserProvider, UpdateUserProvider],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([User])],

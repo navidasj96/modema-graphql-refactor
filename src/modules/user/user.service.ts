@@ -14,6 +14,10 @@ import { User } from '@/modules/user/entities/user.entity';
 import { Repository } from 'typeorm';
 import { PermissionService } from '@/modules/permission/permission.service';
 import { RoleService } from '@/modules/role/role.service';
+import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
+import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
+import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
+import { UpdateUserDto } from '@/modules/user/dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -33,6 +37,14 @@ export class UserService {
      * inject roleService
      */
     private readonly roleService: RoleService,
+    /**
+     * inject createUserProvider
+     */
+    private readonly createUserProvider: CreateUserProvider,
+    /**
+     * inject updateUserProvider
+     */
+    private readonly updateUserProvider: UpdateUserProvider,
   ) {}
 
   create(createUserInput: CreateUserInput) {
@@ -156,5 +168,13 @@ export class UserService {
     return [
       ...new Set([...rolePermissionsNameArray.flat(), ...permissionsNameArray]),
     ];
+  }
+
+  async createUser(createUserDto: CreateUserDto) {
+    return await this.createUserProvider.createUser(createUserDto);
+  }
+
+  async updateUser(updateUserDto: UpdateUserDto, id: number) {
+    return await this.updateUserProvider.updateUser(updateUserDto, id);
   }
 }

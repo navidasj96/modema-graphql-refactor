@@ -1,18 +1,34 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
+import {
+  Body,
+  Controller,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
+import { UpdateUserDto } from '@/modules/user/dto/update-user.dto';
+import { UserService } from '@/modules/user/user.service';
 
 @Controller('user')
 export class UserController {
   constructor(
     /**
-     * inject createUserProvider
+     * Inject userService
      */
-    private readonly createUserProvider: CreateUserProvider,
+    private readonly userService: UserService,
   ) {}
 
   @Post('create')
   public async CreateUser(@Body() createUserDto: CreateUserDto) {
-    return await this.createUserProvider.createUser(createUserDto);
+    return await this.userService.createUser(createUserDto);
+  }
+
+  @Patch(':id')
+  public async UpdateUser(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return await this.userService.updateUser(updateUserDto, id);
   }
 }
