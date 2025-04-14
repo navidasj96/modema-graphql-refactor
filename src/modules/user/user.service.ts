@@ -17,7 +17,6 @@ import { RoleService } from '@/modules/role/role.service';
 import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
 import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
 import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
-import { UpdateUserDto } from '@/modules/user/dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -174,7 +173,7 @@ export class UserService {
     return await this.createUserProvider.createUser(createUserDto);
   }
 
-  async updateUser(updateUserDto: UpdateUserDto, id: number) {
-    return await this.updateUserProvider.updateUser(updateUserDto, id);
+  async updateUser(updateUserInput: UpdateUserInput, id: number) {
+    return await this.updateUserProvider.updateUser(updateUserInput, id);
   }
 }

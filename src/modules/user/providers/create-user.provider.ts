@@ -29,17 +29,20 @@ export class CreateUserProvider {
     //check if user already exists
     let user: User | null = null;
     try {
-      const user = await this.userRepository.findOne({
-        where: [
-          ...(createUserDto.email ? [{ email: createUserDto.email }] : []),
-          ...(createUserDto.username
-            ? [{ username: createUserDto.username }]
-            : []),
-        ],
-      });
+      const { email, username } = createUserDto;
+
+      user =
+        email || username
+          ? await this.userRepository.findOne({
+              where: {
+                ...(email && { email }),
+                ...(username && { username }),
+              },
+            })
+          : null;
     } catch {
       throw new RequestTimeoutException(
-        'unable to process your request at the moment',
+        'Unable to process your request at the moment',
         {
           description: 'Error connecting to the database',
         },
@@ -64,8 +67,7 @@ export class CreateUserProvider {
 
     try {
       newUser = await this.userRepository.save(newUser);
-    } catch (error) {
-      console.log('error', error);
+    } catch {
       throw new RequestTimeoutException(
         'unable to process your request at the moment',
         {
@@ -74,6 +76,6 @@ export class CreateUserProvider {
       );
     }
 
-    return { id: newUser.id, name: newUser.name, username: newUser.username };
+    return { id: newUser.id, name: newUser.name };
   }
 }

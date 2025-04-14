@@ -4,11 +4,11 @@ import {
   Injectable,
   RequestTimeoutException,
 } from '@nestjs/common';
-import { UpdateUserDto } from '@/modules/user/dto/update-user.dto';
 import { User } from '@/modules/user/entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { HashingProvider } from '@/modules/auth/providers/hashing.provider';
+import { UpdateUserInput } from '@/modules/user/dto/update-user.input';
 
 @Injectable()
 export class UpdateUserProvider {
@@ -25,11 +25,10 @@ export class UpdateUserProvider {
     private readonly hashingProvider: HashingProvider,
   ) {}
 
-  public async updateUser(updateUserDto: UpdateUserDto, id: number) {
+  public async updateUser(updateUserInput: UpdateUserInput, id: number) {
     let user: User | null = null;
 
     //check if user exists
-
     try {
       user = await this.userRepository.findOne({
         where: { id: id },
@@ -50,31 +49,34 @@ export class UpdateUserProvider {
     }
 
     try {
-      if (updateUserDto.password) {
-      }
       await this.userRepository.update(user.id, {
-        name: updateUserDto.name,
-        ...(updateUserDto.email && { email: updateUserDto.email }),
-        ...(updateUserDto.username && { username: updateUserDto.username }),
-        ...(updateUserDto.phone && { phone: updateUserDto.phone }),
-        ...(updateUserDto.isActive && { isActive: updateUserDto.isActive }),
-        ...(updateUserDto.isGuest && { isGuest: updateUserDto.isGuest }),
-        ...(updateUserDto.sepidarCode && {
-          sepidarCode: updateUserDto.sepidarCode,
+        ...(updateUserInput.name && { name: updateUserInput.name }),
+        ...(updateUserInput.email && { email: updateUserInput.email }),
+        ...(updateUserInput.username && { username: updateUserInput.username }),
+        ...(updateUserInput.phone && { phone: updateUserInput.phone }),
+        ...(updateUserInput.isActive && { isActive: updateUserInput.isActive }),
+        ...(updateUserInput.isGuest && { isGuest: updateUserInput.isGuest }),
+        ...(updateUserInput.sepidarCode && {
+          sepidarCode: updateUserInput.sepidarCode,
         }),
-        ...(updateUserDto.sepidarId && { sepidarId: updateUserDto.sepidarId }),
-        ...(updateUserDto.phoneVerified && {
-          phoneVerified: updateUserDto.phoneVerified,
+        ...(updateUserInput.sepidarId && {
+          sepidarId: updateUserInput.sepidarId,
         }),
-        ...(updateUserDto.password && {
+        ...(updateUserInput.phoneVerified && {
+          phoneVerified: updateUserInput.phoneVerified,
+        }),
+        ...(updateUserInput.password && {
           password: await this.hashingProvider.hashPassword(
-            updateUserDto.password,
+            updateUserInput.password,
           ),
+        }),
+        ...(updateUserInput.isPreorderApplicant && {
+          isPreorderApplicant: updateUserInput.isPreorderApplicant,
         }),
       });
     } catch (err) {
       throw new RequestTimeoutException(err);
     }
-    return { message: 'user updated successfully' };
+    return { id: user.id, name: user.name };
   }
 }

@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-12T10:55:52.602Z"
+  createdAt: DateTime! = "2025-04-14T05:13:15.621Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-12T10:55:52.620Z"
+  createdAt: DateTime! = "2025-04-14T05:13:15.657Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-12T10:55:52.703Z"
+  createdAt: DateTime! = "2025-04-14T05:13:15.717Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-12T10:55:52.621Z"
+  createdAt: DateTime! = "2025-04-14T05:13:15.658Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-12T10:55:52.640Z"
+  createdAt: DateTime! = "2025-04-14T05:13:15.677Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-12T10:55:52.622Z"
+  createdAt: DateTime! = "2025-04-14T05:13:15.660Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-12T10:55:53.137Z"
+  createdAt: DateTime! = "2025-04-14T05:13:16.135Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-12T10:55:53.147Z"
+  createdAt: DateTime! = "2025-04-14T05:13:16.148Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-12T10:55:53.157Z"
+  createdAt: DateTime! = "2025-04-14T05:13:16.159Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-12T10:55:53.173Z"
+  createdAt: DateTime! = "2025-04-14T05:13:16.169Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-12T10:55:53.183Z"
+  createdAt: DateTime! = "2025-04-14T05:13:16.178Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-12T10:55:53.206Z"
+  createdAt: DateTime! = "2025-04-14T05:13:16.203Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -11224,169 +11224,17 @@ input CreateUserHasRoleInput {
 }
 
 input CreateUserInput {
-  activities: [ActivityInput!]!
-  addresses: [AddressDomain!]!
-  apiToken: String
-  atmCardNo: String
-  automationEvents: [AutomationEventDomain!]!
-  avatar: String
-  basicCarpetDesigners: [BasicCarpetDesignerDomain!]!
-  campaignCartItems: String
-  campaignCartItemsStartDate: DateTime
-  campaignFindingCouponCode: String
-  campaignFindingCouponFoundParts: String!
-  campaignFindingCouponHidingPlace: String
-  campaignFindingCouponUsed: Boolean!
-  campaignFindingCouponWinnerPlace: Float
-  campaignGoldCoinSubs: CampaignGoldCoinSubDomain!
-  campaignId: Float
-  campaignInstagramFollows: [CampaignInstagramFollowDomain!]!
-  campaignPetForms: [CampaignPetFormDomain!]!
-  campaignRoomvoImages: [CampaignRoomvoImageDomain!]!
-  campaignRoomvoVotes: [CampaignRoomvoVoteDomain!]!
-  campaignSubscriptions: [CampaignSubscriptionDomain!]!
-  campaignUefaEuroSubscriberHistories: [CampaignUefaEuroSubscriberHistoryDomain!]!
-  campaignUefaEuroSubscribers: [CampaignUefaEuroSubscriberDomain!]!
-  campaignVotingImageUsers: [CampaignVotingImageUserDomain!]!
-  carpetFeatureUsers: [CarpetFeatureUserDomain!]
-  carpetUsagePlaceUsers: [CarpetUsagePlaceUserDomain!]
-  childrenCouponIsUsed: Boolean!
-  code: String
-  commentsChargedAmount: String!
-  contactFormHistories: [ContactFormHistoryDomain!]
-  contactForms: [ContactFormDomain!]
-  coupons: [CouponDomain!]
-  coupons2: [CouponDomain!]
-  coupons3: [CouponDomain!]
-  coupons4: [CouponDomain!]
-  createdAt: DateTime
-  customerRequests: [CustomerRequestDomain!]
-  designs: [DesignDomain!]
-  discountNotificationSentDate: DateTime
-  discountNotifications: [DiscountNotificationDomain!]
-  discounts: [DiscountDomain!]
-  discounts2: [DiscountDomain!]
   email: String
-  emailVerified: Float
-  exitControls: [ExitControlDomain!]
-  family: String!
-  favoriteProducts: [FavoriteProductDomain!]
-  googleFormUtms: [GoogleFormUtmDomain!]
-  hafezPoemCount: Float!
-  heardAboutUsOption: HeardAboutUsOptionDomain
-  heardAboutUsOptionId: Float
-  helpDesks: HelpDeskDomain
-  holidays: [HolidayDomain!]
-  id: Float!
-  impersonateHistories: [ImpersonateHistoryDomain!]
-  impersonateHistories2: [ImpersonateHistoryDomain!]
-  incredibleOfferSentNotifications: [IncredibleOfferSentNotificationDomain!]
-  invitationCode: InvitationCodeDomain
-  invitationCodeId: Float
-  invoiceAddresses: [InvoiceAddressDomain!]
-  invoiceHistories: [InvoiceHistoryDomain!]
-  invoiceInvoiceStatuses: [InvoiceInvoiceStatusDomain!]
-  invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
-  invoicePaymentHistories2: [InvoicePaymentHistoryDomain!]
-  invoicePayments: [InvoicePaymentDomain!]
-  invoicePayments2: [InvoicePaymentDomain!]
-  invoiceProductItemInvoiceProductStatuses: [InvoiceProductItemInvoiceProductStatusDomain!]
-  invoiceReversals: [InvoiceReversalDomain!]
-  invoices: [InvoiceDomain!]
-  invoices2: [InvoiceDomain!]
   isActive: Float
-  isForeigner: Boolean!
-  isGuest: Float
-  isPasswordChanged: Boolean!
-  isPreorderApplicant: Boolean!
-  loginEmail: String
-  lotteryCode: String
-  mah: Float
-  modelVisits: [ModelVisitDomain!]
-  monthlyRetargetingStartDate: DateTime
   name: String!
-  nationalId: String
-  needsPhotographySubproducts: [NeedsPhotographySubproductDomain!]
-  needsPhotographySubproducts2: [NeedsPhotographySubproductDomain!]
-  negotiationHistories: [NegotiationHistoryDomain!]
-  negotiationHistories2: [NegotiationHistoryDomain!]
-  negotiationHistories3: [NegotiationHistoryDomain!]
-  negotiationSteps: [NegotiationStepDomain!]
-  negotiations: [NegotiationDomain!]
-  negotiations2: [NegotiationDomain!]
-  newUsersCampaignCharged: Boolean!
-  os: String
-  osVersion: String
-  password: String
-  paymentRequests: [PaymentRequestDomain!]
+  password: String!
   phone: String
-  phoneVerified: Float
-  phoneVerifiedBy: Float
-  phoneVerifiedBy2: UserDomain
-  preorderPaid: Boolean!
-  preorderPreorderStatuses: [PreorderPreorderStatusDomain!]
-  preorderRegisterDate: DateTime
-  preorderRegisters: [PreorderRegisterDomain!]
-  preorderRegisters2: [PreorderRegisterDomain!]
-  preorderTurnEndDate: String
-  preorderTurnStartDate: String
-  preorders: [PreorderDomain!]
-  preorders2: [PreorderDomain!]
-  preorders3: [PreorderDomain!]
-  printProfiles: [PrintProfileDomain!]
-  printProfiles2: [PrintProfileDomain!]
-  printRips: [PrintRipDomain!]
-  productCommentLikes: [ProductCommentLikeDomain!]
-  productComments: [ProductCommentDomain!]
-  productComments2: [ProductCommentDomain!]
-  productLikes: [ProductLikeDomain!]
-  productRates: [ProductRateDomain!]
-  productionPadProductionPadStatuses: [ProductionPadProductionPadStatusDomain!]
-  productionRolls: [ProductionRollDomain!]
-  productionRolls2: [ProductionRollDomain!]
-  profilePicture: String
-  rememberToken: String
-  retargetingIsUsed: Boolean!
-  retargetingWalletCharges: [RetargetingWalletChargeDomain!]
-  returnItemStatusReturnRequestItems: [ReturnItemStatusReturnRequestItemDomain!]
-  returnRequestAddresses: [ReturnRequestAddressDomain!]
-  returnRequestHistories: [ReturnRequestHistoryDomain!]
-  returnRequestHistories2: [ReturnRequestHistoryDomain!]
-  returnRequestItemReturnItemStatuses: [ReturnRequestItemReturnItemStatusDomain!]
-  returnRequestReturnStatuses: [ReturnRequestReturnStatusDomain!]
-  returnRequests: [ReturnRequestDomain!]
-  returnedInvoices: [ReturnedInvoiceDomain!]
-  ripTemplates: [RipTemplateDomain!]
-  roz: Float
-  sal: Float
-  sepidarCode: Float
-  sepidarId: Float
-  socialFacebookAccounts: [SocialFacebookAccountDomain!]
-  socialGoogleAccounts: [SocialGoogleAccountDomain!]
-  spinnerIsUsed: Boolean!
-  spinnerVerificationCode: String
-  spinnerVerified: Boolean!
-  status: Float!
-  stripeId: String
-  subproductStockHistories: [SubproductStockHistoryDomain!]
-  temp: String
-  tempName: String!
-  transactions: [TransactionDomain!]
-  transactions2: [TransactionDomain!]
-  updatedAt: DateTime
-  userCarts: [UserCartDomain!]
-  userUtms: [UserUtmDomain!]
   username: String
-  users: [UserDomain!]
-  utmGoogleFormCoupons: [UtmGoogleFormCouponDomain!]
-  verificationCode: String
-  verifyUsers: [VerifyUserDomain!]
-  visitors: [VisitorDomain!]
-  walletGiftCharges: [WalletGiftChargeDomain!]
-  walletHistories: [WalletHistoryDomain!]
-  wallets: WalletDomain
-  withdrawalRequests: [WithdrawalRequestDomain!]
-  withdrawalRequests2: [WithdrawalRequestDomain!]
+}
+
+type CreateUserResponseDto {
+  id: Float!
+  name: String!
 }
 
 input CreateUserUtmInput {
@@ -21726,7 +21574,7 @@ type Mutation {
   createOneWithdrawalRequest(input: CreateOneWithdrawalRequestInput!): WithdrawalRequest!
   createOneWithdrawalRequestStatus(input: CreateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   createOneWonderfulOffer(input: CreateOneWonderfulOfferInput!): WonderfulOffer!
-  createUser(createUserInput: CreateUserInput!): User!
+  createUser(createUserInput: CreateUserInput!): CreateUserResponseDto!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
   deleteManyAddresses(input: DeleteManyAddressesInput!): DeleteManyResponse!
   deleteManyAttributeAttributeGroups(input: DeleteManyAttributeAttributeGroupsInput!): DeleteManyResponse!
@@ -22754,7 +22602,7 @@ type Mutation {
   updateOneWithdrawalRequest(input: UpdateOneWithdrawalRequestInput!): WithdrawalRequest!
   updateOneWithdrawalRequestStatus(input: UpdateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   updateOneWonderfulOffer(input: UpdateOneWonderfulOfferInput!): WonderfulOffer!
-  updateUser(updateUserInput: UpdateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): UpdateUserResponseDto!
 }
 
 type NeedsPhotographySubproduct {
@@ -36325,7 +36173,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-12T10:55:52.602Z"
+  createdAt: DateTime = "2025-04-14T05:13:15.621Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36347,7 +36195,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-12T10:55:52.620Z"
+  createdAt: DateTime = "2025-04-14T05:13:15.657Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36362,7 +36210,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-12T10:55:52.703Z"
+  createdAt: DateTime = "2025-04-14T05:13:15.717Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36386,7 +36234,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-12T10:55:52.621Z"
+  createdAt: DateTime = "2025-04-14T05:13:15.658Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36403,7 +36251,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-12T10:55:52.640Z"
+  createdAt: DateTime = "2025-04-14T05:13:15.677Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36458,7 +36306,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-12T10:55:52.622Z"
+  createdAt: DateTime = "2025-04-14T05:13:15.660Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -44217,169 +44065,23 @@ input UpdateUserHasRole {
 }
 
 input UpdateUserInput {
-  activities: [ActivityInput!]
-  addresses: [AddressDomain!]
-  apiToken: String
-  atmCardNo: String
-  automationEvents: [AutomationEventDomain!]
-  avatar: String
-  basicCarpetDesigners: [BasicCarpetDesignerDomain!]
-  campaignCartItems: String
-  campaignCartItemsStartDate: DateTime
-  campaignFindingCouponCode: String
-  campaignFindingCouponFoundParts: String
-  campaignFindingCouponHidingPlace: String
-  campaignFindingCouponUsed: Boolean
-  campaignFindingCouponWinnerPlace: Float
-  campaignGoldCoinSubs: CampaignGoldCoinSubDomain
-  campaignId: Float
-  campaignInstagramFollows: [CampaignInstagramFollowDomain!]
-  campaignPetForms: [CampaignPetFormDomain!]
-  campaignRoomvoImages: [CampaignRoomvoImageDomain!]
-  campaignRoomvoVotes: [CampaignRoomvoVoteDomain!]
-  campaignSubscriptions: [CampaignSubscriptionDomain!]
-  campaignUefaEuroSubscriberHistories: [CampaignUefaEuroSubscriberHistoryDomain!]
-  campaignUefaEuroSubscribers: [CampaignUefaEuroSubscriberDomain!]
-  campaignVotingImageUsers: [CampaignVotingImageUserDomain!]
-  carpetFeatureUsers: [CarpetFeatureUserDomain!]
-  carpetUsagePlaceUsers: [CarpetUsagePlaceUserDomain!]
-  childrenCouponIsUsed: Boolean
-  code: String
-  commentsChargedAmount: String
-  contactFormHistories: [ContactFormHistoryDomain!]
-  contactForms: [ContactFormDomain!]
-  coupons: [CouponDomain!]
-  coupons2: [CouponDomain!]
-  coupons3: [CouponDomain!]
-  coupons4: [CouponDomain!]
-  createdAt: DateTime
-  customerRequests: [CustomerRequestDomain!]
-  designs: [DesignDomain!]
-  discountNotificationSentDate: DateTime
-  discountNotifications: [DiscountNotificationDomain!]
-  discounts: [DiscountDomain!]
-  discounts2: [DiscountDomain!]
   email: String
-  emailVerified: Float
-  exitControls: [ExitControlDomain!]
-  family: String
-  favoriteProducts: [FavoriteProductDomain!]
-  googleFormUtms: [GoogleFormUtmDomain!]
-  hafezPoemCount: Float
-  heardAboutUsOption: HeardAboutUsOptionDomain
-  heardAboutUsOptionId: Float
-  helpDesks: HelpDeskDomain
-  holidays: [HolidayDomain!]
   id: Int!
-  impersonateHistories: [ImpersonateHistoryDomain!]
-  impersonateHistories2: [ImpersonateHistoryDomain!]
-  incredibleOfferSentNotifications: [IncredibleOfferSentNotificationDomain!]
-  invitationCode: InvitationCodeDomain
-  invitationCodeId: Float
-  invoiceAddresses: [InvoiceAddressDomain!]
-  invoiceHistories: [InvoiceHistoryDomain!]
-  invoiceInvoiceStatuses: [InvoiceInvoiceStatusDomain!]
-  invoicePaymentHistories: [InvoicePaymentHistoryDomain!]
-  invoicePaymentHistories2: [InvoicePaymentHistoryDomain!]
-  invoicePayments: [InvoicePaymentDomain!]
-  invoicePayments2: [InvoicePaymentDomain!]
-  invoiceProductItemInvoiceProductStatuses: [InvoiceProductItemInvoiceProductStatusDomain!]
-  invoiceReversals: [InvoiceReversalDomain!]
-  invoices: [InvoiceDomain!]
-  invoices2: [InvoiceDomain!]
-  isActive: Float
-  isForeigner: Boolean
-  isGuest: Float
-  isPasswordChanged: Boolean
+  isActive: Int
+  isGuest: Int
   isPreorderApplicant: Boolean
-  loginEmail: String
-  lotteryCode: String
-  mah: Float
-  modelVisits: [ModelVisitDomain!]
-  monthlyRetargetingStartDate: DateTime
   name: String
-  nationalId: String
-  needsPhotographySubproducts: [NeedsPhotographySubproductDomain!]
-  needsPhotographySubproducts2: [NeedsPhotographySubproductDomain!]
-  negotiationHistories: [NegotiationHistoryDomain!]
-  negotiationHistories2: [NegotiationHistoryDomain!]
-  negotiationHistories3: [NegotiationHistoryDomain!]
-  negotiationSteps: [NegotiationStepDomain!]
-  negotiations: [NegotiationDomain!]
-  negotiations2: [NegotiationDomain!]
-  newUsersCampaignCharged: Boolean
-  os: String
-  osVersion: String
   password: String
-  paymentRequests: [PaymentRequestDomain!]
   phone: String
-  phoneVerified: Float
-  phoneVerifiedBy: Float
-  phoneVerifiedBy2: UserDomain
-  preorderPaid: Boolean
-  preorderPreorderStatuses: [PreorderPreorderStatusDomain!]
-  preorderRegisterDate: DateTime
-  preorderRegisters: [PreorderRegisterDomain!]
-  preorderRegisters2: [PreorderRegisterDomain!]
-  preorderTurnEndDate: String
-  preorderTurnStartDate: String
-  preorders: [PreorderDomain!]
-  preorders2: [PreorderDomain!]
-  preorders3: [PreorderDomain!]
-  printProfiles: [PrintProfileDomain!]
-  printProfiles2: [PrintProfileDomain!]
-  printRips: [PrintRipDomain!]
-  productCommentLikes: [ProductCommentLikeDomain!]
-  productComments: [ProductCommentDomain!]
-  productComments2: [ProductCommentDomain!]
-  productLikes: [ProductLikeDomain!]
-  productRates: [ProductRateDomain!]
-  productionPadProductionPadStatuses: [ProductionPadProductionPadStatusDomain!]
-  productionRolls: [ProductionRollDomain!]
-  productionRolls2: [ProductionRollDomain!]
-  profilePicture: String
-  rememberToken: String
-  retargetingIsUsed: Boolean
-  retargetingWalletCharges: [RetargetingWalletChargeDomain!]
-  returnItemStatusReturnRequestItems: [ReturnItemStatusReturnRequestItemDomain!]
-  returnRequestAddresses: [ReturnRequestAddressDomain!]
-  returnRequestHistories: [ReturnRequestHistoryDomain!]
-  returnRequestHistories2: [ReturnRequestHistoryDomain!]
-  returnRequestItemReturnItemStatuses: [ReturnRequestItemReturnItemStatusDomain!]
-  returnRequestReturnStatuses: [ReturnRequestReturnStatusDomain!]
-  returnRequests: [ReturnRequestDomain!]
-  returnedInvoices: [ReturnedInvoiceDomain!]
-  ripTemplates: [RipTemplateDomain!]
-  roz: Float
-  sal: Float
-  sepidarCode: Float
-  sepidarId: Float
-  socialFacebookAccounts: [SocialFacebookAccountDomain!]
-  socialGoogleAccounts: [SocialGoogleAccountDomain!]
-  spinnerIsUsed: Boolean
-  spinnerVerificationCode: String
-  spinnerVerified: Boolean
-  status: Float
-  stripeId: String
-  subproductStockHistories: [SubproductStockHistoryDomain!]
-  temp: String
-  tempName: String
-  transactions: [TransactionDomain!]
-  transactions2: [TransactionDomain!]
-  updatedAt: DateTime
-  userCarts: [UserCartDomain!]
-  userUtms: [UserUtmDomain!]
+  phoneVerified: Int
+  sepidarCode: Int
+  sepidarId: Int
   username: String
-  users: [UserDomain!]
-  utmGoogleFormCoupons: [UtmGoogleFormCouponDomain!]
-  verificationCode: String
-  verifyUsers: [VerifyUserDomain!]
-  visitors: [VisitorDomain!]
-  walletGiftCharges: [WalletGiftChargeDomain!]
-  walletHistories: [WalletHistoryDomain!]
-  wallets: WalletDomain
-  withdrawalRequests: [WithdrawalRequestDomain!]
-  withdrawalRequests2: [WithdrawalRequestDomain!]
+}
+
+type UpdateUserResponseDto {
+  id: Float!
+  name: String!
 }
 
 input UpdateUserUtm {
