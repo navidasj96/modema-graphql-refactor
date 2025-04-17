@@ -19,16 +19,16 @@ export class Transaction {
   modelId: number;
 
   @Field()
-  amount: string;
+  amount: number;
 
   @Field()
-  modemaBlocked: string;
+  modemaBlocked: number;
 
   @Field()
-  userBlocked: string;
+  userBlocked: number;
 
   @Field()
-  withdrawable: string;
+  withdrawable: number;
 
   @Field()
   approved: boolean;

@@ -15,13 +15,13 @@ export class Wallet {
   userId: number;
 
   @Field()
-  modemaBlocked: string;
+  modemaBlocked: number;
 
   @Field()
-  userBlocked: string;
+  userBlocked: number;
 
   @Field()
-  withdrawable: string;
+  withdrawable: number;
 
   @Field()
   notUsableForLowTotalPrices: boolean;

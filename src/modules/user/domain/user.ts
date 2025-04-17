@@ -94,6 +94,7 @@ import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has
 })
 @UnPagedRelation('userHasRole', () => UserHasRole)
 @UnPagedRelation('userHasPermission', () => UserHasPermission)
+@UnPagedRelation('wallets', () => Wallet)
 @ObjectType()
 export class User {
   @IDField(() => ID)
@@ -108,7 +109,7 @@ export class User {
   @FilterableField({ nullable: true })
   phone?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   createdAt?: Date;
 
   @Field({ nullable: true })
@@ -141,7 +142,7 @@ export class User {
   @Field({ nullable: true })
   password?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   isGuest?: number;
 
   @Field({ nullable: true })

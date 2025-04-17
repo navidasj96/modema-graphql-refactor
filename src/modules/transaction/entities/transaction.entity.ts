@@ -32,7 +32,7 @@ export class Transaction {
     scale: 2,
     default: () => "'0.00'",
   })
-  amount: string;
+  amount: number;
 
   @Column('decimal', {
     name: 'modema_blocked',
@@ -41,7 +41,7 @@ export class Transaction {
     scale: 2,
     default: () => "'0.00'",
   })
-  modemaBlocked: string;
+  modemaBlocked: number;
 
   @Column('decimal', {
     name: 'user_blocked',
@@ -50,7 +50,7 @@ export class Transaction {
     scale: 2,
     default: () => "'0.00'",
   })
-  userBlocked: string;
+  userBlocked: number;
 
   @Column('decimal', {
     name: 'withdrawable',
@@ -59,7 +59,7 @@ export class Transaction {
     scale: 2,
     default: () => "'0.00'",
   })
-  withdrawable: string;
+  withdrawable: number;
 
   @Column('tinyint', { name: 'approved', width: 1, default: () => "'0'" })
   approved: boolean;

@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-14T05:13:15.621Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.535Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-14T05:13:15.657Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.545Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-14T05:13:15.717Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.601Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-14T05:13:15.658Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.546Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-14T05:13:15.677Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.562Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-14T05:13:15.660Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.547Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-14T05:13:16.135Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.894Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-14T05:13:16.148Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.903Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-14T05:13:16.159Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.912Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-14T05:13:16.169Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.919Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-14T05:13:16.178Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.926Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-14T05:13:16.203Z"
+  createdAt: DateTime! = "2025-04-17T09:28:37.941Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -11166,23 +11166,19 @@ input CreateTorobProductInput {
 }
 
 input CreateTransactionInput {
-  amount: String!
+  amount: Float!
   approved: Boolean!
   approvedBy: Float
-  approvedBy2: UserDomain
   createdAt: DateTime
   description: String
-  id: Float!
   modelId: Float!
   modelType: String!
-  modemaBlocked: String!
+  modemaBlocked: Float!
   tempInvoiceNumber: String
   updatedAt: DateTime
-  user: UserDomain!
-  userBlocked: String!
+  userBlocked: Float!
   userId: Float!
-  walletHistories: [WalletHistoryDomain!]!
-  withdrawable: String!
+  withdrawable: Float!
 }
 
 input CreateUserCartInput {
@@ -11404,18 +11400,11 @@ input CreateWalletHistoryInput {
 }
 
 input CreateWalletInputs {
-  createdAt: DateTime
-  id: Float!
-  modemaBlocked: String!
-  notUsableForLowTotalPrices: Boolean!
-  retargetingWalletCharges: [RetargetingWalletChargeDomain!]!
-  updatedAt: DateTime
-  user: UserDomain!
-  userBlocked: String!
+  modemaBlocked: Float!
+  notUsableForLowTotalPrices: Float!
+  userBlocked: Float!
   userId: Float!
-  walletGiftCharges: [WalletGiftChargeDomain!]!
-  walletHistories: [WalletHistoryDomain!]!
-  withdrawable: String!
+  withdrawable: Float!
 }
 
 input CreateWebsitePageInput {
@@ -11932,6 +11921,26 @@ input DamageReasonUpdateFilter {
   and: [DamageReasonUpdateFilter!]
   id: IDFilterComparison
   or: [DamageReasonUpdateFilter!]
+}
+
+input DateFieldComparison {
+  between: DateFieldComparisonBetween
+  eq: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  is: Boolean
+  isNot: Boolean
+  lt: DateTime
+  lte: DateTime
+  neq: DateTime
+  notBetween: DateFieldComparisonBetween
+  notIn: [DateTime!]
+}
+
+input DateFieldComparisonBetween {
+  lower: DateTime!
+  upper: DateTime!
 }
 
 """
@@ -35886,7 +35895,7 @@ input TorobProductUpdateFilter {
 }
 
 type Transaction {
-  amount: String!
+  amount: Float!
   approved: Boolean!
   approvedBy: Float
   approvedBy2: User
@@ -35895,14 +35904,14 @@ type Transaction {
   id: ID!
   modelId: Float!
   modelType: String!
-  modemaBlocked: String!
+  modemaBlocked: Float!
   tempInvoiceNumber: String
   updatedAt: DateTime
   user: User!
-  userBlocked: String!
+  userBlocked: Float!
   userId: Float!
   walletHistories: [WalletHistory!]!
-  withdrawable: String!
+  withdrawable: Float!
 }
 
 type TransactionConnection {
@@ -35920,7 +35929,7 @@ input TransactionDeleteFilter {
 }
 
 type TransactionDeleteResponse {
-  amount: String
+  amount: Float
   approved: Boolean
   approvedBy: Float
   approvedBy2: User
@@ -35929,18 +35938,18 @@ type TransactionDeleteResponse {
   id: ID
   modelId: Float
   modelType: String
-  modemaBlocked: String
+  modemaBlocked: Float
   tempInvoiceNumber: String
   updatedAt: DateTime
   user: User
-  userBlocked: String
+  userBlocked: Float
   userId: Float
   walletHistories: [WalletHistory!]
-  withdrawable: String
+  withdrawable: Float
 }
 
 input TransactionDomain {
-  amount: String!
+  amount: Float!
   approved: Boolean!
   approvedBy: Float
   approvedBy2: UserDomain
@@ -35949,14 +35958,14 @@ input TransactionDomain {
   id: ID!
   modelId: Float!
   modelType: String!
-  modemaBlocked: String!
+  modemaBlocked: Float!
   tempInvoiceNumber: String
   updatedAt: DateTime
   user: UserDomain!
-  userBlocked: String!
+  userBlocked: Float!
   userId: Float!
   walletHistories: [WalletHistoryDomain!]!
-  withdrawable: String!
+  withdrawable: Float!
 }
 
 type TransactionEdge {
@@ -36173,7 +36182,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-14T05:13:15.621Z"
+  createdAt: DateTime = "2025-04-17T09:28:37.535Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36195,7 +36204,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-14T05:13:15.657Z"
+  createdAt: DateTime = "2025-04-17T09:28:37.545Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36210,7 +36219,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-14T05:13:15.717Z"
+  createdAt: DateTime = "2025-04-17T09:28:37.601Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36234,7 +36243,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-14T05:13:15.658Z"
+  createdAt: DateTime = "2025-04-17T09:28:37.546Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36251,7 +36260,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-14T05:13:15.677Z"
+  createdAt: DateTime = "2025-04-17T09:28:37.562Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36306,7 +36315,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-14T05:13:15.660Z"
+  createdAt: DateTime = "2025-04-17T09:28:37.547Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -43841,7 +43850,7 @@ input UpdateTorobProduct {
 }
 
 input UpdateTransaction {
-  amount: String
+  amount: Float
   approved: Boolean
   approvedBy: Float
   approvedBy2: UserDomain
@@ -43850,14 +43859,14 @@ input UpdateTransaction {
   id: ID
   modelId: Float
   modelType: String
-  modemaBlocked: String
+  modemaBlocked: Float
   tempInvoiceNumber: String
   updatedAt: DateTime
   user: UserDomain
-  userBlocked: String
+  userBlocked: Float
   userId: Float
   walletHistories: [WalletHistoryDomain!]
-  withdrawable: String
+  withdrawable: Float
 }
 
 input UpdateUser {
@@ -44225,16 +44234,16 @@ input UpdateVisitorSale {
 input UpdateWallet {
   createdAt: DateTime
   id: ID
-  modemaBlocked: String
+  modemaBlocked: Float
   notUsableForLowTotalPrices: Boolean
   retargetingWalletCharges: [RetargetingWalletChargeDomain!]
   updatedAt: DateTime
   user: UserDomain
-  userBlocked: String
+  userBlocked: Float
   userId: Float
   walletGiftCharges: [WalletGiftChargeDomain!]
   walletHistories: [WalletHistoryDomain!]
-  withdrawable: String
+  withdrawable: Float
 }
 
 input UpdateWalletGiftCharge {
@@ -44495,7 +44504,13 @@ type User {
   visitors: [Visitor!]
   walletGiftCharges: [WalletGiftCharge!]
   walletHistories: [WalletHistory!]
-  wallets: Wallet
+  wallets(
+    """Specify to filter the records returned."""
+    filter: WalletFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [WalletSort!]! = []
+  ): [Wallet!]!
   withdrawalRequests: [WithdrawalRequest!]
   withdrawalRequests2: [WithdrawalRequest!]
 }
@@ -44629,7 +44644,9 @@ type UserConnection {
 
 input UserDeleteFilter {
   and: [UserDeleteFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
+  isGuest: NumberFieldComparison
   name: StringFieldComparison
   or: [UserDeleteFilter!]
   phone: StringFieldComparison
@@ -44974,7 +44991,9 @@ input UserDomain {
 
 input UserFilter {
   and: [UserFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
+  isGuest: NumberFieldComparison
   name: StringFieldComparison
   or: [UserFilter!]
   phone: StringFieldComparison
@@ -45138,7 +45157,9 @@ input UserSort {
 }
 
 enum UserSortFields {
+  createdAt
   id
+  isGuest
   name
   phone
   username
@@ -45146,7 +45167,9 @@ enum UserSortFields {
 
 input UserUpdateFilter {
   and: [UserUpdateFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
+  isGuest: NumberFieldComparison
   name: StringFieldComparison
   or: [UserUpdateFilter!]
   phone: StringFieldComparison
@@ -46010,16 +46033,16 @@ input VisitorUpdateFilter {
 type Wallet {
   createdAt: DateTime
   id: ID!
-  modemaBlocked: String!
+  modemaBlocked: Float!
   notUsableForLowTotalPrices: Boolean!
   retargetingWalletCharges: [RetargetingWalletCharge!]!
   updatedAt: DateTime
   user: User!
-  userBlocked: String!
+  userBlocked: Float!
   userId: Float!
   walletGiftCharges: [WalletGiftCharge!]!
   walletHistories: [WalletHistory!]!
-  withdrawable: String!
+  withdrawable: Float!
 }
 
 type WalletConnection {
@@ -46039,31 +46062,31 @@ input WalletDeleteFilter {
 type WalletDeleteResponse {
   createdAt: DateTime
   id: ID
-  modemaBlocked: String
+  modemaBlocked: Float
   notUsableForLowTotalPrices: Boolean
   retargetingWalletCharges: [RetargetingWalletCharge!]
   updatedAt: DateTime
   user: User
-  userBlocked: String
+  userBlocked: Float
   userId: Float
   walletGiftCharges: [WalletGiftCharge!]
   walletHistories: [WalletHistory!]
-  withdrawable: String
+  withdrawable: Float
 }
 
 input WalletDomain {
   createdAt: DateTime
   id: ID!
-  modemaBlocked: String!
+  modemaBlocked: Float!
   notUsableForLowTotalPrices: Boolean!
   retargetingWalletCharges: [RetargetingWalletChargeDomain!]!
   updatedAt: DateTime
   user: UserDomain!
-  userBlocked: String!
+  userBlocked: Float!
   userId: Float!
   walletGiftCharges: [WalletGiftChargeDomain!]!
   walletHistories: [WalletHistoryDomain!]!
-  withdrawable: String!
+  withdrawable: Float!
 }
 
 type WalletEdge {

@@ -1,11 +1,13 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { RetargetingWalletCharge } from '@/modules/retargeting-wallet-charge/entities/retargeting-wallet-charge.entity';
 import { WalletGiftCharge } from '@/modules/wallet-gift-charge/entities/wallet-gift-charge.entity';
@@ -28,7 +30,7 @@ export class Wallet {
     scale: 2,
     default: () => "'0.00'",
   })
-  modemaBlocked: string;
+  modemaBlocked: number;
 
   @Column('decimal', {
     name: 'user_blocked',
@@ -37,7 +39,7 @@ export class Wallet {
     scale: 2,
     default: () => "'0.00'",
   })
-  userBlocked: string;
+  userBlocked: number;
 
   @Column('decimal', {
     name: 'withdrawable',
@@ -46,20 +48,29 @@ export class Wallet {
     scale: 2,
     default: () => "'0.00'",
   })
-  withdrawable: string;
+  withdrawable: number;
 
   @Column('tinyint', {
     name: 'not_usable_for_low_total_prices',
     width: 1,
     default: () => "'0'",
   })
-  notUsableForLowTotalPrices: boolean;
+  notUsableForLowTotalPrices: number;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'datetime',
+    precision: 6,
+  })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 
   @OneToMany(
     () => RetargetingWalletCharge,
