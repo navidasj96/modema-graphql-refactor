@@ -1,11 +1,13 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { User } from '@/modules/user/entities/user.entity';
 import { WalletHistory } from '@/modules/wallet-history/entities/wallet-history.entity';
@@ -70,11 +72,22 @@ export class Transaction {
   @Column('text', { name: 'description', nullable: true })
   description?: string;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => User, (user) => user.transactions, {
     onDelete: 'NO ACTION',

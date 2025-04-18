@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
@@ -7,6 +8,7 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Address } from '@/modules/address/entities/address.entity';
 import { AutomationEvent } from '@/modules/automation-event/entities/automation-event.entity';
@@ -131,11 +133,22 @@ export class User {
   @Column('varchar', { name: 'phone', nullable: true, length: 191 })
   phone?: string;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 
   @Column('varchar', { name: 'os', nullable: true, length: 191 })
   os?: string;

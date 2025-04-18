@@ -3,7 +3,6 @@ import { Repository } from 'typeorm';
 import { Wallet } from '@/modules/wallet/entities/wallet.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateWalletInput } from '@/modules/wallet/dto/create-wallet.input';
-import { UserService } from '@/modules/user/user.service';
 import { RuntimeException } from '@nestjs/core/errors/exceptions';
 
 @Injectable()
@@ -14,22 +13,19 @@ export class CreateWalletProvider {
      */
     @InjectRepository(Wallet)
     private readonly walletRepository: Repository<Wallet>,
-    /**
-     * Inject UserSerive
-     */
-    private readonly userService: UserService,
   ) {}
 
   public async createWallet(createWalletDto: CreateWalletInput) {
-    let wallet: Wallet | undefined = undefined;
+    let wallet: Wallet | null = null;
 
     try {
-      const user = await this.userService.findOne(createWalletDto.userId);
-      wallet = user ? user.wallets : undefined;
+      wallet = await this.walletRepository.findOne({
+        where: { userId: createWalletDto.userId },
+      });
     } catch (error) {
       throw new RuntimeException(error);
     }
-
+    
     if (wallet) {
       return true;
     }
@@ -38,6 +34,7 @@ export class CreateWalletProvider {
     try {
       await this.walletRepository.save(wallet);
     } catch (error) {
+      console.log('error');
       throw new RuntimeException(error);
     }
     return true;

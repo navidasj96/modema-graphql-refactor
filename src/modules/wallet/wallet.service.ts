@@ -1,11 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWalletInput } from './dto/create-wallet.input';
 import { UpdateWalletInput } from './dto/update-wallet.input';
+import { CreateWalletProvider } from '@/modules/wallet/providers/create-wallet.provider';
 
 @Injectable()
 export class WalletService {
-  create(createWalletInput: CreateWalletInput) {
-    return 'This action adds a new wallet';
+  constructor(
+    /**
+     * Inject createWalletProvider
+     */
+    private readonly createWalletProvider: CreateWalletProvider,
+  ) {}
+
+  async create(createWalletDto: CreateWalletInput) {
+    return await this.createWalletProvider.createWallet(createWalletDto);
   }
 
   findAll() {

@@ -59,14 +59,16 @@ export class Wallet {
 
   @CreateDateColumn({
     name: 'created_at',
-    type: 'datetime',
-    precision: 6,
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
   @UpdateDateColumn({
     name: 'updated_at',
     type: 'timestamp',
+    precision: 0,
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })

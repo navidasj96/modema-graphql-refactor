@@ -12,7 +12,7 @@ export class RoleHasPermission {
   permissionId: number;
 
   @PrimaryColumn('int', { name: 'role_id' })
-  roleId: string;
+  roleId: number;
 
   @ManyToOne(() => Role, (role) => role.roleHasPermission, {
     onDelete: 'CASCADE',

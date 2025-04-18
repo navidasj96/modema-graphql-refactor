@@ -6,9 +6,10 @@ import { Wallet as WalletGraphQL } from '@/modules/wallet/domain/wallet';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateWalletInput } from '@/modules/wallet/dto/create-wallet.input';
+import { CreateWalletProvider } from '@/modules/wallet/providers/create-wallet.provider';
 
 @Module({
-  providers: [WalletResolver, WalletService],
+  providers: [WalletResolver, WalletService, CreateWalletProvider],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([Wallet])],

@@ -1,10 +1,12 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { User } from '@/modules/user/entities/user.entity';
 
@@ -36,11 +38,11 @@ export class Activity {
   @Column('text', { name: 'details' })
   details: string;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 
   @Column('int', { name: 'deleted_user_id', nullable: true, unsigned: true })
   deletedUserId?: number;
