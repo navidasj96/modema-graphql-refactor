@@ -15,7 +15,7 @@ export class ActivityService {
     private readonly userService: UserService,
   ) {}
 
-  async getUserWithActivities(userId: number): Promise<String> {
+  async getUserWithActivities(userId: number) {
     return await this.userService.findOne(Number(userId));
   }
 
