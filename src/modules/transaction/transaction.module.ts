@@ -7,9 +7,14 @@ import { Transaction as TransactionGraphQL } from '@/modules/transaction/domain/
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateTransactionInput } from '@/modules/transaction/dto/create-transaction.input';
+import { CreateTransactionProvider } from '@/modules/transaction/providers/create-transaction.provider';
 
 @Module({
-  providers: [TransactionResolver, TransactionService],
+  providers: [
+    TransactionResolver,
+    TransactionService,
+    CreateTransactionProvider,
+  ],
   imports: [
     TypeOrmModule.forFeature([Transaction]),
     NestjsQueryGraphQLModule.forFeature({
@@ -23,5 +28,6 @@ import { CreateTransactionInput } from '@/modules/transaction/dto/create-transac
       ],
     }),
   ],
+  exports: [TransactionService],
 })
 export class TransactionModule {}

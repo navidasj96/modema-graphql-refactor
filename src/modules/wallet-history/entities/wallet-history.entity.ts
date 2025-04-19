@@ -1,10 +1,12 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 import { User } from '@/modules/user/entities/user.entity';
@@ -30,36 +32,47 @@ export class WalletHistory {
     comment: 'only usable by modema personnel',
     precision: 18,
     scale: 2,
-    default: () => "'0.00'",
+    default: () => 0.0,
   })
-  modemaBlocked: string;
+  modemaBlocked: number;
 
   @Column('decimal', {
     name: 'user_blocked',
     comment: 'usable by user for purchase only',
     precision: 18,
     scale: 2,
-    default: () => "'0.00'",
+    default: () => 0.0,
   })
-  userBlocked: string;
+  userBlocked: number;
 
   @Column('decimal', {
     name: 'withdrawable',
     comment: 'usable by user for purchase or withdrawal',
     precision: 18,
     scale: 2,
-    default: () => "'0.00'",
+    default: () => 0.0,
   })
-  withdrawable: string;
+  withdrawable: number;
 
   @Column('int', { name: 'created_by', nullable: true, unsigned: true })
   createdBy?: number;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => User, (user) => user.walletHistories, {
     onDelete: 'SET NULL',

@@ -6,9 +6,14 @@ import { WalletHistory as WalletHistoryGraphQL } from '@/modules/wallet-history/
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateWalletHistoryInput } from '@/modules/wallet-history/dto/create-wallet-history.input';
+import { CreateWalletHistoryProvider } from '@/modules/wallet-history/providers/create-wallet-history.provider';
 
 @Module({
-  providers: [WalletHistoryResolver, WalletHistoryService],
+  providers: [
+    WalletHistoryResolver,
+    WalletHistoryService,
+    CreateWalletHistoryProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([WalletHistory])],
@@ -21,5 +26,6 @@ import { CreateWalletHistoryInput } from '@/modules/wallet-history/dto/create-wa
       ],
     }),
   ],
+  exports: [WalletHistoryService, CreateWalletHistoryProvider],
 })
 export class WalletHistoryModule {}

@@ -1,11 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTransactionInput } from './dto/create-transaction.input';
 import { UpdateTransactionInput } from './dto/update-transaction.input';
+import { CreateTransactionProvider } from '@/modules/transaction/providers/create-transaction.provider';
+import { EntityManager } from 'typeorm';
 
 @Injectable()
 export class TransactionService {
-  create(createTransactionInput: CreateTransactionInput) {
-    return 'This action adds a new transaction';
+  constructor(
+    /**
+     * inject createTranscationProvider
+     */
+    private readonly createTransactionProvider: CreateTransactionProvider,
+  ) {}
+
+  async create(
+    createTransactionInput: CreateTransactionInput,
+    manager?: EntityManager,
+  ) {
+    return this.createTransactionProvider.createTransaction(
+      createTransactionInput,
+      manager,
+    );
   }
 
   findAll() {

@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 import { Wallet } from '@/modules/wallet/entities/wallet.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateWalletInput } from '@/modules/wallet/dto/create-wallet.input';
 import { RuntimeException } from '@nestjs/core/errors/exceptions';
 
 @Injectable()
-export class CreateWalletProvider {
+export class CreateOrGetWalletProvider {
   constructor(
     /**
      * Inject walletRepository
@@ -15,28 +15,33 @@ export class CreateWalletProvider {
     private readonly walletRepository: Repository<Wallet>,
   ) {}
 
-  public async createWallet(createWalletDto: CreateWalletInput) {
+  public async createOrGetWallet(
+    createWalletDto: CreateWalletInput,
+    manager?: EntityManager,
+  ) {
     let wallet: Wallet | null = null;
-
+    const walletRepository = manager
+      ? manager.getRepository(Wallet)
+      : this.walletRepository;
     try {
-      wallet = await this.walletRepository.findOne({
+      wallet = await walletRepository.findOne({
         where: { userId: createWalletDto.userId },
       });
     } catch (error) {
       throw new RuntimeException(error);
     }
-    
+
     if (wallet) {
-      return true;
+      return wallet;
     }
-    wallet = this.walletRepository.create(createWalletDto);
+    wallet = walletRepository.create(createWalletDto);
 
     try {
-      await this.walletRepository.save(wallet);
+      await walletRepository.save(wallet);
     } catch (error) {
       console.log('error');
       throw new RuntimeException(error);
     }
-    return true;
+    return wallet;
   }
 }

@@ -1,11 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWalletHistoryInput } from './dto/create-wallet-history.input';
 import { UpdateWalletHistoryInput } from './dto/update-wallet-history.input';
+import { CreateWalletHistoryProvider } from '@/modules/wallet-history/providers/create-wallet-history.provider';
+import { EntityManager } from 'typeorm';
 
 @Injectable()
 export class WalletHistoryService {
-  create(createWalletHistoryInput: CreateWalletHistoryInput) {
-    return 'This action adds a new walletHistory';
+  constructor(
+    /**
+     * inject createWalletHistoryProvider
+     */
+    private readonly createWalletHistoryProvider: CreateWalletHistoryProvider,
+  ) {}
+
+  async create(
+    createWalletHistoryInput: CreateWalletHistoryInput,
+    manager?: EntityManager,
+  ) {
+    return await this.createWalletHistoryProvider.createWalletHistory(
+      createWalletHistoryInput,
+      manager,
+    );
   }
 
   findAll() {

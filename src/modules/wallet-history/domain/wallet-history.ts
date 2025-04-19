@@ -17,13 +17,13 @@ export class WalletHistory {
   transactionId: number;
 
   @Field()
-  modemaBlocked: string;
+  modemaBlocked: number;
 
   @Field()
-  userBlocked: string;
+  userBlocked: number;
 
   @Field()
-  withdrawable: string;
+  withdrawable: number;
 
   @Field({ nullable: true })
   createdBy?: number;

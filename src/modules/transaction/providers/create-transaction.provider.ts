@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 import { Transaction } from '@/modules/transaction/entities/transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateTransactionInput } from '@/modules/transaction/dto/create-transaction.input';
@@ -17,6 +17,7 @@ export class CreateTransactionProvider {
 
   public async createTransaction(
     createTransactionInput: CreateTransactionInput,
+    manager?: EntityManager,
   ) {
     const {
       withdrawable = 0,
@@ -33,14 +34,17 @@ export class CreateTransactionProvider {
       amount: withdrawable + modemaBlocked + userBlocked,
     };
 
-    const transaction = this.transactionRepo.create(transactionObject);
+    const transactionRepo = manager
+      ? manager.getRepository(Transaction)
+      : this.transactionRepo;
+    const transaction = transactionRepo.create(transactionObject);
 
     try {
-      await this.transactionRepo.save(transaction);
+      await transactionRepo.save(transaction);
     } catch (error) {
       throw new RuntimeException(error);
     }
 
-    return transaction.id;
+    return transaction;
   }
 }
