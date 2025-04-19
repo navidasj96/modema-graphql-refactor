@@ -113,6 +113,7 @@ export class WalletService {
         modemaBlocked,
         userBlocked,
         transactionId: transaction.id,
+        createdBy: userId,
       };
 
       await this.walletHistoryService.create(walletHistoryObject, manager);

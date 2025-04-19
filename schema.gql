@@ -1140,7 +1140,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-19T11:22:46.028Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.463Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1228,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-19T11:22:46.044Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.472Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1343,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-19T11:22:46.108Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.506Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1433,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-19T11:22:46.045Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.473Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1674,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-19T11:22:46.070Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.483Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1781,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-19T11:22:46.047Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.474Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5081,7 +5081,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-19T11:22:46.429Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.736Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5103,7 +5103,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-19T11:22:46.439Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.740Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5118,7 +5118,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-19T11:22:46.447Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.743Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-19T11:22:46.455Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.748Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5173,7 +5173,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-19T11:22:46.463Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.752Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5214,7 +5214,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-19T11:22:46.478Z"
+  createdAt: DateTime! = "2025-04-19T18:42:11.760Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -36175,7 +36175,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-19T11:22:46.028Z"
+  createdAt: DateTime = "2025-04-19T18:42:11.463Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36197,7 +36197,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-19T11:22:46.044Z"
+  createdAt: DateTime = "2025-04-19T18:42:11.472Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36212,7 +36212,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-19T11:22:46.108Z"
+  createdAt: DateTime = "2025-04-19T18:42:11.506Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36236,7 +36236,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-19T11:22:46.045Z"
+  createdAt: DateTime = "2025-04-19T18:42:11.473Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36253,7 +36253,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-19T11:22:46.070Z"
+  createdAt: DateTime = "2025-04-19T18:42:11.483Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36308,7 +36308,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-19T11:22:46.047Z"
+  createdAt: DateTime = "2025-04-19T18:42:11.474Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -44509,7 +44509,13 @@ type User {
   verifyUsers: [VerifyUser!]
   visitors: [Visitor!]
   walletGiftCharges: [WalletGiftCharge!]
-  walletHistories: [WalletHistory!]
+  walletHistories(
+    """Specify to filter the records returned."""
+    filter: WalletHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [WalletHistorySort!]! = []
+  ): [WalletHistory!]!
   wallets(
     """Specify to filter the records returned."""
     filter: WalletFilter! = {}
@@ -46043,11 +46049,23 @@ type Wallet {
   notUsableForLowTotalPrices: Boolean!
   retargetingWalletCharges: [RetargetingWalletCharge!]!
   updatedAt: DateTime
-  user: User!
+  user(
+    """Specify to filter the records returned."""
+    filter: UserFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [UserSort!]! = []
+  ): [User!]!
   userBlocked: Float!
   userId: Float!
   walletGiftCharges: [WalletGiftCharge!]!
-  walletHistories: [WalletHistory!]!
+  walletHistories(
+    """Specify to filter the records returned."""
+    filter: WalletHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [WalletHistorySort!]! = []
+  ): [WalletHistory!]!
   withdrawable: Float!
 }
 
@@ -46198,11 +46216,23 @@ type WalletHistory {
   createdBy2: User!
   id: ID!
   modemaBlocked: Float!
-  transaction: Transaction!
+  transaction(
+    """Specify to filter the records returned."""
+    filter: TransactionFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [TransactionSort!]! = []
+  ): [Transaction!]!
   transactionId: Float!
   updatedAt: DateTime
   userBlocked: Float!
-  wallet: Wallet!
+  wallet(
+    """Specify to filter the records returned."""
+    filter: WalletFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [WalletSort!]! = []
+  ): [Wallet!]!
   walletId: Float!
   withdrawable: Float!
 }
