@@ -66,8 +66,6 @@ export class UserTransactionListProvider {
       lastInvoiceHistory = invoiceHistory;
     }
 
-    let totalPaid = 0;
-
     const InvoiceHistoryWithTotals = uniqueInvoiceHistory.map((ih) => {
       const payments = ih.invoicePaymentHistories ?? [];
 
@@ -111,9 +109,6 @@ export class UserTransactionListProvider {
       };
     });
 
-    if (totalPaid < 0) totalPaid = 0;
-
-    // 7. Return final data
     return {
       id: user.id,
       name: user.name,
