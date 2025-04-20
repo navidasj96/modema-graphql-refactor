@@ -17,9 +17,11 @@ import { CreateInvoicePaymentHistoryInput } from '@/modules/invoice-payment-hist
           EntityClass: InvoicePaymentHistory,
           DTOClass: InvoicePaymentHistoryGraphQL,
           CreateDTOClass: CreateInvoicePaymentHistoryInput,
+          enableAggregate: true,
         },
       ],
     }),
   ],
+  exports: [InvoicePaymentHistoryService],
 })
 export class InvoicePaymentHistoryModule {}

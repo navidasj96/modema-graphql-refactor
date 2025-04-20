@@ -5,6 +5,7 @@ import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './domain/user';
 import { CreateUserResponseDto } from '@/modules/user/dto/create-user-response.dto';
 import { UpdateUserResponseDto } from '@/modules/user/dto/update-use-response.dto';
+import { UserTransactionListReturnDto } from '@/modules/user/dto/user-transaction-list-return.dto';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -33,5 +34,10 @@ export class UserResolver {
   @Mutation(() => User)
   removeUser(@Args('id', { type: () => Int }) id: number) {
     return this.userService.remove(id);
+  }
+
+  @Query(() => UserTransactionListReturnDto)
+  userTransactionList(@Args('id', { type: () => Int }) id: number) {
+    return this.userService.userTransactionList(id);
   }
 }

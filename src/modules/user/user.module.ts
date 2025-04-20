@@ -13,6 +13,10 @@ import { CreateUserProvider } from '@/modules/user/providers/create-user.provide
 import { AuthModule } from '@/modules/auth/auth.module';
 import { UserController } from '@/modules/user/user.controller';
 import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
+import { UserTransactionListProvider } from '@/modules/user/providers/user-transaction-list.provider';
+import { WalletHistoryModule } from '@/modules/wallet-history/wallet-history.module';
+import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
+import { InvoicePaymentHistoryModule } from '@/modules/invoice-payment-history/invoice-payment-history.module';
 
 @Module({
   providers: [
@@ -20,6 +24,7 @@ import { UpdateUserProvider } from '@/modules/user/providers/update-user.provide
     UserService,
     CreateUserProvider,
     UpdateUserProvider,
+    UserTransactionListProvider,
   ],
   exports: [UserService, CreateUserProvider, UpdateUserProvider],
   imports: [
@@ -37,6 +42,9 @@ import { UpdateUserProvider } from '@/modules/user/providers/update-user.provide
     RoleModule,
     PermissionModule,
     forwardRef(() => AuthModule),
+    WalletHistoryModule,
+    InvoiceHistoryModule,
+    InvoicePaymentHistoryModule,
   ],
   controllers: [UserController],
 })

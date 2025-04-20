@@ -21,5 +21,6 @@ import { CreateInvoiceHistoryInput } from '@/modules/invoice-history/dto/create-
       ],
     }),
   ],
+  exports: [InvoiceHistoryService],
 })
 export class InvoiceHistoryModule {}

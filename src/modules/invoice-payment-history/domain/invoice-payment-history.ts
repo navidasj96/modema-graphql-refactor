@@ -1,5 +1,9 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  IDField,
+  UnPagedRelation,
+} from '@ptc-org/nestjs-query-graphql';
 import { User } from '@/modules/user/domain/user';
 import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history';
 import { Invoice } from '@/modules/invoice/domain/invoice';
@@ -7,6 +11,10 @@ import { InvoicePayment } from '@/modules/invoice-payment/domain/invoice-payment
 import { InvoicePaymentType } from '@/modules/invoice-payment-type/domain/invoice-payment-type';
 
 @InputType('InvoicePaymentHistoryDomain')
+@UnPagedRelation('invoice', () => Invoice)
+@UnPagedRelation('invoiceHistory', () => InvoiceHistory)
+@UnPagedRelation('invoicePayment', () => InvoicePayment)
+@UnPagedRelation('invoicePaymentType', () => InvoicePaymentType)
 @ObjectType()
 export class InvoicePaymentHistory {
   @IDField(() => ID)
@@ -21,13 +29,13 @@ export class InvoicePaymentHistory {
   @Field({ nullable: true })
   invoiceHistoryId?: number;
 
-  @Field()
+  @FilterableField()
   invoicePaymentTypeId: number;
 
-  @Field()
+  @FilterableField()
   amount: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   forShipping?: boolean;
 
   @Field()
@@ -48,7 +56,7 @@ export class InvoicePaymentHistory {
   @Field({ nullable: true })
   chequePayee?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   isConfirmed?: boolean;
 
   @Field({ nullable: true })

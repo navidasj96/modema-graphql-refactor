@@ -6,6 +6,7 @@ import { Wallet } from '@/modules/wallet/domain/wallet';
 
 @UnPagedRelation('wallet', () => Wallet)
 @UnPagedRelation('transaction', () => Transaction)
+@UnPagedRelation('createdBy2', () => User)
 @InputType('WalletHistoryDomain')
 @ObjectType()
 export class WalletHistory {

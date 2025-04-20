@@ -1,5 +1,5 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { IDField, UnPagedRelation } from '@ptc-org/nestjs-query-graphql';
 import { ChaparTrackingHistory } from '@/modules/chapar-tracking-history/domain/chapar-tracking-history';
 import { Coupon } from '@/modules/coupon/domain/coupon';
 import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/domain/invoice-address-validation-result';
@@ -31,6 +31,9 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 
 @InputType('InvoiceDomain')
+@UnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
+@UnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
+@UnPagedRelation('invoicePaymentHistories', () => InvoicePaymentHistory)
 @ObjectType()
 export class Invoice {
   @IDField(() => ID)

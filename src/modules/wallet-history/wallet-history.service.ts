@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { CreateWalletHistoryInput } from './dto/create-wallet-history.input';
 import { UpdateWalletHistoryInput } from './dto/update-wallet-history.input';
 import { CreateWalletHistoryProvider } from '@/modules/wallet-history/providers/create-wallet-history.provider';
-import { EntityManager } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { WalletHistory } from '@/modules/wallet-history/entities/wallet-history.entity';
 
 @Injectable()
 export class WalletHistoryService {
@@ -11,6 +13,11 @@ export class WalletHistoryService {
      * inject createWalletHistoryProvider
      */
     private readonly createWalletHistoryProvider: CreateWalletHistoryProvider,
+    /**
+     * inject walletHistoryRepository :
+     */
+    @InjectRepository(WalletHistory)
+    private readonly walletHistoryRepository: Repository<WalletHistory>,
   ) {}
 
   async create(
@@ -37,5 +44,12 @@ export class WalletHistoryService {
 
   remove(id: number) {
     return `This action removes a #${id} walletHistory`;
+  }
+
+  async walletForTransactionHistory(id: number) {
+    return await this.walletHistoryRepository.find({
+      where: { createdBy2: { id: id } },
+      relations: ['createdBy2', 'transaction'],
+    });
   }
 }

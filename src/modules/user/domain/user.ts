@@ -96,6 +96,8 @@ import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has
 @UnPagedRelation('userHasPermission', () => UserHasPermission)
 @UnPagedRelation('wallets', () => Wallet)
 @UnPagedRelation('walletHistories', () => WalletHistory)
+@UnPagedRelation('invoiceHistories', () => InvoiceHistory)
+@UnPagedRelation('transactions', () => Transaction)
 @ObjectType()
 export class User {
   @IDField(() => ID)
