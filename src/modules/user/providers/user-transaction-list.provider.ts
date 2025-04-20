@@ -6,7 +6,7 @@ import { InvoicePaymentType } from '@/utils/invoice-payment-type';
 import { WalletHistoryService } from '@/modules/wallet-history/wallet-history.service';
 import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
 import { InvoicePaymentHistoryService } from '@/modules/invoice-payment-history/invoice-payment-history.service';
-import { InvoiceHistoryWithTotalsDto } from '@/modules/invoice-history/dto/invoice-history-with-totals.dto';
+import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
 
 @Injectable()
 export class UserTransactionListProvider {
@@ -46,56 +46,70 @@ export class UserTransactionListProvider {
       await this.walletHistoryService.walletForTransactionHistory(user.id);
 
     // 3. Load invoice histories and invoices
-    const invoiceHistories =
+    const invoiceHistories: InvoiceHistory[] =
       await this.invoiceHistoryService.invoiceHistoryForTransactionHistory(
         user.id,
       );
 
+    //filtered InvoiceHistory to achieve unique history according to invoice_id or total_price
+
+    const uniqueInvoiceHistory: InvoiceHistory[] = [];
+    let lastInvoiceHistory: null | InvoiceHistory = null;
+    for (const invoiceHistory of invoiceHistories) {
+      if (
+        !lastInvoiceHistory ||
+        invoiceHistory.invoiceId !== lastInvoiceHistory.invoiceId ||
+        invoiceHistory.totalPrice !== lastInvoiceHistory.totalPrice
+      ) {
+        uniqueInvoiceHistory.push(invoiceHistory);
+      }
+      lastInvoiceHistory = invoiceHistory;
+    }
+
     let totalPaid = 0;
 
-    const InvoiceHistoryWithTotals: InvoiceHistoryWithTotalsDto[] =
-      invoiceHistories.map((ih) => {
-        const payments = ih.invoicePaymentHistories ?? [];
+    const InvoiceHistoryWithTotals = uniqueInvoiceHistory.map((ih) => {
+      const payments = ih.invoicePaymentHistories ?? [];
 
-        const totalPaid = payments
-          .filter(
-            (p) =>
-              p.invoicePaymentTypeId !==
-                InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              p.isConfirmed,
-          )
-          .reduce((sum, p) => sum + Number(p.amount), 0);
+      const totalPaid = payments
+        .filter(
+          (p) =>
+            p.invoicePaymentTypeId !==
+              InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
+            p.isConfirmed,
+        )
+        .reduce((sum, p) => sum + Number(p.amount), 0);
 
-        const totalWalletDecreased = payments
-          .filter(
-            (p) =>
-              p.invoicePaymentTypeId ===
-                InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              !p.forShipping &&
-              p.isConfirmed &&
-              Number(p.amount) > 0,
-          )
-          .reduce((sum, p) => sum + Number(p.amount), 0);
+      const totalWalletDecreased = payments
+        .filter(
+          (p) =>
+            p.invoicePaymentTypeId ===
+              InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
+            !p.forShipping &&
+            p.isConfirmed &&
+            Number(p.amount) > 0,
+        )
+        .reduce((sum, p) => sum + Number(p.amount), 0);
 
-        const totalWalletIncreased = payments
-          .filter(
-            (p) =>
-              p.invoicePaymentTypeId ===
-                InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              !p.forShipping &&
-              p.isConfirmed &&
-              Number(p.amount) < 0,
-          )
-          .reduce((sum, p) => sum + Number(p.amount), 0);
+      const totalWalletIncreased = payments
+        .filter(
+          (p) =>
+            p.invoicePaymentTypeId ===
+              InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
+            !p.forShipping &&
+            p.isConfirmed &&
+            Number(p.amount) < 0,
+        )
+        .reduce((sum, p) => sum + Number(p.amount), 0);
 
-        // 🔧 Add the computed values to each invoiceHistory instance
-        return {
-          invoiceHistory: ih,
-          totalPaid: Math.max(totalPaid, 0),
-          totalWalletDecreased,
-          totalWalletIncreased,
-        } as InvoiceHistoryWithTotalsDto;
-      });
+      // 🔧 Add the computed values to each invoiceHistory instance
+      return {
+        invoiceHistory: ih,
+        totalPaid: Math.max(totalPaid, 0),
+        totalWalletDecreased,
+        totalWalletIncreased,
+      };
+    });
 
     if (totalPaid < 0) totalPaid = 0;
 
