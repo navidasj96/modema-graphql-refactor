@@ -47,9 +47,11 @@ export class WalletHistoryService {
   }
 
   async walletForTransactionHistory(id: number) {
-    return await this.walletHistoryRepository.find({
-      where: { createdBy2: { id: id } },
-      relations: ['createdBy2', 'transaction'],
-    });
+    return await this.walletHistoryRepository
+      .createQueryBuilder('walletHistory')
+      .leftJoinAndSelect('walletHistory.wallet', 'wallet')
+      .leftJoinAndSelect('wallet.user', 'user')
+      .where('user.id = :userId', { userId: id })
+      .getMany();
   }
 }

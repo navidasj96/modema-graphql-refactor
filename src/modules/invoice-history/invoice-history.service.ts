@@ -36,14 +36,11 @@ export class InvoiceHistoryService {
   }
 
   async invoiceHistoryForTransactionHistory(id: number) {
-    return await this.invoiceHistoryRepository.find({
-      where: { userId: id },
-      relations: [
-        'invoice',
-        'invoice.currentInvoiceStatus',
-        'invoice.invoicePaymentStatus',
-        'invoicePaymentHistories',
-      ],
-    });
+    return await this.invoiceHistoryRepository
+      .createQueryBuilder('invoiceHistory')
+      .innerJoin('invoiceHistory.invoice', 'invoice')
+      .where('invoice.user_id = :userId', { userId: id })
+      .andWhere('invoiceHistory.editor_user_id = :userId', { userId: id })
+      .getMany();
   }
 }

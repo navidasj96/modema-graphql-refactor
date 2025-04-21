@@ -5,7 +5,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { InvoicePaymentType } from '@/utils/invoice-payment-type';
 import { WalletHistoryService } from '@/modules/wallet-history/wallet-history.service';
 import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
-import { InvoicePaymentHistoryService } from '@/modules/invoice-payment-history/invoice-payment-history.service';
 import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
 
 @Injectable()
@@ -26,26 +25,22 @@ export class UserTransactionListProvider {
      */
 
     private readonly invoiceHistoryService: InvoiceHistoryService,
-    /**
-     * inject invoicePaymentHistoryService
-     */
-    private readonly invoicePaymentHistoryService: InvoicePaymentHistoryService,
   ) {}
 
   public async userTransactionList(userId: number) {
-    // 1. Load basic user
+    //load basic user
     const user = await this.userRepository.findOne({
       where: { id: userId },
-      select: ['id', 'name'],
+      relations: ['walletHistories', 'invoiceHistories'],
     });
 
     if (!user) throw new NotFoundException('User not found');
 
-    // 2. Load wallet histories
+    //load wallet histories
     const walletHistories =
       await this.walletHistoryService.walletForTransactionHistory(user.id);
 
-    // 3. Load invoice histories and invoices
+    //  Load invoice histories and invoices
     const invoiceHistories: InvoiceHistory[] =
       await this.invoiceHistoryService.invoiceHistoryForTransactionHistory(
         user.id,
@@ -66,52 +61,53 @@ export class UserTransactionListProvider {
       lastInvoiceHistory = invoiceHistory;
     }
 
-    const InvoiceHistoryWithTotals = uniqueInvoiceHistory.map((ih) => {
-      const payments = ih.invoicePaymentHistories ?? [];
+    const InvoiceHistoryWithTotals = uniqueInvoiceHistory.map(
+      (invoiceHistoryItem) => {
+        const payments = invoiceHistoryItem.invoicePaymentHistories ?? [];
 
-      const totalPaid = payments
-        .filter(
-          (p) =>
-            p.invoicePaymentTypeId !==
-              InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-            p.isConfirmed,
-        )
-        .reduce((sum, p) => sum + Number(p.amount), 0);
+        const totalPaid = payments
+          .filter(
+            (p) =>
+              p.invoicePaymentTypeId !==
+                InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
+              p.isConfirmed,
+          )
+          .reduce((sum, p) => sum + Number(p.amount), 0);
 
-      const totalWalletDecreased = payments
-        .filter(
-          (p) =>
-            p.invoicePaymentTypeId ===
-              InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-            !p.forShipping &&
-            p.isConfirmed &&
-            Number(p.amount) > 0,
-        )
-        .reduce((sum, p) => sum + Number(p.amount), 0);
+        const totalWalletDecreased = payments
+          .filter(
+            (p) =>
+              p.invoicePaymentTypeId ===
+                InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
+              !p.forShipping &&
+              p.isConfirmed &&
+              Number(p.amount) > 0,
+          )
+          .reduce((sum, p) => sum + Number(p.amount), 0);
 
-      const totalWalletIncreased = payments
-        .filter(
-          (p) =>
-            p.invoicePaymentTypeId ===
-              InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-            !p.forShipping &&
-            p.isConfirmed &&
-            Number(p.amount) < 0,
-        )
-        .reduce((sum, p) => sum + Number(p.amount), 0);
+        const totalWalletIncreased = payments
+          .filter(
+            (p) =>
+              p.invoicePaymentTypeId ===
+                InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
+              !p.forShipping &&
+              p.isConfirmed &&
+              Number(p.amount) < 0,
+          )
+          .reduce((sum, p) => sum + Number(p.amount), 0);
 
-      // 🔧 Add the computed values to each invoiceHistory instance
-      return {
-        invoiceHistory: ih,
-        totalPaid: Math.max(totalPaid, 0),
-        totalWalletDecreased,
-        totalWalletIncreased,
-      };
-    });
+        //add the computed values to each invoiceHistory instance
+        return {
+          invoiceHistory: invoiceHistoryItem,
+          totalPaid: Math.max(totalPaid, 0),
+          totalWalletDecreased,
+          totalWalletIncreased,
+        };
+      },
+    );
 
     return {
-      id: user.id,
-      name: user.name,
+      user: user,
       walletHistories,
       InvoiceHistoryWithTotals,
     };
