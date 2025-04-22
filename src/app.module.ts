@@ -274,6 +274,8 @@ import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from '@/modules/auth/config/jwt.config';
 import { GraphQLError } from 'graphql/error';
 import { UserController } from '@/modules/user/user.controller';
+import { AuthenticationGuard } from '@/modules/auth/guards/authentication/authentication.gurad';
+import { APP_GUARD } from '@nestjs/core';
 
 const ENV = process.env.NODE_ENV;
 
@@ -598,10 +600,10 @@ const ENV = process.env.NODE_ENV;
   controllers: [AppController, UserController],
   providers: [
     AppService,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: AuthenticationGuard,
-    // },
+    {
+      provide: APP_GUARD,
+      useClass: AuthenticationGuard,
+    },
     AccessTokenGuard,
   ],
 })

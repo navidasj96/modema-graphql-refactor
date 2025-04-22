@@ -46,12 +46,14 @@ export class WalletHistoryService {
     return `This action removes a #${id} walletHistory`;
   }
 
-  async walletForTransactionHistory(id: number) {
-    return await this.walletHistoryRepository
-      .createQueryBuilder('walletHistory')
-      .leftJoinAndSelect('walletHistory.wallet', 'wallet')
-      .leftJoinAndSelect('wallet.user', 'user')
-      .where('user.id = :userId', { userId: id })
-      .getMany();
+  async userWalletHistories(userId: number) {
+    return await this.walletHistoryRepository.find({
+      where: {
+        wallet: {
+          userId,
+        },
+      },
+      relations: ['wallet', 'wallet.user'],
+    });
   }
 }

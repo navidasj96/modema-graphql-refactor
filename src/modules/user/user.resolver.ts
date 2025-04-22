@@ -6,6 +6,10 @@ import { User } from './domain/user';
 import { CreateUserResponseDto } from '@/modules/user/dto/create-user-response.dto';
 import { UpdateUserResponseDto } from '@/modules/user/dto/update-use-response.dto';
 import { UserTransactionListReturnDto } from '@/modules/user/dto/user-transaction-list-return.dto';
+import { Permissions } from '@/utils/permission-guard/permissions.decorator';
+import { UseGuards } from '@nestjs/common';
+import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
+import { UserPermissions } from '@/utils/permissions';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -36,6 +40,8 @@ export class UserResolver {
     return this.userService.remove(id);
   }
 
+  @UseGuards(PermissionsGuard)
+  @Permissions([UserPermissions.PERMISSION_TO_VIEW_USER_TRANSACTIONS])
   @Query(() => UserTransactionListReturnDto)
   userTransactionList(@Args('id', { type: () => Int }) id: number) {
     return this.userService.userTransactionList(id);

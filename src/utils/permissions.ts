@@ -1,150 +1,150 @@
 export const AttributePermissions = {
   PERMISSION_TO_VIEW: 'view attributes',
-  PERMISSION_TO_CHANGE: 'change attributes'
+  PERMISSION_TO_CHANGE: 'change attributes',
 };
 
 export const AttributeGroupPermissions = {
   PERMISSION_TO_VIEW: 'view attribute groups',
-  PERMISSION_TO_CHANGE: 'change attribute groups'
+  PERMISSION_TO_CHANGE: 'change attribute groups',
 };
 
 export const AttributeItemPermissions = {
   PERMISSION_TO_VIEW: 'view attribute items',
-  PERMISSION_TO_CHANGE: 'change attribute items'
+  PERMISSION_TO_CHANGE: 'change attribute items',
 };
 
 export const BasicCarpetBorderPermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet borders',
-  PERMISSION_TO_CHANGE: 'change basic carpet borders'
+  PERMISSION_TO_CHANGE: 'change basic carpet borders',
 };
 
 export const BasicCarpetBrandPermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet brands',
-  PERMISSION_TO_CHANGE: 'change basic carpet borders'
+  PERMISSION_TO_CHANGE: 'change basic carpet borders',
 };
 
 export const BasicCarpetColorPermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet colors',
-  PERMISSION_TO_CHANGE: 'change basic carpet colors'
+  PERMISSION_TO_CHANGE: 'change basic carpet colors',
 };
 
 export const BasicCarpetDesignPermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet designs',
-  PERMISSION_TO_CHANGE: 'change basic carpet designs'
+  PERMISSION_TO_CHANGE: 'change basic carpet designs',
 };
 
 export const BasicCarpetDesignerPermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet designers',
-  PERMISSION_TO_CHANGE: 'change basic carpet designers'
+  PERMISSION_TO_CHANGE: 'change basic carpet designers',
 };
 
 export const BasicCarpetMaterialPermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet materials',
-  PERMISSION_TO_CHANGE: 'change basic carpet materials'
+  PERMISSION_TO_CHANGE: 'change basic carpet materials',
 };
 
 export const BasicCarpetSizePermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet sizes',
-  PERMISSION_TO_CHANGE: 'change basic carpet sizes'
+  PERMISSION_TO_CHANGE: 'change basic carpet sizes',
 };
 
 export const BasicCarpetTypePermissions = {
   PERMISSION_TO_VIEW: 'view basic carpet types',
-  PERMISSION_TO_CHANGE: 'change basic carpet types'
+  PERMISSION_TO_CHANGE: 'change basic carpet types',
 };
 
 export const CampaignFreeOfferPermissions = {
   PERMISSION_TO_VIEW: 'permission to view campaign free offers',
-  PERMISSION_TO_CHANGE: 'permission to change campaign free offers'
+  PERMISSION_TO_CHANGE: 'permission to change campaign free offers',
 };
 
 export const CampaignInstagramFollowPermissions = {
-  PERMISSION_TO_VIEW: 'view campaign instagram follows list and details'
+  PERMISSION_TO_VIEW: 'view campaign instagram follows list and details',
 };
 
 export const CarpetFeaturePermissions = {
   PERMISSION_TO_VIEW: 'view carpet features',
-  PERMISSION_TO_CHANGE: 'change carpet features'
+  PERMISSION_TO_CHANGE: 'change carpet features',
 };
 
 export const CarpetMaterialPermissions = {
   PERMISSION_TO_VIEW: 'view design materials',
-  PERMISSION_TO_CHANGE: 'change design materials'
+  PERMISSION_TO_CHANGE: 'change design materials',
 };
 
 export const CarpetShapePermissions = {
   PERMISSION_TO_VIEW: 'view design shapes',
-  PERMISSION_TO_CHANGE: 'change design shapes'
+  PERMISSION_TO_CHANGE: 'change design shapes',
 };
 
 export const CarpetSizePermissions = {
   PERMISSION_TO_VIEW: 'view design sizes',
-  PERMISSION_TO_CHANGE: 'change design sizes'
+  PERMISSION_TO_CHANGE: 'change design sizes',
 };
 
 export const CarpetUsagePlacePermissions = {
   PERMISSION_TO_VIEW: 'view carpet usage places',
-  PERMISSION_TO_CHANGE: 'change carpet usage places'
+  PERMISSION_TO_CHANGE: 'change carpet usage places',
 };
 
 export const ColorCategoryPermissions = {
   PERMISSION_TO_VIEW: 'view color categories',
-  PERMISSION_TO_CHANGE: 'change color categories'
+  PERMISSION_TO_CHANGE: 'change color categories',
 };
 
 export const ConfigPermissions = {
   PERMISSION_TO_VIEW: 'change configs',
-  PERMISSION_TO_CHANGE: 'change configs'
+  PERMISSION_TO_CHANGE: 'change configs',
 };
 
 export const ContactFormPermissions = {
-  PERMISSION_TO_VIEW: 'view contact forms'
+  PERMISSION_TO_VIEW: 'view contact forms',
 };
 
 export const CouponPermissions = {
   PERMISSION_TO_VIEW: 'view coupons',
-  PERMISSION_TO_CHANGE: 'change coupons'
+  PERMISSION_TO_CHANGE: 'change coupons',
 };
 
 export const CustomerRequestPermissions = {
   PERMISSION_TO_VIEW: 'view customer files',
-  PERMISSION_TO_CHANGE: 'change customer files'
+  PERMISSION_TO_CHANGE: 'change customer files',
 };
 
 export const DiscountPermissions = {
   PERMISSION_TO_VIEW: 'view discounts',
-  PERMISSION_TO_CHANGE: 'change discounts'
+  PERMISSION_TO_CHANGE: 'change discounts',
 };
 
 export const ExitControlPermissions = {
   PERMISSION_TO_SCAN_AND_CONTROL_EXITING_ITEMS:
     'scan and control exiting items',
-  PERMISSION_TO_VIEW_EXIT_CONTROL_REPORT: 'view exit control report'
+  PERMISSION_TO_VIEW_EXIT_CONTROL_REPORT: 'view exit control report',
 };
 
 export const HeardAboutUsOptionPermissions = {
   PERMISSION_TO_VIEW: 'view heard about us options',
-  PERMISSION_TO_CHANGE: 'change heard about us options'
+  PERMISSION_TO_CHANGE: 'change heard about us options',
 };
 
 export const HelpDeskPermissions = {
   PERMISSION_TO_CHANGE: 'help desk change',
-  PERMISSION_TO_CHANGE_ONLINE_OFFLINE: 'help desk online offline change'
+  PERMISSION_TO_CHANGE_ONLINE_OFFLINE: 'help desk online offline change',
 };
 
 export const HolidayPermissions = {
   PERMISSION_TO_VIEW: 'view holidays',
-  PERMISSION_TO_CHANGE: 'change holidays'
+  PERMISSION_TO_CHANGE: 'change holidays',
 };
 
 export const HomePageCustomerImagePermissions = {
   PERMISSION_TO_VIEW: 'view home page customer images',
-  PERMISSION_TO_CHANGE: 'change home page customer images'
+  PERMISSION_TO_CHANGE: 'change home page customer images',
 };
 
 export const IncredibleOfferPermissions = {
   PERMISSION_TO_VIEW: 'view incredible offers',
-  PERMISSION_TO_CHANGE: 'change incredible offers'
+  PERMISSION_TO_CHANGE: 'change incredible offers',
 };
 
 export const InvoicePermissions = {
@@ -264,14 +264,14 @@ export const InvoicePermissions = {
 
   PERMISSION_TO_SET_INVOICE_TO_DEPOT_FOR_DIGIKALA:
     'set invoice to depot for digikala',
-  PERMISSION_TO_CHANGE_INVOICE_PRICES: 'change invoice prices'
+  PERMISSION_TO_CHANGE_INVOICE_PRICES: 'change invoice prices',
 };
 
 export const InvoicePaymentPermissions = {
   PERMISSION_TO_VIEW_INVOICE_PAYMENTS: 'view invoice payments',
   PERMISSION_TO_ADD_INVOICE_PAYMENTS: 'add invoice payments',
   PERMISSION_TO_EDIT_INVOICE_PAYMENTS: 'edit invoice payments',
-  PERMISSION_TO_DELETE_INVOICE_PAYMENTS: 'delete invoice payments'
+  PERMISSION_TO_DELETE_INVOICE_PAYMENTS: 'delete invoice payments',
 };
 
 export const InvoiceProductItemPermissions = {
@@ -348,21 +348,21 @@ export const InvoiceProductItemPermissions = {
   PERMISSION_TO_VIEW_ITEMS_IN_EXITED_FROM_REPOSITORY:
     'view production items in exited from repository',
   PERMISSION_TO_CHANGE_ITEMS_TO_EXITED_FROM_REPOSITORY:
-    'change production items to exited from repository'
+    'change production items to exited from repository',
 };
 
 export const InvoiceStatusPermissions = {
   PERMISSION_TO_VIEW: 'view invoice statuses',
-  PERMISSION_TO_CHANGE: 'change invoice statuses'
+  PERMISSION_TO_CHANGE: 'change invoice statuses',
 };
 
 export const LabelPermissions = {
   PERMISSION_TO_VIEW: 'view labels',
-  PERMISSION_TO_CHANGE: 'change labels'
+  PERMISSION_TO_CHANGE: 'change labels',
 };
 
 export const ModemaAcceleratorPermissions = {
-  PERMISSION_TO_VIEW: 'view modema accelerator'
+  PERMISSION_TO_VIEW: 'view modema accelerator',
 };
 
 export const NeedsPhotographySubproductPermissions = {
@@ -371,40 +371,40 @@ export const NeedsPhotographySubproductPermissions = {
   PERMISSION_TO_SUBMIT_NEEDS_FOR_PHOTOGRAPHY:
     'submit needs for photography of subproducts',
   PERMISSION_TO_SUBMIT_PHOTOGRAPHY_IS_DONE:
-    'submit photography of subproducts is done'
+    'submit photography of subproducts is done',
 };
 
 export const NegotiationPermissions = {
-  PERMISSION_TO_CHANGE: 'negotiations'
+  PERMISSION_TO_CHANGE: 'negotiations',
 };
 
 export const NegotiationTypePermissions = {
-  PERMISSION_TO_CHANGE: 'negotiations'
+  PERMISSION_TO_CHANGE: 'negotiations',
 };
 
 export const PatternPermissions = {
   PERMISSION_TO_VIEW: 'view patterns',
-  PERMISSION_TO_CHANGE: 'change patterns'
+  PERMISSION_TO_CHANGE: 'change patterns',
 };
 
 export const PatternCategoryPermissions = {
   PERMISSION_TO_VIEW: 'view pattern categories',
-  PERMISSION_TO_CHANGE: 'change pattern categories'
+  PERMISSION_TO_CHANGE: 'change pattern categories',
 };
 
 export const PaymentMethodPermissions = {
   PERMISSION_TO_VIEW: 'view payment methods',
-  PERMISSION_TO_CHANGE: 'change payment methods'
+  PERMISSION_TO_CHANGE: 'change payment methods',
 };
 
 export const PaymentRequestPermissions = {
   PERMISSION_TO_VIEW: 'view visitor payment requests',
-  PERMISSION_TO_CHANGE: 'change visitor payment requests'
+  PERMISSION_TO_CHANGE: 'change visitor payment requests',
 };
 
 export const PermissionPermissions = {
   PERMISSION_TO_VIEW: 'view permissions',
-  PERMISSION_TO_CHANGE: 'change permissions'
+  PERMISSION_TO_CHANGE: 'change permissions',
 };
 
 export const PreorderPermissions = {
@@ -438,27 +438,27 @@ export const PreorderPermissions = {
     'view preorders in user cart activated',
   PERMISSION_TO_VIEW_PREORDERS_IN_ACTIVATION_CODE_EXPIRED:
     'view preorders in activation code expired',
-  PERMISSION_TO_EXPORT_PREORDERS_TO_CSV: 'export preorders to csv'
+  PERMISSION_TO_EXPORT_PREORDERS_TO_CSV: 'export preorders to csv',
 };
 
 export const PreorderRegisterPermissions = {
   PERMISSION_TO_PURCHASE_WITHOUT_PREORDER_REGISTER:
-    'purchase without preorder register'
+    'purchase without preorder register',
 };
 
 export const PriceGroupPermissions = {
   PERMISSION_TO_VIEW: 'view price groups',
-  PERMISSION_TO_CHANGE: 'change price groups'
+  PERMISSION_TO_CHANGE: 'change price groups',
 };
 
 export const PrintProfilePermissions = {
   PERMISSION_TO_VIEW: 'view printing color profiles',
-  PERMISSION_TO_CHANGE: 'change printing color profiles'
+  PERMISSION_TO_CHANGE: 'change printing color profiles',
 };
 
 export const PrintRipPermissions = {
   PERMISSION_TO_VIEW: 'view print rips',
-  PERMISSION_TO_CHANGE: 'change print rips'
+  PERMISSION_TO_CHANGE: 'change print rips',
 };
 
 export const ProductPermissions = {
@@ -471,17 +471,17 @@ export const ProductPermissions = {
   PERMISSION_TO_VIEW_PRODUCT_PRICES: 'view product prices',
   PERMISSION_TO_CHANGE_PRODUCT_PRICES: 'change product prices',
 
-  PERMISSION_TO_VIEW_SUBPRODUCT_LIST_PAGE: 'view subproducts list page'
+  PERMISSION_TO_VIEW_SUBPRODUCT_LIST_PAGE: 'view subproducts list page',
 };
 
 export const ProductCategoryPermissions = {
   PERMISSION_TO_VIEW: 'view product categories',
-  PERMISSION_TO_CHANGE: 'change product categories'
+  PERMISSION_TO_CHANGE: 'change product categories',
 };
 
 export const ProductCommentPermissions = {
   PERMISSION_TO_VIEW: 'view product comments',
-  PERMISSION_TO_REPLY: 'reply to product comments'
+  PERMISSION_TO_REPLY: 'reply to product comments',
 };
 
 export const ProductionPadPermissions = {
@@ -508,32 +508,32 @@ export const ProductionPadPermissions = {
   PERMISSION_TO_CHANGE_PRODUCTION_PAD_TO_RECEIVED_BY_REPOSITORY_FROM_PANEL:
     'change production pad to received by repository from panel',
   PERMISSION_TO_VIEW_PAD_PRODUCTION_PROGRESS: 'view pad production progress',
-  PERMISSION_TO_VIEW_PRODUCTION_REPORT: 'view production report'
+  PERMISSION_TO_VIEW_PRODUCTION_REPORT: 'view production report',
 };
 
 export const ProductionPadRollPermissions = {
   PERMISSION_TO_VIEW: 'view production pad rolls',
-  PERMISSION_TO_CHANGE: 'change production pad rolls'
+  PERMISSION_TO_CHANGE: 'change production pad rolls',
 };
 
 export const ProductionReceiptPermissions = {
   PERMISSION_TO_VIEW: 'view production receipts',
-  PERMISSION_TO_CHANGE: 'change production receipts'
+  PERMISSION_TO_CHANGE: 'change production receipts',
 };
 
 export const ProductionRollPermissions = {
   PERMISSION_TO_VIEW: 'view production rolls',
-  PERMISSION_TO_CHANGE: 'change production rolls'
+  PERMISSION_TO_CHANGE: 'change production rolls',
 };
 
 export const RatePermissions = {
   PERMISSION_TO_VIEW: 'view rate items',
-  PERMISSION_TO_CHANGE: 'change rate items'
+  PERMISSION_TO_CHANGE: 'change rate items',
 };
 
 export const RecommendedProductPermissions = {
   PERMISSION_TO_VIEW: 'view special offers/best sellers',
-  PERMISSION_TO_CHANGE: 'change special offers/best sellers'
+  PERMISSION_TO_CHANGE: 'change special offers/best sellers',
 };
 
 export const ReturnedInvoicePermissions = {
@@ -542,13 +542,13 @@ export const ReturnedInvoicePermissions = {
   PERMISSION_TO_VIEW_RETURNED_INVOICES_LIST: 'view returned invoices list',
   PERMISSION_TO_CHANGE_RETURNED_INVOICES: 'change returned invoices',
   PERMISSION_TO_EXPORT_RETURNED_INVOICES_TO_CSV:
-    'export returned invoices to csv'
+    'export returned invoices to csv',
 };
 
 export const ReturnReasonPermissions = {
   PERMISSION_TO_VIEW: 'view return reasons',
   PERMISSION_TO_CHANGE: 'change return reasons',
-  PERMISSION_TO_VIEW_RETURN_REASONS_REPORT: 'view return reasons report'
+  PERMISSION_TO_VIEW_RETURN_REASONS_REPORT: 'view return reasons report',
 };
 
 export const ReturnRequestPermissions = {
@@ -610,75 +610,92 @@ export const ReturnRequestPermissions = {
     'change return requests to referred to packaging and delivery',
   PERMISSION_TO_CHANGE_RETURN_REQUESTS_TO_CONFIRMED_BY_PACKAGING_AND_DELIVERY:
     'change return requests to confirmed by packaging and delivery',
-  PERMISSION_TO_CHANGE_RETURN_REQUESTS_TYPE: 'change return request type'
+  PERMISSION_TO_CHANGE_RETURN_REQUESTS_TYPE: 'change return request type',
 };
 
 export const RipTemplatePermissions = {
   PERMISSION_TO_VIEW: 'view rip templates',
-  PERMISSION_TO_CHANGE: 'change rip templates'
+  PERMISSION_TO_CHANGE: 'change rip templates',
 };
 
 export const RolePermissions = {
   PERMISSION_TO_VIEW: 'view roles',
-  PERMISSION_TO_CHANGE: 'change roles'
+  PERMISSION_TO_CHANGE: 'change roles',
 };
 
 export const SenderInformationPermissions = {
   PERMISSION_TO_VIEW: 'change sender informations',
-  PERMISSION_TO_CHANGE: 'change sender informations'
+  PERMISSION_TO_CHANGE: 'change sender informations',
 };
 
 export const SettingPermissions = {
   PERMISSION_TO_VIEW: 'change settings',
-  PERMISSION_TO_CHANGE: 'change settings'
+  PERMISSION_TO_CHANGE: 'change settings',
 };
 
 export const SizeGuidePermissions = {
   PERMISSION_TO_VIEW: 'view size guides',
-  PERMISSION_TO_CHANGE: 'change size guides'
+  PERMISSION_TO_CHANGE: 'change size guides',
 };
 
 export const SizeGuidesDetailPermissions = {
   PERMISSION_TO_VIEW: 'view size guide details',
-  PERMISSION_TO_CHANGE: 'change size guide details'
+  PERMISSION_TO_CHANGE: 'change size guide details',
 };
 
 export const SpecialOfferPermissions = {
   PERMISSION_TO_VIEW: 'view special offers/best sellers',
-  PERMISSION_TO_CHANGE: 'change special offers/best sellers'
+  PERMISSION_TO_CHANGE: 'change special offers/best sellers',
 };
 
 export const SubscriberPermissions = {
-  PERMISSION_TO_VIEW: 'view newsletter subscriptions'
+  PERMISSION_TO_VIEW: 'view newsletter subscriptions',
 };
 
 export const TagPermissions = {
   PERMISSION_TO_VIEW: 'view collections (tags)',
-  PERMISSION_TO_CHANGE: 'change collections (tags)'
+  PERMISSION_TO_CHANGE: 'change collections (tags)',
 };
 
 export const TestimonialPermissions = {
   PERMISSION_TO_VIEW: 'view testimonials',
-  PERMISSION_TO_CHANGE: 'change testimonials'
+  PERMISSION_TO_CHANGE: 'change testimonials',
 };
 
 export const UserCartPermissions = {
   PERMISSION_TO_ADD_DESCRIPTION_TO_USER_CART_ITEM:
-    'add description to user cart items'
+    'add description to user cart items',
+};
+
+export const UserPermissions = {
+  PERMISSION_TO_VIEW: 'view users',
+  PERMISSION_TO_CHANGE: 'change users',
+  PERMISSION_TO_EDIT_ALL_FIELDS_OF_USER: 'edit all fields of user',
+  PERMISSION_TO_EDIT_ONLY_NAME_OF_USER: 'edit only name of user',
+  PERMISSION_TO_EDIT_ONLY_SEPIDAR_INFO_OF_USER: 'interact with sepidar',
+  PERMISSION_TO_VIEW_CAMPAIGN_STATISTICS: 'campaign statistics',
+  PERMISSION_TO_LOGIN_AS_PANEL: 'login as panel',
+  PERMISSION_TO_LOGIN_AS_WEB: 'login as web',
+  PERMISSION_TO_VIEW_USER_WALLET: 'view user wallet',
+  PERMISSION_TO_CHARGE_USER_WALLET: 'charge user wallet',
+  PERMISSION_TO_ACCESS_PANEL: 'access panel',
+  PERMISSION_TO_VIEW_USER_TRANSACTIONS: 'view user transactions',
+  PERMISSION_TO_CANCEL_SNAPP_INVOICE_AFTER_RECEIVED:
+    'cancel snapp invoice after received by customer',
 };
 
 export const VisitorPermissions = {
   PERMISSION_TO_VIEW: 'view visitors',
   PERMISSION_TO_CHANGE: 'change visitors',
-  PERMISSION_TO_VIEW_VISITOR_SALES: 'view visitor sales'
+  PERMISSION_TO_VIEW_VISITOR_SALES: 'view visitor sales',
 };
 
 export const VisitorGroupPermissions = {
   PERMISSION_TO_VIEW: 'view visitor groups',
-  PERMISSION_TO_CHANGE: 'change visitor groups'
+  PERMISSION_TO_CHANGE: 'change visitor groups',
 };
 
 export const WithdrawalRequestPermissions = {
   PERMISSION_TO_VIEW: 'view withdrawal requests',
-  PERMISSION_TO_CONFIRM_PAYMENTS: 'confirm withdrawal payments'
+  PERMISSION_TO_CONFIRM_PAYMENTS: 'confirm withdrawal payments',
 };

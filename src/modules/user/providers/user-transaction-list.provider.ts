@@ -18,12 +18,10 @@ export class UserTransactionListProvider {
     /**
      * inject walletHistoryService
      */
-
     private readonly walletHistoryService: WalletHistoryService,
     /**
      * inject invoiceHistoryService
      */
-
     private readonly invoiceHistoryService: InvoiceHistoryService,
   ) {}
 
@@ -31,23 +29,20 @@ export class UserTransactionListProvider {
     //load basic user
     const user = await this.userRepository.findOne({
       where: { id: userId },
-      relations: ['walletHistories', 'invoiceHistories'],
     });
 
     if (!user) throw new NotFoundException('User not found');
 
     //load wallet histories
-    const walletHistories =
-      await this.walletHistoryService.walletForTransactionHistory(user.id);
+    const walletHistories = await this.walletHistoryService.userWalletHistories(
+      user.id,
+    );
 
     //  Load invoice histories and invoices
     const invoiceHistories: InvoiceHistory[] =
-      await this.invoiceHistoryService.invoiceHistoryForTransactionHistory(
-        user.id,
-      );
+      await this.invoiceHistoryService.userInvoiceHistories(user.id);
 
     //filtered InvoiceHistory to achieve unique history according to invoice_id or total_price
-
     const uniqueInvoiceHistory: InvoiceHistory[] = [];
     let lastInvoiceHistory: null | InvoiceHistory = null;
     for (const invoiceHistory of invoiceHistories) {
@@ -61,40 +56,41 @@ export class UserTransactionListProvider {
       lastInvoiceHistory = invoiceHistory;
     }
 
+    // calculate totalPaid , totalWalletDecreased , totalWalletIncreased
     const InvoiceHistoryWithTotals = uniqueInvoiceHistory.map(
       (invoiceHistoryItem) => {
         const payments = invoiceHistoryItem.invoicePaymentHistories ?? [];
 
         const totalPaid = payments
           .filter(
-            (p) =>
-              p.invoicePaymentTypeId !==
+            (payment) =>
+              payment.invoicePaymentTypeId !==
                 InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              p.isConfirmed,
+              payment.isConfirmed,
           )
           .reduce((sum, p) => sum + Number(p.amount), 0);
 
         const totalWalletDecreased = payments
           .filter(
-            (p) =>
-              p.invoicePaymentTypeId ===
+            (payment) =>
+              payment.invoicePaymentTypeId ===
                 InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              !p.forShipping &&
-              p.isConfirmed &&
-              Number(p.amount) > 0,
+              !payment.forShipping &&
+              payment.isConfirmed &&
+              Number(payment.amount) > 0,
           )
-          .reduce((sum, p) => sum + Number(p.amount), 0);
+          .reduce((sum, payment) => sum + Number(payment.amount), 0);
 
         const totalWalletIncreased = payments
           .filter(
-            (p) =>
-              p.invoicePaymentTypeId ===
+            (payment) =>
+              payment.invoicePaymentTypeId ===
                 InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              !p.forShipping &&
-              p.isConfirmed &&
-              Number(p.amount) < 0,
+              !payment.forShipping &&
+              payment.isConfirmed &&
+              Number(payment.amount) < 0,
           )
-          .reduce((sum, p) => sum + Number(p.amount), 0);
+          .reduce((sum, payment) => sum + Number(payment.amount), 0);
 
         //add the computed values to each invoiceHistory instance
         return {

@@ -35,12 +35,14 @@ export class InvoiceHistoryService {
     return `This action removes a #${id} invoiceHistory`;
   }
 
-  async invoiceHistoryForTransactionHistory(id: number) {
-    return await this.invoiceHistoryRepository
-      .createQueryBuilder('invoiceHistory')
-      .innerJoin('invoiceHistory.invoice', 'invoice')
-      .where('invoice.user_id = :userId', { userId: id })
-      .andWhere('invoiceHistory.editor_user_id = :userId', { userId: id })
-      .getMany();
+  async userInvoiceHistories(userId: number) {
+    return await this.invoiceHistoryRepository.find({
+      where: {
+        invoice: {
+          userId,
+        },
+      },
+      relations: ['invoice', 'editorUser'],
+    });
   }
 }
