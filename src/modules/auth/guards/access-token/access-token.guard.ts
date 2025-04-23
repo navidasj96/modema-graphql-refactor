@@ -54,8 +54,12 @@ export class AccessTokenGuard implements CanActivate {
       request[REQUEST_USER_KEY] = payload;
 
       //add users permissions to the request
-      request[REQUEST_USER_KEY].permissions =
-        await this.authService.getUserPermissions(payload.sub);
+      const { roles, permissions } = await this.authService.getUserPermissions(
+        payload.sub,
+      );
+      request[REQUEST_USER_KEY].permissions = permissions;
+
+      request[REQUEST_USER_KEY].roles = roles;
 
       // console.log('request', request.user.sub);
     } catch (error) {

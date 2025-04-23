@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   IDField,
   PagingStrategies,
   QueryOptions,
@@ -91,6 +92,7 @@ import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
+  filterDepth: 2,
 })
 @UnPagedRelation('userHasRole', () => UserHasRole)
 @UnPagedRelation('userHasPermission', () => UserHasPermission)
@@ -98,6 +100,7 @@ import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has
 @UnPagedRelation('walletHistories', () => WalletHistory)
 @UnPagedRelation('invoiceHistories', () => InvoiceHistory)
 @UnPagedRelation('transactions', () => Transaction)
+@FilterableRelation('addresses', () => Address)
 @ObjectType()
 export class User {
   @IDField(() => ID)
@@ -289,8 +292,8 @@ export class User {
   @Field(() => [Activity])
   activities: Activity[];
 
-  @Field(() => [Address])
-  addresses: Address[];
+  @Field(() => [Address], { nullable: true })
+  addresses?: Address[];
 
   @Field(() => [AutomationEvent])
   automationEvents: AutomationEvent[];
