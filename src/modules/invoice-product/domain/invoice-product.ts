@@ -1,5 +1,8 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { CarpetUsagePlaceInvoiceProduct } from '@/modules/carpet-usage-place-invoice-product/domain/carpet-usage-place-invoice-product';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 import { Design } from '@/modules/design/domain/design';
@@ -15,6 +18,37 @@ import { SubproductStockHistory } from '@/modules/subproduct-stock-history/domai
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
 @InputType('InvoiceProductDomain')
+@FilterableUnPagedRelation(
+  'carpetUsagePlaceInvoiceProducts',
+  () => CarpetUsagePlaceInvoiceProduct,
+)
+@FilterableUnPagedRelation(
+  'invoiceProductHistories',
+  () => InvoiceProductHistory,
+)
+@FilterableUnPagedRelation('invoiceProductItems', () => InvoiceProductItem)
+@FilterableUnPagedRelation('design', () => Design)
+@FilterableUnPagedRelation('discount_2', () => Discount)
+@FilterableUnPagedRelation('invoice', () => Invoice)
+@FilterableUnPagedRelation('pad', () => Subproduct)
+@FilterableUnPagedRelation('product', () => Product)
+@FilterableUnPagedRelation('relatedProduct', () => Product)
+@FilterableUnPagedRelation('relatedSubproduct', () => Subproduct)
+@FilterableUnPagedRelation('subproduct', () => Subproduct)
+@FilterableUnPagedRelation('invoiceReversalItems', () => InvoiceReversalItem)
+@FilterableUnPagedRelation(
+  'returnRequestItemHistories',
+  () => ReturnRequestItemHistory,
+)
+@FilterableUnPagedRelation('returnRequestItems', () => ReturnRequestItem)
+@FilterableUnPagedRelation(
+  'returnedInvoiceProducts',
+  () => ReturnedInvoiceProduct,
+)
+@FilterableUnPagedRelation(
+  'subproductStockHistories',
+  () => SubproductStockHistory,
+)
 @ObjectType()
 export class InvoiceProduct {
   @IDField(() => ID)

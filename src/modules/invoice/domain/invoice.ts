@@ -1,5 +1,11 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField, UnPagedRelation } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  FilterableUnPagedRelation,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { ChaparTrackingHistory } from '@/modules/chapar-tracking-history/domain/chapar-tracking-history';
 import { Coupon } from '@/modules/coupon/domain/coupon';
 import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/domain/invoice-address-validation-result';
@@ -31,9 +37,66 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 
 @InputType('InvoiceDomain')
-@UnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
-@UnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
-@UnPagedRelation('invoicePaymentHistories', () => InvoicePaymentHistory)
+@QueryOptions({
+  pagingStrategy: PagingStrategies.OFFSET,
+  enableTotalCount: true,
+})
+@FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
+@FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
+@FilterableUnPagedRelation('invoiceNegotiations', () => InvoiceNegotiation)
+@FilterableUnPagedRelation('invoiceHistories', () => InvoiceHistory)
+@FilterableUnPagedRelation(
+  'chaparTrackingHistories',
+  () => ChaparTrackingHistory,
+)
+@FilterableUnPagedRelation('Coupon', () => Coupon)
+@FilterableUnPagedRelation(
+  'invoiceAddressValidationResults',
+  () => InvoiceAddressValidationResult,
+)
+@FilterableUnPagedRelation('invoiceAddresses', () => InvoiceAddress)
+@FilterableUnPagedRelation(
+  'invoiceBankGatewayHistories',
+  () => InvoiceBankGatewayHistory,
+)
+@FilterableUnPagedRelation(
+  'invoicePaymentHistories',
+  () => InvoicePaymentHistory,
+)
+@FilterableUnPagedRelation('invoiceProducts', () => InvoiceProduct)
+@FilterableUnPagedRelation('invoicePayments', () => InvoicePayment)
+@FilterableUnPagedRelation('invoiceRatesResults', () => InvoiceRatesResult)
+@FilterableUnPagedRelation('invoiceReversals', () => InvoiceReversal)
+@FilterableUnPagedRelation('invoiceShippingRates', () => InvoiceShippingRate)
+@FilterableUnPagedRelation('address', () => Address)
+@FilterableUnPagedRelation(
+  'chaparSettlementStatus',
+  () => ChaparSettlementStatus,
+)
+@FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
+@FilterableUnPagedRelation('invoiceMode', () => InvoiceMode)
+@FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
+@FilterableUnPagedRelation('invoiceType', () => InvoiceType)
+@FilterableUnPagedRelation('lockState2', () => InvoiceStatus)
+@FilterableUnPagedRelation('returnedInvoices2', () => ReturnedInvoice)
+@FilterableUnPagedRelation('returnedInvoices', () => ReturnedInvoice)
+@FilterableUnPagedRelation('returnRequests', () => ReturnRequest)
+@FilterableUnPagedRelation('returnRequestHistories', () => ReturnRequestHistory)
+@FilterableUnPagedRelation('paymentMethodFields', () => PaymentMethodField)
+@FilterableUnPagedRelation('visitor', () => Visitor)
+@FilterableUnPagedRelation('visitorGroup', () => VisitorGroup)
+@FilterableUnPagedRelation('visitorCoupon', () => VisitorCoupon)
+@FilterableUnPagedRelation('user', () => User)
+@FilterableUnPagedRelation(
+  'replacementPaymentStatus',
+  () => InvoicePaymentStatus,
+)
+@FilterableUnPagedRelation('invoices', () => Invoice)
+@FilterableUnPagedRelation('parentInvoice', () => Invoice)
+@FilterableUnPagedRelation('moneyTransferConfirmedBy2', () => Invoice)
+@FilterableUnPagedRelation('lockState2', () => InvoiceStatus)
+@FilterableUnPagedRelation('invoiceType', () => InvoiceType)
+@FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
 @ObjectType()
 export class Invoice {
   @IDField(() => ID)
@@ -105,8 +168,8 @@ export class Invoice {
   @Field({ nullable: true })
   totalVisitorShare?: number;
 
-  @Field({ nullable: true })
-  subtotalPrice?: string;
+  @FilterableField({ nullable: true })
+  subtotalPrice?: number;
 
   @Field({ nullable: true })
   totalDiscount?: string;
@@ -120,8 +183,8 @@ export class Invoice {
   @Field({ nullable: true })
   totalWalletCharged?: string;
 
-  @Field({ nullable: true })
-  totalPrice?: string;
+  @FilterableField({ nullable: true })
+  totalPrice?: number;
 
   @Field()
   additions: string;

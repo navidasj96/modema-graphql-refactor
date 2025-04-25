@@ -1,5 +1,8 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { AttributeProduct } from '@/modules/attribute-product/domain/attribute-product';
 import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
 import { CustomerImageProduct } from '@/modules/customer-image-product/domain/customer-image-product';
@@ -41,6 +44,7 @@ import { WonderfulOffer } from '@/modules/wonderful-offer/domain/wonderful-offer
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
 @InputType('ProductDomain')
+@FilterableUnPagedRelation('subproducts', () => Subproduct)
 @ObjectType()
 export class Product {
   @IDField(() => ID)

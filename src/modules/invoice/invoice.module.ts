@@ -18,6 +18,7 @@ import { InvoiceListProvider } from '@/modules/invoice/providers/invoice-list.pr
           EntityClass: Invoice,
           DTOClass: InvoiceGraphQL,
           CreateDTOClass: CreateInvoiceInput,
+          enableAggregate: true,
         },
       ],
     }),

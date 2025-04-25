@@ -1,5 +1,8 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { AttributeSubproduct } from '@/modules/attribute-subproduct/domain/attribute-subproduct';
 import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/domain/color-category-subproduct';
 import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
@@ -37,6 +40,7 @@ import { UserCart } from '@/modules/user-cart/domain/user-cart';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
 @InputType('SubproductDomain')
+@FilterableUnPagedRelation('basicCarpetColor', () => BasicCarpetColor)
 @ObjectType()
 export class Subproduct {
   @IDField(() => ID)

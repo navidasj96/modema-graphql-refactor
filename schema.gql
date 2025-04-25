@@ -129,6 +129,12 @@ type Address {
   zipCode: String
 }
 
+input AddressAggregateFilter {
+  and: [AddressAggregateFilter!]
+  id: IDFilterComparison
+  or: [AddressAggregateFilter!]
+}
+
 type AddressConnection {
   """Array of edges."""
   edges: [AddressEdge!]!
@@ -1140,7 +1146,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-23T11:49:38.101Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.259Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1228,7 +1234,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-23T11:49:38.121Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.267Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1343,7 +1349,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-23T11:49:38.193Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.303Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1433,7 +1439,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-23T11:49:38.122Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.268Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1674,7 +1680,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-23T11:49:38.144Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.278Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1781,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-23T11:49:38.124Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.269Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -3471,6 +3477,12 @@ type ChaparSettlementStatus {
   updatedAt: DateTime
 }
 
+input ChaparSettlementStatusAggregateFilter {
+  and: [ChaparSettlementStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [ChaparSettlementStatusAggregateFilter!]
+}
+
 type ChaparSettlementStatusConnection {
   """Array of edges."""
   edges: [ChaparSettlementStatusEdge!]!
@@ -3543,6 +3555,12 @@ type ChaparTrackingHistory {
   time: String!
   tracking: String!
   updatedAt: DateTime
+}
+
+input ChaparTrackingHistoryAggregateFilter {
+  and: [ChaparTrackingHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [ChaparTrackingHistoryAggregateFilter!]
 }
 
 type ChaparTrackingHistoryConnection {
@@ -4694,6 +4712,12 @@ type Coupon {
   utmGoogleFormCoupons: [UtmGoogleFormCoupon!]!
 }
 
+input CouponAggregateFilter {
+  and: [CouponAggregateFilter!]
+  id: IDFilterComparison
+  or: [CouponAggregateFilter!]
+}
+
 type CouponConnection {
   """Array of edges."""
   edges: [CouponEdge!]!
@@ -5086,7 +5110,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-23T11:49:38.738Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.582Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5108,7 +5132,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-23T11:49:38.747Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.587Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5123,7 +5147,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-23T11:49:38.754Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.591Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5147,7 +5171,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-23T11:49:38.764Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.596Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5178,7 +5202,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-23T11:49:38.780Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.601Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5219,7 +5243,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-23T11:49:38.805Z"
+  createdAt: DateTime! = "2025-04-25T12:17:59.610Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -17462,16 +17486,56 @@ input InvitationCodeUpdateFilter {
 type Invoice {
   accountingDescription: String
   additions: String!
-  address: Address
+  address(
+    """Specify to filter the records returned."""
+    filter: AddressFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [AddressSort!]! = []
+  ): [Address!]!
+  addressAggregate(
+    """Filter to find records to aggregate on"""
+    filter: AddressAggregateFilter
+  ): [InvoiceAddressAggregateResponse!]!
   addressId: Float!
   canReturn: Boolean!
   cashOnDelivery: Boolean!
-  chaparSettlementStatus: ChaparSettlementStatus
+  chaparSettlementStatus(
+    """Specify to filter the records returned."""
+    filter: ChaparSettlementStatusFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ChaparSettlementStatusSort!]! = []
+  ): [ChaparSettlementStatus!]!
+  chaparSettlementStatusAggregate(
+    """Filter to find records to aggregate on"""
+    filter: ChaparSettlementStatusAggregateFilter
+  ): [InvoiceChaparSettlementStatusAggregateResponse!]!
   chaparSettlementStatusId: Float
   chaparStatus: String
-  chaparTrackingHistories: [ChaparTrackingHistory!]
+  chaparTrackingHistories(
+    """Specify to filter the records returned."""
+    filter: ChaparTrackingHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ChaparTrackingHistorySort!]! = []
+  ): [ChaparTrackingHistory!]!
+  chaparTrackingHistoriesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: ChaparTrackingHistoryAggregateFilter
+  ): [InvoiceChaparTrackingHistoriesAggregateResponse!]!
   containsPadsOnly: Boolean!
-  coupon: Coupon
+  coupon(
+    """Specify to filter the records returned."""
+    filter: CouponFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [CouponSort!]! = []
+  ): [Coupon!]!
+  couponAggregate(
+    """Filter to find records to aggregate on"""
+    filter: CouponAggregateFilter
+  ): [InvoiceCouponAggregateResponse!]!
   couponId: Float
   coupons: [Coupon!]
   createdAt: DateTime
@@ -17485,6 +17549,10 @@ type Invoice {
     """Specify to sort results."""
     sorting: [InvoiceStatusSort!]! = []
   ): [InvoiceStatus!]!
+  currentInvoiceStatusAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceStatusAggregateFilter
+  ): [InvoiceCurrentInvoiceStatusAggregateResponse!]!
   currentInvoiceStatusId: Float!
   deadlineDate: String
   deadlineDateOld: String
@@ -17496,14 +17564,74 @@ type Invoice {
   freeDelivery: Boolean!
   hasPriority: Boolean!
   id: ID!
-  invoiceAddressValidationResults: [InvoiceAddressValidationResult!]
-  invoiceAddresses: [InvoiceAddress!]
-  invoiceBankGatewayHistories: [InvoiceBankGatewayHistory!]
-  invoiceHistories: [InvoiceHistory!]
+  invoiceAddressValidationResults(
+    """Specify to filter the records returned."""
+    filter: InvoiceAddressValidationResultFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceAddressValidationResultSort!]! = []
+  ): [InvoiceAddressValidationResult!]!
+  invoiceAddressValidationResultsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceAddressValidationResultAggregateFilter
+  ): [InvoiceInvoiceAddressValidationResultsAggregateResponse!]!
+  invoiceAddresses(
+    """Specify to filter the records returned."""
+    filter: InvoiceAddressFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceAddressSort!]! = []
+  ): [InvoiceAddress!]!
+  invoiceAddressesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceAddressAggregateFilter
+  ): [InvoiceInvoiceAddressesAggregateResponse!]!
+  invoiceBankGatewayHistories(
+    """Specify to filter the records returned."""
+    filter: InvoiceBankGatewayHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceBankGatewayHistorySort!]! = []
+  ): [InvoiceBankGatewayHistory!]!
+  invoiceBankGatewayHistoriesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceBankGatewayHistoryAggregateFilter
+  ): [InvoiceInvoiceBankGatewayHistoriesAggregateResponse!]!
+  invoiceHistories(
+    """Specify to filter the records returned."""
+    filter: InvoiceHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceHistorySort!]! = []
+  ): [InvoiceHistory!]!
+  invoiceHistoriesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceHistoryAggregateFilter
+  ): [InvoiceInvoiceHistoriesAggregateResponse!]!
   invoiceInvoiceStatuses: [InvoiceInvoiceStatus!]
-  invoiceMode: InvoiceMode
+  invoiceMode(
+    """Specify to filter the records returned."""
+    filter: InvoiceModeFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceModeSort!]! = []
+  ): [InvoiceMode!]!
+  invoiceModeAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceModeAggregateFilter
+  ): [InvoiceInvoiceModeAggregateResponse!]!
   invoiceModeId: Float
-  invoiceNegotiations: [InvoiceNegotiation!]
+  invoiceNegotiations(
+    """Specify to filter the records returned."""
+    filter: InvoiceNegotiationFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceNegotiationSort!]! = []
+  ): [InvoiceNegotiation!]!
+  invoiceNegotiationsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceNegotiationAggregateFilter
+  ): [InvoiceInvoiceNegotiationsAggregateResponse!]!
   invoiceNumber: String
   invoicePaymentHistories(
     """Specify to filter the records returned."""
@@ -17512,6 +17640,10 @@ type Invoice {
     """Specify to sort results."""
     sorting: [InvoicePaymentHistorySort!]! = []
   ): [InvoicePaymentHistory!]!
+  invoicePaymentHistoriesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoicePaymentHistoryAggregateFilter
+  ): [InvoiceInvoicePaymentHistoriesAggregateResponse!]!
   invoicePaymentStatus(
     """Specify to filter the records returned."""
     filter: InvoicePaymentStatusFilter! = {}
@@ -17519,16 +17651,90 @@ type Invoice {
     """Specify to sort results."""
     sorting: [InvoicePaymentStatusSort!]! = []
   ): [InvoicePaymentStatus!]!
+  invoicePaymentStatusAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoicePaymentStatusAggregateFilter
+  ): [InvoiceInvoicePaymentStatusAggregateResponse!]!
   invoicePaymentStatusId: Float
-  invoicePayments: [InvoicePayment!]
+  invoicePayments(
+    """Specify to filter the records returned."""
+    filter: InvoicePaymentFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoicePaymentSort!]! = []
+  ): [InvoicePayment!]!
+  invoicePaymentsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoicePaymentAggregateFilter
+  ): [InvoiceInvoicePaymentsAggregateResponse!]!
   invoiceProductHistories: [InvoiceProductHistory!]
-  invoiceProducts: [InvoiceProduct!]
-  invoiceRatesResults: [InvoiceRatesResult!]
-  invoiceReversals: [InvoiceReversal!]
-  invoiceShippingRates: [InvoiceShippingRate!]
-  invoiceType: InvoiceType
+  invoiceProducts(
+    """Specify to filter the records returned."""
+    filter: InvoiceProductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceProductSort!]! = []
+  ): [InvoiceProduct!]!
+  invoiceProductsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceProductAggregateFilter
+  ): [InvoiceInvoiceProductsAggregateResponse!]!
+  invoiceRatesResults(
+    """Specify to filter the records returned."""
+    filter: InvoiceRatesResultFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceRatesResultSort!]! = []
+  ): [InvoiceRatesResult!]!
+  invoiceRatesResultsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceRatesResultAggregateFilter
+  ): [InvoiceInvoiceRatesResultsAggregateResponse!]!
+  invoiceReversals(
+    """Specify to filter the records returned."""
+    filter: InvoiceReversalFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceReversalSort!]! = []
+  ): [InvoiceReversal!]!
+  invoiceReversalsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceReversalAggregateFilter
+  ): [InvoiceInvoiceReversalsAggregateResponse!]!
+  invoiceShippingRates(
+    """Specify to filter the records returned."""
+    filter: InvoiceShippingRateFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceShippingRateSort!]! = []
+  ): [InvoiceShippingRate!]!
+  invoiceShippingRatesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceShippingRateAggregateFilter
+  ): [InvoiceInvoiceShippingRatesAggregateResponse!]!
+  invoiceType(
+    """Specify to filter the records returned."""
+    filter: InvoiceTypeFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceTypeSort!]! = []
+  ): [InvoiceType!]!
+  invoiceTypeAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceTypeAggregateFilter
+  ): [InvoiceInvoiceTypeAggregateResponse!]!
   invoiceTypeId: Float
-  invoices: [Invoice!]
+  invoices(
+    """Specify to filter the records returned."""
+    filter: InvoiceFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceSort!]! = []
+  ): [Invoice!]!
+  invoicesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceAggregateFilter
+  ): [InvoiceInvoicesAggregateResponse!]!
   isChaparDelivery: Boolean!
   isDepot: Boolean!
   isForAdvertisement: Boolean!
@@ -17536,33 +17742,123 @@ type Invoice {
   issueDate: DateTime!
   lastName: String!
   lockState: Float
-  lockState2: InvoiceStatus
+  lockState2(
+    """Specify to filter the records returned."""
+    filter: InvoiceStatusFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceStatusSort!]! = []
+  ): [InvoiceStatus!]!
+  lockState2Aggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceStatusAggregateFilter
+  ): [InvoiceLockState2AggregateResponse!]!
   lockStateDescription: String
   mah: Float
   moneyTransferConfirmed: Boolean
   moneyTransferConfirmedBy: Float
-  moneyTransferConfirmedBy2: User
+  moneyTransferConfirmedBy2(
+    """Specify to filter the records returned."""
+    filter: InvoiceFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceSort!]! = []
+  ): [Invoice!]!
+  moneyTransferConfirmedBy2Aggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceAggregateFilter
+  ): [InvoiceMoneyTransferConfirmedBy2AggregateResponse!]!
   moneyTransferRefCode: String
   name: String!
   needsReview: Boolean!
   orderId: String
   packageCount: Float
   paidCodShippingRate: Float!
-  parentInvoice: Invoice
+  parentInvoice(
+    """Specify to filter the records returned."""
+    filter: InvoiceFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceSort!]! = []
+  ): [Invoice!]!
+  parentInvoiceAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceAggregateFilter
+  ): [InvoiceParentInvoiceAggregateResponse!]!
   parentInvoiceId: Float
   partnerCode: String!
   paymentCreditable: Boolean!
   paymentErrorMessage: String
-  paymentMethodFields: [PaymentMethodField!]
+  paymentMethodFields(
+    """Specify to filter the records returned."""
+    filter: PaymentMethodFieldFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [PaymentMethodFieldSort!]! = []
+  ): [PaymentMethodField!]!
+  paymentMethodFieldsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: PaymentMethodFieldAggregateFilter
+  ): [InvoicePaymentMethodFieldsAggregateResponse!]!
   refId: String
   replacementAdditionalPrice: String!
-  replacementPaymentStatus: InvoicePaymentStatus
+  replacementPaymentStatus(
+    """Specify to filter the records returned."""
+    filter: InvoicePaymentStatusFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoicePaymentStatusSort!]! = []
+  ): [InvoicePaymentStatus!]!
+  replacementPaymentStatusAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoicePaymentStatusAggregateFilter
+  ): [InvoiceReplacementPaymentStatusAggregateResponse!]!
   replacementPaymentStatusId: Float
   replacementPriceMoneyTransferCode: String
-  returnRequestHistories: [ReturnRequestHistory!]
-  returnRequests: [ReturnRequest!]
-  returnedInvoices: [ReturnedInvoice!]
-  returnedInvoices2: [ReturnedInvoice!]
+  returnRequestHistories(
+    """Specify to filter the records returned."""
+    filter: ReturnRequestHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnRequestHistorySort!]! = []
+  ): [ReturnRequestHistory!]!
+  returnRequestHistoriesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: ReturnRequestHistoryAggregateFilter
+  ): [InvoiceReturnRequestHistoriesAggregateResponse!]!
+  returnRequests(
+    """Specify to filter the records returned."""
+    filter: ReturnRequestFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnRequestSort!]! = []
+  ): [ReturnRequest!]!
+  returnRequestsAggregate(
+    """Filter to find records to aggregate on"""
+    filter: ReturnRequestAggregateFilter
+  ): [InvoiceReturnRequestsAggregateResponse!]!
+  returnedInvoices(
+    """Specify to filter the records returned."""
+    filter: ReturnedInvoiceFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnedInvoiceSort!]! = []
+  ): [ReturnedInvoice!]!
+  returnedInvoices2(
+    """Specify to filter the records returned."""
+    filter: ReturnedInvoiceFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnedInvoiceSort!]! = []
+  ): [ReturnedInvoice!]!
+  returnedInvoices2Aggregate(
+    """Filter to find records to aggregate on"""
+    filter: ReturnedInvoiceAggregateFilter
+  ): [InvoiceReturnedInvoices2AggregateResponse!]!
+  returnedInvoicesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: ReturnedInvoiceAggregateFilter
+  ): [InvoiceReturnedInvoicesAggregateResponse!]!
   roz: Float
   sal: Float
   saleRefId: String
@@ -17573,11 +17869,11 @@ type Invoice {
   shipmentUuid: String
   shippingRate: String
   shippingRateCod: String
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
   totalCouponDiscount: String
   totalDiscount: String
-  totalPrice: String
+  totalPrice: Float
   totalPriceOld: Float
   totalTax: String
   totalVisitorShare: Float
@@ -17585,13 +17881,53 @@ type Invoice {
   trackingCode: String
   updatedAt: DateTime
   useWallet: Boolean!
-  user: User
+  user(
+    """Specify to filter the records returned."""
+    filter: UserFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [UserSort!]! = []
+  ): [User!]!
+  userAggregate(
+    """Filter to find records to aggregate on"""
+    filter: UserAggregateFilter
+  ): [InvoiceUserAggregateResponse!]!
   userId: Float
-  visitor: Visitor
-  visitorCoupon: VisitorCoupon
+  visitor(
+    """Specify to filter the records returned."""
+    filter: VisitorFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [VisitorSort!]! = []
+  ): [Visitor!]!
+  visitorAggregate(
+    """Filter to find records to aggregate on"""
+    filter: VisitorAggregateFilter
+  ): [InvoiceVisitorAggregateResponse!]!
+  visitorCoupon(
+    """Specify to filter the records returned."""
+    filter: VisitorCouponFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [VisitorCouponSort!]! = []
+  ): [VisitorCoupon!]!
+  visitorCouponAggregate(
+    """Filter to find records to aggregate on"""
+    filter: VisitorCouponAggregateFilter
+  ): [InvoiceVisitorCouponAggregateResponse!]!
   visitorCouponId: Float
   visitorCouponRate: Float
-  visitorGroup: VisitorGroup
+  visitorGroup(
+    """Specify to filter the records returned."""
+    filter: VisitorGroupFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [VisitorGroupSort!]! = []
+  ): [VisitorGroup!]!
+  visitorGroupAggregate(
+    """Filter to find records to aggregate on"""
+    filter: VisitorGroupAggregateFilter
+  ): [InvoiceVisitorGroupAggregateResponse!]!
   visitorGroupId: Float
   visitorId: Float
   visitorRate: Float
@@ -17631,12 +17967,39 @@ type InvoiceAddress {
   zipCode: String
 }
 
+input InvoiceAddressAggregateFilter {
+  and: [InvoiceAddressAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAddressAggregateFilter!]
+}
+
+type InvoiceAddressAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceAddressAggregateResponse {
+  avg: InvoiceAddressAvgAggregate
+  count: InvoiceAddressCountAggregate
+  groupBy: InvoiceAddressAggregateGroupBy
+  max: InvoiceAddressMaxAggregate
+  min: InvoiceAddressMinAggregate
+  sum: InvoiceAddressSumAggregate
+}
+
+type InvoiceAddressAvgAggregate {
+  id: Float
+}
+
 type InvoiceAddressConnection {
   """Array of edges."""
   edges: [InvoiceAddressEdge!]!
 
   """Paging information"""
   pageInfo: PageInfo!
+}
+
+type InvoiceAddressCountAggregate {
+  id: Int
 }
 
 input InvoiceAddressDeleteFilter {
@@ -17723,6 +18086,14 @@ input InvoiceAddressFilter {
   or: [InvoiceAddressFilter!]
 }
 
+type InvoiceAddressMaxAggregate {
+  id: ID
+}
+
+type InvoiceAddressMinAggregate {
+  id: ID
+}
+
 input InvoiceAddressSort {
   direction: SortDirection!
   field: InvoiceAddressSortFields!
@@ -17731,6 +18102,10 @@ input InvoiceAddressSort {
 
 enum InvoiceAddressSortFields {
   id
+}
+
+type InvoiceAddressSumAggregate {
+  id: Float
 }
 
 input InvoiceAddressUpdateFilter {
@@ -17748,6 +18123,12 @@ type InvoiceAddressValidationResult {
   invoice: Invoice
   invoiceId: Float!
   updatedAt: DateTime
+}
+
+input InvoiceAddressValidationResultAggregateFilter {
+  and: [InvoiceAddressValidationResultAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAddressValidationResultAggregateFilter!]
 }
 
 type InvoiceAddressValidationResultConnection {
@@ -17817,9 +18198,245 @@ input InvoiceAddressValidationResultUpdateFilter {
 }
 
 input InvoiceAggregateFilter {
+  Coupon: InvoiceAggregateFilterCouponAggregateFilter
+  address: InvoiceAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilter!]
+  chaparSettlementStatus: InvoiceAggregateFilterChaparSettlementStatusAggregateFilter
+  chaparTrackingHistories: InvoiceAggregateFilterChaparTrackingHistoryAggregateFilter
+  currentInvoiceStatus: InvoiceAggregateFilterInvoiceStatusAggregateFilter
   id: IDFilterComparison
+  invoiceAddressValidationResults: InvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter
+  invoiceAddresses: InvoiceAggregateFilterInvoiceAddressAggregateFilter
+  invoiceBankGatewayHistories: InvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter
+  invoiceHistories: InvoiceAggregateFilterInvoiceHistoryAggregateFilter
+  invoiceMode: InvoiceAggregateFilterInvoiceModeAggregateFilter
+  invoiceNegotiations: InvoiceAggregateFilterInvoiceNegotiationAggregateFilter
+  invoicePaymentHistories: InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter
+  invoicePaymentStatus: InvoiceAggregateFilterInvoicePaymentStatusAggregateFilter
+  invoicePayments: InvoiceAggregateFilterInvoicePaymentAggregateFilter
+  invoiceProducts: InvoiceAggregateFilterInvoiceProductAggregateFilter
+  invoiceRatesResults: InvoiceAggregateFilterInvoiceRatesResultAggregateFilter
+  invoiceReversals: InvoiceAggregateFilterInvoiceReversalAggregateFilter
+  invoiceShippingRates: InvoiceAggregateFilterInvoiceShippingRateAggregateFilter
+  invoiceType: InvoiceAggregateFilterInvoiceTypeAggregateFilter
+  invoices: InvoiceAggregateFilterInvoiceAggregateFilter
+  lockState2: InvoiceAggregateFilterInvoiceStatusAggregateFilter
+  moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilter
   or: [InvoiceAggregateFilter!]
+  parentInvoice: InvoiceAggregateFilterInvoiceAggregateFilter
+  paymentMethodFields: InvoiceAggregateFilterPaymentMethodFieldAggregateFilter
+  replacementPaymentStatus: InvoiceAggregateFilterInvoicePaymentStatusAggregateFilter
+  returnRequestHistories: InvoiceAggregateFilterReturnRequestHistoryAggregateFilter
+  returnRequests: InvoiceAggregateFilterReturnRequestAggregateFilter
+  returnedInvoices: InvoiceAggregateFilterReturnedInvoiceAggregateFilter
+  returnedInvoices2: InvoiceAggregateFilterReturnedInvoiceAggregateFilter
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+  user: InvoiceAggregateFilterUserAggregateFilter
+  visitor: InvoiceAggregateFilterVisitorAggregateFilter
+  visitorCoupon: InvoiceAggregateFilterVisitorCouponAggregateFilter
+  visitorGroup: InvoiceAggregateFilterVisitorGroupAggregateFilter
+}
+
+input InvoiceAggregateFilterAddressAggregateFilter {
+  and: [InvoiceAggregateFilterAddressAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterChaparSettlementStatusAggregateFilter {
+  and: [InvoiceAggregateFilterChaparSettlementStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterChaparSettlementStatusAggregateFilter!]
+}
+
+input InvoiceAggregateFilterChaparTrackingHistoryAggregateFilter {
+  and: [InvoiceAggregateFilterChaparTrackingHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterChaparTrackingHistoryAggregateFilter!]
+}
+
+input InvoiceAggregateFilterCouponAggregateFilter {
+  and: [InvoiceAggregateFilterCouponAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterCouponAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAddressAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAddressAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAggregateFilter!]
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+}
+
+input InvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceHistoryAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceHistoryAggregateFilter!]
+  editorUserId: NumberFieldComparison
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceHistoryAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceModeAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceModeAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceModeAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceNegotiationAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceNegotiationAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceNegotiationAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoicePaymentAggregateFilter {
+  and: [InvoiceAggregateFilterInvoicePaymentAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoicePaymentAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
+  amount: StringFieldComparison
+  and: [InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
+  forShipping: BooleanFieldComparison
+  id: IDFilterComparison
+  invoicePaymentTypeId: NumberFieldComparison
+  isConfirmed: BooleanFieldComparison
+  or: [InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoicePaymentStatusAggregateFilter {
+  and: [InvoiceAggregateFilterInvoicePaymentStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoicePaymentStatusAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceProductAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceProductAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceProductAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceRatesResultAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceRatesResultAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceRatesResultAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceReversalAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceReversalAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceReversalAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceShippingRateAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceShippingRateAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceShippingRateAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceStatusAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceStatusAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceTypeAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceTypeAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceTypeAggregateFilter!]
+}
+
+input InvoiceAggregateFilterPaymentMethodFieldAggregateFilter {
+  and: [InvoiceAggregateFilterPaymentMethodFieldAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterPaymentMethodFieldAggregateFilter!]
+}
+
+input InvoiceAggregateFilterReturnRequestAggregateFilter {
+  and: [InvoiceAggregateFilterReturnRequestAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterReturnRequestAggregateFilter!]
+}
+
+input InvoiceAggregateFilterReturnRequestHistoryAggregateFilter {
+  and: [InvoiceAggregateFilterReturnRequestHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterReturnRequestHistoryAggregateFilter!]
+}
+
+input InvoiceAggregateFilterReturnedInvoiceAggregateFilter {
+  and: [InvoiceAggregateFilterReturnedInvoiceAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterReturnedInvoiceAggregateFilter!]
+}
+
+input InvoiceAggregateFilterUserAggregateFilter {
+  and: [InvoiceAggregateFilterUserAggregateFilter!]
+  createdAt: DateFieldComparison
+  id: IDFilterComparison
+  isGuest: NumberFieldComparison
+  name: StringFieldComparison
+  or: [InvoiceAggregateFilterUserAggregateFilter!]
+  phone: StringFieldComparison
+  username: StringFieldComparison
+}
+
+input InvoiceAggregateFilterVisitorAggregateFilter {
+  and: [InvoiceAggregateFilterVisitorAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterVisitorAggregateFilter!]
+}
+
+input InvoiceAggregateFilterVisitorCouponAggregateFilter {
+  and: [InvoiceAggregateFilterVisitorCouponAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterVisitorCouponAggregateFilter!]
+}
+
+input InvoiceAggregateFilterVisitorGroupAggregateFilter {
+  and: [InvoiceAggregateFilterVisitorGroupAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterVisitorGroupAggregateFilter!]
+}
+
+type InvoiceAggregateGroupBy {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceAggregateResponse {
+  avg: InvoiceAvgAggregate
+  count: InvoiceCountAggregate
+  groupBy: InvoiceAggregateGroupBy
+  max: InvoiceMaxAggregate
+  min: InvoiceMinAggregate
+  sum: InvoiceSumAggregate
+}
+
+type InvoiceAvgAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoiceBankGatewayHistory {
@@ -17834,6 +18451,12 @@ type InvoiceBankGatewayHistory {
   refId: String
   saleRefId: String
   updatedAt: DateTime
+}
+
+input InvoiceBankGatewayHistoryAggregateFilter {
+  and: [InvoiceBankGatewayHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceBankGatewayHistoryAggregateFilter!]
 }
 
 type InvoiceBankGatewayHistoryConnection {
@@ -17908,18 +18531,161 @@ input InvoiceBankGatewayHistoryUpdateFilter {
   or: [InvoiceBankGatewayHistoryUpdateFilter!]
 }
 
+type InvoiceChaparSettlementStatusAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceChaparSettlementStatusAggregateResponse {
+  avg: InvoiceChaparSettlementStatusAvgAggregate
+  count: InvoiceChaparSettlementStatusCountAggregate
+  groupBy: InvoiceChaparSettlementStatusAggregateGroupBy
+  max: InvoiceChaparSettlementStatusMaxAggregate
+  min: InvoiceChaparSettlementStatusMinAggregate
+  sum: InvoiceChaparSettlementStatusSumAggregate
+}
+
+type InvoiceChaparSettlementStatusAvgAggregate {
+  id: Float
+}
+
+type InvoiceChaparSettlementStatusCountAggregate {
+  id: Int
+}
+
+type InvoiceChaparSettlementStatusMaxAggregate {
+  id: ID
+}
+
+type InvoiceChaparSettlementStatusMinAggregate {
+  id: ID
+}
+
+type InvoiceChaparSettlementStatusSumAggregate {
+  id: Float
+}
+
+type InvoiceChaparTrackingHistoriesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceChaparTrackingHistoriesAggregateResponse {
+  avg: InvoiceChaparTrackingHistoriesAvgAggregate
+  count: InvoiceChaparTrackingHistoriesCountAggregate
+  groupBy: InvoiceChaparTrackingHistoriesAggregateGroupBy
+  max: InvoiceChaparTrackingHistoriesMaxAggregate
+  min: InvoiceChaparTrackingHistoriesMinAggregate
+  sum: InvoiceChaparTrackingHistoriesSumAggregate
+}
+
+type InvoiceChaparTrackingHistoriesAvgAggregate {
+  id: Float
+}
+
+type InvoiceChaparTrackingHistoriesCountAggregate {
+  id: Int
+}
+
+type InvoiceChaparTrackingHistoriesMaxAggregate {
+  id: ID
+}
+
+type InvoiceChaparTrackingHistoriesMinAggregate {
+  id: ID
+}
+
+type InvoiceChaparTrackingHistoriesSumAggregate {
+  id: Float
+}
+
 type InvoiceConnection {
-  """Array of edges."""
-  edges: [InvoiceEdge!]!
+  """Array of nodes."""
+  nodes: [Invoice!]!
 
   """Paging information"""
-  pageInfo: PageInfo!
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type InvoiceCountAggregate {
+  id: Int
+  subtotalPrice: Int
+  totalPrice: Int
+}
+
+type InvoiceCouponAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceCouponAggregateResponse {
+  avg: InvoiceCouponAvgAggregate
+  count: InvoiceCouponCountAggregate
+  groupBy: InvoiceCouponAggregateGroupBy
+  max: InvoiceCouponMaxAggregate
+  min: InvoiceCouponMinAggregate
+  sum: InvoiceCouponSumAggregate
+}
+
+type InvoiceCouponAvgAggregate {
+  id: Float
+}
+
+type InvoiceCouponCountAggregate {
+  id: Int
+}
+
+type InvoiceCouponMaxAggregate {
+  id: ID
+}
+
+type InvoiceCouponMinAggregate {
+  id: ID
+}
+
+type InvoiceCouponSumAggregate {
+  id: Float
+}
+
+type InvoiceCurrentInvoiceStatusAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceCurrentInvoiceStatusAggregateResponse {
+  avg: InvoiceCurrentInvoiceStatusAvgAggregate
+  count: InvoiceCurrentInvoiceStatusCountAggregate
+  groupBy: InvoiceCurrentInvoiceStatusAggregateGroupBy
+  max: InvoiceCurrentInvoiceStatusMaxAggregate
+  min: InvoiceCurrentInvoiceStatusMinAggregate
+  sum: InvoiceCurrentInvoiceStatusSumAggregate
+}
+
+type InvoiceCurrentInvoiceStatusAvgAggregate {
+  id: Float
+}
+
+type InvoiceCurrentInvoiceStatusCountAggregate {
+  id: Int
+}
+
+type InvoiceCurrentInvoiceStatusMaxAggregate {
+  id: ID
+}
+
+type InvoiceCurrentInvoiceStatusMinAggregate {
+  id: ID
+}
+
+type InvoiceCurrentInvoiceStatusSumAggregate {
+  id: Float
 }
 
 input InvoiceDeleteFilter {
   and: [InvoiceDeleteFilter!]
   id: IDFilterComparison
   or: [InvoiceDeleteFilter!]
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
 }
 
 type InvoiceDeleteResponse {
@@ -18018,11 +18784,11 @@ type InvoiceDeleteResponse {
   shipmentUuid: String
   shippingRate: String
   shippingRateCod: String
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
   totalCouponDiscount: String
   totalDiscount: String
-  totalPrice: String
+  totalPrice: Float
   totalPriceOld: Float
   totalTax: String
   totalVisitorShare: Float
@@ -18140,11 +18906,11 @@ input InvoiceDomain {
   shipmentUuid: String
   shippingRate: String
   shippingRateCod: String
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
   totalCouponDiscount: String
   totalDiscount: String
-  totalPrice: String
+  totalPrice: Float
   totalPriceOld: Float
   totalTax: String
   totalVisitorShare: Float
@@ -18166,18 +18932,225 @@ input InvoiceDomain {
   wholesaleRemainingMoneyTransferRefCode: String
 }
 
-type InvoiceEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the Invoice"""
-  node: Invoice!
+input InvoiceFilter {
+  Coupon: InvoiceFilterCouponFilter
+  address: InvoiceFilterAddressFilter
+  and: [InvoiceFilter!]
+  chaparSettlementStatus: InvoiceFilterChaparSettlementStatusFilter
+  chaparTrackingHistories: InvoiceFilterChaparTrackingHistoryFilter
+  currentInvoiceStatus: InvoiceFilterInvoiceStatusFilter
+  id: IDFilterComparison
+  invoiceAddressValidationResults: InvoiceFilterInvoiceAddressValidationResultFilter
+  invoiceAddresses: InvoiceFilterInvoiceAddressFilter
+  invoiceBankGatewayHistories: InvoiceFilterInvoiceBankGatewayHistoryFilter
+  invoiceHistories: InvoiceFilterInvoiceHistoryFilter
+  invoiceMode: InvoiceFilterInvoiceModeFilter
+  invoiceNegotiations: InvoiceFilterInvoiceNegotiationFilter
+  invoicePaymentHistories: InvoiceFilterInvoicePaymentHistoryFilter
+  invoicePaymentStatus: InvoiceFilterInvoicePaymentStatusFilter
+  invoicePayments: InvoiceFilterInvoicePaymentFilter
+  invoiceProducts: InvoiceFilterInvoiceProductFilter
+  invoiceRatesResults: InvoiceFilterInvoiceRatesResultFilter
+  invoiceReversals: InvoiceFilterInvoiceReversalFilter
+  invoiceShippingRates: InvoiceFilterInvoiceShippingRateFilter
+  invoiceType: InvoiceFilterInvoiceTypeFilter
+  invoices: InvoiceFilterInvoiceFilter
+  lockState2: InvoiceFilterInvoiceStatusFilter
+  moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilter
+  or: [InvoiceFilter!]
+  parentInvoice: InvoiceFilterInvoiceFilter
+  paymentMethodFields: InvoiceFilterPaymentMethodFieldFilter
+  replacementPaymentStatus: InvoiceFilterInvoicePaymentStatusFilter
+  returnRequestHistories: InvoiceFilterReturnRequestHistoryFilter
+  returnRequests: InvoiceFilterReturnRequestFilter
+  returnedInvoices: InvoiceFilterReturnedInvoiceFilter
+  returnedInvoices2: InvoiceFilterReturnedInvoiceFilter
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+  user: InvoiceFilterUserFilter
+  visitor: InvoiceFilterVisitorFilter
+  visitorCoupon: InvoiceFilterVisitorCouponFilter
+  visitorGroup: InvoiceFilterVisitorGroupFilter
 }
 
-input InvoiceFilter {
-  and: [InvoiceFilter!]
+input InvoiceFilterAddressFilter {
+  and: [InvoiceFilterAddressFilter!]
   id: IDFilterComparison
-  or: [InvoiceFilter!]
+  or: [InvoiceFilterAddressFilter!]
+}
+
+input InvoiceFilterChaparSettlementStatusFilter {
+  and: [InvoiceFilterChaparSettlementStatusFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterChaparSettlementStatusFilter!]
+}
+
+input InvoiceFilterChaparTrackingHistoryFilter {
+  and: [InvoiceFilterChaparTrackingHistoryFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterChaparTrackingHistoryFilter!]
+}
+
+input InvoiceFilterCouponFilter {
+  and: [InvoiceFilterCouponFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterCouponFilter!]
+}
+
+input InvoiceFilterInvoiceAddressFilter {
+  and: [InvoiceFilterInvoiceAddressFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceAddressFilter!]
+}
+
+input InvoiceFilterInvoiceAddressValidationResultFilter {
+  and: [InvoiceFilterInvoiceAddressValidationResultFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceAddressValidationResultFilter!]
+}
+
+input InvoiceFilterInvoiceBankGatewayHistoryFilter {
+  and: [InvoiceFilterInvoiceBankGatewayHistoryFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceBankGatewayHistoryFilter!]
+}
+
+input InvoiceFilterInvoiceFilter {
+  and: [InvoiceFilterInvoiceFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceFilter!]
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+}
+
+input InvoiceFilterInvoiceHistoryFilter {
+  and: [InvoiceFilterInvoiceHistoryFilter!]
+  editorUserId: NumberFieldComparison
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceHistoryFilter!]
+}
+
+input InvoiceFilterInvoiceModeFilter {
+  and: [InvoiceFilterInvoiceModeFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceModeFilter!]
+}
+
+input InvoiceFilterInvoiceNegotiationFilter {
+  and: [InvoiceFilterInvoiceNegotiationFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceNegotiationFilter!]
+}
+
+input InvoiceFilterInvoicePaymentFilter {
+  and: [InvoiceFilterInvoicePaymentFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoicePaymentFilter!]
+}
+
+input InvoiceFilterInvoicePaymentHistoryFilter {
+  amount: StringFieldComparison
+  and: [InvoiceFilterInvoicePaymentHistoryFilter!]
+  forShipping: BooleanFieldComparison
+  id: IDFilterComparison
+  invoicePaymentTypeId: NumberFieldComparison
+  isConfirmed: BooleanFieldComparison
+  or: [InvoiceFilterInvoicePaymentHistoryFilter!]
+}
+
+input InvoiceFilterInvoicePaymentStatusFilter {
+  and: [InvoiceFilterInvoicePaymentStatusFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoicePaymentStatusFilter!]
+}
+
+input InvoiceFilterInvoiceProductFilter {
+  and: [InvoiceFilterInvoiceProductFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceProductFilter!]
+}
+
+input InvoiceFilterInvoiceRatesResultFilter {
+  and: [InvoiceFilterInvoiceRatesResultFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceRatesResultFilter!]
+}
+
+input InvoiceFilterInvoiceReversalFilter {
+  and: [InvoiceFilterInvoiceReversalFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceReversalFilter!]
+}
+
+input InvoiceFilterInvoiceShippingRateFilter {
+  and: [InvoiceFilterInvoiceShippingRateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceShippingRateFilter!]
+}
+
+input InvoiceFilterInvoiceStatusFilter {
+  and: [InvoiceFilterInvoiceStatusFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceStatusFilter!]
+}
+
+input InvoiceFilterInvoiceTypeFilter {
+  and: [InvoiceFilterInvoiceTypeFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceTypeFilter!]
+}
+
+input InvoiceFilterPaymentMethodFieldFilter {
+  and: [InvoiceFilterPaymentMethodFieldFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterPaymentMethodFieldFilter!]
+}
+
+input InvoiceFilterReturnRequestFilter {
+  and: [InvoiceFilterReturnRequestFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterReturnRequestFilter!]
+}
+
+input InvoiceFilterReturnRequestHistoryFilter {
+  and: [InvoiceFilterReturnRequestHistoryFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterReturnRequestHistoryFilter!]
+}
+
+input InvoiceFilterReturnedInvoiceFilter {
+  and: [InvoiceFilterReturnedInvoiceFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterReturnedInvoiceFilter!]
+}
+
+input InvoiceFilterUserFilter {
+  and: [InvoiceFilterUserFilter!]
+  createdAt: DateFieldComparison
+  id: IDFilterComparison
+  isGuest: NumberFieldComparison
+  name: StringFieldComparison
+  or: [InvoiceFilterUserFilter!]
+  phone: StringFieldComparison
+  username: StringFieldComparison
+}
+
+input InvoiceFilterVisitorCouponFilter {
+  and: [InvoiceFilterVisitorCouponFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterVisitorCouponFilter!]
+}
+
+input InvoiceFilterVisitorFilter {
+  and: [InvoiceFilterVisitorFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterVisitorFilter!]
+}
+
+input InvoiceFilterVisitorGroupFilter {
+  and: [InvoiceFilterVisitorGroupFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterVisitorGroupFilter!]
 }
 
 type InvoiceHistory {
@@ -18548,6 +19521,455 @@ type InvoiceHistoryWithTotalsDto {
   totalWalletIncreased: Float!
 }
 
+type InvoiceInvoiceAddressValidationResultsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceAddressValidationResultsAggregateResponse {
+  avg: InvoiceInvoiceAddressValidationResultsAvgAggregate
+  count: InvoiceInvoiceAddressValidationResultsCountAggregate
+  groupBy: InvoiceInvoiceAddressValidationResultsAggregateGroupBy
+  max: InvoiceInvoiceAddressValidationResultsMaxAggregate
+  min: InvoiceInvoiceAddressValidationResultsMinAggregate
+  sum: InvoiceInvoiceAddressValidationResultsSumAggregate
+}
+
+type InvoiceInvoiceAddressValidationResultsAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceAddressValidationResultsCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceAddressValidationResultsMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceAddressValidationResultsMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceAddressValidationResultsSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceAddressesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceAddressesAggregateResponse {
+  avg: InvoiceInvoiceAddressesAvgAggregate
+  count: InvoiceInvoiceAddressesCountAggregate
+  groupBy: InvoiceInvoiceAddressesAggregateGroupBy
+  max: InvoiceInvoiceAddressesMaxAggregate
+  min: InvoiceInvoiceAddressesMinAggregate
+  sum: InvoiceInvoiceAddressesSumAggregate
+}
+
+type InvoiceInvoiceAddressesAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceAddressesCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceAddressesMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceAddressesMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceAddressesSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceBankGatewayHistoriesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceBankGatewayHistoriesAggregateResponse {
+  avg: InvoiceInvoiceBankGatewayHistoriesAvgAggregate
+  count: InvoiceInvoiceBankGatewayHistoriesCountAggregate
+  groupBy: InvoiceInvoiceBankGatewayHistoriesAggregateGroupBy
+  max: InvoiceInvoiceBankGatewayHistoriesMaxAggregate
+  min: InvoiceInvoiceBankGatewayHistoriesMinAggregate
+  sum: InvoiceInvoiceBankGatewayHistoriesSumAggregate
+}
+
+type InvoiceInvoiceBankGatewayHistoriesAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceBankGatewayHistoriesCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceBankGatewayHistoriesMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceBankGatewayHistoriesMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceBankGatewayHistoriesSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceHistoriesAggregateGroupBy {
+  editorUserId: Float
+  id: ID
+}
+
+type InvoiceInvoiceHistoriesAggregateResponse {
+  avg: InvoiceInvoiceHistoriesAvgAggregate
+  count: InvoiceInvoiceHistoriesCountAggregate
+  groupBy: InvoiceInvoiceHistoriesAggregateGroupBy
+  max: InvoiceInvoiceHistoriesMaxAggregate
+  min: InvoiceInvoiceHistoriesMinAggregate
+  sum: InvoiceInvoiceHistoriesSumAggregate
+}
+
+type InvoiceInvoiceHistoriesAvgAggregate {
+  editorUserId: Float
+  id: Float
+}
+
+type InvoiceInvoiceHistoriesCountAggregate {
+  editorUserId: Int
+  id: Int
+}
+
+type InvoiceInvoiceHistoriesMaxAggregate {
+  editorUserId: Float
+  id: ID
+}
+
+type InvoiceInvoiceHistoriesMinAggregate {
+  editorUserId: Float
+  id: ID
+}
+
+type InvoiceInvoiceHistoriesSumAggregate {
+  editorUserId: Float
+  id: Float
+}
+
+type InvoiceInvoiceModeAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceModeAggregateResponse {
+  avg: InvoiceInvoiceModeAvgAggregate
+  count: InvoiceInvoiceModeCountAggregate
+  groupBy: InvoiceInvoiceModeAggregateGroupBy
+  max: InvoiceInvoiceModeMaxAggregate
+  min: InvoiceInvoiceModeMinAggregate
+  sum: InvoiceInvoiceModeSumAggregate
+}
+
+type InvoiceInvoiceModeAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceModeCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceModeMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceModeMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceModeSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceNegotiationsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceNegotiationsAggregateResponse {
+  avg: InvoiceInvoiceNegotiationsAvgAggregate
+  count: InvoiceInvoiceNegotiationsCountAggregate
+  groupBy: InvoiceInvoiceNegotiationsAggregateGroupBy
+  max: InvoiceInvoiceNegotiationsMaxAggregate
+  min: InvoiceInvoiceNegotiationsMinAggregate
+  sum: InvoiceInvoiceNegotiationsSumAggregate
+}
+
+type InvoiceInvoiceNegotiationsAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceNegotiationsCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceNegotiationsMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceNegotiationsMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceNegotiationsSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoicePaymentHistoriesAggregateGroupBy {
+  amount: String
+  forShipping: Boolean
+  id: ID
+  invoicePaymentTypeId: Float
+  isConfirmed: Boolean
+}
+
+type InvoiceInvoicePaymentHistoriesAggregateResponse {
+  avg: InvoiceInvoicePaymentHistoriesAvgAggregate
+  count: InvoiceInvoicePaymentHistoriesCountAggregate
+  groupBy: InvoiceInvoicePaymentHistoriesAggregateGroupBy
+  max: InvoiceInvoicePaymentHistoriesMaxAggregate
+  min: InvoiceInvoicePaymentHistoriesMinAggregate
+  sum: InvoiceInvoicePaymentHistoriesSumAggregate
+}
+
+type InvoiceInvoicePaymentHistoriesAvgAggregate {
+  id: Float
+  invoicePaymentTypeId: Float
+}
+
+type InvoiceInvoicePaymentHistoriesCountAggregate {
+  amount: Int
+  forShipping: Int
+  id: Int
+  invoicePaymentTypeId: Int
+  isConfirmed: Int
+}
+
+type InvoiceInvoicePaymentHistoriesMaxAggregate {
+  amount: String
+  id: ID
+  invoicePaymentTypeId: Float
+}
+
+type InvoiceInvoicePaymentHistoriesMinAggregate {
+  amount: String
+  id: ID
+  invoicePaymentTypeId: Float
+}
+
+type InvoiceInvoicePaymentHistoriesSumAggregate {
+  id: Float
+  invoicePaymentTypeId: Float
+}
+
+type InvoiceInvoicePaymentStatusAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoicePaymentStatusAggregateResponse {
+  avg: InvoiceInvoicePaymentStatusAvgAggregate
+  count: InvoiceInvoicePaymentStatusCountAggregate
+  groupBy: InvoiceInvoicePaymentStatusAggregateGroupBy
+  max: InvoiceInvoicePaymentStatusMaxAggregate
+  min: InvoiceInvoicePaymentStatusMinAggregate
+  sum: InvoiceInvoicePaymentStatusSumAggregate
+}
+
+type InvoiceInvoicePaymentStatusAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoicePaymentStatusCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoicePaymentStatusMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoicePaymentStatusMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoicePaymentStatusSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoicePaymentsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoicePaymentsAggregateResponse {
+  avg: InvoiceInvoicePaymentsAvgAggregate
+  count: InvoiceInvoicePaymentsCountAggregate
+  groupBy: InvoiceInvoicePaymentsAggregateGroupBy
+  max: InvoiceInvoicePaymentsMaxAggregate
+  min: InvoiceInvoicePaymentsMinAggregate
+  sum: InvoiceInvoicePaymentsSumAggregate
+}
+
+type InvoiceInvoicePaymentsAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoicePaymentsCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoicePaymentsMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoicePaymentsMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoicePaymentsSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceProductsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceProductsAggregateResponse {
+  avg: InvoiceInvoiceProductsAvgAggregate
+  count: InvoiceInvoiceProductsCountAggregate
+  groupBy: InvoiceInvoiceProductsAggregateGroupBy
+  max: InvoiceInvoiceProductsMaxAggregate
+  min: InvoiceInvoiceProductsMinAggregate
+  sum: InvoiceInvoiceProductsSumAggregate
+}
+
+type InvoiceInvoiceProductsAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceProductsCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceProductsMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceProductsMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceProductsSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceRatesResultsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceRatesResultsAggregateResponse {
+  avg: InvoiceInvoiceRatesResultsAvgAggregate
+  count: InvoiceInvoiceRatesResultsCountAggregate
+  groupBy: InvoiceInvoiceRatesResultsAggregateGroupBy
+  max: InvoiceInvoiceRatesResultsMaxAggregate
+  min: InvoiceInvoiceRatesResultsMinAggregate
+  sum: InvoiceInvoiceRatesResultsSumAggregate
+}
+
+type InvoiceInvoiceRatesResultsAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceRatesResultsCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceRatesResultsMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceRatesResultsMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceRatesResultsSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceReversalsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceReversalsAggregateResponse {
+  avg: InvoiceInvoiceReversalsAvgAggregate
+  count: InvoiceInvoiceReversalsCountAggregate
+  groupBy: InvoiceInvoiceReversalsAggregateGroupBy
+  max: InvoiceInvoiceReversalsMaxAggregate
+  min: InvoiceInvoiceReversalsMinAggregate
+  sum: InvoiceInvoiceReversalsSumAggregate
+}
+
+type InvoiceInvoiceReversalsAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceReversalsCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceReversalsMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceReversalsMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceReversalsSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceShippingRatesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceShippingRatesAggregateResponse {
+  avg: InvoiceInvoiceShippingRatesAvgAggregate
+  count: InvoiceInvoiceShippingRatesCountAggregate
+  groupBy: InvoiceInvoiceShippingRatesAggregateGroupBy
+  max: InvoiceInvoiceShippingRatesMaxAggregate
+  min: InvoiceInvoiceShippingRatesMinAggregate
+  sum: InvoiceInvoiceShippingRatesSumAggregate
+}
+
+type InvoiceInvoiceShippingRatesAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceShippingRatesCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceShippingRatesMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceShippingRatesMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceShippingRatesSumAggregate {
+  id: Float
+}
+
 type InvoiceInvoiceStatus {
   comment: String
   createdAt: DateTime
@@ -18631,12 +20053,141 @@ input InvoiceInvoiceStatusUpdateFilter {
   or: [InvoiceInvoiceStatusUpdateFilter!]
 }
 
+type InvoiceInvoiceTypeAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceTypeAggregateResponse {
+  avg: InvoiceInvoiceTypeAvgAggregate
+  count: InvoiceInvoiceTypeCountAggregate
+  groupBy: InvoiceInvoiceTypeAggregateGroupBy
+  max: InvoiceInvoiceTypeMaxAggregate
+  min: InvoiceInvoiceTypeMinAggregate
+  sum: InvoiceInvoiceTypeSumAggregate
+}
+
+type InvoiceInvoiceTypeAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceTypeCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceTypeMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceTypeMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceTypeSumAggregate {
+  id: Float
+}
+
+type InvoiceInvoicesAggregateGroupBy {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceInvoicesAggregateResponse {
+  avg: InvoiceInvoicesAvgAggregate
+  count: InvoiceInvoicesCountAggregate
+  groupBy: InvoiceInvoicesAggregateGroupBy
+  max: InvoiceInvoicesMaxAggregate
+  min: InvoiceInvoicesMinAggregate
+  sum: InvoiceInvoicesSumAggregate
+}
+
+type InvoiceInvoicesAvgAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceInvoicesCountAggregate {
+  id: Int
+  subtotalPrice: Int
+  totalPrice: Int
+}
+
+type InvoiceInvoicesMaxAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceInvoicesMinAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceInvoicesSumAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceLockState2AggregateGroupBy {
+  id: ID
+}
+
+type InvoiceLockState2AggregateResponse {
+  avg: InvoiceLockState2AvgAggregate
+  count: InvoiceLockState2CountAggregate
+  groupBy: InvoiceLockState2AggregateGroupBy
+  max: InvoiceLockState2MaxAggregate
+  min: InvoiceLockState2MinAggregate
+  sum: InvoiceLockState2SumAggregate
+}
+
+type InvoiceLockState2AvgAggregate {
+  id: Float
+}
+
+type InvoiceLockState2CountAggregate {
+  id: Int
+}
+
+type InvoiceLockState2MaxAggregate {
+  id: ID
+}
+
+type InvoiceLockState2MinAggregate {
+  id: ID
+}
+
+type InvoiceLockState2SumAggregate {
+  id: Float
+}
+
+type InvoiceMaxAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceMinAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
 type InvoiceMode {
   createdAt: DateTime
   id: ID!
   invoices: [Invoice!]
   name: String!
   updatedAt: DateTime
+}
+
+input InvoiceModeAggregateFilter {
+  and: [InvoiceModeAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceModeAggregateFilter!]
 }
 
 type InvoiceModeConnection {
@@ -18699,6 +20250,51 @@ input InvoiceModeUpdateFilter {
   or: [InvoiceModeUpdateFilter!]
 }
 
+type InvoiceMoneyTransferConfirmedBy2AggregateGroupBy {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceMoneyTransferConfirmedBy2AggregateResponse {
+  avg: InvoiceMoneyTransferConfirmedBy2AvgAggregate
+  count: InvoiceMoneyTransferConfirmedBy2CountAggregate
+  groupBy: InvoiceMoneyTransferConfirmedBy2AggregateGroupBy
+  max: InvoiceMoneyTransferConfirmedBy2MaxAggregate
+  min: InvoiceMoneyTransferConfirmedBy2MinAggregate
+  sum: InvoiceMoneyTransferConfirmedBy2SumAggregate
+}
+
+type InvoiceMoneyTransferConfirmedBy2AvgAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceMoneyTransferConfirmedBy2CountAggregate {
+  id: Int
+  subtotalPrice: Int
+  totalPrice: Int
+}
+
+type InvoiceMoneyTransferConfirmedBy2MaxAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceMoneyTransferConfirmedBy2MinAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceMoneyTransferConfirmedBy2SumAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
 type InvoiceNegotiation {
   createdAt: DateTime
   id: ID!
@@ -18707,6 +20303,12 @@ type InvoiceNegotiation {
   negotiation: Negotiation
   negotiationId: Float!
   updatedAt: DateTime
+}
+
+input InvoiceNegotiationAggregateFilter {
+  and: [InvoiceNegotiationAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceNegotiationAggregateFilter!]
 }
 
 type InvoiceNegotiationConnection {
@@ -18771,6 +20373,51 @@ input InvoiceNegotiationUpdateFilter {
   and: [InvoiceNegotiationUpdateFilter!]
   id: IDFilterComparison
   or: [InvoiceNegotiationUpdateFilter!]
+}
+
+type InvoiceParentInvoiceAggregateGroupBy {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceParentInvoiceAggregateResponse {
+  avg: InvoiceParentInvoiceAvgAggregate
+  count: InvoiceParentInvoiceCountAggregate
+  groupBy: InvoiceParentInvoiceAggregateGroupBy
+  max: InvoiceParentInvoiceMaxAggregate
+  min: InvoiceParentInvoiceMinAggregate
+  sum: InvoiceParentInvoiceSumAggregate
+}
+
+type InvoiceParentInvoiceAvgAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceParentInvoiceCountAggregate {
+  id: Int
+  subtotalPrice: Int
+  totalPrice: Int
+}
+
+type InvoiceParentInvoiceMaxAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceParentInvoiceMinAggregate {
+  id: ID
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
+type InvoiceParentInvoiceSumAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoicePayment {
@@ -19090,6 +20737,8 @@ input InvoicePaymentHistoryFilter {
 
 type InvoicePaymentHistoryInvoiceAggregateGroupBy {
   id: ID
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoicePaymentHistoryInvoiceAggregateResponse {
@@ -19103,10 +20752,14 @@ type InvoicePaymentHistoryInvoiceAggregateResponse {
 
 type InvoicePaymentHistoryInvoiceAvgAggregate {
   id: Float
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoicePaymentHistoryInvoiceCountAggregate {
   id: Int
+  subtotalPrice: Int
+  totalPrice: Int
 }
 
 type InvoicePaymentHistoryInvoiceHistoryAggregateGroupBy {
@@ -19150,10 +20803,14 @@ type InvoicePaymentHistoryInvoiceHistorySumAggregate {
 
 type InvoicePaymentHistoryInvoiceMaxAggregate {
   id: ID
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoicePaymentHistoryInvoiceMinAggregate {
   id: ID
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoicePaymentHistoryInvoicePaymentAggregateGroupBy {
@@ -19224,6 +20881,8 @@ type InvoicePaymentHistoryInvoicePaymentTypeSumAggregate {
 
 type InvoicePaymentHistoryInvoiceSumAggregate {
   id: Float
+  subtotalPrice: Float
+  totalPrice: Float
 }
 
 type InvoicePaymentHistoryMaxAggregate {
@@ -19267,6 +20926,39 @@ input InvoicePaymentHistoryUpdateFilter {
   or: [InvoicePaymentHistoryUpdateFilter!]
 }
 
+type InvoicePaymentMethodFieldsAggregateGroupBy {
+  id: ID
+}
+
+type InvoicePaymentMethodFieldsAggregateResponse {
+  avg: InvoicePaymentMethodFieldsAvgAggregate
+  count: InvoicePaymentMethodFieldsCountAggregate
+  groupBy: InvoicePaymentMethodFieldsAggregateGroupBy
+  max: InvoicePaymentMethodFieldsMaxAggregate
+  min: InvoicePaymentMethodFieldsMinAggregate
+  sum: InvoicePaymentMethodFieldsSumAggregate
+}
+
+type InvoicePaymentMethodFieldsAvgAggregate {
+  id: Float
+}
+
+type InvoicePaymentMethodFieldsCountAggregate {
+  id: Int
+}
+
+type InvoicePaymentMethodFieldsMaxAggregate {
+  id: ID
+}
+
+type InvoicePaymentMethodFieldsMinAggregate {
+  id: ID
+}
+
+type InvoicePaymentMethodFieldsSumAggregate {
+  id: Float
+}
+
 input InvoicePaymentSort {
   direction: SortDirection!
   field: InvoicePaymentSortFields!
@@ -19284,6 +20976,12 @@ type InvoicePaymentStatus {
   invoices2: [Invoice!]
   name: String
   updatedAt: DateTime
+}
+
+input InvoicePaymentStatusAggregateFilter {
+  and: [InvoicePaymentStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoicePaymentStatusAggregateFilter!]
 }
 
 type InvoicePaymentStatusConnection {
@@ -19437,48 +21135,144 @@ input InvoicePaymentUpdateFilter {
 type InvoiceProduct {
   bundleCount: Float!
   bundlePrice: String!
-  carpetUsagePlaceInvoiceProducts: [CarpetUsagePlaceInvoiceProduct!]
+  carpetUsagePlaceInvoiceProducts(
+    """Specify to filter the records returned."""
+    filter: CarpetUsagePlaceInvoiceProductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [CarpetUsagePlaceInvoiceProductSort!]! = []
+  ): [CarpetUsagePlaceInvoiceProduct!]!
   count: Float!
   createdAt: DateTime
   description: String
-  design: Design
+  design(
+    """Specify to filter the records returned."""
+    filter: DesignFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [DesignSort!]! = []
+  ): [Design!]!
   designId: Float
   designerPricePercentage: Float
   designerPriceShare: Float
   discount: String
   discountId: Float
-  discount_2: Discount
+  discount_2(
+    """Specify to filter the records returned."""
+    filter: DiscountFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [DiscountSort!]! = []
+  ): [Discount!]!
   gift: Float!
   id: ID!
-  invoice: Invoice
+  invoice(
+    """Specify to filter the records returned."""
+    filter: InvoiceFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceSort!]! = []
+  ): [Invoice!]!
   invoiceId: Float!
-  invoiceProductHistories: [InvoiceProductHistory!]
-  invoiceProductItems: [InvoiceProductItem!]
+  invoiceProductHistories(
+    """Specify to filter the records returned."""
+    filter: InvoiceProductHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceProductHistorySort!]! = []
+  ): [InvoiceProductHistory!]!
+  invoiceProductItems(
+    """Specify to filter the records returned."""
+    filter: InvoiceProductItemFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceProductItemSort!]! = []
+  ): [InvoiceProductItem!]!
   invoiceProductItemsCreated: Boolean!
-  invoiceReversalItems: [InvoiceReversalItem!]
+  invoiceReversalItems(
+    """Specify to filter the records returned."""
+    filter: InvoiceReversalItemFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceReversalItemSort!]! = []
+  ): [InvoiceReversalItem!]!
   isCouponApplicable: Boolean!
   itemsFromDepot: Float
   itemsToProduce: Float
   length: Float
   manuallyAdded: Boolean!
-  pad: Subproduct
+  pad(
+    """Specify to filter the records returned."""
+    filter: SubproductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [SubproductSort!]! = []
+  ): [Subproduct!]!
   padId: Float
   price: String!
   pricePerInch: Float
-  product: Product
+  product(
+    """Specify to filter the records returned."""
+    filter: ProductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ProductSort!]! = []
+  ): [Product!]!
   productId: Float
-  relatedProduct: Product
+  relatedProduct(
+    """Specify to filter the records returned."""
+    filter: ProductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ProductSort!]! = []
+  ): [Product!]!
   relatedProductId: Float
-  relatedSubproduct: Subproduct
+  relatedSubproduct(
+    """Specify to filter the records returned."""
+    filter: SubproductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [SubproductSort!]! = []
+  ): [Subproduct!]!
   relatedSubproductId: Float
-  returnRequestItemHistories: [ReturnRequestItemHistory!]
-  returnRequestItems: [ReturnRequestItem!]
-  returnedInvoiceProducts: [ReturnedInvoiceProduct!]
+  returnRequestItemHistories(
+    """Specify to filter the records returned."""
+    filter: ReturnRequestItemHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnRequestItemHistorySort!]! = []
+  ): [ReturnRequestItemHistory!]!
+  returnRequestItems(
+    """Specify to filter the records returned."""
+    filter: ReturnRequestItemFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnRequestItemSort!]! = []
+  ): [ReturnRequestItem!]!
+  returnedInvoiceProducts(
+    """Specify to filter the records returned."""
+    filter: ReturnedInvoiceProductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [ReturnedInvoiceProductSort!]! = []
+  ): [ReturnedInvoiceProduct!]!
   sepidarId: Float
   stockCount: Float
-  subproduct: Subproduct
+  subproduct(
+    """Specify to filter the records returned."""
+    filter: SubproductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [SubproductSort!]! = []
+  ): [Subproduct!]!
   subproductId: Float
-  subproductStockHistories: [SubproductStockHistory!]
+  subproductStockHistories(
+    """Specify to filter the records returned."""
+    filter: SubproductStockHistoryFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [SubproductStockHistorySort!]! = []
+  ): [SubproductStockHistory!]!
   tempDepotItemsCreated: Boolean!
   totalCouponDiscount: String
   totalDiscount: String
@@ -19486,6 +21280,108 @@ type InvoiceProduct {
   updatedAt: DateTime
   width: Float
   withPad: Boolean!
+}
+
+input InvoiceProductAggregateFilter {
+  and: [InvoiceProductAggregateFilter!]
+  carpetUsagePlaceInvoiceProducts: InvoiceProductAggregateFilterCarpetUsagePlaceInvoiceProductAggregateFilter
+  design: InvoiceProductAggregateFilterDesignAggregateFilter
+  discount_2: InvoiceProductAggregateFilterDiscountAggregateFilter
+  id: IDFilterComparison
+  invoice: InvoiceProductAggregateFilterInvoiceAggregateFilter
+  invoiceProductHistories: InvoiceProductAggregateFilterInvoiceProductHistoryAggregateFilter
+  invoiceProductItems: InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter
+  invoiceReversalItems: InvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter
+  or: [InvoiceProductAggregateFilter!]
+  pad: InvoiceProductAggregateFilterSubproductAggregateFilter
+  product: InvoiceProductAggregateFilterProductAggregateFilter
+  relatedProduct: InvoiceProductAggregateFilterProductAggregateFilter
+  relatedSubproduct: InvoiceProductAggregateFilterSubproductAggregateFilter
+  returnRequestItemHistories: InvoiceProductAggregateFilterReturnRequestItemHistoryAggregateFilter
+  returnRequestItems: InvoiceProductAggregateFilterReturnRequestItemAggregateFilter
+  returnedInvoiceProducts: InvoiceProductAggregateFilterReturnedInvoiceProductAggregateFilter
+  subproduct: InvoiceProductAggregateFilterSubproductAggregateFilter
+  subproductStockHistories: InvoiceProductAggregateFilterSubproductStockHistoryAggregateFilter
+}
+
+input InvoiceProductAggregateFilterCarpetUsagePlaceInvoiceProductAggregateFilter {
+  and: [InvoiceProductAggregateFilterCarpetUsagePlaceInvoiceProductAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterCarpetUsagePlaceInvoiceProductAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterDesignAggregateFilter {
+  and: [InvoiceProductAggregateFilterDesignAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterDesignAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterDiscountAggregateFilter {
+  and: [InvoiceProductAggregateFilterDiscountAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterDiscountAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterInvoiceAggregateFilter {
+  and: [InvoiceProductAggregateFilterInvoiceAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterInvoiceAggregateFilter!]
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+}
+
+input InvoiceProductAggregateFilterInvoiceProductHistoryAggregateFilter {
+  and: [InvoiceProductAggregateFilterInvoiceProductHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterInvoiceProductHistoryAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
+  and: [InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
+  and: [InvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterProductAggregateFilter {
+  and: [InvoiceProductAggregateFilterProductAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterProductAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterReturnRequestItemAggregateFilter {
+  and: [InvoiceProductAggregateFilterReturnRequestItemAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterReturnRequestItemAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterReturnRequestItemHistoryAggregateFilter {
+  and: [InvoiceProductAggregateFilterReturnRequestItemHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterReturnRequestItemHistoryAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterReturnedInvoiceProductAggregateFilter {
+  and: [InvoiceProductAggregateFilterReturnedInvoiceProductAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterReturnedInvoiceProductAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterSubproductAggregateFilter {
+  and: [InvoiceProductAggregateFilterSubproductAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterSubproductAggregateFilter!]
+}
+
+input InvoiceProductAggregateFilterSubproductStockHistoryAggregateFilter {
+  and: [InvoiceProductAggregateFilterSubproductStockHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductAggregateFilterSubproductStockHistoryAggregateFilter!]
 }
 
 type InvoiceProductConnection {
@@ -19620,8 +21516,104 @@ type InvoiceProductEdge {
 
 input InvoiceProductFilter {
   and: [InvoiceProductFilter!]
+  carpetUsagePlaceInvoiceProducts: InvoiceProductFilterCarpetUsagePlaceInvoiceProductFilter
+  design: InvoiceProductFilterDesignFilter
+  discount_2: InvoiceProductFilterDiscountFilter
   id: IDFilterComparison
+  invoice: InvoiceProductFilterInvoiceFilter
+  invoiceProductHistories: InvoiceProductFilterInvoiceProductHistoryFilter
+  invoiceProductItems: InvoiceProductFilterInvoiceProductItemFilter
+  invoiceReversalItems: InvoiceProductFilterInvoiceReversalItemFilter
   or: [InvoiceProductFilter!]
+  pad: InvoiceProductFilterSubproductFilter
+  product: InvoiceProductFilterProductFilter
+  relatedProduct: InvoiceProductFilterProductFilter
+  relatedSubproduct: InvoiceProductFilterSubproductFilter
+  returnRequestItemHistories: InvoiceProductFilterReturnRequestItemHistoryFilter
+  returnRequestItems: InvoiceProductFilterReturnRequestItemFilter
+  returnedInvoiceProducts: InvoiceProductFilterReturnedInvoiceProductFilter
+  subproduct: InvoiceProductFilterSubproductFilter
+  subproductStockHistories: InvoiceProductFilterSubproductStockHistoryFilter
+}
+
+input InvoiceProductFilterCarpetUsagePlaceInvoiceProductFilter {
+  and: [InvoiceProductFilterCarpetUsagePlaceInvoiceProductFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterCarpetUsagePlaceInvoiceProductFilter!]
+}
+
+input InvoiceProductFilterDesignFilter {
+  and: [InvoiceProductFilterDesignFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterDesignFilter!]
+}
+
+input InvoiceProductFilterDiscountFilter {
+  and: [InvoiceProductFilterDiscountFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterDiscountFilter!]
+}
+
+input InvoiceProductFilterInvoiceFilter {
+  and: [InvoiceProductFilterInvoiceFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterInvoiceFilter!]
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+}
+
+input InvoiceProductFilterInvoiceProductHistoryFilter {
+  and: [InvoiceProductFilterInvoiceProductHistoryFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterInvoiceProductHistoryFilter!]
+}
+
+input InvoiceProductFilterInvoiceProductItemFilter {
+  and: [InvoiceProductFilterInvoiceProductItemFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterInvoiceProductItemFilter!]
+}
+
+input InvoiceProductFilterInvoiceReversalItemFilter {
+  and: [InvoiceProductFilterInvoiceReversalItemFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterInvoiceReversalItemFilter!]
+}
+
+input InvoiceProductFilterProductFilter {
+  and: [InvoiceProductFilterProductFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterProductFilter!]
+}
+
+input InvoiceProductFilterReturnRequestItemFilter {
+  and: [InvoiceProductFilterReturnRequestItemFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterReturnRequestItemFilter!]
+}
+
+input InvoiceProductFilterReturnRequestItemHistoryFilter {
+  and: [InvoiceProductFilterReturnRequestItemHistoryFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterReturnRequestItemHistoryFilter!]
+}
+
+input InvoiceProductFilterReturnedInvoiceProductFilter {
+  and: [InvoiceProductFilterReturnedInvoiceProductFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterReturnedInvoiceProductFilter!]
+}
+
+input InvoiceProductFilterSubproductFilter {
+  and: [InvoiceProductFilterSubproductFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterSubproductFilter!]
+}
+
+input InvoiceProductFilterSubproductStockHistoryFilter {
+  and: [InvoiceProductFilterSubproductStockHistoryFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductFilterSubproductStockHistoryFilter!]
 }
 
 type InvoiceProductHistory {
@@ -20148,6 +22140,12 @@ type InvoiceRatesResult {
   updatedAt: DateTime
 }
 
+input InvoiceRatesResultAggregateFilter {
+  and: [InvoiceRatesResultAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceRatesResultAggregateFilter!]
+}
+
 type InvoiceRatesResultConnection {
   """Array of edges."""
   edges: [InvoiceRatesResultEdge!]!
@@ -20220,6 +22218,171 @@ input InvoiceRatesResultUpdateFilter {
   or: [InvoiceRatesResultUpdateFilter!]
 }
 
+type InvoiceReplacementPaymentStatusAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceReplacementPaymentStatusAggregateResponse {
+  avg: InvoiceReplacementPaymentStatusAvgAggregate
+  count: InvoiceReplacementPaymentStatusCountAggregate
+  groupBy: InvoiceReplacementPaymentStatusAggregateGroupBy
+  max: InvoiceReplacementPaymentStatusMaxAggregate
+  min: InvoiceReplacementPaymentStatusMinAggregate
+  sum: InvoiceReplacementPaymentStatusSumAggregate
+}
+
+type InvoiceReplacementPaymentStatusAvgAggregate {
+  id: Float
+}
+
+type InvoiceReplacementPaymentStatusCountAggregate {
+  id: Int
+}
+
+type InvoiceReplacementPaymentStatusMaxAggregate {
+  id: ID
+}
+
+type InvoiceReplacementPaymentStatusMinAggregate {
+  id: ID
+}
+
+type InvoiceReplacementPaymentStatusSumAggregate {
+  id: Float
+}
+
+type InvoiceReturnRequestHistoriesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceReturnRequestHistoriesAggregateResponse {
+  avg: InvoiceReturnRequestHistoriesAvgAggregate
+  count: InvoiceReturnRequestHistoriesCountAggregate
+  groupBy: InvoiceReturnRequestHistoriesAggregateGroupBy
+  max: InvoiceReturnRequestHistoriesMaxAggregate
+  min: InvoiceReturnRequestHistoriesMinAggregate
+  sum: InvoiceReturnRequestHistoriesSumAggregate
+}
+
+type InvoiceReturnRequestHistoriesAvgAggregate {
+  id: Float
+}
+
+type InvoiceReturnRequestHistoriesCountAggregate {
+  id: Int
+}
+
+type InvoiceReturnRequestHistoriesMaxAggregate {
+  id: ID
+}
+
+type InvoiceReturnRequestHistoriesMinAggregate {
+  id: ID
+}
+
+type InvoiceReturnRequestHistoriesSumAggregate {
+  id: Float
+}
+
+type InvoiceReturnRequestsAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceReturnRequestsAggregateResponse {
+  avg: InvoiceReturnRequestsAvgAggregate
+  count: InvoiceReturnRequestsCountAggregate
+  groupBy: InvoiceReturnRequestsAggregateGroupBy
+  max: InvoiceReturnRequestsMaxAggregate
+  min: InvoiceReturnRequestsMinAggregate
+  sum: InvoiceReturnRequestsSumAggregate
+}
+
+type InvoiceReturnRequestsAvgAggregate {
+  id: Float
+}
+
+type InvoiceReturnRequestsCountAggregate {
+  id: Int
+}
+
+type InvoiceReturnRequestsMaxAggregate {
+  id: ID
+}
+
+type InvoiceReturnRequestsMinAggregate {
+  id: ID
+}
+
+type InvoiceReturnRequestsSumAggregate {
+  id: Float
+}
+
+type InvoiceReturnedInvoices2AggregateGroupBy {
+  id: ID
+}
+
+type InvoiceReturnedInvoices2AggregateResponse {
+  avg: InvoiceReturnedInvoices2AvgAggregate
+  count: InvoiceReturnedInvoices2CountAggregate
+  groupBy: InvoiceReturnedInvoices2AggregateGroupBy
+  max: InvoiceReturnedInvoices2MaxAggregate
+  min: InvoiceReturnedInvoices2MinAggregate
+  sum: InvoiceReturnedInvoices2SumAggregate
+}
+
+type InvoiceReturnedInvoices2AvgAggregate {
+  id: Float
+}
+
+type InvoiceReturnedInvoices2CountAggregate {
+  id: Int
+}
+
+type InvoiceReturnedInvoices2MaxAggregate {
+  id: ID
+}
+
+type InvoiceReturnedInvoices2MinAggregate {
+  id: ID
+}
+
+type InvoiceReturnedInvoices2SumAggregate {
+  id: Float
+}
+
+type InvoiceReturnedInvoicesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceReturnedInvoicesAggregateResponse {
+  avg: InvoiceReturnedInvoicesAvgAggregate
+  count: InvoiceReturnedInvoicesCountAggregate
+  groupBy: InvoiceReturnedInvoicesAggregateGroupBy
+  max: InvoiceReturnedInvoicesMaxAggregate
+  min: InvoiceReturnedInvoicesMinAggregate
+  sum: InvoiceReturnedInvoicesSumAggregate
+}
+
+type InvoiceReturnedInvoicesAvgAggregate {
+  id: Float
+}
+
+type InvoiceReturnedInvoicesCountAggregate {
+  id: Int
+}
+
+type InvoiceReturnedInvoicesMaxAggregate {
+  id: ID
+}
+
+type InvoiceReturnedInvoicesMinAggregate {
+  id: ID
+}
+
+type InvoiceReturnedInvoicesSumAggregate {
+  id: Float
+}
+
 type InvoiceReversal {
   createdAt: DateTime
   id: ID!
@@ -20234,6 +22397,12 @@ type InvoiceReversal {
   reviewedDate: DateTime
   updatedAt: DateTime
   wholeInvoice: Boolean!
+}
+
+input InvoiceReversalAggregateFilter {
+  and: [InvoiceReversalAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceReversalAggregateFilter!]
 }
 
 type InvoiceReversalConnection {
@@ -20404,6 +22573,12 @@ type InvoiceShippingRate {
   updatedAt: DateTime
 }
 
+input InvoiceShippingRateAggregateFilter {
+  and: [InvoiceShippingRateAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceShippingRateAggregateFilter!]
+}
+
 type InvoiceShippingRateConnection {
   """Array of edges."""
   edges: [InvoiceShippingRateEdge!]!
@@ -20480,6 +22655,8 @@ input InvoiceSort {
 
 enum InvoiceSortFields {
   id
+  subtotalPrice
+  totalPrice
 }
 
 type InvoiceStatus {
@@ -20495,6 +22672,12 @@ type InvoiceStatus {
   smsToCustomer: Boolean
   status: String!
   updatedAt: DateTime
+}
+
+input InvoiceStatusAggregateFilter {
+  and: [InvoiceStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceStatusAggregateFilter!]
 }
 
 type InvoiceStatusConnection {
@@ -20571,12 +22754,24 @@ input InvoiceStatusUpdateFilter {
   or: [InvoiceStatusUpdateFilter!]
 }
 
+type InvoiceSumAggregate {
+  id: Float
+  subtotalPrice: Float
+  totalPrice: Float
+}
+
 type InvoiceType {
   createdAt: DateTime
   id: ID!
   invoices: [Invoice!]
   name: String!
   updatedAt: DateTime
+}
+
+input InvoiceTypeAggregateFilter {
+  and: [InvoiceTypeAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceTypeAggregateFilter!]
 }
 
 type InvoiceTypeConnection {
@@ -20643,6 +22838,162 @@ input InvoiceUpdateFilter {
   and: [InvoiceUpdateFilter!]
   id: IDFilterComparison
   or: [InvoiceUpdateFilter!]
+  subtotalPrice: NumberFieldComparison
+  totalPrice: NumberFieldComparison
+}
+
+type InvoiceUserAggregateGroupBy {
+  createdAt: DateTime
+  id: ID
+  isGuest: Float
+  name: String
+  phone: String
+  username: String
+}
+
+type InvoiceUserAggregateResponse {
+  avg: InvoiceUserAvgAggregate
+  count: InvoiceUserCountAggregate
+  groupBy: InvoiceUserAggregateGroupBy
+  max: InvoiceUserMaxAggregate
+  min: InvoiceUserMinAggregate
+  sum: InvoiceUserSumAggregate
+}
+
+type InvoiceUserAvgAggregate {
+  id: Float
+  isGuest: Float
+}
+
+type InvoiceUserCountAggregate {
+  createdAt: Int
+  id: Int
+  isGuest: Int
+  name: Int
+  phone: Int
+  username: Int
+}
+
+type InvoiceUserMaxAggregate {
+  createdAt: DateTime
+  id: ID
+  isGuest: Float
+  name: String
+  phone: String
+  username: String
+}
+
+type InvoiceUserMinAggregate {
+  createdAt: DateTime
+  id: ID
+  isGuest: Float
+  name: String
+  phone: String
+  username: String
+}
+
+type InvoiceUserSumAggregate {
+  id: Float
+  isGuest: Float
+}
+
+type InvoiceVisitorAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceVisitorAggregateResponse {
+  avg: InvoiceVisitorAvgAggregate
+  count: InvoiceVisitorCountAggregate
+  groupBy: InvoiceVisitorAggregateGroupBy
+  max: InvoiceVisitorMaxAggregate
+  min: InvoiceVisitorMinAggregate
+  sum: InvoiceVisitorSumAggregate
+}
+
+type InvoiceVisitorAvgAggregate {
+  id: Float
+}
+
+type InvoiceVisitorCountAggregate {
+  id: Int
+}
+
+type InvoiceVisitorCouponAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceVisitorCouponAggregateResponse {
+  avg: InvoiceVisitorCouponAvgAggregate
+  count: InvoiceVisitorCouponCountAggregate
+  groupBy: InvoiceVisitorCouponAggregateGroupBy
+  max: InvoiceVisitorCouponMaxAggregate
+  min: InvoiceVisitorCouponMinAggregate
+  sum: InvoiceVisitorCouponSumAggregate
+}
+
+type InvoiceVisitorCouponAvgAggregate {
+  id: Float
+}
+
+type InvoiceVisitorCouponCountAggregate {
+  id: Int
+}
+
+type InvoiceVisitorCouponMaxAggregate {
+  id: ID
+}
+
+type InvoiceVisitorCouponMinAggregate {
+  id: ID
+}
+
+type InvoiceVisitorCouponSumAggregate {
+  id: Float
+}
+
+type InvoiceVisitorGroupAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceVisitorGroupAggregateResponse {
+  avg: InvoiceVisitorGroupAvgAggregate
+  count: InvoiceVisitorGroupCountAggregate
+  groupBy: InvoiceVisitorGroupAggregateGroupBy
+  max: InvoiceVisitorGroupMaxAggregate
+  min: InvoiceVisitorGroupMinAggregate
+  sum: InvoiceVisitorGroupSumAggregate
+}
+
+type InvoiceVisitorGroupAvgAggregate {
+  id: Float
+}
+
+type InvoiceVisitorGroupCountAggregate {
+  id: Int
+}
+
+type InvoiceVisitorGroupMaxAggregate {
+  id: ID
+}
+
+type InvoiceVisitorGroupMinAggregate {
+  id: ID
+}
+
+type InvoiceVisitorGroupSumAggregate {
+  id: Float
+}
+
+type InvoiceVisitorMaxAggregate {
+  id: ID
+}
+
+type InvoiceVisitorMinAggregate {
+  id: ID
+}
+
+type InvoiceVisitorSumAggregate {
+  id: Float
 }
 
 type Label {
@@ -24428,6 +26779,12 @@ type PaymentMethodField {
   value: String!
 }
 
+input PaymentMethodFieldAggregateFilter {
+  and: [PaymentMethodFieldAggregateFilter!]
+  id: IDFilterComparison
+  or: [PaymentMethodFieldAggregateFilter!]
+}
+
 type PaymentMethodFieldConnection {
   """Array of edges."""
   edges: [PaymentMethodFieldEdge!]!
@@ -25743,7 +28100,13 @@ type Product {
   sortOrder: Float
   specialOffers: [SpecialOffer!]!
   specialOffers2: [SpecialOffer!]!
-  subproducts: [Subproduct!]!
+  subproducts(
+    """Specify to filter the records returned."""
+    filter: SubproductFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [SubproductSort!]! = []
+  ): [Subproduct!]!
   torobProducts: [TorobProduct!]!
   totalDislike: Float!
   totalLike: Float!
@@ -26679,6 +29042,13 @@ input ProductFilter {
   and: [ProductFilter!]
   id: IDFilterComparison
   or: [ProductFilter!]
+  subproducts: ProductFilterSubproductFilter
+}
+
+input ProductFilterSubproductFilter {
+  and: [ProductFilterSubproductFilter!]
+  id: IDFilterComparison
+  or: [ProductFilterSubproductFilter!]
 }
 
 type ProductLike {
@@ -28998,6 +31368,10 @@ type Query {
     """Specify to sort results."""
     sorting: [InvoiceAddressSort!]! = []
   ): InvoiceAddressConnection!
+  invoiceAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceAggregateFilter
+  ): [InvoiceAggregateResponse!]!
   invoiceBankGatewayHistories(
     """Specify to filter the records returned."""
     filter: InvoiceBankGatewayHistoryFilter! = {}
@@ -29288,7 +31662,7 @@ type Query {
     filter: InvoiceFilter! = {}
 
     """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
+    paging: OffsetPaging! = {limit: 10}
 
     """Specify to sort results."""
     sorting: [InvoiceSort!]! = []
@@ -32139,6 +34513,12 @@ input ReturnRequestAddressUpdateFilter {
   or: [ReturnRequestAddressUpdateFilter!]
 }
 
+input ReturnRequestAggregateFilter {
+  and: [ReturnRequestAggregateFilter!]
+  id: IDFilterComparison
+  or: [ReturnRequestAggregateFilter!]
+}
+
 type ReturnRequestConnection {
   """Array of edges."""
   edges: [ReturnRequestEdge!]!
@@ -32267,6 +34647,12 @@ type ReturnRequestHistory {
   userBlocked: String
   userId: Float!
   withdrawable: String
+}
+
+input ReturnRequestHistoryAggregateFilter {
+  and: [ReturnRequestHistoryAggregateFilter!]
+  id: IDFilterComparison
+  or: [ReturnRequestHistoryAggregateFilter!]
 }
 
 type ReturnRequestHistoryConnection {
@@ -33144,6 +35530,12 @@ type ReturnedInvoice {
   updatedAt: DateTime
   user: User!
   userId: Float!
+}
+
+input ReturnedInvoiceAggregateFilter {
+  and: [ReturnedInvoiceAggregateFilter!]
+  id: IDFilterComparison
+  or: [ReturnedInvoiceAggregateFilter!]
 }
 
 type ReturnedInvoiceConnection {
@@ -34718,7 +37110,13 @@ type Subproduct {
   basicCarpetBorderId: Float
   basicCarpetBrand: BasicCarpetBrand!
   basicCarpetBrandId: Float
-  basicCarpetColor: BasicCarpetColor!
+  basicCarpetColor(
+    """Specify to filter the records returned."""
+    filter: BasicCarpetColorFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [BasicCarpetColorSort!]! = []
+  ): [BasicCarpetColor!]!
   basicCarpetColorId: Float
   basicCarpetDesign: BasicCarpetDesign!
   basicCarpetDesignId: Float
@@ -34994,8 +37392,15 @@ type SubproductEdge {
 
 input SubproductFilter {
   and: [SubproductFilter!]
+  basicCarpetColor: SubproductFilterBasicCarpetColorFilter
   id: IDFilterComparison
   or: [SubproductFilter!]
+}
+
+input SubproductFilterBasicCarpetColorFilter {
+  and: [SubproductFilterBasicCarpetColorFilter!]
+  id: IDFilterComparison
+  or: [SubproductFilterBasicCarpetColorFilter!]
 }
 
 input SubproductSort {
@@ -36515,7 +38920,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-23T11:49:38.101Z"
+  createdAt: DateTime = "2025-04-25T12:17:59.259Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -36537,7 +38942,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-23T11:49:38.121Z"
+  createdAt: DateTime = "2025-04-25T12:17:59.267Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36552,7 +38957,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-23T11:49:38.193Z"
+  createdAt: DateTime = "2025-04-25T12:17:59.303Z"
   description: String
   facebookId: String
   headerImage: String
@@ -36576,7 +38981,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-23T11:49:38.122Z"
+  createdAt: DateTime = "2025-04-25T12:17:59.268Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -36593,7 +38998,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-23T11:49:38.144Z"
+  createdAt: DateTime = "2025-04-25T12:17:59.278Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -36648,7 +39053,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-23T11:49:38.124Z"
+  createdAt: DateTime = "2025-04-25T12:17:59.269Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -37777,11 +40182,11 @@ input UpdateInvoice {
   shipmentUuid: String
   shippingRate: String
   shippingRateCod: String
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
   totalCouponDiscount: String
   totalDiscount: String
-  totalPrice: String
+  totalPrice: Float
   totalPriceOld: Float
   totalTax: String
   totalVisitorShare: Float
@@ -44879,6 +47284,24 @@ type User {
   withdrawalRequests2: [WithdrawalRequest!]
 }
 
+input UserAggregateFilter {
+  addresses: UserAggregateFilterAddressAggregateFilter
+  and: [UserAggregateFilter!]
+  createdAt: DateFieldComparison
+  id: IDFilterComparison
+  isGuest: NumberFieldComparison
+  name: StringFieldComparison
+  or: [UserAggregateFilter!]
+  phone: StringFieldComparison
+  username: StringFieldComparison
+}
+
+input UserAggregateFilterAddressAggregateFilter {
+  and: [UserAggregateFilterAddressAggregateFilter!]
+  id: IDFilterComparison
+  or: [UserAggregateFilterAddressAggregateFilter!]
+}
+
 type UserCart {
   bundleCount: Float!
   count: Float!
@@ -45987,6 +48410,12 @@ type Visitor {
   visitorSales: [VisitorSale!]!
 }
 
+input VisitorAggregateFilter {
+  and: [VisitorAggregateFilter!]
+  id: IDFilterComparison
+  or: [VisitorAggregateFilter!]
+}
+
 type VisitorConnection {
   """Array of edges."""
   edges: [VisitorEdge!]!
@@ -46005,6 +48434,12 @@ type VisitorCoupon {
   updatedAt: DateTime!
   visitor: Visitor!
   visitorId: Float!
+}
+
+input VisitorCouponAggregateFilter {
+  and: [VisitorCouponAggregateFilter!]
+  id: IDFilterComparison
+  or: [VisitorCouponAggregateFilter!]
 }
 
 type VisitorCouponConnection {
@@ -46149,6 +48584,12 @@ type VisitorGroup {
   visitorGroupRates: [VisitorGroupRate!]!
   visitorSales: [VisitorSale!]!
   visitors: [Visitor!]!
+}
+
+input VisitorGroupAggregateFilter {
+  and: [VisitorGroupAggregateFilter!]
+  id: IDFilterComparison
+  or: [VisitorGroupAggregateFilter!]
 }
 
 type VisitorGroupConnection {

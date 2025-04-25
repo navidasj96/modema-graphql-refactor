@@ -239,7 +239,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  totalPrice: string | null;
+  totalPrice: number | null;
 
   @Column('decimal', {
     name: 'additions',
