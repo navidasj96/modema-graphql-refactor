@@ -17,6 +17,7 @@ import { CreateInvoicePaymentInput } from '@/modules/invoice-payment/dto/create-
           EntityClass: InvoicePayment,
           DTOClass: InvoicePaymentGraphQL,
           CreateDTOClass: CreateInvoicePaymentInput,
+          enableAggregate: true,
         },
       ],
     }),

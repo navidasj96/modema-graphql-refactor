@@ -37,7 +37,7 @@ export class InvoicePayment {
     scale: 2,
     default: () => "'0.00'",
   })
-  amount: string;
+  amount: number;
 
   @Column('tinyint', { name: 'for_shipping', width: 1, default: () => "'0'" })
   forShipping: boolean;

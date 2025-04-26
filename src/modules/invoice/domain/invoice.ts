@@ -47,21 +47,21 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @FilterableUnPagedRelation('invoiceHistories', () => InvoiceHistory)
 @FilterableUnPagedRelation(
   'chaparTrackingHistories',
-  () => ChaparTrackingHistory,
+  () => ChaparTrackingHistory
 )
 @FilterableUnPagedRelation('Coupon', () => Coupon)
 @FilterableUnPagedRelation(
   'invoiceAddressValidationResults',
-  () => InvoiceAddressValidationResult,
+  () => InvoiceAddressValidationResult
 )
 @FilterableUnPagedRelation('invoiceAddresses', () => InvoiceAddress)
 @FilterableUnPagedRelation(
   'invoiceBankGatewayHistories',
-  () => InvoiceBankGatewayHistory,
+  () => InvoiceBankGatewayHistory
 )
 @FilterableUnPagedRelation(
   'invoicePaymentHistories',
-  () => InvoicePaymentHistory,
+  () => InvoicePaymentHistory
 )
 @FilterableUnPagedRelation('invoiceProducts', () => InvoiceProduct)
 @FilterableUnPagedRelation('invoicePayments', () => InvoicePayment)
@@ -71,7 +71,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @FilterableUnPagedRelation('address', () => Address)
 @FilterableUnPagedRelation(
   'chaparSettlementStatus',
-  () => ChaparSettlementStatus,
+  () => ChaparSettlementStatus
 )
 @FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
 @FilterableUnPagedRelation('invoiceMode', () => InvoiceMode)
@@ -89,7 +89,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @FilterableUnPagedRelation('user', () => User)
 @FilterableUnPagedRelation(
   'replacementPaymentStatus',
-  () => InvoicePaymentStatus,
+  () => InvoicePaymentStatus
 )
 @FilterableUnPagedRelation('invoices', () => Invoice)
 @FilterableUnPagedRelation('parentInvoice', () => Invoice)
@@ -97,6 +97,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @FilterableUnPagedRelation('lockState2', () => InvoiceStatus)
 @FilterableUnPagedRelation('invoiceType', () => InvoiceType)
 @FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
+@FilterableUnPagedRelation('invoiceInvoiceStatuses', () => InvoiceInvoiceStatus)
 @ObjectType()
 export class Invoice {
   @IDField(() => ID)

@@ -20,11 +20,11 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @InputType('InvoiceProductDomain')
 @FilterableUnPagedRelation(
   'carpetUsagePlaceInvoiceProducts',
-  () => CarpetUsagePlaceInvoiceProduct,
+  () => CarpetUsagePlaceInvoiceProduct
 )
 @FilterableUnPagedRelation(
   'invoiceProductHistories',
-  () => InvoiceProductHistory,
+  () => InvoiceProductHistory
 )
 @FilterableUnPagedRelation('invoiceProductItems', () => InvoiceProductItem)
 @FilterableUnPagedRelation('design', () => Design)
@@ -38,16 +38,16 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @FilterableUnPagedRelation('invoiceReversalItems', () => InvoiceReversalItem)
 @FilterableUnPagedRelation(
   'returnRequestItemHistories',
-  () => ReturnRequestItemHistory,
+  () => ReturnRequestItemHistory
 )
 @FilterableUnPagedRelation('returnRequestItems', () => ReturnRequestItem)
 @FilterableUnPagedRelation(
   'returnedInvoiceProducts',
-  () => ReturnedInvoiceProduct,
+  () => ReturnedInvoiceProduct
 )
 @FilterableUnPagedRelation(
   'subproductStockHistories',
-  () => SubproductStockHistory,
+  () => SubproductStockHistory
 )
 @ObjectType()
 export class InvoiceProduct {

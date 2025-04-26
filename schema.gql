@@ -1146,7 +1146,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-25T12:17:59.259Z"
+  createdAt: DateTime! = "2025-04-26T10:37:41.912Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1234,7 +1234,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-25T12:17:59.267Z"
+  createdAt: DateTime! = "2025-04-26T10:37:41.928Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1349,7 +1349,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-25T12:17:59.303Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.022Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1439,7 +1439,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-25T12:17:59.268Z"
+  createdAt: DateTime! = "2025-04-26T10:37:41.929Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1680,7 +1680,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-25T12:17:59.278Z"
+  createdAt: DateTime! = "2025-04-26T10:37:41.947Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-25T12:17:59.269Z"
+  createdAt: DateTime! = "2025-04-26T10:37:41.930Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5110,7 +5110,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-25T12:17:59.582Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.617Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5132,7 +5132,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-25T12:17:59.587Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.630Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5147,7 +5147,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-25T12:17:59.591Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.642Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5171,7 +5171,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-25T12:17:59.596Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.665Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5202,7 +5202,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-25T12:17:59.601Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.677Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5243,7 +5243,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-25T12:17:59.610Z"
+  createdAt: DateTime! = "2025-04-26T10:37:42.704Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -17608,7 +17608,17 @@ type Invoice {
     """Filter to find records to aggregate on"""
     filter: InvoiceHistoryAggregateFilter
   ): [InvoiceInvoiceHistoriesAggregateResponse!]!
-  invoiceInvoiceStatuses: [InvoiceInvoiceStatus!]
+  invoiceInvoiceStatuses(
+    """Specify to filter the records returned."""
+    filter: InvoiceInvoiceStatusFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceInvoiceStatusSort!]! = []
+  ): [InvoiceInvoiceStatus!]!
+  invoiceInvoiceStatusesAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoiceInvoiceStatusAggregateFilter
+  ): [InvoiceInvoiceInvoiceStatusesAggregateResponse!]!
   invoiceMode(
     """Specify to filter the records returned."""
     filter: InvoiceModeFilter! = {}
@@ -18209,6 +18219,7 @@ input InvoiceAggregateFilter {
   invoiceAddresses: InvoiceAggregateFilterInvoiceAddressAggregateFilter
   invoiceBankGatewayHistories: InvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter
   invoiceHistories: InvoiceAggregateFilterInvoiceHistoryAggregateFilter
+  invoiceInvoiceStatuses: InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter
   invoiceMode: InvoiceAggregateFilterInvoiceModeAggregateFilter
   invoiceNegotiations: InvoiceAggregateFilterInvoiceNegotiationAggregateFilter
   invoicePaymentHistories: InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter
@@ -18295,6 +18306,12 @@ input InvoiceAggregateFilterInvoiceHistoryAggregateFilter {
   or: [InvoiceAggregateFilterInvoiceHistoryAggregateFilter!]
 }
 
+input InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter!]
+}
+
 input InvoiceAggregateFilterInvoiceModeAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceModeAggregateFilter!]
   id: IDFilterComparison
@@ -18308,6 +18325,7 @@ input InvoiceAggregateFilterInvoiceNegotiationAggregateFilter {
 }
 
 input InvoiceAggregateFilterInvoicePaymentAggregateFilter {
+  amount: NumberFieldComparison
   and: [InvoiceAggregateFilterInvoicePaymentAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoicePaymentAggregateFilter!]
@@ -18944,6 +18962,7 @@ input InvoiceFilter {
   invoiceAddresses: InvoiceFilterInvoiceAddressFilter
   invoiceBankGatewayHistories: InvoiceFilterInvoiceBankGatewayHistoryFilter
   invoiceHistories: InvoiceFilterInvoiceHistoryFilter
+  invoiceInvoiceStatuses: InvoiceFilterInvoiceInvoiceStatusFilter
   invoiceMode: InvoiceFilterInvoiceModeFilter
   invoiceNegotiations: InvoiceFilterInvoiceNegotiationFilter
   invoicePaymentHistories: InvoiceFilterInvoicePaymentHistoryFilter
@@ -19030,6 +19049,12 @@ input InvoiceFilterInvoiceHistoryFilter {
   or: [InvoiceFilterInvoiceHistoryFilter!]
 }
 
+input InvoiceFilterInvoiceInvoiceStatusFilter {
+  and: [InvoiceFilterInvoiceInvoiceStatusFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceInvoiceStatusFilter!]
+}
+
 input InvoiceFilterInvoiceModeFilter {
   and: [InvoiceFilterInvoiceModeFilter!]
   id: IDFilterComparison
@@ -19043,6 +19068,7 @@ input InvoiceFilterInvoiceNegotiationFilter {
 }
 
 input InvoiceFilterInvoicePaymentFilter {
+  amount: NumberFieldComparison
   and: [InvoiceFilterInvoicePaymentFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoicePaymentFilter!]
@@ -19659,6 +19685,39 @@ type InvoiceInvoiceHistoriesSumAggregate {
   id: Float
 }
 
+type InvoiceInvoiceInvoiceStatusesAggregateGroupBy {
+  id: ID
+}
+
+type InvoiceInvoiceInvoiceStatusesAggregateResponse {
+  avg: InvoiceInvoiceInvoiceStatusesAvgAggregate
+  count: InvoiceInvoiceInvoiceStatusesCountAggregate
+  groupBy: InvoiceInvoiceInvoiceStatusesAggregateGroupBy
+  max: InvoiceInvoiceInvoiceStatusesMaxAggregate
+  min: InvoiceInvoiceInvoiceStatusesMinAggregate
+  sum: InvoiceInvoiceInvoiceStatusesSumAggregate
+}
+
+type InvoiceInvoiceInvoiceStatusesAvgAggregate {
+  id: Float
+}
+
+type InvoiceInvoiceInvoiceStatusesCountAggregate {
+  id: Int
+}
+
+type InvoiceInvoiceInvoiceStatusesMaxAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceInvoiceStatusesMinAggregate {
+  id: ID
+}
+
+type InvoiceInvoiceInvoiceStatusesSumAggregate {
+  id: Float
+}
+
 type InvoiceInvoiceModeAggregateGroupBy {
   id: ID
 }
@@ -19806,6 +19865,7 @@ type InvoiceInvoicePaymentStatusSumAggregate {
 }
 
 type InvoiceInvoicePaymentsAggregateGroupBy {
+  amount: Float
   id: ID
 }
 
@@ -19819,22 +19879,27 @@ type InvoiceInvoicePaymentsAggregateResponse {
 }
 
 type InvoiceInvoicePaymentsAvgAggregate {
+  amount: Float
   id: Float
 }
 
 type InvoiceInvoicePaymentsCountAggregate {
+  amount: Int
   id: Int
 }
 
 type InvoiceInvoicePaymentsMaxAggregate {
+  amount: Float
   id: ID
 }
 
 type InvoiceInvoicePaymentsMinAggregate {
+  amount: Float
   id: ID
 }
 
 type InvoiceInvoicePaymentsSumAggregate {
+  amount: Float
   id: Float
 }
 
@@ -19976,11 +20041,30 @@ type InvoiceInvoiceStatus {
   id: ID!
   invoice: Invoice
   invoiceId: Float!
-  invoiceStatus: InvoiceStatus
+  invoiceStatus(
+    """Specify to filter the records returned."""
+    filter: InvoiceStatusFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [InvoiceStatusSort!]! = []
+  ): [InvoiceStatus!]!
   invoiceStatusId: Float!
   updatedAt: DateTime
   user: User
   userId: Float
+}
+
+input InvoiceInvoiceStatusAggregateFilter {
+  and: [InvoiceInvoiceStatusAggregateFilter!]
+  id: IDFilterComparison
+  invoiceStatus: InvoiceInvoiceStatusAggregateFilterInvoiceStatusAggregateFilter
+  or: [InvoiceInvoiceStatusAggregateFilter!]
+}
+
+input InvoiceInvoiceStatusAggregateFilterInvoiceStatusAggregateFilter {
+  and: [InvoiceInvoiceStatusAggregateFilterInvoiceStatusAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceInvoiceStatusAggregateFilterInvoiceStatusAggregateFilter!]
 }
 
 type InvoiceInvoiceStatusConnection {
@@ -20034,7 +20118,14 @@ type InvoiceInvoiceStatusEdge {
 input InvoiceInvoiceStatusFilter {
   and: [InvoiceInvoiceStatusFilter!]
   id: IDFilterComparison
+  invoiceStatus: InvoiceInvoiceStatusFilterInvoiceStatusFilter
   or: [InvoiceInvoiceStatusFilter!]
+}
+
+input InvoiceInvoiceStatusFilterInvoiceStatusFilter {
+  and: [InvoiceInvoiceStatusFilterInvoiceStatusFilter!]
+  id: IDFilterComparison
+  or: [InvoiceInvoiceStatusFilterInvoiceStatusFilter!]
 }
 
 input InvoiceInvoiceStatusSort {
@@ -20421,7 +20512,7 @@ type InvoiceParentInvoiceSumAggregate {
 }
 
 type InvoicePayment {
-  amount: String!
+  amount: Float!
   chequeBank: String
   chequeDate: String
   chequeNumber: String
@@ -20447,9 +20538,29 @@ type InvoicePayment {
 }
 
 input InvoicePaymentAggregateFilter {
+  amount: NumberFieldComparison
   and: [InvoicePaymentAggregateFilter!]
   id: IDFilterComparison
   or: [InvoicePaymentAggregateFilter!]
+}
+
+type InvoicePaymentAggregateGroupBy {
+  amount: Float
+  id: ID
+}
+
+type InvoicePaymentAggregateResponse {
+  avg: InvoicePaymentAvgAggregate
+  count: InvoicePaymentCountAggregate
+  groupBy: InvoicePaymentAggregateGroupBy
+  max: InvoicePaymentMaxAggregate
+  min: InvoicePaymentMinAggregate
+  sum: InvoicePaymentSumAggregate
+}
+
+type InvoicePaymentAvgAggregate {
+  amount: Float
+  id: Float
 }
 
 type InvoicePaymentConnection {
@@ -20460,14 +20571,20 @@ type InvoicePaymentConnection {
   pageInfo: PageInfo!
 }
 
+type InvoicePaymentCountAggregate {
+  amount: Int
+  id: Int
+}
+
 input InvoicePaymentDeleteFilter {
+  amount: NumberFieldComparison
   and: [InvoicePaymentDeleteFilter!]
   id: IDFilterComparison
   or: [InvoicePaymentDeleteFilter!]
 }
 
 type InvoicePaymentDeleteResponse {
-  amount: String
+  amount: Float
   chequeBank: String
   chequeDate: String
   chequeNumber: String
@@ -20493,7 +20610,7 @@ type InvoicePaymentDeleteResponse {
 }
 
 input InvoicePaymentDomain {
-  amount: String!
+  amount: Float!
   chequeBank: String
   chequeDate: String
   chequeNumber: String
@@ -20527,6 +20644,7 @@ type InvoicePaymentEdge {
 }
 
 input InvoicePaymentFilter {
+  amount: NumberFieldComparison
   and: [InvoicePaymentFilter!]
   id: IDFilterComparison
   or: [InvoicePaymentFilter!]
@@ -20814,6 +20932,7 @@ type InvoicePaymentHistoryInvoiceMinAggregate {
 }
 
 type InvoicePaymentHistoryInvoicePaymentAggregateGroupBy {
+  amount: Float
   id: ID
 }
 
@@ -20827,22 +20946,27 @@ type InvoicePaymentHistoryInvoicePaymentAggregateResponse {
 }
 
 type InvoicePaymentHistoryInvoicePaymentAvgAggregate {
+  amount: Float
   id: Float
 }
 
 type InvoicePaymentHistoryInvoicePaymentCountAggregate {
+  amount: Int
   id: Int
 }
 
 type InvoicePaymentHistoryInvoicePaymentMaxAggregate {
+  amount: Float
   id: ID
 }
 
 type InvoicePaymentHistoryInvoicePaymentMinAggregate {
+  amount: Float
   id: ID
 }
 
 type InvoicePaymentHistoryInvoicePaymentSumAggregate {
+  amount: Float
   id: Float
 }
 
@@ -20926,6 +21050,11 @@ input InvoicePaymentHistoryUpdateFilter {
   or: [InvoicePaymentHistoryUpdateFilter!]
 }
 
+type InvoicePaymentMaxAggregate {
+  amount: Float
+  id: ID
+}
+
 type InvoicePaymentMethodFieldsAggregateGroupBy {
   id: ID
 }
@@ -20959,6 +21088,11 @@ type InvoicePaymentMethodFieldsSumAggregate {
   id: Float
 }
 
+type InvoicePaymentMinAggregate {
+  amount: Float
+  id: ID
+}
+
 input InvoicePaymentSort {
   direction: SortDirection!
   field: InvoicePaymentSortFields!
@@ -20966,6 +21100,7 @@ input InvoicePaymentSort {
 }
 
 enum InvoicePaymentSortFields {
+  amount
   id
 }
 
@@ -21044,6 +21179,11 @@ input InvoicePaymentStatusUpdateFilter {
   and: [InvoicePaymentStatusUpdateFilter!]
   id: IDFilterComparison
   or: [InvoicePaymentStatusUpdateFilter!]
+}
+
+type InvoicePaymentSumAggregate {
+  amount: Float
+  id: Float
 }
 
 type InvoicePaymentType {
@@ -21127,6 +21267,7 @@ input InvoicePaymentTypeUpdateFilter {
 }
 
 input InvoicePaymentUpdateFilter {
+  amount: NumberFieldComparison
   and: [InvoicePaymentUpdateFilter!]
   id: IDFilterComparison
   or: [InvoicePaymentUpdateFilter!]
@@ -31447,6 +31588,10 @@ type Query {
     """The id of the record to find."""
     id: ID!
   ): InvoicePayment!
+  invoicePaymentAggregate(
+    """Filter to find records to aggregate on"""
+    filter: InvoicePaymentAggregateFilter
+  ): [InvoicePaymentAggregateResponse!]!
   invoicePaymentHistories(
     """Specify to filter the records returned."""
     filter: InvoicePaymentHistoryFilter! = {}
@@ -38920,7 +39065,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-25T12:17:59.259Z"
+  createdAt: DateTime = "2025-04-26T10:37:41.912Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -38942,7 +39087,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-25T12:17:59.267Z"
+  createdAt: DateTime = "2025-04-26T10:37:41.928Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -38957,7 +39102,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-25T12:17:59.303Z"
+  createdAt: DateTime = "2025-04-26T10:37:42.022Z"
   description: String
   facebookId: String
   headerImage: String
@@ -38981,7 +39126,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-25T12:17:59.268Z"
+  createdAt: DateTime = "2025-04-26T10:37:41.929Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -38998,7 +39143,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-25T12:17:59.278Z"
+  createdAt: DateTime = "2025-04-26T10:37:41.947Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -39053,7 +39198,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-25T12:17:59.269Z"
+  createdAt: DateTime = "2025-04-26T10:37:41.930Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -40391,7 +40536,7 @@ input UpdateInvoiceNegotiation {
 }
 
 input UpdateInvoicePayment {
-  amount: String
+  amount: Float
   chequeBank: String
   chequeDate: String
   chequeNumber: String
