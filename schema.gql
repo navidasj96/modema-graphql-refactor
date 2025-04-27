@@ -1146,7 +1146,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-26T10:37:41.912Z"
+  createdAt: DateTime! = "2025-04-27T10:25:21.856Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1234,7 +1234,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-26T10:37:41.928Z"
+  createdAt: DateTime! = "2025-04-27T10:25:21.874Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1349,7 +1349,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-26T10:37:42.022Z"
+  createdAt: DateTime! = "2025-04-27T10:25:21.959Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1439,7 +1439,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-26T10:37:41.929Z"
+  createdAt: DateTime! = "2025-04-27T10:25:21.876Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1680,7 +1680,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-26T10:37:41.947Z"
+  createdAt: DateTime! = "2025-04-27T10:25:21.900Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-26T10:37:41.930Z"
+  createdAt: DateTime! = "2025-04-27T10:25:21.877Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5110,7 +5110,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-26T10:37:42.617Z"
+  createdAt: DateTime! = "2025-04-27T10:25:22.782Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5132,7 +5132,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-26T10:37:42.630Z"
+  createdAt: DateTime! = "2025-04-27T10:25:22.794Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5147,7 +5147,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-26T10:37:42.642Z"
+  createdAt: DateTime! = "2025-04-27T10:25:22.814Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5171,7 +5171,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-26T10:37:42.665Z"
+  createdAt: DateTime! = "2025-04-27T10:25:22.827Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5202,7 +5202,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-26T10:37:42.677Z"
+  createdAt: DateTime! = "2025-04-27T10:25:22.840Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5243,7 +5243,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-26T10:37:42.704Z"
+  createdAt: DateTime! = "2025-04-27T10:25:22.866Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -18308,6 +18308,7 @@ input InvoiceAggregateFilterInvoiceHistoryAggregateFilter {
 
 input InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter!]
 }
@@ -19051,6 +19052,7 @@ input InvoiceFilterInvoiceHistoryFilter {
 
 input InvoiceFilterInvoiceInvoiceStatusFilter {
   and: [InvoiceFilterInvoiceInvoiceStatusFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceInvoiceStatusFilter!]
 }
@@ -19686,6 +19688,7 @@ type InvoiceInvoiceHistoriesSumAggregate {
 }
 
 type InvoiceInvoiceInvoiceStatusesAggregateGroupBy {
+  createdAt: DateTime
   id: ID
 }
 
@@ -19703,14 +19706,17 @@ type InvoiceInvoiceInvoiceStatusesAvgAggregate {
 }
 
 type InvoiceInvoiceInvoiceStatusesCountAggregate {
+  createdAt: Int
   id: Int
 }
 
 type InvoiceInvoiceInvoiceStatusesMaxAggregate {
+  createdAt: DateTime
   id: ID
 }
 
 type InvoiceInvoiceInvoiceStatusesMinAggregate {
+  createdAt: DateTime
   id: ID
 }
 
@@ -20056,6 +20062,7 @@ type InvoiceInvoiceStatus {
 
 input InvoiceInvoiceStatusAggregateFilter {
   and: [InvoiceInvoiceStatusAggregateFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
   invoiceStatus: InvoiceInvoiceStatusAggregateFilterInvoiceStatusAggregateFilter
   or: [InvoiceInvoiceStatusAggregateFilter!]
@@ -20077,6 +20084,7 @@ type InvoiceInvoiceStatusConnection {
 
 input InvoiceInvoiceStatusDeleteFilter {
   and: [InvoiceInvoiceStatusDeleteFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
   or: [InvoiceInvoiceStatusDeleteFilter!]
 }
@@ -20117,6 +20125,7 @@ type InvoiceInvoiceStatusEdge {
 
 input InvoiceInvoiceStatusFilter {
   and: [InvoiceInvoiceStatusFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
   invoiceStatus: InvoiceInvoiceStatusFilterInvoiceStatusFilter
   or: [InvoiceInvoiceStatusFilter!]
@@ -20135,11 +20144,13 @@ input InvoiceInvoiceStatusSort {
 }
 
 enum InvoiceInvoiceStatusSortFields {
+  createdAt
   id
 }
 
 input InvoiceInvoiceStatusUpdateFilter {
   and: [InvoiceInvoiceStatusUpdateFilter!]
+  createdAt: DateFieldComparison
   id: IDFilterComparison
   or: [InvoiceInvoiceStatusUpdateFilter!]
 }
@@ -39065,7 +39076,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-26T10:37:41.912Z"
+  createdAt: DateTime = "2025-04-27T10:25:21.856Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -39087,7 +39098,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-26T10:37:41.928Z"
+  createdAt: DateTime = "2025-04-27T10:25:21.874Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -39102,7 +39113,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-26T10:37:42.022Z"
+  createdAt: DateTime = "2025-04-27T10:25:21.959Z"
   description: String
   facebookId: String
   headerImage: String
@@ -39126,7 +39137,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-26T10:37:41.929Z"
+  createdAt: DateTime = "2025-04-27T10:25:21.876Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -39143,7 +39154,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-26T10:37:41.947Z"
+  createdAt: DateTime = "2025-04-27T10:25:21.900Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -39198,7 +39209,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-26T10:37:41.930Z"
+  createdAt: DateTime = "2025-04-27T10:25:21.877Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
