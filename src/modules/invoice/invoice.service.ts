@@ -1,16 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateInvoiceInput } from './dto/create-invoice.input';
 import { UpdateInvoiceInput } from './dto/update-invoice.input';
-import { InvoiceListProvider } from '@/modules/invoice/providers/invoice-list.provider';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers/check-similar-invoice-with-name.provider';
+import { CheckSimilarInvoiceWithNameInput } from '@/modules/invoice/dto/check-similar-invoice-with-name.input.dto';
 
 @Injectable()
 export class InvoiceService {
   constructor(
-    /**
-     * inject invoiceListProvider
-     */
-    private readonly invoiceListProvider: InvoiceListProvider,
+    private readonly checkSimilarInvoiceWithNameProvider: CheckSimilarInvoiceWithNameProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -33,7 +31,11 @@ export class InvoiceService {
     return `This action removes a #${id} invoice`;
   }
 
-  async invoiceList(context: { req: UserContext }) {
-    return await this.invoiceListProvider.invoiceList(context);
+  async checkSimilarInvoiceWithName(
+    userInfo: CheckSimilarInvoiceWithNameInput[]
+  ) {
+    return await this.checkSimilarInvoiceWithNameProvider.checkSimilarInvoiceWithName(
+      userInfo
+    );
   }
 }

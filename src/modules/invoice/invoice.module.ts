@@ -6,10 +6,14 @@ import { Invoice as InvoiceGraphQL } from '@/modules/invoice/domain/invoice';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateInvoiceInput } from '@/modules/invoice/dto/create-invoice.input';
-import { InvoiceListProvider } from '@/modules/invoice/providers/invoice-list.provider';
+import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers/check-similar-invoice-with-name.provider';
 
 @Module({
-  providers: [InvoiceResolver, InvoiceService, InvoiceListProvider],
+  providers: [
+    InvoiceResolver,
+    InvoiceService,
+    CheckSimilarInvoiceWithNameProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([Invoice])],
