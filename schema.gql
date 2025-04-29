@@ -1146,7 +1146,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-28T08:58:19.562Z"
+  createdAt: DateTime! = "2025-04-29T09:36:19.442Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1234,7 +1234,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-28T08:58:19.571Z"
+  createdAt: DateTime! = "2025-04-29T09:36:19.457Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1349,7 +1349,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-28T08:58:19.624Z"
+  createdAt: DateTime! = "2025-04-29T09:36:19.521Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1439,7 +1439,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-28T08:58:19.571Z"
+  createdAt: DateTime! = "2025-04-29T09:36:19.459Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1680,7 +1680,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-28T08:58:19.587Z"
+  createdAt: DateTime! = "2025-04-29T09:36:19.477Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-04-28T08:58:19.572Z"
+  createdAt: DateTime! = "2025-04-29T09:36:19.460Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5120,7 +5120,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-04-28T08:58:19.961Z"
+  createdAt: DateTime! = "2025-04-29T09:36:20.068Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5142,7 +5142,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-04-28T08:58:19.967Z"
+  createdAt: DateTime! = "2025-04-29T09:36:20.077Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5157,7 +5157,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-04-28T08:58:19.979Z"
+  createdAt: DateTime! = "2025-04-29T09:36:20.084Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5181,7 +5181,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-04-28T08:58:19.988Z"
+  createdAt: DateTime! = "2025-04-29T09:36:20.093Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5212,7 +5212,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-04-28T08:58:19.995Z"
+  createdAt: DateTime! = "2025-04-29T09:36:20.100Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5253,7 +5253,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-04-28T08:58:20.012Z"
+  createdAt: DateTime! = "2025-04-29T09:36:20.120Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -17960,7 +17960,13 @@ type InvoiceAddress {
   address2: String
   addressId: Float!
   address_2: Address
-  city: City
+  city(
+    """Specify to filter the records returned."""
+    filter: CityFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [CitySort!]! = []
+  ): [City!]!
   cityId: Float!
   country: Country
   countryId: Float!
@@ -17979,7 +17985,13 @@ type InvoiceAddress {
   nationalId: String
   phone: String
   phone2: String
-  state: State
+  state(
+    """Specify to filter the records returned."""
+    filter: StateFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [StateSort!]! = []
+  ): [State!]!
   stateId: Float!
   updatedAt: DateTime
   user: User
@@ -17989,8 +18001,22 @@ type InvoiceAddress {
 
 input InvoiceAddressAggregateFilter {
   and: [InvoiceAddressAggregateFilter!]
+  city: InvoiceAddressAggregateFilterCityAggregateFilter
   id: IDFilterComparison
   or: [InvoiceAddressAggregateFilter!]
+  state: InvoiceAddressAggregateFilterStateAggregateFilter
+}
+
+input InvoiceAddressAggregateFilterCityAggregateFilter {
+  and: [InvoiceAddressAggregateFilterCityAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAddressAggregateFilterCityAggregateFilter!]
+}
+
+input InvoiceAddressAggregateFilterStateAggregateFilter {
+  and: [InvoiceAddressAggregateFilterStateAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAddressAggregateFilterStateAggregateFilter!]
 }
 
 type InvoiceAddressAggregateGroupBy {
@@ -18102,8 +18128,22 @@ type InvoiceAddressEdge {
 
 input InvoiceAddressFilter {
   and: [InvoiceAddressFilter!]
+  city: InvoiceAddressFilterCityFilter
   id: IDFilterComparison
   or: [InvoiceAddressFilter!]
+  state: InvoiceAddressFilterStateFilter
+}
+
+input InvoiceAddressFilterCityFilter {
+  and: [InvoiceAddressFilterCityFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAddressFilterCityFilter!]
+}
+
+input InvoiceAddressFilterStateFilter {
+  and: [InvoiceAddressFilterStateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAddressFilterStateFilter!]
 }
 
 type InvoiceAddressMaxAggregate {
@@ -18362,6 +18402,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilter!]
+  productId: NumberFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceRatesResultAggregateFilter {
@@ -19106,6 +19147,7 @@ input InvoiceFilterInvoiceProductFilter {
   and: [InvoiceFilterInvoiceProductFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceProductFilter!]
+  productId: NumberFieldComparison
 }
 
 input InvoiceFilterInvoiceRatesResultFilter {
@@ -19921,6 +19963,7 @@ type InvoiceInvoicePaymentsSumAggregate {
 
 type InvoiceInvoiceProductsAggregateGroupBy {
   id: ID
+  productId: Float
 }
 
 type InvoiceInvoiceProductsAggregateResponse {
@@ -19934,22 +19977,27 @@ type InvoiceInvoiceProductsAggregateResponse {
 
 type InvoiceInvoiceProductsAvgAggregate {
   id: Float
+  productId: Float
 }
 
 type InvoiceInvoiceProductsCountAggregate {
   id: Int
+  productId: Int
 }
 
 type InvoiceInvoiceProductsMaxAggregate {
   id: ID
+  productId: Float
 }
 
 type InvoiceInvoiceProductsMinAggregate {
   id: ID
+  productId: Float
 }
 
 type InvoiceInvoiceProductsSumAggregate {
   id: Float
+  productId: Float
 }
 
 type InvoiceInvoiceRatesResultsAggregateGroupBy {
@@ -21457,6 +21505,7 @@ input InvoiceProductAggregateFilter {
   or: [InvoiceProductAggregateFilter!]
   pad: InvoiceProductAggregateFilterSubproductAggregateFilter
   product: InvoiceProductAggregateFilterProductAggregateFilter
+  productId: NumberFieldComparison
   relatedProduct: InvoiceProductAggregateFilterProductAggregateFilter
   relatedSubproduct: InvoiceProductAggregateFilterSubproductAggregateFilter
   returnRequestItemHistories: InvoiceProductAggregateFilterReturnRequestItemHistoryAggregateFilter
@@ -21558,6 +21607,7 @@ input InvoiceProductDeleteFilter {
   and: [InvoiceProductDeleteFilter!]
   id: IDFilterComparison
   or: [InvoiceProductDeleteFilter!]
+  productId: NumberFieldComparison
 }
 
 type InvoiceProductDeleteResponse {
@@ -21689,6 +21739,7 @@ input InvoiceProductFilter {
   or: [InvoiceProductFilter!]
   pad: InvoiceProductFilterSubproductFilter
   product: InvoiceProductFilterProductFilter
+  productId: NumberFieldComparison
   relatedProduct: InvoiceProductFilterProductFilter
   relatedSubproduct: InvoiceProductFilterSubproductFilter
   returnRequestItemHistories: InvoiceProductFilterReturnRequestItemHistoryFilter
@@ -22200,6 +22251,7 @@ input InvoiceProductSort {
 
 enum InvoiceProductSortFields {
   id
+  productId
 }
 
 type InvoiceProductStatus {
@@ -22286,6 +22338,7 @@ input InvoiceProductUpdateFilter {
   and: [InvoiceProductUpdateFilter!]
   id: IDFilterComparison
   or: [InvoiceProductUpdateFilter!]
+  productId: NumberFieldComparison
 }
 
 type InvoiceRatesResult {
@@ -39086,7 +39139,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-04-28T08:58:19.562Z"
+  createdAt: DateTime = "2025-04-29T09:36:19.442Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -39108,7 +39161,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-04-28T08:58:19.571Z"
+  createdAt: DateTime = "2025-04-29T09:36:19.457Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -39123,7 +39176,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-04-28T08:58:19.624Z"
+  createdAt: DateTime = "2025-04-29T09:36:19.521Z"
   description: String
   facebookId: String
   headerImage: String
@@ -39147,7 +39200,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-04-28T08:58:19.571Z"
+  createdAt: DateTime = "2025-04-29T09:36:19.459Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -39164,7 +39217,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-04-28T08:58:19.587Z"
+  createdAt: DateTime = "2025-04-29T09:36:19.477Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -39219,7 +39272,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-04-28T08:58:19.572Z"
+  createdAt: DateTime = "2025-04-29T09:36:19.460Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
