@@ -1,5 +1,5 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ShippingService } from '@/modules/shipping-service/domain/shipping-service';
 
@@ -12,7 +12,7 @@ export class InvoiceShippingRate {
   @Field()
   invoiceId: number;
 
-  @Field()
+  @FilterableField()
   shippingServiceId: number;
 
   @Field()
