@@ -40,6 +40,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
+  filterDepth: 1,
 })
 @FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
 @FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
@@ -103,7 +104,7 @@ export class Invoice {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   currentInvoiceStatusId: number;
 
   @Field({ nullable: true })
@@ -298,7 +299,7 @@ export class Invoice {
   @Field()
   needsReview: boolean;
 
-  @Field()
+  @FilterableField()
   containsPadsOnly: boolean;
 
   @Field({ nullable: true })

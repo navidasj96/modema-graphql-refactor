@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   FilterableUnPagedRelation,
   IDField,
 } from '@ptc-org/nestjs-query-graphql';
@@ -34,7 +35,7 @@ export class InvoiceAddress {
   @Field()
   stateId: number;
 
-  @Field()
+  @FilterableField()
   cityId: number;
 
   @Field({ nullable: true })
