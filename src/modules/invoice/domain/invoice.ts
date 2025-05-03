@@ -113,7 +113,7 @@ export class Invoice {
   @Field({ nullable: true })
   couponId?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   invoiceNumber?: string;
 
   @Field({ nullable: true })
@@ -146,7 +146,7 @@ export class Invoice {
   @Field()
   lastName: string;
 
-  @Field()
+  @FilterableField()
   issueDate: Date;
 
   @Field({ nullable: true })

@@ -17,6 +17,7 @@ import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([Invoice])],
+
       resolvers: [
         {
           EntityClass: Invoice,
