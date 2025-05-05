@@ -38,19 +38,19 @@ export class InvoiceAddress {
   @FilterableField()
   cityId: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   fullname?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   zipCode?: string;
 
-  @Field()
+  @FilterableField()
   address: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   address2?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   phone?: string;
 
   @Field({ nullable: true })

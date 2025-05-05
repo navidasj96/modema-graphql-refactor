@@ -1,5 +1,5 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
 import { Address } from '@/modules/address/domain/address';
 import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/domain/basic-carpet-designer';
 import { State } from '@/modules/state/domain/state';
@@ -16,7 +16,7 @@ export class City {
   @Field()
   stateId: number;
 
-  @Field()
+  @FilterableField()
   name: string;
 
   @Field({ nullable: true })

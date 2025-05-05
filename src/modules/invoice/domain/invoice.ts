@@ -40,7 +40,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
-  filterDepth: 1,
+  filterDepth: 3,
 })
 @FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
 @FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
