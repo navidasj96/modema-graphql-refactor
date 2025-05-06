@@ -40,7 +40,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
-  filterDepth: 3,
+  filterDepth: 4,
 })
 @FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
 @FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
@@ -173,8 +173,8 @@ export class Invoice {
   @FilterableField({ nullable: true })
   subtotalPrice?: number;
 
-  @Field({ nullable: true })
-  totalDiscount?: string;
+  @FilterableField({ nullable: true })
+  totalDiscount?: number;
 
   @Field({ nullable: true })
   totalCouponDiscount?: string;

@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   FilterableUnPagedRelation,
   IDField,
 } from '@ptc-org/nestjs-query-graphql';
@@ -119,7 +120,7 @@ export class Subproduct {
   @Field({ nullable: true })
   basicCarpetMaterialId?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   basicCarpetSizeId?: number;
 
   @Field({ nullable: true })
