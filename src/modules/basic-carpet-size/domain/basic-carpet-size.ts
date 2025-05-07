@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   IDField,
   PagingStrategies,
   QueryOptions,
@@ -26,10 +27,10 @@ export class BasicCarpetSize {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   title: string;
 
-  @Field()
+  @FilterableField()
   code: string;
 
   @Field()

@@ -131,11 +131,11 @@ export class Invoice {
   @Field({ nullable: true })
   selectedShippingServiceId?: number;
 
-  @Field({ nullable: true })
-  shippingRate?: string;
+  @FilterableField({ nullable: true })
+  shippingRate?: number;
 
-  @Field({ nullable: true })
-  shippingRateCod?: string;
+  @FilterableField({ nullable: true })
+  shippingRateCod?: number;
 
   @Field()
   paidCodShippingRate: number;
@@ -218,7 +218,7 @@ export class Invoice {
   @Field()
   visitorShareCalculated: boolean;
 
-  @Field()
+  @FilterableField()
   isChaparDelivery: boolean;
 
   @Field({ nullable: true })

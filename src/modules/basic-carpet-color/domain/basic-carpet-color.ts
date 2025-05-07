@@ -1,5 +1,5 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
 import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-offer';
 import { ProductColorImage } from '@/modules/product-color-image/domain/product-color-image';
 import { ProductColorSale } from '@/modules/product-color-sale/domain/product-color-sale';
@@ -14,10 +14,10 @@ export class BasicCarpetColor {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   title: string;
 
-  @Field()
+  @FilterableField()
   code: string;
 
   @Field({ nullable: true })

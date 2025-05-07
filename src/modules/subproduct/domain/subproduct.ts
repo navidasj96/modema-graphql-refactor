@@ -54,10 +54,10 @@ export class Subproduct {
   @Field({ nullable: true })
   imageId?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   videoId?: number;
 
-  @Field()
+  @FilterableField()
   name: string;
 
   @Field({ nullable: true })
@@ -126,7 +126,7 @@ export class Subproduct {
   @Field({ nullable: true })
   basicCarpetColorId?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   code?: string;
 
   @Field({ nullable: true })

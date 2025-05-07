@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   FilterableUnPagedRelation,
   IDField,
 } from '@ptc-org/nestjs-query-graphql';
@@ -53,7 +54,7 @@ export class Product {
   @Field({ nullable: true })
   imageId?: number;
 
-  @Field()
+  @FilterableField()
   name: string;
 
   @Field({ nullable: true })
