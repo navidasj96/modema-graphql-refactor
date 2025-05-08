@@ -43,6 +43,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @InputType('SubproductDomain')
 @FilterableUnPagedRelation('basicCarpetColor', () => BasicCarpetColor)
 @FilterableUnPagedRelation('basicCarpetSize', () => BasicCarpetSize)
+@FilterableUnPagedRelation('image', () => Image)
 @ObjectType()
 export class Subproduct {
   @IDField(() => ID)

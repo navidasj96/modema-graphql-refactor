@@ -15,6 +15,7 @@ import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history
 @InputType('InvoiceAddressDomain')
 @FilterableUnPagedRelation('city', () => City)
 @FilterableUnPagedRelation('state', () => State)
+@FilterableUnPagedRelation('user', () => User)
 @ObjectType()
 export class InvoiceAddress {
   @IDField(() => ID)
