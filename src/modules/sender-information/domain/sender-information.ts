@@ -1,10 +1,21 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { City } from '@/modules/city/domain/city';
 import { Country } from '@/modules/country/domain/country';
 import { State } from '@/modules/state/domain/state';
 
 @InputType('SenderInformationDomain')
+@FilterableUnPagedRelation('city', () => City)
+@FilterableUnPagedRelation('country', () => Country)
+@FilterableUnPagedRelation('state', () => State)
+@QueryOptions({
+  pagingStrategy: PagingStrategies.NONE,
+})
 @ObjectType()
 export class SenderInformation {
   @IDField(() => ID)
