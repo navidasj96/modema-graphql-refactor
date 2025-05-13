@@ -3,6 +3,8 @@ import {
   FilterableField,
   FilterableUnPagedRelation,
   IDField,
+  PagingStrategies,
+  QueryOptions,
 } from '@ptc-org/nestjs-query-graphql';
 import { AttributeSubproduct } from '@/modules/attribute-subproduct/domain/attribute-subproduct';
 import { ColorCategorySubproduct } from '@/modules/color-category-subproduct/domain/color-category-subproduct';
@@ -44,6 +46,8 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @FilterableUnPagedRelation('basicCarpetColor', () => BasicCarpetColor)
 @FilterableUnPagedRelation('basicCarpetSize', () => BasicCarpetSize)
 @FilterableUnPagedRelation('image', () => Image)
+@FilterableUnPagedRelation('product', () => Product)
+@QueryOptions({ pagingStrategy: PagingStrategies.NONE })
 @ObjectType()
 export class Subproduct {
   @IDField(() => ID)

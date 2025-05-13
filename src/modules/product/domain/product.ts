@@ -114,7 +114,7 @@ export class Product {
   @Field()
   isSelfEmployedDesigner: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   isCarpetPad?: boolean;
 
   @Field()
