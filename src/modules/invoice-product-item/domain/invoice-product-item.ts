@@ -1,5 +1,10 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { ExitControlItem } from '@/modules/exit-control-item/domain/exit-control-item';
 import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/domain/invoice-product-item-invoice-product-status';
 import { DamageReason } from '@/modules/damage-reason/domain/damage-reason';
@@ -10,6 +15,21 @@ import { ProductionRoll } from '@/modules/production-roll/domain/production-roll
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
 @InputType('InvoiceProductItemDomain')
+@FilterableUnPagedRelation('exitControlItems', () => ExitControlItem)
+@FilterableUnPagedRelation(
+  'invoiceProductItemInvoiceProductStatuses',
+  () => InvoiceProductItemInvoiceProductStatus
+)
+@FilterableUnPagedRelation('currentStatus', () => InvoiceProductStatus)
+@FilterableUnPagedRelation('damageReason', () => DamageReason)
+@FilterableUnPagedRelation('invoiceProduct', () => InvoiceProduct)
+@FilterableUnPagedRelation('printProfile', () => PrintProfile)
+@FilterableUnPagedRelation('printRip', () => PrintRip)
+@FilterableUnPagedRelation('productionRoll', () => ProductionRoll)
+@QueryOptions({
+  pagingStrategy: PagingStrategies.OFFSET,
+  filterDepth: 4,
+})
 @ObjectType()
 export class InvoiceProductItem {
   @IDField(() => ID)

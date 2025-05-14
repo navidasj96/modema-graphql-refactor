@@ -55,7 +55,7 @@ export class InvoiceProduct {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   invoiceId: number;
 
   @FilterableField({ nullable: true })
