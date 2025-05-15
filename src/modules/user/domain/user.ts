@@ -2,6 +2,7 @@ import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
   FilterableRelation,
+  FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
   QueryOptions,
@@ -101,6 +102,8 @@ import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has
 @UnPagedRelation('invoiceHistories', () => InvoiceHistory)
 @UnPagedRelation('transactions', () => Transaction)
 @FilterableRelation('addresses', () => Address)
+@FilterableUnPagedRelation('invoices', () => Invoice)
+@FilterableUnPagedRelation('invoices2', () => Invoice)
 @ObjectType()
 export class User {
   @IDField(() => ID)

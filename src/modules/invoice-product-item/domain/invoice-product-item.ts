@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
@@ -65,7 +66,7 @@ export class InvoiceProductItem {
   @Field({ nullable: true })
   isPrintedAndHeated?: boolean;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   fromDepot?: boolean;
 
   @Field()
