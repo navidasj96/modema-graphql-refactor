@@ -12,6 +12,8 @@ import { UserService } from '@/modules/user/user.service';
 import { Response } from 'express';
 import { TokensName } from '@/modules/auth/enums/tokens-name.enum';
 import { SingInReturnInterface } from '@/modules/auth/interfaces/sing-in-return.interface';
+import jwtConfig from '@/modules/auth/config/jwt.config';
+import { ConfigType } from '@nestjs/config';
 
 @Injectable()
 export class SignInProvider {
@@ -29,11 +31,17 @@ export class SignInProvider {
      * Inject generateTokenProvider
      */
     private readonly generateTokenProvider: GenerateTokenProvider,
+
+    /**
+     * inject jwtConfiguration
+     */
+    @Inject(jwtConfig.KEY)
+    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>
   ) {}
 
   public async signIn(
     signInDto: SignInDto,
-    res: Response,
+    res: Response
   ): Promise<SingInReturnInterface> {
     //find user by email
     let user = await this.usersService.findUserByUsername(signInDto.username);
@@ -43,7 +51,7 @@ export class SignInProvider {
     try {
       isEqual = await this.hashingProvider.comparePassword(
         signInDto.password,
-        user.password ?? '',
+        user.password ?? ''
       );
     } catch (error) {
       throw new RequestTimeoutException(error, {
@@ -61,13 +69,13 @@ export class SignInProvider {
       httpOnly: true,
       secure: false,
       sameSite: 'lax',
-      maxAge: 8000 * 60 * 60, // 8 hour
+      maxAge: this.jwtConfiguration.refreshTokenTtl,
     });
     res.cookie(TokensName.refresh_token, refreshToken, {
       httpOnly: true,
       secure: false,
       sameSite: 'lax',
-      maxAge: 8000 * 60 * 60, // 8 hour
+      maxAge: this.jwtConfiguration.refreshTokenTtl,
     });
     return { id: user.id, username: user.name };
   }

@@ -34,7 +34,7 @@ export class RefreshTokensProvider {
      * Inject userService
      */
     @Inject(forwardRef(() => UserService))
-    private readonly userService: UserService,
+    private readonly userService: UserService
   ) {}
 
   public async refreshTokens(refreshTokenDto: RefreshTokenDto, res: Response) {
@@ -57,13 +57,13 @@ export class RefreshTokensProvider {
         httpOnly: true,
         secure: false,
         sameSite: 'lax',
-        maxAge: 8000 * 60 * 60, // 8 hour
+        maxAge: this.jwtConfiguration.refreshTokenTtl,
       });
       res.cookie(TokensName.refresh_token, refreshToken, {
         httpOnly: true,
         secure: false,
         sameSite: 'lax',
-        maxAge: 8000 * 60 * 60, // 8 hour
+        maxAge: this.jwtConfiguration.refreshTokenTtl,
       });
       return { accessToken, refreshToken };
     } catch (err) {
