@@ -31,7 +31,6 @@ export class SignInProvider {
      * Inject generateTokenProvider
      */
     private readonly generateTokenProvider: GenerateTokenProvider,
-
     /**
      * inject jwtConfiguration
      */
@@ -64,12 +63,19 @@ export class SignInProvider {
 
     const { refreshToken, accessToken } =
       await this.generateTokenProvider.generateTokens(user);
-
+    // console.log(
+    //   'this.jwtConfiguration.accessTokenTtl',
+    //   this.jwtConfiguration.accessTokenTtl
+    // );
+    // console.log(
+    //   'this.jwtConfiguration.refreshTokenTtl',
+    //   this.jwtConfiguration.refreshTokenTtl
+    // );
     res.cookie(TokensName.access_token, accessToken, {
       httpOnly: true,
       secure: false,
       sameSite: 'lax',
-      maxAge: this.jwtConfiguration.refreshTokenTtl,
+      maxAge: this.jwtConfiguration.accessTokenTtl,
     });
     res.cookie(TokensName.refresh_token, refreshToken, {
       httpOnly: true,
