@@ -57,7 +57,7 @@ export class RefreshTokensProvider {
         httpOnly: true,
         secure: false,
         sameSite: 'lax',
-        maxAge: this.jwtConfiguration.refreshTokenTtl,
+        maxAge: this.jwtConfiguration.accessTokenTtl,
       });
       res.cookie(TokensName.refresh_token, refreshToken, {
         httpOnly: true,
