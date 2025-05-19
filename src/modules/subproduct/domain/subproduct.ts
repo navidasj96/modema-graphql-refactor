@@ -47,6 +47,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @FilterableUnPagedRelation('basicCarpetSize', () => BasicCarpetSize)
 @FilterableUnPagedRelation('image', () => Image)
 @FilterableUnPagedRelation('product', () => Product)
+@FilterableUnPagedRelation('basicCarpetBorder', () => BasicCarpetBorder)
 @QueryOptions({ pagingStrategy: PagingStrategies.NONE })
 @ObjectType()
 export class Subproduct {

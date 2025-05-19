@@ -35,6 +35,7 @@ import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invoice';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
+import { ShippingService } from '@/modules/shipping-service/domain/shipping-service';
 
 @InputType('InvoiceDomain')
 @QueryOptions({
@@ -99,6 +100,7 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @FilterableUnPagedRelation('invoiceType', () => InvoiceType)
 @FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
 @FilterableUnPagedRelation('invoiceInvoiceStatuses', () => InvoiceInvoiceStatus)
+@FilterableUnPagedRelation('shippingService', () => ShippingService)
 @ObjectType()
 export class Invoice {
   @IDField(() => ID)
@@ -457,4 +459,7 @@ export class Invoice {
 
   @Field(() => [ReturnedInvoice], { nullable: true })
   returnedInvoices2?: ReturnedInvoice[];
+
+  @Field(() => ShippingService, { nullable: true })
+  shippingService?: ShippingService;
 }

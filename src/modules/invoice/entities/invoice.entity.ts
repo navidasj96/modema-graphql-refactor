@@ -37,13 +37,14 @@ import { ReturnRequest } from '@/modules/return-request/entities/return-request.
 import { ReturnedInvoice } from '@/modules/returned-invoice/entities/returned-invoice.entity';
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
+import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
 
 @Index('invoice_number', ['invoiceNumber'], { unique: true })
 @Index('invoices_address_id_index', ['addressId'], {})
 @Index(
   'invoices_chapar_settlement_status_id_index',
   ['chaparSettlementStatusId'],
-  {},
+  {}
 )
 @Index('invoices_coupon_id_index', ['couponId'], {})
 @Index('invoices_crm_company_id_index', ['crmCompanyId'], {})
@@ -52,13 +53,13 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'invoices_current_invoice_status_id_index',
   ['currentInvoiceStatusId'],
-  {},
+  {}
 )
 @Index('invoices_invoice_mode_id_index', ['invoiceModeId'], {})
 @Index(
   'invoices_invoice_payment_status_id_index',
   ['invoicePaymentStatusId'],
-  {},
+  {}
 )
 @Index('invoices_invoice_type_id_index', ['invoiceTypeId'], {})
 @Index('invoices_lock_state_foreign', ['lockState'], {})
@@ -66,13 +67,13 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'invoices_money_transfer_confirmed_by_index',
   ['moneyTransferConfirmedBy'],
-  {},
+  {}
 )
 @Index('invoices_parent_invoice_id_index', ['parentInvoiceId'], {})
 @Index(
   'invoices_replacement_payment_status_id_index',
   ['replacementPaymentStatusId'],
-  {},
+  {}
 )
 @Index('invoices_roz_index', ['roz'], {})
 @Index('invoices_sal_index', ['sal'], {})
@@ -487,7 +488,7 @@ export class Invoice {
 
   @OneToMany(
     () => ChaparTrackingHistory,
-    (chaparTrackingHistory) => chaparTrackingHistory.invoice,
+    (chaparTrackingHistory) => chaparTrackingHistory.invoice
   )
   chaparTrackingHistories: ChaparTrackingHistory[];
 
@@ -496,7 +497,7 @@ export class Invoice {
 
   @OneToMany(
     () => InvoiceAddressValidationResult,
-    (invoiceAddressValidationResult) => invoiceAddressValidationResult.invoice,
+    (invoiceAddressValidationResult) => invoiceAddressValidationResult.invoice
   )
   invoiceAddressValidationResults: InvoiceAddressValidationResult[];
 
@@ -505,7 +506,7 @@ export class Invoice {
 
   @OneToMany(
     () => InvoiceBankGatewayHistory,
-    (invoiceBankGatewayHistory) => invoiceBankGatewayHistory.invoice,
+    (invoiceBankGatewayHistory) => invoiceBankGatewayHistory.invoice
   )
   invoiceBankGatewayHistories: InvoiceBankGatewayHistory[];
 
@@ -514,19 +515,19 @@ export class Invoice {
 
   @OneToMany(
     () => InvoiceInvoiceStatus,
-    (invoiceInvoiceStatus) => invoiceInvoiceStatus.invoice,
+    (invoiceInvoiceStatus) => invoiceInvoiceStatus.invoice
   )
   invoiceInvoiceStatuses: InvoiceInvoiceStatus[];
 
   @OneToMany(
     () => InvoiceNegotiation,
-    (invoiceNegotiation) => invoiceNegotiation.invoice,
+    (invoiceNegotiation) => invoiceNegotiation.invoice
   )
   invoiceNegotiations: InvoiceNegotiation[];
 
   @OneToMany(
     () => InvoicePaymentHistory,
-    (invoicePaymentHistory) => invoicePaymentHistory.invoice,
+    (invoicePaymentHistory) => invoicePaymentHistory.invoice
   )
   invoicePaymentHistories: InvoicePaymentHistory[];
 
@@ -535,7 +536,7 @@ export class Invoice {
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.invoice,
+    (invoiceProductHistory) => invoiceProductHistory.invoice
   )
   invoiceProductHistories: InvoiceProductHistory[];
 
@@ -544,19 +545,19 @@ export class Invoice {
 
   @OneToMany(
     () => InvoiceRatesResult,
-    (invoiceRatesResults) => invoiceRatesResults.invoice,
+    (invoiceRatesResults) => invoiceRatesResults.invoice
   )
   invoiceRatesResults: InvoiceRatesResult[];
 
   @OneToMany(
     () => InvoiceReversal,
-    (invoiceReversal) => invoiceReversal.invoice,
+    (invoiceReversal) => invoiceReversal.invoice
   )
   invoiceReversals: InvoiceReversal[];
 
   @OneToMany(
     () => InvoiceShippingRate,
-    (invoiceShippingRate) => invoiceShippingRate.invoice,
+    (invoiceShippingRate) => invoiceShippingRate.invoice
   )
   invoiceShippingRates: InvoiceShippingRate[];
 
@@ -570,7 +571,7 @@ export class Invoice {
   @ManyToOne(
     () => ChaparSettlementStatus,
     (chaparSettlementStatus) => chaparSettlementStatus.invoices,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([
     { name: 'chapar_settlement_status_id', referencedColumnName: 'id' },
@@ -603,7 +604,7 @@ export class Invoice {
   @ManyToOne(
     () => InvoicePaymentStatus,
     (invoicePaymentStatus) => invoicePaymentStatus.invoices,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'invoice_payment_status_id', referencedColumnName: 'id' },
@@ -646,7 +647,7 @@ export class Invoice {
   @ManyToOne(
     () => InvoicePaymentStatus,
     (invoicePaymentStatus) => invoicePaymentStatus.invoices2,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'replacement_payment_status_id', referencedColumnName: 'id' },
@@ -683,13 +684,13 @@ export class Invoice {
 
   @OneToMany(
     () => PaymentMethodField,
-    (paymentMethodField) => paymentMethodField.invoice,
+    (paymentMethodField) => paymentMethodField.invoice
   )
   paymentMethodFields: PaymentMethodField[];
 
   @OneToMany(
     () => ReturnRequestHistory,
-    (returnRequestHistory) => returnRequestHistory.invoice,
+    (returnRequestHistory) => returnRequestHistory.invoice
   )
   returnRequestHistories: ReturnRequestHistory[];
 
@@ -698,13 +699,26 @@ export class Invoice {
 
   @OneToMany(
     () => ReturnedInvoice,
-    (returnedInvoices) => returnedInvoices.invoice,
+    (returnedInvoices) => returnedInvoices.invoice
   )
   returnedInvoices: ReturnedInvoice[];
 
   @OneToMany(
     () => ReturnedInvoice,
-    (returnedInvoices) => returnedInvoices.replacementInvoice,
+    (returnedInvoices) => returnedInvoices.replacementInvoice
   )
   returnedInvoices2: ReturnedInvoice[];
+
+  @ManyToOne(
+    () => ShippingService,
+    (shippingService) => shippingService.invoices,
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
+  )
+  @JoinColumn([
+    {
+      name: 'selected_shipping_service_id',
+      referencedColumnName: 'id',
+    },
+  ])
+  shippingService: ShippingService;
 }

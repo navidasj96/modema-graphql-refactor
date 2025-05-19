@@ -3,6 +3,8 @@ import {
   FilterableField,
   FilterableUnPagedRelation,
   IDField,
+  PagingStrategies,
+  QueryOptions,
 } from '@ptc-org/nestjs-query-graphql';
 import { CarpetUsagePlaceInvoiceProduct } from '@/modules/carpet-usage-place-invoice-product/domain/carpet-usage-place-invoice-product';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
@@ -50,6 +52,9 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
   'subproductStockHistories',
   () => SubproductStockHistory
 )
+@QueryOptions({
+  pagingStrategy: PagingStrategies.OFFSET,
+})
 @ObjectType()
 export class InvoiceProduct {
   @IDField(() => ID)
