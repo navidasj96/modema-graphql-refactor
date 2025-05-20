@@ -12,12 +12,12 @@ export class CreateOrGetWalletProvider {
      * Inject walletRepository
      */
     @InjectRepository(Wallet)
-    private readonly walletRepository: Repository<Wallet>,
+    private readonly walletRepository: Repository<Wallet>
   ) {}
 
   public async createOrGetWallet(
     createWalletDto: CreateWalletInput,
-    manager?: EntityManager,
+    manager?: EntityManager
   ) {
     let wallet: Wallet | null = null;
     const walletRepository = manager

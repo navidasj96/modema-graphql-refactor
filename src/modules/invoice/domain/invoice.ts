@@ -242,7 +242,7 @@ export class Invoice {
   isDepot: boolean;
 
   @Field()
-  forDigikala: boolean;
+  forDigikala: number;
 
   @Field()
   isForAdvertisement: boolean;

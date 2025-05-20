@@ -1,47 +1,66 @@
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { DataSource, In } from 'typeorm';
+import { SetInvoiceAsDepotForDigikalaResponseDto } from '@/modules/invoice/dto/set-invoice-as-depot-for-digikala-response.dto';
 
 @Injectable()
 export class SetInvoiceAsDepotForDigikalaProvider {
   constructor(
     /**
-     * inject invoiceRepository
+     * inject dataSource
      */
-    @InjectRepository(Invoice)
-    private readonly invoiceRepository: Repository<Invoice>
+    private readonly dataSource: DataSource
   ) {}
 
-  public async setInvoiceAsDepotForDigikala(ids: String[]) {
+  public async setInvoiceAsDepotForDigikala(
+    ids: string[]
+  ): Promise<SetInvoiceAsDepotForDigikalaResponseDto> {
     const invoiceIds = ids.map((id) => Number(id));
-    const invoices = await this.invoiceRepository.find({
-      where: {
-        id: In(invoiceIds),
-      },
-      relations: [
-        'invoiceAddresses',
-        'invoiceAddresses.state',
-        'invoiceAddresses.city',
-        'invoiceProducts',
-        'invoiceProducts.product',
-        'invoiceProducts.subproduct',
-        'invoiceProducts.subproduct.basicCarpetSize',
-        'visitor',
-      ],
-    });
+    const queryRunner = this.dataSource.createQueryRunner();
 
-    for (const invoice of invoices) {
-      if (invoice.isDepot) {
-        invoice.forDigikala = true;
-        await this.invoiceRepository.save(invoice);
-      } else {
-        throw new Error(
-          `صورتحساب های انتخابی باید از نوع دپو باشند. شماره صورتحساب: ${invoice.invoiceNumber}`
-        );
+    //use typeorm queryRunner
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    const manager = queryRunner.manager;
+    const invoiceRepository = manager.getRepository(Invoice);
+    try {
+      const invoices = await invoiceRepository.find({
+        where: {
+          id: In(invoiceIds),
+        },
+      });
+
+      for (const invoice of invoices) {
+        if (invoice.isDepot) {
+          const updateInvoice: Invoice = {
+            ...invoice,
+            forDigikala: 1,
+          };
+
+          await invoiceRepository.save(updateInvoice);
+        } else {
+          await queryRunner.rollbackTransaction();
+          return {
+            message: `صورتحساب های انتخابی باید از نوع دپو باشند. شماره صورتحساب: ${invoice.invoiceNumber}`,
+            status: false,
+          };
+        }
       }
-    }
+      await queryRunner.commitTransaction();
+      return {
+        message:
+          'صورتحساب های انتخابی با موفقیت به دپو برای دیجی کالا تغییر داده شد',
+        status: true,
+      };
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      return {
+        message: `:${error}مشکلی در عملیات بوجود امده است`,
 
-    return invoices;
+        status: true,
+      };
+    } finally {
+      await queryRunner.release();
+    }
   }
 }

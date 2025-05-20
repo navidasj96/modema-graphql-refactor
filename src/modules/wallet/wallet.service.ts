@@ -33,7 +33,7 @@ export class WalletService {
     /**
      * inject dataSource
      */
-    private readonly dataSource: DataSource,
+    private readonly dataSource: DataSource
     /**
      * inject
      */
@@ -52,7 +52,7 @@ export class WalletService {
   }
 
   async update(
-    updateWalletInput: UpdateWalletInput,
+    updateWalletInput: UpdateWalletInput
   ): Promise<UpdateWalletResponseDto> {
     //use typeorm queryRunner
     const queryRunner = this.dataSource.createQueryRunner();
@@ -79,15 +79,14 @@ export class WalletService {
       //create or get wallet
       const wallet = await this.createWalletProvider.createOrGetWallet(
         walletObject,
-        manager,
+        manager
       );
 
-      console.log('wallet', wallet);
       //update wallet with new values
       await this.updateWalletProvider.updateWallet(
         walletObject,
         wallet.id,
-        manager,
+        manager
       );
 
       //create new Transaction and save it
@@ -103,7 +102,7 @@ export class WalletService {
       };
       const transaction = await this.transactionService.create(
         transactionObject,
-        manager,
+        manager
       );
 
       //create new wallet history and save it
@@ -122,7 +121,6 @@ export class WalletService {
 
       return { walletId: wallet.id };
     } catch (error) {
-      console.log('this runs');
       await queryRunner.rollbackTransaction();
       throw new Error(error);
     } finally {

@@ -12,13 +12,13 @@ export class UpdateWalletProvider {
      * inject walletRepository
      */
     @InjectRepository(Wallet)
-    private readonly walletRepository: Repository<Wallet>,
+    private readonly walletRepository: Repository<Wallet>
   ) {}
 
   public async updateWallet(
     updateWalletInput: UpdateWalletInput,
     walletId: number,
-    manager?: EntityManager,
+    manager?: EntityManager
   ) {
     let wallet: UpdateResult | null = null;
     //create wallet if not exist or update it if exist

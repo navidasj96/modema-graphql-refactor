@@ -1,11 +1,13 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 import { ChaparTrackingHistory } from '@/modules/chapar-tracking-history/entities/chapar-tracking-history.entity';
@@ -335,7 +337,7 @@ export class Invoice {
   isDepot: boolean;
 
   @Column('tinyint', { name: 'for_digikala', width: 1, default: () => "'0'" })
-  forDigikala: boolean;
+  forDigikala: number;
 
   @Column('tinyint', {
     name: 'is_for_advertisement',
@@ -465,11 +467,22 @@ export class Invoice {
   @Column('int', { name: 'sepidar_code', nullable: true })
   sepidarCode: number | null;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt: Date | null;
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt: Date | null;
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 
   @Column('datetime', { name: 'seen_at', nullable: true })
   seenAt: Date | null;

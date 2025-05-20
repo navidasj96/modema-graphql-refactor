@@ -280,6 +280,7 @@ import { SettingModule } from '@/modules/setting/setting.module';
 import { SettingsHistoryModule } from '@/modules/settings-history/settings-history.module';
 
 const ENV = process.env.NODE_ENV;
+console.log('ENV', ENV);
 
 @Module({
   imports: [
@@ -314,6 +315,7 @@ const ENV = process.env.NODE_ENV;
       sortSchema: true,
       introspection: true,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
+
       context: ({ req }) => {
         const authHeader = req.headers.authorization || '';
         const token = authHeader.startsWith('Bearer ')
