@@ -276,6 +276,8 @@ import { GraphQLError } from 'graphql/error';
 import { UserController } from '@/modules/user/user.controller';
 import { AuthenticationGuard } from '@/modules/auth/guards/authentication/authentication.gurad';
 import { APP_GUARD } from '@nestjs/core';
+import { SettingModule } from '@/modules/setting/setting.module';
+import { SettingsHistoryModule } from '@/modules/settings-history/settings-history.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -596,6 +598,8 @@ const ENV = process.env.NODE_ENV;
     AuthModule,
     JwtModule.registerAsync(jwtConfig.asProvider()),
     ConfigModuleNest.forFeature(jwtConfig),
+    SettingModule,
+    SettingsHistoryModule,
   ],
   controllers: [AppController, UserController],
   providers: [

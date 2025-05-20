@@ -1148,7 +1148,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-19T08:59:33.825Z"
+  createdAt: DateTime! = "2025-05-20T11:38:17.590Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1242,7 +1242,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-19T08:59:33.840Z"
+  createdAt: DateTime! = "2025-05-20T11:38:17.603Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1357,7 +1357,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-19T08:59:33.906Z"
+  createdAt: DateTime! = "2025-05-20T11:38:17.669Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1447,7 +1447,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-19T08:59:33.842Z"
+  createdAt: DateTime! = "2025-05-20T11:38:17.604Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1682,7 +1682,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-19T08:59:33.862Z"
+  createdAt: DateTime! = "2025-05-20T11:38:17.619Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-19T08:59:33.844Z"
+  createdAt: DateTime! = "2025-05-20T11:38:17.605Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5124,7 +5124,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-19T08:59:34.973Z"
+  createdAt: DateTime! = "2025-05-20T11:38:18.250Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5146,7 +5146,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-05-19T08:59:34.985Z"
+  createdAt: DateTime! = "2025-05-20T11:38:18.260Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5161,7 +5161,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-19T08:59:34.994Z"
+  createdAt: DateTime! = "2025-05-20T11:38:18.275Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5185,7 +5185,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-05-19T08:59:35.006Z"
+  createdAt: DateTime! = "2025-05-20T11:38:18.284Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5216,7 +5216,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-19T08:59:35.019Z"
+  createdAt: DateTime! = "2025-05-20T11:38:18.292Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5257,7 +5257,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-05-19T08:59:35.056Z"
+  createdAt: DateTime! = "2025-05-20T11:38:18.317Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -7968,6 +7968,16 @@ input CreateManySenderInformationsInput {
   senderInformations: [CreateSenderInformationInput!]!
 }
 
+input CreateManySettingsHistoriesInput {
+  """Array of records to create"""
+  settingsHistories: [CreateSettingsHistoryInput!]!
+}
+
+input CreateManySettingsInput {
+  """Array of records to create"""
+  settings: [CreateSettingInput!]!
+}
+
 input CreateManyShippingServicesInput {
   """Array of records to create"""
   shippingServices: [CreateShippingServiceInput!]!
@@ -9478,6 +9488,16 @@ input CreateOneSenderInformationInput {
   senderInformation: CreateSenderInformationInput!
 }
 
+input CreateOneSettingInput {
+  """The record to create"""
+  setting: CreateSettingInput!
+}
+
+input CreateOneSettingsHistoryInput {
+  """The record to create"""
+  settingsHistory: CreateSettingsHistoryInput!
+}
+
 input CreateOneShippingServiceInput {
   """The record to create"""
   shippingService: CreateShippingServiceInput!
@@ -10810,6 +10830,170 @@ input CreateSenderInformationInput {
   streetLines: String!
   title: String!
   updatedAt: DateTime
+}
+
+input CreateSettingInput {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float!
+  boxCapacity: Float!
+  campaignPetDiscountAmount: Float!
+  campaignPetMinDonationAmount: Float!
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Float
+  delayDaysNormal: Float
+  delayReportDaysForAdmin: Float
+  delayReportDaysForProduction: Float
+  deliveryDurationDays: Float
+  digikalaSharePercent: Float!
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean!
+  id: Float!
+  isActive: Boolean!
+  lotteryDraw: Float
+  lotteryDrawBrace: Float
+  lotteryDrawNumbers: String
+  lotteryDrawNumbersBrace: String
+  maxDistanceForFreeDelivery: Float!
+  maxLength: Float!
+  maxWastagePercent: Float
+  maxWidth: Float!
+  minLength: Float!
+  minWidth: Float!
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float!
+  preorderDailyLimit: Float
+  preorderFakeCountLow: Float
+  preorderFakeMultiplyBy: Float
+  preorderMode: Boolean!
+  preorderNewModeActive: Boolean!
+  preorderNotifyAfterPeriodStartedDays: Float
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Float
+  preorderNotifyBeforePeriodEndsDays: Float
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Float
+  preorderPurchasePeriodHours: Float
+  preorderRegisterPrice: Float
+  preorderWaitDays: Float
+  pricePerMeter: String!
+  productionRollId: Float
+  redisWorkerStatus: Boolean!
+  retargetingCommentingReminderDays: Float!
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Float
+  retargetingCouponExpiryDays: Float
+  retargetingCouponMaximumPercent: Float
+  retargetingCouponMaximumUse: Float
+  retargetingFirstNotifyWalletUsageDays: Float
+  retargetingNotifyAfterSentDays: Float
+  retargetingNotifyIfNotUsedDays: Float
+  retargetingSecondNotifyWalletUsageDays: Float
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Float
+  retargetingWalletChargeAmount: Float
+  retargetingWalletMaximumPercent: Float
+  returnDeadlineForGuarantee: Float!
+  returnDeadlineForTestDelivered: Float!
+  returnDeadlineForTestSent: Float!
+  rollReferenceCode: String
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float!
+  updatedAt: DateTime
+  weightPerMeter: Float!
+}
+
+input CreateSettingsHistoryInput {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float!
+  boxCapacity: String
+  campaignPetDiscountAmount: Int
+  campaignPetMinDonationAmount: Int
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Int
+  delayDaysNormal: Int
+  delayReportDaysForAdmin: Int
+  delayReportDaysForProduction: Int
+  deliveryDurationDays: Int
+  digikalaSharePercent: Float!
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean!
+  historyCreatedAt: DateTime
+  historyCreatedBy: Int
+  historyUpdatedAt: DateTime
+  id: Float!
+  isActive: Boolean!
+  maxDistanceForFreeDelivery: Float!
+  maxLength: Float!
+  maxWastagePercent: Int
+  maxWidth: Float!
+  minLength: Float!
+  minWidth: Float!
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float!
+  preorderDailyLimit: Int
+  preorderFakeCountLow: Int
+  preorderFakeMultiplyBy: Int
+  preorderMode: Boolean!
+  preorderNewModeActive: Boolean!
+  preorderNotifyAfterPeriodStartedDays: Int
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Int
+  preorderNotifyBeforePeriodEndsDays: Int
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Int
+  preorderPurchasePeriodHours: Int
+  preorderRegisterPrice: Int
+  preorderWaitDays: Int
+  pricePerMeter: String!
+  productionRollId: Int
+  redisWorkerStatus: Boolean!
+  retargetingCommentingReminderDays: Int!
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Int
+  retargetingCouponExpiryDays: Int
+  retargetingCouponMaximumPercent: Int
+  retargetingCouponMaximumUse: Int
+  retargetingFirstNotifyWalletUsageDays: Int
+  retargetingNotifyAfterSentDays: Int
+  retargetingNotifyIfNotUsedDays: Int
+  retargetingSecondNotifyWalletUsageDays: Int
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Int
+  retargetingWalletChargeAmount: Int
+  retargetingWalletMaximumPercent: Int
+  returnDeadlineForGuarantee: Int!
+  returnDeadlineForTestDelivered: Int!
+  returnDeadlineForTestSent: Int!
+  rollReferenceCode: String
+  settingId: Int!
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float!
+  updatedAt: DateTime
+  weightPerMeter: Float!
 }
 
 input CreateShippingServiceInput {
@@ -13032,6 +13216,16 @@ input DeleteManySenderInformationsInput {
   filter: SenderInformationDeleteFilter!
 }
 
+input DeleteManySettingsHistoriesInput {
+  """Filter to find records to delete"""
+  filter: SettingsHistoryDeleteFilter!
+}
+
+input DeleteManySettingsInput {
+  """Filter to find records to delete"""
+  filter: SettingDeleteFilter!
+}
+
 input DeleteManyShippingServicesInput {
   """Filter to find records to delete"""
   filter: ShippingServiceDeleteFilter!
@@ -14308,6 +14502,16 @@ input DeleteOneRussianInput {
 }
 
 input DeleteOneSenderInformationInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneSettingInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneSettingsHistoryInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -33241,6 +33445,8 @@ type Mutation {
   createManyRoleHasPermissions(input: CreateManyRoleHasPermissionsInput!): [RoleHasPermission!]!
   createManyRussians(input: CreateManyRussiansInput!): [Russian!]!
   createManySenderInformations(input: CreateManySenderInformationsInput!): [SenderInformation!]!
+  createManySettings(input: CreateManySettingsInput!): [Setting!]!
+  createManySettingsHistories(input: CreateManySettingsHistoriesInput!): [SettingsHistory!]!
   createManyShippingServices(input: CreateManyShippingServicesInput!): [ShippingService!]!
   createManySitemapStaticPages(input: CreateManySitemapStaticPagesInput!): [SitemapStaticPage!]!
   createManySizeGuides(input: CreateManySizeGuidesInput!): [SizeGuide!]!
@@ -33498,6 +33704,8 @@ type Mutation {
   createOneRoleHasPermission(input: CreateOneRoleHasPermissionInput!): RoleHasPermission!
   createOneRussian(input: CreateOneRussianInput!): Russian!
   createOneSenderInformation(input: CreateOneSenderInformationInput!): SenderInformation!
+  createOneSetting(input: CreateOneSettingInput!): Setting!
+  createOneSettingsHistory(input: CreateOneSettingsHistoryInput!): SettingsHistory!
   createOneShippingService(input: CreateOneShippingServiceInput!): ShippingService!
   createOneSitemapStaticPage(input: CreateOneSitemapStaticPageInput!): SitemapStaticPage!
   createOneSizeGuide(input: CreateOneSizeGuideInput!): SizeGuide!
@@ -33545,6 +33753,8 @@ type Mutation {
   createOneWithdrawalRequest(input: CreateOneWithdrawalRequestInput!): WithdrawalRequest!
   createOneWithdrawalRequestStatus(input: CreateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   createOneWonderfulOffer(input: CreateOneWonderfulOfferInput!): WonderfulOffer!
+  createSetting(createSettingInput: CreateSettingInput!): Setting!
+  createSettingsHistory(createSettingsHistoryInput: CreateSettingsHistoryInput!): SettingsHistory!
   createUser(createUserInput: CreateUserInput!): CreateUserResponseDto!
   createWallet(createWalletInput: CreateWalletInputs!): Boolean!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
@@ -33756,6 +33966,8 @@ type Mutation {
   deleteManyRoleHasPermissions(input: DeleteManyRoleHasPermissionsInput!): DeleteManyResponse!
   deleteManyRussians(input: DeleteManyRussiansInput!): DeleteManyResponse!
   deleteManySenderInformations(input: DeleteManySenderInformationsInput!): DeleteManyResponse!
+  deleteManySettings(input: DeleteManySettingsInput!): DeleteManyResponse!
+  deleteManySettingsHistories(input: DeleteManySettingsHistoriesInput!): DeleteManyResponse!
   deleteManyShippingServices(input: DeleteManyShippingServicesInput!): DeleteManyResponse!
   deleteManySitemapStaticPages(input: DeleteManySitemapStaticPagesInput!): DeleteManyResponse!
   deleteManySizeGuides(input: DeleteManySizeGuidesInput!): DeleteManyResponse!
@@ -34012,6 +34224,8 @@ type Mutation {
   deleteOneRoleHasPermission(input: DeleteOneRoleHasPermissionInput!): RoleHasPermissionDeleteResponse!
   deleteOneRussian(input: DeleteOneRussianInput!): RussianDeleteResponse!
   deleteOneSenderInformation(input: DeleteOneSenderInformationInput!): SenderInformationDeleteResponse!
+  deleteOneSetting(input: DeleteOneSettingInput!): SettingDeleteResponse!
+  deleteOneSettingsHistory(input: DeleteOneSettingsHistoryInput!): SettingsHistoryDeleteResponse!
   deleteOneShippingService(input: DeleteOneShippingServiceInput!): ShippingServiceDeleteResponse!
   deleteOneSitemapStaticPage(input: DeleteOneSitemapStaticPageInput!): SitemapStaticPageDeleteResponse!
   deleteOneSizeGuide(input: DeleteOneSizeGuideInput!): SizeGuideDeleteResponse!
@@ -34060,6 +34274,8 @@ type Mutation {
   deleteOneWithdrawalRequestStatus(input: DeleteOneWithdrawalRequestStatusInput!): WithdrawalRequestStatusDeleteResponse!
   deleteOneWonderfulOffer(input: DeleteOneWonderfulOfferInput!): WonderfulOfferDeleteResponse!
   removeNegotiationStep(id: Int!): NegotiationStep!
+  removeSetting(id: Int!): Setting!
+  removeSettingsHistory(id: Int!): SettingsHistory!
   removeUser(id: Int!): User!
   updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
   updateManyAddresses(input: UpdateManyAddressesInput!): UpdateManyResponse!
@@ -34270,6 +34486,8 @@ type Mutation {
   updateManyRoleHasPermissions(input: UpdateManyRoleHasPermissionsInput!): UpdateManyResponse!
   updateManyRussians(input: UpdateManyRussiansInput!): UpdateManyResponse!
   updateManySenderInformations(input: UpdateManySenderInformationsInput!): UpdateManyResponse!
+  updateManySettings(input: UpdateManySettingsInput!): UpdateManyResponse!
+  updateManySettingsHistories(input: UpdateManySettingsHistoriesInput!): UpdateManyResponse!
   updateManyShippingServices(input: UpdateManyShippingServicesInput!): UpdateManyResponse!
   updateManySitemapStaticPages(input: UpdateManySitemapStaticPagesInput!): UpdateManyResponse!
   updateManySizeGuides(input: UpdateManySizeGuidesInput!): UpdateManyResponse!
@@ -34527,6 +34745,8 @@ type Mutation {
   updateOneRoleHasPermission(input: UpdateOneRoleHasPermissionInput!): RoleHasPermission!
   updateOneRussian(input: UpdateOneRussianInput!): Russian!
   updateOneSenderInformation(input: UpdateOneSenderInformationInput!): SenderInformation!
+  updateOneSetting(input: UpdateOneSettingInput!): Setting!
+  updateOneSettingsHistory(input: UpdateOneSettingsHistoryInput!): SettingsHistory!
   updateOneShippingService(input: UpdateOneShippingServiceInput!): ShippingService!
   updateOneSitemapStaticPage(input: UpdateOneSitemapStaticPageInput!): SitemapStaticPage!
   updateOneSizeGuide(input: UpdateOneSizeGuideInput!): SizeGuide!
@@ -34574,6 +34794,8 @@ type Mutation {
   updateOneWithdrawalRequest(input: UpdateOneWithdrawalRequestInput!): WithdrawalRequest!
   updateOneWithdrawalRequestStatus(input: UpdateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   updateOneWonderfulOffer(input: UpdateOneWonderfulOfferInput!): WonderfulOffer!
+  updateSetting(updateSettingInput: UpdateSettingInput!): Setting!
+  updateSettingsHistory(updateSettingsHistoryInput: UpdateSettingsHistoryInput!): SettingsHistory!
   updateUser(updateUserInput: UpdateUserInput!): UpdateUserResponseDto!
   updateWallet(updateWalletInput: UpdateWalletInput!): UpdateWalletResponseDto!
 }
@@ -42211,6 +42433,35 @@ type Query {
     """Specify to sort results."""
     sorting: [SenderInformationSort!]! = []
   ): [SenderInformation!]!
+  setInvoiceAsDepotForDigikala(ids: [String!]!): [Invoice!]!
+  setting(
+    """The id of the record to find."""
+    id: ID!
+  ): Setting!
+  settings(
+    """Specify to filter the records returned."""
+    filter: SettingFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [SettingSort!]! = []
+  ): SettingConnection!
+  settingsHistories(
+    """Specify to filter the records returned."""
+    filter: SettingsHistoryFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [SettingsHistorySort!]! = []
+  ): SettingsHistoryConnection!
+  settingsHistory(
+    """The id of the record to find."""
+    id: ID!
+  ): SettingsHistory!
   shippingService(
     """The id of the record to find."""
     id: ID!
@@ -45658,6 +45909,430 @@ input SenderInformationUpdateFilter {
   or: [SenderInformationUpdateFilter!]
 }
 
+type Setting {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: Float
+  campaignPetDiscountAmount: Float!
+  campaignPetMinDonationAmount: Float!
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Float
+  delayDaysNormal: Float
+  delayReportDaysForAdmin: Float
+  delayReportDaysForProduction: Float
+  deliveryDurationDays: Float
+  digikalaSharePercent: Float!
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean!
+  id: ID!
+  isActive: Boolean!
+  lotteryDraw: Float
+  lotteryDrawBrace: Float
+  lotteryDrawNumbers: String
+  lotteryDrawNumbersBrace: String
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Float
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Float
+  preorderFakeCountLow: Float
+  preorderFakeMultiplyBy: Float
+  preorderMode: Boolean!
+  preorderNewModeActive: Boolean!
+  preorderNotifyAfterPeriodStartedDays: Float
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Float
+  preorderNotifyBeforePeriodEndsDays: Float
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Float
+  preorderPurchasePeriodHours: Float
+  preorderRegisterPrice: Float
+  preorderWaitDays: Float
+  pricePerMeter: String!
+  productionRollId: Float
+  redisWorkerStatus: Boolean!
+  retargetingCommentingReminderDays: Float!
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Float
+  retargetingCouponExpiryDays: Float
+  retargetingCouponMaximumPercent: Float
+  retargetingCouponMaximumUse: Float
+  retargetingFirstNotifyWalletUsageDays: Float
+  retargetingNotifyAfterSentDays: Float
+  retargetingNotifyIfNotUsedDays: Float
+  retargetingSecondNotifyWalletUsageDays: Float
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Float
+  retargetingWalletChargeAmount: Float
+  retargetingWalletMaximumPercent: Float
+  returnDeadlineForGuarantee: Float!
+  returnDeadlineForTestDelivered: Float!
+  returnDeadlineForTestSent: Float!
+  rollReferenceCode: String
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+type SettingConnection {
+  """Array of edges."""
+  edges: [SettingEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input SettingDeleteFilter {
+  and: [SettingDeleteFilter!]
+  id: IDFilterComparison
+  or: [SettingDeleteFilter!]
+  pricePerMeter: StringFieldComparison
+}
+
+type SettingDeleteResponse {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: Float
+  campaignPetDiscountAmount: Float
+  campaignPetMinDonationAmount: Float
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Float
+  delayDaysNormal: Float
+  delayReportDaysForAdmin: Float
+  delayReportDaysForProduction: Float
+  deliveryDurationDays: Float
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean
+  id: ID
+  isActive: Boolean
+  lotteryDraw: Float
+  lotteryDrawBrace: Float
+  lotteryDrawNumbers: String
+  lotteryDrawNumbersBrace: String
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Float
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Float
+  preorderFakeCountLow: Float
+  preorderFakeMultiplyBy: Float
+  preorderMode: Boolean
+  preorderNewModeActive: Boolean
+  preorderNotifyAfterPeriodStartedDays: Float
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Float
+  preorderNotifyBeforePeriodEndsDays: Float
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Float
+  preorderPurchasePeriodHours: Float
+  preorderRegisterPrice: Float
+  preorderWaitDays: Float
+  pricePerMeter: String
+  productionRollId: Float
+  redisWorkerStatus: Boolean
+  retargetingCommentingReminderDays: Float
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Float
+  retargetingCouponExpiryDays: Float
+  retargetingCouponMaximumPercent: Float
+  retargetingCouponMaximumUse: Float
+  retargetingFirstNotifyWalletUsageDays: Float
+  retargetingNotifyAfterSentDays: Float
+  retargetingNotifyIfNotUsedDays: Float
+  retargetingSecondNotifyWalletUsageDays: Float
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Float
+  retargetingWalletChargeAmount: Float
+  retargetingWalletMaximumPercent: Float
+  returnDeadlineForGuarantee: Float
+  returnDeadlineForTestDelivered: Float
+  returnDeadlineForTestSent: Float
+  rollReferenceCode: String
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+type SettingEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Setting"""
+  node: Setting!
+}
+
+input SettingFilter {
+  and: [SettingFilter!]
+  id: IDFilterComparison
+  or: [SettingFilter!]
+  pricePerMeter: StringFieldComparison
+}
+
+input SettingSort {
+  direction: SortDirection!
+  field: SettingSortFields!
+  nulls: SortNulls
+}
+
+enum SettingSortFields {
+  id
+  pricePerMeter
+}
+
+input SettingUpdateFilter {
+  and: [SettingUpdateFilter!]
+  id: IDFilterComparison
+  or: [SettingUpdateFilter!]
+  pricePerMeter: StringFieldComparison
+}
+
+type SettingsHistory {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: String
+  campaignPetDiscountAmount: Int
+  campaignPetMinDonationAmount: Int
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Int
+  delayDaysNormal: Int
+  delayReportDaysForAdmin: Int
+  delayReportDaysForProduction: Int
+  deliveryDurationDays: Int
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean!
+  historyCreatedAt: DateTime
+  historyCreatedBy: Int
+  historyUpdatedAt: DateTime
+  id: ID!
+  isActive: Boolean!
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Int
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Int
+  preorderFakeCountLow: Int
+  preorderFakeMultiplyBy: Int
+  preorderMode: Boolean!
+  preorderNewModeActive: Boolean!
+  preorderNotifyAfterPeriodStartedDays: Int
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Int
+  preorderNotifyBeforePeriodEndsDays: Int
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Int
+  preorderPurchasePeriodHours: Int
+  preorderRegisterPrice: Int
+  preorderWaitDays: Int
+  pricePerMeter: String!
+  productionRollId: Int
+  redisWorkerStatus: Boolean!
+  retargetingCommentingReminderDays: Int!
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Int
+  retargetingCouponExpiryDays: Int
+  retargetingCouponMaximumPercent: Int
+  retargetingCouponMaximumUse: Int
+  retargetingFirstNotifyWalletUsageDays: Int
+  retargetingNotifyAfterSentDays: Int
+  retargetingNotifyIfNotUsedDays: Int
+  retargetingSecondNotifyWalletUsageDays: Int
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Int
+  retargetingWalletChargeAmount: Int
+  retargetingWalletMaximumPercent: Int
+  returnDeadlineForGuarantee: Int!
+  returnDeadlineForTestDelivered: Int!
+  returnDeadlineForTestSent: Int!
+  rollReferenceCode: String
+  settingId: Int!
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+type SettingsHistoryConnection {
+  """Array of edges."""
+  edges: [SettingsHistoryEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input SettingsHistoryDeleteFilter {
+  and: [SettingsHistoryDeleteFilter!]
+  id: IDFilterComparison
+  or: [SettingsHistoryDeleteFilter!]
+  pricePerMeter: StringFieldComparison
+}
+
+type SettingsHistoryDeleteResponse {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: String
+  campaignPetDiscountAmount: Int
+  campaignPetMinDonationAmount: Int
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Int
+  delayDaysNormal: Int
+  delayReportDaysForAdmin: Int
+  delayReportDaysForProduction: Int
+  deliveryDurationDays: Int
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean
+  historyCreatedAt: DateTime
+  historyCreatedBy: Int
+  historyUpdatedAt: DateTime
+  id: ID
+  isActive: Boolean
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Int
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Int
+  preorderFakeCountLow: Int
+  preorderFakeMultiplyBy: Int
+  preorderMode: Boolean
+  preorderNewModeActive: Boolean
+  preorderNotifyAfterPeriodStartedDays: Int
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Int
+  preorderNotifyBeforePeriodEndsDays: Int
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Int
+  preorderPurchasePeriodHours: Int
+  preorderRegisterPrice: Int
+  preorderWaitDays: Int
+  pricePerMeter: String
+  productionRollId: Int
+  redisWorkerStatus: Boolean
+  retargetingCommentingReminderDays: Int
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Int
+  retargetingCouponExpiryDays: Int
+  retargetingCouponMaximumPercent: Int
+  retargetingCouponMaximumUse: Int
+  retargetingFirstNotifyWalletUsageDays: Int
+  retargetingNotifyAfterSentDays: Int
+  retargetingNotifyIfNotUsedDays: Int
+  retargetingSecondNotifyWalletUsageDays: Int
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Int
+  retargetingWalletChargeAmount: Int
+  retargetingWalletMaximumPercent: Int
+  returnDeadlineForGuarantee: Int
+  returnDeadlineForTestDelivered: Int
+  returnDeadlineForTestSent: Int
+  rollReferenceCode: String
+  settingId: Int
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+type SettingsHistoryEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the SettingsHistory"""
+  node: SettingsHistory!
+}
+
+input SettingsHistoryFilter {
+  and: [SettingsHistoryFilter!]
+  id: IDFilterComparison
+  or: [SettingsHistoryFilter!]
+  pricePerMeter: StringFieldComparison
+}
+
+input SettingsHistorySort {
+  direction: SortDirection!
+  field: SettingsHistorySortFields!
+  nulls: SortNulls
+}
+
+enum SettingsHistorySortFields {
+  id
+  pricePerMeter
+}
+
+input SettingsHistoryUpdateFilter {
+  and: [SettingsHistoryUpdateFilter!]
+  id: IDFilterComparison
+  or: [SettingsHistoryUpdateFilter!]
+  pricePerMeter: StringFieldComparison
+}
+
 type ShippingService {
   code: String!
   description: String
@@ -48300,7 +48975,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-05-19T08:59:33.825Z"
+  createdAt: DateTime = "2025-05-20T11:38:17.590Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -48322,7 +48997,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-05-19T08:59:33.840Z"
+  createdAt: DateTime = "2025-05-20T11:38:17.603Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -48337,7 +49012,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-05-19T08:59:33.906Z"
+  createdAt: DateTime = "2025-05-20T11:38:17.669Z"
   description: String
   facebookId: String
   headerImage: String
@@ -48361,7 +49036,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-05-19T08:59:33.842Z"
+  createdAt: DateTime = "2025-05-20T11:38:17.604Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -48378,7 +49053,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-05-19T08:59:33.862Z"
+  createdAt: DateTime = "2025-05-20T11:38:17.619Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -48433,7 +49108,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-05-19T08:59:33.844Z"
+  createdAt: DateTime = "2025-05-20T11:38:17.605Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -51779,6 +52454,22 @@ input UpdateManySenderInformationsInput {
   update: UpdateSenderInformation!
 }
 
+input UpdateManySettingsHistoriesInput {
+  """Filter used to find fields to update"""
+  filter: SettingsHistoryUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateSettingsHistory!
+}
+
+input UpdateManySettingsInput {
+  """Filter used to find fields to update"""
+  filter: SettingUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateSetting!
+}
+
 input UpdateManyShippingServicesInput {
   """Filter used to find fields to update"""
   filter: ShippingServiceUpdateFilter!
@@ -54071,6 +54762,22 @@ input UpdateOneSenderInformationInput {
   update: UpdateSenderInformation!
 }
 
+input UpdateOneSettingInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateSetting!
+}
+
+input UpdateOneSettingsHistoryInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateSettingsHistory!
+}
+
 input UpdateOneShippingServiceInput {
   """The id of the record to update"""
   id: ID!
@@ -55570,6 +56277,334 @@ input UpdateSenderInformation {
   streetLines: String
   title: String
   updatedAt: DateTime
+}
+
+input UpdateSetting {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: Float
+  campaignPetDiscountAmount: Float
+  campaignPetMinDonationAmount: Float
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Float
+  delayDaysNormal: Float
+  delayReportDaysForAdmin: Float
+  delayReportDaysForProduction: Float
+  deliveryDurationDays: Float
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean
+  id: ID
+  isActive: Boolean
+  lotteryDraw: Float
+  lotteryDrawBrace: Float
+  lotteryDrawNumbers: String
+  lotteryDrawNumbersBrace: String
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Float
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Float
+  preorderFakeCountLow: Float
+  preorderFakeMultiplyBy: Float
+  preorderMode: Boolean
+  preorderNewModeActive: Boolean
+  preorderNotifyAfterPeriodStartedDays: Float
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Float
+  preorderNotifyBeforePeriodEndsDays: Float
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Float
+  preorderPurchasePeriodHours: Float
+  preorderRegisterPrice: Float
+  preorderWaitDays: Float
+  pricePerMeter: String
+  productionRollId: Float
+  redisWorkerStatus: Boolean
+  retargetingCommentingReminderDays: Float
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Float
+  retargetingCouponExpiryDays: Float
+  retargetingCouponMaximumPercent: Float
+  retargetingCouponMaximumUse: Float
+  retargetingFirstNotifyWalletUsageDays: Float
+  retargetingNotifyAfterSentDays: Float
+  retargetingNotifyIfNotUsedDays: Float
+  retargetingSecondNotifyWalletUsageDays: Float
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Float
+  retargetingWalletChargeAmount: Float
+  retargetingWalletMaximumPercent: Float
+  returnDeadlineForGuarantee: Float
+  returnDeadlineForTestDelivered: Float
+  returnDeadlineForTestSent: Float
+  rollReferenceCode: String
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+input UpdateSettingInput {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: Float
+  campaignPetDiscountAmount: Float
+  campaignPetMinDonationAmount: Float
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Float
+  delayDaysNormal: Float
+  delayReportDaysForAdmin: Float
+  delayReportDaysForProduction: Float
+  deliveryDurationDays: Float
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean
+  id: Int!
+  isActive: Boolean
+  lotteryDraw: Float
+  lotteryDrawBrace: Float
+  lotteryDrawNumbers: String
+  lotteryDrawNumbersBrace: String
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Float
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Float
+  preorderFakeCountLow: Float
+  preorderFakeMultiplyBy: Float
+  preorderMode: Boolean
+  preorderNewModeActive: Boolean
+  preorderNotifyAfterPeriodStartedDays: Float
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Float
+  preorderNotifyBeforePeriodEndsDays: Float
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Float
+  preorderPurchasePeriodHours: Float
+  preorderRegisterPrice: Float
+  preorderWaitDays: Float
+  pricePerMeter: String
+  productionRollId: Float
+  redisWorkerStatus: Boolean
+  retargetingCommentingReminderDays: Float
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Float
+  retargetingCouponExpiryDays: Float
+  retargetingCouponMaximumPercent: Float
+  retargetingCouponMaximumUse: Float
+  retargetingFirstNotifyWalletUsageDays: Float
+  retargetingNotifyAfterSentDays: Float
+  retargetingNotifyIfNotUsedDays: Float
+  retargetingSecondNotifyWalletUsageDays: Float
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Float
+  retargetingWalletChargeAmount: Float
+  retargetingWalletMaximumPercent: Float
+  returnDeadlineForGuarantee: Float
+  returnDeadlineForTestDelivered: Float
+  returnDeadlineForTestSent: Float
+  rollReferenceCode: String
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+input UpdateSettingsHistory {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: String
+  campaignPetDiscountAmount: Int
+  campaignPetMinDonationAmount: Int
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Int
+  delayDaysNormal: Int
+  delayReportDaysForAdmin: Int
+  delayReportDaysForProduction: Int
+  deliveryDurationDays: Int
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean
+  historyCreatedAt: DateTime
+  historyCreatedBy: Int
+  historyUpdatedAt: DateTime
+  id: ID
+  isActive: Boolean
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Int
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Int
+  preorderFakeCountLow: Int
+  preorderFakeMultiplyBy: Int
+  preorderMode: Boolean
+  preorderNewModeActive: Boolean
+  preorderNotifyAfterPeriodStartedDays: Int
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Int
+  preorderNotifyBeforePeriodEndsDays: Int
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Int
+  preorderPurchasePeriodHours: Int
+  preorderRegisterPrice: Int
+  preorderWaitDays: Int
+  pricePerMeter: String
+  productionRollId: Int
+  redisWorkerStatus: Boolean
+  retargetingCommentingReminderDays: Int
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Int
+  retargetingCouponExpiryDays: Int
+  retargetingCouponMaximumPercent: Int
+  retargetingCouponMaximumUse: Int
+  retargetingFirstNotifyWalletUsageDays: Int
+  retargetingNotifyAfterSentDays: Int
+  retargetingNotifyIfNotUsedDays: Int
+  retargetingSecondNotifyWalletUsageDays: Int
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Int
+  retargetingWalletChargeAmount: Int
+  retargetingWalletMaximumPercent: Int
+  returnDeadlineForGuarantee: Int
+  returnDeadlineForTestDelivered: Int
+  returnDeadlineForTestSent: Int
+  rollReferenceCode: String
+  settingId: Int
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
+}
+
+input UpdateSettingsHistoryInput {
+  aroundShirazDeliveryRate: String
+  averageRolledHeight: Float
+  boxCapacity: String
+  campaignPetDiscountAmount: Int
+  campaignPetMinDonationAmount: Int
+  createdAt: DateTime
+  defaultDeliveryRate: String
+  delayDaysCustom: Int
+  delayDaysNormal: Int
+  delayReportDaysForAdmin: Int
+  delayReportDaysForProduction: Int
+  deliveryDurationDays: Int
+  digikalaSharePercent: Float
+  digipayToken: String
+  digipayTokenExpiresAt: DateTime
+  freeDelivery: Boolean
+  historyCreatedAt: DateTime
+  historyCreatedBy: Int
+  historyUpdatedAt: DateTime
+  id: Int!
+  isActive: Boolean
+  maxDistanceForFreeDelivery: Float
+  maxLength: Float
+  maxWastagePercent: Int
+  maxWidth: Float
+  minLength: Float
+  minWidth: Float
+  minimumPriceForFreeDelivery: String
+  padRollRefCode: String
+  padWeightPerMeter: Float
+  preorderDailyLimit: Int
+  preorderFakeCountLow: Int
+  preorderFakeMultiplyBy: Int
+  preorderMode: Boolean
+  preorderNewModeActive: Boolean
+  preorderNotifyAfterPeriodStartedDays: Int
+  preorderNotifyAfterStartedText: String
+  preorderNotifyBeforeDays: Int
+  preorderNotifyBeforePeriodEndsDays: Int
+  preorderNotifyBeforeStartedText: String
+  preorderNotifyIntervalHours: Int
+  preorderPurchasePeriodHours: Int
+  preorderRegisterPrice: Int
+  preorderWaitDays: Int
+  pricePerMeter: String
+  productionRollId: Int
+  redisWorkerStatus: Boolean
+  retargetingCommentingReminderDays: Int
+  retargetingCommentingReminderText: String
+  retargetingCouponAmount: Int
+  retargetingCouponExpiryDays: Int
+  retargetingCouponMaximumPercent: Int
+  retargetingCouponMaximumUse: Int
+  retargetingFirstNotifyWalletUsageDays: Int
+  retargetingNotifyAfterSentDays: Int
+  retargetingNotifyIfNotUsedDays: Int
+  retargetingSecondNotifyWalletUsageDays: Int
+  retargetingTextToCustomerAfterEachFriendSale: String
+  retargetingTextToCustomerAfterFriendInvoiceSent: String
+  retargetingTextToCustomerAfterSale: String
+  retargetingTextToCustomerAfterSent: String
+  retargetingTextToCustomerIfCouponNotUsed: String
+  retargetingTextToCustomerIfWalletNotUsed: String
+  retargetingThirdNotifyWalletUsageDays: Int
+  retargetingWalletChargeAmount: Int
+  retargetingWalletMaximumPercent: Int
+  returnDeadlineForGuarantee: Int
+  returnDeadlineForTestDelivered: Int
+  returnDeadlineForTestSent: Int
+  rollReferenceCode: String
+  settingId: Int
+  shirazDeliveryRate: String
+  snappToken: String
+  snappTokenExpiresAt: DateTime
+  taraToken: String
+  taraTokenExpiresAt: DateTime
+  taxRate: Float
+  updatedAt: DateTime
+  weightPerMeter: Float
 }
 
 input UpdateShippingService {
