@@ -48,7 +48,7 @@ export class UserService {
     /**
      * inject userTransactionListProvider
      */
-    private readonly userTransactionListProvider: UserTransactionListProvider,
+    private readonly userTransactionListProvider: UserTransactionListProvider
   ) {}
 
   create(createUserInput: CreateUserInput) {
@@ -100,7 +100,7 @@ export class UserService {
         'unable to process your request at the moment',
         {
           description: 'Error connecting to the database',
-        },
+        }
       );
     }
     return true;
@@ -117,7 +117,7 @@ export class UserService {
         'unable to process your request at the moment',
         {
           description: 'Error connecting to the database',
-        },
+        }
       );
     }
 
@@ -129,26 +129,6 @@ export class UserService {
   }
 
   async findRolesAndPermissionsById(userId: number) {
-    // const user = await this.userRepository
-    //   .createQueryBuilder('user')
-    //   .leftJoinAndSelect('user.userHasPermission', 'userHasPermission')
-    //   .leftJoinAndSelect('userHasPermission.permission', 'permission')
-    //   .leftJoinAndSelect('user.userHasRole', 'userHasRole')
-    //   .leftJoinAndSelect('userHasRole.role', 'role')
-    //   .leftJoinAndSelect('role.roleHasPermission', 'roleHasPermission')
-    //   .leftJoinAndSelect('roleHasPermission.permission', 'rolePermission')
-    //   .where('user.id = :id', { id: userId })
-    //   .select([
-    //     'user.id',
-    //     'userHasPermission.permissionId',
-    //     'permission.name',
-    //     'userHasRole.roleId',
-    //     'role.id',
-    //     'roleHasPermission.permissionId',
-    //     'rolePermission.name',
-    //   ])
-    //   .getOne();
-
     const user = await this.userRepository.findOne({
       where: { id: userId },
       relations: {
@@ -176,13 +156,13 @@ export class UserService {
     //extract name of every permissions of the roles assigned to the user
     const rolePermissionsNameArray = userRoles.map((userRole) => {
       return userRole.role.roleHasPermission.map(
-        (perm) => perm.permission.name,
+        (perm) => perm.permission.name
       );
     });
 
     //extract permissions assign to the user
     const permissionsNameArray = userPermission.map(
-      (perm) => perm.permission.name,
+      (perm) => perm.permission.name
     );
 
     return {

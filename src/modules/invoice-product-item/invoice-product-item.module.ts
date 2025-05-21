@@ -21,5 +21,6 @@ import { CreateInvoiceProductItemInput } from '@/modules/invoice-product-item/dt
       ],
     }),
   ],
+  exports: [InvoiceProductItemService],
 })
 export class InvoiceProductItemModule {}

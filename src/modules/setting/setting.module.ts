@@ -24,5 +24,6 @@ import { CreateSettingInput } from '@/modules/setting/dto/create-setting.input';
       ],
     }),
   ],
+  exports: [SettingService],
 })
 export class SettingModule {}

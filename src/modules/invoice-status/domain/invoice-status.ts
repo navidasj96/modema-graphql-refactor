@@ -1,10 +1,17 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/domain/invoice-invoice-status';
 import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 
 @InputType('InvoiceStatusDomain')
+@QueryOptions({
+  pagingStrategy: PagingStrategies.NONE,
+})
 @ObjectType()
 export class InvoiceStatus {
   @IDField(() => ID)

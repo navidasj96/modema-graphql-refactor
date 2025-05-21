@@ -30,6 +30,14 @@ export class SetInvoiceAsDepotForDigikalaProvider {
         },
       });
 
+      if (invoices.length === 0) {
+        await queryRunner.rollbackTransaction();
+        return {
+          message: `صورتحسابی با این شناسه ها پیدا نشد`,
+          status: false,
+        };
+      }
+
       for (const invoice of invoices) {
         if (invoice.isDepot) {
           const updateInvoice: Invoice = {

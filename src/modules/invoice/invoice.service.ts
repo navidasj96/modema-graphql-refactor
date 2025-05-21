@@ -5,6 +5,8 @@ import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers/check-similar-invoice-with-name.provider';
 import { CheckSimilarInvoiceWithNameInput } from '@/modules/invoice/dto/check-similar-invoice-with-name.input.dto';
 import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/providers/set-invoice-as-depot-for-digikala';
+import { ChangeInvoiceStatusProvider } from './providers/change-invoices-status.provider';
+import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
 
 @Injectable()
 export class InvoiceService {
@@ -13,7 +15,11 @@ export class InvoiceService {
     /**
      * inject setInvoiceAsDepotForDigikalaProvider
      */
-    private readonly setInvoiceAsDepotForDigikalaProvider: SetInvoiceAsDepotForDigikalaProvider
+    private readonly setInvoiceAsDepotForDigikalaProvider: SetInvoiceAsDepotForDigikalaProvider,
+    /**
+     * inject changeInvoiceStatusProvider
+     */
+    private readonly ChangeInvoiceStatusProvider: ChangeInvoiceStatusProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -47,6 +53,16 @@ export class InvoiceService {
   async setInvoiceAsDepotForDigikala(ids: string[]) {
     return await this.setInvoiceAsDepotForDigikalaProvider.setInvoiceAsDepotForDigikala(
       ids
+    );
+  }
+
+  async changeInvoiceStatus(
+    changeInvoicesStatusInput: ChangeInvoicesStatusInput,
+    context: { req: UserContext }
+  ) {
+    return await this.ChangeInvoiceStatusProvider.updateInvoiceStatus(
+      changeInvoicesStatusInput,
+      context
     );
   }
 }

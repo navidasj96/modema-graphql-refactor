@@ -36,3 +36,10 @@ export const NOT_SENT_INVOICE_STATUSES: InvoiceStatusEnum[] = [
   InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS,
   InvoiceStatusEnum.READY_TO_SEND_TIPAX,
 ];
+
+export const READY_TO_SEND_INVOICE_STATUSES: InvoiceStatusEnum[] = [
+  InvoiceStatusEnum.READY_TO_SEND_CHAPAR,
+  InvoiceStatusEnum.READY_TO_SEND_MAHEX,
+  InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS,
+  InvoiceStatusEnum.READY_TO_SEND_TIPAX,
+];

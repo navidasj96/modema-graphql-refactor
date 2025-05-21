@@ -8,6 +8,10 @@ import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateInvoiceInput } from '@/modules/invoice/dto/create-invoice.input';
 import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers/check-similar-invoice-with-name.provider';
 import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/providers/set-invoice-as-depot-for-digikala';
+import { AuthModule } from '../auth/auth.module';
+import { ChangeInvoiceStatusProvider } from '@/modules/invoice/providers/change-invoices-status.provider';
+import { SettingModule } from '@/modules/setting/setting.module';
+import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice-product-item.module';
 
 @Module({
   providers: [
@@ -15,6 +19,7 @@ import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/provider
     InvoiceService,
     CheckSimilarInvoiceWithNameProvider,
     SetInvoiceAsDepotForDigikalaProvider,
+    ChangeInvoiceStatusProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -29,6 +34,9 @@ import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/provider
         },
       ],
     }),
+    AuthModule,
+    SettingModule,
+    InvoiceProductItemModule,
   ],
 })
 export class InvoiceModule {}
