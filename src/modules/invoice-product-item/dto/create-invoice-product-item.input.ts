@@ -38,16 +38,16 @@ export class CreateInvoiceProductItemInput {
   predictedDateForReceivedByRepository?: string;
 
   @Field({ nullable: true })
-  isTagPrinted?: boolean;
+  isTagPrinted?: number;
 
   @Field({ nullable: true })
-  isPrintedAndHeated?: boolean;
+  isPrintedAndHeated?: number;
 
   @Field({ nullable: true })
-  fromDepot?: boolean;
+  fromDepot?: number;
 
   @Field()
-  isReversed: boolean;
+  isReversed: number;
 
   @Field({ nullable: true })
   printProfileId?: number;
@@ -62,7 +62,7 @@ export class CreateInvoiceProductItemInput {
   damageReasonId?: number;
 
   @Field()
-  isInsertedIntoSepidar: boolean;
+  isInsertedIntoSepidar: number;
 
   @Field()
   createdAt: Date;

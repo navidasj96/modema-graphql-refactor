@@ -22,14 +22,14 @@ import { InvoiceProductStatus } from '@/modules/invoice-product-status/entities/
 @Index(
   'invoice_product_items_invoice_product_id_index',
   ['invoiceProductId'],
-  {},
+  {}
 )
 @Index('invoice_product_items_print_profile_id_index', ['printProfileId'], {})
 @Index('invoice_product_items_print_rip_id_index', ['printRipId'], {})
 @Index(
   'invoice_product_items_production_roll_id_index',
   ['productionRollId'],
-  {},
+  {}
 )
 @Index('invoice_product_items_row_index', ['row'], {})
 @Entity('invoice_product_items', { schema: 'modema' })
@@ -74,20 +74,20 @@ export class InvoiceProductItem {
     width: 1,
     default: () => "'1'",
   })
-  isTagPrinted?: boolean;
+  isTagPrinted?: number;
 
   @Column('tinyint', {
     name: 'is_printed_and_heated',
     nullable: true,
     width: 1,
   })
-  isPrintedAndHeated?: boolean;
+  isPrintedAndHeated?: number;
 
   @Column('tinyint', { name: 'from_depot', nullable: true, width: 1 })
-  fromDepot?: boolean;
+  fromDepot: number;
 
   @Column('tinyint', { name: 'is_reversed', width: 1, default: () => "'0'" })
-  isReversed: boolean;
+  isReversed: number;
 
   @Column('int', { name: 'print_profile_id', nullable: true, unsigned: true })
   printProfileId?: number;
@@ -106,7 +106,7 @@ export class InvoiceProductItem {
     width: 1,
     default: () => "'0'",
   })
-  isInsertedIntoSepidar: boolean;
+  isInsertedIntoSepidar: number;
 
   @Column('timestamp', {
     name: 'created_at',
@@ -134,21 +134,21 @@ export class InvoiceProductItem {
 
   @OneToMany(
     () => ExitControlItem,
-    (exitControlItem) => exitControlItem.invoiceProductItem,
+    (exitControlItem) => exitControlItem.invoiceProductItem
   )
   exitControlItems: ExitControlItem[];
 
   @OneToMany(
     () => InvoiceProductItemInvoiceProductStatus,
     (invoiceProductItemInvoiceProductStatus) =>
-      invoiceProductItemInvoiceProductStatus.invoiceProductItem,
+      invoiceProductItemInvoiceProductStatus.invoiceProductItem
   )
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemInvoiceProductStatus[];
 
   @ManyToOne(
     () => InvoiceProductStatus,
     (invoiceProductStatus) => invoiceProductStatus.invoiceProductItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'current_status_id', referencedColumnName: 'id' }])
   currentStatus: InvoiceProductStatus;
@@ -156,7 +156,7 @@ export class InvoiceProductItem {
   @ManyToOne(
     () => DamageReason,
     (damageReason) => damageReason.invoiceProductItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'damage_reason_id', referencedColumnName: 'id' }])
   damageReason: DamageReason;
@@ -164,7 +164,7 @@ export class InvoiceProductItem {
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.invoiceProductItems,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;
@@ -172,7 +172,7 @@ export class InvoiceProductItem {
   @ManyToOne(
     () => PrintProfile,
     (printProfile) => printProfile.invoiceProductItems,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'print_profile_id', referencedColumnName: 'id' }])
   printProfile: PrintProfile;
@@ -187,7 +187,7 @@ export class InvoiceProductItem {
   @ManyToOne(
     () => ProductionRoll,
     (productionRoll) => productionRoll.invoiceProductItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'production_roll_id', referencedColumnName: 'id' }])
   productionRoll: ProductionRoll;

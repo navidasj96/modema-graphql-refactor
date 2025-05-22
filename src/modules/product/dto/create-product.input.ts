@@ -109,10 +109,10 @@ export class CreateProductInput {
   isSelfEmployedDesigner: number;
 
   @Field({ nullable: true })
-  isCarpetPad?: boolean;
+  isCarpetPad?: number;
 
   @Field()
-  isShaggy: boolean;
+  isShaggy: number;
 
   @Field({ nullable: true })
   metaTags?: string;
@@ -133,7 +133,7 @@ export class CreateProductInput {
   bestSellerColorId?: number;
 
   @Field()
-  carpetHasRoots: boolean;
+  carpetHasRoots: number;
 
   @Field({ nullable: true })
   parentProductId?: number;
@@ -145,19 +145,19 @@ export class CreateProductInput {
   emallsTitle?: string;
 
   @Field()
-  emallsActive: boolean;
+  emallsActive: number;
 
   @Field()
-  snapppayActive: boolean;
+  snapppayActive: number;
 
   @Field({ nullable: true })
-  snapppaySortOrder?: boolean;
+  snapppaySortOrder?: number;
 
   @Field({ nullable: true })
   sortOrder?: number;
 
   @Field()
-  isActive: boolean;
+  isActive: number;
 
   @Field()
   activeUpdatedAt: Date;

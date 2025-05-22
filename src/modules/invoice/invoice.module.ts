@@ -12,6 +12,7 @@ import { AuthModule } from '../auth/auth.module';
 import { ChangeInvoiceStatusProvider } from '@/modules/invoice/providers/change-invoices-status.provider';
 import { SettingModule } from '@/modules/setting/setting.module';
 import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice-product-item.module';
+import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.module';
 
 @Module({
   providers: [
@@ -37,6 +38,7 @@ import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice
     AuthModule,
     SettingModule,
     InvoiceProductItemModule,
+    InvoiceProductItemInvoiceProductStatusModule,
   ],
 })
 export class InvoiceModule {}

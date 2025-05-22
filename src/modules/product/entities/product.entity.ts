@@ -53,7 +53,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'products_id_min_basic_carpet_size_id_unique',
   ['id', 'minBasicCarpetSizeId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('products_idx1', ['isCarpetPad'], {})
 @Index('products_idx2', ['id', 'minBasicCarpetSizeId'], { unique: true })
@@ -63,7 +63,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'products_is_self_employed_designer_index',
   ['isSelfEmployedDesigner'],
-  {},
+  {}
 )
 @Index('products_is_shaggy_index', ['isShaggy'], {})
 @Index('products_min_basic_carpet_size_id_index', ['minBasicCarpetSizeId'], {})
@@ -197,10 +197,10 @@ export class Product {
     width: 1,
     default: () => "'0'",
   })
-  isCarpetPad?: boolean;
+  isCarpetPad?: number;
 
   @Column('tinyint', { name: 'is_shaggy', width: 1, default: () => "'0'" })
-  isShaggy: boolean;
+  isShaggy: number;
 
   @Column('text', { name: 'meta_tags', nullable: true })
   metaTags?: string;
@@ -238,7 +238,7 @@ export class Product {
     width: 1,
     default: () => "'0'",
   })
-  carpetHasRoots: boolean;
+  carpetHasRoots: number;
 
   @Column('int', { name: 'parent_product_id', nullable: true, unsigned: true })
   parentProductId?: number;
@@ -250,23 +250,23 @@ export class Product {
   emallsTitle?: string;
 
   @Column('tinyint', { name: 'emalls_active', width: 1, default: () => "'0'" })
-  emallsActive: boolean;
+  emallsActive: number;
 
   @Column('tinyint', {
     name: 'snapppay_active',
     width: 1,
     default: () => "'0'",
   })
-  snapppayActive: boolean;
+  snapppayActive: number;
 
   @Column('tinyint', { name: 'snapppay_sort_order', nullable: true, width: 1 })
-  snapppaySortOrder?: boolean;
+  snapppaySortOrder?: number;
 
   @Column('int', { name: 'sort_order', nullable: true, unsigned: true })
   sortOrder?: number;
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
-  isActive: boolean;
+  isActive: number;
 
   @Column('datetime', {
     name: 'active_updated_at',
@@ -315,7 +315,7 @@ export class Product {
 
   @OneToMany(
     () => AttributeProduct,
-    (attributeProduct) => attributeProduct.product,
+    (attributeProduct) => attributeProduct.product
   )
   attributeProducts: AttributeProduct[];
 
@@ -324,37 +324,37 @@ export class Product {
 
   @OneToMany(
     () => CustomerImageProduct,
-    (customerImageProduct) => customerImageProduct.product,
+    (customerImageProduct) => customerImageProduct.product
   )
   customerImageProducts: CustomerImageProduct[];
 
   @OneToMany(
     () => CustomerVideoProduct,
-    (customerVideoProduct) => customerVideoProduct.product,
+    (customerVideoProduct) => customerVideoProduct.product
   )
   customerVideoProducts: CustomerVideoProduct[];
 
   @OneToMany(
     () => DiscountNotification,
-    (discountNotification) => discountNotification.product,
+    (discountNotification) => discountNotification.product
   )
   discountNotifications: DiscountNotification[];
 
   @OneToMany(
     () => DiscountSubject,
-    (discountSubject) => discountSubject.product,
+    (discountSubject) => discountSubject.product
   )
   discountSubjects: DiscountSubject[];
 
   @OneToMany(
     () => FavoriteProduct,
-    (favoriteProduct) => favoriteProduct.product,
+    (favoriteProduct) => favoriteProduct.product
   )
   favoriteProducts: FavoriteProduct[];
 
   @OneToMany(
     () => HomePageCustomerImage,
-    (homePageCustomerImage) => homePageCustomerImage.product,
+    (homePageCustomerImage) => homePageCustomerImage.product
   )
   homePageCustomerImages: HomePageCustomerImage[];
 
@@ -363,19 +363,19 @@ export class Product {
 
   @OneToMany(
     () => IncredibleOffer,
-    (incredibleOffer) => incredibleOffer.product,
+    (incredibleOffer) => incredibleOffer.product
   )
   incredibleOffers: IncredibleOffer[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.product,
+    (invoiceProductHistory) => invoiceProductHistory.product
   )
   invoiceProductHistories: InvoiceProductHistory[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.relatedProduct,
+    (invoiceProductHistory) => invoiceProductHistory.relatedProduct
   )
   invoiceProductHistories2: InvoiceProductHistory[];
 
@@ -384,7 +384,7 @@ export class Product {
 
   @OneToMany(
     () => InvoiceProduct,
-    (invoiceProduct) => invoiceProduct.relatedProduct,
+    (invoiceProduct) => invoiceProduct.relatedProduct
   )
   invoiceProducts2: InvoiceProduct[];
 
@@ -393,7 +393,7 @@ export class Product {
 
   @OneToMany(
     () => OutOfStockButListedProduct,
-    (outOfStockButListedProduct) => outOfStockButListedProduct.product,
+    (outOfStockButListedProduct) => outOfStockButListedProduct.product
   )
   outOfStockButListedProducts: OutOfStockButListedProduct[];
 
@@ -402,13 +402,13 @@ export class Product {
 
   @OneToMany(
     () => ProductColorImage,
-    (productColorImage) => productColorImage.product,
+    (productColorImage) => productColorImage.product
   )
   productColorImages: ProductColorImage[];
 
   @OneToMany(
     () => ProductColorSale,
-    (productColorSale) => productColorSale.product,
+    (productColorSale) => productColorSale.product
   )
   productColorSales: ProductColorSale[];
 
@@ -420,7 +420,7 @@ export class Product {
 
   @OneToMany(
     () => ProductProductCategory,
-    (productProductCategory) => productProductCategory.product,
+    (productProductCategory) => productProductCategory.product
   )
   productProductCategories: ProductProductCategory[];
 
@@ -429,7 +429,7 @@ export class Product {
 
   @OneToMany(
     () => ProductRateAverage,
-    (productRateAverage) => productRateAverage.product,
+    (productRateAverage) => productRateAverage.product
   )
   productRateAverages: ProductRateAverage[];
 
@@ -442,7 +442,7 @@ export class Product {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.products,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'best_seller_color_id', referencedColumnName: 'id' }])
   bestSellerColor: BasicCarpetColor;
@@ -457,7 +457,7 @@ export class Product {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.products,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'min_basic_carpet_size_id', referencedColumnName: 'id' },
@@ -483,13 +483,13 @@ export class Product {
 
   @OneToMany(
     () => ReadyToSendProduct,
-    (readyToSendProduct) => readyToSendProduct.product,
+    (readyToSendProduct) => readyToSendProduct.product
   )
   readyToSendProducts: ReadyToSendProduct[];
 
   @OneToMany(
     () => RecommendedProduct,
-    (recommendedProduct) => recommendedProduct.product,
+    (recommendedProduct) => recommendedProduct.product
   )
   recommendedProducts: RecommendedProduct[];
 
@@ -498,37 +498,37 @@ export class Product {
 
   @OneToMany(
     () => RelatedProduct,
-    (relatedProducts) => relatedProducts.relatedProduct,
+    (relatedProducts) => relatedProducts.relatedProduct
   )
   relatedProducts2: RelatedProduct[];
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.product,
+    (returnRequestItemHistory) => returnRequestItemHistory.product
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItem,
-    (returnRequestItem) => returnRequestItem.product,
+    (returnRequestItem) => returnRequestItem.product
   )
   returnRequestItems: ReturnRequestItem[];
 
   @OneToMany(
     () => ReturnedInvoiceProduct,
-    (returnedInvoiceProduct) => returnedInvoiceProduct.product,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.product
   )
   returnedInvoiceProducts: ReturnedInvoiceProduct[];
 
   @OneToMany(
     () => SpecialOffer,
-    (specialOffer) => specialOffer.specialOfferProduct,
+    (specialOffer) => specialOffer.specialOfferProduct
   )
   specialOffers: SpecialOffer[];
 
   @OneToMany(
     () => SpecialOffer,
-    (specialOffer) => specialOffer.wonderfulOfferProduct,
+    (specialOffer) => specialOffer.wonderfulOfferProduct
   )
   specialOffers2: SpecialOffer[];
 

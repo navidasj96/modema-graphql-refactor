@@ -123,7 +123,7 @@ export class CreateInvoiceInput {
   additions: string;
 
   @Field()
-  cashOnDelivery: boolean;
+  cashOnDelivery: number;
 
   @Field({ nullable: true })
   paymentErrorMessage?: string;
@@ -132,7 +132,7 @@ export class CreateInvoiceInput {
   invoicePaymentStatusId?: number;
 
   @Field()
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Field({ nullable: true })
   trackingCode?: string;
@@ -147,10 +147,10 @@ export class CreateInvoiceInput {
   packageCount?: number;
 
   @Field()
-  visitorShareCalculated: boolean;
+  visitorShareCalculated: number;
 
   @Field()
-  isChaparDelivery: boolean;
+  isChaparDelivery: number;
 
   @Field({ nullable: true })
   chaparStatus?: string;
@@ -168,16 +168,16 @@ export class CreateInvoiceInput {
   crmCompanyPersonId?: string;
 
   @Field()
-  isDepot: boolean;
+  isDepot: number;
 
   @Field()
   forDigikala: number;
 
   @Field()
-  isForAdvertisement: boolean;
+  isForAdvertisement: number;
 
   @Field()
-  hasPriority: boolean;
+  hasPriority: number;
 
   @Field()
   replacementAdditionalPrice: string;
@@ -201,7 +201,7 @@ export class CreateInvoiceInput {
   invoiceTypeId?: number;
 
   @Field()
-  paymentCreditable: boolean;
+  paymentCreditable: number;
 
   @Field({ nullable: true })
   wholesaleRemainingMoneyTransferRefCode?: string;
@@ -216,22 +216,22 @@ export class CreateInvoiceInput {
   lockStateDescription?: string;
 
   @Field({ nullable: true })
-  moneyTransferConfirmed?: boolean;
+  moneyTransferConfirmed?: number;
 
   @Field({ nullable: true })
   moneyTransferConfirmedBy?: number;
 
   @Field()
-  isReversible: boolean;
+  isReversible: number;
 
   @Field()
-  useWallet: boolean;
+  useWallet: number;
 
   @Field()
-  needsReview: boolean;
+  needsReview: number;
 
   @Field()
-  containsPadsOnly: boolean;
+  containsPadsOnly: number;
 
   @Field({ nullable: true })
   deadlineDate?: string;
@@ -270,7 +270,7 @@ export class CreateInvoiceInput {
   seenAt?: Date;
 
   @Field()
-  canReturn: boolean;
+  canReturn: number;
 
   @Field({ nullable: true })
   sal?: number;

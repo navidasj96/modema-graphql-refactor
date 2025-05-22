@@ -194,7 +194,7 @@ export class Invoice {
   additions: string;
 
   @Field()
-  cashOnDelivery: boolean;
+  cashOnDelivery: number;
 
   @Field({ nullable: true })
   paymentErrorMessage?: string;
@@ -203,7 +203,7 @@ export class Invoice {
   invoicePaymentStatusId?: number;
 
   @Field()
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Field({ nullable: true })
   trackingCode?: string;
@@ -218,10 +218,10 @@ export class Invoice {
   packageCount?: number;
 
   @Field()
-  visitorShareCalculated: boolean;
+  visitorShareCalculated: number;
 
   @FilterableField()
-  isChaparDelivery: boolean;
+  isChaparDelivery: number;
 
   @Field({ nullable: true })
   chaparStatus?: string;
@@ -239,16 +239,16 @@ export class Invoice {
   crmCompanyPersonId?: string;
 
   @Field()
-  isDepot: boolean;
+  isDepot: number;
 
   @Field()
   forDigikala: number;
 
   @Field()
-  isForAdvertisement: boolean;
+  isForAdvertisement: number;
 
   @Field()
-  hasPriority: boolean;
+  hasPriority: number;
 
   @Field()
   replacementAdditionalPrice: string;
@@ -272,7 +272,7 @@ export class Invoice {
   invoiceTypeId?: number;
 
   @Field()
-  paymentCreditable: boolean;
+  paymentCreditable: number;
 
   @Field({ nullable: true })
   wholesaleRemainingMoneyTransferRefCode?: string;
@@ -287,22 +287,22 @@ export class Invoice {
   lockStateDescription?: string;
 
   @Field({ nullable: true })
-  moneyTransferConfirmed?: boolean;
+  moneyTransferConfirmed?: number;
 
   @Field({ nullable: true })
   moneyTransferConfirmedBy?: number;
 
   @Field()
-  isReversible: boolean;
+  isReversible: number;
 
   @Field()
-  useWallet: boolean;
+  useWallet: number;
 
   @Field()
-  needsReview: boolean;
+  needsReview: number;
 
   @FilterableField()
-  containsPadsOnly: boolean;
+  containsPadsOnly: number;
 
   @Field({ nullable: true })
   deadlineDate?: string;
@@ -341,7 +341,7 @@ export class Invoice {
   seenAt?: Date;
 
   @Field()
-  canReturn: boolean;
+  canReturn: number;
 
   @Field({ nullable: true })
   sal?: number;

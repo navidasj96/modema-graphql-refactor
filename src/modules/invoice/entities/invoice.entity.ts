@@ -257,7 +257,7 @@ export class Invoice {
     width: 1,
     default: () => "'0'",
   })
-  cashOnDelivery: boolean;
+  cashOnDelivery: number;
 
   @Column('varchar', {
     name: 'payment_error_message',
@@ -274,7 +274,7 @@ export class Invoice {
   invoicePaymentStatusId: number | null;
 
   @Column('tinyint', { name: 'free_delivery', width: 1, default: () => "'1'" })
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Column('varchar', { name: 'tracking_code', nullable: true, length: 191 })
   trackingCode: string | null;
@@ -297,14 +297,14 @@ export class Invoice {
     width: 1,
     default: () => "'0'",
   })
-  visitorShareCalculated: boolean;
+  visitorShareCalculated: number;
 
   @Column('tinyint', {
     name: 'is_chapar_delivery',
     width: 1,
     default: () => "'1'",
   })
-  isChaparDelivery: boolean;
+  isChaparDelivery: number;
 
   @Column('varchar', { name: 'chapar_status', nullable: true, length: 191 })
   chaparStatus: string | null;
@@ -334,7 +334,7 @@ export class Invoice {
   crmCompanyPersonId: string | null;
 
   @Column('tinyint', { name: 'is_depot', width: 1, default: () => "'0'" })
-  isDepot: boolean;
+  isDepot: number;
 
   @Column('tinyint', { name: 'for_digikala', width: 1, default: () => "'0'" })
   forDigikala: number;
@@ -344,10 +344,10 @@ export class Invoice {
     width: 1,
     default: () => "'0'",
   })
-  isForAdvertisement: boolean;
+  isForAdvertisement: number;
 
   @Column('tinyint', { name: 'has_priority', width: 1, default: () => "'0'" })
-  hasPriority: boolean;
+  hasPriority: number;
 
   @Column('decimal', {
     name: 'replacement_additional_price',
@@ -392,7 +392,7 @@ export class Invoice {
     width: 1,
     default: () => "'0'",
   })
-  paymentCreditable: boolean;
+  paymentCreditable: number;
 
   @Column('varchar', {
     name: 'wholesale_remaining_money_transfer_ref_code',
@@ -415,7 +415,7 @@ export class Invoice {
     nullable: true,
     width: 1,
   })
-  moneyTransferConfirmed: boolean | null;
+  moneyTransferConfirmed: number | null;
 
   @Column('int', {
     name: 'money_transfer_confirmed_by',
@@ -425,20 +425,20 @@ export class Invoice {
   moneyTransferConfirmedBy: number | null;
 
   @Column('tinyint', { name: 'is_reversible', width: 1, default: () => "'0'" })
-  isReversible: boolean;
+  isReversible: number;
 
   @Column('tinyint', { name: 'use_wallet', width: 1, default: () => "'0'" })
-  useWallet: boolean;
+  useWallet: number;
 
   @Column('tinyint', { name: 'needs_review', width: 1, default: () => "'0'" })
-  needsReview: boolean;
+  needsReview: number;
 
   @Column('tinyint', {
     name: 'contains_pads_only',
     width: 1,
     default: () => "'0'",
   })
-  containsPadsOnly: boolean;
+  containsPadsOnly: number;
 
   @Column('date', { name: 'deadline_date', nullable: true })
   deadlineDate: string | null;
@@ -488,7 +488,7 @@ export class Invoice {
   seenAt: Date | null;
 
   @Column('tinyint', { name: 'can_return', width: 1, default: () => "'0'" })
-  canReturn: boolean;
+  canReturn: number;
 
   @Column('smallint', { name: 'sal', nullable: true, unsigned: true })
   sal: number | null;

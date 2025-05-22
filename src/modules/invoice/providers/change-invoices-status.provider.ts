@@ -1,5 +1,6 @@
 import { AuthService } from '@/modules/auth/auth.service';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceProductItemInvoiceProductStatusService } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.service';
 import { InvoiceProductItemService } from '@/modules/invoice-product-item/invoice-product-item.service';
 import { ChangeInvoicesStatusResponseDto } from '@/modules/invoice/dto/change-invoices-status-response.dto';
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
@@ -7,7 +8,7 @@ import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { SettingService } from '@/modules/setting/setting.service';
 import { permissionsToChangeInvoiceStatusEnum } from '@/modules/user/helpers/permission-to-change-invoice-status';
 import { RolesNameEnum } from '@/utils/general-enums.enum';
-import { checkUserHasRole } from '@/utils/helpers';
+import { checkUserHasPermission, checkUserHasRole } from '@/utils/helpers';
 import {
   ALL_WHOLESALE_PAYMENT_STATUSES,
   InvoicePaymentStatusEnum,
@@ -17,6 +18,7 @@ import {
   InvoiceStatusEnum,
   READY_TO_SEND_INVOICE_STATUSES,
 } from '@/utils/invoice-status';
+import { InvoicePermissions } from '@/utils/permissions';
 import { Injectable } from '@nestjs/common';
 import { DataSource, EntityManager, In } from 'typeorm';
 
@@ -39,7 +41,11 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject invoiceProductItemService
      */
-    private readonly invoiceProductItemService: InvoiceProductItemService
+    private readonly invoiceProductItemService: InvoiceProductItemService,
+    /**
+     * inject invoiceProductItemInvoiceProductStatusService
+     */
+    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService
   ) {}
 
   public async updateInvoiceStatus(
@@ -60,7 +66,6 @@ export class ChangeInvoiceStatusProvider {
     //check for statues that user can change
     const statusesToChange = permissionsToChangeInvoiceStatusEnum(permissions);
 
-    console.log('statusesToChange', statusesToChange);
     if (!statusesToChange.includes(statusId)) {
       return {
         message: `شما اجازه تغییر وضعیت به این صورتحساب را ندارید`,
@@ -113,7 +118,9 @@ export class ChangeInvoiceStatusProvider {
         const changeResult = await this.changeInvoiceStatus(
           invoice,
           statusId,
-          roles
+          roles,
+          permissions,
+          manager
         );
 
         if (changeResult.status == false) {
@@ -142,12 +149,16 @@ export class ChangeInvoiceStatusProvider {
   public async changeInvoiceStatus(
     invoice: Invoice,
     status: number,
-    roles: string[]
+    roles: string[],
+    permissions: string[],
+    manager: EntityManager
   ): Promise<ChangeInvoicesStatusResponseDto> {
     const invoiceUser = invoice.user;
     const setting = await this.settingService.findAll();
     const invoiceProducts = invoice.invoiceProducts;
     const invoiceStatusId = invoice.currentInvoiceStatusId;
+    //we will update parameters of invoice and then will save it as the updated invoice
+    let updatedInvocie = invoice;
 
     if (invoiceStatusId == InvoiceStatusEnum.DELIVERED) {
       return {
@@ -244,8 +255,77 @@ export class ChangeInvoiceStatusProvider {
     if (invoiceStatusId == InvoiceStatusEnum.RECEIVED_BY_PACKAGING_DEPARTMENT) {
       const result =
         this.checkIfCreditableInvoiceAccountingDescriptionEntered(invoice);
+      await this.changeInvoiceItemStatusesToExitedFromRepository(
+        invoice,
+        manager
+      );
+
+      if (result.status == false) {
+        return {
+          message: result.message,
+          status: false,
+        };
+      }
     }
 
+    // کنترل صورتحساب های دپو؛ بعد از تکمیل تولید تنها میتواند به حالت "انتقال به انبار دپو" برده شود
+    if (
+      status == InvoiceStatusEnum.READY_TO_SEND_CHAPAR ||
+      status == InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS ||
+      status == InvoiceStatusEnum.READY_TO_SEND_MAHEX ||
+      status == InvoiceStatusEnum.SENT ||
+      status == InvoiceStatusEnum.DELIVERED ||
+      status == InvoiceStatusEnum.RETURN_TO_ORIGIN ||
+      status == InvoiceStatusEnum.CANCEL
+    ) {
+      if (
+        status == InvoiceStatusEnum.CANCEL &&
+        checkUserHasPermission(permissions, [
+          InvoicePermissions.PERMISSION_TO_CHANGE_TO_CANCEL,
+        ]) &&
+        checkUserHasRole(roles, [RolesNameEnum.ADMINISTRATOR])
+      ) {
+        updatedInvocie.isReversible = 0;
+      } else if (invoice.isDepot == 0) {
+        return {
+          message: `
+                      صورتحساب 
+                      ${invoice.invoiceNumber}
+                    برای ورود به انبار دپو ثبت شده است. لطفا پس از تکمیل تولید کالاها، وضعیت آن را به انتقال به انبار دپو تغییر دهید.
+                      }
+                
+                        `,
+          status: false,
+        };
+      } else if (
+        status == (InvoiceStatusEnum.ADDED_TO_DEPOT_INVENTORY as number)
+      ) {
+        if (invoice.isDepot == 0) {
+          return {
+            message: `
+                      صورتحساب 
+                      ${invoice.invoiceNumber}
+                     برای ورود به انبار دپو ثبت نشده است و امکان انتقال آن به انبار دپو وجود ندارد.
+                      }
+                
+                        `,
+            status: false,
+          };
+        }
+      }
+    }
+    // برای ارجاع صورتحساب به واحد تولید حتما باید تعداد تحویلی از دپو و ارسال به واحد تولید برای هر آیتم صورتحساب تکمیل شده باشد
+
+    if (status == InvoiceStatusEnum.REFERRED_TO_PRODUCTION_DEPARTMENT) {
+      const result = this.checkIfItemsFromDepotAndToProduceSpecified(invoice);
+      if (result.status == false) {
+        return {
+          message: result.message,
+          status: false,
+        };
+      }
+      await this.updateInvoiceProductItemsDepotAndProduce(invoice, manager);
+    }
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
       status: true,
@@ -288,19 +368,126 @@ export class ChangeInvoiceStatusProvider {
     };
   }
 
+  public checkIfItemsFromDepotAndToProduceSpecified(invoice: Invoice) {
+    let itemsFromDepotAndToProduceSpecified = true;
+    const invoiceProducts = invoice.invoiceProducts;
+    for (const invoiceProduct of invoiceProducts) {
+      if (invoiceProduct.product.isCarpetPad == 0) {
+        if (!invoiceProduct.itemsToProduce || !invoiceProduct.itemsFromDepot) {
+          itemsFromDepotAndToProduceSpecified = false;
+        } else if (
+          invoiceProduct.itemsToProduce == 0 &&
+          invoiceProduct.itemsFromDepot == 0
+        ) {
+          itemsFromDepotAndToProduceSpecified = false;
+        }
+      }
+    }
+    if (itemsFromDepotAndToProduceSpecified == false) {
+      return {
+        message: `
+                 تعداد آیتم های صورتحساب
+                  ${invoice.invoiceNumber}
+                 که باید تولید شوند و تعدادی که باید از انبار دپو ارسال شوند مشخص نشده است. لطفا جهت ارجاع به واحد تولید این تعدادها را برای هر آیتم صورتحساب مشخص نمایید
+                  }
+                    `,
+        status: false,
+      };
+    }
+    return {
+      message: 'ok',
+      status: true,
+    };
+  }
+
   public async changeInvoiceItemStatusesToExitedFromRepository(
     invoice: Invoice,
     manager?: EntityManager
   ) {
     const invoiceProducts = invoice.invoiceProducts;
+    const user = invoice.user;
+    const comment =
+      'انتقال ایتم به مرحله "خروج از انبار گردید" به دلیل اینکه از انبار خارج شده و به مرحله بسته بندی رفته است';
 
     for (const invoiceProduct of invoiceProducts) {
       const invoiceProductItems = invoiceProduct.invoiceProductItems;
 
       for (const invoiceProductItem of invoiceProductItems) {
-        await this.invoiceProductItemService.updateCurrentStatusId(
-          invoiceProductItem,
-          InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY,
+        const currentStatusId = invoiceProductItem.currentStatusId;
+        const invoiceProductItemId = invoiceProductItem.id;
+
+        try {
+          await this.invoiceProductItemService.updateCurrentStatusId(
+            invoiceProductItem,
+            InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY,
+            manager
+          );
+          await this.invoiceProductItemInvoiceProductStatusService.attach(
+            invoiceProductItemId,
+            currentStatusId,
+            user.id,
+            comment,
+            manager
+          );
+        } catch (error) {
+          throw new Error(`مشکلی در تغییر وضعیت ایتم بوجود امده است: ${error}`);
+        }
+      }
+    }
+  }
+
+  public async updateInvoiceProductItemsDepotAndProduce(
+    invoice: Invoice,
+    manager: EntityManager
+  ) {
+    const invoiceProducts = invoice.invoiceProducts;
+    const user = invoice.user;
+    const comment =
+      'انتقال ایتم به مرحله "تحویل انبار گردید" به دلیل اینکه باید از دپو بیایند و چاپ تگ آن صورت بگیرد';
+    for (const invoiceProduct of invoiceProducts) {
+      const invoiceProductItems = invoiceProduct.invoiceProductItems;
+      const itemsToProduce = invoiceProduct.itemsToProduce;
+      const itemsFromDepot = invoiceProduct.itemsFromDepot;
+
+      const invoiceProductItemsToProduce =
+        await this.invoiceProductItemService.getNonDepotInvoiceProductItems(
+          invoiceProduct.id,
+          itemsToProduce
+        );
+
+      for (const invoiceProductItem of invoiceProductItemsToProduce) {
+        let updatedInvoiceProductItem = invoiceProductItem;
+        updatedInvoiceProductItem.fromDepot = 0;
+        updatedInvoiceProductItem.currentStatusId =
+          InvoiceProductStatusEnum.BEGIN_PRODUCTION;
+        updatedInvoiceProductItem.isTagPrinted = 1;
+        await this.invoiceProductItemService.save(
+          updatedInvoiceProductItem,
+          manager
+        );
+      }
+
+      const invoiceProductItemsFromDepot =
+        await this.invoiceProductItemService.getNonDepotInvoiceProductItems(
+          invoiceProduct.id,
+          itemsFromDepot
+        );
+
+      for (const invoiceProductItem of invoiceProductItemsFromDepot) {
+        let updatedInvoiceProductItem = invoiceProductItem;
+        updatedInvoiceProductItem.fromDepot = 0;
+        updatedInvoiceProductItem.currentStatusId =
+          InvoiceProductStatusEnum.RECEIVED_BY_REPOSITORY_DEPARTMENT;
+        updatedInvoiceProductItem.isTagPrinted = 1;
+        await this.invoiceProductItemInvoiceProductStatusService.attach(
+          invoiceProductItem.id,
+          invoiceProductItem.currentStatusId,
+          user.id,
+          comment,
+          manager
+        );
+        await this.invoiceProductItemService.save(
+          updatedInvoiceProductItem,
           manager
         );
       }
