@@ -22,5 +22,6 @@ import { CreateInvoicePaymentInput } from '@/modules/invoice-payment/dto/create-
       ],
     }),
   ],
+  exports: [InvoicePaymentService],
 })
 export class InvoicePaymentModule {}

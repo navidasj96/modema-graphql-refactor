@@ -1,9 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { CreateShippingServiceInput } from './dto/create-shipping-service.input';
 import { UpdateShippingServiceInput } from './dto/update-shipping-service.input';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
+import { CreateShipmentChaparProvider } from '@/modules/shipping-service/providers/create-shipment-chapar.provider';
 
 @Injectable()
 export class ShippingServiceService {
+  constructor(
+    /**
+     * inject CreateShipmentChaparProvider
+     */
+    private readonly createShipmentChaparProvider: CreateShipmentChaparProvider
+  ) {}
+
   create(createShippingServiceInput: CreateShippingServiceInput) {
     return 'This action adds a new shippingService';
   }
@@ -23,4 +33,27 @@ export class ShippingServiceService {
   remove(id: number) {
     return `This action removes a #${id} shippingService`;
   }
+
+  async createShipping(invoice: Invoice, shippingServiceId: number) {
+    let result;
+    if (
+      shippingServiceId == ShippingServiceEnum.SHIPPING_SERVICE_CHAPAR_GROUND
+    ) {
+      result = await this.createShipmentChapar(invoice);
+    } else if (
+      shippingServiceId ==
+      ShippingServiceEnum.SHIPPING_SERVICE_MAHEX_DOOR_TO_DOOR
+    ) {
+      result = await this.createShipmentMahex(invoice);
+    }
+    return result;
+  }
+
+  async createShipmentChapar(invoice: Invoice) {
+    return await this.createShipmentChaparProvider.createShipmentChapar(
+      invoice
+    );
+  }
+
+  async createShipmentMahex(invoice: Invoice) {}
 }

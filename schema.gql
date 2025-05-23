@@ -1148,7 +1148,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-22T09:14:19.024Z"
+  createdAt: DateTime! = "2025-05-23T14:21:14.867Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1242,7 +1242,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-22T09:14:19.036Z"
+  createdAt: DateTime! = "2025-05-23T14:21:14.876Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1357,7 +1357,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-22T09:14:19.127Z"
+  createdAt: DateTime! = "2025-05-23T14:21:14.908Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1447,7 +1447,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-22T09:14:19.037Z"
+  createdAt: DateTime! = "2025-05-23T14:21:14.877Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1682,7 +1682,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-22T09:14:19.054Z"
+  createdAt: DateTime! = "2025-05-23T14:21:14.887Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-22T09:14:19.038Z"
+  createdAt: DateTime! = "2025-05-23T14:21:14.877Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5134,7 +5134,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-22T09:14:19.634Z"
+  createdAt: DateTime! = "2025-05-23T14:21:15.242Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5156,7 +5156,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-05-22T09:14:19.647Z"
+  createdAt: DateTime! = "2025-05-23T14:21:15.247Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5171,7 +5171,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-22T09:14:19.654Z"
+  createdAt: DateTime! = "2025-05-23T14:21:15.251Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5195,7 +5195,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-05-22T09:14:19.662Z"
+  createdAt: DateTime! = "2025-05-23T14:21:15.256Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5226,7 +5226,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-22T09:14:19.669Z"
+  createdAt: DateTime! = "2025-05-23T14:21:15.261Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5267,7 +5267,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-05-22T09:14:19.691Z"
+  createdAt: DateTime! = "2025-05-23T14:21:15.275Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -10858,9 +10858,9 @@ input CreateSettingInput {
   digikalaSharePercent: Float!
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean!
+  freeDelivery: Float!
   id: Float!
-  isActive: Boolean!
+  isActive: Float!
   lotteryDraw: Float
   lotteryDrawBrace: Float
   lotteryDrawNumbers: String
@@ -10877,8 +10877,8 @@ input CreateSettingInput {
   preorderDailyLimit: Float
   preorderFakeCountLow: Float
   preorderFakeMultiplyBy: Float
-  preorderMode: Boolean!
-  preorderNewModeActive: Boolean!
+  preorderMode: Float!
+  preorderNewModeActive: Float!
   preorderNotifyAfterPeriodStartedDays: Float
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Float
@@ -10890,7 +10890,7 @@ input CreateSettingInput {
   preorderWaitDays: Float
   pricePerMeter: String!
   productionRollId: Float
-  redisWorkerStatus: Boolean!
+  redisWorkerStatus: Float!
   retargetingCommentingReminderDays: Float!
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Float
@@ -18666,6 +18666,7 @@ input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilter {
   addresses: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -18680,6 +18681,12 @@ input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddr
   and: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -19058,6 +19065,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterU
   addresses: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -19072,6 +19080,12 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterU
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -19725,6 +19739,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggr
   addresses: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -19739,6 +19754,12 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggr
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -20377,6 +20398,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilter {
   addresses: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -20391,6 +20413,12 @@ input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggr
   and: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -21406,6 +21434,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterU
   addresses: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -21420,6 +21449,12 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterU
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -21855,6 +21890,7 @@ input InvoiceAggregateFilterUserAggregateFilter {
   addresses: InvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -21869,6 +21905,12 @@ input InvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter {
   and: [InvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -22500,6 +22542,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggrega
   addresses: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter
   and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
   invoices2: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter
@@ -22514,6 +22557,12 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggrega
   and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterAddressAggregateFilter!]
+}
+
+input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
@@ -23222,6 +23271,7 @@ input InvoiceFilterInvoiceAddressFilterUserFilter {
   addresses: InvoiceFilterInvoiceAddressFilterUserFilterAddressFilter
   and: [InvoiceFilterInvoiceAddressFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter
@@ -23236,6 +23286,12 @@ input InvoiceFilterInvoiceAddressFilterUserFilterAddressFilter {
   and: [InvoiceFilterInvoiceAddressFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceAddressFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter {
@@ -23620,6 +23676,7 @@ input InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilter {
   addresses: InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterAddressFilter
   and: [InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter
@@ -23634,6 +23691,12 @@ input InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterAddressFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter {
@@ -24293,6 +24356,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterUserFilter {
   addresses: InvoiceFilterInvoiceFilterInvoiceFilterUserFilterAddressFilter
   and: [InvoiceFilterInvoiceFilterInvoiceFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterInvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterInvoiceFilterInvoiceFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterInvoiceFilterInvoiceFilterUserFilterInvoiceFilter
@@ -24307,6 +24371,12 @@ input InvoiceFilterInvoiceFilterInvoiceFilterUserFilterAddressFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterInvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterInvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterInvoiceFilterInvoiceFilterUserFilterInvoiceFilter {
@@ -24939,6 +25009,7 @@ input InvoiceFilterInvoiceFilterUserFilter {
   addresses: InvoiceFilterInvoiceFilterUserFilterAddressFilter
   and: [InvoiceFilterInvoiceFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterInvoiceFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterInvoiceFilterUserFilterInvoiceFilter
@@ -24953,6 +25024,12 @@ input InvoiceFilterInvoiceFilterUserFilterAddressFilter {
   and: [InvoiceFilterInvoiceFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterInvoiceFilterUserFilterInvoiceFilter {
@@ -25962,6 +26039,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilter {
   addresses: InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter
   and: [InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter
@@ -25976,6 +26054,12 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter {
@@ -26411,6 +26495,7 @@ input InvoiceFilterUserFilter {
   addresses: InvoiceFilterUserFilterAddressFilter
   and: [InvoiceFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterUserFilterInvoiceFilter
@@ -26425,6 +26510,12 @@ input InvoiceFilterUserFilterAddressFilter {
   and: [InvoiceFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterUserFilterInvoiceFilter {
@@ -27056,6 +27147,7 @@ input InvoiceFilterUserFilterInvoiceFilterUserFilter {
   addresses: InvoiceFilterUserFilterInvoiceFilterUserFilterAddressFilter
   and: [InvoiceFilterUserFilterInvoiceFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceFilterUserFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceFilterUserFilterInvoiceFilterUserFilterInvoiceFilter
   invoices2: InvoiceFilterUserFilterInvoiceFilterUserFilterInvoiceFilter
@@ -27070,6 +27162,12 @@ input InvoiceFilterUserFilterInvoiceFilterUserFilterAddressFilter {
   and: [InvoiceFilterUserFilterInvoiceFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceFilterUserFilterInvoiceFilterUserFilterAddressFilter!]
+}
+
+input InvoiceFilterUserFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceFilterUserFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceFilterUserFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceFilterUserFilterInvoiceFilterUserFilterInvoiceFilter {
@@ -31007,6 +31105,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilter {
   addresses: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter
   invoices2: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter
@@ -31021,6 +31120,12 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterAddress
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter!]
   id: IDFilterComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterAddressFilter!]
+}
+
+input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter {
+  and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterHeardAboutUsOptionFilter!]
 }
 
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter {
@@ -45962,9 +46067,9 @@ type Setting {
   digikalaSharePercent: Float!
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean!
+  freeDelivery: Float!
   id: ID!
-  isActive: Boolean!
+  isActive: Float!
   lotteryDraw: Float
   lotteryDrawBrace: Float
   lotteryDrawNumbers: String
@@ -45981,8 +46086,8 @@ type Setting {
   preorderDailyLimit: Float
   preorderFakeCountLow: Float
   preorderFakeMultiplyBy: Float
-  preorderMode: Boolean!
-  preorderNewModeActive: Boolean!
+  preorderMode: Float!
+  preorderNewModeActive: Float!
   preorderNotifyAfterPeriodStartedDays: Float
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Float
@@ -45994,7 +46099,7 @@ type Setting {
   preorderWaitDays: Float
   pricePerMeter: String!
   productionRollId: Float
-  redisWorkerStatus: Boolean!
+  redisWorkerStatus: Float!
   retargetingCommentingReminderDays: Float!
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Float
@@ -46059,9 +46164,9 @@ type SettingDeleteResponse {
   digikalaSharePercent: Float
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean
+  freeDelivery: Float
   id: ID
-  isActive: Boolean
+  isActive: Float
   lotteryDraw: Float
   lotteryDrawBrace: Float
   lotteryDrawNumbers: String
@@ -46078,8 +46183,8 @@ type SettingDeleteResponse {
   preorderDailyLimit: Float
   preorderFakeCountLow: Float
   preorderFakeMultiplyBy: Float
-  preorderMode: Boolean
-  preorderNewModeActive: Boolean
+  preorderMode: Float
+  preorderNewModeActive: Float
   preorderNotifyAfterPeriodStartedDays: Float
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Float
@@ -46091,7 +46196,7 @@ type SettingDeleteResponse {
   preorderWaitDays: Float
   pricePerMeter: String
   productionRollId: Float
-  redisWorkerStatus: Boolean
+  redisWorkerStatus: Float
   retargetingCommentingReminderDays: Float
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Float
@@ -49012,7 +49117,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-05-22T09:14:19.024Z"
+  createdAt: DateTime = "2025-05-23T14:21:14.867Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -49034,7 +49139,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-05-22T09:14:19.036Z"
+  createdAt: DateTime = "2025-05-23T14:21:14.876Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -49049,7 +49154,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-05-22T09:14:19.127Z"
+  createdAt: DateTime = "2025-05-23T14:21:14.908Z"
   description: String
   facebookId: String
   headerImage: String
@@ -49073,7 +49178,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-05-22T09:14:19.037Z"
+  createdAt: DateTime = "2025-05-23T14:21:14.877Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -49090,7 +49195,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-05-22T09:14:19.054Z"
+  createdAt: DateTime = "2025-05-23T14:21:14.887Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -49145,7 +49250,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-05-22T09:14:19.038Z"
+  createdAt: DateTime = "2025-05-23T14:21:14.877Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -56332,9 +56437,9 @@ input UpdateSetting {
   digikalaSharePercent: Float
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean
+  freeDelivery: Float
   id: ID
-  isActive: Boolean
+  isActive: Float
   lotteryDraw: Float
   lotteryDrawBrace: Float
   lotteryDrawNumbers: String
@@ -56351,8 +56456,8 @@ input UpdateSetting {
   preorderDailyLimit: Float
   preorderFakeCountLow: Float
   preorderFakeMultiplyBy: Float
-  preorderMode: Boolean
-  preorderNewModeActive: Boolean
+  preorderMode: Float
+  preorderNewModeActive: Float
   preorderNotifyAfterPeriodStartedDays: Float
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Float
@@ -56364,7 +56469,7 @@ input UpdateSetting {
   preorderWaitDays: Float
   pricePerMeter: String
   productionRollId: Float
-  redisWorkerStatus: Boolean
+  redisWorkerStatus: Float
   retargetingCommentingReminderDays: Float
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Float
@@ -56414,9 +56519,9 @@ input UpdateSettingInput {
   digikalaSharePercent: Float
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean
+  freeDelivery: Float
   id: Int!
-  isActive: Boolean
+  isActive: Float
   lotteryDraw: Float
   lotteryDrawBrace: Float
   lotteryDrawNumbers: String
@@ -56433,8 +56538,8 @@ input UpdateSettingInput {
   preorderDailyLimit: Float
   preorderFakeCountLow: Float
   preorderFakeMultiplyBy: Float
-  preorderMode: Boolean
-  preorderNewModeActive: Boolean
+  preorderMode: Float
+  preorderNewModeActive: Float
   preorderNotifyAfterPeriodStartedDays: Float
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Float
@@ -56446,7 +56551,7 @@ input UpdateSettingInput {
   preorderWaitDays: Float
   pricePerMeter: String
   productionRollId: Float
-  redisWorkerStatus: Boolean
+  redisWorkerStatus: Float
   retargetingCommentingReminderDays: Float
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Float
@@ -57583,7 +57688,13 @@ type User {
   favoriteProducts: [FavoriteProduct!]
   googleFormUtms: [GoogleFormUtm!]
   hafezPoemCount: Float!
-  heardAboutUsOption: HeardAboutUsOption
+  heardAboutUsOption(
+    """Specify to filter the records returned."""
+    filter: HeardAboutUsOptionFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [HeardAboutUsOptionSort!]! = []
+  ): [HeardAboutUsOption!]!
   heardAboutUsOptionId: Float
   helpDesks: HelpDesk
   holidays: [Holiday!]
@@ -57753,6 +57864,7 @@ input UserAggregateFilter {
   addresses: UserAggregateFilterAddressAggregateFilter
   and: [UserAggregateFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: UserAggregateFilterHeardAboutUsOptionAggregateFilter
   id: IDFilterComparison
   invoices: UserAggregateFilterInvoiceAggregateFilter
   invoices2: UserAggregateFilterInvoiceAggregateFilter
@@ -57767,6 +57879,12 @@ input UserAggregateFilterAddressAggregateFilter {
   and: [UserAggregateFilterAddressAggregateFilter!]
   id: IDFilterComparison
   or: [UserAggregateFilterAddressAggregateFilter!]
+}
+
+input UserAggregateFilterHeardAboutUsOptionAggregateFilter {
+  and: [UserAggregateFilterHeardAboutUsOptionAggregateFilter!]
+  id: IDFilterComparison
+  or: [UserAggregateFilterHeardAboutUsOptionAggregateFilter!]
 }
 
 input UserAggregateFilterInvoiceAggregateFilter {
@@ -58509,6 +58627,7 @@ input UserFilter {
   addresses: UserFilterAddressFilter
   and: [UserFilter!]
   createdAt: DateFieldComparison
+  heardAboutUsOption: UserFilterHeardAboutUsOptionFilter
   id: IDFilterComparison
   invoices: UserFilterInvoiceFilter
   invoices2: UserFilterInvoiceFilter
@@ -58523,6 +58642,12 @@ input UserFilterAddressFilter {
   and: [UserFilterAddressFilter!]
   id: IDFilterComparison
   or: [UserFilterAddressFilter!]
+}
+
+input UserFilterHeardAboutUsOptionFilter {
+  and: [UserFilterHeardAboutUsOptionFilter!]
+  id: IDFilterComparison
+  or: [UserFilterHeardAboutUsOptionFilter!]
 }
 
 input UserFilterInvoiceFilter {

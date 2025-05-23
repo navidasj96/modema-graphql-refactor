@@ -1,4 +1,4 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 
 @InputType('CreateSettingInput')
 export class CreateSettingInput {
@@ -42,7 +42,7 @@ export class CreateSettingInput {
   taxRate?: number;
 
   @Field()
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Field({ nullable: true })
   minimumPriceForFreeDelivery: string;
@@ -63,10 +63,10 @@ export class CreateSettingInput {
   padRollRefCode?: string;
 
   @Field()
-  redisWorkerStatus: boolean;
+  redisWorkerStatus: number;
 
   @Field()
-  preorderMode: boolean;
+  preorderMode: number;
 
   @Field({ nullable: true })
   shirazDeliveryRate?: string;
@@ -177,7 +177,7 @@ export class CreateSettingInput {
   maxWastagePercent?: number;
 
   @Field()
-  preorderNewModeActive: boolean;
+  preorderNewModeActive: number;
 
   @Field(() => Number, { nullable: true })
   preorderDailyLimit?: number;
@@ -219,7 +219,7 @@ export class CreateSettingInput {
   preorderFakeMultiplyBy?: number;
 
   @Field()
-  isActive: boolean;
+  isActive: number;
 
   @Field({ nullable: true })
   createdAt?: Date;

@@ -21,6 +21,9 @@ import {
 import { InvoicePermissions } from '@/utils/permissions';
 import { Injectable } from '@nestjs/common';
 import { DataSource, EntityManager, In } from 'typeorm';
+import { Config } from '@/utils/Config';
+import { ShippingServiceService } from '@/modules/shipping-service/shipping-service.service';
+import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -33,7 +36,6 @@ export class ChangeInvoiceStatusProvider {
      * inject AuthService
      */
     private readonly authService: AuthService,
-
     /**
      * inject settingService
      */
@@ -45,12 +47,15 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject invoiceProductItemInvoiceProductStatusService
      */
-    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService
+    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService,
+    /**
+     * inject shippingService
+     */
+    private readonly shippingService: ShippingServiceService
   ) {}
 
   public async updateInvoiceStatus(
     changeInvoicesStatusInput: ChangeInvoicesStatusInput,
-
     context: { req: UserContext }
   ): Promise<ChangeInvoicesStatusResponseDto> {
     const { ids, statusId } = changeInvoicesStatusInput;
@@ -96,6 +101,7 @@ export class ChangeInvoiceStatusProvider {
             },
           },
           visitor: true,
+          user: { heardAboutUsOption: true },
         },
       });
 
@@ -173,7 +179,7 @@ export class ChangeInvoiceStatusProvider {
         status: false,
       };
     }
-
+    console.log('invoice', invoice);
     if (
       invoiceStatusId == InvoiceStatusEnum.AWAITING_PROCESS &&
       status > invoiceStatusId &&
@@ -326,6 +332,18 @@ export class ChangeInvoiceStatusProvider {
       }
       await this.updateInvoiceProductItemsDepotAndProduce(invoice, manager);
     }
+
+    //todo : check what the Config is
+
+    if (status === InvoiceStatusEnum.READY_TO_SEND_CHAPAR) {
+      if (Config.app.CHAPAR_ACTIVE) {
+        const result = await this.shippingService.createShipping(
+          invoice,
+          ShippingServiceEnum.SHIPPING_SERVICE_CHAPAR_GROUND
+        );
+      }
+    }
+
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
       status: true,
@@ -362,6 +380,7 @@ export class ChangeInvoiceStatusProvider {
         };
       }
     }
+
     return {
       message: 'ok',
       status: true,

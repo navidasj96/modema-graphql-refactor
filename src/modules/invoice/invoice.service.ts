@@ -7,6 +7,8 @@ import { CheckSimilarInvoiceWithNameInput } from '@/modules/invoice/dto/check-si
 import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/providers/set-invoice-as-depot-for-digikala';
 import { ChangeInvoiceStatusProvider } from './providers/change-invoices-status.provider';
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
 
 @Injectable()
 export class InvoiceService {
@@ -19,7 +21,11 @@ export class InvoiceService {
     /**
      * inject changeInvoiceStatusProvider
      */
-    private readonly ChangeInvoiceStatusProvider: ChangeInvoiceStatusProvider
+    private readonly changeInvoiceStatusProvider: ChangeInvoiceStatusProvider,
+    /**
+     * inject fillInvoicePackageCountIfEmpty
+     */
+    private readonly fillInvoicePackageCountIfEmptyProvider: FillInvoicePackageCountIfEmptyProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -60,9 +66,15 @@ export class InvoiceService {
     changeInvoicesStatusInput: ChangeInvoicesStatusInput,
     context: { req: UserContext }
   ) {
-    return await this.ChangeInvoiceStatusProvider.updateInvoiceStatus(
+    return await this.changeInvoiceStatusProvider.updateInvoiceStatus(
       changeInvoicesStatusInput,
       context
+    );
+  }
+
+  async fillInvoicePackageCountIfEmpty(invoice: Invoice) {
+    return await this.fillInvoicePackageCountIfEmptyProvider.fillInvoicePackageCountIfEmpty(
+      invoice
     );
   }
 }

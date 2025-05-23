@@ -104,6 +104,7 @@ import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has
 @FilterableRelation('addresses', () => Address)
 @FilterableUnPagedRelation('invoices', () => Invoice)
 @FilterableUnPagedRelation('invoices2', () => Invoice)
+@FilterableUnPagedRelation('heardAboutUsOption', () => HeardAboutUsOption)
 @ObjectType()
 export class User {
   @IDField(() => ID)

@@ -34,4 +34,8 @@ export class SettingService {
   remove(id: number) {
     return `This action removes a #${id} setting`;
   }
+
+  async activeSetting() {
+    return await this.settingRepository.findOne({ where: { isActive: 1 } });
+  }
 }

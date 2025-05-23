@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { InvoiceService } from './invoice.service';
 import { InvoiceResolver } from './invoice.resolver';
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
@@ -13,6 +13,8 @@ import { ChangeInvoiceStatusProvider } from '@/modules/invoice/providers/change-
 import { SettingModule } from '@/modules/setting/setting.module';
 import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice-product-item.module';
 import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.module';
+import { ShippingServiceModule } from '@/modules/shipping-service/shipping-service.module';
+import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
 
 @Module({
   providers: [
@@ -21,6 +23,7 @@ import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-
     CheckSimilarInvoiceWithNameProvider,
     SetInvoiceAsDepotForDigikalaProvider,
     ChangeInvoiceStatusProvider,
+    FillInvoicePackageCountIfEmptyProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -39,6 +42,8 @@ import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-
     SettingModule,
     InvoiceProductItemModule,
     InvoiceProductItemInvoiceProductStatusModule,
+    forwardRef(() => ShippingServiceModule),
   ],
+  exports: [InvoiceService],
 })
 export class InvoiceModule {}

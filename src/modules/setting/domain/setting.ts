@@ -1,5 +1,5 @@
-import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
-import { IDField, FilterableField } from '@ptc-org/nestjs-query-graphql';
+import { Field, Float, ID, ObjectType } from '@nestjs/graphql';
+import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
 
 @ObjectType()
 export class Setting {
@@ -43,7 +43,7 @@ export class Setting {
   taxRate?: number;
 
   @Field()
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Field({ nullable: true })
   minimumPriceForFreeDelivery: string;
@@ -64,10 +64,10 @@ export class Setting {
   padRollRefCode?: string;
 
   @Field()
-  redisWorkerStatus: boolean;
+  redisWorkerStatus: number;
 
   @Field()
-  preorderMode: boolean;
+  preorderMode: number;
 
   @Field({ nullable: true })
   shirazDeliveryRate?: string;
@@ -178,7 +178,7 @@ export class Setting {
   maxWastagePercent?: number;
 
   @Field()
-  preorderNewModeActive: boolean;
+  preorderNewModeActive: number;
 
   @Field(() => Number, { nullable: true })
   preorderDailyLimit?: number;
@@ -220,7 +220,7 @@ export class Setting {
   preorderFakeMultiplyBy?: number;
 
   @Field()
-  isActive: boolean;
+  isActive: number;
 
   @Field({ nullable: true })
   createdAt?: Date;

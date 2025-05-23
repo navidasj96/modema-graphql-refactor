@@ -88,7 +88,7 @@ export class Setting {
   taxRate: number | null;
 
   @Column('tinyint', { name: 'free_delivery', width: 1, default: () => "'1'" })
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Column('decimal', {
     name: 'minimum_price_for_free_delivery',
@@ -132,10 +132,10 @@ export class Setting {
     width: 1,
     default: () => "'0'",
   })
-  redisWorkerStatus: boolean;
+  redisWorkerStatus: number;
 
   @Column('tinyint', { name: 'preorder_mode', width: 1, default: () => "'0'" })
-  preorderMode: boolean;
+  preorderMode: number;
 
   @Column('decimal', {
     name: 'shiraz_delivery_rate',
@@ -361,7 +361,7 @@ export class Setting {
     width: 1,
     default: () => "'0'",
   })
-  preorderNewModeActive: boolean;
+  preorderNewModeActive: number;
 
   @Column('int', {
     name: 'preorder_daily_limit',
@@ -453,7 +453,7 @@ export class Setting {
   preorderFakeMultiplyBy: number | null;
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
-  isActive: boolean;
+  isActive: number;
 
   @Column('timestamp', { name: 'created_at', nullable: true })
   createdAt: Date | null;
