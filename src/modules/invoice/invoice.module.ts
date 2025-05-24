@@ -15,6 +15,9 @@ import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice
 import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.module';
 import { ShippingServiceModule } from '@/modules/shipping-service/shipping-service.module';
 import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
+import { VisitorModule } from '@/modules/visitor/visitor.module';
+import { QueueModule } from '@/modules/queue/queue.module';
+import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.module';
 
 @Module({
   providers: [
@@ -42,6 +45,9 @@ import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/provid
     SettingModule,
     InvoiceProductItemModule,
     InvoiceProductItemInvoiceProductStatusModule,
+    VisitorModule,
+    QueueModule,
+    InvoiceProductModule,
     forwardRef(() => ShippingServiceModule),
   ],
   exports: [InvoiceService],

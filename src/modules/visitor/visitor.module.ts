@@ -21,5 +21,6 @@ import { CreateVisitorInput } from '@/modules/visitor/dto/create-visitor.input';
       ],
     }),
   ],
+  exports: [VisitorService],
 })
 export class VisitorModule {}

@@ -92,6 +92,8 @@ import { ImageModule } from './modules/image/image.module';
 import { UserModule } from '@/modules/user/user.module';
 import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
 import databaseConfig from '@/configuration/database.config';
+import redisConfig from '@/configuration/redis.config';
+import generalConfig from '@/configuration/general-config';
 import {
   ConfigModule as ConfigModuleNest,
   ConfigService as ConfigServiceNest,
@@ -278,16 +280,32 @@ import { AuthenticationGuard } from '@/modules/auth/guards/authentication/authen
 import { APP_GUARD } from '@nestjs/core';
 import { SettingModule } from '@/modules/setting/setting.module';
 import { SettingsHistoryModule } from '@/modules/settings-history/settings-history.module';
+import { ExternalApiModule } from './modules/external-api/external-api.module';
+import { SmsModule } from './modules/sms/sms.module';
+import { BullModule } from '@nestjs/bull';
+import { QueueModule } from './modules/queue/queue.module';
 
 const ENV = process.env.NODE_ENV;
 console.log('ENV', ENV);
 
 @Module({
   imports: [
+    BullModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigServiceNest],
+      useFactory: (configService: ConfigServiceNest) => ({
+        redis: {
+          host: configService.get('redis.host'),
+          port: +configService.get('redis.port'),
+        },
+      }),
+    }),
+
     ConfigModuleNest.forRoot({
       isGlobal: true,
+      // validationSchema: validationSchema,
       envFilePath: [!ENV ? '.env' : `.env.${ENV}`],
-      load: [databaseConfig],
+      load: [databaseConfig, generalConfig],
     }),
 
     TypeOrmModule.forRootAsync({
@@ -602,6 +620,9 @@ console.log('ENV', ENV);
     ConfigModuleNest.forFeature(jwtConfig),
     SettingModule,
     SettingsHistoryModule,
+    ExternalApiModule,
+    SmsModule,
+    QueueModule,
   ],
   controllers: [AppController, UserController],
   providers: [

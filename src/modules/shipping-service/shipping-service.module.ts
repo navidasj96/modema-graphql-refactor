@@ -9,6 +9,7 @@ import { CreateShippingServiceInput } from '@/modules/shipping-service/dto/creat
 import { CreateShipmentChaparProvider } from '@/modules/shipping-service/providers/create-shipment-chapar.provider';
 import { InvoiceModule } from '@/modules/invoice/invoice.module';
 import { InvoicePaymentModule } from '@/modules/invoice-payment/invoice-payment.module';
+import { ExternalApiModule } from '@/modules/external-api/external-api.module';
 
 @Module({
   providers: [
@@ -29,6 +30,7 @@ import { InvoicePaymentModule } from '@/modules/invoice-payment/invoice-payment.
     }),
     InvoicePaymentModule,
     forwardRef(() => InvoiceModule),
+    ExternalApiModule,
   ],
   exports: [ShippingServiceService],
 })

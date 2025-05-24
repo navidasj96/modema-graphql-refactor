@@ -33,7 +33,7 @@ export class InvoiceProductItemInvoiceProductStatus {
   userId: number;
 
   @Column('varchar', { name: 'comment', nullable: true, length: 191 })
-  comment?: string;
+  comment?: string | null;
 
   @Column('timestamp', {
     name: 'created_at',
@@ -51,7 +51,7 @@ export class InvoiceProductItemInvoiceProductStatus {
     () => InvoiceProductItem,
     (invoiceProductItem) =>
       invoiceProductItem.invoiceProductItemInvoiceProductStatuses,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_item_id', referencedColumnName: 'id' }])
   invoiceProductItem: InvoiceProductItem;
@@ -60,7 +60,7 @@ export class InvoiceProductItemInvoiceProductStatus {
     () => InvoiceProductStatus,
     (invoiceProductStatuse) =>
       invoiceProductStatuse.invoiceProductItemInvoiceProductStatuses,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'invoice_product_status_id', referencedColumnName: 'id' },
@@ -70,7 +70,7 @@ export class InvoiceProductItemInvoiceProductStatus {
   @ManyToOne(
     () => User,
     (user) => user.invoiceProductItemInvoiceProductStatuses,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
   user: User;

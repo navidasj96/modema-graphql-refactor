@@ -1,9 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { CreateVisitorInput } from './dto/create-visitor.input';
 import { UpdateVisitorInput } from './dto/update-visitor.input';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
+import { EntityManager, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class VisitorService {
+  constructor(
+    /**
+     * inject visitorRepository
+     */
+    @InjectRepository(Visitor)
+    private readonly visitorRepository: Repository<Visitor>
+  ) {}
   create(createVisitorInput: CreateVisitorInput) {
     return 'This action adds a new visitor';
   }
@@ -22,5 +32,11 @@ export class VisitorService {
 
   remove(id: number) {
     return `This action removes a #${id} visitor`;
+  }
+  async save(visitor: Visitor, manager?: EntityManager) {
+    const repository = manager
+      ? manager.getRepository(Visitor)
+      : this.visitorRepository;
+    return await repository.save(visitor);
   }
 }

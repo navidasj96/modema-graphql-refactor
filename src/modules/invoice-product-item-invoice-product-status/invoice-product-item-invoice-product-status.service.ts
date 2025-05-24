@@ -45,7 +45,7 @@ export class InvoiceProductItemInvoiceProductStatusService {
     invoiceProductItemId: number,
     currentStatusId: number,
     userId: number,
-    comment: string,
+    comment: string | null,
     manager?: EntityManager
   ) {
     const repository = manager

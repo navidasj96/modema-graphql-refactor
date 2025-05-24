@@ -64,7 +64,7 @@ export class CreateInvoiceProductInput {
   totalDiscount?: string;
 
   @Field()
-  isCouponApplicable: boolean;
+  isCouponApplicable: number;
 
   @Field({ nullable: true })
   totalCouponDiscount?: string;
@@ -76,7 +76,7 @@ export class CreateInvoiceProductInput {
   designerPriceShare?: number;
 
   @Field()
-  withPad: boolean;
+  withPad: number;
 
   @Field({ nullable: true })
   padId?: number;
@@ -88,7 +88,7 @@ export class CreateInvoiceProductInput {
   relatedSubproductId?: number;
 
   @Field()
-  invoiceProductItemsCreated: boolean;
+  invoiceProductItemsCreated: number;
 
   @Field({ nullable: true })
   itemsToProduce?: number;
@@ -109,7 +109,7 @@ export class CreateInvoiceProductInput {
   updatedAt?: Date;
 
   @Field()
-  tempDepotItemsCreated: boolean;
+  tempDepotItemsCreated: number;
 
   @Field({ nullable: true })
   sepidarId?: number;
@@ -118,7 +118,7 @@ export class CreateInvoiceProductInput {
   gift: number;
 
   @Field()
-  manuallyAdded: boolean;
+  manuallyAdded: number;
 
   @Field(() => [CarpetUsagePlaceInvoiceProduct], { nullable: true })
   carpetUsagePlaceInvoiceProducts?: CarpetUsagePlaceInvoiceProduct[];

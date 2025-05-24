@@ -9,7 +9,9 @@ import { ChangeInvoiceStatusProvider } from './providers/change-invoices-status.
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
-
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 @Injectable()
 export class InvoiceService {
   constructor(
@@ -25,7 +27,12 @@ export class InvoiceService {
     /**
      * inject fillInvoicePackageCountIfEmpty
      */
-    private readonly fillInvoicePackageCountIfEmptyProvider: FillInvoicePackageCountIfEmptyProvider
+    private readonly fillInvoicePackageCountIfEmptyProvider: FillInvoicePackageCountIfEmptyProvider,
+    /**
+     * inject invoiceRepository
+     */
+    @InjectRepository(Invoice)
+    private readonly invoiceRepository: Repository<Invoice>
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -36,8 +43,8 @@ export class InvoiceService {
     return `This action returns all invoice`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} invoice`;
+  async findOne(options: FindOneOptions<Invoice>) {
+    return await this.invoiceRepository.findOne(options);
   }
 
   update(id: number, updateInvoiceInput: UpdateInvoiceInput) {

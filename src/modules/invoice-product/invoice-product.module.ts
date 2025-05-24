@@ -21,5 +21,6 @@ import { CreateInvoiceProductInput } from '@/modules/invoice-product/dto/create-
       ],
     }),
   ],
+  exports: [InvoiceProductService],
 })
 export class InvoiceProductModule {}

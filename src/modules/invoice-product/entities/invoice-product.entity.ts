@@ -26,7 +26,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'invoice_products_idx1_unique',
   ['invoiceId', 'subproductId', 'withPad', 'padId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('invoice_products_invoice_id_index', ['invoiceId'], {})
 @Index('invoice_products_pad_id_index', ['padId'], {})
@@ -35,7 +35,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'invoice_products_related_subproduct_id_index',
   ['relatedSubproductId'],
-  {},
+  {}
 )
 @Index('invoice_products_subproduct_id_index', ['subproductId'], {})
 @Entity('invoice_products', { schema: 'modema' })
@@ -129,7 +129,7 @@ export class InvoiceProduct {
     width: 1,
     default: () => "'0'",
   })
-  isCouponApplicable: boolean;
+  isCouponApplicable: number;
 
   @Column('decimal', {
     name: 'total_coupon_discount',
@@ -156,7 +156,7 @@ export class InvoiceProduct {
   designerPriceShare?: number;
 
   @Column('tinyint', { name: 'with_pad', width: 1, default: () => "'0'" })
-  withPad: boolean;
+  withPad: number;
 
   @Column('int', { name: 'pad_id', nullable: true, unsigned: true })
   padId?: number;
@@ -176,7 +176,7 @@ export class InvoiceProduct {
     width: 1,
     default: () => "'0'",
   })
-  invoiceProductItemsCreated: boolean;
+  invoiceProductItemsCreated: number;
 
   @Column('int', { name: 'items_to_produce', nullable: true })
   itemsToProduce?: number;
@@ -201,7 +201,7 @@ export class InvoiceProduct {
     width: 1,
     default: () => "'0'",
   })
-  tempDepotItemsCreated: boolean;
+  tempDepotItemsCreated: number;
 
   @Column('int', { name: 'sepidar_id', nullable: true })
   sepidarId?: number;
@@ -210,24 +210,24 @@ export class InvoiceProduct {
   gift: number;
 
   @Column('tinyint', { name: 'manually_added', width: 1, default: () => "'0'" })
-  manuallyAdded: boolean;
+  manuallyAdded: number;
 
   @OneToMany(
     () => CarpetUsagePlaceInvoiceProduct,
     (carpetUsagePlaceInvoiceProduct) =>
-      carpetUsagePlaceInvoiceProduct.invoiceProduct,
+      carpetUsagePlaceInvoiceProduct.invoiceProduct
   )
   carpetUsagePlaceInvoiceProducts: CarpetUsagePlaceInvoiceProduct[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.invoiceProduct,
+    (invoiceProductHistory) => invoiceProductHistory.invoiceProduct
   )
   invoiceProductHistories: InvoiceProductHistory[];
 
   @OneToMany(
     () => InvoiceProductItem,
-    (invoiceProductItem) => invoiceProductItem.invoiceProduct,
+    (invoiceProductItem) => invoiceProductItem.invoiceProduct
   )
   invoiceProductItems: InvoiceProductItem[];
 
@@ -289,31 +289,31 @@ export class InvoiceProduct {
 
   @OneToMany(
     () => InvoiceReversalItem,
-    (invoiceReversalItem) => invoiceReversalItem.invoiceProduct,
+    (invoiceReversalItem) => invoiceReversalItem.invoiceProduct
   )
   invoiceReversalItems: InvoiceReversalItem[];
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.invoiceProduct,
+    (returnRequestItemHistory) => returnRequestItemHistory.invoiceProduct
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItem,
-    (returnRequestItem) => returnRequestItem.invoiceProduct,
+    (returnRequestItem) => returnRequestItem.invoiceProduct
   )
   returnRequestItems: ReturnRequestItem[];
 
   @OneToMany(
     () => ReturnedInvoiceProduct,
-    (returnedInvoiceProduct) => returnedInvoiceProduct.invoiceProduct,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.invoiceProduct
   )
   returnedInvoiceProducts: ReturnedInvoiceProduct[];
 
   @OneToMany(
     () => SubproductStockHistory,
-    (subproductStockHistory) => subproductStockHistory.invoiceProduct,
+    (subproductStockHistory) => subproductStockHistory.invoiceProduct
   )
   subproductStockHistories: SubproductStockHistory[];
 }

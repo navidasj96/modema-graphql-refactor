@@ -106,7 +106,7 @@ export class InvoiceProduct {
   totalDiscount?: string;
 
   @Field()
-  isCouponApplicable: boolean;
+  isCouponApplicable: number;
 
   @Field({ nullable: true })
   totalCouponDiscount?: string;
@@ -118,7 +118,7 @@ export class InvoiceProduct {
   designerPriceShare?: number;
 
   @Field()
-  withPad: boolean;
+  withPad: number;
 
   @Field({ nullable: true })
   padId?: number;
@@ -130,7 +130,7 @@ export class InvoiceProduct {
   relatedSubproductId?: number;
 
   @Field()
-  invoiceProductItemsCreated: boolean;
+  invoiceProductItemsCreated: number;
 
   @Field({ nullable: true })
   itemsToProduce?: number;
@@ -151,7 +151,7 @@ export class InvoiceProduct {
   updatedAt?: Date;
 
   @Field()
-  tempDepotItemsCreated: boolean;
+  tempDepotItemsCreated: number;
 
   @Field({ nullable: true })
   sepidarId?: number;
@@ -160,7 +160,7 @@ export class InvoiceProduct {
   gift: number;
 
   @Field()
-  manuallyAdded: boolean;
+  manuallyAdded: number;
 
   @Field(() => [CarpetUsagePlaceInvoiceProduct], { nullable: true })
   carpetUsagePlaceInvoiceProducts?: CarpetUsagePlaceInvoiceProduct[];

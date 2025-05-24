@@ -21,9 +21,19 @@ import {
 import { InvoicePermissions } from '@/utils/permissions';
 import { Injectable } from '@nestjs/common';
 import { DataSource, EntityManager, In } from 'typeorm';
-import { Config } from '@/utils/Config';
 import { ShippingServiceService } from '@/modules/shipping-service/shipping-service.service';
 import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
+import { ConfigService } from '@nestjs/config';
+import { VisitorService } from '@/modules/visitor/visitor.service';
+import { InjectQueue } from '@nestjs/bull';
+import { Job } from '@/modules/job/domain/job';
+import { JobsEnum } from '@/jobs/enum/jobsEnum';
+import { Queue } from 'bull';
+import { User } from '@/modules/user/entities/user.entity';
+import { Subproduct } from '../../subproduct/entities/subproduct.entity';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { InvoiceProductService } from '@/modules/invoice-product/invoice-product.service';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -51,7 +61,24 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject shippingService
      */
-    private readonly shippingService: ShippingServiceService
+    private readonly shippingService: ShippingServiceService,
+    /**
+     * inject configService
+     */
+    private readonly configService: ConfigService,
+    /**
+     * inject visitorService
+     */
+    private readonly visitorService: VisitorService,
+    /**
+     * inject queue
+     */
+    @InjectQueue(JobsEnum.Invoice_Tracking_Code_Notification)
+    private readonly queue: Queue,
+    /**
+     * inject invoiceProductsService
+     */
+    private readonly invoiceProductsService: InvoiceProductService
   ) {}
 
   public async updateInvoiceStatus(
@@ -164,7 +191,6 @@ export class ChangeInvoiceStatusProvider {
     const invoiceProducts = invoice.invoiceProducts;
     const invoiceStatusId = invoice.currentInvoiceStatusId;
     //we will update parameters of invoice and then will save it as the updated invoice
-    let updatedInvocie = invoice;
 
     if (invoiceStatusId == InvoiceStatusEnum.DELIVERED) {
       return {
@@ -179,7 +205,6 @@ export class ChangeInvoiceStatusProvider {
         status: false,
       };
     }
-    console.log('invoice', invoice);
     if (
       invoiceStatusId == InvoiceStatusEnum.AWAITING_PROCESS &&
       status > invoiceStatusId &&
@@ -291,7 +316,7 @@ export class ChangeInvoiceStatusProvider {
         ]) &&
         checkUserHasRole(roles, [RolesNameEnum.ADMINISTRATOR])
       ) {
-        updatedInvocie.isReversible = 0;
+        invoice.isReversible = 0;
       } else if (invoice.isDepot == 0) {
         return {
           message: `
@@ -334,14 +359,80 @@ export class ChangeInvoiceStatusProvider {
     }
 
     //todo : check what the Config is
-
     if (status === InvoiceStatusEnum.READY_TO_SEND_CHAPAR) {
-      if (Config.app.CHAPAR_ACTIVE) {
+      if (this.configService.get('general.CHAPAR_ACTIVE') == true) {
         const result = await this.shippingService.createShipping(
           invoice,
           ShippingServiceEnum.SHIPPING_SERVICE_CHAPAR_GROUND
         );
       }
+
+      //todo : add mahex shipping if its available
+
+      // if selected invoice status is ready_to_send then call tipax API
+    } else if (status == InvoiceStatusEnum.READY_TO_SEND_TIPAX) {
+      invoice.trackingCode = '-';
+      invoice.isChaparDelivery = 0;
+      invoice.selectedShippingServiceId =
+        ShippingServiceEnum.SHIPPING_SERVICE_TIPAX;
+    } else if (status == InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS) {
+      invoice.trackingCode = '-';
+      invoice.isChaparDelivery = 0;
+      invoice.selectedShippingServiceId =
+        ShippingServiceEnum.SHIPPING_SERVICE_MODEMA_EXPRESS;
+    }
+
+    // calculate visitors share if the invoice is finalized at our end
+    if (
+      status == InvoiceStatusEnum.READY_TO_SEND_CHAPAR ||
+      status == InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS ||
+      status == InvoiceStatusEnum.READY_TO_SEND_MAHEX ||
+      status == InvoiceStatusEnum.READY_TO_SEND_TIPAX ||
+      status == InvoiceStatusEnum.SENT ||
+      status == InvoiceStatusEnum.DELIVERED
+    ) {
+      const visitorShareCalculated = await this.calulateVisitorShare(invoice);
+
+      if (!visitorShareCalculated) {
+        return {
+          message:
+            'ذخیره سهم بازاریاب از صورتحساب انتخابی با مشکل مواجه شد. لطفا دوباره اطلاعات را ذخیره نمایید و در صورت خطای مجدد با بخش پشتیبانی تماس حاصل نمایید.',
+          status: false,
+        };
+      }
+    }
+
+    if (
+      status == InvoiceStatusEnum.SENT ||
+      status == InvoiceStatusEnum.DELIVERED ||
+      status == InvoiceStatusEnum.CANCEL
+    ) {
+      invoice.isReversible = 0;
+    }
+
+    if (status == InvoiceStatusEnum.SENT) {
+      invoice.canReturn = 1;
+      if (
+        invoice.invoicePaymentStatusId &&
+        ![
+          InvoicePaymentStatusEnum.DIGIKALA_ORDERS,
+          InvoicePaymentStatusEnum.BA_SALAM_ORDERS,
+        ].includes(invoice.invoicePaymentStatusId)
+      ) {
+        if (
+          invoice.isChaparDelivery == 1 ||
+          invoice.selectedShippingServiceId ==
+            ShippingServiceEnum.SHIPPING_SERVICE_MAHEX_DOOR_TO_DOOR
+        ) {
+          await this.queue.add(JobsEnum.Invoice_Tracking_Code_Notification, {
+            invoiceId: invoice.id,
+          });
+        }
+      }
+    }
+
+    if (status == InvoiceStatusEnum.PREPARING_PRODUCTS) {
+      this.checkAndCreateInvoiceProductItems(invoice, invoice.user, manager);
     }
 
     return {
@@ -511,5 +602,103 @@ export class ChangeInvoiceStatusProvider {
         );
       }
     }
+  }
+
+  public async calulateVisitorShare(invoice: Invoice, manager?: EntityManager) {
+    const visitorShareCalculated = invoice.visitorShareCalculated;
+    const visitorCouponId = invoice.visitorCouponId;
+    const partner_code = invoice.partnerCode;
+    const totalVisitorShare = invoice.totalVisitorShare || 0;
+    const visitor = invoice.visitor;
+    if ((visitorCouponId || partner_code) && !visitorShareCalculated) {
+      visitor.balance && (visitor.balance += totalVisitorShare);
+
+      const visitorSaveResponse = await this.visitorService.save(
+        visitor,
+        manager
+      );
+
+      if (visitorSaveResponse) {
+        invoice.visitorShareCalculated = 1;
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public async checkAndCreateInvoiceProductItems(
+    invoice: Invoice,
+    user: User,
+    manager: EntityManager
+  ) {
+    const invoiceProducts = invoice.invoiceProducts;
+    for (const invoiceProduct of invoiceProducts) {
+      const Subproduct = invoiceProduct.subproduct;
+      const product = Subproduct.product;
+      let row = 1;
+      if (product.isCarpetPad == 0) {
+        if (invoiceProduct.invoiceProductItemsCreated == 0) {
+          if (invoiceProduct.itemsToProduce) {
+            for (; row <= invoiceProduct.itemsToProduce; row++) {
+              const invoiceProductItem = new InvoiceProductItem();
+              invoiceProductItem.row = row;
+              invoiceProductItem.invoiceProductId = invoiceProduct.id;
+              invoiceProductItem.currentStatusId =
+                InvoiceProductStatusEnum.BEGIN_PRODUCTION;
+              invoiceProductItem.code = `${invoice.invoiceNumber}_${Subproduct.id}_${row}`;
+              await this.invoiceProductItemService.save(
+                invoiceProductItem,
+                manager
+              );
+            }
+          }
+        }
+        const otherSameInvoiceProduct = invoice.invoiceProducts.find(
+          (invoiceProductInner) =>
+            invoiceProductInner.id != invoiceProduct.id &&
+            invoiceProductInner.subproductId == Subproduct.id
+        );
+
+        if (
+          otherSameInvoiceProduct &&
+          otherSameInvoiceProduct.invoiceProductItemsCreated == 0
+        ) {
+          const lastRowPlusOne = row;
+          for (
+            ;
+            row <
+            lastRowPlusOne + (otherSameInvoiceProduct.itemsToProduce || 0);
+            row++
+          ) {
+            const invoiceProductItem = new InvoiceProductItem();
+            invoiceProductItem.row = row;
+            invoiceProductItem.invoiceProductId = otherSameInvoiceProduct.id;
+            invoiceProductItem.currentStatusId =
+              InvoiceProductStatusEnum.BEGIN_PRODUCTION;
+            invoiceProductItem.code = `${invoice.invoiceNumber}_${Subproduct.id}_${row}`;
+            await this.invoiceProductItemService.save(
+              invoiceProductItem,
+              manager
+            );
+
+            await this.invoiceProductItemInvoiceProductStatusService.attach(
+              invoiceProductItem.id,
+              invoiceProductItem.currentStatusId,
+              user.id,
+              null,
+              manager
+            );
+          }
+          otherSameInvoiceProduct.invoiceProductItemsCreated = 1;
+          await this.invoiceProductsService.save(
+            otherSameInvoiceProduct,
+            manager
+          );
+        }
+      }
+    }
+    return true;
   }
 }

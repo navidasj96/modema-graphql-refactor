@@ -5,6 +5,7 @@ import { CityIds } from '@/utils/City-ids';
 import { InvoiceStatusEnum } from '@/utils/invoice-status';
 import { InvoicePaymentStatusEnum } from '@/utils/invoice-payment-status';
 import { InvoicePaymentService } from '@/modules/invoice-payment/invoice-payment.service';
+import { ExternalApiService } from '@/modules/external-api/external-api.service';
 
 @Injectable()
 export class CreateShipmentChaparProvider {
@@ -17,12 +18,17 @@ export class CreateShipmentChaparProvider {
     /**
      * inject invoicePaymentService
      */
-    private readonly invoicePaymentService: InvoicePaymentService
+    private readonly invoicePaymentService: InvoicePaymentService,
+
+    /**
+     * inject externalApiService
+     */
+    private readonly externalApiService: ExternalApiService
   ) {}
 
   async createShipmentChapar(invoice: Invoice) {
     let updatedInvoice = invoice;
-    const invoiceAddress = invoice.invoiceAddresses;
+    const invoiceAddress = invoice.invoiceAddresses[0];
     const packageCountResults =
       await this.invoiceService.fillInvoicePackageCountIfEmpty(invoice);
     let totalVolume = packageCountResults.totalVolume;
@@ -118,5 +124,18 @@ export class CreateShipmentChaparProvider {
     } else {
       paymentType = 1;
     }
+
+    return await this.externalApiService.sendToChapar({
+      invoice,
+      invoiceAddress,
+      options: {
+        assignedPieces,
+        service,
+        value,
+        paymentType,
+        weight,
+        inv_value,
+      },
+    });
   }
 }
