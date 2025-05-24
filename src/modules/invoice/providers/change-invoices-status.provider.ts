@@ -20,20 +20,18 @@ import {
 } from '@/utils/invoice-status';
 import { InvoicePermissions } from '@/utils/permissions';
 import { Injectable } from '@nestjs/common';
-import { DataSource, EntityManager, In } from 'typeorm';
+import { DataSource, EntityManager, In, IsNull, Repository } from 'typeorm';
 import { ShippingServiceService } from '@/modules/shipping-service/shipping-service.service';
 import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { ConfigService } from '@nestjs/config';
 import { VisitorService } from '@/modules/visitor/visitor.service';
 import { InjectQueue } from '@nestjs/bull';
-import { Job } from '@/modules/job/domain/job';
 import { JobsEnum } from '@/jobs/enum/jobsEnum';
 import { Queue } from 'bull';
 import { User } from '@/modules/user/entities/user.entity';
-import { Subproduct } from '../../subproduct/entities/subproduct.entity';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
-import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
 import { InvoiceProductService } from '@/modules/invoice-product/invoice-product.service';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -78,14 +76,19 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject invoiceProductsService
      */
-    private readonly invoiceProductsService: InvoiceProductService
+    private readonly invoiceProductsService: InvoiceProductService,
+    /**
+     * inject invoiceRepository
+     */
+    @InjectRepository(Invoice)
+    private readonly invoiceRepository: Repository<Invoice>
   ) {}
 
   public async updateInvoiceStatus(
     changeInvoicesStatusInput: ChangeInvoicesStatusInput,
     context: { req: UserContext }
   ): Promise<ChangeInvoicesStatusResponseDto> {
-    const { ids, statusId } = changeInvoicesStatusInput;
+    let { ids, statusId } = changeInvoicesStatusInput;
     const { req } = context;
 
     //check user permission
@@ -124,6 +127,7 @@ export class ChangeInvoiceStatusProvider {
           invoiceProducts: {
             product: true,
             subproduct: {
+              product: true,
               basicCarpetSize: true,
             },
           },
@@ -163,6 +167,7 @@ export class ChangeInvoiceStatusProvider {
             status: false,
           };
         }
+        await queryRunner.commitTransaction();
       }
     } catch (error) {
       await queryRunner.rollbackTransaction();
@@ -186,8 +191,12 @@ export class ChangeInvoiceStatusProvider {
     permissions: string[],
     manager: EntityManager
   ): Promise<ChangeInvoicesStatusResponseDto> {
+    const repository = manager
+      ? manager.getRepository(Invoice)
+      : this.invoiceRepository;
     const invoiceUser = invoice.user;
     const setting = await this.settingService.findAll();
+    let comment = '';
     const invoiceProducts = invoice.invoiceProducts;
     const invoiceStatusId = invoice.currentInvoiceStatusId;
     //we will update parameters of invoice and then will save it as the updated invoice
@@ -210,7 +219,7 @@ export class ChangeInvoiceStatusProvider {
       status > invoiceStatusId &&
       status != InvoiceStatusEnum.CANCEL
     ) {
-      if (!invoiceUser.heardAboutUsOption?.id) {
+      if (!invoiceUser.heardAboutUsOptionId) {
         return {
           message: `
                 برای مشتری مربوط به صورتحساب
@@ -291,7 +300,7 @@ export class ChangeInvoiceStatusProvider {
         manager
       );
 
-      if (result.status == false) {
+      if (!result.status) {
         return {
           message: result.message,
           status: false,
@@ -317,7 +326,7 @@ export class ChangeInvoiceStatusProvider {
         checkUserHasRole(roles, [RolesNameEnum.ADMINISTRATOR])
       ) {
         invoice.isReversible = 0;
-      } else if (invoice.isDepot == 0) {
+      } else if (invoice.isDepot == 1) {
         return {
           message: `
                       صورتحساب 
@@ -328,9 +337,7 @@ export class ChangeInvoiceStatusProvider {
                         `,
           status: false,
         };
-      } else if (
-        status == (InvoiceStatusEnum.ADDED_TO_DEPOT_INVENTORY as number)
-      ) {
+      } else if (status == InvoiceStatusEnum.ADDED_TO_DEPOT_INVENTORY) {
         if (invoice.isDepot == 0) {
           return {
             message: `
@@ -432,8 +439,41 @@ export class ChangeInvoiceStatusProvider {
     }
 
     if (status == InvoiceStatusEnum.PREPARING_PRODUCTS) {
-      this.checkAndCreateInvoiceProductItems(invoice, invoice.user, manager);
+      await this.checkAndCreateInvoiceProductItems(
+        invoice,
+        invoice.user,
+        manager
+      );
     }
+
+    //todo complete cancel snapp if needed
+    if (status == InvoiceStatusEnum.CANCEL) {
+      const cancelSnappPaymentResult = await this.checkAndCancelSnappPayment(
+        invoice,
+        manager
+      );
+    }
+
+    let invoiceContainsPadsOnly = true;
+
+    for (const invoiceProduct of invoiceProducts) {
+      const product = invoiceProduct.product;
+      if (product.isCarpetPad == 0) {
+        invoiceContainsPadsOnly = false;
+        break;
+      }
+      if (invoiceContainsPadsOnly) {
+        invoice.containsPadsOnly = 1;
+        if (status == InvoiceStatusEnum.REFERRED_TO_PRODUCTION_DEPARTMENT) {
+          status = InvoiceStatusEnum.PRODUCTION_COMPLETED;
+          comment =
+            'تغییر وضعیت فاکتور به تحویل بسته بندی، به دلیل اینکه صورتحساب تنها شامل پد است.';
+        }
+      }
+    }
+
+    invoice.currentInvoiceStatusId = status;
+    await repository.save(invoice);
 
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
@@ -493,7 +533,7 @@ export class ChangeInvoiceStatusProvider {
         }
       }
     }
-    if (itemsFromDepotAndToProduceSpecified == false) {
+    if (!itemsFromDepotAndToProduceSpecified) {
       return {
         message: `
                  تعداد آیتم های صورتحساب
@@ -525,13 +565,20 @@ export class ChangeInvoiceStatusProvider {
       for (const invoiceProductItem of invoiceProductItems) {
         const currentStatusId = invoiceProductItem.currentStatusId;
         const invoiceProductItemId = invoiceProductItem.id;
-
+        invoiceProductItem.currentStatusId =
+          InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY;
         try {
-          await this.invoiceProductItemService.updateCurrentStatusId(
+          // await this.invoiceProductItemService.updateCurrentStatusId(
+          //   invoiceProductItem,
+          //   InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY,
+          //   manager
+          // );
+          await this.invoiceProductItemService.save(
             invoiceProductItem,
-            InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY,
             manager
           );
+
+          //todo:double check the attach functionality
           await this.invoiceProductItemInvoiceProductStatusService.attach(
             invoiceProductItemId,
             currentStatusId,
@@ -560,10 +607,10 @@ export class ChangeInvoiceStatusProvider {
       const itemsFromDepot = invoiceProduct.itemsFromDepot;
 
       const invoiceProductItemsToProduce =
-        await this.invoiceProductItemService.getNonDepotInvoiceProductItems(
-          invoiceProduct.id,
-          itemsToProduce
-        );
+        await this.invoiceProductItemService.findAll({
+          where: { id: invoiceProduct.id, fromDepot: IsNull() },
+          take: itemsToProduce,
+        });
 
       for (const invoiceProductItem of invoiceProductItemsToProduce) {
         let updatedInvoiceProductItem = invoiceProductItem;
@@ -578,10 +625,10 @@ export class ChangeInvoiceStatusProvider {
       }
 
       const invoiceProductItemsFromDepot =
-        await this.invoiceProductItemService.getNonDepotInvoiceProductItems(
-          invoiceProduct.id,
-          itemsFromDepot
-        );
+        await this.invoiceProductItemService.findAll({
+          where: { id: invoiceProduct.id, fromDepot: IsNull() },
+          take: itemsToProduce,
+        });
 
       for (const invoiceProductItem of invoiceProductItemsFromDepot) {
         let updatedInvoiceProductItem = invoiceProductItem;
@@ -652,13 +699,22 @@ export class ChangeInvoiceStatusProvider {
                 invoiceProductItem,
                 manager
               );
+              await this.invoiceProductItemInvoiceProductStatusService.attach(
+                invoiceProductItem.id,
+                invoiceProductItem.currentStatusId,
+                user.id,
+                null,
+                manager
+              );
             }
           }
+          invoiceProduct.invoiceProductItemsCreated = 1;
+          await this.invoiceProductsService.save(invoiceProduct, manager);
         }
         const otherSameInvoiceProduct = invoice.invoiceProducts.find(
           (invoiceProductInner) =>
             invoiceProductInner.id != invoiceProduct.id &&
-            invoiceProductInner.subproductId == Subproduct.id
+            invoiceProductInner.subproductId == invoiceProduct.subproductId
         );
 
         if (
@@ -701,4 +757,9 @@ export class ChangeInvoiceStatusProvider {
     }
     return true;
   }
+
+  public async checkAndCancelSnappPayment(
+    invoice: Invoice,
+    manager: EntityManager
+  ) {}
 }

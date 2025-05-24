@@ -92,7 +92,6 @@ import { ImageModule } from './modules/image/image.module';
 import { UserModule } from '@/modules/user/user.module';
 import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
 import databaseConfig from '@/configuration/database.config';
-import redisConfig from '@/configuration/redis.config';
 import generalConfig from '@/configuration/general-config';
 import {
   ConfigModule as ConfigModuleNest,
@@ -286,7 +285,6 @@ import { BullModule } from '@nestjs/bull';
 import { QueueModule } from './modules/queue/queue.module';
 
 const ENV = process.env.NODE_ENV;
-console.log('ENV', ENV);
 
 @Module({
   imports: [

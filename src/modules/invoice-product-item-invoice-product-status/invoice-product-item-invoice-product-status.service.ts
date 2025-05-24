@@ -4,7 +4,6 @@ import { UpdateInvoiceProductItemInvoiceProductStatusInput } from './dto/update-
 import { EntityManager, Repository } from 'typeorm';
 import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/entities/invoice-product-item-invoice-product-status.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InvoiceProductStatus } from '../invoice-product-status/domain/invoice-product-status';
 
 @Injectable()
 export class InvoiceProductItemInvoiceProductStatusService {
@@ -15,6 +14,7 @@ export class InvoiceProductItemInvoiceProductStatusService {
     @InjectRepository(InvoiceProductItemInvoiceProductStatus)
     private readonly invoiceProductItemInvoiceProductStatusRepository: Repository<InvoiceProductItemInvoiceProductStatus>
   ) {}
+
   create(
     createInvoiceProductItemInvoiceProductStatusInput: CreateInvoiceProductItemInvoiceProductStatusInput
   ) {
