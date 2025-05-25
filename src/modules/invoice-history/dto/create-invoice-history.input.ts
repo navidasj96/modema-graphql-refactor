@@ -152,16 +152,16 @@ export class CreateInvoiceHistoryInput {
   crmCompanyPersonId?: string;
 
   @Field({ nullable: true })
-  isDepot?: boolean;
+  isDepot?: number;
 
   @Field()
-  forDigikala: boolean;
+  forDigikala: number;
 
   @Field()
-  isForAdvertisement: boolean;
+  isForAdvertisement: number;
 
   @Field()
-  hasPriority: boolean;
+  hasPriority: number;
 
   @Field({ nullable: true })
   replacementAdditionalPrice?: string;

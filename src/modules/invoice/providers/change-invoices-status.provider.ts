@@ -32,6 +32,9 @@ import { User } from '@/modules/user/entities/user.entity';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { InvoiceProductService } from '@/modules/invoice-product/invoice-product.service';
 import { InjectRepository } from '@nestjs/typeorm';
+import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/entities/invoice-invoice-status.entity';
+import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
+import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -81,7 +84,14 @@ export class ChangeInvoiceStatusProvider {
      * inject invoiceRepository
      */
     @InjectRepository(Invoice)
-    private readonly invoiceRepository: Repository<Invoice>
+    private readonly invoiceRepository: Repository<Invoice>,
+    /**
+     * inject invoiceInvoiceStatusService
+     */
+    private readonly invoiceInvoiceStatusService: InvoiceInvoiceStatusService,
+    /**
+     * inject InvoiceHistoryService
+     */ private readonly invoiceHistoryService: InvoiceHistoryService
   ) {}
 
   public async updateInvoiceStatus(
@@ -90,7 +100,8 @@ export class ChangeInvoiceStatusProvider {
   ): Promise<ChangeInvoicesStatusResponseDto> {
     let { ids, statusId } = changeInvoicesStatusInput;
     const { req } = context;
-
+    const { user } = req;
+    let { sub: userId } = user;
     //check user permission
     const userPermissions = await this.authService.getUserPermissions(
       req.user.sub
@@ -110,7 +121,7 @@ export class ChangeInvoiceStatusProvider {
 
     const invoiceIds = ids.map((id) => Number(id));
     const queryRunner = this.dataSource.createQueryRunner();
-
+    let comment = '';
     //use typeorm queryRunner
     await queryRunner.connect();
     await queryRunner.startTransaction();
@@ -131,6 +142,7 @@ export class ChangeInvoiceStatusProvider {
               basicCarpetSize: true,
             },
           },
+          invoicePayments: true,
           visitor: true,
           user: { heardAboutUsOption: true },
         },
@@ -157,6 +169,8 @@ export class ChangeInvoiceStatusProvider {
           statusId,
           roles,
           permissions,
+          comment,
+          userId,
           manager
         );
 
@@ -189,6 +203,8 @@ export class ChangeInvoiceStatusProvider {
     status: number,
     roles: string[],
     permissions: string[],
+    comment: string = '',
+    userId: number,
     manager: EntityManager
   ): Promise<ChangeInvoicesStatusResponseDto> {
     const repository = manager
@@ -196,7 +212,6 @@ export class ChangeInvoiceStatusProvider {
       : this.invoiceRepository;
     const invoiceUser = invoice.user;
     const setting = await this.settingService.findAll();
-    let comment = '';
     const invoiceProducts = invoice.invoiceProducts;
     const invoiceStatusId = invoice.currentInvoiceStatusId;
     //we will update parameters of invoice and then will save it as the updated invoice
@@ -472,9 +487,23 @@ export class ChangeInvoiceStatusProvider {
       }
     }
 
+    // در صورتی که همه چیز به درستی انجام شود، وضعیت انتخابی کاربر پنل در invoices ذخیره شده
+    // و همچنین تاریخچه این تغییر وضعیت در جدول invoice_statuses همراه با id کاربر تغییر دهنده وضعیت ذخیره می شود
+
     invoice.currentInvoiceStatusId = status;
     await repository.save(invoice);
-
+    await this.invoiceInvoiceStatusService.attach(
+      invoice.id,
+      status,
+      userId,
+      comment,
+      manager
+    );
+    await this.invoiceHistoryService.saveInvoiceHistory(
+      invoice,
+      invoice.userId,
+      manager
+    );
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
       status: true,
@@ -603,7 +632,7 @@ export class ChangeInvoiceStatusProvider {
       'انتقال ایتم به مرحله "تحویل انبار گردید" به دلیل اینکه باید از دپو بیایند و چاپ تگ آن صورت بگیرد';
     for (const invoiceProduct of invoiceProducts) {
       const invoiceProductItems = invoiceProduct.invoiceProductItems;
-      const itemsToProduce = invoiceProduct.itemsToProduce;
+      const itemsToProduce = invoiceProduct.itemsToProduce || 0;
       const itemsFromDepot = invoiceProduct.itemsFromDepot;
 
       const invoiceProductItemsToProduce =

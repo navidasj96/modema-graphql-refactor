@@ -1148,7 +1148,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-24T17:21:18.357Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.212Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1242,7 +1242,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-24T17:21:18.366Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.229Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1357,7 +1357,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-24T17:21:18.402Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.295Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1447,7 +1447,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-24T17:21:18.367Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.230Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1682,7 +1682,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-24T17:21:18.378Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.258Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-24T17:21:18.368Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.232Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1824,11 +1824,6 @@ input BasicCarpetTypeUpdateFilter {
   and: [BasicCarpetTypeUpdateFilter!]
   id: IDFilterComparison
   or: [BasicCarpetTypeUpdateFilter!]
-}
-
-input BooleanFieldComparison {
-  is: Boolean
-  isNot: Boolean
 }
 
 type Border {
@@ -5134,7 +5129,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-24T17:21:18.733Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.859Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5156,7 +5151,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-05-24T17:21:18.738Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.867Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5171,7 +5166,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-24T17:21:18.742Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.875Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5195,7 +5190,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-05-24T17:21:18.747Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.885Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5226,7 +5221,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-24T17:21:18.752Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.896Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5267,7 +5262,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-05-24T17:21:18.763Z"
+  createdAt: DateTime! = "2025-05-25T11:37:08.914Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -6379,11 +6374,11 @@ input CreateInvoiceHistoryInput {
   editorUser: UserDomain
   editorUserId: Float!
   email: String
-  forDigikala: Boolean!
+  forDigikala: Float!
   freeDelivery: Float!
   fullAddress: String
   fullname: String
-  hasPriority: Boolean!
+  hasPriority: Float!
   id: Float!
   invoice: InvoiceDomain
   invoiceAddress: InvoiceAddressDomain
@@ -6396,8 +6391,8 @@ input CreateInvoiceHistoryInput {
   invoiceProductHistories: [InvoiceProductHistoryDomain!]
   invoiceTypeId: Float
   isChaparDelivery: Float!
-  isDepot: Boolean
-  isForAdvertisement: Boolean!
+  isDepot: Float
+  isForAdvertisement: Float!
   isReversible: Boolean!
   issueDate: DateTime!
   lastName: String!
@@ -6603,7 +6598,7 @@ input CreateInvoiceNegotiationInput {
 }
 
 input CreateInvoicePaymentHistoryInput {
-  amount: String!
+  amount: Float!
   chequeBank: String
   chequeDate: String
   chequeNumber: String
@@ -6612,7 +6607,7 @@ input CreateInvoicePaymentHistoryInput {
   confirmedBy2: UserDomain
   createdAt: DateTime
   description: String
-  forShipping: Boolean
+  forShipping: Float
   id: Float!
   invoice: InvoiceDomain!
   invoiceHistory: InvoiceHistoryDomain
@@ -6622,7 +6617,7 @@ input CreateInvoicePaymentHistoryInput {
   invoicePaymentId: Float!
   invoicePaymentType: InvoicePaymentTypeDomain!
   invoicePaymentTypeId: Float!
-  isConfirmed: Boolean
+  isConfirmed: Float
   paymentDate: String
   refCode: String
   refCodeSales: String
@@ -18132,9 +18127,9 @@ type Invoice {
   totalDiscount: Float
   totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
   useWallet: Float!
@@ -18840,10 +18835,10 @@ input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvo
 input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -19382,10 +19377,10 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceA
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -19542,10 +19537,10 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceP
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -19845,10 +19840,10 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentAggregateFilter 
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -20051,10 +20046,10 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -20572,10 +20567,10 @@ input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggr
 input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -20750,10 +20745,10 @@ input InvoiceAggregateFilterInvoicePaymentAggregateFilter {
 input InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -21077,10 +21072,10 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -21237,10 +21232,10 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -22185,10 +22180,10 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggr
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -22345,10 +22340,10 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaym
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -23020,9 +23015,9 @@ type InvoiceDeleteResponse {
   totalDiscount: Float
   totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
   useWallet: Float
@@ -23143,9 +23138,9 @@ input InvoiceDomain {
   totalDiscount: Float
   totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
   useWallet: Float!
@@ -23445,10 +23440,10 @@ input InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoicePaymentFilt
 input InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -24005,10 +24000,10 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -24159,10 +24154,10 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -24456,10 +24451,10 @@ input InvoiceFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -24662,10 +24657,10 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentF
 input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -25183,10 +25178,10 @@ input InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -25355,10 +25350,10 @@ input InvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -25688,10 +25683,10 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentF
 input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -25842,10 +25837,10 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -26796,10 +26791,10 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -26950,10 +26945,10 @@ input InvoiceFilterUserFilterInvoiceFilterInvoicePaymentFilter {
 input InvoiceFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -27252,11 +27247,11 @@ type InvoiceHistory {
   ): [User!]!
   editorUserId: Float!
   email: String
-  forDigikala: Boolean!
+  forDigikala: Float!
   freeDelivery: Float!
   fullAddress: String
   fullname: String
-  hasPriority: Boolean!
+  hasPriority: Float!
   id: ID!
   invoice(
     """Specify to filter the records returned."""
@@ -27287,24 +27282,24 @@ type InvoiceHistory {
   invoiceProductHistories: [InvoiceProductHistory!]
   invoiceTypeId: Float
   isChaparDelivery: Float!
-  isDepot: Boolean
-  isForAdvertisement: Boolean!
-  isReversible: Boolean!
+  isDepot: Float
+  isForAdvertisement: Float!
+  isReversible: Float!
   issueDate: DateTime!
   lastName: String!
   latitude: String
   lockState: Float
   longitude: String
-  moneyTransferConfirmed: Boolean
+  moneyTransferConfirmed: Float
   moneyTransferConfirmedBy: Float
   moneyTransferRefCode: String
   name: String!
-  needsReview: Boolean!
+  needsReview: Float!
   orderId: String
   packageCount: Float
   parentInvoiceId: Float
   partnerCode: String
-  paymentCreditable: Boolean
+  paymentCreditable: Float
   paymentErrorMessage: String
   phone: String
   phone2: String
@@ -27317,18 +27312,18 @@ type InvoiceHistory {
   shippingRate: String
   shippingRateCod: String
   stateId: Float!
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: String
+  totalCouponDiscount: Float
+  totalDiscount: Float
+  totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
-  useWallet: Boolean
+  useWallet: Float
   userId: Float
   visitorCouponId: Float
   visitorCouponRate: Float
@@ -27386,11 +27381,11 @@ type InvoiceHistoryDeleteResponse {
   editorUser: User
   editorUserId: Float
   email: String
-  forDigikala: Boolean
+  forDigikala: Float
   freeDelivery: Float
   fullAddress: String
   fullname: String
-  hasPriority: Boolean
+  hasPriority: Float
   id: ID
   invoice: Invoice
   invoiceAddress: InvoiceAddress
@@ -27403,24 +27398,24 @@ type InvoiceHistoryDeleteResponse {
   invoiceProductHistories: [InvoiceProductHistory!]
   invoiceTypeId: Float
   isChaparDelivery: Float
-  isDepot: Boolean
-  isForAdvertisement: Boolean
-  isReversible: Boolean
+  isDepot: Float
+  isForAdvertisement: Float
+  isReversible: Float
   issueDate: DateTime
   lastName: String
   latitude: String
   lockState: Float
   longitude: String
-  moneyTransferConfirmed: Boolean
+  moneyTransferConfirmed: Float
   moneyTransferConfirmedBy: Float
   moneyTransferRefCode: String
   name: String
-  needsReview: Boolean
+  needsReview: Float
   orderId: String
   packageCount: Float
   parentInvoiceId: Float
   partnerCode: String
-  paymentCreditable: Boolean
+  paymentCreditable: Float
   paymentErrorMessage: String
   phone: String
   phone2: String
@@ -27433,18 +27428,18 @@ type InvoiceHistoryDeleteResponse {
   shippingRate: String
   shippingRateCod: String
   stateId: Float
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: String
+  totalCouponDiscount: Float
+  totalDiscount: Float
+  totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
-  useWallet: Boolean
+  useWallet: Float
   userId: Float
   visitorCouponId: Float
   visitorCouponRate: Float
@@ -27480,11 +27475,11 @@ input InvoiceHistoryDomain {
   editorUser: UserDomain
   editorUserId: Float!
   email: String
-  forDigikala: Boolean!
+  forDigikala: Float!
   freeDelivery: Float!
   fullAddress: String
   fullname: String
-  hasPriority: Boolean!
+  hasPriority: Float!
   id: ID!
   invoice: InvoiceDomain
   invoiceAddress: InvoiceAddressDomain
@@ -27497,24 +27492,24 @@ input InvoiceHistoryDomain {
   invoiceProductHistories: [InvoiceProductHistoryDomain!]
   invoiceTypeId: Float
   isChaparDelivery: Float!
-  isDepot: Boolean
-  isForAdvertisement: Boolean!
-  isReversible: Boolean!
+  isDepot: Float
+  isForAdvertisement: Float!
+  isReversible: Float!
   issueDate: DateTime!
   lastName: String!
   latitude: String
   lockState: Float
   longitude: String
-  moneyTransferConfirmed: Boolean
+  moneyTransferConfirmed: Float
   moneyTransferConfirmedBy: Float
   moneyTransferRefCode: String
   name: String!
-  needsReview: Boolean!
+  needsReview: Float!
   orderId: String
   packageCount: Float
   parentInvoiceId: Float
   partnerCode: String
-  paymentCreditable: Boolean
+  paymentCreditable: Float
   paymentErrorMessage: String
   phone: String
   phone2: String
@@ -27527,18 +27522,18 @@ input InvoiceHistoryDomain {
   shippingRate: String
   shippingRateCod: String
   stateId: Float!
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: String
+  totalCouponDiscount: Float
+  totalDiscount: Float
+  totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
-  useWallet: Boolean
+  useWallet: Float
   userId: Float
   visitorCouponId: Float
   visitorCouponRate: Float
@@ -27859,10 +27854,10 @@ type InvoiceInvoiceNegotiationsSumAggregate {
 
 type InvoiceInvoicePaymentHistoriesAggregateGroupBy {
   amount: String
-  forShipping: Boolean
+  forShipping: Float
   id: ID
   invoicePaymentTypeId: Float
-  isConfirmed: Boolean
+  isConfirmed: Float
 }
 
 type InvoiceInvoicePaymentHistoriesAggregateResponse {
@@ -27875,8 +27870,10 @@ type InvoiceInvoicePaymentHistoriesAggregateResponse {
 }
 
 type InvoiceInvoicePaymentHistoriesAvgAggregate {
+  forShipping: Float
   id: Float
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 type InvoiceInvoicePaymentHistoriesCountAggregate {
@@ -27889,19 +27886,25 @@ type InvoiceInvoicePaymentHistoriesCountAggregate {
 
 type InvoiceInvoicePaymentHistoriesMaxAggregate {
   amount: String
+  forShipping: Float
   id: ID
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 type InvoiceInvoicePaymentHistoriesMinAggregate {
   amount: String
+  forShipping: Float
   id: ID
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 type InvoiceInvoicePaymentHistoriesSumAggregate {
+  forShipping: Float
   id: Float
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 type InvoiceInvoicePaymentStatusAggregateGroupBy {
@@ -28904,7 +28907,7 @@ type InvoicePaymentHistory {
   confirmedBy2: User
   createdAt: DateTime
   description: String
-  forShipping: Boolean
+  forShipping: Float
   id: ID!
   invoice(
     """Specify to filter the records returned."""
@@ -28954,7 +28957,7 @@ type InvoicePaymentHistory {
     filter: InvoicePaymentTypeAggregateFilter
   ): [InvoicePaymentHistoryInvoicePaymentTypeAggregateResponse!]!
   invoicePaymentTypeId: Float!
-  isConfirmed: Boolean
+  isConfirmed: Float
   paymentDate: String
   refCode: String
   refCodeSales: String
@@ -28966,19 +28969,19 @@ type InvoicePaymentHistory {
 input InvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [InvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoicePaymentHistoryAggregateFilter!]
 }
 
 type InvoicePaymentHistoryAggregateGroupBy {
   amount: String
-  forShipping: Boolean
+  forShipping: Float
   id: ID
   invoicePaymentTypeId: Float
-  isConfirmed: Boolean
+  isConfirmed: Float
 }
 
 type InvoicePaymentHistoryAggregateResponse {
@@ -28991,8 +28994,10 @@ type InvoicePaymentHistoryAggregateResponse {
 }
 
 type InvoicePaymentHistoryAvgAggregate {
+  forShipping: Float
   id: Float
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 type InvoicePaymentHistoryConnection {
@@ -29014,10 +29019,10 @@ type InvoicePaymentHistoryCountAggregate {
 input InvoicePaymentHistoryDeleteFilter {
   amount: StringFieldComparison
   and: [InvoicePaymentHistoryDeleteFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoicePaymentHistoryDeleteFilter!]
 }
 
@@ -29031,7 +29036,7 @@ type InvoicePaymentHistoryDeleteResponse {
   confirmedBy2: User
   createdAt: DateTime
   description: String
-  forShipping: Boolean
+  forShipping: Float
   id: ID
   invoice: Invoice
   invoiceHistory: InvoiceHistory
@@ -29041,7 +29046,7 @@ type InvoicePaymentHistoryDeleteResponse {
   invoicePaymentId: Float
   invoicePaymentType: InvoicePaymentType
   invoicePaymentTypeId: Float
-  isConfirmed: Boolean
+  isConfirmed: Float
   paymentDate: String
   refCode: String
   refCodeSales: String
@@ -29060,7 +29065,7 @@ input InvoicePaymentHistoryDomain {
   confirmedBy2: UserDomain
   createdAt: DateTime
   description: String
-  forShipping: Boolean
+  forShipping: Float
   id: ID!
   invoice: InvoiceDomain!
   invoiceHistory: InvoiceHistoryDomain
@@ -29070,7 +29075,7 @@ input InvoicePaymentHistoryDomain {
   invoicePaymentId: Float!
   invoicePaymentType: InvoicePaymentTypeDomain!
   invoicePaymentTypeId: Float!
-  isConfirmed: Boolean
+  isConfirmed: Float
   paymentDate: String
   refCode: String
   refCodeSales: String
@@ -29090,10 +29095,10 @@ type InvoicePaymentHistoryEdge {
 input InvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoicePaymentHistoryFilter!]
 }
 
@@ -29299,14 +29304,18 @@ type InvoicePaymentHistoryInvoiceSumAggregate {
 
 type InvoicePaymentHistoryMaxAggregate {
   amount: String
+  forShipping: Float
   id: ID
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 type InvoicePaymentHistoryMinAggregate {
   amount: String
+  forShipping: Float
   id: ID
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 input InvoicePaymentHistorySort {
@@ -29324,17 +29333,19 @@ enum InvoicePaymentHistorySortFields {
 }
 
 type InvoicePaymentHistorySumAggregate {
+  forShipping: Float
   id: Float
   invoicePaymentTypeId: Float
+  isConfirmed: Float
 }
 
 input InvoicePaymentHistoryUpdateFilter {
   amount: StringFieldComparison
   and: [InvoicePaymentHistoryUpdateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoicePaymentHistoryUpdateFilter!]
 }
 
@@ -30077,12 +30088,12 @@ type InvoiceProductHistory {
   invoiceId: Float!
   invoiceProduct: InvoiceProduct
   invoiceProductId: Float
-  invoiceProductItemsCreated: Boolean!
-  isCouponApplicable: Boolean!
+  invoiceProductItemsCreated: Float!
+  isCouponApplicable: Float!
   itemsFromDepot: Float
   itemsToProduce: Float
   length: Float
-  manuallyAdded: Boolean!
+  manuallyAdded: Float!
   padId: Float
   price: String!
   pricePerInch: Float
@@ -30100,7 +30111,7 @@ type InvoiceProductHistory {
   totalPrice: Float
   updatedAt: DateTime
   width: Float
-  withPad: Boolean!
+  withPad: Float!
 }
 
 type InvoiceProductHistoryConnection {
@@ -30137,12 +30148,12 @@ type InvoiceProductHistoryDeleteResponse {
   invoiceId: Float
   invoiceProduct: InvoiceProduct
   invoiceProductId: Float
-  invoiceProductItemsCreated: Boolean
-  isCouponApplicable: Boolean
+  invoiceProductItemsCreated: Float
+  isCouponApplicable: Float
   itemsFromDepot: Float
   itemsToProduce: Float
   length: Float
-  manuallyAdded: Boolean
+  manuallyAdded: Float
   padId: Float
   price: String
   pricePerInch: Float
@@ -30160,7 +30171,7 @@ type InvoiceProductHistoryDeleteResponse {
   totalPrice: Float
   updatedAt: DateTime
   width: Float
-  withPad: Boolean
+  withPad: Float
 }
 
 input InvoiceProductHistoryDomain {
@@ -30183,12 +30194,12 @@ input InvoiceProductHistoryDomain {
   invoiceId: Float!
   invoiceProduct: InvoiceProductDomain
   invoiceProductId: Float
-  invoiceProductItemsCreated: Boolean!
-  isCouponApplicable: Boolean!
+  invoiceProductItemsCreated: Float!
+  isCouponApplicable: Float!
   itemsFromDepot: Float
   itemsToProduce: Float
   length: Float
-  manuallyAdded: Boolean!
+  manuallyAdded: Float!
   padId: Float
   price: String!
   pricePerInch: Float
@@ -30206,7 +30217,7 @@ input InvoiceProductHistoryDomain {
   totalPrice: Float
   updatedAt: DateTime
   width: Float
-  withPad: Boolean!
+  withPad: Float!
 }
 
 type InvoiceProductHistoryEdge {
@@ -30754,10 +30765,10 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvo
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -30908,10 +30919,10 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoicePaymentFil
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 
@@ -49117,7 +49128,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-05-24T17:21:18.357Z"
+  createdAt: DateTime = "2025-05-25T11:37:08.212Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -49139,7 +49150,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-05-24T17:21:18.366Z"
+  createdAt: DateTime = "2025-05-25T11:37:08.229Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -49154,7 +49165,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-05-24T17:21:18.402Z"
+  createdAt: DateTime = "2025-05-25T11:37:08.295Z"
   description: String
   facebookId: String
   headerImage: String
@@ -49178,7 +49189,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-05-24T17:21:18.367Z"
+  createdAt: DateTime = "2025-05-25T11:37:08.230Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -49195,7 +49206,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-05-24T17:21:18.378Z"
+  createdAt: DateTime = "2025-05-25T11:37:08.258Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -49250,7 +49261,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-05-24T17:21:18.368Z"
+  createdAt: DateTime = "2025-05-25T11:37:08.232Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -50386,9 +50397,9 @@ input UpdateInvoice {
   totalDiscount: Float
   totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
   useWallet: Float
@@ -50487,11 +50498,11 @@ input UpdateInvoiceHistory {
   editorUser: UserDomain
   editorUserId: Float
   email: String
-  forDigikala: Boolean
+  forDigikala: Float
   freeDelivery: Float
   fullAddress: String
   fullname: String
-  hasPriority: Boolean
+  hasPriority: Float
   id: ID
   invoice: InvoiceDomain
   invoiceAddress: InvoiceAddressDomain
@@ -50504,24 +50515,24 @@ input UpdateInvoiceHistory {
   invoiceProductHistories: [InvoiceProductHistoryDomain!]
   invoiceTypeId: Float
   isChaparDelivery: Float
-  isDepot: Boolean
-  isForAdvertisement: Boolean
-  isReversible: Boolean
+  isDepot: Float
+  isForAdvertisement: Float
+  isReversible: Float
   issueDate: DateTime
   lastName: String
   latitude: String
   lockState: Float
   longitude: String
-  moneyTransferConfirmed: Boolean
+  moneyTransferConfirmed: Float
   moneyTransferConfirmedBy: Float
   moneyTransferRefCode: String
   name: String
-  needsReview: Boolean
+  needsReview: Float
   orderId: String
   packageCount: Float
   parentInvoiceId: Float
   partnerCode: String
-  paymentCreditable: Boolean
+  paymentCreditable: Float
   paymentErrorMessage: String
   phone: String
   phone2: String
@@ -50534,18 +50545,18 @@ input UpdateInvoiceHistory {
   shippingRate: String
   shippingRateCod: String
   stateId: Float
-  subtotalPrice: String
+  subtotalPrice: Float
   taxRate: Float
-  totalCouponDiscount: String
-  totalDiscount: String
-  totalPrice: String
+  totalCouponDiscount: Float
+  totalDiscount: Float
+  totalPrice: Float
   totalPriceOld: Float
-  totalTax: String
+  totalTax: Float
   totalVisitorShare: Float
-  totalWalletCharged: String
+  totalWalletCharged: Float
   trackingCode: String
   updatedAt: DateTime
-  useWallet: Boolean
+  useWallet: Float
   userId: Float
   visitorCouponId: Float
   visitorCouponRate: Float
@@ -50624,7 +50635,7 @@ input UpdateInvoicePaymentHistory {
   confirmedBy2: UserDomain
   createdAt: DateTime
   description: String
-  forShipping: Boolean
+  forShipping: Float
   id: ID
   invoice: InvoiceDomain
   invoiceHistory: InvoiceHistoryDomain
@@ -50634,7 +50645,7 @@ input UpdateInvoicePaymentHistory {
   invoicePaymentId: Float
   invoicePaymentType: InvoicePaymentTypeDomain
   invoicePaymentTypeId: Float
-  isConfirmed: Boolean
+  isConfirmed: Float
   paymentDate: String
   refCode: String
   refCodeSales: String
@@ -50736,12 +50747,12 @@ input UpdateInvoiceProductHistory {
   invoiceId: Float
   invoiceProduct: InvoiceProductDomain
   invoiceProductId: Float
-  invoiceProductItemsCreated: Boolean
-  isCouponApplicable: Boolean
+  invoiceProductItemsCreated: Float
+  isCouponApplicable: Float
   itemsFromDepot: Float
   itemsToProduce: Float
   length: Float
-  manuallyAdded: Boolean
+  manuallyAdded: Float
   padId: Float
   price: String
   pricePerInch: Float
@@ -50759,7 +50770,7 @@ input UpdateInvoiceProductHistory {
   totalPrice: Float
   updatedAt: DateTime
   width: Float
-  withPad: Boolean
+  withPad: Float
 }
 
 input UpdateInvoiceProductItem {
@@ -58038,10 +58049,10 @@ input UserAggregateFilterInvoiceAggregateFilterInvoicePaymentAggregateFilter {
 input UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
   amount: StringFieldComparison
   and: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
 }
 
@@ -58801,10 +58812,10 @@ input UserFilterInvoiceFilterInvoicePaymentFilter {
 input UserFilterInvoiceFilterInvoicePaymentHistoryFilter {
   amount: StringFieldComparison
   and: [UserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
-  forShipping: BooleanFieldComparison
+  forShipping: NumberFieldComparison
   id: IDFilterComparison
   invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: BooleanFieldComparison
+  isConfirmed: NumberFieldComparison
   or: [UserFilterInvoiceFilterInvoicePaymentHistoryFilter!]
 }
 

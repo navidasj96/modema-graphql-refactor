@@ -202,7 +202,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  subtotalPrice: string | null;
+  subtotalPrice: number | null;
 
   @Column('decimal', {
     name: 'total_discount',
@@ -210,7 +210,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  totalDiscount: string | null;
+  totalDiscount: number | null;
 
   @Column('decimal', {
     name: 'total_coupon_discount',
@@ -218,7 +218,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  totalCouponDiscount: string | null;
+  totalCouponDiscount: number | null;
 
   @Column('decimal', {
     name: 'total_tax',
@@ -226,7 +226,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  totalTax: string | null;
+  totalTax: number | null;
 
   @Column('decimal', {
     name: 'total_wallet_charged',
@@ -234,7 +234,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  totalWalletCharged: string | null;
+  totalWalletCharged: number | null;
 
   @Column('decimal', {
     name: 'total_price',

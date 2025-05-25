@@ -182,10 +182,10 @@ export class Invoice {
   totalCouponDiscount?: string;
 
   @Field({ nullable: true })
-  totalTax?: string;
+  totalTax?: number;
 
   @Field({ nullable: true })
-  totalWalletCharged?: string;
+  totalWalletCharged?: number;
 
   @FilterableField({ nullable: true })
   totalPrice?: number;

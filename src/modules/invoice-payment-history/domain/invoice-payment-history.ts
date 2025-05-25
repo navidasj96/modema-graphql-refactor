@@ -36,7 +36,7 @@ export class InvoicePaymentHistory {
   amount: string;
 
   @FilterableField({ nullable: true })
-  forShipping?: boolean;
+  forShipping?: number;
 
   @Field()
   userId: number;
@@ -57,7 +57,7 @@ export class InvoicePaymentHistory {
   chequePayee?: string;
 
   @FilterableField({ nullable: true })
-  isConfirmed?: boolean;
+  isConfirmed?: number;
 
   @Field({ nullable: true })
   refCodeSales?: string;

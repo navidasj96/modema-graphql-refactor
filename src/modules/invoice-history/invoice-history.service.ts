@@ -2,8 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { CreateInvoiceHistoryInput } from './dto/create-invoice-history.input';
 import { UpdateInvoiceHistoryInput } from './dto/update-invoice-history.input';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { SaveInvoiceHistoryProvider } from '@/modules/invoice-history/providers/save-invoice-history.provider';
 
 @Injectable()
 export class InvoiceHistoryService {
@@ -13,6 +15,11 @@ export class InvoiceHistoryService {
      */
     @InjectRepository(InvoiceHistory)
     private readonly invoiceHistoryRepository: Repository<InvoiceHistory>,
+
+    /**
+     * inject saveInvoiceHistoryProvider
+     */
+    private readonly saveInvoiceHistoryProvider: SaveInvoiceHistoryProvider
   ) {}
 
   create(createInvoiceHistoryInput: CreateInvoiceHistoryInput) {
@@ -44,5 +51,17 @@ export class InvoiceHistoryService {
       },
       relations: ['invoice', 'editorUser'],
     });
+  }
+
+  async saveInvoiceHistory(
+    invoice: Invoice,
+    userId: number | null,
+    manager?: EntityManager
+  ) {
+    return await this.saveInvoiceHistoryProvider.saveInvoiceHistory(
+      invoice,
+      userId,
+      manager
+    );
   }
 }

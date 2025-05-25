@@ -96,22 +96,22 @@ export class InvoiceHistory {
   totalVisitorShare?: number;
 
   @Field({ nullable: true })
-  subtotalPrice?: string;
+  subtotalPrice?: number;
 
   @Field({ nullable: true })
-  totalDiscount?: string;
+  totalDiscount?: number;
 
   @Field({ nullable: true })
-  totalCouponDiscount?: string;
+  totalCouponDiscount?: number;
 
   @Field({ nullable: true })
-  totalTax?: string;
+  totalTax?: number;
 
   @Field({ nullable: true })
-  totalWalletCharged?: string;
+  totalWalletCharged?: number;
 
   @Field({ nullable: true })
-  totalPrice?: string;
+  totalPrice?: number;
 
   @Field()
   additions: string;
@@ -162,16 +162,16 @@ export class InvoiceHistory {
   crmCompanyPersonId?: string;
 
   @Field({ nullable: true })
-  isDepot?: boolean;
+  isDepot?: number;
 
   @Field()
-  forDigikala: boolean;
+  forDigikala: number;
 
   @Field()
-  isForAdvertisement: boolean;
+  isForAdvertisement: number;
 
   @Field()
-  hasPriority: boolean;
+  hasPriority: number;
 
   @Field({ nullable: true })
   replacementAdditionalPrice?: string;
@@ -195,7 +195,7 @@ export class InvoiceHistory {
   invoiceTypeId?: number;
 
   @Field({ nullable: true })
-  paymentCreditable?: boolean;
+  paymentCreditable?: number;
 
   @Field({ nullable: true })
   description?: string;
@@ -249,19 +249,19 @@ export class InvoiceHistory {
   lockState?: number;
 
   @Field({ nullable: true })
-  moneyTransferConfirmed?: boolean;
+  moneyTransferConfirmed?: number;
 
   @Field({ nullable: true })
   moneyTransferConfirmedBy?: number;
 
   @Field()
-  isReversible: boolean;
+  isReversible: number;
 
   @Field({ nullable: true })
-  useWallet?: boolean;
+  useWallet?: number;
 
   @Field()
-  needsReview: boolean;
+  needsReview: number;
 
   @Field({ nullable: true })
   parentInvoiceId?: number;

@@ -23,10 +23,10 @@ export class CreateInvoicePaymentHistoryInput {
   invoicePaymentTypeId: number;
 
   @Field()
-  amount: string;
+  amount: number;
 
   @Field({ nullable: true })
-  forShipping?: boolean;
+  forShipping?: number;
 
   @Field()
   userId: number;
@@ -47,7 +47,7 @@ export class CreateInvoicePaymentHistoryInput {
   chequePayee?: string;
 
   @Field({ nullable: true })
-  isConfirmed?: boolean;
+  isConfirmed?: number;
 
   @Field({ nullable: true })
   refCodeSales?: string;

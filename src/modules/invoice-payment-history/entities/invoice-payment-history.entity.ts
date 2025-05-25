@@ -16,18 +16,18 @@ import { InvoicePaymentType } from '@/modules/invoice-payment-type/entities/invo
 @Index(
   'invoice_payment_histories_invoice_history_id_index',
   ['invoiceHistoryId'],
-  {},
+  {}
 )
 @Index('invoice_payment_histories_invoice_id_index', ['invoiceId'], {})
 @Index(
   'invoice_payment_histories_invoice_payment_id_index',
   ['invoicePaymentId'],
-  {},
+  {}
 )
 @Index(
   'invoice_payment_histories_invoice_payment_type_id_index',
   ['invoicePaymentTypeId'],
-  {},
+  {}
 )
 @Index('invoice_payment_histories_user_id_index', ['userId'], {})
 @Entity('invoice_payment_histories', { schema: 'modema' })
@@ -53,10 +53,10 @@ export class InvoicePaymentHistory {
     scale: 2,
     default: () => "'0.00'",
   })
-  amount: string;
+  amount: number;
 
   @Column('tinyint', { name: 'for_shipping', nullable: true, width: 1 })
-  forShipping?: boolean;
+  forShipping?: number;
 
   @Column('int', { name: 'user_id', unsigned: true })
   userId: number;
@@ -77,7 +77,7 @@ export class InvoicePaymentHistory {
   chequePayee: string;
 
   @Column('tinyint', { name: 'is_confirmed', nullable: true, width: 1 })
-  isConfirmed?: boolean;
+  isConfirmed?: number;
 
   @Column('varchar', { name: 'ref_code_sales', nullable: true, length: 191 })
   refCodeSales?: string;
@@ -107,7 +107,7 @@ export class InvoicePaymentHistory {
   @ManyToOne(
     () => InvoiceHistory,
     (invoiceHistory) => invoiceHistory.invoicePaymentHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_history_id', referencedColumnName: 'id' }])
   invoiceHistory: InvoiceHistory;
@@ -122,7 +122,7 @@ export class InvoicePaymentHistory {
   @ManyToOne(
     () => InvoicePayment,
     (invoicePayment) => invoicePayment.invoicePaymentHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_payment_id', referencedColumnName: 'id' }])
   invoicePayment: InvoicePayment;
@@ -130,7 +130,7 @@ export class InvoicePaymentHistory {
   @ManyToOne(
     () => InvoicePaymentType,
     (invoicePaymentType) => invoicePaymentType.invoicePaymentHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_payment_type_id', referencedColumnName: 'id' }])
   invoicePaymentType: InvoicePaymentType;

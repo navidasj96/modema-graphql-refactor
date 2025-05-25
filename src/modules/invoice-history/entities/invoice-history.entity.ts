@@ -19,7 +19,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
 @Index(
   'invoice_histories_money_transfer_confirmed_by_index',
   ['moneyTransferConfirmedBy'],
-  {},
+  {}
 )
 @Entity('invoice_histories', { schema: 'modema' })
 export class InvoiceHistory {
@@ -36,34 +36,34 @@ export class InvoiceHistory {
   currentInvoiceStatusId: number;
 
   @Column('int', { name: 'user_id', nullable: true })
-  userId?: number;
+  userId: number | null;
 
   @Column('int', { name: 'address_id' })
   addressId: number;
 
   @Column('double', { name: 'total_price_old', nullable: true, precision: 22 })
-  totalPriceOld?: number;
+  totalPriceOld: number | null;
 
   @Column('int', { name: 'coupon_id', nullable: true })
-  couponId?: number;
+  couponId: number | null;
 
   @Column('varchar', { name: 'invoice_number', nullable: true, length: 191 })
-  invoiceNumber?: string;
+  invoiceNumber: string | null;
 
   @Column('varchar', { name: 'ref_id', nullable: true, length: 191 })
-  refId?: string;
+  refId: string | null;
 
   @Column('varchar', { name: 'sale_ref_id', nullable: true, length: 191 })
-  saleRefId?: string;
+  saleRefId: string | null;
 
   @Column('varchar', { name: 'order_id', nullable: true, length: 191 })
-  orderId?: string;
+  orderId: string | null;
 
   @Column('double', { name: 'tax_rate', nullable: true, precision: 22 })
-  taxRate?: number;
+  taxRate: number | null;
 
   @Column('int', { name: 'selected_shipping_service_id', nullable: true })
-  selectedShippingServiceId?: number;
+  selectedShippingServiceId: number | null;
 
   @Column('decimal', {
     name: 'shipping_rate',
@@ -71,7 +71,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  shippingRate?: string;
+  shippingRate: string | null;
 
   @Column('decimal', {
     name: 'shipping_rate_cod',
@@ -79,7 +79,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  shippingRateCod?: string;
+  shippingRateCod: string | null;
 
   @Column('varchar', { name: 'name', length: 191 })
   name: string;
@@ -91,33 +91,33 @@ export class InvoiceHistory {
   issueDate: Date;
 
   @Column('int', { name: 'visitor_coupon_id', nullable: true })
-  visitorCouponId?: number;
+  visitorCouponId: number | null;
 
   @Column('int', { name: 'visitor_id', nullable: true })
-  visitorId?: number;
+  visitorId: number | null;
 
   @Column('int', { name: 'visitor_group_id', nullable: true })
-  visitorGroupId?: number;
+  visitorGroupId: number | null;
 
   @Column('double', {
     name: 'visitor_coupon_rate',
     nullable: true,
     precision: 22,
   })
-  visitorCouponRate?: number;
+  visitorCouponRate: number | null;
 
   @Column('double', { name: 'visitor_rate', nullable: true, precision: 22 })
-  visitorRate?: number;
+  visitorRate: number | null;
 
   @Column('varchar', { name: 'partner_code', nullable: true, length: 191 })
-  partnerCode?: string;
+  partnerCode: string | null;
 
   @Column('double', {
     name: 'total_visitor_share',
     nullable: true,
     precision: 22,
   })
-  totalVisitorShare?: number;
+  totalVisitorShare: number | null;
 
   @Column('decimal', {
     name: 'subtotal_price',
@@ -125,7 +125,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  subtotalPrice?: string;
+  subtotalPrice: number | null;
 
   @Column('decimal', {
     name: 'total_discount',
@@ -133,7 +133,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  totalDiscount?: string;
+  totalDiscount: number | null;
 
   @Column('decimal', {
     name: 'total_coupon_discount',
@@ -141,7 +141,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  totalCouponDiscount?: string;
+  totalCouponDiscount: number | null;
 
   @Column('decimal', {
     name: 'total_tax',
@@ -149,7 +149,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  totalTax?: string;
+  totalTax: number | null;
 
   @Column('decimal', {
     name: 'total_wallet_charged',
@@ -157,7 +157,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  totalWalletCharged?: string;
+  totalWalletCharged: number | null;
 
   @Column('decimal', {
     name: 'total_price',
@@ -165,7 +165,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  totalPrice?: string;
+  totalPrice: number | null;
 
   @Column('decimal', {
     name: 'additions',
@@ -183,29 +183,29 @@ export class InvoiceHistory {
     nullable: true,
     length: 191,
   })
-  paymentErrorMessage?: string;
+  paymentErrorMessage: string | null;
 
   @Column('int', { name: 'invoice_payment_status_id', nullable: true })
-  invoicePaymentStatusId?: number;
+  invoicePaymentStatusId: number | null;
 
   @Column('tinyint', { name: 'free_delivery' })
   freeDelivery: number;
 
   @Column('varchar', { name: 'tracking_code', nullable: true, length: 191 })
-  trackingCode?: string;
+  trackingCode: string | null;
 
   @Column('datetime', { name: 'delivered_date', nullable: true })
-  deliveredDate?: Date;
+  deliveredDate: Date | null;
 
   @Column('varchar', {
     name: 'money_transfer_ref_code',
     nullable: true,
     length: 191,
   })
-  moneyTransferRefCode?: string;
+  moneyTransferRefCode: string | null;
 
   @Column('int', { name: 'package_count', nullable: true })
-  packageCount?: number;
+  packageCount: number | null;
 
   @Column('tinyint', { name: 'visitor_share_calculated' })
   visitorShareCalculated: number;
@@ -214,35 +214,35 @@ export class InvoiceHistory {
   isChaparDelivery: number;
 
   @Column('varchar', { name: 'chapar_status', nullable: true, length: 191 })
-  chaparStatus?: string;
+  chaparStatus: string | null;
 
   @Column('int', { name: 'chapar_settlement_status_id', nullable: true })
-  chaparSettlementStatusId?: number;
+  chaparSettlementStatusId: number | null;
 
   @Column('bigint', { name: 'crm_pre_order_id', nullable: true })
-  crmPreOrderId?: string;
+  crmPreOrderId: string | null;
 
   @Column('bigint', { name: 'crm_company_id', nullable: true })
-  crmCompanyId?: string;
+  crmCompanyId: string | null;
 
   @Column('bigint', { name: 'crm_company_person_id', nullable: true })
-  crmCompanyPersonId?: string;
+  crmCompanyPersonId: string | null;
 
   @Column('tinyint', { name: 'is_depot', nullable: true, width: 1 })
-  isDepot?: boolean;
+  isDepot: number | null;
 
   @Column('tinyint', { name: 'for_digikala', width: 1, default: () => "'0'" })
-  forDigikala: boolean;
+  forDigikala: number;
 
   @Column('tinyint', {
     name: 'is_for_advertisement',
     width: 1,
     default: () => "'0'",
   })
-  isForAdvertisement: boolean;
+  isForAdvertisement: number;
 
   @Column('tinyint', { name: 'has_priority', width: 1, default: () => "'0'" })
-  hasPriority: boolean;
+  hasPriority: number;
 
   @Column('decimal', {
     name: 'replacement_additional_price',
@@ -250,42 +250,42 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  replacementAdditionalPrice?: string;
+  replacementAdditionalPrice: string | null;
 
   @Column('int', { name: 'replacement_payment_status_id', nullable: true })
-  replacementPaymentStatusId?: number;
+  replacementPaymentStatusId: number | null;
 
   @Column('varchar', {
     name: 'replacement_price_money_transfer_code',
     nullable: true,
     length: 191,
   })
-  replacementPriceMoneyTransferCode?: string;
+  replacementPriceMoneyTransferCode: string | null;
 
   @Column('double', {
     name: 'digikala_share_percent',
     nullable: true,
     precision: 22,
   })
-  digikalaSharePercent?: number;
+  digikalaSharePercent: number | null;
 
   @Column('double', { name: 'digikala_share', nullable: true, precision: 22 })
-  digikalaShare?: number;
+  digikalaShare: number | null;
 
   @Column('int', { name: 'invoice_mode_id', nullable: true })
-  invoiceModeId?: number;
+  invoiceModeId: number | null;
 
   @Column('int', { name: 'invoice_type_id', nullable: true })
-  invoiceTypeId?: number;
+  invoiceTypeId: number | null;
 
   @Column('tinyint', { name: 'payment_creditable', nullable: true, width: 1 })
-  paymentCreditable?: boolean;
+  paymentCreditable: number | null;
 
   @Column('text', { name: 'description', nullable: true })
-  description?: string;
+  description: string | null;
 
   @Column('text', { name: 'accounting_description', nullable: true })
-  accountingDescription?: string;
+  accountingDescription: string | null;
 
   @Column('int', { name: 'invoice_address_id', unsigned: true })
   invoiceAddressId: number;
@@ -300,76 +300,76 @@ export class InvoiceHistory {
   cityId: number;
 
   @Column('varchar', { name: 'fullname', nullable: true, length: 191 })
-  fullname?: string;
+  fullname: string | null;
 
   @Column('varchar', { name: 'zip_code', nullable: true, length: 191 })
-  zipCode?: string;
+  zipCode: string | null;
 
   @Column('varchar', { name: 'address', length: 191 })
   address: string;
 
   @Column('varchar', { name: 'address2', nullable: true, length: 191 })
-  address2?: string;
+  address2: string | null;
 
   @Column('varchar', { name: 'phone', nullable: true, length: 191 })
-  phone?: string;
+  phone: string | null;
 
   @Column('varchar', { name: 'phone2', nullable: true, length: 191 })
-  phone2?: string;
+  phone2: string | null;
 
   @Column('varchar', { name: 'longitude', nullable: true, length: 191 })
-  longitude?: string;
+  longitude: string | null;
 
   @Column('varchar', { name: 'latitude', nullable: true, length: 191 })
-  latitude?: string;
+  latitude: string | null;
 
   @Column('varchar', { name: 'email', nullable: true, length: 191 })
-  email?: string;
+  email: string | null;
 
   @Column('varchar', { name: 'full_address', nullable: true, length: 191 })
-  fullAddress?: string;
+  fullAddress: string | null;
 
   @Column('int', { name: 'lock_state', nullable: true })
-  lockState?: number;
+  lockState: number | null;
 
   @Column('tinyint', {
     name: 'money_transfer_confirmed',
     nullable: true,
     width: 1,
   })
-  moneyTransferConfirmed?: boolean;
+  moneyTransferConfirmed: number | null;
 
   @Column('int', {
     name: 'money_transfer_confirmed_by',
     nullable: true,
     unsigned: true,
   })
-  moneyTransferConfirmedBy?: number;
+  moneyTransferConfirmedBy: number | null;
 
   @Column('tinyint', { name: 'is_reversible', width: 1, default: () => "'0'" })
-  isReversible: boolean;
+  isReversible: number;
 
   @Column('tinyint', { name: 'use_wallet', nullable: true, width: 1 })
-  useWallet?: boolean;
+  useWallet: number | null;
 
   @Column('tinyint', { name: 'needs_review', width: 1, default: () => "'0'" })
-  needsReview: boolean;
+  needsReview: number;
 
   @Column('int', { name: 'parent_invoice_id', nullable: true })
-  parentInvoiceId?: number;
+  parentInvoiceId: number | null;
 
   @Column('varchar', {
     name: 'wholesale_remaining_money_transfer_ref_code',
     nullable: true,
     length: 191,
   })
-  wholesaleRemainingMoneyTransferRefCode?: string;
+  wholesaleRemainingMoneyTransferRefCode: string | null;
 
   @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  createdAt: Date | null;
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  updatedAt: Date | null;
 
   @ManyToOne(() => User, (user) => user.invoiceHistories, {
     onDelete: 'NO ACTION',
@@ -381,7 +381,7 @@ export class InvoiceHistory {
   @ManyToOne(
     () => InvoiceAddress,
     (invoiceAddress) => invoiceAddress.invoiceHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_address_id', referencedColumnName: 'id' }])
   invoiceAddress: InvoiceAddress;
@@ -395,13 +395,13 @@ export class InvoiceHistory {
 
   @OneToMany(
     () => InvoicePaymentHistory,
-    (invoicePaymentHistory) => invoicePaymentHistory.invoiceHistory,
+    (invoicePaymentHistory) => invoicePaymentHistory.invoiceHistory
   )
   invoicePaymentHistories: InvoicePaymentHistory[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.invoiceHistory,
+    (invoiceProductHistory) => invoiceProductHistory.invoiceHistory
   )
   invoiceProductHistories: InvoiceProductHistory[];
 }

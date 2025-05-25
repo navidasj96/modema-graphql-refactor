@@ -66,7 +66,7 @@ export class InvoiceProductHistory {
   totalDiscount?: string;
 
   @Field()
-  isCouponApplicable: boolean;
+  isCouponApplicable: number;
 
   @Field({ nullable: true })
   totalCouponDiscount?: string;
@@ -78,7 +78,7 @@ export class InvoiceProductHistory {
   designerPriceShare?: number;
 
   @Field()
-  withPad: boolean;
+  withPad: number;
 
   @Field({ nullable: true })
   padId?: number;
@@ -90,7 +90,7 @@ export class InvoiceProductHistory {
   relatedSubproductId?: number;
 
   @Field()
-  invoiceProductItemsCreated: boolean;
+  invoiceProductItemsCreated: number;
 
   @Field({ nullable: true })
   itemsToProduce?: number;
@@ -111,7 +111,7 @@ export class InvoiceProductHistory {
   updatedAt?: Date;
 
   @Field()
-  manuallyAdded: boolean;
+  manuallyAdded: number;
 
   @Field(() => Design, { nullable: true })
   design?: Design;

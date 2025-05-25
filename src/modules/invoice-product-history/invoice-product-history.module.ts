@@ -21,5 +21,6 @@ import { CreateInvoiceProductHistoryInput } from '@/modules/invoice-product-hist
       ],
     }),
   ],
+  exports: [InvoiceProductHistoryService],
 })
 export class InvoiceProductHistoryModule {}

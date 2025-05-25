@@ -19,25 +19,25 @@ import { Design } from '@/modules/design/entities/design.entity';
 @Index(
   'invoice_product_histories_invoice_history_id_index',
   ['invoiceHistoryId'],
-  {},
+  {}
 )
 @Index('invoice_product_histories_invoice_id_index', ['invoiceId'], {})
 @Index(
   'invoice_product_histories_invoice_product_id_index',
   ['invoiceProductId'],
-  {},
+  {}
 )
 @Index('invoice_product_histories_pad_id_index', ['padId'], {})
 @Index('invoice_product_histories_product_id_index', ['productId'], {})
 @Index(
   'invoice_product_histories_related_product_id_index',
   ['relatedProductId'],
-  {},
+  {}
 )
 @Index(
   'invoice_product_histories_related_subproduct_id_index',
   ['relatedSubproductId'],
-  {},
+  {}
 )
 @Index('invoice_product_histories_subproduct_id_index', ['subproductId'], {})
 @Entity('invoice_product_histories', { schema: 'modema' })
@@ -112,7 +112,7 @@ export class InvoiceProductHistory {
   totalDiscount: string | null;
 
   @Column('tinyint', { name: 'is_coupon_applicable', width: 1 })
-  isCouponApplicable: boolean;
+  isCouponApplicable: number;
 
   @Column('decimal', {
     name: 'total_coupon_discount',
@@ -137,7 +137,7 @@ export class InvoiceProductHistory {
   designerPriceShare: number | null;
 
   @Column('tinyint', { name: 'with_pad', width: 1 })
-  withPad: boolean;
+  withPad: number;
 
   @Column('int', { name: 'pad_id', nullable: true, unsigned: true })
   padId: number | null;
@@ -153,7 +153,7 @@ export class InvoiceProductHistory {
   relatedSubproductId: number | null;
 
   @Column('tinyint', { name: 'invoice_product_items_created', width: 1 })
-  invoiceProductItemsCreated: boolean;
+  invoiceProductItemsCreated: number;
 
   @Column('int', { name: 'items_to_produce', nullable: true })
   itemsToProduce: number | null;
@@ -174,7 +174,7 @@ export class InvoiceProductHistory {
   updatedAt: Date | null;
 
   @Column('tinyint', { name: 'manually_added', width: 1, default: () => "'0'" })
-  manuallyAdded: boolean;
+  manuallyAdded: number;
 
   @ManyToOne(() => Design, (design) => design.invoiceProductHistories, {
     onDelete: 'NO ACTION',
@@ -193,7 +193,7 @@ export class InvoiceProductHistory {
   @ManyToOne(
     () => InvoiceHistory,
     (invoiceHistory) => invoiceHistory.invoiceProductHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_history_id', referencedColumnName: 'id' }])
   invoiceHistory: InvoiceHistory;
@@ -208,7 +208,7 @@ export class InvoiceProductHistory {
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.invoiceProductHistories,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;
@@ -230,7 +230,7 @@ export class InvoiceProductHistory {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.invoiceProductHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'related_subproduct_id', referencedColumnName: 'id' }])
   relatedSubproduct: Subproduct;
@@ -238,7 +238,7 @@ export class InvoiceProductHistory {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.invoiceProductHistories2,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

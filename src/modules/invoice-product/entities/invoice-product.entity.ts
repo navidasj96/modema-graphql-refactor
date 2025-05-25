@@ -47,16 +47,16 @@ export class InvoiceProduct {
   invoiceId: number;
 
   @Column('int', { name: 'product_id', nullable: true, unsigned: true })
-  productId?: number;
+  productId: number | null;
 
   @Column('int', { name: 'subproduct_id', nullable: true, unsigned: true })
-  subproductId?: number;
+  subproductId: number | null;
 
   @Column('int', { name: 'design_id', nullable: true, unsigned: true })
-  designId?: number;
+  designId: number | null;
 
   @Column('int', { name: 'discount_id', nullable: true, unsigned: true })
-  discountId?: number;
+  discountId: number | null;
 
   @Column('double', {
     name: 'width',
@@ -64,7 +64,7 @@ export class InvoiceProduct {
     unsigned: true,
     precision: 22,
   })
-  width?: number;
+  width: number | null;
 
   @Column('double', {
     name: 'length',
@@ -72,7 +72,7 @@ export class InvoiceProduct {
     unsigned: true,
     precision: 22,
   })
-  length?: number;
+  length: number | null;
 
   @Column('double', {
     name: 'price_per_inch',
@@ -80,7 +80,7 @@ export class InvoiceProduct {
     unsigned: true,
     precision: 22,
   })
-  pricePerInch?: number;
+  pricePerInch: number | null;
 
   @Column('decimal', { name: 'price', precision: 18, scale: 2 })
   price: string;
@@ -99,7 +99,7 @@ export class InvoiceProduct {
     precision: 18,
     scale: 2,
   })
-  discount?: string;
+  discount: string | null;
 
   @Column('smallint', { name: 'count', unsigned: true })
   count: number;
@@ -114,7 +114,7 @@ export class InvoiceProduct {
     precision: 14,
     scale: 2,
   })
-  totalPrice?: number;
+  totalPrice: number | null;
 
   @Column('decimal', {
     name: 'total_discount',
@@ -122,7 +122,7 @@ export class InvoiceProduct {
     precision: 18,
     scale: 2,
   })
-  totalDiscount?: string;
+  totalDiscount: string | null;
 
   @Column('tinyint', {
     name: 'is_coupon_applicable',
@@ -137,7 +137,7 @@ export class InvoiceProduct {
     precision: 18,
     scale: 2,
   })
-  totalCouponDiscount?: string;
+  totalCouponDiscount: string | null;
 
   @Column('double', {
     name: 'designer_price_percentage',
@@ -145,7 +145,7 @@ export class InvoiceProduct {
     unsigned: true,
     precision: 22,
   })
-  designerPricePercentage?: number;
+  designerPricePercentage: number | null;
 
   @Column('double', {
     name: 'designer_price_share',
@@ -153,23 +153,23 @@ export class InvoiceProduct {
     unsigned: true,
     precision: 22,
   })
-  designerPriceShare?: number;
+  designerPriceShare: number | null;
 
   @Column('tinyint', { name: 'with_pad', width: 1, default: () => "'0'" })
   withPad: number;
 
   @Column('int', { name: 'pad_id', nullable: true, unsigned: true })
-  padId?: number;
+  padId: number | null;
 
   @Column('int', { name: 'related_product_id', nullable: true, unsigned: true })
-  relatedProductId?: number;
+  relatedProductId: number | null;
 
   @Column('int', {
     name: 'related_subproduct_id',
     nullable: true,
     unsigned: true,
   })
-  relatedSubproductId?: number;
+  relatedSubproductId: number | null;
 
   @Column('tinyint', {
     name: 'invoice_product_items_created',
@@ -179,22 +179,22 @@ export class InvoiceProduct {
   invoiceProductItemsCreated: number;
 
   @Column('int', { name: 'items_to_produce', nullable: true })
-  itemsToProduce?: number;
+  itemsToProduce: number | null;
 
   @Column('int', { name: 'items_from_depot', nullable: true })
-  itemsFromDepot?: number;
+  itemsFromDepot: number | null;
 
   @Column('int', { name: 'stock_count', nullable: true })
-  stockCount?: number;
+  stockCount: number | null;
 
   @Column('text', { name: 'description', nullable: true })
-  description?: string;
+  description: string | null;
 
   @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  createdAt: Date | null;
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  updatedAt: Date | null;
 
   @Column('tinyint', {
     name: 'temp_depot_items_created',
@@ -204,7 +204,7 @@ export class InvoiceProduct {
   tempDepotItemsCreated: number;
 
   @Column('int', { name: 'sepidar_id', nullable: true })
-  sepidarId?: number;
+  sepidarId: number | null;
 
   @Column('smallint', { name: 'gift', default: () => "'0'" })
   gift: number;
