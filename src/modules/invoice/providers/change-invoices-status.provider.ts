@@ -32,7 +32,6 @@ import { User } from '@/modules/user/entities/user.entity';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { InvoiceProductService } from '@/modules/invoice-product/invoice-product.service';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/entities/invoice-invoice-status.entity';
 import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
 import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
 

@@ -3,7 +3,7 @@ import { CreateInvoicePaymentHistoryInput } from './dto/create-invoice-payment-h
 import { UpdateInvoicePaymentHistoryInput } from './dto/update-invoice-payment-history.input';
 import { InjectRepository } from '@nestjs/typeorm';
 import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 
 @Injectable()
 export class InvoicePaymentHistoryService {
@@ -12,7 +12,7 @@ export class InvoicePaymentHistoryService {
      * inject invoicePaymentHistoryRepository
      */
     @InjectRepository(InvoicePaymentHistory)
-    private readonly invoicePaymentHistoryRepository: Repository<InvoicePaymentHistory>,
+    private readonly invoicePaymentHistoryRepository: Repository<InvoicePaymentHistory>
   ) {}
 
   create(createInvoicePaymentHistoryInput: CreateInvoicePaymentHistoryInput) {
@@ -29,7 +29,7 @@ export class InvoicePaymentHistoryService {
 
   update(
     id: number,
-    updateInvoicePaymentHistoryInput: UpdateInvoicePaymentHistoryInput,
+    updateInvoicePaymentHistoryInput: UpdateInvoicePaymentHistoryInput
   ) {
     return `This action updates a #${id} invoicePaymentHistory`;
   }
@@ -38,8 +38,19 @@ export class InvoicePaymentHistoryService {
     return `This action removes a #${id} invoicePaymentHistory`;
   }
 
+  async save(
+    invoicePaymentHistory: InvoicePaymentHistory,
+    manager?: EntityManager
+  ) {
+    const repository = manager
+      ? manager.getRepository(InvoicePaymentHistory)
+      : this.invoicePaymentHistoryRepository;
+
+    return await repository.save(invoicePaymentHistory);
+  }
+
   async invoicePaymentHistoryForTransactionHistory(
-    invoiceHistoryIds: number[],
+    invoiceHistoryIds: number[]
   ) {
     return await this.invoicePaymentHistoryRepository
       .createQueryBuilder('iph')

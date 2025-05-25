@@ -7,6 +7,7 @@ import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
+import { InvoicePaymentHistoryService } from '@/modules/invoice-payment-history/invoice-payment-history.service';
 
 @Injectable()
 export class SaveInvoiceHistoryProvider {
@@ -16,17 +17,20 @@ export class SaveInvoiceHistoryProvider {
      */
     @InjectRepository(InvoiceHistory)
     private readonly invoiceHistoryRepository: Repository<InvoiceHistory>,
-
     /**
      * inject invoiceHasChangedProvider
      */
     private readonly invoiceHasChangedProvider: InvoiceHasChangedProvider,
-
     /**
      * inject invoiceProductHistory
      */
-    private readonly invoiceProductHistoryService: InvoiceProductHistoryService
+    private readonly invoiceProductHistoryService: InvoiceProductHistoryService,
+    /**
+     * inject InvoicePaymentHistoryService
+     */
+    private readonly invoicePaymentHistoryService: InvoicePaymentHistoryService
   ) {}
+
   async saveInvoiceHistory(
     invoice: Invoice,
     userId: number | null,
@@ -59,6 +63,7 @@ export class SaveInvoiceHistoryProvider {
     // }
 
     const invoiceHistory = new InvoiceHistory();
+
     invoiceHistory.editorUserId = userId;
     invoiceHistory.invoiceId = invoice.id;
     invoiceHistory.currentInvoiceStatusId = invoice.currentInvoiceStatusId;
@@ -197,6 +202,7 @@ export class SaveInvoiceHistoryProvider {
             invoiceProductHistory,
             manager
           );
+
         if (!invoiceProductHistorySave) {
           flagSave = false;
         }
@@ -225,9 +231,11 @@ export class SaveInvoiceHistoryProvider {
         invoicePaymentHistory.forShipping = invoicePayment.forShipping;
         invoicePaymentHistory.paymentDate = invoicePayment.paymentDate;
         invoicePaymentHistory.description = invoicePayment.description;
-        const invoicePaymentHistorySave = await repository.save(
-          invoicePaymentHistory
-        );
+        const invoicePaymentHistorySave =
+          await this.invoicePaymentHistoryService.save(
+            invoicePaymentHistory,
+            manager
+          );
         console.log('invoicePaymentHistorySave', invoicePaymentHistorySave);
 
         if (!invoicePaymentHistorySave) {

@@ -9,6 +9,7 @@ import { CreateInvoiceHistoryInput } from '@/modules/invoice-history/dto/create-
 import { InvoiceHasChangedProvider } from '@/modules/invoice-history/providers/invoice-has-changed.provider';
 import { SaveInvoiceHistoryProvider } from '@/modules/invoice-history/providers/save-invoice-history.provider';
 import { InvoiceProductHistoryModule } from '@/modules/invoice-product-history/invoice-product-history.module';
+import { InvoicePaymentHistoryModule } from '@/modules/invoice-payment-history/invoice-payment-history.module';
 
 @Module({
   providers: [
@@ -29,6 +30,7 @@ import { InvoiceProductHistoryModule } from '@/modules/invoice-product-history/i
       ],
     }),
     InvoiceProductHistoryModule,
+    InvoicePaymentHistoryModule,
   ],
   exports: [InvoiceHistoryService],
 })

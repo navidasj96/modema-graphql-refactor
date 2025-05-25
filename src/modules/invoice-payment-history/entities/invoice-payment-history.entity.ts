@@ -1,10 +1,12 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { User } from '@/modules/user/entities/user.entity';
 import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
@@ -91,11 +93,22 @@ export class InvoicePaymentHistory {
   @Column('varchar', { name: 'description', nullable: true, length: 191 })
   description?: string;
 
-  @Column('timestamp', { name: 'created_at', nullable: true })
-  createdAt?: Date;
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date;
 
-  @Column('timestamp', { name: 'updated_at', nullable: true })
-  updatedAt?: Date;
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => User, (users) => users.invoicePaymentHistories, {
     onDelete: 'NO ACTION',
