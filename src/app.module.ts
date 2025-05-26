@@ -345,16 +345,20 @@ const ENV = process.env.NODE_ENV;
       },
 
       formatError: (error: GraphQLError) => {
-        const MainError = error.extensions.originalError as {
-          message: string;
-          error: string;
-          statusCode: number;
+        const originalError = error.extensions.originalError as any;
+
+        const formattedError = {
+          message: originalError?.message || error.message,
+          error: originalError?.error || 'Internal Server Error',
+          statusCode: originalError?.statusCode || 500,
         };
-        return {
-          message: MainError.message,
-          error: MainError.error,
-          statusCode: MainError.statusCode,
-        };
+
+        // ✅ Only add stack trace in development
+        if (originalError?.stack) {
+          (formattedError as any).stack = originalError.stack;
+        }
+
+        return formattedError;
       },
     }),
     ActivityModule,

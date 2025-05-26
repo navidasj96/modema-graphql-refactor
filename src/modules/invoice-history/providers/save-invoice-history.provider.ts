@@ -49,7 +49,6 @@ export class SaveInvoiceHistoryProvider {
         throw new Error('User ID is required to save invoice history');
       }
     }
-
     const invoiceAddress = invoice.invoiceAddresses[0];
     const invoiceProducts = invoice.invoiceProducts;
     const invoicePayments = invoice.invoicePayments;
@@ -152,7 +151,8 @@ export class SaveInvoiceHistoryProvider {
     invoiceHistory.latitude = invoiceAddress.latitude;
     invoiceHistory.email = invoiceAddress.email;
     invoiceHistory.fullAddress = invoiceAddress.fullAddress;
-
+    invoiceHistory.createdAt = new Date();
+    invoiceHistory.updatedAt = new Date();
     const saveInvoiceHistory = await repository.save(invoiceHistory);
     if (!saveInvoiceHistory) {
       return false;
@@ -236,7 +236,6 @@ export class SaveInvoiceHistoryProvider {
             invoicePaymentHistory,
             manager
           );
-        console.log('invoicePaymentHistorySave', invoicePaymentHistorySave);
 
         if (!invoicePaymentHistorySave) {
           flagSave = false;

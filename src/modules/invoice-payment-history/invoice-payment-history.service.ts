@@ -46,7 +46,11 @@ export class InvoicePaymentHistoryService {
       ? manager.getRepository(InvoicePaymentHistory)
       : this.invoicePaymentHistoryRepository;
 
-    return await repository.save(invoicePaymentHistory);
+    return await repository.save({
+      ...invoicePaymentHistory,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
   }
 
   async invoicePaymentHistoryForTransactionHistory(

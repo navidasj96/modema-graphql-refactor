@@ -40,7 +40,6 @@ export class InvoiceResolver {
     ids: string[],
     @Context() context: { req: Request }
   ) {
-    console.log('context', context.req[REQUEST_USER_KEY]);
     return await this.invoiceService.setInvoiceAsDepotForDigikala(ids);
   }
 

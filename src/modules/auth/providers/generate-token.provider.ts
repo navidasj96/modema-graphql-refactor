@@ -16,7 +16,7 @@ export class GenerateTokenProvider {
      * inject jewConfiguration
      */
     @Inject(jwtConfig.KEY)
-    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
+    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>
   ) {}
 
   public async signToken<T>(userId: number, expiresIn: number, payload?: T) {
@@ -30,22 +30,23 @@ export class GenerateTokenProvider {
         issuer: this.jwtConfiguration.issuer,
         secret: this.jwtConfiguration.secret,
         expiresIn: expiresIn,
-      },
+      }
     );
   }
 
   public async generateTokens(user: User) {
     //generate accessToken
     //generate refreshToken
+
     const [accessToken, refreshToken] = await Promise.all([
       this.signToken<Partial<ActiveUserData>>(
         user.id,
         this.jwtConfiguration.accessTokenTtl,
-        { email: user.email },
+        { email: user.email }
       ),
       this.signToken<Partial<ActiveUserData>>(
         user.id,
-        this.jwtConfiguration.refreshTokenTtl,
+        this.jwtConfiguration.refreshTokenTtl
       ),
     ]);
 

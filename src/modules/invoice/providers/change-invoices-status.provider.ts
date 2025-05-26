@@ -16,11 +16,19 @@ import {
 import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import {
   InvoiceStatusEnum,
+  NOT_SENT_INVOICE_STATUSES,
   READY_TO_SEND_INVOICE_STATUSES,
 } from '@/utils/invoice-status';
 import { InvoicePermissions } from '@/utils/permissions';
 import { Injectable } from '@nestjs/common';
-import { DataSource, EntityManager, In, IsNull, Repository } from 'typeorm';
+import {
+  DataSource,
+  EntityManager,
+  In,
+  IsNull,
+  Not,
+  Repository,
+} from 'typeorm';
 import { ShippingServiceService } from '@/modules/shipping-service/shipping-service.service';
 import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { ConfigService } from '@nestjs/config';
@@ -34,6 +42,7 @@ import { InvoiceProductService } from '@/modules/invoice-product/invoice-product
 import { InjectRepository } from '@nestjs/typeorm';
 import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
 import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
+import { GraphQLError } from 'graphql';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -113,19 +122,22 @@ export class ChangeInvoiceStatusProvider {
 
     if (!statusesToChange.includes(statusId)) {
       return {
-        message: `شما اجازه تغییر وضعیت به این صورتحساب را ندارید`,
+        message:
+          'نام کاربری شما اجازه تغییر وضعیت صورتحساب به وضعیت درخواستی را ندارد. لطفا در صورت مشاهده مغایرت در مجوزها با بخش فنی تماس حاصل نمایید.',
         status: false,
       };
     }
 
     const invoiceIds = ids.map((id) => Number(id));
-    const queryRunner = this.dataSource.createQueryRunner();
     let comment = '';
     //use typeorm queryRunner
+    const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
     const manager = queryRunner.manager;
     const invoiceRepository = manager.getRepository(Invoice);
+    let invoiceUsersThatHasOtherInvoices: Record<any, any> = {};
+
     try {
       const invoices = await invoiceRepository.find({
         where: { id: In(invoiceIds) },
@@ -140,13 +152,13 @@ export class ChangeInvoiceStatusProvider {
               product: true,
               basicCarpetSize: true,
             },
+            invoiceProductItems: true,
           },
           invoicePayments: true,
           visitor: true,
           user: { heardAboutUsOption: true },
         },
       });
-
       for (const invoice of invoices) {
         if (
           !checkUserHasRole(roles, [RolesNameEnum.ADMINISTRATOR]) &&
@@ -163,6 +175,8 @@ export class ChangeInvoiceStatusProvider {
         }
 
         //change invoice status
+        comment =
+          'تغییر وضعیت چند صورتحساب از طریق صفحه ی لیست صورتحساب ها انجام شد';
         const changeResult = await this.changeInvoiceStatus(
           invoice,
           statusId,
@@ -181,19 +195,51 @@ export class ChangeInvoiceStatusProvider {
           };
         }
         await queryRunner.commitTransaction();
+        const customerOtherInvoicesCount = await this.invoiceRepository.count({
+          where: {
+            id: Not(invoice.id),
+            userId: invoice.userId as number,
+            currentInvoiceStatusId: In(NOT_SENT_INVOICE_STATUSES),
+          },
+        });
+        if (customerOtherInvoicesCount > 0) {
+          const userName = invoice.user.name;
+          invoiceUsersThatHasOtherInvoices = {
+            userId: invoice.userId,
+            user: userName,
+            invoice: invoice.id,
+            invoiceNumber: invoice.invoiceNumber,
+            message: `
+            صورتحساب
+            ${invoice.invoiceNumber}
+            مربوط به نام کاربر
+            ${userName}
+            دارای صورتحساب دیگری است که در حال پردازش و آماده سازی می باشد
+            `,
+          };
+        }
       }
     } catch (error) {
       await queryRunner.rollbackTransaction();
-      return {
-        message: `:${error}مشکلی در عملیات بوجود امده است`,
-        status: false,
-      };
+      throw new GraphQLError('مشکلی پیش آمد', {
+        extensions: {
+          code: 'BAD_USER_INPUT',
+          originalError: {
+            message: 'مشکلی در تغییر وضعیت ایتم بوجود امده است',
+            error: error?.message,
+            stack: error?.stack,
+            statusCode: 400,
+          },
+        },
+      });
     } finally {
       await queryRunner.release();
     }
+
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
       status: true,
+      customerOtherInvoices: invoiceUsersThatHasOtherInvoices,
     };
   }
 
@@ -311,6 +357,7 @@ export class ChangeInvoiceStatusProvider {
         this.checkIfCreditableInvoiceAccountingDescriptionEntered(invoice);
       await this.changeInvoiceItemStatusesToExitedFromRepository(
         invoice,
+        userId,
         manager
       );
 
@@ -500,7 +547,7 @@ export class ChangeInvoiceStatusProvider {
     );
     await this.invoiceHistoryService.saveInvoiceHistory(
       invoice,
-      invoice.userId,
+      userId,
       manager
     );
     return {
@@ -580,27 +627,21 @@ export class ChangeInvoiceStatusProvider {
 
   public async changeInvoiceItemStatusesToExitedFromRepository(
     invoice: Invoice,
+    userId: number,
     manager?: EntityManager
   ) {
     const invoiceProducts = invoice.invoiceProducts;
-    const user = invoice.user;
     const comment =
       'انتقال ایتم به مرحله "خروج از انبار گردید" به دلیل اینکه از انبار خارج شده و به مرحله بسته بندی رفته است';
 
     for (const invoiceProduct of invoiceProducts) {
       const invoiceProductItems = invoiceProduct.invoiceProductItems;
-
       for (const invoiceProductItem of invoiceProductItems) {
         const currentStatusId = invoiceProductItem.currentStatusId;
         const invoiceProductItemId = invoiceProductItem.id;
         invoiceProductItem.currentStatusId =
           InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY;
         try {
-          // await this.invoiceProductItemService.updateCurrentStatusId(
-          //   invoiceProductItem,
-          //   InvoiceProductStatusEnum.EXITED_FROM_REPOSITORY,
-          //   manager
-          // );
           await this.invoiceProductItemService.save(
             invoiceProductItem,
             manager
@@ -610,12 +651,22 @@ export class ChangeInvoiceStatusProvider {
           await this.invoiceProductItemInvoiceProductStatusService.attach(
             invoiceProductItemId,
             currentStatusId,
-            user.id,
+            userId,
             comment,
             manager
           );
         } catch (error) {
-          throw new Error(`مشکلی در تغییر وضعیت ایتم بوجود امده است: ${error}`);
+          throw new GraphQLError('مشکلی پیش آمد', {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+              originalError: {
+                message: 'مشکلی در تغییر وضعیت ایتم بوجود امده است',
+                error: error?.message,
+                stack: error?.stack,
+                statusCode: 400,
+              },
+            },
+          });
         }
       }
     }

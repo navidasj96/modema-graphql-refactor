@@ -53,10 +53,12 @@ export class InvoiceProductItemInvoiceProductStatusService {
       : this.invoiceProductItemInvoiceProductStatusRepository;
 
     await repository.save({
-      invoiceProductItem: { id: invoiceProductItemId },
-      InvoiceProductStatus: { id: currentStatusId },
-      user: { id: userId },
+      invoiceProductItemId: invoiceProductItemId,
+      invoiceProductStatusId: currentStatusId,
+      userId,
       comment,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
   }
 }

@@ -6,9 +6,12 @@ export default registerAs('jwt', () => {
     secret: process.env.JWT_SECRET ?? 'sadsadad',
     audience: process.env.JWT_TOKEN_AUDIENCE ?? 'asdsadsad',
     issuer: process.env.JWT_TOKEN_ISSUER ?? 'sadsadsad',
-    accessTokenTtl: parseInt(process.env.JWT_ACCESS_TOKEN_TTL ?? '480000', 10),
+    accessTokenTtl: parseInt(
+      process.env.JWT_ACCESS_TOKEN_TTL ?? `${8000 * 60 * 60}`,
+      10
+    ),
     refreshTokenTtl: parseInt(
-      process.env.JWT_REFRESH_TOKEN_TTL ?? `525600000`,
+      process.env.JWT_REFRESH_TOKEN_TTL ?? `${8000 * 60 * 60 * 1000}`,
       10
     ),
   };
