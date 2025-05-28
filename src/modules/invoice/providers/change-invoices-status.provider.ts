@@ -34,7 +34,6 @@ import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { ConfigService } from '@nestjs/config';
 import { VisitorService } from '@/modules/visitor/visitor.service';
 import { InjectQueue } from '@nestjs/bull';
-import { JobsEnum } from '@/jobs/enum/jobsEnum';
 import { Queue } from 'bull';
 import { User } from '@/modules/user/entities/user.entity';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
@@ -43,6 +42,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
 import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
 import { GraphQLError } from 'graphql';
+import { JobsEnum } from '@/modules/jobs/enum/jobsEnum';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -550,6 +550,10 @@ export class ChangeInvoiceStatusProvider {
       userId,
       manager
     );
+
+    await this.queue.add(JobsEnum.Invoice_Tracking_Code_Notification, {
+      invoiceId: invoice.id,
+    });
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
       status: true,

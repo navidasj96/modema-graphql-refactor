@@ -281,8 +281,10 @@ import { SettingModule } from '@/modules/setting/setting.module';
 import { SettingsHistoryModule } from '@/modules/settings-history/settings-history.module';
 import { ExternalApiModule } from './modules/external-api/external-api.module';
 import { SmsModule } from './modules/sms/sms.module';
-import { BullModule } from '@nestjs/bull';
+import { BullModule } from '@nestjs/bullmq';
 import { QueueModule } from './modules/queue/queue.module';
+import redisConfig from '@/configuration/redis.config';
+import { JobsModule } from '@/modules/jobs/jobs.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -292,7 +294,7 @@ const ENV = process.env.NODE_ENV;
       imports: [ConfigModule],
       inject: [ConfigServiceNest],
       useFactory: (configService: ConfigServiceNest) => ({
-        redis: {
+        connection: {
           host: configService.get('redis.host'),
           port: +configService.get('redis.port'),
         },
@@ -303,7 +305,7 @@ const ENV = process.env.NODE_ENV;
       isGlobal: true,
       // validationSchema: validationSchema,
       envFilePath: [!ENV ? '.env' : `.env.${ENV}`],
-      load: [databaseConfig, generalConfig],
+      load: [databaseConfig, generalConfig, redisConfig],
     }),
 
     TypeOrmModule.forRootAsync({
@@ -625,6 +627,7 @@ const ENV = process.env.NODE_ENV;
     ExternalApiModule,
     SmsModule,
     QueueModule,
+    JobsModule,
   ],
   controllers: [AppController, UserController],
   providers: [
