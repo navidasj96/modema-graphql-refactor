@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { BullModule } from '@nestjs/bull';
-import { JobsEnum } from '@/jobs/enum/jobsEnum';
+import { BullModule } from '@nestjs/bullmq';
+import { JobsEnum } from '@/modules/jobs/enum/jobsEnum';
 
 @Module({
   imports: [

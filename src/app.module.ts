@@ -281,10 +281,10 @@ import { SettingModule } from '@/modules/setting/setting.module';
 import { SettingsHistoryModule } from '@/modules/settings-history/settings-history.module';
 import { ExternalApiModule } from './modules/external-api/external-api.module';
 import { SmsModule } from './modules/sms/sms.module';
-import { BullModule } from '@nestjs/bull';
+import { BullModule } from '@nestjs/bullmq';
 import { QueueModule } from './modules/queue/queue.module';
-import { JobsModule } from '@/modules/jobs/jobs.module';
 import redisConfig from '@/configuration/redis.config';
+import { JobsModule } from '@/modules/jobs/jobs.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -294,7 +294,7 @@ const ENV = process.env.NODE_ENV;
       imports: [ConfigModule],
       inject: [ConfigServiceNest],
       useFactory: (configService: ConfigServiceNest) => ({
-        redis: {
+        connection: {
           host: configService.get('redis.host'),
           port: +configService.get('redis.port'),
         },
