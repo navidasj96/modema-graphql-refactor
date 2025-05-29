@@ -43,3 +43,10 @@ export const READY_TO_SEND_INVOICE_STATUSES: InvoiceStatusEnum[] = [
   InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS,
   InvoiceStatusEnum.READY_TO_SEND_TIPAX,
 ];
+
+export const PRODUCTION_IN_PROGRESS_INVOICE_STATUSES: InvoiceStatusEnum[] = [
+  InvoiceStatusEnum.REFERRED_TO_PRODUCTION_DEPARTMENT,
+  InvoiceStatusEnum.PREPARING_PRODUCTS,
+  InvoiceStatusEnum.PRODUCTION_COMPLETED,
+  InvoiceStatusEnum.RECEIVED_BY_PACKAGING_DEPARTMENT,
+];

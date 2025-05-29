@@ -17,6 +17,7 @@ import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import {
   InvoiceStatusEnum,
   NOT_SENT_INVOICE_STATUSES,
+  PRODUCTION_IN_PROGRESS_INVOICE_STATUSES,
   READY_TO_SEND_INVOICE_STATUSES,
 } from '@/utils/invoice-status';
 import { InvoicePermissions } from '@/utils/permissions';
@@ -34,7 +35,6 @@ import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { ConfigService } from '@nestjs/config';
 import { VisitorService } from '@/modules/visitor/visitor.service';
 import { InjectQueue } from '@nestjs/bull';
-import { JobsEnum } from '@/jobs/enum/jobsEnum';
 import { Queue } from 'bull';
 import { User } from '@/modules/user/entities/user.entity';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
@@ -43,6 +43,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
 import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
 import { GraphQLError } from 'graphql';
+import { UserService } from '@/modules/user/user.service';
+import { JobsEnum } from '@/modules/jobs/enum/jobsEnum';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -99,7 +101,12 @@ export class ChangeInvoiceStatusProvider {
     private readonly invoiceInvoiceStatusService: InvoiceInvoiceStatusService,
     /**
      * inject InvoiceHistoryService
-     */ private readonly invoiceHistoryService: InvoiceHistoryService
+     */
+    private readonly invoiceHistoryService: InvoiceHistoryService,
+    /**
+     * inject userService
+     */
+    private readonly userService: UserService
   ) {}
 
   public async updateInvoiceStatus(
@@ -511,7 +518,8 @@ export class ChangeInvoiceStatusProvider {
     if (status == InvoiceStatusEnum.CANCEL) {
       const cancelSnappPaymentResult = await this.checkAndCancelSnappPayment(
         invoice,
-        manager
+        manager,
+        userId
       );
     }
 
@@ -550,6 +558,9 @@ export class ChangeInvoiceStatusProvider {
       userId,
       manager
     );
+    await this.queue.add(JobsEnum.Invoice_Tracking_Code_Notification, {
+      invoiceId: invoice.id,
+    });
     return {
       message: 'صورتحساب با موفقیت تغییر وضعیت داده شد',
       status: true,
@@ -839,6 +850,29 @@ export class ChangeInvoiceStatusProvider {
 
   public async checkAndCancelSnappPayment(
     invoice: Invoice,
-    manager: EntityManager
-  ) {}
+    manager: EntityManager,
+    userId: number
+  ) {
+    if (invoice.invoicePaymentStatusId == InvoicePaymentStatusEnum.SNAPPPAY) {
+      if (
+        PRODUCTION_IN_PROGRESS_INVOICE_STATUSES.includes(
+          invoice.currentInvoiceStatusId
+        )
+      ) {
+        return await this.cancelSnappPayment(
+          invoice.orderId,
+          invoice.refId,
+          userId
+        );
+      }
+    }
+  }
+
+  public async cancelSnappPayment(
+    orderId: string | null,
+    refId: string | null,
+    userId: number
+  ) {
+    const user = await this.userService.find({ where: { id: userId } });
+  }
 }

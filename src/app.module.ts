@@ -283,6 +283,8 @@ import { ExternalApiModule } from './modules/external-api/external-api.module';
 import { SmsModule } from './modules/sms/sms.module';
 import { BullModule } from '@nestjs/bull';
 import { QueueModule } from './modules/queue/queue.module';
+import { JobsModule } from '@/modules/jobs/jobs.module';
+import redisConfig from '@/configuration/redis.config';
 
 const ENV = process.env.NODE_ENV;
 
@@ -303,7 +305,7 @@ const ENV = process.env.NODE_ENV;
       isGlobal: true,
       // validationSchema: validationSchema,
       envFilePath: [!ENV ? '.env' : `.env.${ENV}`],
-      load: [databaseConfig, generalConfig],
+      load: [databaseConfig, generalConfig, redisConfig],
     }),
 
     TypeOrmModule.forRootAsync({
@@ -625,6 +627,7 @@ const ENV = process.env.NODE_ENV;
     ExternalApiModule,
     SmsModule,
     QueueModule,
+    JobsModule,
   ],
   controllers: [AppController, UserController],
   providers: [

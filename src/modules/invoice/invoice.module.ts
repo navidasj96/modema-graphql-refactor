@@ -20,6 +20,7 @@ import { QueueModule } from '@/modules/queue/queue.module';
 import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.module';
 import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
 import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
+import { UserModule } from '@/modules/user/user.module';
 
 @Module({
   providers: [
@@ -52,6 +53,7 @@ import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.
     InvoiceProductModule,
     InvoiceInvoiceStatusModule,
     InvoiceHistoryModule,
+    UserModule,
     forwardRef(() => ShippingServiceModule),
   ],
   exports: [InvoiceService],

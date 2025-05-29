@@ -11,7 +11,7 @@ import { UpdateUserInput } from './dto/update-user.input';
 import { ActivityService } from '@/modules/activity/activity.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '@/modules/user/entities/user.entity';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 import { PermissionService } from '@/modules/permission/permission.service';
 import { RoleService } from '@/modules/role/role.service';
 import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
@@ -71,8 +71,8 @@ export class UserService {
     return `This action removes a #${id} user`;
   }
 
-  test() {
-    return this.activityService.getActivityWithUser(1);
+  async find(options: FindOneOptions<User>) {
+    return await this.userRepository.findOne(options);
   }
 
   async findUserByUsername(username: string) {
