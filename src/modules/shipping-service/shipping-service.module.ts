@@ -10,12 +10,15 @@ import { CreateShipmentChaparProvider } from '@/modules/shipping-service/provide
 import { InvoiceModule } from '@/modules/invoice/invoice.module';
 import { InvoicePaymentModule } from '@/modules/invoice-payment/invoice-payment.module';
 import { ExternalApiModule } from '@/modules/external-api/external-api.module';
+import { SnappAuthenticationControllerProvider } from '@/modules/shipping-service/providers/snapp-authentication-controller.provider';
+import { SettingModule } from '@/modules/setting/setting.module';
 
 @Module({
   providers: [
     ShippingServiceResolver,
     ShippingServiceService,
     CreateShipmentChaparProvider,
+    SnappAuthenticationControllerProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -31,6 +34,7 @@ import { ExternalApiModule } from '@/modules/external-api/external-api.module';
     InvoicePaymentModule,
     forwardRef(() => InvoiceModule),
     ExternalApiModule,
+    SettingModule,
   ],
   exports: [ShippingServiceService],
 })

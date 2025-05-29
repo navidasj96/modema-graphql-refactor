@@ -1,6 +1,6 @@
 // jobs.module.ts
 import { Module } from '@nestjs/common';
-import { InvoiceTrackingCodeNotificationProcessor } from '@/modules/jobs/send-invoice-tracking-code-notification.job';
+import { InvoiceTrackingCodeNotificationProcessor } from '@/modules/jobs/processors/send-invoice-tracking-code-notification.job';
 import { SmsModule } from '@/modules/sms/sms.module';
 import { InvoiceModule } from '@/modules/invoice/invoice.module';
 
