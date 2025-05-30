@@ -19,3 +19,20 @@ export const checkUserHasRole = (
 
   return hasRole;
 };
+
+export const nowGreaterThanOrEqualTo = (date: Date | string): boolean => {
+  const now = new Date();
+  const compareDate = typeof date === 'string' ? new Date(date) : date;
+
+  if (isNaN(compareDate.getTime())) {
+    throw new Error('Invalid date input');
+  }
+
+  return now.getTime() >= compareDate.getTime();
+};
+
+import dayjs from 'dayjs';
+
+export function getDatePlusSeconds(seconds = 0): Date {
+  return dayjs().add(seconds, 'second').toDate();
+}

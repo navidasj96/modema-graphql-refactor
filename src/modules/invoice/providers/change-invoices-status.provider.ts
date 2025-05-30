@@ -113,10 +113,10 @@ export class ChangeInvoiceStatusProvider {
     changeInvoicesStatusInput: ChangeInvoicesStatusInput,
     context: { req: UserContext }
   ): Promise<ChangeInvoicesStatusResponseDto> {
-    let { ids, statusId } = changeInvoicesStatusInput;
+    const { ids, statusId } = changeInvoicesStatusInput;
     const { req } = context;
     const { user } = req;
-    let { sub: userId } = user;
+    const { sub: userId } = user;
     //check user permission
     const userPermissions = await this.authService.getUserPermissions(
       req.user.sub
@@ -703,7 +703,7 @@ export class ChangeInvoiceStatusProvider {
         });
 
       for (const invoiceProductItem of invoiceProductItemsToProduce) {
-        let updatedInvoiceProductItem = invoiceProductItem;
+        const updatedInvoiceProductItem = invoiceProductItem;
         updatedInvoiceProductItem.fromDepot = 0;
         updatedInvoiceProductItem.currentStatusId =
           InvoiceProductStatusEnum.BEGIN_PRODUCTION;
@@ -721,7 +721,7 @@ export class ChangeInvoiceStatusProvider {
         });
 
       for (const invoiceProductItem of invoiceProductItemsFromDepot) {
-        let updatedInvoiceProductItem = invoiceProductItem;
+        const updatedInvoiceProductItem = invoiceProductItem;
         updatedInvoiceProductItem.fromDepot = 0;
         updatedInvoiceProductItem.currentStatusId =
           InvoiceProductStatusEnum.RECEIVED_BY_REPOSITORY_DEPARTMENT;
@@ -860,19 +860,30 @@ export class ChangeInvoiceStatusProvider {
         )
       ) {
         return await this.cancelSnappPayment(
-          invoice.orderId,
+          userId,
           invoice.refId,
-          userId
+          invoice.orderId
         );
       }
     }
   }
 
   public async cancelSnappPayment(
-    orderId: string | null,
-    refId: string | null,
-    userId: number
+    userId: number,
+    orderId?: string | null,
+    refId?: string | null
   ) {
     const user = await this.userService.find({ where: { id: userId } });
+    if (!orderId) {
+      throw new GraphQLError('orderId is required');
+    }
+    const invoice = await this.invoiceRepository.findOne({
+      where: { orderId: orderId },
+    });
+    const snappToken = await this.shippingService.getOrCreateSnappToken();
+
+    if (!snappToken) {
+      throw new GraphQLError('سرویس اسنپ پی در حال حاضر در دسترس نمی باشد');
+    }
   }
 }

@@ -1,5 +1,4 @@
 import { SendToChaparInput } from '@/modules/external-api/dtos/send-to-chapar-input';
-import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
@@ -19,6 +18,7 @@ export class SendToChaparProvider {
      */
     private readonly httpService: HttpService
   ) {}
+
   public async sendToChapar(sendToChaparInput: SendToChaparInput) {
     const nowJalali = format(new Date(), 'yyyyMMdd');
     const today = new Date().toISOString().slice(0, 10);

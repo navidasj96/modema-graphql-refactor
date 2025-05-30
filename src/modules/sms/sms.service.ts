@@ -23,9 +23,9 @@ export class SmsService {
     );
 
     const payload = {
-      username: this.configService.get('FARAPAYAMAK_USERNAME'),
-      password: this.configService.get('FARAPAYAMAK_PASSWORD'),
-      from: this.configService.get('FARAPAYAMAK_PHONE_NUMBER'),
+      username: this.configService.get('general.FARAPAYAMAK_USERNAME'),
+      password: this.configService.get('general.FARAPAYAMAK_PASSWORD'),
+      from: this.configService.get('general.FARAPAYAMAK_PHONE_NUMBER'),
       to,
       text,
       isFlash: false,

@@ -8,10 +8,10 @@ import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
 import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import { InvoicePermissions } from '@/utils/permissions';
 import { SetInvoiceAsDepotForDigikalaResponseDto } from '@/modules/invoice/dto/set-invoice-as-depot-for-digikala-response.dto';
-import { REQUEST_USER_KEY } from '@/modules/auth/constant/auth.constant';
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { ChangeInvoicesStatusResponseDto } from '@/modules/invoice/dto/change-invoices-status-response.dto';
+import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dto';
 
 @Resolver(() => Invoice)
 export class InvoiceResolver {
@@ -37,8 +37,7 @@ export class InvoiceResolver {
   @Mutation(() => SetInvoiceAsDepotForDigikalaResponseDto)
   async setInvoiceAsDepotForDigikala(
     @Args('ids', { type: () => [String] })
-    ids: string[],
-    @Context() context: { req: Request }
+    ids: string[]
   ) {
     return await this.invoiceService.setInvoiceAsDepotForDigikala(ids);
   }
@@ -55,5 +54,19 @@ export class InvoiceResolver {
       changeInvoicesStatusInput,
       context
     );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([InvoicePermissions.PERMISSION_TO_VIEW_INVOICE_DETAILS])
+  @Query(() => Invoice)
+  async showInvoice(
+    @Args('showInvoice', { type: () => ShowInvoiceInputDto })
+    showInvoiceInputDto: ShowInvoiceInputDto,
+    @Context()
+    context: {
+      req: UserContext;
+    }
+  ) {
+    return await this.invoiceService.showInvoice(showInvoiceInputDto, context);
   }
 }

@@ -38,4 +38,8 @@ export class SettingService {
   async activeSetting() {
     return await this.settingRepository.findOne({ where: { isActive: 1 } });
   }
+
+  async save(setting: Setting) {
+    return await this.settingRepository.save(setting);
+  }
 }

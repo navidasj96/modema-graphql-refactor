@@ -29,7 +29,7 @@ export class AccessTokenGuard implements CanActivate {
     /**
      * inject authService
      */
-    private readonly authService: AuthService,
+    private readonly authService: AuthService
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -47,7 +47,7 @@ export class AccessTokenGuard implements CanActivate {
     try {
       const payload = (await this.jwtService.verifyAsync(
         token,
-        this.jwtConfiguration,
+        this.jwtConfiguration
       )) as ActiveUserData;
 
       // add the payload to Request body to be able to grab the user in any controller by this
@@ -55,7 +55,7 @@ export class AccessTokenGuard implements CanActivate {
 
       //add users permissions to the request
       const { roles, permissions } = await this.authService.getUserPermissions(
-        payload.sub,
+        payload.sub
       );
       request[REQUEST_USER_KEY].permissions = permissions;
 

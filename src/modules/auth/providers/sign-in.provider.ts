@@ -71,6 +71,7 @@ export class SignInProvider {
     //   'this.jwtConfiguration.refreshTokenTtl',
     //   this.jwtConfiguration.refreshTokenTtl
     // );
+
     res.cookie(TokensName.access_token, accessToken, {
       httpOnly: true,
       secure: false,

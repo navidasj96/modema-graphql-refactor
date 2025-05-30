@@ -12,6 +12,8 @@ import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/provid
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
+import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
+import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dto';
 
 @Injectable()
 export class InvoiceService {
@@ -33,7 +35,11 @@ export class InvoiceService {
      * inject invoiceRepository
      */
     @InjectRepository(Invoice)
-    private readonly invoiceRepository: Repository<Invoice>
+    private readonly invoiceRepository: Repository<Invoice>,
+    /**
+     * inject showInvoiceProvider
+     */
+    private readonly showInvoiceProvider: ShowInvoiceProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -83,6 +89,16 @@ export class InvoiceService {
   async fillInvoicePackageCountIfEmpty(invoice: Invoice) {
     return await this.fillInvoicePackageCountIfEmptyProvider.fillInvoicePackageCountIfEmpty(
       invoice
+    );
+  }
+
+  async showInvoice(
+    showInvoiceInputDto: ShowInvoiceInputDto,
+    context: { req: UserContext }
+  ) {
+    return await this.showInvoiceProvider.showInvoice(
+      showInvoiceInputDto,
+      context
     );
   }
 }

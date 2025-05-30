@@ -4,6 +4,7 @@ import { UpdateShippingServiceInput } from './dto/update-shipping-service.input'
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { CreateShipmentChaparProvider } from '@/modules/shipping-service/providers/create-shipment-chapar.provider';
+import { SnappAuthenticationControllerProvider } from '@/modules/shipping-service/providers/snapp-authentication-controller.provider';
 
 @Injectable()
 export class ShippingServiceService {
@@ -11,7 +12,11 @@ export class ShippingServiceService {
     /**
      * inject CreateShipmentChaparProvider
      */
-    private readonly createShipmentChaparProvider: CreateShipmentChaparProvider
+    private readonly createShipmentChaparProvider: CreateShipmentChaparProvider,
+    /**
+     * inject SnappAuthenticationControllerProvider
+     */
+    private readonly snappAuthenticationControllerProvider: SnappAuthenticationControllerProvider
   ) {}
 
   create(createShippingServiceInput: CreateShippingServiceInput) {
@@ -56,4 +61,8 @@ export class ShippingServiceService {
   }
 
   async createShipmentMahex(invoice: Invoice) {}
+
+  async getOrCreateSnappToken() {
+    return await this.snappAuthenticationControllerProvider.getOrCreateSnappToken();
+  }
 }

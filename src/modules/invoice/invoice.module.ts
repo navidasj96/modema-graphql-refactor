@@ -21,6 +21,7 @@ import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.
 import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
 import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
 import { UserModule } from '@/modules/user/user.module';
+import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
 
 @Module({
   providers: [
@@ -30,6 +31,7 @@ import { UserModule } from '@/modules/user/user.module';
     SetInvoiceAsDepotForDigikalaProvider,
     ChangeInvoiceStatusProvider,
     FillInvoicePackageCountIfEmptyProvider,
+    ShowInvoiceProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
