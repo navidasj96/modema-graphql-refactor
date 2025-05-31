@@ -36,3 +36,17 @@ import dayjs from 'dayjs';
 export function getDatePlusSeconds(seconds = 0): Date {
   return dayjs().add(seconds, 'second').toDate();
 }
+
+export function pluck<
+  T extends Record<string, any>,
+  K extends keyof T,
+  V extends keyof T,
+>(items: T[], valueKey: V, keyKey: K): Record<T[K], T[V]> {
+  return items.reduce(
+    (acc, item) => {
+      acc[item[keyKey]] = item[valueKey];
+      return acc;
+    },
+    {} as Record<T[K], T[V]>
+  );
+}

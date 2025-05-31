@@ -22,6 +22,10 @@ import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/inv
 import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
 import { UserModule } from '@/modules/user/user.module';
 import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
+import { InvoiceStatusModule } from '@/modules/invoice-status/invoice-status.module';
+import { InvoicePrepareProvider } from '@/modules/invoice/providers/invoice-prepare.provider';
+import { WalletModule } from '@/modules/wallet/wallet.module';
+import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
 
 @Module({
   providers: [
@@ -32,6 +36,7 @@ import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-pr
     ChangeInvoiceStatusProvider,
     FillInvoicePackageCountIfEmptyProvider,
     ShowInvoiceProvider,
+    InvoicePrepareProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -56,6 +61,9 @@ import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-pr
     InvoiceInvoiceStatusModule,
     InvoiceHistoryModule,
     UserModule,
+    InvoiceStatusModule,
+    WalletModule,
+    InvoiceAddressModule,
     forwardRef(() => ShippingServiceModule),
   ],
   exports: [InvoiceService],

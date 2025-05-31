@@ -6,9 +6,14 @@ import { InvoiceAddress as InvoiceAddressGraphQL } from '@/modules/invoice-addre
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateInvoiceAddressInput } from '@/modules/invoice-address/dto/create-invoice-address.input';
+import { InvoiceAddressPrepareProvider } from '@/modules/invoice-address/providers/invoice-address-prepare.provider';
 
 @Module({
-  providers: [InvoiceAddressResolver, InvoiceAddressService],
+  providers: [
+    InvoiceAddressResolver,
+    InvoiceAddressService,
+    InvoiceAddressPrepareProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([InvoiceAddress])],
@@ -21,5 +26,6 @@ import { CreateInvoiceAddressInput } from '@/modules/invoice-address/dto/create-
       ],
     }),
   ],
+  exports: [InvoiceAddressService],
 })
 export class InvoiceAddressModule {}

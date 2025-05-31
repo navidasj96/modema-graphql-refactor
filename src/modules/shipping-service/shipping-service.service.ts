@@ -5,6 +5,9 @@ import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
 import { CreateShipmentChaparProvider } from '@/modules/shipping-service/providers/create-shipment-chapar.provider';
 import { SnappAuthenticationControllerProvider } from '@/modules/shipping-service/providers/snapp-authentication-controller.provider';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class ShippingServiceService {
@@ -16,7 +19,12 @@ export class ShippingServiceService {
     /**
      * inject SnappAuthenticationControllerProvider
      */
-    private readonly snappAuthenticationControllerProvider: SnappAuthenticationControllerProvider
+    private readonly snappAuthenticationControllerProvider: SnappAuthenticationControllerProvider,
+    /**
+     * inject shippingServiceRepository
+     */
+    @InjectRepository(ShippingService)
+    private readonly shippingServiceRepository: Repository<ShippingService>
   ) {}
 
   create(createShippingServiceInput: CreateShippingServiceInput) {
@@ -27,8 +35,8 @@ export class ShippingServiceService {
     return `This action returns all shippingService`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} shippingService`;
+  async findOne(options: FindOneOptions<ShippingService>) {
+    return await this.shippingServiceRepository.findOne(options);
   }
 
   update(id: number, updateShippingServiceInput: UpdateShippingServiceInput) {

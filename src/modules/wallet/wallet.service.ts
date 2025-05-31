@@ -7,9 +7,12 @@ import { WalletHistoryService } from '@/modules/wallet-history/wallet-history.se
 import { UpdateWalletProvider } from '@/modules/wallet/providers/update-wallet.provider';
 import { CreateTransactionInput } from '@/modules/transaction/dto/create-transaction.input';
 import { CreateWalletHistoryInput } from '@/modules/wallet-history/dto/create-wallet-history.input';
-import { DataSource } from 'typeorm';
+import { DataSource, FindOneOptions, Repository } from 'typeorm';
 import { UpdateWalletResponseDto } from '@/modules/wallet/dto/update-wallet-response.dto';
 import LaravelModelNames from '@/utils/laravel-model-names';
+import { read } from 'fs';
+import { Wallet } from '@/modules/wallet/entities/wallet.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class WalletService {
@@ -33,10 +36,12 @@ export class WalletService {
     /**
      * inject dataSource
      */
-    private readonly dataSource: DataSource
+    private readonly dataSource: DataSource,
     /**
-     * inject
+     * inject walletRepository
      */
+    @InjectRepository(Wallet)
+    private readonly walletRepository: Repository<Wallet>
   ) {}
 
   async create(createWalletDto: CreateWalletInput) {
@@ -47,8 +52,8 @@ export class WalletService {
     return `This action returns all wallet`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} wallet`;
+  async findOne(options: FindOneOptions<Wallet>) {
+    return await this.walletRepository.findOne(options);
   }
 
   async update(

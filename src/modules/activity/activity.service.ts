@@ -12,11 +12,11 @@ export class ActivityService {
      */
     @InjectRepository(Activity)
     private readonly activityRepository: Repository<Activity>,
-    private readonly userService: UserService,
+    private readonly userService: UserService
   ) {}
 
   async getUserWithActivities(userId: number) {
-    return await this.userService.findOne(Number(userId));
+    return await this.userService.findOne({ where: { id: Number(userId) } });
   }
 
   async getActivityWithUser(activityId: number): Promise<Activity | null> {

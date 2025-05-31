@@ -32,5 +32,6 @@ import { UpdateWalletProvider } from '@/modules/wallet/providers/update-wallet.p
     WalletHistoryModule,
     TransactionModule,
   ],
+  exports: [WalletService],
 })
 export class WalletModule {}

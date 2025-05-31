@@ -1,0 +1,8 @@
+export enum InvoiceModeEnum {
+  INVOICE_MODE_FOR_CUSTOMER = 1 as number,
+  INVOICE_MODE_FOR_DEPOT = 2 as number,
+  INVOICE_MODE_FOR_DEPOT_CANCELED = 3 as number,
+  INVOICE_MODE_REVERSED_COMPLETELY = 4 as number,
+  INVOICE_MODE_DAMAGED = 5 as number,
+  INVOICE_MODE_CREATED_FROM_DAMAGED = 6 as number,
+}

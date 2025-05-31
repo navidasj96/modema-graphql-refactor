@@ -6,9 +6,14 @@ import { InvoiceStatus as InvoiceStatusGraphQL } from '@/modules/invoice-status/
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateInvoiceStatusInput } from '@/modules/invoice-status/dto/create-invoice-status.input';
+import { InvoiceStatusPrepareProvider } from '@/modules/invoice-status/providers/invoice-status-prepare.provider';
 
 @Module({
-  providers: [InvoiceStatusResolver, InvoiceStatusService],
+  providers: [
+    InvoiceStatusResolver,
+    InvoiceStatusService,
+    InvoiceStatusPrepareProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([InvoiceStatus])],
@@ -21,5 +26,6 @@ import { CreateInvoiceStatusInput } from '@/modules/invoice-status/dto/create-in
       ],
     }),
   ],
+  exports: [InvoiceStatusService],
 })
 export class InvoiceStatusModule {}

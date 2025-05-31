@@ -50,3 +50,18 @@ export const PRODUCTION_IN_PROGRESS_INVOICE_STATUSES: InvoiceStatusEnum[] = [
   InvoiceStatusEnum.PRODUCTION_COMPLETED,
   InvoiceStatusEnum.RECEIVED_BY_PACKAGING_DEPARTMENT,
 ];
+
+export const INVOICE_STATUSES_PACKAGING_AND_AFTER_STATUSES: InvoiceStatusEnum[] =
+  [
+    InvoiceStatusEnum.RECEIVED_BY_PACKAGING_DEPARTMENT,
+    InvoiceStatusEnum.READY_TO_SEND_CHAPAR,
+    InvoiceStatusEnum.READY_TO_SEND_MAHEX,
+    InvoiceStatusEnum.READY_TO_SEND_GENERAL_EXPRESS,
+    InvoiceStatusEnum.READY_TO_SEND_TIPAX,
+    InvoiceStatusEnum.SENT,
+    InvoiceStatusEnum.CANCEL,
+    InvoiceStatusEnum.RETURN_TO_ORIGIN,
+    InvoiceStatusEnum.ADDED_TO_DEPOT_INVENTORY,
+    InvoiceStatusEnum.DAMAGED_DURING_PRODUCTION,
+    InvoiceStatusEnum.CANCELED_SNAPP_AFTER_RECEIVED_BY_CUSTOMER,
+  ];
