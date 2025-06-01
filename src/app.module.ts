@@ -285,6 +285,7 @@ import { BullModule } from '@nestjs/bullmq';
 import { QueueModule } from './modules/queue/queue.module';
 import redisConfig from '@/configuration/redis.config';
 import { JobsModule } from '@/modules/jobs/jobs.module';
+import { TagDetailModule } from './modules/tag-detail/tag-detail.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -628,6 +629,7 @@ const ENV = process.env.NODE_ENV;
     SmsModule,
     QueueModule,
     JobsModule,
+    TagDetailModule,
   ],
   controllers: [AppController, UserController],
   providers: [

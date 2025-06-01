@@ -17,7 +17,7 @@ export class CreateTagInput {
   discount?: number;
 
   @Field()
-  specialOffer: boolean;
+  specialOffer: number;
 
   @Field()
   columnWidth: number;

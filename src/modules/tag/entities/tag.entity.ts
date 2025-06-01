@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { ProductTag } from '@/modules/product-tag/entities/product-tag.entity';
 import { Image } from '@/modules/image/entities/image.entity';
+import { TagDetail } from '@/modules/tag-detail/entities/tag-detail.entity';
 
 @Index('slider_image_id', ['sliderImageId'], {})
 @Index('tags_image_id_index', ['imageId'], {})
@@ -34,7 +35,7 @@ export class Tag {
   discount?: number;
 
   @Column('tinyint', { name: 'special_offer', width: 1, default: 0 })
-  specialOffer: boolean;
+  specialOffer: number;
 
   @Column('int', { name: 'column_width', default: 12 })
   columnWidth: number;
@@ -119,4 +120,7 @@ export class Tag {
   })
   @JoinColumn([{ name: 'image_id', referencedColumnName: 'id' }])
   image: Image;
+
+  @OneToMany(() => TagDetail, (tagDetail) => tagDetail.tag)
+  tagDetails: TagDetail[];
 }

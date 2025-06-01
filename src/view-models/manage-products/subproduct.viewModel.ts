@@ -1,11 +1,15 @@
 import { Product } from '@/modules/product/entities/product.entity';
 import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 import { AttributeGroupViewModel } from './attribute-group.viewModel';
-import { AttributeViewModel } from './attribute.viewModel';
-import { TagViewModel } from './tag.viewModel';
-import { ImageViewModel } from './image.viewModel';
-import { VideoViewModel } from './video.viewModel';
-import { ActiveDiscountViewModel } from '../general/active-discount.viewModel';
+import { sub } from 'date-fns-jalali';
+import { AttributeViewModel } from '@/view-models/manage-products/attribute.viewModel';
+import { TagViewModel } from '@/view-models/manage-products/tag.viewModel';
+import { Tag } from '@/modules/tag/entities/tag.entity';
+import { ImageViewModel } from '@/view-models/manage-products/image.viewModel';
+import { Image } from '@/modules/image/entities/image.entity';
+import { Video } from '@/modules/video/entities/video.entity';
+import { VideoViewModel } from '@/view-models/manage-products/video.viewModel';
+import { ProductVideo } from '@/modules/product-video/entities/product-video.entity';
 
 export class SubproductViewModel {
   id: number;
@@ -36,7 +40,7 @@ export class SubproductViewModel {
   tags: TagViewModel[];
   image: ImageViewModel | null;
   images: ImageViewModel[];
-  videos: VideoViewModel[];
+  videos: (Video | VideoViewModel)[];
   activeDiscount: ActiveDiscountViewModel | null;
   colorCategories: { id: number }[];
   stockCount: number;
@@ -70,105 +74,136 @@ export class SubproductViewModel {
       loadChildrenBySize = false,
     } = options || {};
 
-    this.id = subproduct.id;
-    this.productId = subproduct.productId;
-    this.name = subproduct.name;
-    this.code = subproduct.code?.toLowerCase() ?? '';
-    this.price = Number(subproduct.price);
-    this.padPrice = Number(subproduct.padPrice);
-    this.description = subproduct.description ?? '';
-    this.saleCount = subproduct.saleCount;
-    this.totalLike = subproduct.totalLike;
-    this.totalDislike = subproduct.totalDislike;
-    this.rate = subproduct.rate;
-    this.rateCount = subproduct.rateCount;
-    this.size = subproduct.size;
-    this.width = subproduct.width;
-    this.length = subproduct.length;
-    this.colors = subproduct.colors;
-    this.sizeIsCustomizable = !!subproduct.sizeIsCustomizable;
-    this.sizeId = subproduct.basicCarpetSize?.id ?? 0;
-    this.sizeTitle = subproduct.basicCarpetSize?.title ?? '';
-    this.basicCarpetSizeId = subproduct.basicCarpetSize?.id ?? 0;
-    this.colorId = subproduct.basicCarpetColor?.id ?? 0;
-    this.colorTitle = subproduct.basicCarpetColor?.title ?? 'پد';
-    this.isActive = !!subproduct.isActive;
-    this.nameEn = subproduct.nameEn;
+    const attributes = subproduct.attributeSubproducts.map(
+      (sub) => sub.attribute
+    );
+    if (attributes.length > 0) {
+      const attributeGroupCollections: AttributeGroupViewModel[] = [];
 
-    // Attributes
-    this.attributeGroups = (subproduct.attributes || []).map((attr) => {
-      // You may need to group attributes by group here
-      return new AttributeGroupViewModel(attr.attributeGroup, [
-        new AttributeViewModel(attr),
-      ]);
-    });
-
-    // Tags
-    this.tags = (subproduct.tags || []).map((tag) => new TagViewModel(tag));
-
-    // Images
-    this.image = subproduct.image ? new ImageViewModel(subproduct.image) : null;
-    this.images = [];
-    if (loadOtherImages && subproduct.images) {
-      this.images = subproduct.images.map((img) => new ImageViewModel(img));
+      for (const attribute of attributes) {
+        let attributeGroup = attribute.attributeAttributeGroups?.map(
+          (att) => att.attributeGroup
+        )[0];
+        const attributeViewModel = new AttributeViewModel(attribute);
+        let checkAttrGroupCollection = attributeGroupCollections.find(
+          (attGroup) => attGroup.id == attributeGroup?.id
+        );
+        if (checkAttrGroupCollection) {
+          checkAttrGroupCollection.attributes.push(attributeViewModel);
+        } else {
+          let attributeGroupViewModel = new AttributeGroupViewModel();
+          attributeGroup &&
+            attributeGroupViewModel.attributes.push(
+              attributeGroupViewModel.prepare(attributeGroup)
+            );
+          attributeGroupCollections.push(attributeGroupViewModel);
+        }
+      }
+      this.attributeGroups = attributeGroupCollections;
     }
 
-    // Videos
-    this.videos = [];
-    if (loadVideos && product.videos) {
-      const basicCarpetColorId = subproduct.basicCarpetColor?.id;
-      this.videos = product.videos
-        .filter(
-          (video) => video.pivot?.basicCarpetColorId === basicCarpetColorId
-        )
-        .map((video) => new VideoViewModel(video, video.pivot?.sortOrder));
+    let tags: Tag[] | TagViewModel[] = subproduct.productTags.map(
+      (tags) => tags.tag
+    );
+    if (tags) {
+      tags = tags.map((tag) => new TagViewModel(tag, 0));
     }
 
-    // Active Discount
-    this.activeDiscount = subproduct.activeDiscount
-      ? new ActiveDiscountViewModel(subproduct.activeDiscount, subproduct.price)
-      : null;
+    let image: Image | ImageViewModel = subproduct.image;
+    if (image) {
+      image = new ImageViewModel(subproduct.image);
+    }
+    let otherImages: Image[] | ImageViewModel[] = [];
+    if (loadOtherImages) {
+      otherImages = subproduct.imageSubproducts.map((img) => img.image);
 
-    // Color Categories
-    this.colorCategories = (subproduct.colorCategories || []).map((cat) => ({
-      id: cat.id,
-    }));
+      if (otherImages.length > 0) {
+        otherImages = otherImages.map((img) => new ImageViewModel(img));
+      }
+    }
 
-    // Stock
-    this.stockCount = subproduct.stockCount;
-    this.stockCountFaked = false;
-    this.stockCountReal = subproduct.stockCount;
+    let productVideos: Video[] | VideoViewModel[] | ProductVideo[] = [];
+    if (loadVideos) {
+      productVideos = product.productVideos.map(
+        (productVideo) => productVideo.video
+      );
 
-    // Price minus discount
-    this.priceMinusDiscount = Number(
-      subproduct.priceMinusDiscount ?? subproduct.price
-    );
-    this.padPriceMinusDiscount = Number(
-      subproduct.padPriceMinusDiscount ?? subproduct.padPrice
-    );
+      //todo: check if this is a correct implementation (specially sortOrder)
+      if (productVideos.length > 0) {
+        let basicCarpetColorId = subproduct.basicCarpetColorId;
+        productVideos = productVideos
+          .flatMap((video) => video.productVideos)
+          .filter(
+            (productVideo) =>
+              productVideo.basicCarpetColorId == basicCarpetColorId
+          )
+          .map(
+            (productVideo) =>
+              new VideoViewModel(productVideo.video, productVideo.sortOrder)
+          );
+      }
+      let video: Video | VideoViewModel = subproduct.video;
+      if (video) {
+        video = new VideoViewModel(video);
+      }
 
-    // Bundle prices
-    this.bundlePrice = Number(subproduct.bundlePrice ?? 0);
-    this.bundlePadPrice = Number(subproduct.bundlePadPrice ?? 0);
-    this.bundlePriceMinusDiscount = Number(
-      subproduct.bundlePriceMinusDiscount ?? 0
-    );
-    this.bundlePadPriceMinusDiscount = Number(
-      subproduct.bundlePadPriceMinusDiscount ?? 0
-    );
+      let othervideos: Video[] | VideoViewModel[] =
+        subproduct.subproductVideos.map(
+          (subproductVideo) =>
+            new VideoViewModel(subproductVideo.video, subproductVideo.sortOrder)
+        );
+      let videos = [...productVideos];
+      if (video) {
+        videos.push(video);
+      }
+      if (othervideos.length > 0) {
+        videos = videos.concat(othervideos);
+      }
+      this.videos = videos;
+    }
 
-    // Other fields
-    this.borderColor = subproduct.borderColor ?? '';
-    this.isOutOfStock = !!subproduct.isOutOfStock;
+    //todo:check the productColorImages to be truly received
+    let productColorImages:
+      | null
+      | {
+          image: Image;
+          sortOrder: number | undefined;
+          basicCarpetColorId: number | undefined;
+        }[] = null;
+    if (loadColorImages) {
+      productColorImages = product.productColorImages.map(
+        (productColorImages) => {
+          return {
+            image: productColorImages.image,
+            sortOrder: productColorImages.sortOrder,
+            basicCarpetColorId: productColorImages.basicCarpetColorId,
+          };
+        }
+      );
 
-    // Child product (optional, implement if needed)
-    this.childProduct = null;
-  }
+      if (productColorImages) {
+        let basicCarpetColorId = subproduct.basicCarpetColorId;
+        const productColorImages = product.productColorImages
+          .filter(
+            (productColorImage) =>
+              productColorImage.basicCarpetColorId === basicCarpetColorId
+          )
+          .map(
+            (productColorImage) => new ImageViewModel(productColorImage.image)
+          );
+      }
+    }
+    let images:
+      | {
+          image: Image;
+          sortOrder: number | undefined;
+          basicCarpetColorId: number | undefined;
+        }[]
+      | Image[]
+      | ImageViewModel[] = productColorImages ? [...productColorImages] : [];
 
-  static prepareSimple(subproduct: Subproduct) {
-    return {
-      id: subproduct.id,
-      name: subproduct.name,
-    };
+    if (otherImages && otherImages.length > 0) {
+      images = [...otherImages, ...images];
+    }
   }
 }

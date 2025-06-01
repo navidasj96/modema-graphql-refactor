@@ -1,30 +1,32 @@
 import { AttributeGroup } from '@/modules/attribute-group/entities/attribute-group.entity';
-import { AttributeViewModel } from './attribute.viewModel';
+import { AttributeViewModel } from '@/view-models/manage-products/attribute.viewModel';
 
 export class AttributeGroupViewModel {
   id: number;
   productCategoryId: number | undefined;
   name: string;
   generalName: string | undefined;
-  attributes: AttributeViewModel[];
+  attributes: any[];
   sortOrder: number | undefined;
   isActive: number | undefined;
 
-  constructor(attributeGroup: AttributeGroup) {
-    const attributes = attributeGroup.attributeAttributeGroups
-      ?.map((pivot) => pivot.attribute)
-      .filter((attr) => attr !== undefined);
-    this.id = attributeGroup.id;
-    this.productCategoryId = attributeGroup.productCategoryId;
-    this.name = attributeGroup.name;
-    this.generalName = attributeGroup.generalName;
-    this.sortOrder = attributeGroup.sortOrder;
-    this.isActive = attributeGroup.isActive;
+  prepare(attributeGroup: AttributeGroup) {
+    let attributes = attributeGroup.attributeAttributeGroups?.map(
+      (att) => att.attribute
+    );
 
-    this.attributes = Array.isArray(attributeGroup.attributes)
-      ? attributeGroup.attributes.map(
-          (attribute: any) => new AttributeViewModel(attribute)
-        )
-      : [];
+    if (attributes) {
+      attributes.map((attribute) => new AttributeViewModel(attribute));
+    }
+
+    return {
+      id: attributeGroup.id,
+      productCategoryId: attributeGroup.productCategoryId,
+      name: attributeGroup.name,
+      generalName: attributeGroup.generalName,
+      sortOrder: attributeGroup.sortOrder,
+      isActive: attributeGroup.isActive,
+      attributes: attributes,
+    };
   }
 }

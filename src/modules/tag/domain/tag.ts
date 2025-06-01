@@ -19,7 +19,7 @@ export class Tag {
   discount?: number;
 
   @Field()
-  specialOffer: boolean;
+  specialOffer: number;
 
   @Field()
   columnWidth: number;
