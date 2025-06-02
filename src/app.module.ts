@@ -335,7 +335,7 @@ const ENV = process.env.NODE_ENV;
       introspection: true,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
 
-      context: ({ req }) => {
+      context: ({ req, res }) => {
         const authHeader = req.headers.authorization || '';
         const token = authHeader.startsWith('Bearer ')
           ? authHeader.slice(7)
@@ -344,6 +344,7 @@ const ENV = process.env.NODE_ENV;
         return {
           req,
           token,
+          res,
         };
       },
 
@@ -356,7 +357,7 @@ const ENV = process.env.NODE_ENV;
           statusCode: originalError?.statusCode || 500,
         };
 
-        // ✅ Only add stack trace in development
+        // Only add stack trace in development
         if (originalError?.stack) {
           (formattedError as any).stack = originalError.stack;
         }

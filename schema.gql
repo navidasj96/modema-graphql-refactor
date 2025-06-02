@@ -1148,7 +1148,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-31T10:46:45.571Z"
+  createdAt: DateTime! = "2025-06-02T10:42:28.870Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1242,7 +1242,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-31T10:46:45.586Z"
+  createdAt: DateTime! = "2025-06-02T10:42:28.932Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1357,7 +1357,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-31T10:46:45.652Z"
+  createdAt: DateTime! = "2025-06-02T10:42:29.127Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1447,7 +1447,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-31T10:46:45.587Z"
+  createdAt: DateTime! = "2025-06-02T10:42:28.934Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1682,7 +1682,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-31T10:46:45.603Z"
+  createdAt: DateTime! = "2025-06-02T10:42:29.017Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1787,7 +1787,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-05-31T10:46:45.589Z"
+  createdAt: DateTime! = "2025-06-02T10:42:28.936Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5130,7 +5130,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-05-31T10:46:46.215Z"
+  createdAt: DateTime! = "2025-06-02T10:42:30.999Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5152,7 +5152,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-05-31T10:46:46.224Z"
+  createdAt: DateTime! = "2025-06-02T10:42:31.025Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5167,7 +5167,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-05-31T10:46:46.234Z"
+  createdAt: DateTime! = "2025-06-02T10:42:31.053Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5191,7 +5191,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-05-31T10:46:46.245Z"
+  createdAt: DateTime! = "2025-06-02T10:42:31.080Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5222,7 +5222,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-05-31T10:46:46.259Z"
+  createdAt: DateTime! = "2025-06-02T10:42:31.140Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5263,7 +5263,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-05-31T10:46:46.279Z"
+  createdAt: DateTime! = "2025-06-02T10:42:31.192Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -8054,6 +8054,11 @@ input CreateManySubscribersInput {
   subscribers: [CreateSubscriberInput!]!
 }
 
+input CreateManyTagDetailsInput {
+  """Array of records to create"""
+  tagDetails: [CreateTagDetailInput!]!
+}
+
 input CreateManyTagsInput {
   """Array of records to create"""
   tags: [CreateTagInput!]!
@@ -9572,6 +9577,11 @@ input CreateOneSubproductVideoInput {
 input CreateOneSubscriberInput {
   """The record to create"""
   subscriber: CreateSubscriberInput!
+}
+
+input CreateOneTagDetailInput {
+  """The record to create"""
+  tagDetail: CreateTagDetailInput!
 }
 
 input CreateOneTagInput {
@@ -11243,6 +11253,18 @@ input CreateSubscriberInput {
   updatedAt: DateTime
 }
 
+input CreateTagDetailInput {
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  isActive: Boolean!
+  sortOrder: Float
+  tagId: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
 input CreateTagInput {
   columnOrder: Float!
   columnWidth: Float!
@@ -11264,7 +11286,7 @@ input CreateTagInput {
   sliderImage: ImageDomain
   sliderImageId: Float
   sortOrder: Float
-  specialOffer: Boolean!
+  specialOffer: Float!
   title: String!
   titleEn: String
   updatedAt: DateTime
@@ -13307,6 +13329,11 @@ input DeleteManySubscribersInput {
   filter: SubscriberDeleteFilter!
 }
 
+input DeleteManyTagDetailsInput {
+  """Filter to find records to delete"""
+  filter: TagDetailDeleteFilter!
+}
+
 input DeleteManyTagsInput {
   """Filter to find records to delete"""
   filter: TagDeleteFilter!
@@ -14593,6 +14620,11 @@ input DeleteOneSubproductVideoInput {
 }
 
 input DeleteOneSubscriberInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneTagDetailInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -33618,6 +33650,7 @@ type Mutation {
   createManySubproductVideos(input: CreateManySubproductVideosInput!): [SubproductVideo!]!
   createManySubproducts(input: CreateManySubproductsInput!): [Subproduct!]!
   createManySubscribers(input: CreateManySubscribersInput!): [Subscriber!]!
+  createManyTagDetails(input: CreateManyTagDetailsInput!): [TagDetail!]!
   createManyTags(input: CreateManyTagsInput!): [Tag!]!
   createManyTempSubproductDiscounts(input: CreateManyTempSubproductDiscountsInput!): [TempSubproductDiscount!]!
   createManyTestimonials(input: CreateManyTestimonialsInput!): [Testimonial!]!
@@ -33878,6 +33911,7 @@ type Mutation {
   createOneSubproductVideo(input: CreateOneSubproductVideoInput!): SubproductVideo!
   createOneSubscriber(input: CreateOneSubscriberInput!): Subscriber!
   createOneTag(input: CreateOneTagInput!): Tag!
+  createOneTagDetail(input: CreateOneTagDetailInput!): TagDetail!
   createOneTempSubproductDiscount(input: CreateOneTempSubproductDiscountInput!): TempSubproductDiscount!
   createOneTestimonial(input: CreateOneTestimonialInput!): Testimonial!
   createOneTextLayer(input: CreateOneTextLayerInput!): TextLayer!
@@ -33912,6 +33946,7 @@ type Mutation {
   createOneWonderfulOffer(input: CreateOneWonderfulOfferInput!): WonderfulOffer!
   createSetting(createSettingInput: CreateSettingInput!): Setting!
   createSettingsHistory(createSettingsHistoryInput: CreateSettingsHistoryInput!): SettingsHistory!
+  createTagDetail(createTagDetailInput: CreateTagDetailInput!): TagDetail!
   createUser(createUserInput: CreateUserInput!): CreateUserResponseDto!
   createWallet(createWalletInput: CreateWalletInputs!): Boolean!
   deleteManyActivities(input: DeleteManyActivitiesInput!): DeleteManyResponse!
@@ -34139,6 +34174,7 @@ type Mutation {
   deleteManySubproductVideos(input: DeleteManySubproductVideosInput!): DeleteManyResponse!
   deleteManySubproducts(input: DeleteManySubproductsInput!): DeleteManyResponse!
   deleteManySubscribers(input: DeleteManySubscribersInput!): DeleteManyResponse!
+  deleteManyTagDetails(input: DeleteManyTagDetailsInput!): DeleteManyResponse!
   deleteManyTags(input: DeleteManyTagsInput!): DeleteManyResponse!
   deleteManyTempSubproductDiscounts(input: DeleteManyTempSubproductDiscountsInput!): DeleteManyResponse!
   deleteManyTestimonials(input: DeleteManyTestimonialsInput!): DeleteManyResponse!
@@ -34398,6 +34434,7 @@ type Mutation {
   deleteOneSubproductVideo(input: DeleteOneSubproductVideoInput!): SubproductVideoDeleteResponse!
   deleteOneSubscriber(input: DeleteOneSubscriberInput!): SubscriberDeleteResponse!
   deleteOneTag(input: DeleteOneTagInput!): TagDeleteResponse!
+  deleteOneTagDetail(input: DeleteOneTagDetailInput!): TagDetailDeleteResponse!
   deleteOneTempSubproductDiscount(input: DeleteOneTempSubproductDiscountInput!): TempSubproductDiscountDeleteResponse!
   deleteOneTestimonial(input: DeleteOneTestimonialInput!): TestimonialDeleteResponse!
   deleteOneTextLayer(input: DeleteOneTextLayerInput!): TextLayerDeleteResponse!
@@ -34433,6 +34470,7 @@ type Mutation {
   removeNegotiationStep(id: Int!): NegotiationStep!
   removeSetting(id: Int!): Setting!
   removeSettingsHistory(id: Int!): SettingsHistory!
+  removeTagDetail(id: Int!): TagDetail!
   removeUser(id: Int!): User!
   setInvoiceAsDepotForDigikala(ids: [String!]!): SetInvoiceAsDepotForDigikalaResponseDto!
   updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
@@ -34660,6 +34698,7 @@ type Mutation {
   updateManySubproductVideos(input: UpdateManySubproductVideosInput!): UpdateManyResponse!
   updateManySubproducts(input: UpdateManySubproductsInput!): UpdateManyResponse!
   updateManySubscribers(input: UpdateManySubscribersInput!): UpdateManyResponse!
+  updateManyTagDetails(input: UpdateManyTagDetailsInput!): UpdateManyResponse!
   updateManyTags(input: UpdateManyTagsInput!): UpdateManyResponse!
   updateManyTempSubproductDiscounts(input: UpdateManyTempSubproductDiscountsInput!): UpdateManyResponse!
   updateManyTestimonials(input: UpdateManyTestimonialsInput!): UpdateManyResponse!
@@ -34920,6 +34959,7 @@ type Mutation {
   updateOneSubproductVideo(input: UpdateOneSubproductVideoInput!): SubproductVideo!
   updateOneSubscriber(input: UpdateOneSubscriberInput!): Subscriber!
   updateOneTag(input: UpdateOneTagInput!): Tag!
+  updateOneTagDetail(input: UpdateOneTagDetailInput!): TagDetail!
   updateOneTempSubproductDiscount(input: UpdateOneTempSubproductDiscountInput!): TempSubproductDiscount!
   updateOneTestimonial(input: UpdateOneTestimonialInput!): Testimonial!
   updateOneTextLayer(input: UpdateOneTextLayerInput!): TextLayer!
@@ -34954,6 +34994,7 @@ type Mutation {
   updateOneWonderfulOffer(input: UpdateOneWonderfulOfferInput!): WonderfulOffer!
   updateSetting(updateSettingInput: UpdateSettingInput!): Setting!
   updateSettingsHistory(updateSettingsHistoryInput: UpdateSettingsHistoryInput!): SettingsHistory!
+  updateTagDetail(updateTagDetailInput: UpdateTagDetailInput!): TagDetail!
   updateUser(updateUserInput: UpdateUserInput!): UpdateUserResponseDto!
   updateWallet(updateWalletInput: UpdateWalletInput!): UpdateWalletResponseDto!
 }
@@ -40743,6 +40784,7 @@ type Query {
     """Specify to sort results."""
     sorting: [FileSort!]! = []
   ): FileConnection!
+  findOneSubproduct: Boolean!
   getActivityWithUserResolver(activityId: Float!): Activity!
   getUserWithActivitiesResolver(userId: Float!): User!
   ghazal(
@@ -42814,6 +42856,20 @@ type Query {
     """The id of the record to find."""
     id: ID!
   ): Tag!
+  tagDetail(
+    """The id of the record to find."""
+    id: ID!
+  ): TagDetail!
+  tagDetails(
+    """Specify to filter the records returned."""
+    filter: TagDetailFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [TagDetailSort!]! = []
+  ): TagDetailConnection!
   tags(
     """Specify to filter the records returned."""
     filter: TagFilter! = {}
@@ -47967,7 +48023,7 @@ type Tag {
   sliderImage: Image
   sliderImageId: Float
   sortOrder: Float
-  specialOffer: Boolean!
+  specialOffer: Float!
   title: String!
   titleEn: String
   updatedAt: DateTime
@@ -48011,13 +48067,99 @@ type TagDeleteResponse {
   sliderImage: Image
   sliderImageId: Float
   sortOrder: Float
-  specialOffer: Boolean
+  specialOffer: Float
   title: String
   titleEn: String
   updatedAt: DateTime
   urlSlug: String
   urlSlugEn: String
   viewCounter: Float
+}
+
+type TagDetail {
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  tag: Tag
+  tagId: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+type TagDetailConnection {
+  """Array of edges."""
+  edges: [TagDetailEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input TagDetailDeleteFilter {
+  and: [TagDetailDeleteFilter!]
+  id: IDFilterComparison
+  or: [TagDetailDeleteFilter!]
+}
+
+type TagDetailDeleteResponse {
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  tag: Tag
+  tagId: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+input TagDetailDomain {
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID!
+  isActive: Boolean!
+  sortOrder: Float
+  tag: TagDomain
+  tagId: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+type TagDetailEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the TagDetail"""
+  node: TagDetail!
+}
+
+input TagDetailFilter {
+  and: [TagDetailFilter!]
+  id: IDFilterComparison
+  or: [TagDetailFilter!]
+}
+
+input TagDetailSort {
+  direction: SortDirection!
+  field: TagDetailSortFields!
+  nulls: SortNulls
+}
+
+enum TagDetailSortFields {
+  id
+}
+
+input TagDetailUpdateFilter {
+  and: [TagDetailUpdateFilter!]
+  id: IDFilterComparison
+  or: [TagDetailUpdateFilter!]
 }
 
 input TagDomain {
@@ -48041,7 +48183,7 @@ input TagDomain {
   sliderImage: ImageDomain
   sliderImageId: Float
   sortOrder: Float
-  specialOffer: Boolean!
+  specialOffer: Float!
   title: String!
   titleEn: String
   updatedAt: DateTime
@@ -49139,7 +49281,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-05-31T10:46:45.571Z"
+  createdAt: DateTime = "2025-06-02T10:42:28.870Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -49161,7 +49303,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-05-31T10:46:45.586Z"
+  createdAt: DateTime = "2025-06-02T10:42:28.932Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -49176,7 +49318,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-05-31T10:46:45.652Z"
+  createdAt: DateTime = "2025-06-02T10:42:29.127Z"
   description: String
   facebookId: String
   headerImage: String
@@ -49200,7 +49342,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-05-31T10:46:45.587Z"
+  createdAt: DateTime = "2025-06-02T10:42:28.934Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -49217,7 +49359,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-05-31T10:46:45.603Z"
+  createdAt: DateTime = "2025-06-02T10:42:29.017Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -49272,7 +49414,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-05-31T10:46:45.589Z"
+  createdAt: DateTime = "2025-06-02T10:42:28.936Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52746,6 +52888,14 @@ input UpdateManySubscribersInput {
   update: UpdateSubscriber!
 }
 
+input UpdateManyTagDetailsInput {
+  """Filter used to find fields to update"""
+  filter: TagDetailUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateTagDetail!
+}
+
 input UpdateManyTagsInput {
   """Filter used to find fields to update"""
   filter: TagUpdateFilter!
@@ -55054,6 +55204,14 @@ input UpdateOneSubscriberInput {
   update: UpdateSubscriber!
 }
 
+input UpdateOneTagDetailInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateTagDetail!
+}
+
 input UpdateOneTagInput {
   """The id of the record to update"""
   id: ID!
@@ -57033,13 +57191,40 @@ input UpdateTag {
   sliderImage: ImageDomain
   sliderImageId: Float
   sortOrder: Float
-  specialOffer: Boolean
+  specialOffer: Float
   title: String
   titleEn: String
   updatedAt: DateTime
   urlSlug: String
   urlSlugEn: String
   viewCounter: Float
+}
+
+input UpdateTagDetail {
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: ID
+  isActive: Boolean
+  sortOrder: Float
+  tag: TagDomain
+  tagId: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
+}
+
+input UpdateTagDetailInput {
+  createdAt: DateTime
+  detailText: String
+  detailTextEn: String
+  id: Int!
+  isActive: Boolean
+  sortOrder: Float
+  tagId: Float
+  title: String
+  titleEn: String
+  updatedAt: DateTime
 }
 
 input UpdateTempSubproductDiscount {

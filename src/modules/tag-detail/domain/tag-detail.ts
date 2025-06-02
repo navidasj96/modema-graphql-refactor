@@ -6,9 +6,9 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Tag } from '@/modules/tag/entities/tag.entity';
 import { IDField } from '@ptc-org/nestjs-query-graphql';
 import { ID, InputType, ObjectType, Field } from '@nestjs/graphql';
+import { Tag } from '@/modules/tag/domain/tag';
 
 @InputType('TagDetailDomain')
 @ObjectType()

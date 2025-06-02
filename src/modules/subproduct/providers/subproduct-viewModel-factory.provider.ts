@@ -1,6 +1,6 @@
 import { Product } from '@/modules/product/entities/product.entity';
 import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
-import { AttributeGroupViewModel } from './attribute-group.viewModel';
+import { AttributeGroupViewModel } from '../../../view-models/manage-products/attribute-group.viewModel';
 import { sub } from 'date-fns-jalali';
 import { AttributeViewModel } from '@/view-models/manage-products/attribute.viewModel';
 import { TagViewModel } from '@/view-models/manage-products/tag.viewModel';
@@ -10,53 +10,13 @@ import { Image } from '@/modules/image/entities/image.entity';
 import { Video } from '@/modules/video/entities/video.entity';
 import { VideoViewModel } from '@/view-models/manage-products/video.viewModel';
 import { ProductVideo } from '@/modules/product-video/entities/product-video.entity';
+import { Injectable } from '@nestjs/common';
 
-export class SubproductViewModel {
-  id: number;
-  productId: number;
-  name: string;
-  code: string;
-  price: number;
-  padPrice: number;
-  description: string;
-  saleCount: number;
-  totalLike: number;
-  totalDislike: number;
-  rate: number;
-  rateCount: number | undefined;
-  size: number;
-  width: number | undefined;
-  length: number | undefined;
-  colors: string | undefined;
-  sizeIsCustomizable: boolean;
-  sizeId: number;
-  colorId: number;
-  sizeTitle: string;
-  colorTitle: string;
-  basicCarpetSizeId: number;
-  isActive: boolean;
-  nameEn: string | undefined;
-  attributeGroups: AttributeGroupViewModel[];
-  tags: TagViewModel[];
-  image: ImageViewModel | null;
-  images: ImageViewModel[];
-  videos: (Video | VideoViewModel)[];
-  activeDiscount: ActiveDiscountViewModel | null;
-  colorCategories: { id: number }[];
-  stockCount: number;
-  stockCountFaked: boolean;
-  stockCountReal: number;
-  childProduct: any; // Replace with ProductViewModel if available
-  priceMinusDiscount: number;
-  padPriceMinusDiscount: number;
-  borderColor: string;
-  bundlePrice: number;
-  bundlePadPrice: number;
-  bundlePriceMinusDiscount: number;
-  bundlePadPriceMinusDiscount: number;
-  isOutOfStock: boolean;
+@Injectable()
+export class SubproductViewModelFactoryProvider {
+  constructor() {}
 
-  constructor(
+  async create(
     subproduct: Subproduct,
     product: Product,
     options?: {
@@ -66,13 +26,14 @@ export class SubproductViewModel {
       loadChildrenBySize?: boolean;
     }
   ) {
-    // Set defaults for options
     const {
       loadOtherImages = true,
       loadVideos = true,
       loadColorImages = true,
       loadChildrenBySize = false,
     } = options || {};
+    let attributeGroups: AttributeGroupViewModel[] = [];
+    let videos: (Video | VideoViewModel)[] = [];
 
     const attributes = subproduct.attributeSubproducts.map(
       (sub) => sub.attribute
@@ -99,7 +60,7 @@ export class SubproductViewModel {
           attributeGroupCollections.push(attributeGroupViewModel);
         }
       }
-      this.attributeGroups = attributeGroupCollections;
+      attributeGroups = attributeGroupCollections;
     }
 
     let tags: Tag[] | TagViewModel[] = subproduct.productTags.map(
@@ -159,25 +120,20 @@ export class SubproductViewModel {
       if (othervideos.length > 0) {
         videos = videos.concat(othervideos);
       }
-      this.videos = videos;
+      videos = videos;
     }
 
-    //todo:check the productColorImages to be truly received
-    let productColorImages:
-      | null
-      | {
-          image: Image;
-          sortOrder: number | undefined;
-          basicCarpetColorId: number | undefined;
-        }[] = null;
+    //todo:check the productColorImages to be truly received. also orderby product_color_images.sort_order is not applied yet
+    let productColorImages: null | Image[] = null;
     if (loadColorImages) {
       productColorImages = product.productColorImages.map(
         (productColorImages) => {
-          return {
-            image: productColorImages.image,
+          const image = {
+            ...productColorImages.image,
             sortOrder: productColorImages.sortOrder,
             basicCarpetColorId: productColorImages.basicCarpetColorId,
-          };
+          } as Image;
+          return image;
         }
       );
 
@@ -193,17 +149,26 @@ export class SubproductViewModel {
           );
       }
     }
-    let images:
-      | {
-          image: Image;
-          sortOrder: number | undefined;
-          basicCarpetColorId: number | undefined;
-        }[]
-      | Image[]
-      | ImageViewModel[] = productColorImages ? [...productColorImages] : [];
+    let images: (Image | ImageViewModel)[] = productColorImages
+      ? [...productColorImages]
+      : [];
 
     if (otherImages && otherImages.length > 0) {
       images = [...otherImages, ...images];
+    }
+
+    let priceMinusDiscount = subproduct.price;
+    let padPriceMinusDiscount = subproduct.padPrice;
+    let bundlePriceMinusDiscount = subproduct.bundlePrice;
+    let bundlePadPriceMinusDiscount = subproduct.bundlePadPrice;
+    let activeDiscount;
+    if (
+      subproduct.basicCarpetDesigner &&
+      subproduct.basicCarpetDesigner.selfEmployed
+    ) {
+      activeDiscount = null;
+    } else {
+      let $subproduct = true;
     }
   }
 }

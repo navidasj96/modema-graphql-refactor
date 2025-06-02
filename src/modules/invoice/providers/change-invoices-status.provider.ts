@@ -694,7 +694,7 @@ export class ChangeInvoiceStatusProvider {
     for (const invoiceProduct of invoiceProducts) {
       const invoiceProductItems = invoiceProduct.invoiceProductItems;
       const itemsToProduce = invoiceProduct.itemsToProduce || 0;
-      const itemsFromDepot = invoiceProduct.itemsFromDepot;
+      const itemsFromDepot = invoiceProduct.itemsFromDepot || 0;
 
       const invoiceProductItemsToProduce =
         await this.invoiceProductItemService.findAll({
@@ -717,7 +717,7 @@ export class ChangeInvoiceStatusProvider {
       const invoiceProductItemsFromDepot =
         await this.invoiceProductItemService.findAll({
           where: { id: invoiceProduct.id, fromDepot: IsNull() },
-          take: itemsToProduce,
+          take: itemsFromDepot,
         });
 
       for (const invoiceProductItem of invoiceProductItemsFromDepot) {

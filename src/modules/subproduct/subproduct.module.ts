@@ -6,9 +6,14 @@ import { Subproduct as SubproductGraphQL } from '@/modules/subproduct/domain/sub
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateSubproductInput } from '@/modules/subproduct/dto/create-subproduct.input';
+import { SubproductViewModelFactoryProvider } from '@/modules/subproduct/providers/subproduct-viewModel-factory.provider';
 
 @Module({
-  providers: [SubproductResolver, SubproductService],
+  providers: [
+    SubproductResolver,
+    SubproductService,
+    SubproductViewModelFactoryProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([Subproduct])],
