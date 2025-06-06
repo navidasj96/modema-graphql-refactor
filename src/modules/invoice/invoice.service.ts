@@ -14,6 +14,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
 import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dto';
+import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
+import { SubproductsDepotInProgressInput } from '@/modules/invoice/dto/subproducts-depot-in-progress.input';
+import { SubproductsDepotInProgressOutput } from '@/modules/invoice/dto/subproducts-depot-in-progress.output';
 
 @Injectable()
 export class InvoiceService {
@@ -39,7 +42,11 @@ export class InvoiceService {
     /**
      * inject showInvoiceProvider
      */
-    private readonly showInvoiceProvider: ShowInvoiceProvider
+    private readonly showInvoiceProvider: ShowInvoiceProvider,
+    /**
+     * inject subproductsDepotInProgressProvider
+     */
+    private readonly subproductsDepotInProgressProvider: SubproductsDepotInProgressProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -99,6 +106,14 @@ export class InvoiceService {
     return await this.showInvoiceProvider.showInvoice(
       showInvoiceInputDto,
       context
+    );
+  }
+
+  async subproductsDepotInProgress(
+    subproductsDepotInProgressInput: SubproductsDepotInProgressInput
+  ): Promise<SubproductsDepotInProgressOutput> {
+    return await this.subproductsDepotInProgressProvider.subproductsDepotInProgress(
+      subproductsDepotInProgressInput
     );
   }
 }

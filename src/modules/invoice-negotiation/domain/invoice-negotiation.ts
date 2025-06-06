@@ -1,8 +1,12 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { Invoice } from '@/modules/invoice/domain/invoice';
 import { Negotiation } from '@/modules/negotiation/domain/negotiation';
 
+@FilterableUnPagedRelation('negotiation', () => Negotiation)
 @InputType('InvoiceNegotiationDomain')
 @ObjectType()
 export class InvoiceNegotiation {

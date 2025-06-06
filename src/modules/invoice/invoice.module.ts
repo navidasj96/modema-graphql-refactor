@@ -26,6 +26,8 @@ import { InvoiceStatusModule } from '@/modules/invoice-status/invoice-status.mod
 import { InvoicePrepareProvider } from '@/modules/invoice/providers/invoice-prepare.provider';
 import { WalletModule } from '@/modules/wallet/wallet.module';
 import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
+import { InvoiceProductStatusModule } from '@/modules/invoice-product-status/invoice-product-status.module';
+import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
 
 @Module({
   providers: [
@@ -37,6 +39,7 @@ import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.
     FillInvoicePackageCountIfEmptyProvider,
     ShowInvoiceProvider,
     InvoicePrepareProvider,
+    SubproductsDepotInProgressProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -64,6 +67,7 @@ import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.
     InvoiceStatusModule,
     WalletModule,
     InvoiceAddressModule,
+    InvoiceProductStatusModule,
     forwardRef(() => ShippingServiceModule),
   ],
   exports: [InvoiceService],

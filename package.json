@@ -50,6 +50,7 @@
     "graphql": "^16.10.0",
     "graphql-query-complexity": "1.0.0",
     "graphql-subscriptions": "^3.0.0",
+    "graphql-type-json": "^0.3.2",
     "ioredis": "^5.6.1",
     "joi": "^17.13.3",
     "jsdom": "^26.1.0",

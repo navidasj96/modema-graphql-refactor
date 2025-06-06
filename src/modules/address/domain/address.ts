@@ -1,5 +1,8 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { City } from '@/modules/city/domain/city';
 import { Country } from '@/modules/country/domain/country';
 import { State } from '@/modules/state/domain/state';
@@ -11,6 +14,8 @@ import { Invoice } from '@/modules/invoice/domain/invoice';
 import { ReturnRequestAddress } from '@/modules/return-request-address/domain/return-request-address';
 
 @InputType('AddressDomain')
+@FilterableUnPagedRelation('state', () => State)
+@FilterableUnPagedRelation('city', () => City)
 @ObjectType()
 export class Address {
   @IDField(() => ID)

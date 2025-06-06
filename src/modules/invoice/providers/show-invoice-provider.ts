@@ -188,7 +188,12 @@ export class ShowInvoiceProvider {
           invoicePayment.amount > 0
       )
       .reduce((acc, payment) => acc + payment.amount, 0);
-    const invoiceViewModel = new Invoice();
+    if (invoice) {
+      let statusCode = -100;
+      if (invoice.shippingRateCod) {
+        statusCode = Number(invoice.shippingRateCod);
+      }
+    }
 
     return invoice;
   }
@@ -233,6 +238,7 @@ export class ShowInvoiceProvider {
       return true;
     }
   }
+
   public isMoneyTransferConfirmationEditable(
     permissions: string[],
     invoice: Invoice

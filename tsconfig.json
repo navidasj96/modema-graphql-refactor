@@ -11,9 +11,7 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "@/*": [
-        "*"
-      ]
+      "@/*": ["*"]
       // Map @ to the src directory
     },
     "incremental": true,

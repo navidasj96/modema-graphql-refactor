@@ -12,6 +12,8 @@ import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { ChangeInvoicesStatusResponseDto } from '@/modules/invoice/dto/change-invoices-status-response.dto';
 import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dto';
+import { SubproductsDepotInProgressInput } from '@/modules/invoice/dto/subproducts-depot-in-progress.input';
+import { SubproductsDepotInProgressOutput } from '@/modules/invoice/dto/subproducts-depot-in-progress.output';
 
 @Resolver(() => Invoice)
 export class InvoiceResolver {
@@ -68,5 +70,17 @@ export class InvoiceResolver {
     }
   ) {
     return await this.invoiceService.showInvoice(showInvoiceInputDto, context);
+  }
+
+  @Query(() => SubproductsDepotInProgressOutput)
+  async subproductsDepotInProgress(
+    @Args('subproductsDepotInProgress', {
+      type: () => SubproductsDepotInProgressInput,
+    })
+    subproductsDepotInProgressInput: SubproductsDepotInProgressInput
+  ) {
+    return await this.invoiceService.subproductsDepotInProgress(
+      subproductsDepotInProgressInput
+    );
   }
 }

@@ -21,5 +21,6 @@ import { CreateInvoiceProductStatusInput } from '@/modules/invoice-product-statu
       ],
     }),
   ],
+  exports: [InvoiceProductStatusService],
 })
 export class InvoiceProductStatusModule {}

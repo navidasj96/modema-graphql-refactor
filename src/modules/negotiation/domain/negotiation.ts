@@ -1,5 +1,8 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { FileNegotiation } from '@/modules/file-negotiation/domain/file-negotiation';
 import { InvoiceNegotiation } from '@/modules/invoice-negotiation/domain/invoice-negotiation';
 import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotiation-history';
@@ -8,6 +11,7 @@ import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiati
 import { User } from '@/modules/user/domain/user';
 
 @InputType('NegotiationDomain')
+@FilterableUnPagedRelation('negotiator', () => User)
 @ObjectType()
 export class Negotiation {
   @IDField(() => ID)
