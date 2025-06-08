@@ -29,6 +29,7 @@ import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/in
 @FilterableUnPagedRelation('productionRoll', () => ProductionRoll)
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
+  enableTotalCount: true,
   filterDepth: 4,
 })
 @ObjectType()
@@ -36,16 +37,16 @@ export class InvoiceProductItem {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   invoiceProductId: number;
 
-  @Field()
+  @FilterableField()
   currentStatusId: number;
 
   @Field()
   row: number;
 
-  @Field()
+  @FilterableField()
   code: string;
 
   @Field({ nullable: true })

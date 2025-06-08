@@ -1,9 +1,24 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  FilterableUnPagedRelation,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/domain/invoice-product-item-invoice-product-status';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 
 @InputType('InvoiceProductStatusDomain')
+@FilterableUnPagedRelation(
+  'invoiceProductItemInvoiceProductStatuses',
+  () => InvoiceProductItemInvoiceProductStatus
+)
+@FilterableUnPagedRelation('invoiceProductItems', () => InvoiceProductItem)
+@QueryOptions({
+  pagingStrategy: PagingStrategies.NONE,
+  filterDepth: 4,
+})
 @ObjectType()
 export class InvoiceProductStatus {
   @IDField(() => ID)
@@ -12,10 +27,10 @@ export class InvoiceProductStatus {
   @Field()
   status: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   step?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   stepShaggy?: number;
 
   @Field()

@@ -1,10 +1,16 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableUnPagedRelation,
+  IDField,
+} from '@ptc-org/nestjs-query-graphql';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 import { User } from '@/modules/user/domain/user';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
 @InputType('InvoiceProductItemInvoiceProductStatusDomain')
+@FilterableUnPagedRelation('invoiceProductStatus', () => InvoiceProductStatus)
+@FilterableUnPagedRelation('invoiceProductItem', () => InvoiceProductItem)
+@FilterableUnPagedRelation('user', () => User)
 @ObjectType()
 export class InvoiceProductItemInvoiceProductStatus {
   @IDField(() => ID)
