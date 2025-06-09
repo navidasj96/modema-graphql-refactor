@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
@@ -21,12 +22,12 @@ import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/in
   'invoiceProductItemInvoiceProductStatuses',
   () => InvoiceProductItemInvoiceProductStatus
 )
-@FilterableUnPagedRelation('currentStatus', () => InvoiceProductStatus)
-@FilterableUnPagedRelation('damageReason', () => DamageReason)
-@FilterableUnPagedRelation('invoiceProduct', () => InvoiceProduct)
-@FilterableUnPagedRelation('printProfile', () => PrintProfile)
-@FilterableUnPagedRelation('printRip', () => PrintRip)
-@FilterableUnPagedRelation('productionRoll', () => ProductionRoll)
+@FilterableRelation('currentStatus', () => InvoiceProductStatus)
+@FilterableRelation('damageReason', () => DamageReason)
+@FilterableRelation('invoiceProduct', () => InvoiceProduct)
+@FilterableRelation('printProfile', () => PrintProfile, { nullable: true })
+@FilterableRelation('printRip', () => PrintRip, { nullable: true })
+@FilterableRelation('productionRoll', () => ProductionRoll)
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
@@ -88,10 +89,10 @@ export class InvoiceProductItem {
   @Field()
   isInsertedIntoSepidar: number;
 
-  @Field()
+  @FilterableField()
   createdAt: Date;
 
-  @Field()
+  @FilterableField()
   updatedAt: Date;
 
   @Field({ nullable: true })

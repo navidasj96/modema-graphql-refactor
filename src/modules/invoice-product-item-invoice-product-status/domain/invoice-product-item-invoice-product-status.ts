@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableRelation,
   FilterableUnPagedRelation,
   IDField,
 } from '@ptc-org/nestjs-query-graphql';
@@ -8,9 +9,13 @@ import { User } from '@/modules/user/domain/user';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
 
 @InputType('InvoiceProductItemInvoiceProductStatusDomain')
-@FilterableUnPagedRelation('invoiceProductStatus', () => InvoiceProductStatus)
-@FilterableUnPagedRelation('invoiceProductItem', () => InvoiceProductItem)
-@FilterableUnPagedRelation('user', () => User)
+@FilterableRelation('invoiceProductStatus', () => InvoiceProductStatus, {
+  nullable: true,
+})
+@FilterableRelation('invoiceProductItem', () => InvoiceProductItem, {
+  nullable: true,
+})
+@FilterableRelation('user', () => User, { nullable: true })
 @ObjectType()
 export class InvoiceProductItemInvoiceProductStatus {
   @IDField(() => ID)

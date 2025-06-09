@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
@@ -43,11 +44,11 @@ import { UserCart } from '@/modules/user-cart/domain/user-cart';
 import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/invoice-product-history';
 
 @InputType('SubproductDomain')
-@FilterableUnPagedRelation('basicCarpetColor', () => BasicCarpetColor)
-@FilterableUnPagedRelation('basicCarpetSize', () => BasicCarpetSize)
-@FilterableUnPagedRelation('image', () => Image)
-@FilterableUnPagedRelation('product', () => Product)
-@FilterableUnPagedRelation('basicCarpetBorder', () => BasicCarpetBorder)
+@FilterableRelation('basicCarpetColor', () => BasicCarpetColor)
+@FilterableRelation('basicCarpetSize', () => BasicCarpetSize)
+@FilterableRelation('image', () => Image)
+@FilterableRelation('product', () => Product)
+@FilterableRelation('basicCarpetBorder', () => BasicCarpetBorder)
 @QueryOptions({ pagingStrategy: PagingStrategies.NONE })
 @ObjectType()
 export class Subproduct {

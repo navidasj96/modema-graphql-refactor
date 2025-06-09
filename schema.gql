@@ -1192,7 +1192,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-08T11:43:46.635Z"
+  createdAt: DateTime! = "2025-06-09T11:00:30.850Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1286,7 +1286,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-08T11:43:46.645Z"
+  createdAt: DateTime! = "2025-06-09T11:00:30.868Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1401,7 +1401,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-08T11:43:46.685Z"
+  createdAt: DateTime! = "2025-06-09T11:00:30.926Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1491,7 +1491,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-08T11:43:46.645Z"
+  createdAt: DateTime! = "2025-06-09T11:00:30.869Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1726,7 +1726,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-08T11:43:46.657Z"
+  createdAt: DateTime! = "2025-06-09T11:00:30.885Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1831,7 +1831,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-08T11:43:46.646Z"
+  createdAt: DateTime! = "2025-06-09T11:00:30.870Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5174,7 +5174,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-08T11:43:47.142Z"
+  createdAt: DateTime! = "2025-06-09T11:00:31.521Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5196,7 +5196,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-06-08T11:43:47.148Z"
+  createdAt: DateTime! = "2025-06-09T11:00:31.530Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5211,7 +5211,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-08T11:43:47.156Z"
+  createdAt: DateTime! = "2025-06-09T11:00:31.542Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5235,7 +5235,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-06-08T11:43:47.172Z"
+  createdAt: DateTime! = "2025-06-09T11:00:31.554Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5266,7 +5266,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-08T11:43:47.182Z"
+  createdAt: DateTime! = "2025-06-09T11:00:31.564Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5307,7 +5307,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-06-08T11:43:47.200Z"
+  createdAt: DateTime! = "2025-06-09T11:00:31.583Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -17873,17 +17873,7 @@ type Invoice {
   crmCompanyId: String
   crmCompanyPersonId: String
   crmPreOrderId: String
-  currentInvoiceStatus(
-    """Specify to filter the records returned."""
-    filter: InvoiceStatusFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceStatusSort!]! = []
-  ): [InvoiceStatus!]!
-  currentInvoiceStatusAggregate(
-    """Filter to find records to aggregate on"""
-    filter: InvoiceStatusAggregateFilter
-  ): [InvoiceCurrentInvoiceStatusAggregateResponse!]!
+  currentInvoiceStatus: InvoiceStatus
   currentInvoiceStatusId: Float!
   deadlineDate: String
   deadlineDateOld: String
@@ -17950,17 +17940,7 @@ type Invoice {
     """Filter to find records to aggregate on"""
     filter: InvoiceInvoiceStatusAggregateFilter
   ): [InvoiceInvoiceInvoiceStatusesAggregateResponse!]!
-  invoiceMode(
-    """Specify to filter the records returned."""
-    filter: InvoiceModeFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceModeSort!]! = []
-  ): [InvoiceMode!]!
-  invoiceModeAggregate(
-    """Filter to find records to aggregate on"""
-    filter: InvoiceModeAggregateFilter
-  ): [InvoiceInvoiceModeAggregateResponse!]!
+  invoiceMode: InvoiceMode
   invoiceModeId: Float
   invoiceNegotiations(
     """Specify to filter the records returned."""
@@ -17985,17 +17965,7 @@ type Invoice {
     """Filter to find records to aggregate on"""
     filter: InvoicePaymentHistoryAggregateFilter
   ): [InvoiceInvoicePaymentHistoriesAggregateResponse!]!
-  invoicePaymentStatus(
-    """Specify to filter the records returned."""
-    filter: InvoicePaymentStatusFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoicePaymentStatusSort!]! = []
-  ): [InvoicePaymentStatus!]!
-  invoicePaymentStatusAggregate(
-    """Filter to find records to aggregate on"""
-    filter: InvoicePaymentStatusAggregateFilter
-  ): [InvoiceInvoicePaymentStatusAggregateResponse!]!
+  invoicePaymentStatus: InvoicePaymentStatus
   invoicePaymentStatusId: Float
   invoicePayments(
     """Specify to filter the records returned."""
@@ -18053,17 +18023,7 @@ type Invoice {
     """Filter to find records to aggregate on"""
     filter: InvoiceShippingRateAggregateFilter
   ): [InvoiceInvoiceShippingRatesAggregateResponse!]!
-  invoiceType(
-    """Specify to filter the records returned."""
-    filter: InvoiceTypeFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceTypeSort!]! = []
-  ): [InvoiceType!]!
-  invoiceTypeAggregate(
-    """Filter to find records to aggregate on"""
-    filter: InvoiceTypeAggregateFilter
-  ): [InvoiceInvoiceTypeAggregateResponse!]!
+  invoiceType: InvoiceType!
   invoiceTypeId: Float
   invoices(
     """Specify to filter the records returned."""
@@ -18115,17 +18075,7 @@ type Invoice {
   orderId: String
   packageCount: Float
   paidCodShippingRate: Float!
-  parentInvoice(
-    """Specify to filter the records returned."""
-    filter: InvoiceFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceSort!]! = []
-  ): [Invoice!]!
-  parentInvoiceAggregate(
-    """Filter to find records to aggregate on"""
-    filter: InvoiceAggregateFilter
-  ): [InvoiceParentInvoiceAggregateResponse!]!
+  parentInvoice: Invoice
   parentInvoiceId: Float
   partnerCode: String!
   paymentCreditable: Float!
@@ -18143,17 +18093,7 @@ type Invoice {
   ): [InvoicePaymentMethodFieldsAggregateResponse!]!
   refId: String
   replacementAdditionalPrice: String!
-  replacementPaymentStatus(
-    """Specify to filter the records returned."""
-    filter: InvoicePaymentStatusFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoicePaymentStatusSort!]! = []
-  ): [InvoicePaymentStatus!]!
-  replacementPaymentStatusAggregate(
-    """Filter to find records to aggregate on"""
-    filter: InvoicePaymentStatusAggregateFilter
-  ): [InvoiceReplacementPaymentStatusAggregateResponse!]!
+  replacementPaymentStatus: InvoicePaymentStatus
   replacementPaymentStatusId: Float
   replacementPriceMoneyTransferCode: String
   returnRequestHistories(
@@ -18233,17 +18173,7 @@ type Invoice {
   trackingCode: String
   updatedAt: DateTime
   useWallet: Float!
-  user(
-    """Specify to filter the records returned."""
-    filter: UserFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [UserSort!]! = []
-  ): [User!]!
-  userAggregate(
-    """Filter to find records to aggregate on"""
-    filter: UserAggregateFilter
-  ): [InvoiceUserAggregateResponse!]!
+  user: User
   userId: Float
   visitor(
     """Specify to filter the records returned."""
@@ -18292,13 +18222,7 @@ type InvoiceAddress {
   address2: String
   addressId: Float!
   address_2: Address
-  city(
-    """Specify to filter the records returned."""
-    filter: CityFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [CitySort!]! = []
-  ): [City!]!
+  city: City
   cityId: Float!
   country: Country
   countryId: Float!
@@ -18317,22 +18241,10 @@ type InvoiceAddress {
   nationalId: String
   phone: String
   phone2: String
-  state(
-    """Specify to filter the records returned."""
-    filter: StateFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [StateSort!]! = []
-  ): [State!]!
+  state: State
   stateId: Float!
   updatedAt: DateTime
-  user(
-    """Specify to filter the records returned."""
-    filter: UserFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [UserSort!]! = []
-  ): [User!]!
+  user: User
   userId: Float!
   zipCode: String
 }
@@ -19788,11 +19700,13 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceP
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
@@ -20371,6 +20285,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterDamageReasonAggregateFilter
@@ -20384,6 +20299,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
   printProfile: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintProfileAggregateFilter
   printRip: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintRipAggregateFilter
   productionRoll: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterProductionRollAggregateFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterDamageReasonAggregateFilter {
@@ -21656,11 +21572,13 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
@@ -21842,6 +21760,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductHistoryAg
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterDamageReasonAggregateFilter
@@ -21855,6 +21774,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
   printProfile: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintProfileAggregateFilter
   printRip: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintRipAggregateFilter
   productionRoll: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterProductionRollAggregateFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterDamageReasonAggregateFilter {
@@ -21936,11 +21856,13 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
@@ -22003,11 +21925,13 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilterInvoiceProductStatusAggregateFilter {
@@ -22042,11 +21966,13 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilter {
@@ -22864,11 +22790,13 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProd
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
@@ -23307,39 +23235,6 @@ type InvoiceCouponMinAggregate {
 }
 
 type InvoiceCouponSumAggregate {
-  id: Float
-}
-
-type InvoiceCurrentInvoiceStatusAggregateGroupBy {
-  id: ID
-}
-
-type InvoiceCurrentInvoiceStatusAggregateResponse {
-  avg: InvoiceCurrentInvoiceStatusAvgAggregate
-  count: InvoiceCurrentInvoiceStatusCountAggregate
-  groupBy: InvoiceCurrentInvoiceStatusAggregateGroupBy
-  max: InvoiceCurrentInvoiceStatusMaxAggregate
-  min: InvoiceCurrentInvoiceStatusMinAggregate
-  sum: InvoiceCurrentInvoiceStatusSumAggregate
-}
-
-type InvoiceCurrentInvoiceStatusAvgAggregate {
-  id: Float
-}
-
-type InvoiceCurrentInvoiceStatusCountAggregate {
-  id: Int
-}
-
-type InvoiceCurrentInvoiceStatusMaxAggregate {
-  id: ID
-}
-
-type InvoiceCurrentInvoiceStatusMinAggregate {
-  id: ID
-}
-
-type InvoiceCurrentInvoiceStatusSumAggregate {
   id: Float
 }
 
@@ -24752,11 +24647,13 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductH
 input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -25329,6 +25226,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductHistoryFilter 
 input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter
@@ -25342,6 +25240,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   printProfile: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -26608,11 +26507,13 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceP
 input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -26794,6 +26695,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductHistoryFilter {
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter
@@ -26807,6 +26709,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   printProfile: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -26888,11 +26791,13 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFil
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -26955,11 +26860,13 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductIte
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -26994,11 +26901,13 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductSta
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -27816,11 +27725,13 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceProductHist
 input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -28580,39 +28491,6 @@ type InvoiceInvoiceInvoiceStatusesSumAggregate {
   id: Float
 }
 
-type InvoiceInvoiceModeAggregateGroupBy {
-  id: ID
-}
-
-type InvoiceInvoiceModeAggregateResponse {
-  avg: InvoiceInvoiceModeAvgAggregate
-  count: InvoiceInvoiceModeCountAggregate
-  groupBy: InvoiceInvoiceModeAggregateGroupBy
-  max: InvoiceInvoiceModeMaxAggregate
-  min: InvoiceInvoiceModeMinAggregate
-  sum: InvoiceInvoiceModeSumAggregate
-}
-
-type InvoiceInvoiceModeAvgAggregate {
-  id: Float
-}
-
-type InvoiceInvoiceModeCountAggregate {
-  id: Int
-}
-
-type InvoiceInvoiceModeMaxAggregate {
-  id: ID
-}
-
-type InvoiceInvoiceModeMinAggregate {
-  id: ID
-}
-
-type InvoiceInvoiceModeSumAggregate {
-  id: Float
-}
-
 type InvoiceInvoiceNegotiationsAggregateGroupBy {
   id: ID
 }
@@ -28699,39 +28577,6 @@ type InvoiceInvoicePaymentHistoriesSumAggregate {
   id: Float
   invoicePaymentTypeId: Float
   isConfirmed: Float
-}
-
-type InvoiceInvoicePaymentStatusAggregateGroupBy {
-  id: ID
-}
-
-type InvoiceInvoicePaymentStatusAggregateResponse {
-  avg: InvoiceInvoicePaymentStatusAvgAggregate
-  count: InvoiceInvoicePaymentStatusCountAggregate
-  groupBy: InvoiceInvoicePaymentStatusAggregateGroupBy
-  max: InvoiceInvoicePaymentStatusMaxAggregate
-  min: InvoiceInvoicePaymentStatusMinAggregate
-  sum: InvoiceInvoicePaymentStatusSumAggregate
-}
-
-type InvoiceInvoicePaymentStatusAvgAggregate {
-  id: Float
-}
-
-type InvoiceInvoicePaymentStatusCountAggregate {
-  id: Int
-}
-
-type InvoiceInvoicePaymentStatusMaxAggregate {
-  id: ID
-}
-
-type InvoiceInvoicePaymentStatusMinAggregate {
-  id: ID
-}
-
-type InvoiceInvoicePaymentStatusSumAggregate {
-  id: Float
 }
 
 type InvoiceInvoicePaymentsAggregateGroupBy {
@@ -29037,39 +28882,6 @@ input InvoiceInvoiceStatusUpdateFilter {
   or: [InvoiceInvoiceStatusUpdateFilter!]
 }
 
-type InvoiceInvoiceTypeAggregateGroupBy {
-  id: ID
-}
-
-type InvoiceInvoiceTypeAggregateResponse {
-  avg: InvoiceInvoiceTypeAvgAggregate
-  count: InvoiceInvoiceTypeCountAggregate
-  groupBy: InvoiceInvoiceTypeAggregateGroupBy
-  max: InvoiceInvoiceTypeMaxAggregate
-  min: InvoiceInvoiceTypeMinAggregate
-  sum: InvoiceInvoiceTypeSumAggregate
-}
-
-type InvoiceInvoiceTypeAvgAggregate {
-  id: Float
-}
-
-type InvoiceInvoiceTypeCountAggregate {
-  id: Int
-}
-
-type InvoiceInvoiceTypeMaxAggregate {
-  id: ID
-}
-
-type InvoiceInvoiceTypeMinAggregate {
-  id: ID
-}
-
-type InvoiceInvoiceTypeSumAggregate {
-  id: Float
-}
-
 type InvoiceInvoicesAggregateGroupBy {
   containsPadsOnly: Float
   currentInvoiceStatusId: Float
@@ -29226,12 +29038,6 @@ type InvoiceMode {
   invoices: [Invoice!]
   name: String!
   updatedAt: DateTime
-}
-
-input InvoiceModeAggregateFilter {
-  and: [InvoiceModeAggregateFilter!]
-  id: IDFilterComparison
-  or: [InvoiceModeAggregateFilter!]
 }
 
 type InvoiceModeConnection {
@@ -29481,95 +29287,6 @@ input InvoiceNegotiationUpdateFilter {
   and: [InvoiceNegotiationUpdateFilter!]
   id: IDFilterComparison
   or: [InvoiceNegotiationUpdateFilter!]
-}
-
-type InvoiceParentInvoiceAggregateGroupBy {
-  containsPadsOnly: Float
-  currentInvoiceStatusId: Float
-  id: ID
-  invoiceNumber: String
-  isChaparDelivery: Float
-  issueDate: DateTime
-  shippingRate: Float
-  shippingRateCod: Float
-  subtotalPrice: Float
-  totalDiscount: Float
-  totalPrice: Float
-}
-
-type InvoiceParentInvoiceAggregateResponse {
-  avg: InvoiceParentInvoiceAvgAggregate
-  count: InvoiceParentInvoiceCountAggregate
-  groupBy: InvoiceParentInvoiceAggregateGroupBy
-  max: InvoiceParentInvoiceMaxAggregate
-  min: InvoiceParentInvoiceMinAggregate
-  sum: InvoiceParentInvoiceSumAggregate
-}
-
-type InvoiceParentInvoiceAvgAggregate {
-  containsPadsOnly: Float
-  currentInvoiceStatusId: Float
-  id: Float
-  isChaparDelivery: Float
-  shippingRate: Float
-  shippingRateCod: Float
-  subtotalPrice: Float
-  totalDiscount: Float
-  totalPrice: Float
-}
-
-type InvoiceParentInvoiceCountAggregate {
-  containsPadsOnly: Int
-  currentInvoiceStatusId: Int
-  id: Int
-  invoiceNumber: Int
-  isChaparDelivery: Int
-  issueDate: Int
-  shippingRate: Int
-  shippingRateCod: Int
-  subtotalPrice: Int
-  totalDiscount: Int
-  totalPrice: Int
-}
-
-type InvoiceParentInvoiceMaxAggregate {
-  containsPadsOnly: Float
-  currentInvoiceStatusId: Float
-  id: ID
-  invoiceNumber: String
-  isChaparDelivery: Float
-  issueDate: DateTime
-  shippingRate: Float
-  shippingRateCod: Float
-  subtotalPrice: Float
-  totalDiscount: Float
-  totalPrice: Float
-}
-
-type InvoiceParentInvoiceMinAggregate {
-  containsPadsOnly: Float
-  currentInvoiceStatusId: Float
-  id: ID
-  invoiceNumber: String
-  isChaparDelivery: Float
-  issueDate: DateTime
-  shippingRate: Float
-  shippingRateCod: Float
-  subtotalPrice: Float
-  totalDiscount: Float
-  totalPrice: Float
-}
-
-type InvoiceParentInvoiceSumAggregate {
-  containsPadsOnly: Float
-  currentInvoiceStatusId: Float
-  id: Float
-  isChaparDelivery: Float
-  shippingRate: Float
-  shippingRateCod: Float
-  subtotalPrice: Float
-  totalDiscount: Float
-  totalPrice: Float
 }
 
 type InvoicePayment {
@@ -30226,12 +29943,6 @@ type InvoicePaymentStatus {
   updatedAt: DateTime
 }
 
-input InvoicePaymentStatusAggregateFilter {
-  and: [InvoicePaymentStatusAggregateFilter!]
-  id: IDFilterComparison
-  or: [InvoicePaymentStatusAggregateFilter!]
-}
-
 input InvoicePaymentStatusDeleteFilter {
   and: [InvoicePaymentStatusDeleteFilter!]
   id: IDFilterComparison
@@ -30383,34 +30094,16 @@ type InvoiceProduct {
   count: Float!
   createdAt: DateTime
   description: String
-  design(
-    """Specify to filter the records returned."""
-    filter: DesignFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [DesignSort!]! = []
-  ): [Design!]!
+  design: Design!
   designId: Float
   designerPricePercentage: Float
   designerPriceShare: Float
   discount: String
   discountId: Float
-  discount_2(
-    """Specify to filter the records returned."""
-    filter: DiscountFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [DiscountSort!]! = []
-  ): [Discount!]!
+  discount_2: Discount!
   gift: Float!
   id: ID!
-  invoice(
-    """Specify to filter the records returned."""
-    filter: InvoiceFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceSort!]! = []
-  ): [Invoice!]!
+  invoice: Invoice!
   invoiceId: Float!
   invoiceProductHistories(
     """Specify to filter the records returned."""
@@ -30439,39 +30132,15 @@ type InvoiceProduct {
   itemsToProduce: Float
   length: Float
   manuallyAdded: Float!
-  pad(
-    """Specify to filter the records returned."""
-    filter: SubproductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [SubproductSort!]! = []
-  ): [Subproduct!]!
+  pad: Subproduct!
   padId: Float
   price: String!
   pricePerInch: Float
-  product(
-    """Specify to filter the records returned."""
-    filter: ProductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [ProductSort!]! = []
-  ): [Product!]!
+  product: Product!
   productId: Float
-  relatedProduct(
-    """Specify to filter the records returned."""
-    filter: ProductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [ProductSort!]! = []
-  ): [Product!]!
+  relatedProduct: Product!
   relatedProductId: Float
-  relatedSubproduct(
-    """Specify to filter the records returned."""
-    filter: SubproductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [SubproductSort!]! = []
-  ): [Subproduct!]!
+  relatedSubproduct: Subproduct!
   relatedSubproductId: Float
   returnRequestItemHistories(
     """Specify to filter the records returned."""
@@ -30496,13 +30165,7 @@ type InvoiceProduct {
   ): [ReturnedInvoiceProduct!]!
   sepidarId: Float
   stockCount: Float
-  subproduct(
-    """Specify to filter the records returned."""
-    filter: SubproductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [SubproductSort!]! = []
-  ): [Subproduct!]!
+  subproduct: Subproduct!
   subproductId: Float
   subproductStockHistories(
     """Specify to filter the records returned."""
@@ -30587,11 +30250,13 @@ input InvoiceProductAggregateFilterInvoiceProductHistoryAggregateFilter {
 input InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   and: [InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
@@ -30833,11 +30498,13 @@ input InvoiceProductFilterInvoiceProductHistoryFilter {
 input InvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductFilterInvoiceReversalItemFilter {
@@ -31073,22 +30740,10 @@ input InvoiceProductHistoryUpdateFilter {
 type InvoiceProductItem {
   code: String!
   createdAt: DateTime!
-  currentStatus(
-    """Specify to filter the records returned."""
-    filter: InvoiceProductStatusFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceProductStatusSort!]! = []
-  ): [InvoiceProductStatus!]!
+  currentStatus: InvoiceProductStatus!
   currentStatusId: Float!
   damageCause: String
-  damageReason(
-    """Specify to filter the records returned."""
-    filter: DamageReasonFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [DamageReasonSort!]! = []
-  ): [DamageReason!]!
+  damageReason: DamageReason!
   damageReasonId: Float
   damageType: Float
   exitControlItems(
@@ -31100,13 +30755,7 @@ type InvoiceProductItem {
   ): [ExitControlItem!]!
   fromDepot: Float
   id: ID!
-  invoiceProduct(
-    """Specify to filter the records returned."""
-    filter: InvoiceProductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceProductSort!]! = []
-  ): [InvoiceProduct!]!
+  invoiceProduct: InvoiceProduct!
   invoiceProductId: Float!
   invoiceProductItemInvoiceProductStatuses(
     """Specify to filter the records returned."""
@@ -31121,29 +30770,11 @@ type InvoiceProductItem {
   isTagPrinted: Float
   padCode: String
   predictedDateForReceivedByRepository: String
-  printProfile(
-    """Specify to filter the records returned."""
-    filter: PrintProfileFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [PrintProfileSort!]! = []
-  ): [PrintProfile!]!
+  printProfile: PrintProfile
   printProfileId: Float
-  printRip(
-    """Specify to filter the records returned."""
-    filter: PrintRipFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [PrintRipSort!]! = []
-  ): [PrintRip!]!
+  printRip: PrintRip
   printRipId: Float
-  productionRoll(
-    """Specify to filter the records returned."""
-    filter: ProductionRollFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [ProductionRollSort!]! = []
-  ): [ProductionRoll!]!
+  productionRoll: ProductionRoll!
   productionRollId: Float
   rollReferenceCode: String
   row: Float!
@@ -31167,11 +30798,13 @@ type InvoiceProductItemConnection {
 input InvoiceProductItemDeleteFilter {
   and: [InvoiceProductItemDeleteFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemDeleteFilter!]
+  updatedAt: DateFieldComparison
 }
 
 type InvoiceProductItemDeleteResponse {
@@ -31247,6 +30880,7 @@ input InvoiceProductItemDomain {
 input InvoiceProductItemFilter {
   and: [InvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductItemFilterDamageReasonFilter
@@ -31260,6 +30894,7 @@ input InvoiceProductItemFilter {
   printProfile: InvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterDamageReasonFilter {
@@ -31895,11 +31530,13 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFil
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -32081,6 +31718,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductHistoryFilter {
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter
@@ -32094,6 +31732,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   printProfile: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -32175,11 +31814,13 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -32242,11 +31883,13 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -32281,11 +31924,13 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -32476,6 +32121,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter {
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -32489,6 +32135,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   printProfile: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -32570,11 +32217,13 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -32637,11 +32286,13 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -32676,11 +32327,13 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -32720,6 +32373,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -32733,6 +32387,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   printProfile: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -32799,11 +32454,13 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -33143,6 +32800,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilter {
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -33156,6 +32814,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
   printProfile: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -33237,11 +32896,13 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -33304,11 +32965,13 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -33343,11 +33006,13 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -33386,6 +33051,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoic
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -33399,6 +33065,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoic
   printProfile: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -33466,11 +33133,13 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoic
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -33544,30 +33213,12 @@ type InvoiceProductItemInvoiceProductStatus {
   comment: String
   createdAt: DateTime!
   id: ID!
-  invoiceProductItem(
-    """Specify to filter the records returned."""
-    filter: InvoiceProductItemFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceProductItemSort!]! = []
-  ): [InvoiceProductItem!]!
+  invoiceProductItem: InvoiceProductItem
   invoiceProductItemId: Float!
-  invoiceProductStatus(
-    """Specify to filter the records returned."""
-    filter: InvoiceProductStatusFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [InvoiceProductStatusSort!]! = []
-  ): [InvoiceProductStatus!]!
+  invoiceProductStatus: InvoiceProductStatus
   invoiceProductStatusId: Float!
   updatedAt: DateTime!
-  user(
-    """Specify to filter the records returned."""
-    filter: UserFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [UserSort!]! = []
-  ): [User!]!
+  user: User
   userId: Float!
 }
 
@@ -33631,11 +33282,13 @@ input InvoiceProductItemInvoiceProductStatusFilter {
 input InvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -33681,20 +33334,24 @@ input InvoiceProductItemSort {
 
 enum InvoiceProductItemSortFields {
   code
+  createdAt
   currentStatusId
   fromDepot
   id
   invoiceProductId
+  updatedAt
 }
 
 input InvoiceProductItemUpdateFilter {
   and: [InvoiceProductItemUpdateFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductItemUpdateFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductSort {
@@ -33778,6 +33435,7 @@ input InvoiceProductStatusFilter {
 input InvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -33791,6 +33449,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilter {
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -34130,6 +33789,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter
@@ -34143,6 +33803,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvo
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -34309,6 +33970,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoic
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -34322,6 +33984,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoic
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -34389,11 +34052,13 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoic
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -34458,6 +34123,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilt
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -34471,6 +34137,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilt
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -34537,11 +34204,13 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilt
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -34593,6 +34262,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -34606,6 +34276,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   printProfile: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -34687,11 +34358,13 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceReversalItemFilter {
@@ -34754,11 +34427,13 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -34793,11 +34468,13 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilter {
@@ -34837,6 +34514,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatus: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilter
   currentStatusId: NumberFieldComparison
   damageReason: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter
@@ -34850,6 +34528,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   printProfile: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
   productionRoll: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterProductionRollFilter
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterDamageReasonFilter {
@@ -34916,11 +34595,13 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   code: StringFieldComparison
+  createdAt: DateFieldComparison
   currentStatusId: NumberFieldComparison
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
+  updatedAt: DateFieldComparison
 }
 
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilter {
@@ -35365,39 +35046,6 @@ input InvoiceRatesResultUpdateFilter {
   and: [InvoiceRatesResultUpdateFilter!]
   id: IDFilterComparison
   or: [InvoiceRatesResultUpdateFilter!]
-}
-
-type InvoiceReplacementPaymentStatusAggregateGroupBy {
-  id: ID
-}
-
-type InvoiceReplacementPaymentStatusAggregateResponse {
-  avg: InvoiceReplacementPaymentStatusAvgAggregate
-  count: InvoiceReplacementPaymentStatusCountAggregate
-  groupBy: InvoiceReplacementPaymentStatusAggregateGroupBy
-  max: InvoiceReplacementPaymentStatusMaxAggregate
-  min: InvoiceReplacementPaymentStatusMinAggregate
-  sum: InvoiceReplacementPaymentStatusSumAggregate
-}
-
-type InvoiceReplacementPaymentStatusAvgAggregate {
-  id: Float
-}
-
-type InvoiceReplacementPaymentStatusCountAggregate {
-  id: Int
-}
-
-type InvoiceReplacementPaymentStatusMaxAggregate {
-  id: ID
-}
-
-type InvoiceReplacementPaymentStatusMinAggregate {
-  id: ID
-}
-
-type InvoiceReplacementPaymentStatusSumAggregate {
-  id: Float
 }
 
 type InvoiceReturnRequestHistoriesAggregateGroupBy {
@@ -35953,12 +35601,6 @@ type InvoiceType {
   updatedAt: DateTime
 }
 
-input InvoiceTypeAggregateFilter {
-  and: [InvoiceTypeAggregateFilter!]
-  id: IDFilterComparison
-  or: [InvoiceTypeAggregateFilter!]
-}
-
 input InvoiceTypeDeleteFilter {
   and: [InvoiceTypeDeleteFilter!]
   id: IDFilterComparison
@@ -36017,61 +35659,6 @@ input InvoiceUpdateFilter {
   subtotalPrice: NumberFieldComparison
   totalDiscount: NumberFieldComparison
   totalPrice: NumberFieldComparison
-}
-
-type InvoiceUserAggregateGroupBy {
-  createdAt: DateTime
-  id: ID
-  isGuest: Float
-  name: String
-  phone: String
-  username: String
-}
-
-type InvoiceUserAggregateResponse {
-  avg: InvoiceUserAvgAggregate
-  count: InvoiceUserCountAggregate
-  groupBy: InvoiceUserAggregateGroupBy
-  max: InvoiceUserMaxAggregate
-  min: InvoiceUserMinAggregate
-  sum: InvoiceUserSumAggregate
-}
-
-type InvoiceUserAvgAggregate {
-  id: Float
-  isGuest: Float
-}
-
-type InvoiceUserCountAggregate {
-  createdAt: Int
-  id: Int
-  isGuest: Int
-  name: Int
-  phone: Int
-  username: Int
-}
-
-type InvoiceUserMaxAggregate {
-  createdAt: DateTime
-  id: ID
-  isGuest: Float
-  name: String
-  phone: String
-  username: String
-}
-
-type InvoiceUserMinAggregate {
-  createdAt: DateTime
-  id: ID
-  isGuest: Float
-  name: String
-  phone: String
-  username: String
-}
-
-type InvoiceUserSumAggregate {
-  id: Float
-  isGuest: Float
 }
 
 type InvoiceVisitorAggregateGroupBy {
@@ -50843,23 +50430,11 @@ input SubcolorUpdateFilter {
 
 type Subproduct {
   attributeSubproducts: [AttributeSubproduct!]!
-  basicCarpetBorder(
-    """Specify to filter the records returned."""
-    filter: BasicCarpetBorderFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [BasicCarpetBorderSort!]! = []
-  ): [BasicCarpetBorder!]!
+  basicCarpetBorder: BasicCarpetBorder!
   basicCarpetBorderId: Float
   basicCarpetBrand: BasicCarpetBrand!
   basicCarpetBrandId: Float
-  basicCarpetColor(
-    """Specify to filter the records returned."""
-    filter: BasicCarpetColorFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [BasicCarpetColorSort!]! = []
-  ): [BasicCarpetColor!]!
+  basicCarpetColor: BasicCarpetColor!
   basicCarpetColorId: Float
   basicCarpetDesign: BasicCarpetDesign!
   basicCarpetDesignId: Float
@@ -50867,13 +50442,7 @@ type Subproduct {
   basicCarpetDesignerId: Float
   basicCarpetMaterial: BasicCarpetMaterial!
   basicCarpetMaterialId: Float
-  basicCarpetSize(
-    """Specify to filter the records returned."""
-    filter: BasicCarpetSizeFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [BasicCarpetSizeSort!]! = []
-  ): [BasicCarpetSize!]!
+  basicCarpetSize: BasicCarpetSize!
   basicCarpetSizeId: Float
   basicCarpetType: BasicCarpetType!
   basicCarpetTypeId: Float
@@ -50893,13 +50462,7 @@ type Subproduct {
   favoriteProducts: [FavoriteProduct!]!
   getStockCountFromSepidar: Boolean!
   id: ID!
-  image(
-    """Specify to filter the records returned."""
-    filter: ImageFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [ImageSort!]! = []
-  ): [Image!]!
+  image: Image!
   imageId: Float
   imageSubproducts: [ImageSubproduct!]!
   invoiceProductHistories: [InvoiceProductHistory!]!
@@ -50915,13 +50478,7 @@ type Subproduct {
   padPrice: String!
   preorders: [Preorder!]!
   price: String
-  product(
-    """Specify to filter the records returned."""
-    filter: ProductFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [ProductSort!]! = []
-  ): [Product!]!
+  product: Product!
   productComments: [ProductComment!]!
   productId: Float!
   productLikes: [ProductLike!]!
@@ -52809,7 +52366,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-06-08T11:43:46.635Z"
+  createdAt: DateTime = "2025-06-09T11:00:30.850Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -52831,7 +52388,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-06-08T11:43:46.645Z"
+  createdAt: DateTime = "2025-06-09T11:00:30.868Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52846,7 +52403,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-06-08T11:43:46.685Z"
+  createdAt: DateTime = "2025-06-09T11:00:30.926Z"
   description: String
   facebookId: String
   headerImage: String
@@ -52870,7 +52427,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-06-08T11:43:46.645Z"
+  createdAt: DateTime = "2025-06-09T11:00:30.869Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52887,7 +52444,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-06-08T11:43:46.657Z"
+  createdAt: DateTime = "2025-06-09T11:00:30.885Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -52942,7 +52499,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-06-08T11:43:46.646Z"
+  createdAt: DateTime = "2025-06-09T11:00:30.870Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -61423,13 +60980,7 @@ type User {
   favoriteProducts: [FavoriteProduct!]
   googleFormUtms: [GoogleFormUtm!]
   hafezPoemCount: Float!
-  heardAboutUsOption(
-    """Specify to filter the records returned."""
-    filter: HeardAboutUsOptionFilter! = {}
-
-    """Specify to sort results."""
-    sorting: [HeardAboutUsOptionSort!]! = []
-  ): [HeardAboutUsOption!]!
+  heardAboutUsOption: HeardAboutUsOption
   heardAboutUsOptionId: Float
   helpDesks: HelpDesk
   holidays: [Holiday!]
@@ -61593,311 +61144,6 @@ type User {
   ): [Wallet!]!
   withdrawalRequests: [WithdrawalRequest!]
   withdrawalRequests2: [WithdrawalRequest!]
-}
-
-input UserAggregateFilter {
-  addresses: UserAggregateFilterAddressAggregateFilter
-  and: [UserAggregateFilter!]
-  createdAt: DateFieldComparison
-  heardAboutUsOption: UserAggregateFilterHeardAboutUsOptionAggregateFilter
-  id: IDFilterComparison
-  invoices: UserAggregateFilterInvoiceAggregateFilter
-  invoices2: UserAggregateFilterInvoiceAggregateFilter
-  isGuest: NumberFieldComparison
-  name: StringFieldComparison
-  or: [UserAggregateFilter!]
-  phone: StringFieldComparison
-  username: StringFieldComparison
-}
-
-input UserAggregateFilterAddressAggregateFilter {
-  and: [UserAggregateFilterAddressAggregateFilter!]
-  city: UserAggregateFilterAddressAggregateFilterCityAggregateFilter
-  id: IDFilterComparison
-  or: [UserAggregateFilterAddressAggregateFilter!]
-  state: UserAggregateFilterAddressAggregateFilterStateAggregateFilter
-}
-
-input UserAggregateFilterAddressAggregateFilterCityAggregateFilter {
-  and: [UserAggregateFilterAddressAggregateFilterCityAggregateFilter!]
-  id: IDFilterComparison
-  name: StringFieldComparison
-  or: [UserAggregateFilterAddressAggregateFilterCityAggregateFilter!]
-}
-
-input UserAggregateFilterAddressAggregateFilterStateAggregateFilter {
-  and: [UserAggregateFilterAddressAggregateFilterStateAggregateFilter!]
-  id: IDFilterComparison
-  name: StringFieldComparison
-  or: [UserAggregateFilterAddressAggregateFilterStateAggregateFilter!]
-}
-
-input UserAggregateFilterHeardAboutUsOptionAggregateFilter {
-  and: [UserAggregateFilterHeardAboutUsOptionAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterHeardAboutUsOptionAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilter {
-  Coupon: UserAggregateFilterInvoiceAggregateFilterCouponAggregateFilter
-  address: UserAggregateFilterInvoiceAggregateFilterAddressAggregateFilter
-  and: [UserAggregateFilterInvoiceAggregateFilter!]
-  chaparSettlementStatus: UserAggregateFilterInvoiceAggregateFilterChaparSettlementStatusAggregateFilter
-  chaparTrackingHistories: UserAggregateFilterInvoiceAggregateFilterChaparTrackingHistoryAggregateFilter
-  containsPadsOnly: NumberFieldComparison
-  currentInvoiceStatus: UserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
-  currentInvoiceStatusId: NumberFieldComparison
-  id: IDFilterComparison
-  invoiceAddressValidationResults: UserAggregateFilterInvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter
-  invoiceAddresses: UserAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilter
-  invoiceBankGatewayHistories: UserAggregateFilterInvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter
-  invoiceHistories: UserAggregateFilterInvoiceAggregateFilterInvoiceHistoryAggregateFilter
-  invoiceInvoiceStatuses: UserAggregateFilterInvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter
-  invoiceMode: UserAggregateFilterInvoiceAggregateFilterInvoiceModeAggregateFilter
-  invoiceNegotiations: UserAggregateFilterInvoiceAggregateFilterInvoiceNegotiationAggregateFilter
-  invoiceNumber: StringFieldComparison
-  invoicePaymentHistories: UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter
-  invoicePaymentStatus: UserAggregateFilterInvoiceAggregateFilterInvoicePaymentStatusAggregateFilter
-  invoicePayments: UserAggregateFilterInvoiceAggregateFilterInvoicePaymentAggregateFilter
-  invoiceProducts: UserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilter
-  invoiceRatesResults: UserAggregateFilterInvoiceAggregateFilterInvoiceRatesResultAggregateFilter
-  invoiceReversals: UserAggregateFilterInvoiceAggregateFilterInvoiceReversalAggregateFilter
-  invoiceShippingRates: UserAggregateFilterInvoiceAggregateFilterInvoiceShippingRateAggregateFilter
-  invoiceType: UserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
-  invoices: UserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
-  isChaparDelivery: NumberFieldComparison
-  issueDate: DateFieldComparison
-  lockState2: UserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
-  moneyTransferConfirmedBy2: UserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
-  or: [UserAggregateFilterInvoiceAggregateFilter!]
-  parentInvoice: UserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
-  paymentMethodFields: UserAggregateFilterInvoiceAggregateFilterPaymentMethodFieldAggregateFilter
-  replacementPaymentStatus: UserAggregateFilterInvoiceAggregateFilterInvoicePaymentStatusAggregateFilter
-  returnRequestHistories: UserAggregateFilterInvoiceAggregateFilterReturnRequestHistoryAggregateFilter
-  returnRequests: UserAggregateFilterInvoiceAggregateFilterReturnRequestAggregateFilter
-  returnedInvoices: UserAggregateFilterInvoiceAggregateFilterReturnedInvoiceAggregateFilter
-  returnedInvoices2: UserAggregateFilterInvoiceAggregateFilterReturnedInvoiceAggregateFilter
-  shippingRate: NumberFieldComparison
-  shippingRateCod: NumberFieldComparison
-  shippingService: UserAggregateFilterInvoiceAggregateFilterShippingServiceAggregateFilter
-  subtotalPrice: NumberFieldComparison
-  totalDiscount: NumberFieldComparison
-  totalPrice: NumberFieldComparison
-  user: UserAggregateFilterInvoiceAggregateFilterUserAggregateFilter
-  visitor: UserAggregateFilterInvoiceAggregateFilterVisitorAggregateFilter
-  visitorCoupon: UserAggregateFilterInvoiceAggregateFilterVisitorCouponAggregateFilter
-  visitorGroup: UserAggregateFilterInvoiceAggregateFilterVisitorGroupAggregateFilter
-}
-
-input UserAggregateFilterInvoiceAggregateFilterAddressAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterAddressAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterAddressAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterChaparSettlementStatusAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterChaparSettlementStatusAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterChaparSettlementStatusAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterChaparTrackingHistoryAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterChaparTrackingHistoryAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterChaparTrackingHistoryAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterCouponAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterCouponAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterCouponAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilter {
-  address: StringFieldComparison
-  address2: StringFieldComparison
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilter!]
-  cityId: NumberFieldComparison
-  fullname: StringFieldComparison
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilter!]
-  phone: StringFieldComparison
-  zipCode: StringFieldComparison
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceAddressValidationResultAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
-  containsPadsOnly: NumberFieldComparison
-  currentInvoiceStatusId: NumberFieldComparison
-  id: IDFilterComparison
-  invoiceNumber: StringFieldComparison
-  isChaparDelivery: NumberFieldComparison
-  issueDate: DateFieldComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
-  shippingRate: NumberFieldComparison
-  shippingRateCod: NumberFieldComparison
-  subtotalPrice: NumberFieldComparison
-  totalDiscount: NumberFieldComparison
-  totalPrice: NumberFieldComparison
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceBankGatewayHistoryAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceHistoryAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceHistoryAggregateFilter!]
-  editorUserId: NumberFieldComparison
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceHistoryAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter!]
-  createdAt: DateFieldComparison
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceInvoiceStatusAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceModeAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceModeAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceModeAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceNegotiationAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceNegotiationAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceNegotiationAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoicePaymentAggregateFilter {
-  amount: NumberFieldComparison
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter {
-  amount: StringFieldComparison
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-  forShipping: NumberFieldComparison
-  id: IDFilterComparison
-  invoicePaymentTypeId: NumberFieldComparison
-  isConfirmed: NumberFieldComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentHistoryAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoicePaymentStatusAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentStatusAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoicePaymentStatusAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilter!]
-  id: IDFilterComparison
-  invoiceId: NumberFieldComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilter!]
-  productId: NumberFieldComparison
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceRatesResultAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceRatesResultAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceRatesResultAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceReversalAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceReversalAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceReversalAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceShippingRateAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceShippingRateAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceShippingRateAggregateFilter!]
-  shippingServiceId: NumberFieldComparison
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterPaymentMethodFieldAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterPaymentMethodFieldAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterPaymentMethodFieldAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterReturnRequestAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterReturnRequestAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterReturnRequestAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterReturnRequestHistoryAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterReturnRequestHistoryAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterReturnRequestHistoryAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterReturnedInvoiceAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterReturnedInvoiceAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterReturnedInvoiceAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterShippingServiceAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterShippingServiceAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterShippingServiceAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterUserAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterUserAggregateFilter!]
-  createdAt: DateFieldComparison
-  id: IDFilterComparison
-  isGuest: NumberFieldComparison
-  name: StringFieldComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterUserAggregateFilter!]
-  phone: StringFieldComparison
-  username: StringFieldComparison
-}
-
-input UserAggregateFilterInvoiceAggregateFilterVisitorAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterVisitorAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterVisitorAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterVisitorCouponAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterVisitorCouponAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterVisitorCouponAggregateFilter!]
-}
-
-input UserAggregateFilterInvoiceAggregateFilterVisitorGroupAggregateFilter {
-  and: [UserAggregateFilterInvoiceAggregateFilterVisitorGroupAggregateFilter!]
-  id: IDFilterComparison
-  or: [UserAggregateFilterInvoiceAggregateFilterVisitorGroupAggregateFilter!]
 }
 
 type UserCart {

@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
@@ -30,14 +31,14 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
   () => InvoiceProductHistory
 )
 @FilterableUnPagedRelation('invoiceProductItems', () => InvoiceProductItem)
-@FilterableUnPagedRelation('design', () => Design)
-@FilterableUnPagedRelation('discount_2', () => Discount)
-@FilterableUnPagedRelation('invoice', () => Invoice)
-@FilterableUnPagedRelation('pad', () => Subproduct)
-@FilterableUnPagedRelation('product', () => Product)
-@FilterableUnPagedRelation('relatedProduct', () => Product)
-@FilterableUnPagedRelation('relatedSubproduct', () => Subproduct)
-@FilterableUnPagedRelation('subproduct', () => Subproduct)
+@FilterableRelation('design', () => Design)
+@FilterableRelation('discount_2', () => Discount)
+@FilterableRelation('invoice', () => Invoice)
+@FilterableRelation('pad', () => Subproduct)
+@FilterableRelation('product', () => Product)
+@FilterableRelation('relatedProduct', () => Product)
+@FilterableRelation('relatedSubproduct', () => Subproduct)
+@FilterableRelation('subproduct', () => Subproduct)
 @FilterableUnPagedRelation('invoiceReversalItems', () => InvoiceReversalItem)
 @FilterableUnPagedRelation(
   'returnRequestItemHistories',

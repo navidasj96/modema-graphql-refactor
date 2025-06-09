@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
@@ -43,8 +44,12 @@ import { ShippingService } from '@/modules/shipping-service/domain/shipping-serv
   enableTotalCount: true,
   filterDepth: 4,
 })
-@FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
-@FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
+@FilterableRelation('currentInvoiceStatus', () => InvoiceStatus, {
+  nullable: true,
+})
+@FilterableRelation('invoicePaymentStatus', () => InvoicePaymentStatus, {
+  nullable: true,
+})
 @FilterableUnPagedRelation('invoiceNegotiations', () => InvoiceNegotiation)
 @FilterableUnPagedRelation('invoiceHistories', () => InvoiceHistory)
 @FilterableUnPagedRelation(
@@ -75,10 +80,11 @@ import { ShippingService } from '@/modules/shipping-service/domain/shipping-serv
   'chaparSettlementStatus',
   () => ChaparSettlementStatus
 )
-@FilterableUnPagedRelation('currentInvoiceStatus', () => InvoiceStatus)
-@FilterableUnPagedRelation('invoiceMode', () => InvoiceMode)
-@FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
-@FilterableUnPagedRelation('invoiceType', () => InvoiceType)
+@FilterableRelation('currentInvoiceStatus', () => InvoiceStatus, {
+  nullable: true,
+})
+@FilterableRelation('invoiceMode', () => InvoiceMode, { nullable: true })
+@FilterableRelation('invoiceType', () => InvoiceType)
 @FilterableUnPagedRelation('lockState2', () => InvoiceStatus)
 @FilterableUnPagedRelation('returnedInvoices2', () => ReturnedInvoice)
 @FilterableUnPagedRelation('returnedInvoices', () => ReturnedInvoice)
@@ -88,17 +94,13 @@ import { ShippingService } from '@/modules/shipping-service/domain/shipping-serv
 @FilterableUnPagedRelation('visitor', () => Visitor)
 @FilterableUnPagedRelation('visitorGroup', () => VisitorGroup)
 @FilterableUnPagedRelation('visitorCoupon', () => VisitorCoupon)
-@FilterableUnPagedRelation('user', () => User)
-@FilterableUnPagedRelation(
-  'replacementPaymentStatus',
-  () => InvoicePaymentStatus
-)
+@FilterableRelation('user', () => User, { nullable: true })
+@FilterableRelation('replacementPaymentStatus', () => InvoicePaymentStatus, {
+  nullable: true,
+})
 @FilterableUnPagedRelation('invoices', () => Invoice)
-@FilterableUnPagedRelation('parentInvoice', () => Invoice)
+@FilterableRelation('parentInvoice', () => Invoice, { nullable: true })
 @FilterableUnPagedRelation('moneyTransferConfirmedBy2', () => Invoice)
-@FilterableUnPagedRelation('lockState2', () => InvoiceStatus)
-@FilterableUnPagedRelation('invoiceType', () => InvoiceType)
-@FilterableUnPagedRelation('invoicePaymentStatus', () => InvoicePaymentStatus)
 @FilterableUnPagedRelation('invoiceInvoiceStatuses', () => InvoiceInvoiceStatus)
 @FilterableUnPagedRelation('shippingService', () => ShippingService)
 @ObjectType()
