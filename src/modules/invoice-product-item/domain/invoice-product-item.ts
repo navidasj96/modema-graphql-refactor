@@ -27,7 +27,7 @@ import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/in
 @FilterableRelation('invoiceProduct', () => InvoiceProduct)
 @FilterableRelation('printProfile', () => PrintProfile, { nullable: true })
 @FilterableRelation('printRip', () => PrintRip, { nullable: true })
-@FilterableRelation('productionRoll', () => ProductionRoll)
+@FilterableRelation('productionRoll', () => ProductionRoll, { nullable: true })
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
   enableTotalCount: true,
