@@ -137,11 +137,9 @@ export class UpdateInvoiceProductItemsProvider {
         const invoiceProduct = invoiceProductItem.invoiceProduct;
         const invoice = invoiceProduct.invoice;
         const product = invoiceProduct.product;
-        const date = deliverToRepositoryDate
-          ? new Date(deliverToRepositoryDate)
-          : null;
-        const formattedDate = date ? date.toISOString().split('T')[0] : null;
-        console.log('formattedDate', formattedDate);
+        const date = deliverToRepositoryDate;
+        const formattedDate = date ? date.split('T')[0] : null;
+        console.log('formattedDate', deliverToRepositoryDate);
         if (status == InvoiceProductStatusEnum.PRINT && product.isShaggy == 0) {
           if (deliverToRepositoryDate == '') {
             await queryRunner.rollbackTransaction();
@@ -196,6 +194,7 @@ export class UpdateInvoiceProductItemsProvider {
         invoiceProductItem.currentStatusId = status;
         invoiceProductItem.isPrintedAndHeated = 1;
         invoiceProductItem.printProfileId = printProfileActiveId;
+        // console.log('invoiceProductItem', invoiceProductItem);
         await invoiceProductItemRepositoryWithQuerryRunner.save(
           invoiceProductItem
         );
@@ -259,6 +258,7 @@ export class UpdateInvoiceProductItemsProvider {
         status: true,
       };
     } catch (error) {
+      console.log('error', error);
       await queryRunner.rollbackTransaction();
       return {
         message: 'خطا در به روز رسانی آیتم های فاکتور',
