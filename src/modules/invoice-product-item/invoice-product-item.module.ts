@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { InvoiceProductItemService } from './invoice-product-item.service';
 import { InvoiceProductItemResolver } from './invoice-product-item.resolver';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
@@ -6,9 +6,24 @@ import { InvoiceProductItem as InvoiceProductItemGraphQL } from '@/modules/invoi
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateInvoiceProductItemInput } from '@/modules/invoice-product-item/dto/create-invoice-product-item.input';
+import { UpdateInvoiceProductItemsProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items.provider';
+import { SettingModule } from '@/modules/setting/setting.module';
+import { PrintProfileModule } from '@/modules/print-profile/print-profile.module';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { InvoiceProductStatusModule } from '@/modules/invoice-product-status/invoice-product-status.module';
+import { PermissionsToChangeInvoiceProductItemStatusProvider } from '@/modules/invoice-product-item/providers/permissions-to-change-invoice-product-item-status.provider';
+import { ProductionRollModule } from '@/modules/production-roll/production-roll.module';
+import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.module';
+import { InvoiceModule } from '@/modules/invoice/invoice.module';
+import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
 
 @Module({
-  providers: [InvoiceProductItemResolver, InvoiceProductItemService],
+  providers: [
+    InvoiceProductItemResolver,
+    InvoiceProductItemService,
+    UpdateInvoiceProductItemsProvider,
+    PermissionsToChangeInvoiceProductItemStatusProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([InvoiceProductItem])],
@@ -20,6 +35,14 @@ import { CreateInvoiceProductItemInput } from '@/modules/invoice-product-item/dt
         },
       ],
     }),
+    SettingModule,
+    PrintProfileModule,
+    AuthModule,
+    InvoiceProductStatusModule,
+    ProductionRollModule,
+    InvoiceProductItemInvoiceProductStatusModule,
+    InvoiceInvoiceStatusModule,
+    forwardRef(() => InvoiceModule),
   ],
   exports: [InvoiceProductItemService],
 })

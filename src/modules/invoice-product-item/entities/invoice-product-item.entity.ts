@@ -60,7 +60,7 @@ export class InvoiceProductItem {
   rollReferenceCode?: string;
 
   @Column('int', { name: 'production_roll_id', nullable: true, unsigned: true })
-  productionRollId?: number;
+  productionRollId?: number | null;
 
   @Column('date', {
     name: 'predicted_date_for_received_by_repository',
@@ -90,7 +90,7 @@ export class InvoiceProductItem {
   isReversed: number;
 
   @Column('int', { name: 'print_profile_id', nullable: true, unsigned: true })
-  printProfileId?: number;
+  printProfileId?: number | null;
 
   @Column('tinyint', { name: 'damage_type', nullable: true })
   damageType?: number;

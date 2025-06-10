@@ -70,7 +70,7 @@ export class PrintProfile {
   totalInkLimit?: string;
 
   @Field()
-  isActive: boolean;
+  isActive: number;
 
   @Field({ nullable: true })
   createdBy?: number;

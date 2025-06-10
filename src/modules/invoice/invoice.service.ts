@@ -9,7 +9,7 @@ import { ChangeInvoiceStatusProvider } from './providers/change-invoices-status.
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
@@ -115,5 +115,12 @@ export class InvoiceService {
     return await this.subproductsDepotInProgressProvider.subproductsDepotInProgress(
       subproductsDepotInProgressInput
     );
+  }
+
+  async save(invoice: Invoice, manager?: EntityManager) {
+    const repository = manager
+      ? manager.getRepository(Invoice)
+      : this.invoiceRepository;
+    return await repository.save(invoice);
   }
 }

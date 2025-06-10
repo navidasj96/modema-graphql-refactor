@@ -98,7 +98,7 @@ export class PrintProfile {
   totalInkLimit?: string;
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'0'" })
-  isActive: boolean;
+  isActive: number;
 
   @Column('int', { name: 'created_by', nullable: true, unsigned: true })
   createdBy?: number;
@@ -114,7 +114,7 @@ export class PrintProfile {
 
   @OneToMany(
     () => InvoiceProductItem,
-    (invoiceProductItem) => invoiceProductItem.printProfile,
+    (invoiceProductItem) => invoiceProductItem.printProfile
   )
   invoiceProductItems: InvoiceProductItem[];
 

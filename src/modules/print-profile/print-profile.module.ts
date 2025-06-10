@@ -21,5 +21,6 @@ import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-prin
       ],
     }),
   ],
+  exports: [PrintProfileService],
 })
 export class PrintProfileModule {}

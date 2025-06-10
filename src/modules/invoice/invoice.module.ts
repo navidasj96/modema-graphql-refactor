@@ -56,7 +56,6 @@ import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/
     }),
     AuthModule,
     SettingModule,
-    InvoiceProductItemModule,
     InvoiceProductItemInvoiceProductStatusModule,
     VisitorModule,
     QueueModule,
@@ -69,6 +68,7 @@ import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/
     InvoiceAddressModule,
     InvoiceProductStatusModule,
     forwardRef(() => ShippingServiceModule),
+    forwardRef(() => InvoiceProductItemModule),
   ],
   exports: [InvoiceService],
 })

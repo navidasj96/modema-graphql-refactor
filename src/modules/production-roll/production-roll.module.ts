@@ -21,5 +21,6 @@ import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-
       ],
     }),
   ],
+  exports: [ProductionRollService],
 })
 export class ProductionRollModule {}
