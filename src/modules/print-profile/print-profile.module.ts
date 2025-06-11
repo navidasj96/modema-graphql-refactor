@@ -6,9 +6,15 @@ import { PrintProfile as PrintProfileGraphQL } from '@/modules/print-profile/dom
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-print-profile.input';
+import { ChangeActivePrintProfileProvider } from '@/modules/print-profile/providers/change-active-print-profile.provider';
+import { AuthModule } from '@/modules/auth/auth.module';
 
 @Module({
-  providers: [PrintProfileResolver, PrintProfileService],
+  providers: [
+    PrintProfileResolver,
+    PrintProfileService,
+    ChangeActivePrintProfileProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([PrintProfile])],
@@ -20,6 +26,7 @@ import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-prin
         },
       ],
     }),
+    AuthModule,
   ],
   exports: [PrintProfileService],
 })

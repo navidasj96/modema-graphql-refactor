@@ -6,6 +6,8 @@ import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.p
 import { SignInDto } from '@/modules/auth/dtos/sigin.dto';
 import { RefreshTokenDto } from '@/modules/auth/dtos/refresh-token.dto';
 import { Response } from 'express';
+import { UserPermissionCheckProvider } from '@/modules/auth/providers/user-permission-check.provider';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
 
 @Injectable()
 export class AuthService {
@@ -27,6 +29,11 @@ export class AuthService {
      * inject userService
      */
     private readonly userService: UserService,
+
+    /**
+     * inject userPermissionCheckProvider
+     */
+    private readonly userPermissionCheckProvider: UserPermissionCheckProvider
   ) {}
 
   public async signIn(singInDto: SignInDto, res: Response) {
@@ -45,5 +52,17 @@ export class AuthService {
 
   public async getUserPermissions(userId: number) {
     return this.userService.findRolesAndPermissionsById(userId);
+  }
+
+  public async userPermissionCheck(
+    requestedPermissions: string[],
+    context?: { req: UserContext },
+    userIdInput?: number
+  ) {
+    return await this.userPermissionCheckProvider.userPermissionCheck(
+      requestedPermissions,
+      context,
+      userIdInput
+    );
   }
 }

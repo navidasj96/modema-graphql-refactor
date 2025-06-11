@@ -42,4 +42,33 @@ export class SettingService {
   async save(setting: Setting) {
     return await this.settingRepository.save(setting);
   }
+
+  async updateRollRefrenceCode(
+    rollReferenceCode: string,
+    rollReferenceCodeId: string
+  ) {
+    const setting = await this.activeSetting();
+    if (setting) {
+      try {
+        setting.rollReferenceCode = rollReferenceCode;
+        setting.productionRollId = Number(rollReferenceCodeId);
+        await this.save(setting);
+        return {
+          message:
+            'کد رول تولید با موفقیت تغییر داده شد و از این پس برای تمام آیتم هایی که به چاپ و هیت انتقال داده شوند این کد جدید در نظر گرفته خواهد شد',
+          status: true,
+        };
+      } catch (error) {
+        return {
+          message: 'خطا در تغییر کد رول تولید، لطفا دوباره تلاش کنید',
+          status: false,
+        };
+      }
+    } else {
+      return {
+        message: 'تنظیمات فعالی برای تغییر کد رول تولید یافت نشد',
+        status: false,
+      };
+    }
+  }
 }

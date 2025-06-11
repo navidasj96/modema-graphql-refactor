@@ -38,13 +38,13 @@ export class ProductionRoll {
   closeDate?: Date;
 
   @Column('tinyint', { name: 'is_shaggy', default: 0 })
-  isShaggy: boolean;
+  isShaggy: number;
 
   @Column('varchar', { name: 'shaggy_color', nullable: true, length: 191 })
   shaggyColor?: string;
 
   @Column('tinyint', { name: 'is_closed', default: 0 })
-  isClosed: boolean;
+  isClosed: number;
 
   @Column('timestamp', {
     name: 'created_at',
@@ -68,7 +68,7 @@ export class ProductionRoll {
 
   @OneToMany(
     () => InvoiceProductItem,
-    (invoiceProductItems) => invoiceProductItems.productionRoll,
+    (invoiceProductItems) => invoiceProductItems.productionRoll
   )
   invoiceProductItems: InvoiceProductItem[];
 

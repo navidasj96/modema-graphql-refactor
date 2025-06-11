@@ -13,6 +13,7 @@ import { UserModule } from '@/modules/user/user.module';
 import { SignInProvider } from '@/modules/auth/providers/sign-in.provider';
 import { GenerateTokenProvider } from '@/modules/auth/providers/generate-token.provider';
 import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.provider';
+import { UserPermissionCheckProvider } from '@/modules/auth/providers/user-permission-check.provider';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.p
     SignInProvider,
     GenerateTokenProvider,
     RefreshTokensProvider,
+    UserPermissionCheckProvider,
   ],
   exports: [AuthService, HashingProvider],
   controllers: [AuthController],

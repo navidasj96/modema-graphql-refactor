@@ -16,6 +16,7 @@ import { ProductionRollModule } from '@/modules/production-roll/production-roll.
 import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.module';
 import { InvoiceModule } from '@/modules/invoice/invoice.module';
 import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
+import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
 
 @Module({
   providers: [
@@ -23,6 +24,7 @@ import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/inv
     InvoiceProductItemService,
     UpdateInvoiceProductItemsProvider,
     PermissionsToChangeInvoiceProductItemStatusProvider,
+    UpdateInvoiceProductItemsRollIdProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -43,6 +45,7 @@ import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/inv
     InvoiceProductItemInvoiceProductStatusModule,
     InvoiceInvoiceStatusModule,
     forwardRef(() => InvoiceModule),
+    ProductionRollModule,
   ],
   exports: [InvoiceProductItemService],
 })

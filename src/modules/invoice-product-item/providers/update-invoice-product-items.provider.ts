@@ -139,7 +139,7 @@ export class UpdateInvoiceProductItemsProvider {
         const product = invoiceProduct.product;
         const date = deliverToRepositoryDate;
         const formattedDate = date ? date.split('T')[0] : null;
-        console.log('formattedDate', deliverToRepositoryDate);
+
         if (status == InvoiceProductStatusEnum.PRINT && product.isShaggy == 0) {
           if (deliverToRepositoryDate == '') {
             await queryRunner.rollbackTransaction();
@@ -165,7 +165,7 @@ export class UpdateInvoiceProductItemsProvider {
                   where: { id: settings.productionRollId },
                 })
               : null;
-
+          console.log('productionRoll', productionRoll);
           invoiceProductItem.productionRollId = settings?.productionRollId;
           invoiceProductItem.rollReferenceCode = productionRoll?.rollNumber;
         } else if (

@@ -4,6 +4,8 @@ import { UpdatePrintProfileInput } from './dto/update-print-profile.input';
 import { FindOneOptions, Repository } from 'typeorm';
 import { PrintProfile } from '@/modules/print-profile/entities/print-profile.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ChangeActivePrintProfileProvider } from '@/modules/print-profile/providers/change-active-print-profile.provider';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
 
 @Injectable()
 export class PrintProfileService {
@@ -12,7 +14,11 @@ export class PrintProfileService {
      * inject printProfileRepository
      */
     @InjectRepository(PrintProfile)
-    private readonly printProfileRepository: Repository<PrintProfile>
+    private readonly printProfileRepository: Repository<PrintProfile>,
+    /**
+     * inject changeActivePrintProfileProvider
+     */
+    private readonly changeActivePrintProfileProvider: ChangeActivePrintProfileProvider
   ) {}
   create(createPrintProfileInput: CreatePrintProfileInput) {
     return 'This action adds a new printProfile';
@@ -32,5 +38,15 @@ export class PrintProfileService {
 
   remove(id: number) {
     return `This action removes a #${id} printProfile`;
+  }
+
+  async changeActivePrintProfile(
+    context: { req: UserContext },
+    printProfileId: number
+  ) {
+    return await this.changeActivePrintProfileProvider.changeActivePrintProfile(
+      context,
+      printProfileId
+    );
   }
 }
