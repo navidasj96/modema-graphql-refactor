@@ -12,7 +12,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'carpet_usage_place_user_carpet_usage_place_id_index',
   ['carpetUsagePlaceId'],
-  {},
+  {}
 )
 @Index('carpet_usage_place_user_user_id_index', ['userId'], {})
 @Entity('carpet_usage_place_user', { schema: 'modema' })
@@ -35,7 +35,7 @@ export class CarpetUsagePlaceUser {
   @ManyToOne(
     () => CarpetUsagePlace,
     (carpetUsagePlace) => carpetUsagePlace.carpetUsagePlaceUsers,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'carpet_usage_place_id', referencedColumnName: 'id' }])
   carpetUsagePlace: CarpetUsagePlace;

@@ -14,7 +14,7 @@ import { Video } from '@/modules/video/entities/video.entity';
 @Index(
   'subproduct_video_video_id_subproduct_id_unique',
   ['videoId', 'subproductId'],
-  { unique: true },
+  { unique: true }
 )
 @Entity('subproduct_video', { schema: 'modema' })
 export class SubproductVideo {

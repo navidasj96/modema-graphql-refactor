@@ -26,7 +26,7 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'return_request_items_return_item_status_id_index',
   ['returnItemStatusId'],
-  {},
+  {}
 )
 @Index('return_request_items_return_reason_id_index', ['returnReasonId'], {})
 @Index('return_request_items_return_request_id_index', ['returnRequestId'], {})
@@ -93,39 +93,39 @@ export class ReturnRequestItem {
   @OneToMany(
     () => ReturnItemStatusReturnRequestItem,
     (returnItemStatusReturnRequestItem) =>
-      returnItemStatusReturnRequestItem.returnRequestItem,
+      returnItemStatusReturnRequestItem.returnRequestItem
   )
   returnItemStatusReturnRequestItems: ReturnItemStatusReturnRequestItem[];
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.returnRequestItem,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnRequestItem
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItemImage,
-    (returnRequestItemImage) => returnRequestItemImage.returnRequestItem,
+    (returnRequestItemImage) => returnRequestItemImage.returnRequestItem
   )
   returnRequestItemImages: ReturnRequestItemImage[];
 
   @OneToMany(
     () => ReturnRequestItemReturnItemStatus,
     (returnRequestItemReturnItemStatus) =>
-      returnRequestItemReturnItemStatus.returnRequestItem,
+      returnRequestItemReturnItemStatus.returnRequestItem
   )
   returnRequestItemReturnItemStatuses: ReturnRequestItemReturnItemStatus[];
 
   @OneToMany(
     () => ReturnRequestItemVideo,
-    (returnRequestItemVideos) => returnRequestItemVideos.returnRequestItem,
+    (returnRequestItemVideos) => returnRequestItemVideos.returnRequestItem
   )
   returnRequestItemVideos: ReturnRequestItemVideo[];
 
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.returnRequestItems,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;
@@ -140,7 +140,7 @@ export class ReturnRequestItem {
   @ManyToOne(
     () => ReturnItemStatus,
     (returnItemStatus) => returnItemStatus.returnRequestItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_item_status_id', referencedColumnName: 'id' }])
   returnItemStatus: ReturnItemStatus;
@@ -148,7 +148,7 @@ export class ReturnRequestItem {
   @ManyToOne(
     () => ReturnReason,
     (returnReason) => returnReason.returnRequestItems,
-    { onDelete: 'SET NULL', onUpdate: 'SET NULL' },
+    { onDelete: 'SET NULL', onUpdate: 'SET NULL' }
   )
   @JoinColumn([{ name: 'return_reason_id', referencedColumnName: 'id' }])
   returnReason: ReturnReason;
@@ -156,7 +156,7 @@ export class ReturnRequestItem {
   @ManyToOne(
     () => ReturnRequest,
     (returnRequest) => returnRequest.returnRequestItems,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_id', referencedColumnName: 'id' }])
   returnRequest: ReturnRequest;

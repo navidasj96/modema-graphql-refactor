@@ -28,7 +28,7 @@ export class ReturnType {
 
   @OneToMany(
     () => ReturnRequestHistory,
-    (returnRequestHistory) => returnRequestHistory.returnType,
+    (returnRequestHistory) => returnRequestHistory.returnType
   )
   returnRequestHistories: ReturnRequestHistory[];
 

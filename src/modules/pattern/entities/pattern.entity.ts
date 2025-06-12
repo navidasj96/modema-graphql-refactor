@@ -79,7 +79,7 @@ export class Pattern {
   @ManyToOne(
     () => PatternCategory,
     (patternCategory) => patternCategory.patterns,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'pattern_category_id', referencedColumnName: 'id' }])
   patternCategory: PatternCategory;

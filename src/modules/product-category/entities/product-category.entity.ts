@@ -130,19 +130,19 @@ export class ProductCategory {
 
   @OneToMany(
     () => AttributeGroup,
-    (attributeGroup) => attributeGroup.productCategory,
+    (attributeGroup) => attributeGroup.productCategory
   )
   attributeGroups: AttributeGroup[];
 
   @OneToMany(
     () => CouponSubject,
-    (couponSubject) => couponSubject.productCategory,
+    (couponSubject) => couponSubject.productCategory
   )
   couponSubjects: CouponSubject[];
 
   @OneToMany(
     () => DiscountSubject,
-    (discountSubject) => discountSubject.productCategory,
+    (discountSubject) => discountSubject.productCategory
   )
   discountSubjects: DiscountSubject[];
 
@@ -177,7 +177,7 @@ export class ProductCategory {
   @ManyToOne(
     () => ProductCategory,
     (productCategory) => productCategory.productCategories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'parent_id', referencedColumnName: 'id' }])
   parent: ProductCategory;
@@ -187,13 +187,13 @@ export class ProductCategory {
 
   @OneToMany(
     () => ProductCategoryRate,
-    (productCategoryRate) => productCategoryRate.productCategory,
+    (productCategoryRate) => productCategoryRate.productCategory
   )
   productCategoryRates: ProductCategoryRate[];
 
   @OneToMany(
     () => ProductProductCategory,
-    (productProductCategory) => productProductCategory.productCategory,
+    (productProductCategory) => productProductCategory.productCategory
   )
   productProductCategory: ProductProductCategory[];
 }

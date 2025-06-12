@@ -16,7 +16,10 @@ export class ProductCommentLikeService {
     return `This action returns a #${id} productCommentLike`;
   }
 
-  update(id: number, updateProductCommentLikeInput: UpdateProductCommentLikeInput) {
+  update(
+    id: number,
+    updateProductCommentLikeInput: UpdateProductCommentLikeInput
+  ) {
     return `This action updates a #${id} productCommentLike`;
   }
 

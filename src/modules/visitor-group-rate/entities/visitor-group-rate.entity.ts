@@ -49,7 +49,7 @@ export class VisitorGroupRate {
   @ManyToOne(
     () => VisitorGroup,
     (visitorGroup) => visitorGroup.visitorGroupRates,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'visitor_group_id', referencedColumnName: 'id' }])
   visitorGroup: VisitorGroup;

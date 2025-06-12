@@ -14,7 +14,7 @@ import { WithdrawalRequestStatus } from '@/modules/withdrawal-request-status/ent
 @Index(
   'withdrawal_requests_withdrawal_request_status_id_index',
   ['withdrawalRequestStatusId'],
-  {},
+  {}
 )
 @Entity('withdrawal_requests', { schema: 'modema' })
 export class WithdrawalRequest {
@@ -79,7 +79,7 @@ export class WithdrawalRequest {
   @ManyToOne(
     () => WithdrawalRequestStatus,
     (withdrawalRequestStatus) => withdrawalRequestStatus.withdrawalRequests,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'withdrawal_request_status_id', referencedColumnName: 'id' },

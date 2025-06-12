@@ -5,6 +5,6 @@ import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiati
 @Resolver(() => NegotiationStatus)
 export class NegotiationStatusResolver {
   constructor(
-    private readonly negotiationStatusService: NegotiationStatusService,
+    private readonly negotiationStatusService: NegotiationStatusService
   ) {}
 }

@@ -12,11 +12,11 @@ export class AttributeAttributeGroupService {
      * Inject attributeAttributeGroupRepository
      */
     @InjectRepository(AttributeAttributeGroup)
-    private readonly attributeAttributeGroupRepository: Repository<AttributeAttributeGroup>,
+    private readonly attributeAttributeGroupRepository: Repository<AttributeAttributeGroup>
   ) {}
 
   create(
-    createAttributeAttributeGroupInput: CreateAttributeAttributeGroupInput,
+    createAttributeAttributeGroupInput: CreateAttributeAttributeGroupInput
   ) {
     return 'This action adds a new attributeAttributeGroup';
   }
@@ -33,7 +33,7 @@ export class AttributeAttributeGroupService {
 
   update(
     id: number,
-    updateAttributeAttributeGroupInput: UpdateAttributeAttributeGroupInput,
+    updateAttributeAttributeGroupInput: UpdateAttributeAttributeGroupInput
   ) {
     return `This action updates a #${id} attributeAttributeGroup`;
   }

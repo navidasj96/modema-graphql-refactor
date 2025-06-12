@@ -2,7 +2,9 @@ import { CreateProductionPadProductionPadStatusInput } from './create-production
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateProductionPadProductionPadStatusInput extends PartialType(CreateProductionPadProductionPadStatusInput) {
+export class UpdateProductionPadProductionPadStatusInput extends PartialType(
+  CreateProductionPadProductionPadStatusInput
+) {
   @Field(() => Int)
   id: number;
 }

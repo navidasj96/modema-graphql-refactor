@@ -16,7 +16,10 @@ export class CampaignGoldCoinSubService {
     return `This action returns a #${id} campaignGoldCoinSub`;
   }
 
-  update(id: number, updateCampaignGoldCoinSubInput: UpdateCampaignGoldCoinSubInput) {
+  update(
+    id: number,
+    updateCampaignGoldCoinSubInput: UpdateCampaignGoldCoinSubInput
+  ) {
     return `This action updates a #${id} campaignGoldCoinSub`;
   }
 

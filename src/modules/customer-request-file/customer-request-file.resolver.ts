@@ -5,6 +5,6 @@ import { CustomerRequestFile } from './domain/customer-request-file';
 @Resolver(() => CustomerRequestFile)
 export class CustomerRequestFileResolver {
   constructor(
-    private readonly customerRequestFileService: CustomerRequestFileService,
+    private readonly customerRequestFileService: CustomerRequestFileService
   ) {}
 }

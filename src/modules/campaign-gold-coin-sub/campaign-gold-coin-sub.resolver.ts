@@ -5,6 +5,6 @@ import { CampaignGoldCoinSub } from './domain/campaign-gold-coin-sub';
 @Resolver(() => CampaignGoldCoinSub)
 export class CampaignGoldCoinSubResolver {
   constructor(
-    private readonly campaignGoldCoinSubService: CampaignGoldCoinSubService,
+    private readonly campaignGoldCoinSubService: CampaignGoldCoinSubService
   ) {}
 }

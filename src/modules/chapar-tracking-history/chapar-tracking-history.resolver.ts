@@ -5,6 +5,6 @@ import { ChaparTrackingHistory } from './domain/chapar-tracking-history';
 @Resolver(() => ChaparTrackingHistory)
 export class ChaparTrackingHistoryResolver {
   constructor(
-    private readonly chaparTrackingHistoryService: ChaparTrackingHistoryService,
+    private readonly chaparTrackingHistoryService: ChaparTrackingHistoryService
   ) {}
 }

@@ -5,6 +5,6 @@ import { OutOfStockButListedProduct } from '@/modules/out-of-stock-but-listed-pr
 @Resolver(() => OutOfStockButListedProduct)
 export class OutOfStockButListedProductResolver {
   constructor(
-    private readonly outOfStockButListedProductService: OutOfStockButListedProductService,
+    private readonly outOfStockButListedProductService: OutOfStockButListedProductService
   ) {}
 }

@@ -5,6 +5,6 @@ import { InvoicePaymentType } from '@/modules/invoice-payment-type/domain/invoic
 @Resolver(() => InvoicePaymentType)
 export class InvoicePaymentTypeResolver {
   constructor(
-    private readonly invoicePaymentTypeService: InvoicePaymentTypeService,
+    private readonly invoicePaymentTypeService: InvoicePaymentTypeService
   ) {}
 }

@@ -2,7 +2,9 @@ import { CreatePreorderPreorderStatusInput } from './create-preorder-preorder-st
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdatePreorderPreorderStatusInput extends PartialType(CreatePreorderPreorderStatusInput) {
+export class UpdatePreorderPreorderStatusInput extends PartialType(
+  CreatePreorderPreorderStatusInput
+) {
   @Field(() => Int)
   id: number;
 }

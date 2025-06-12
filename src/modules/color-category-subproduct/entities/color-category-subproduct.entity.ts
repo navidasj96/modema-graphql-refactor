@@ -12,7 +12,7 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'color_category_subproduct_color_category_id_index',
   ['colorCategoryId'],
-  {},
+  {}
 )
 @Index('color_category_subproduct_idx1', ['colorCategoryId', 'subproductId'], {
   unique: true,
@@ -38,7 +38,7 @@ export class ColorCategorySubproduct {
   @ManyToOne(
     () => ColorCategory,
     (colorCategory) => colorCategory.colorCategorySubproducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'color_category_id', referencedColumnName: 'id' }])
   colorCategory: ColorCategory;
@@ -46,7 +46,7 @@ export class ColorCategorySubproduct {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.colorCategorySubproducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

@@ -14,7 +14,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'preorder_preorder_status_preorder_status_id_index',
   ['preorderStatusId'],
-  {},
+  {}
 )
 @Index('preorder_preorder_status_user_id_index', ['userId'], {})
 @Entity('preorder_preorder_status', { schema: 'modema' })
@@ -50,7 +50,7 @@ export class PreorderPreorderStatus {
   @ManyToOne(
     () => PreorderStatus,
     (preorderStatus) => preorderStatus.preorderPreorderStatuses,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'preorder_status_id', referencedColumnName: 'id' }])
   preorderStatus: PreorderStatus;

@@ -147,7 +147,7 @@ export class Address {
 
   @OneToMany(
     () => InvoiceAddressValidationResult,
-    (invoiceAddressValidationResult) => invoiceAddressValidationResult.address,
+    (invoiceAddressValidationResult) => invoiceAddressValidationResult.address
   )
   invoiceAddressValidationResults?: InvoiceAddressValidationResult[];
 
@@ -156,7 +156,7 @@ export class Address {
 
   @OneToMany(
     () => InvoiceRatesResult,
-    (invoiceRatesResult) => invoiceRatesResult.address,
+    (invoiceRatesResult) => invoiceRatesResult.address
   )
   invoiceRatesResults?: InvoiceRatesResult[];
 
@@ -165,7 +165,7 @@ export class Address {
 
   @OneToMany(
     () => ReturnRequestAddress,
-    (returnRequestAddress) => returnRequestAddress.address_2,
+    (returnRequestAddress) => returnRequestAddress.address_2
   )
   returnRequestAddresses?: ReturnRequestAddress[];
 }

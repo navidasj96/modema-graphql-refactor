@@ -13,12 +13,12 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'return_item_status_return_request_item_idx_item',
   ['returnRequestItemId'],
-  {},
+  {}
 )
 @Index(
   'return_item_status_return_request_item_idx_status',
   ['returnItemStatusId'],
-  {},
+  {}
 )
 @Index('return_item_status_return_request_item_idx_user_id', ['userId'], {})
 @Entity('return_item_status_return_request_item', { schema: 'modema' })
@@ -47,7 +47,7 @@ export class ReturnItemStatusReturnRequestItem {
   @ManyToOne(
     () => ReturnRequestItem,
     (returnRequestItem) => returnRequestItem.returnItemStatusReturnRequestItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
   returnRequestItem: ReturnRequestItem;
@@ -55,7 +55,7 @@ export class ReturnItemStatusReturnRequestItem {
   @ManyToOne(
     () => ReturnItemStatus,
     (returnItemStatus) => returnItemStatus.returnItemStatusReturnRequestItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_item_status_id', referencedColumnName: 'id' }])
   returnItemStatus: ReturnItemStatus;

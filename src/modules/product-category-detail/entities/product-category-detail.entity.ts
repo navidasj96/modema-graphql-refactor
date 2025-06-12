@@ -3,7 +3,7 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 @Index(
   'product_category_details_product_category_id_index',
   ['productCategoryId'],
-  {},
+  {}
 )
 @Entity('product_category_details', { schema: 'modema' })
 export class ProductCategoryDetail {

@@ -13,7 +13,7 @@ import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invo
 @Index(
   'exit_control_items_invoice_product_item_id_index',
   ['invoiceProductItemId'],
-  {},
+  {}
 )
 @Entity('exit_control_items', { schema: 'modema' })
 export class ExitControlItem {
@@ -55,7 +55,7 @@ export class ExitControlItem {
   @ManyToOne(
     () => InvoiceProductItem,
     (invoiceProductItem) => invoiceProductItem.exitControlItems,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_item_id', referencedColumnName: 'id' }])
   invoiceProductItem: InvoiceProductItem;

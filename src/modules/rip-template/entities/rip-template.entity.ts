@@ -34,7 +34,7 @@ export class RipTemplate {
 
   @OneToMany(
     () => RipTemplateItem,
-    (ripTemplateItem) => ripTemplateItem.ripTemplate,
+    (ripTemplateItem) => ripTemplateItem.ripTemplate
   )
   ripTemplateItems: RipTemplateItem[];
 

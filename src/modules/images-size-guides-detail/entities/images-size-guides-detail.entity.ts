@@ -13,7 +13,7 @@ import { Image } from '@/modules/image/entities/image.entity';
 @Index(
   'images_size_guides_details_size_guides_details_id_index',
   ['sizeGuidesDetailsId'],
-  {},
+  {}
 )
 @Entity('images_size_guides_details', { schema: 'modema' })
 export class ImagesSizeGuidesDetail {
@@ -50,7 +50,7 @@ export class ImagesSizeGuidesDetail {
   @ManyToOne(
     () => SizeGuidesDetail,
     (sizeGuidesDetail) => sizeGuidesDetail.imagesSizeGuidesDetails,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'size_guides_details_id', referencedColumnName: 'id' }])
   sizeGuidesDetails: SizeGuidesDetail;

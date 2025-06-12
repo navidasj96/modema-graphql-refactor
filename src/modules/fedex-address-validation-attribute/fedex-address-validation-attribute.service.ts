@@ -4,7 +4,9 @@ import { UpdateFedexAddressValidationAttributeInput } from './dto/update-fedex-a
 
 @Injectable()
 export class FedexAddressValidationAttributeService {
-  create(createFedexAddressValidationAttributeInput: CreateFedexAddressValidationAttributeInput) {
+  create(
+    createFedexAddressValidationAttributeInput: CreateFedexAddressValidationAttributeInput
+  ) {
     return 'This action adds a new fedexAddressValidationAttribute';
   }
 
@@ -16,7 +18,10 @@ export class FedexAddressValidationAttributeService {
     return `This action returns a #${id} fedexAddressValidationAttribute`;
   }
 
-  update(id: number, updateFedexAddressValidationAttributeInput: UpdateFedexAddressValidationAttributeInput) {
+  update(
+    id: number,
+    updateFedexAddressValidationAttributeInput: UpdateFedexAddressValidationAttributeInput
+  ) {
     return `This action updates a #${id} fedexAddressValidationAttribute`;
   }
 

@@ -145,7 +145,7 @@ export class BasicCarpetSize {
 
   @OneToMany(
     () => BasicCarpetSizeDetail,
-    (basicCarpetSizeDetail) => basicCarpetSizeDetail.basicCarpetSize,
+    (basicCarpetSizeDetail) => basicCarpetSizeDetail.basicCarpetSize
   )
   basicCarpetSizeDetails: BasicCarpetSizeDetail[];
 
@@ -165,37 +165,37 @@ export class BasicCarpetSize {
 
   @OneToMany(
     () => CampaignFreeOfferSize,
-    (campaignFreeOfferSize) => campaignFreeOfferSize.basicCarpetSize,
+    (campaignFreeOfferSize) => campaignFreeOfferSize.basicCarpetSize
   )
   campaignFreeOfferSizes: CampaignFreeOfferSize[];
 
   @OneToMany(
     () => CouponSubject,
-    (couponSubject) => couponSubject.basicCarpetSize,
+    (couponSubject) => couponSubject.basicCarpetSize
   )
   couponSubjects: CouponSubject[];
 
   @OneToMany(
     () => DesignersProductPriceRange,
-    (designersProductPriceRange) => designersProductPriceRange.basicCarpetSize,
+    (designersProductPriceRange) => designersProductPriceRange.basicCarpetSize
   )
   designersProductPriceRanges: DesignersProductPriceRange[];
 
   @OneToMany(
     () => DiscountSubject,
-    (discountSubject) => discountSubject.basicCarpetSize,
+    (discountSubject) => discountSubject.basicCarpetSize
   )
   discountSubjects: DiscountSubject[];
 
   @OneToMany(
     () => PriceGroupSize,
-    (priceGroupSize) => priceGroupSize.basicCarpetSize,
+    (priceGroupSize) => priceGroupSize.basicCarpetSize
   )
   priceGroupSizes: PriceGroupSize[];
 
   @OneToMany(
     () => ProductionPad,
-    (productionPad) => productionPad.basicCarpetSize,
+    (productionPad) => productionPad.basicCarpetSize
   )
   productionPads: ProductionPad[];
 
@@ -204,7 +204,7 @@ export class BasicCarpetSize {
 
   @OneToMany(
     () => RipTemplateItem,
-    (ripTemplateItem) => ripTemplateItem.basicCarpetSize,
+    (ripTemplateItem) => ripTemplateItem.basicCarpetSize
   )
   ripTemplateItems: RipTemplateItem[];
 

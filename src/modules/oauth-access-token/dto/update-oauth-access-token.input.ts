@@ -3,7 +3,7 @@ import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateOauthAccessTokenInput extends PartialType(
-  CreateOauthAccessTokenInput,
+  CreateOauthAccessTokenInput
 ) {
   @Field(() => Int)
   id: string;

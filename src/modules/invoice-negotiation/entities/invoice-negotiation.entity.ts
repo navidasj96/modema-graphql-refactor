@@ -38,7 +38,7 @@ export class InvoiceNegotiation {
   @ManyToOne(
     () => Negotiation,
     (negotiation) => negotiation.invoiceNegotiations,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'negotiation_id', referencedColumnName: 'id' }])
   negotiation: Negotiation;

@@ -36,7 +36,7 @@ export class CustomerRequest {
 
   @OneToMany(
     () => CustomerRequestFile,
-    (customerRequestFile) => customerRequestFile.customerRequest,
+    (customerRequestFile) => customerRequestFile.customerRequest
   )
   customerRequestFiles: CustomerRequestFile[];
 

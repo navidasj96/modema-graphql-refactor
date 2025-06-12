@@ -5,6 +5,6 @@ import { RecommendedProduct } from '@/modules/recommended-product/domain/recomme
 @Resolver(() => RecommendedProduct)
 export class RecommendedProductResolver {
   constructor(
-    private readonly recommendedProductService: RecommendedProductService,
+    private readonly recommendedProductService: RecommendedProductService
   ) {}
 }

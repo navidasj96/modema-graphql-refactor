@@ -16,7 +16,10 @@ export class SubproductSpecialImageService {
     return `This action returns a #${id} subproductSpecialImage`;
   }
 
-  update(id: number, updateSubproductSpecialImageInput: UpdateSubproductSpecialImageInput) {
+  update(
+    id: number,
+    updateSubproductSpecialImageInput: UpdateSubproductSpecialImageInput
+  ) {
     return `This action updates a #${id} subproductSpecialImage`;
   }
 

@@ -15,7 +15,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'negotiation_histories_negotiation_status_id_index',
   ['negotiationStatusId'],
-  {},
+  {}
 )
 @Index('negotiation_histories_new_negotiator_id_index', ['newNegotiatorId'], {})
 @Index('negotiation_histories_old_negotiator_id_index', ['oldNegotiatorId'], {})
@@ -49,7 +49,7 @@ export class NegotiationHistory {
   @ManyToOne(
     () => Negotiation,
     (negotiation: Negotiation) => negotiation.negotiationHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'negotiation_id', referencedColumnName: 'id' }])
   negotiation: Negotiation;
@@ -58,7 +58,7 @@ export class NegotiationHistory {
     () => NegotiationStatus,
     (negotiationStatus: NegotiationStatus) =>
       negotiationStatus.negotiationHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'negotiation_status_id', referencedColumnName: 'id' }])
   negotiationStatus: NegotiationStatus;

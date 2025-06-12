@@ -4,7 +4,9 @@ import { UpdateIncredibleOfferSentNotificationInput } from './dto/update-incredi
 
 @Injectable()
 export class IncredibleOfferSentNotificationService {
-  create(createIncredibleOfferSentNotificationInput: CreateIncredibleOfferSentNotificationInput) {
+  create(
+    createIncredibleOfferSentNotificationInput: CreateIncredibleOfferSentNotificationInput
+  ) {
     return 'This action adds a new incredibleOfferSentNotification';
   }
 
@@ -16,7 +18,10 @@ export class IncredibleOfferSentNotificationService {
     return `This action returns a #${id} incredibleOfferSentNotification`;
   }
 
-  update(id: number, updateIncredibleOfferSentNotificationInput: UpdateIncredibleOfferSentNotificationInput) {
+  update(
+    id: number,
+    updateIncredibleOfferSentNotificationInput: UpdateIncredibleOfferSentNotificationInput
+  ) {
     return `This action updates a #${id} incredibleOfferSentNotification`;
   }
 

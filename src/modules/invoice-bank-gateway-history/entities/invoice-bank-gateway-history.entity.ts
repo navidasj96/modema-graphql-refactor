@@ -14,7 +14,7 @@ import { PreorderRegister } from '@/modules/preorder-register/entities/preorder-
 @Index(
   'invoice_bank_gateway_histories_preorder_register_id_index',
   ['preorderRegisterId'],
-  {},
+  {}
 )
 @Entity('invoice_bank_gateway_histories', { schema: 'modema' })
 export class InvoiceBankGatewayHistory {
@@ -64,7 +64,7 @@ export class InvoiceBankGatewayHistory {
   @ManyToOne(
     () => PreorderRegister,
     (preorderRegister) => preorderRegister.invoiceBankGatewayHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'preorder_register_id', referencedColumnName: 'id' }])
   preorderRegister: PreorderRegister;

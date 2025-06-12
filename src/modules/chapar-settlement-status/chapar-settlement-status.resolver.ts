@@ -5,6 +5,6 @@ import { ChaparSettlementStatus } from './domain/chapar-settlement-status';
 @Resolver(() => ChaparSettlementStatus)
 export class ChaparSettlementStatusResolver {
   constructor(
-    private readonly chaparSettlementStatusService: ChaparSettlementStatusService,
+    private readonly chaparSettlementStatusService: ChaparSettlementStatusService
   ) {}
 }

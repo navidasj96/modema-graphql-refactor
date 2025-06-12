@@ -3,7 +3,7 @@ import { CreateAutomationEventInput } from '@/modules/automation-event/dto/creat
 
 @InputType()
 export class UpdateAutomationEventInput extends PartialType(
-  CreateAutomationEventInput,
+  CreateAutomationEventInput
 ) {
   @Field(() => Int)
   id: number;

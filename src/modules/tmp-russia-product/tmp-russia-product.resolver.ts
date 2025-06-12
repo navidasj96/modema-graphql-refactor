@@ -5,6 +5,6 @@ import { TmpRussiaProduct } from '@/modules/tmp-russia-product/domain/tmp-russia
 @Resolver(() => TmpRussiaProduct)
 export class TmpRussiaProductResolver {
   constructor(
-    private readonly tmpRussiaProductService: TmpRussiaProductService,
+    private readonly tmpRussiaProductService: TmpRussiaProductService
   ) {}
 }

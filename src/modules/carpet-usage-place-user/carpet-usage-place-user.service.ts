@@ -16,7 +16,10 @@ export class CarpetUsagePlaceUserService {
     return `This action returns a #${id} carpetUsagePlaceUser`;
   }
 
-  update(id: number, updateCarpetUsagePlaceUserInput: UpdateCarpetUsagePlaceUserInput) {
+  update(
+    id: number,
+    updateCarpetUsagePlaceUserInput: UpdateCarpetUsagePlaceUserInput
+  ) {
     return `This action updates a #${id} carpetUsagePlaceUser`;
   }
 

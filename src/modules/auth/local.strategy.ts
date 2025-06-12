@@ -16,7 +16,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     /**
      * inject hashingProvider
      */
-    private readonly hashingProvider: HashingProvider,
+    private readonly hashingProvider: HashingProvider
   ) {
     super();
   }
@@ -33,7 +33,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     if (
       !(await this.hashingProvider.comparePassword(
         password,
-        user.password ?? '',
+        user.password ?? ''
       ))
     ) {
       this.logger.debug(`invalid credentials`);

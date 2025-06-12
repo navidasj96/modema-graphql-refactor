@@ -49,21 +49,21 @@ export class AttributeGroup {
 
   @OneToMany(
     () => AttributeAttributeGroup,
-    (attributeAttributeGroup) => attributeAttributeGroup.attributeGroup,
+    (attributeAttributeGroup) => attributeAttributeGroup.attributeGroup
   )
   attributeAttributeGroups?: AttributeAttributeGroup[];
 
   @ManyToOne(
     () => ProductCategory,
     (productCategory) => productCategory.attributeGroups,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
   productCategory?: ProductCategory;
 
   @OneToMany(
     () => AttributeItem,
-    (attributeItem) => attributeItem.attributeGroup,
+    (attributeItem) => attributeItem.attributeGroup
   )
   attributeItems?: AttributeItem[];
 }

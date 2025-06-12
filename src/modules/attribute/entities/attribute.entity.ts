@@ -45,7 +45,7 @@ export class Attribute {
 
   @OneToMany(
     () => AttributeAttributeGroup,
-    (attributeAttributeGroup) => attributeAttributeGroup.attribute,
+    (attributeAttributeGroup) => attributeAttributeGroup.attribute
   )
   attributeAttributeGroups?: AttributeAttributeGroup[];
 
@@ -54,13 +54,13 @@ export class Attribute {
 
   @OneToMany(
     () => AttributeProduct,
-    (attributeProduct) => attributeProduct.attribute,
+    (attributeProduct) => attributeProduct.attribute
   )
   attributeProducts?: AttributeProduct[];
 
   @OneToMany(
     () => AttributeSubproduct,
-    (attributeSubproduct) => attributeSubproduct.attribute,
+    (attributeSubproduct) => attributeSubproduct.attribute
   )
   attributeSubproducts?: AttributeSubproduct[];
 }

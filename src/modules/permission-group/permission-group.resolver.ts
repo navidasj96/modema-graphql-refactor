@@ -5,6 +5,6 @@ import { PermissionGroup } from '@/modules/permission-group/domain/permission-gr
 @Resolver(() => PermissionGroup)
 export class PermissionGroupResolver {
   constructor(
-    private readonly permissionGroupService: PermissionGroupService,
+    private readonly permissionGroupService: PermissionGroupService
   ) {}
 }

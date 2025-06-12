@@ -35,7 +35,7 @@ export class InvoiceAddressValidationResult {
   @ManyToOne(
     () => Address,
     (address) => address.invoiceAddressValidationResults,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'address_id', referencedColumnName: 'id' }])
   address: Address;
@@ -43,7 +43,7 @@ export class InvoiceAddressValidationResult {
   @ManyToOne(
     () => Invoice,
     (invoice) => invoice.invoiceAddressValidationResults,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
   invoice: Invoice;

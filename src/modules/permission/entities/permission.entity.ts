@@ -46,7 +46,7 @@ export class Permission {
 
   @OneToMany(
     () => ModelHasPermission,
-    (modelHasPermission) => modelHasPermission.permission,
+    (modelHasPermission) => modelHasPermission.permission
   )
   modelHasPermissions: ModelHasPermission[];
 
@@ -63,7 +63,7 @@ export class Permission {
   @ManyToOne(
     () => PermissionGroup,
     (permissionGroups) => permissionGroups.permissions,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'permission_group_id', referencedColumnName: 'id' }])
   permissionGroup: PermissionGroup;
@@ -79,13 +79,13 @@ export class Permission {
 
   @OneToMany(
     () => RoleHasPermission,
-    (RoleHasPermission) => RoleHasPermission.permission,
+    (RoleHasPermission) => RoleHasPermission.permission
   )
   roleHasPermission: RoleHasPermission[];
 
   @OneToMany(
     () => UserHasPermission,
-    (userHasPermission) => userHasPermission.permission,
+    (userHasPermission) => userHasPermission.permission
   )
   userHasPermission: UserHasPermission[];
 }

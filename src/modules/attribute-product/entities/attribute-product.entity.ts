@@ -15,7 +15,7 @@ import { Product } from '@/modules/product/entities/product.entity';
 @Index(
   'attribute_product_product_id_attribute_id_unique',
   ['productId', 'attributeId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('attribute_product_product_id_index', ['productId'], {})
 @Entity('attribute_product', { schema: 'modema' })
@@ -57,7 +57,7 @@ export class AttributeProduct {
   @ManyToOne(
     () => AttributeItem,
     (attributeItem) => attributeItem.attributeProducts,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'attribute_item_id', referencedColumnName: 'id' }])
   attributeItem?: AttributeItem;

@@ -5,6 +5,6 @@ import { InvoiceAddressValidationResult } from '@/modules/invoice-address-valida
 @Resolver(() => InvoiceAddressValidationResult)
 export class InvoiceAddressValidationResultResolver {
   constructor(
-    private readonly invoiceAddressValidationResultService: InvoiceAddressValidationResultService,
+    private readonly invoiceAddressValidationResultService: InvoiceAddressValidationResultService
   ) {}
 }

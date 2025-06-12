@@ -2,7 +2,9 @@ import { CreateCampaignUefaEuroSubscriberHistoryInput } from './create-campaign-
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCampaignUefaEuroSubscriberHistoryInput extends PartialType(CreateCampaignUefaEuroSubscriberHistoryInput) {
+export class UpdateCampaignUefaEuroSubscriberHistoryInput extends PartialType(
+  CreateCampaignUefaEuroSubscriberHistoryInput
+) {
   @Field(() => Int)
   id: number;
 }

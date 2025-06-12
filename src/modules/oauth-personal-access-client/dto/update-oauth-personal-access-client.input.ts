@@ -2,7 +2,9 @@ import { CreateOauthPersonalAccessClientInput } from './create-oauth-personal-ac
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateOauthPersonalAccessClientInput extends PartialType(CreateOauthPersonalAccessClientInput) {
+export class UpdateOauthPersonalAccessClientInput extends PartialType(
+  CreateOauthPersonalAccessClientInput
+) {
   @Field(() => Int)
   id: number;
 }

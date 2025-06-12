@@ -5,6 +5,6 @@ import { OauthAccessToken } from '@/modules/oauth-access-token/domain/oauth-acce
 @Resolver(() => OauthAccessToken)
 export class OauthAccessTokenResolver {
   constructor(
-    private readonly oauthAccessTokenService: OauthAccessTokenService,
+    private readonly oauthAccessTokenService: OauthAccessTokenService
   ) {}
 }

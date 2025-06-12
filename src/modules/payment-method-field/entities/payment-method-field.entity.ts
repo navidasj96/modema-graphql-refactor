@@ -12,7 +12,7 @@ import { PaymentMethod } from '@/modules/payment-method/entities/payment-method.
 @Index(
   'payment_method_fields_idx1',
   ['paymentMethodId', 'paymentIdentifier', 'name'],
-  { unique: true },
+  { unique: true }
 )
 @Index('payment_method_fields_invoice_id_index', ['invoiceId'], {})
 @Index('payment_method_fields_payment_method_id_index', ['paymentMethodId'], {})
@@ -52,7 +52,7 @@ export class PaymentMethodField {
   @ManyToOne(
     () => PaymentMethod,
     (paymentMethod) => paymentMethod.paymentMethodFields,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'payment_method_id', referencedColumnName: 'id' }])
   paymentMethod: PaymentMethod;

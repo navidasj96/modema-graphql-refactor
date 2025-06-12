@@ -2,7 +2,9 @@ import { CreateTmpTagChangesPrintInput } from './create-tmp-tag-changes-print.in
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateTmpTagChangesPrintInput extends PartialType(CreateTmpTagChangesPrintInput) {
+export class UpdateTmpTagChangesPrintInput extends PartialType(
+  CreateTmpTagChangesPrintInput
+) {
   @Field(() => Int)
   id: number;
 }

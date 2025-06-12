@@ -87,25 +87,25 @@ export class BasicCarpetColor {
 
   @OneToMany(
     () => IncredibleOffer,
-    (incredibleOffer) => incredibleOffer.basicCarpetColor,
+    (incredibleOffer) => incredibleOffer.basicCarpetColor
   )
   incredibleOffers: IncredibleOffer[];
 
   @OneToMany(
     () => ProductColorImage,
-    (productColorImage) => productColorImage.basicCarpetColor,
+    (productColorImage) => productColorImage.basicCarpetColor
   )
   productColorImages: ProductColorImage[];
 
   @OneToMany(
     () => ProductColorSale,
-    (productColorSale) => productColorSale.basicCarpetColor,
+    (productColorSale) => productColorSale.basicCarpetColor
   )
   productColorSales: ProductColorSale[];
 
   @OneToMany(
     () => ProductVideo,
-    (productVideo) => productVideo.basicCarpetColor,
+    (productVideo) => productVideo.basicCarpetColor
   )
   productVideos: ProductVideo[];
 
@@ -117,7 +117,7 @@ export class BasicCarpetColor {
 
   @OneToMany(
     () => TorobProduct,
-    (torobProduct) => torobProduct.basicCarpetColor,
+    (torobProduct) => torobProduct.basicCarpetColor
   )
   torobProducts: TorobProduct[];
 }

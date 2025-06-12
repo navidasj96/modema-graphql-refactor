@@ -12,7 +12,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'product_comment_likes_product_comment_id_index',
   ['productCommentId'],
-  {},
+  {}
 )
 @Index('product_comment_likes_user_id_index', ['userId'], {})
 @Entity('product_comment_likes', { schema: 'modema' })
@@ -41,7 +41,7 @@ export class ProductCommentLike {
   @ManyToOne(
     () => ProductComment,
     (productComment) => productComment.productCommentLikes,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_comment_id', referencedColumnName: 'id' }])
   productComment: ProductComment;

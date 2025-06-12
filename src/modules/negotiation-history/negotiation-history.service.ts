@@ -16,7 +16,10 @@ export class NegotiationHistoryService {
     return `This action returns a #${id} negotiationHistory`;
   }
 
-  update(id: number, updateNegotiationHistoryInput: UpdateNegotiationHistoryInput) {
+  update(
+    id: number,
+    updateNegotiationHistoryInput: UpdateNegotiationHistoryInput
+  ) {
     return `This action updates a #${id} negotiationHistory`;
   }
 

@@ -5,6 +5,6 @@ import { ModemaAcceleratorImage } from '@/modules/modema-accelerator-image/domai
 @Resolver(() => ModemaAcceleratorImage)
 export class ModemaAcceleratorImageResolver {
   constructor(
-    private readonly modemaAcceleratorImageService: ModemaAcceleratorImageService,
+    private readonly modemaAcceleratorImageService: ModemaAcceleratorImageService
   ) {}
 }

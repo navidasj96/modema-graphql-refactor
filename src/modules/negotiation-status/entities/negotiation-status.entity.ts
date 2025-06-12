@@ -25,7 +25,7 @@ export class NegotiationStatus {
 
   @OneToMany(
     () => NegotiationHistory,
-    (negotiationHistory) => negotiationHistory.negotiationStatus,
+    (negotiationHistory) => negotiationHistory.negotiationStatus
   )
   negotiationHistories: NegotiationHistory[];
 

@@ -17,7 +17,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'returned_invoices_replacement_invoice_id_index',
   ['replacementInvoiceId'],
-  {},
+  {}
 )
 @Index('returned_invoices_user_id_index', ['userId'], {})
 @Entity('returned_invoices', { schema: 'modema' })
@@ -58,7 +58,7 @@ export class ReturnedInvoice {
 
   @OneToMany(
     () => ReturnedInvoiceProduct,
-    (returnedInvoiceProduct) => returnedInvoiceProduct.returnedInvoice,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.returnedInvoice
   )
   returnedInvoiceProducts: ReturnedInvoiceProduct[];
 
@@ -79,7 +79,7 @@ export class ReturnedInvoice {
   @ManyToOne(
     () => ReturnReason,
     (returnReason) => returnReason.returnedInvoices,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_reason_id', referencedColumnName: 'id' }])
   returnReason: ReturnReason;

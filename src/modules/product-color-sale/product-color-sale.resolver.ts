@@ -5,6 +5,6 @@ import { ProductColorSale } from '@/modules/product-color-sale/domain/product-co
 @Resolver(() => ProductColorSale)
 export class ProductColorSaleResolver {
   constructor(
-    private readonly productColorSaleService: ProductColorSaleService,
+    private readonly productColorSaleService: ProductColorSaleService
   ) {}
 }

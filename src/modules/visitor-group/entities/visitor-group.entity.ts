@@ -43,7 +43,7 @@ export class VisitorGroup {
 
   @OneToMany(
     () => VisitorGroupRate,
-    (visitorGroupRate) => visitorGroupRate.visitorGroup,
+    (visitorGroupRate) => visitorGroupRate.visitorGroup
   )
   visitorGroupRates: VisitorGroupRate[];
 

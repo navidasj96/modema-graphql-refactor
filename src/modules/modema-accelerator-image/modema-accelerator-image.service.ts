@@ -16,7 +16,10 @@ export class ModemaAcceleratorImageService {
     return `This action returns a #${id} modemaAcceleratorImage`;
   }
 
-  update(id: number, updateModemaAcceleratorImageInput: UpdateModemaAcceleratorImageInput) {
+  update(
+    id: number,
+    updateModemaAcceleratorImageInput: UpdateModemaAcceleratorImageInput
+  ) {
     return `This action updates a #${id} modemaAcceleratorImage`;
   }
 

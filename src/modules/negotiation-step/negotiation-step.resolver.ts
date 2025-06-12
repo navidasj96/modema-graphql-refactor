@@ -7,13 +7,13 @@ import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-s
 @Resolver(() => NegotiationStep)
 export class NegotiationStepResolver {
   constructor(
-    private readonly negotiationStepService: NegotiationStepService,
+    private readonly negotiationStepService: NegotiationStepService
   ) {}
 
   @Mutation(() => NegotiationStep)
   createNegotiationStep(
     @Args('createNegotiationStepInput')
-    createNegotiationStepInput: CreateNegotiationStepInput,
+    createNegotiationStepInput: CreateNegotiationStepInput
   ) {
     return this.negotiationStepService.create(createNegotiationStepInput);
   }
@@ -31,11 +31,11 @@ export class NegotiationStepResolver {
   @Mutation(() => NegotiationStep)
   updateNegotiationStep(
     @Args('updateNegotiationStepInput')
-    updateNegotiationStepInput: UpdateNegotiationStepInput,
+    updateNegotiationStepInput: UpdateNegotiationStepInput
   ) {
     return this.negotiationStepService.update(
       updateNegotiationStepInput.id,
-      updateNegotiationStepInput,
+      updateNegotiationStepInput
     );
   }
 

@@ -34,7 +34,7 @@ export class ImageSize {
 
   @OneToMany(
     () => ProductCategory,
-    (productCategory) => productCategory.imageSize,
+    (productCategory) => productCategory.imageSize
   )
   productCategories: ProductCategory[];
 }

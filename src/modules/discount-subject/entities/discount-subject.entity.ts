@@ -16,33 +16,33 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'discount_subjects_basic_carpet_size_id_index',
   ['basicCarpetSizeId'],
-  {},
+  {}
 )
 @Index(
   'discount_subjects_discount_id_basic_carpet_size_id_unique',
   ['discountId', 'basicCarpetSizeId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('discount_subjects_discount_id_index', ['discountId'], {})
 @Index(
   'discount_subjects_discount_id_price_group_id_unique',
   ['discountId', 'priceGroupId'],
-  { unique: true },
+  { unique: true }
 )
 @Index(
   'discount_subjects_discount_id_product_category_id_unique',
   ['discountId', 'productCategoryId'],
-  { unique: true },
+  { unique: true }
 )
 @Index(
   'discount_subjects_discount_id_product_id_unique',
   ['discountId', 'productId'],
-  { unique: true },
+  { unique: true }
 )
 @Index(
   'discount_subjects_discount_id_subproduct_id_unique',
   ['discountId', 'subproductId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('discount_subjects_price_group_id_index', ['priceGroupId'], {})
 @Index('discount_subjects_product_category_id_index', ['productCategoryId'], {})
@@ -88,7 +88,7 @@ export class DiscountSubject {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.discountSubjects,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;
@@ -110,7 +110,7 @@ export class DiscountSubject {
   @ManyToOne(
     () => ProductCategory,
     (productCategory) => productCategory.discountSubjects,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
   productCategory: ProductCategory;

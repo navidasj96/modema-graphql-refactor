@@ -4,7 +4,9 @@ import { UpdateCampaignInstagramFollowInput } from './dto/update-campaign-instag
 
 @Injectable()
 export class CampaignInstagramFollowService {
-  create(createCampaignInstagramFollowInput: CreateCampaignInstagramFollowInput) {
+  create(
+    createCampaignInstagramFollowInput: CreateCampaignInstagramFollowInput
+  ) {
     return 'This action adds a new campaignInstagramFollow';
   }
 
@@ -16,7 +18,10 @@ export class CampaignInstagramFollowService {
     return `This action returns a #${id} campaignInstagramFollow`;
   }
 
-  update(id: number, updateCampaignInstagramFollowInput: UpdateCampaignInstagramFollowInput) {
+  update(
+    id: number,
+    updateCampaignInstagramFollowInput: UpdateCampaignInstagramFollowInput
+  ) {
     return `This action updates a #${id} campaignInstagramFollow`;
   }
 

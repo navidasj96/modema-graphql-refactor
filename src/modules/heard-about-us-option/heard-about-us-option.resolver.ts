@@ -5,6 +5,6 @@ import { HeardAboutUsOption } from './domain/heard-about-us-option';
 @Resolver(() => HeardAboutUsOption)
 export class HeardAboutUsOptionResolver {
   constructor(
-    private readonly heardAboutUsOptionService: HeardAboutUsOptionService,
+    private readonly heardAboutUsOptionService: HeardAboutUsOptionService
   ) {}
 }

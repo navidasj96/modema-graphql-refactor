@@ -5,6 +5,6 @@ import { SizeGuidesDetail } from '@/modules/size-guides-detail/domain/size-guide
 @Resolver(() => SizeGuidesDetail)
 export class SizeGuidesDetailResolver {
   constructor(
-    private readonly sizeGuidesDetailService: SizeGuidesDetailService,
+    private readonly sizeGuidesDetailService: SizeGuidesDetailService
   ) {}
 }

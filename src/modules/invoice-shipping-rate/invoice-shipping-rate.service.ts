@@ -16,7 +16,10 @@ export class InvoiceShippingRateService {
     return `This action returns a #${id} invoiceShippingRate`;
   }
 
-  update(id: number, updateInvoiceShippingRateInput: UpdateInvoiceShippingRateInput) {
+  update(
+    id: number,
+    updateInvoiceShippingRateInput: UpdateInvoiceShippingRateInput
+  ) {
     return `This action updates a #${id} invoiceShippingRate`;
   }
 

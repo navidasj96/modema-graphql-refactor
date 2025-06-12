@@ -5,6 +5,6 @@ import { InvoiceRatesResult } from '@/modules/invoice-rates-result/domain/invoic
 @Resolver(() => InvoiceRatesResult)
 export class InvoiceRatesResultResolver {
   constructor(
-    private readonly invoiceRatesResultService: InvoiceRatesResultService,
+    private readonly invoiceRatesResultService: InvoiceRatesResultService
   ) {}
 }

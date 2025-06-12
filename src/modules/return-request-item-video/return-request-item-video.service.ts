@@ -16,7 +16,10 @@ export class ReturnRequestItemVideoService {
     return `This action returns a #${id} returnRequestItemVideo`;
   }
 
-  update(id: number, updateReturnRequestItemVideoInput: UpdateReturnRequestItemVideoInput) {
+  update(
+    id: number,
+    updateReturnRequestItemVideoInput: UpdateReturnRequestItemVideoInput
+  ) {
     return `This action updates a #${id} returnRequestItemVideo`;
   }
 

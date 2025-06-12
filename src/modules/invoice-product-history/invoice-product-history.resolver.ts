@@ -5,6 +5,6 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @Resolver(() => InvoiceProductHistory)
 export class InvoiceProductHistoryResolver {
   constructor(
-    private readonly invoiceProductHistoryService: InvoiceProductHistoryService,
+    private readonly invoiceProductHistoryService: InvoiceProductHistoryService
   ) {}
 }

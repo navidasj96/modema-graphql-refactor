@@ -5,6 +5,6 @@ import { ModelHasPermission } from '@/modules/model-has-permission/domain/model-
 @Resolver(() => ModelHasPermission)
 export class ModelHasPermissionResolver {
   constructor(
-    private readonly modelHasPermissionService: ModelHasPermissionService,
+    private readonly modelHasPermissionService: ModelHasPermissionService
   ) {}
 }

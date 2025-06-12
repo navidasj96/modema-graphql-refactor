@@ -16,7 +16,10 @@ export class ContactFormHistoryService {
     return `This action returns a #${id} contactFormHistory`;
   }
 
-  update(id: number, updateContactFormHistoryInput: UpdateContactFormHistoryInput) {
+  update(
+    id: number,
+    updateContactFormHistoryInput: UpdateContactFormHistoryInput
+  ) {
     return `This action updates a #${id} contactFormHistory`;
   }
 

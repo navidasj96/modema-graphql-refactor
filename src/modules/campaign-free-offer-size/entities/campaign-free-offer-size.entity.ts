@@ -12,12 +12,12 @@ import { CampaignFreeOffer } from '@/modules/campaign-free-offer/entities/campai
 @Index(
   'campaign_free_offer_sizes_basic_carpet_size_id_index',
   ['basicCarpetSizeId'],
-  {},
+  {}
 )
 @Index(
   'campaign_free_offer_sizes_campaign_free_offer_id_index',
   ['campaignFreeOfferId'],
-  {},
+  {}
 )
 @Entity('campaign_free_offer_sizes', { schema: 'modema' })
 export class CampaignFreeOfferSize {
@@ -39,7 +39,7 @@ export class CampaignFreeOfferSize {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.campaignFreeOfferSizes,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;
@@ -47,7 +47,7 @@ export class CampaignFreeOfferSize {
   @ManyToOne(
     () => CampaignFreeOffer,
     (campaignFreeOffer) => campaignFreeOffer.campaignFreeOfferSizes,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'campaign_free_offer_id', referencedColumnName: 'id' }])
   campaignFreeOffer: CampaignFreeOffer;

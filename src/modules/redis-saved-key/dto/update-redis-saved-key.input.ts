@@ -3,7 +3,7 @@ import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateRedisSavedKeyInput extends PartialType(
-  CreateRedisSavedKeyInput,
+  CreateRedisSavedKeyInput
 ) {
   @Field(() => Int)
   id: string;

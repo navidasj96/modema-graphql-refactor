@@ -5,6 +5,6 @@ import { ReturnRequestHistory } from '@/modules/return-request-history/domain/re
 @Resolver(() => ReturnRequestHistory)
 export class ReturnRequestHistoryResolver {
   constructor(
-    private readonly returnRequestHistoryService: ReturnRequestHistoryService,
+    private readonly returnRequestHistoryService: ReturnRequestHistoryService
   ) {}
 }

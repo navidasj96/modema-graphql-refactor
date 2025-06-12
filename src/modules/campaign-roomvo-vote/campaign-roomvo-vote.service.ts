@@ -16,7 +16,10 @@ export class CampaignRoomvoVoteService {
     return `This action returns a #${id} campaignRoomvoVote`;
   }
 
-  update(id: number, updateCampaignRoomvoVoteInput: UpdateCampaignRoomvoVoteInput) {
+  update(
+    id: number,
+    updateCampaignRoomvoVoteInput: UpdateCampaignRoomvoVoteInput
+  ) {
     return `This action updates a #${id} campaignRoomvoVote`;
   }
 

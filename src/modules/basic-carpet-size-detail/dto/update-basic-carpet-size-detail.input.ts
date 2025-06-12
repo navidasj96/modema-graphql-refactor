@@ -2,7 +2,9 @@ import { CreateBasicCarpetSizeDetailInput } from './create-basic-carpet-size-det
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateBasicCarpetSizeDetailInput extends PartialType(CreateBasicCarpetSizeDetailInput) {
+export class UpdateBasicCarpetSizeDetailInput extends PartialType(
+  CreateBasicCarpetSizeDetailInput
+) {
   @Field(() => Int)
   id: number;
 }

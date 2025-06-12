@@ -14,7 +14,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'product_likes_product_id_subproduct_id_user_id_unique',
   ['productId', 'subproductId', 'userId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('product_likes_subproduct_id_index', ['subproductId'], {})
 @Index('product_likes_user_id_index', ['userId'], {})

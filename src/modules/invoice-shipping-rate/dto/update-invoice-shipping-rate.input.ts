@@ -2,7 +2,9 @@ import { CreateInvoiceShippingRateInput } from './create-invoice-shipping-rate.i
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateInvoiceShippingRateInput extends PartialType(CreateInvoiceShippingRateInput) {
+export class UpdateInvoiceShippingRateInput extends PartialType(
+  CreateInvoiceShippingRateInput
+) {
   @Field(() => Int)
   id: number;
 }

@@ -12,7 +12,7 @@ import { RipTemplate } from '@/modules/rip-template/entities/rip-template.entity
 @Index(
   'rip_template_items_basic_carpet_size_id_index',
   ['basicCarpetSizeId'],
-  {},
+  {}
 )
 @Index('rip_template_items_rip_template_id_index', ['ripTemplateId'], {})
 @Entity('rip_template_items', { schema: 'modema' })
@@ -41,7 +41,7 @@ export class RipTemplateItem {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.ripTemplateItems,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;

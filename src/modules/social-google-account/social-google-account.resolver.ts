@@ -5,6 +5,6 @@ import { SocialGoogleAccount } from '@/modules/social-google-account/domain/soci
 @Resolver(() => SocialGoogleAccount)
 export class SocialGoogleAccountResolver {
   constructor(
-    private readonly socialGoogleAccountService: SocialGoogleAccountService,
+    private readonly socialGoogleAccountService: SocialGoogleAccountService
   ) {}
 }

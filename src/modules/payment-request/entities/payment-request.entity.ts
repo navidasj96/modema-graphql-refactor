@@ -14,7 +14,7 @@ import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 @Index(
   'payment_requests_payment_request_status_id_index',
   ['paymentRequestStatusId'],
-  {},
+  {}
 )
 @Index('payment_requests_visitor_id_index', ['visitorId'], {})
 @Entity('payment_requests', { schema: 'modema' })
@@ -72,7 +72,7 @@ export class PaymentRequest {
   @ManyToOne(
     () => PaymentRequestStatus,
     (paymentRequestStatus) => paymentRequestStatus.paymentRequests,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'payment_request_status_id', referencedColumnName: 'id' },

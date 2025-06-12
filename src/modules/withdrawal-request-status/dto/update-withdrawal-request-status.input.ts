@@ -2,7 +2,9 @@ import { CreateWithdrawalRequestStatusInput } from './create-withdrawal-request-
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateWithdrawalRequestStatusInput extends PartialType(CreateWithdrawalRequestStatusInput) {
+export class UpdateWithdrawalRequestStatusInput extends PartialType(
+  CreateWithdrawalRequestStatusInput
+) {
   @Field(() => Int)
   id: number;
 }

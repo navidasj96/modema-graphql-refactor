@@ -5,6 +5,6 @@ import { CampaignRoomvoImage } from './domain/campaign-roomvo-image';
 @Resolver(() => CampaignRoomvoImage)
 export class CampaignRoomvoImageResolver {
   constructor(
-    private readonly campaignRoomvoImageService: CampaignRoomvoImageService,
+    private readonly campaignRoomvoImageService: CampaignRoomvoImageService
   ) {}
 }

@@ -11,18 +11,18 @@ export class CreateWalletHistoryProvider {
      * Inject walletHistoryRepository
      */
     @InjectRepository(WalletHistory)
-    private readonly walletHistoryRepository: Repository<WalletHistory>,
+    private readonly walletHistoryRepository: Repository<WalletHistory>
   ) {}
 
   public async createWalletHistory(
     createWalletHistoryInput: CreateWalletHistoryInput,
-    manager?: EntityManager,
+    manager?: EntityManager
   ) {
     const walletHistoryRepository = manager
       ? manager.getRepository(WalletHistory)
       : this.walletHistoryRepository;
     const newWalletHistory = walletHistoryRepository.create(
-      createWalletHistoryInput,
+      createWalletHistoryInput
     );
     try {
       await walletHistoryRepository.save(newWalletHistory);

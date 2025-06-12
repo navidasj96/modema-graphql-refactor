@@ -5,6 +5,6 @@ import { ModemaAcceleratorVideo } from '@/modules/modema-accelerator-video/domai
 @Resolver(() => ModemaAcceleratorVideo)
 export class ModemaAcceleratorVideoResolver {
   constructor(
-    private readonly modemaAcceleratorVideoService: ModemaAcceleratorVideoService,
+    private readonly modemaAcceleratorVideoService: ModemaAcceleratorVideoService
   ) {}
 }

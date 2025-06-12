@@ -5,6 +5,6 @@ import { ProductionPadProductionPadStatus } from '@/modules/production-pad-produ
 @Resolver(() => ProductionPadProductionPadStatus)
 export class ProductionPadProductionPadStatusResolver {
   constructor(
-    private readonly productionPadProductionPadStatusService: ProductionPadProductionPadStatusService,
+    private readonly productionPadProductionPadStatusService: ProductionPadProductionPadStatusService
   ) {}
 }

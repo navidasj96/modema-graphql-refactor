@@ -13,7 +13,7 @@ import { Product } from '@/modules/product/entities/product.entity';
 @Index(
   'incredible_offers_basic_carpet_color_id_index',
   ['basicCarpetColorId'],
-  {},
+  {}
 )
 @Index('incredible_offers_discount_id_index', ['discountId'], {})
 @Index('incredible_offers_product_id_index', ['productId'], {})
@@ -65,7 +65,7 @@ export class IncredibleOffer {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.incredibleOffers,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
   basicCarpetColor: BasicCarpetColor;

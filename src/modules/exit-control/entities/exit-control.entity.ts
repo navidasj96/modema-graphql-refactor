@@ -42,7 +42,7 @@ export class ExitControl {
 
   @OneToMany(
     () => ExitControlItem,
-    (exitControlItem) => exitControlItem.exitControl,
+    (exitControlItem) => exitControlItem.exitControl
   )
   exitControlItems: ExitControlItem[];
 

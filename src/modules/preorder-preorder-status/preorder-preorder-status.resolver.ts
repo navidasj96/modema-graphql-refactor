@@ -5,6 +5,6 @@ import { PreorderPreorderStatus } from '@/modules/preorder-preorder-status/domai
 @Resolver(() => PreorderPreorderStatus)
 export class PreorderPreorderStatusResolver {
   constructor(
-    private readonly preorderPreorderStatusService: PreorderPreorderStatusService,
+    private readonly preorderPreorderStatusService: PreorderPreorderStatusService
   ) {}
 }

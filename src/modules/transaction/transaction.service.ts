@@ -10,16 +10,16 @@ export class TransactionService {
     /**
      * inject createTranscationProvider
      */
-    private readonly createTransactionProvider: CreateTransactionProvider,
+    private readonly createTransactionProvider: CreateTransactionProvider
   ) {}
 
   async create(
     createTransactionInput: CreateTransactionInput,
-    manager?: EntityManager,
+    manager?: EntityManager
   ) {
     return this.createTransactionProvider.createTransaction(
       createTransactionInput,
-      manager,
+      manager
     );
   }
 

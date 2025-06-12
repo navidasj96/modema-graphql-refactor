@@ -4,7 +4,7 @@ import { Role } from '@/modules/role/entities/role.entity';
 @Index(
   'model_has_roles_model_type_model_id_index',
   ['modelType', 'modelId'],
-  {},
+  {}
 )
 @Entity('model_has_roles', { schema: 'modema' })
 export class ModelHasRole {

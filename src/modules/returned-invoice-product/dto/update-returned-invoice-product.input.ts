@@ -3,7 +3,7 @@ import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateReturnedInvoiceProductInput extends PartialType(
-  CreateReturnedInvoiceProductInput,
+  CreateReturnedInvoiceProductInput
 ) {
   @Field(() => Int)
   id: number;

@@ -5,6 +5,6 @@ import { ExitControlItem } from './domain/exit-control-item';
 @Resolver(() => ExitControlItem)
 export class ExitControlItemResolver {
   constructor(
-    private readonly exitControlItemService: ExitControlItemService,
+    private readonly exitControlItemService: ExitControlItemService
   ) {}
 }

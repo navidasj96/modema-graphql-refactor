@@ -5,6 +5,6 @@ import { ReturnedInvoice } from '@/modules/returned-invoice/domain/returned-invo
 @Resolver(() => ReturnedInvoice)
 export class ReturnedInvoiceResolver {
   constructor(
-    private readonly returnedInvoiceService: ReturnedInvoiceService,
+    private readonly returnedInvoiceService: ReturnedInvoiceService
   ) {}
 }

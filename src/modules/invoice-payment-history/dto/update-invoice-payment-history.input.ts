@@ -2,7 +2,9 @@ import { CreateInvoicePaymentHistoryInput } from './create-invoice-payment-histo
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateInvoicePaymentHistoryInput extends PartialType(CreateInvoicePaymentHistoryInput) {
+export class UpdateInvoicePaymentHistoryInput extends PartialType(
+  CreateInvoicePaymentHistoryInput
+) {
   @Field(() => Int)
   id: number;
 }

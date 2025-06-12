@@ -5,6 +5,6 @@ import { CampaignUefaEuroSubscriber } from './domain/campaign-uefa-euro-subscrib
 @Resolver(() => CampaignUefaEuroSubscriber)
 export class CampaignUefaEuroSubscriberResolver {
   constructor(
-    private readonly campaignUefaEuroSubscriberService: CampaignUefaEuroSubscriberService,
+    private readonly campaignUefaEuroSubscriberService: CampaignUefaEuroSubscriberService
   ) {}
 }

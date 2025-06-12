@@ -5,6 +5,6 @@ import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gif
 @Resolver(() => WalletGiftCharge)
 export class WalletGiftChargeResolver {
   constructor(
-    private readonly walletGiftChargeService: WalletGiftChargeService,
+    private readonly walletGiftChargeService: WalletGiftChargeService
   ) {}
 }

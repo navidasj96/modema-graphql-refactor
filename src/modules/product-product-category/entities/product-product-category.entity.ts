@@ -13,7 +13,7 @@ import { Product } from '@/modules/product/entities/product.entity';
 @Index(
   'product_product_category_product_category_id_index',
   ['productCategoryId'],
-  {},
+  {}
 )
 @Index('product_product_category_product_id_index', ['productId'], {})
 @Entity('product_product_category', { schema: 'modema' })
@@ -36,7 +36,7 @@ export class ProductProductCategory {
   @ManyToOne(
     () => ProductCategory,
     (productCategory) => productCategory.productProductCategory,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
   productCategory: ProductCategory;

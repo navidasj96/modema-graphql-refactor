@@ -5,6 +5,6 @@ import { CampaignPetForm } from './domain/campaign-pet-form';
 @Resolver(() => CampaignPetForm)
 export class CampaignPetFormResolver {
   constructor(
-    private readonly campaignPetFormService: CampaignPetFormService,
+    private readonly campaignPetFormService: CampaignPetFormService
   ) {}
 }

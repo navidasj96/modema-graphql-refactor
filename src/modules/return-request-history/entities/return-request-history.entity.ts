@@ -24,12 +24,12 @@ import { ReturnRequestItemHistory } from '@/modules/return-request-item-history/
 @Index(
   'return_request_histories_return_request_id_index',
   ['returnRequestId'],
-  {},
+  {}
 )
 @Index(
   'return_request_histories_return_status_id_index',
   ['returnStatusId'],
-  {},
+  {}
 )
 @Index('return_request_histories_return_type_id_index', ['returnTypeId'], {})
 @Index('return_request_histories_user_id_index', ['userId'], {})
@@ -154,7 +154,7 @@ export class ReturnRequestHistory {
     {
       onDelete: 'NO ACTION',
       onUpdate: 'CASCADE',
-    },
+    }
   )
   @JoinColumn([{ name: 'parent_id', referencedColumnName: 'id' }])
   parent: ReturnRequest;
@@ -165,7 +165,7 @@ export class ReturnRequestHistory {
     {
       onDelete: 'NO ACTION',
       onUpdate: 'CASCADE',
-    },
+    }
   )
   @JoinColumn([{ name: 'return_status_id', referencedColumnName: 'id' }])
   returnStatus: ReturnStatus;
@@ -176,7 +176,7 @@ export class ReturnRequestHistory {
     {
       onDelete: 'NO ACTION',
       onUpdate: 'CASCADE',
-    },
+    }
   )
   @JoinColumn([{ name: 'return_type_id', referencedColumnName: 'id' }])
   returnType: ReturnType;
@@ -190,7 +190,7 @@ export class ReturnRequestHistory {
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.returnRequestHistory,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnRequestHistory
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 }

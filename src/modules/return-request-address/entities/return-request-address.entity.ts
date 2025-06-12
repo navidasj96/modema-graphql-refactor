@@ -19,7 +19,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'return_request_addresses_return_request_id_index',
   ['returnRequestId'],
-  {},
+  {}
 )
 @Index('return_request_addresses_state_id_index', ['stateId'], {})
 @Index('return_request_addresses_user_id_index', ['userId'], {})
@@ -115,7 +115,7 @@ export class ReturnRequestAddress {
   @ManyToOne(
     () => ReturnRequest,
     (returnRequest) => returnRequest.returnRequestAddresses,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_id', referencedColumnName: 'id' }])
   returnRequest: ReturnRequest;

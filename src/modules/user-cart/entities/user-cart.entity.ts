@@ -15,7 +15,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'user_carts_idx1',
   ['userId', 'subproductId', 'withPad', 'relatedSubproductId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('user_carts_product_id_index', ['productId'], {})
 @Index('user_carts_related_product_id_index', ['relatedProductId'], {})

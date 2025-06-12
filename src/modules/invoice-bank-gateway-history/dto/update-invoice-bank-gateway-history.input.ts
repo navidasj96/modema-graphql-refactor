@@ -2,7 +2,9 @@ import { CreateInvoiceBankGatewayHistoryInput } from './create-invoice-bank-gate
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateInvoiceBankGatewayHistoryInput extends PartialType(CreateInvoiceBankGatewayHistoryInput) {
+export class UpdateInvoiceBankGatewayHistoryInput extends PartialType(
+  CreateInvoiceBankGatewayHistoryInput
+) {
   @Field(() => Int)
   id: number;
 }

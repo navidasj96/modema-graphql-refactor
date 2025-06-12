@@ -53,7 +53,7 @@ export class Country {
 
   @OneToMany(
     () => BasicCarpetDesigner,
-    (basicCarpetDesigner) => basicCarpetDesigner.country,
+    (basicCarpetDesigner) => basicCarpetDesigner.country
   )
   basicCarpetDesigners: BasicCarpetDesigner[];
 
@@ -65,13 +65,13 @@ export class Country {
 
   @OneToMany(
     () => ReturnRequestAddress,
-    (returnRequestAddress) => returnRequestAddress.country,
+    (returnRequestAddress) => returnRequestAddress.country
   )
   returnRequestAddresses: ReturnRequestAddress[];
 
   @OneToMany(
     () => SenderInformation,
-    (senderInformation) => senderInformation.country,
+    (senderInformation) => senderInformation.country
   )
   senderInformations: SenderInformation[];
 

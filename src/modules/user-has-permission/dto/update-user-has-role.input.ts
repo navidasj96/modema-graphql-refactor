@@ -3,7 +3,7 @@ import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateUserHasRoleInput extends PartialType(
-  CreateUserHasPermissionInput,
+  CreateUserHasPermissionInput
 ) {
   @Field(() => Int)
   id: number;

@@ -2,7 +2,9 @@ import { CreateFedexAddressValidationAttributeInput } from './create-fedex-addre
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateFedexAddressValidationAttributeInput extends PartialType(CreateFedexAddressValidationAttributeInput) {
+export class UpdateFedexAddressValidationAttributeInput extends PartialType(
+  CreateFedexAddressValidationAttributeInput
+) {
   @Field(() => Int)
   id: number;
 }

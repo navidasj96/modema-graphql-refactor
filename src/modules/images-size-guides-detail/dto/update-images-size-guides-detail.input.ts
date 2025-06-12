@@ -2,7 +2,9 @@ import { CreateImagesSizeGuidesDetailInput } from './create-images-size-guides-d
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateImagesSizeGuidesDetailInput extends PartialType(CreateImagesSizeGuidesDetailInput) {
+export class UpdateImagesSizeGuidesDetailInput extends PartialType(
+  CreateImagesSizeGuidesDetailInput
+) {
   @Field(() => Int)
   id: number;
 }

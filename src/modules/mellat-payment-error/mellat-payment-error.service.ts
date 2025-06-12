@@ -16,7 +16,10 @@ export class MellatPaymentErrorService {
     return `This action returns a #${id} mellatPaymentError`;
   }
 
-  update(id: number, updateMellatPaymentErrorInput: UpdateMellatPaymentErrorInput) {
+  update(
+    id: number,
+    updateMellatPaymentErrorInput: UpdateMellatPaymentErrorInput
+  ) {
     return `This action updates a #${id} mellatPaymentError`;
   }
 

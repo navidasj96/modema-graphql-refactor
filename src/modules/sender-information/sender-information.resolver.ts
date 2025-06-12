@@ -5,6 +5,6 @@ import { SenderInformation } from '@/modules/sender-information/domain/sender-in
 @Resolver(() => SenderInformation)
 export class SenderInformationResolver {
   constructor(
-    private readonly senderInformationService: SenderInformationService,
+    private readonly senderInformationService: SenderInformationService
   ) {}
 }

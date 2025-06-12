@@ -2,7 +2,9 @@ import { CreateDiscountNotificationInput } from './create-discount-notification.
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateDiscountNotificationInput extends PartialType(CreateDiscountNotificationInput) {
+export class UpdateDiscountNotificationInput extends PartialType(
+  CreateDiscountNotificationInput
+) {
   @Field(() => Int)
   id: number;
 }

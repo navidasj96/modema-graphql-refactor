@@ -5,6 +5,6 @@ import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-r
 @Resolver(() => ReturnRequestItem)
 export class ReturnRequestItemResolver {
   constructor(
-    private readonly returnRequestItemService: ReturnRequestItemService,
+    private readonly returnRequestItemService: ReturnRequestItemService
   ) {}
 }

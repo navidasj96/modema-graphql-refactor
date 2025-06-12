@@ -16,7 +16,10 @@ export class PaymentMethodFieldService {
     return `This action returns a #${id} paymentMethodField`;
   }
 
-  update(id: number, updatePaymentMethodFieldInput: UpdatePaymentMethodFieldInput) {
+  update(
+    id: number,
+    updatePaymentMethodFieldInput: UpdatePaymentMethodFieldInput
+  ) {
     return `This action updates a #${id} paymentMethodField`;
   }
 

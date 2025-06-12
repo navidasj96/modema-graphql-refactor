@@ -47,7 +47,7 @@ export class CampaignUefaEuroSubscriberHistory {
     () => ContactFormStatus,
     (contactFormStatus) =>
       contactFormStatus.campaignUefaEuroSubscriberHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
   contactFormStatus: ContactFormStatus;
@@ -56,7 +56,7 @@ export class CampaignUefaEuroSubscriberHistory {
     () => CampaignUefaEuroSubscriber,
     (campaignUefaEuroSubscriber) =>
       campaignUefaEuroSubscriber.campaignUefaEuroSubscriberHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'campaign_uefa_euro_subscriber_id', referencedColumnName: 'id' },

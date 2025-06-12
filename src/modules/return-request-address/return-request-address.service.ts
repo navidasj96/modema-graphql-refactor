@@ -16,7 +16,10 @@ export class ReturnRequestAddressService {
     return `This action returns a #${id} returnRequestAddress`;
   }
 
-  update(id: number, updateReturnRequestAddressInput: UpdateReturnRequestAddressInput) {
+  update(
+    id: number,
+    updateReturnRequestAddressInput: UpdateReturnRequestAddressInput
+  ) {
     return `This action updates a #${id} returnRequestAddress`;
   }
 

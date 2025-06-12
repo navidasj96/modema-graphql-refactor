@@ -19,33 +19,33 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'return_request_item_histories_invoice_product_id_foreign',
   ['invoiceProductId'],
-  {},
+  {}
 )
 @Index('return_request_item_histories_product_id_index', ['productId'], {})
 @Index(
   'return_request_item_histories_return_item_status_id_index',
   ['returnItemStatusId'],
-  {},
+  {}
 )
 @Index(
   'return_request_item_histories_return_reason_id_index',
   ['returnReasonId'],
-  {},
+  {}
 )
 @Index(
   'return_request_item_histories_return_request_id_index',
   ['returnRequestId'],
-  {},
+  {}
 )
 @Index(
   'return_request_item_histories_return_request_item_id_index',
   ['returnRequestItemId'],
-  {},
+  {}
 )
 @Index(
   'return_request_item_histories_subproduct_id_index',
   ['subproductId'],
-  {},
+  {}
 )
 @Entity('return_request_item_histories', { schema: 'modema' })
 export class ReturnRequestItemHistory {
@@ -114,7 +114,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => ReturnRequestHistory,
     (returnRequestHistory) => returnRequestHistory.returnRequestItemHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'return_request_history_id', referencedColumnName: 'id' },
@@ -124,7 +124,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.returnRequestItemHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;
@@ -139,7 +139,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => ReturnItemStatus,
     (returnItemStatus) => returnItemStatus.returnRequestItemHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_item_status_id', referencedColumnName: 'id' }])
   returnItemStatus: ReturnItemStatus;
@@ -147,7 +147,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => ReturnReason,
     (returnReason) => returnReason.returnRequestItemHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_reason_id', referencedColumnName: 'id' }])
   returnReason: ReturnReason;
@@ -155,7 +155,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => ReturnRequest,
     (returnRequest) => returnRequest.returnRequestItemHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_id', referencedColumnName: 'id' }])
   returnRequest: ReturnRequest;
@@ -163,7 +163,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => ReturnRequestItem,
     (returnRequestItem) => returnRequestItem.returnRequestItemHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
   returnRequestItem: ReturnRequestItem;
@@ -171,7 +171,7 @@ export class ReturnRequestItemHistory {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.returnRequestItemHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

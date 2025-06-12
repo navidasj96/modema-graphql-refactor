@@ -25,19 +25,19 @@ export class ReturnReason {
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.returnReason,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnReason
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItem,
-    (returnRequestItem) => returnRequestItem.returnReason,
+    (returnRequestItem) => returnRequestItem.returnReason
   )
   returnRequestItems: ReturnRequestItem[];
 
   @OneToMany(
     () => ReturnedInvoice,
-    (returnedInvoice) => returnedInvoice.returnReason,
+    (returnedInvoice) => returnedInvoice.returnReason
   )
   returnedInvoices: ReturnedInvoice[];
 }

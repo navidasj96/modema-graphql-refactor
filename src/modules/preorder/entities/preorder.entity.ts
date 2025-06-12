@@ -112,7 +112,7 @@ export class Preorder {
 
   @OneToMany(
     () => PreorderPreorderStatus,
-    (preorderPreorderStatus) => preorderPreorderStatus.preorder,
+    (preorderPreorderStatus) => preorderPreorderStatus.preorder
   )
   preorderPreorderStatuses: PreorderPreorderStatus[];
 
@@ -126,7 +126,7 @@ export class Preorder {
   @ManyToOne(
     () => PreorderStatus,
     (preorderStatus) => preorderStatus.preorders,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'preorder_status_id', referencedColumnName: 'id' }])
   preorderStatus: PreorderStatus;

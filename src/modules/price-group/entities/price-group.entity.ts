@@ -19,13 +19,13 @@ export class PriceGroup {
 
   @OneToMany(
     () => DiscountSubject,
-    (discountSubjects) => discountSubjects.priceGroup,
+    (discountSubjects) => discountSubjects.priceGroup
   )
   discountSubjects: DiscountSubject[];
 
   @OneToMany(
     () => PriceGroupSize,
-    (priceGroupSize) => priceGroupSize.priceGroup,
+    (priceGroupSize) => priceGroupSize.priceGroup
   )
   priceGroupSizes: PriceGroupSize[];
 

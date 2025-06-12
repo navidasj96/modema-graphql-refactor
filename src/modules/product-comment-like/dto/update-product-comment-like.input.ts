@@ -2,7 +2,9 @@ import { CreateProductCommentLikeInput } from './create-product-comment-like.inp
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateProductCommentLikeInput extends PartialType(CreateProductCommentLikeInput) {
+export class UpdateProductCommentLikeInput extends PartialType(
+  CreateProductCommentLikeInput
+) {
   @Field(() => Int)
   id: number;
 }

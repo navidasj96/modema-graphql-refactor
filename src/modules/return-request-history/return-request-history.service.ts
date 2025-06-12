@@ -16,7 +16,10 @@ export class ReturnRequestHistoryService {
     return `This action returns a #${id} returnRequestHistory`;
   }
 
-  update(id: number, updateReturnRequestHistoryInput: UpdateReturnRequestHistoryInput) {
+  update(
+    id: number,
+    updateReturnRequestHistoryInput: UpdateReturnRequestHistoryInput
+  ) {
     return `This action updates a #${id} returnRequestHistory`;
   }
 

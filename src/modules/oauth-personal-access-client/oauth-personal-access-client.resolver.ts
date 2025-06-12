@@ -5,6 +5,6 @@ import { OauthPersonalAccessClient } from '@/modules/oauth-personal-access-clien
 @Resolver(() => OauthPersonalAccessClient)
 export class OauthPersonalAccessClientResolver {
   constructor(
-    private readonly oauthPersonalAccessClientService: OauthPersonalAccessClientService,
+    private readonly oauthPersonalAccessClientService: OauthPersonalAccessClientService
   ) {}
 }

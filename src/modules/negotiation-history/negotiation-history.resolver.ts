@@ -5,6 +5,6 @@ import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotia
 @Resolver(() => NegotiationHistory)
 export class NegotiationHistoryResolver {
   constructor(
-    private readonly negotiationHistoryService: NegotiationHistoryService,
+    private readonly negotiationHistoryService: NegotiationHistoryService
   ) {}
 }

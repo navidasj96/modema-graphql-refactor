@@ -40,26 +40,26 @@ export class ReturnItemStatus {
   @OneToMany(
     () => ReturnItemStatusReturnRequestItem,
     (returnItemStatusReturnRequestItem) =>
-      returnItemStatusReturnRequestItem.returnItemStatus,
+      returnItemStatusReturnRequestItem.returnItemStatus
   )
   returnItemStatusReturnRequestItems: ReturnItemStatusReturnRequestItem[];
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.returnItemStatus,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnItemStatus
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItemReturnItemStatus,
     (returnRequestItemReturnItemStatus) =>
-      returnRequestItemReturnItemStatus.returnItemStatus,
+      returnRequestItemReturnItemStatus.returnItemStatus
   )
   returnRequestItemReturnItemStatuses: ReturnRequestItemReturnItemStatus[];
 
   @OneToMany(
     () => ReturnRequestItem,
-    (returnRequestItem) => returnRequestItem.returnItemStatus,
+    (returnRequestItem) => returnRequestItem.returnItemStatus
   )
   returnRequestItems: ReturnRequestItem[];
 }

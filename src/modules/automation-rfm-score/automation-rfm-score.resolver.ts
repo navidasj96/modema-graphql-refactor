@@ -5,6 +5,6 @@ import { AutomationRfmScore } from './domain/automation-rfm-score';
 @Resolver(() => AutomationRfmScore)
 export class AutomationRfmScoreResolver {
   constructor(
-    private readonly automationRfmScoreService: AutomationRfmScoreService,
+    private readonly automationRfmScoreService: AutomationRfmScoreService
   ) {}
 }

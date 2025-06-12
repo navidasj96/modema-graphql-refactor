@@ -5,6 +5,6 @@ import { TempSubproductDiscount } from '@/modules/temp-subproduct-discount/domai
 @Resolver(() => TempSubproductDiscount)
 export class TempSubproductDiscountResolver {
   constructor(
-    private readonly tempSubproductDiscountService: TempSubproductDiscountService,
+    private readonly tempSubproductDiscountService: TempSubproductDiscountService
   ) {}
 }

@@ -34,13 +34,13 @@ export class InvoiceProductStatus {
   @OneToMany(
     () => InvoiceProductItemInvoiceProductStatus,
     (invoiceProductItemInvoiceProductStatus) =>
-      invoiceProductItemInvoiceProductStatus.invoiceProductStatus,
+      invoiceProductItemInvoiceProductStatus.invoiceProductStatus
   )
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemInvoiceProductStatus[];
 
   @OneToMany(
     () => InvoiceProductItem,
-    (invoiceProductItem) => invoiceProductItem.currentStatus,
+    (invoiceProductItem) => invoiceProductItem.currentStatus
   )
   invoiceProductItems: InvoiceProductItem[];
 }

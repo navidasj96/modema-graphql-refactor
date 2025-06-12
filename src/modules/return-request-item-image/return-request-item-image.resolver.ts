@@ -5,6 +5,6 @@ import { ReturnRequestItemImage } from '@/modules/return-request-item-image/doma
 @Resolver(() => ReturnRequestItemImage)
 export class ReturnRequestItemImageResolver {
   constructor(
-    private readonly returnRequestItemImageService: ReturnRequestItemImageService,
+    private readonly returnRequestItemImageService: ReturnRequestItemImageService
   ) {}
 }

@@ -14,7 +14,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'contact_form_histories_contact_form_status_id_index',
   ['contactFormStatusId'],
-  {},
+  {}
 )
 @Index('contact_form_histories_user_id_index', ['userId'], {})
 @Entity('contact_form_histories', { schema: 'modema' })
@@ -43,7 +43,7 @@ export class ContactFormHistory {
   @ManyToOne(
     () => ContactForm,
     (contactForm) => contactForm.contactFormHistories,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'contact_form_id', referencedColumnName: 'id' }])
   contactForm: ContactForm;
@@ -51,7 +51,7 @@ export class ContactFormHistory {
   @ManyToOne(
     () => ContactFormStatus,
     (contactFormStatus) => contactFormStatus.contactFormHistories,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
   contactFormStatus: ContactFormStatus;

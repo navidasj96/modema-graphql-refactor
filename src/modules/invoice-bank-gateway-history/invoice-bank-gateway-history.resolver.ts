@@ -5,6 +5,6 @@ import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-histor
 @Resolver(() => InvoiceBankGatewayHistory)
 export class InvoiceBankGatewayHistoryResolver {
   constructor(
-    private readonly invoiceBankGatewayHistoryService: InvoiceBankGatewayHistoryService,
+    private readonly invoiceBankGatewayHistoryService: InvoiceBankGatewayHistoryService
   ) {}
 }

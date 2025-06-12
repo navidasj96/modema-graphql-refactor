@@ -16,7 +16,10 @@ export class CampaignFreeOfferSizeService {
     return `This action returns a #${id} campaignFreeOfferSize`;
   }
 
-  update(id: number, updateCampaignFreeOfferSizeInput: UpdateCampaignFreeOfferSizeInput) {
+  update(
+    id: number,
+    updateCampaignFreeOfferSizeInput: UpdateCampaignFreeOfferSizeInput
+  ) {
     return `This action updates a #${id} campaignFreeOfferSize`;
   }
 

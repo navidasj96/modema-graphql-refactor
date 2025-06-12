@@ -2,7 +2,9 @@ import { CreatePaymentRequestStatusInput } from './create-payment-request-status
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdatePaymentRequestStatusInput extends PartialType(CreatePaymentRequestStatusInput) {
+export class UpdatePaymentRequestStatusInput extends PartialType(
+  CreatePaymentRequestStatusInput
+) {
   @Field(() => Int)
   id: number;
 }

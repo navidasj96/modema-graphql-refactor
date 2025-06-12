@@ -30,7 +30,7 @@ export class CarpetFeature {
 
   @OneToMany(
     () => CarpetFeatureUser,
-    (carpetFeatureUser) => carpetFeatureUser.carpetFeature,
+    (carpetFeatureUser) => carpetFeatureUser.carpetFeature
   )
   carpetFeatureUsers: CarpetFeatureUser[];
 }

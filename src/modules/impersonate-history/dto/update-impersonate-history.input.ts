@@ -3,7 +3,7 @@ import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateImpersonateHistoryInput extends PartialType(
-  CreateImpersonateHistoryInput,
+  CreateImpersonateHistoryInput
 ) {
   @Field(() => Int)
   id: string;

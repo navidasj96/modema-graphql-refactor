@@ -31,7 +31,7 @@ export class CarpetFeatureUser {
   @ManyToOne(
     () => CarpetFeature,
     (carpetFeature) => carpetFeature.carpetFeatureUsers,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'carpet_feature_id', referencedColumnName: 'id' }])
   carpetFeature: CarpetFeature;

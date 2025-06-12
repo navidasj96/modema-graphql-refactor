@@ -2,7 +2,9 @@ import { CreateInvoiceAddressValidationResultInput } from './create-invoice-addr
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateInvoiceAddressValidationResultInput extends PartialType(CreateInvoiceAddressValidationResultInput) {
+export class UpdateInvoiceAddressValidationResultInput extends PartialType(
+  CreateInvoiceAddressValidationResultInput
+) {
   @Field(() => Int)
   id: number;
 }

@@ -41,7 +41,7 @@ export class SizeGuide {
 
   @OneToMany(
     () => SizeGuidesDetail,
-    (sizeGuidesDetail) => sizeGuidesDetail.sizeGuide,
+    (sizeGuidesDetail) => sizeGuidesDetail.sizeGuide
   )
   sizeGuidesDetails: SizeGuidesDetail[];
 }

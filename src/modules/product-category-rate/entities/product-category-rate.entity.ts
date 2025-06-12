@@ -12,7 +12,7 @@ import { Rate } from '@/modules/rate/entities/rate.entity';
 @Index(
   'product_category_rate_product_category_id_index',
   ['productCategoryId'],
-  {},
+  {}
 )
 @Index('product_category_rate_rate_id_index', ['rateId'], {})
 @Entity('product_category_rate', { schema: 'modema' })
@@ -35,7 +35,7 @@ export class ProductCategoryRate {
   @ManyToOne(
     () => ProductCategory,
     (productCategory) => productCategory.productCategoryRates,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
   productCategory: ProductCategory;

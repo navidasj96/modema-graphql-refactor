@@ -18,7 +18,7 @@ export class SignInOtpGeneratorService {
     /**
      * inject hashingProvider
      */
-    private readonly hashingProvider: HashingProvider,
+    private readonly hashingProvider: HashingProvider
   ) {}
 
   async otpGeneratorAndSetter(username: string) {

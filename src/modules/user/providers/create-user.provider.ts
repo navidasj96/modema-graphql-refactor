@@ -22,7 +22,7 @@ export class CreateUserProvider {
      * Inject hashingProvider
      */
     @Inject(forwardRef(() => HashingProvider))
-    private readonly hashingProvider: HashingProvider,
+    private readonly hashingProvider: HashingProvider
   ) {}
 
   public async createUser(createUserDto: CreateUserDto) {
@@ -45,7 +45,7 @@ export class CreateUserProvider {
         'Unable to process your request at the moment',
         {
           description: 'Error connecting to the database',
-        },
+        }
       );
     }
 
@@ -72,7 +72,7 @@ export class CreateUserProvider {
         'unable to process your request at the moment',
         {
           description: 'Error connecting to the database',
-        },
+        }
       );
     }
 

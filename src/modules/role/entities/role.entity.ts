@@ -38,7 +38,7 @@ export class Role {
 
   @OneToMany(
     () => RoleHasPermission,
-    (RoleHasPermission) => RoleHasPermission.role,
+    (RoleHasPermission) => RoleHasPermission.role
   )
   roleHasPermission: RoleHasPermission[];
 }

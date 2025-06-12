@@ -11,7 +11,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'campaign_subscriptions_campaign_name_user_id_unique',
   ['campaignName', 'userId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('campaign_subscriptions_code_index', ['code'], {})
 @Index('campaign_subscriptions_user_id_index', ['userId'], {})

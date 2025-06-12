@@ -5,6 +5,6 @@ import { IncredibleOfferSentNotification } from '@/modules/incredible-offer-sent
 @Resolver(() => IncredibleOfferSentNotification)
 export class IncredibleOfferSentNotificationResolver {
   constructor(
-    private readonly incredibleOfferSentNotificationService: IncredibleOfferSentNotificationService,
+    private readonly incredibleOfferSentNotificationService: IncredibleOfferSentNotificationService
   ) {}
 }

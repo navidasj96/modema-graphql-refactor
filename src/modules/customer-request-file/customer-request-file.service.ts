@@ -16,7 +16,10 @@ export class CustomerRequestFileService {
     return `This action returns a #${id} customerRequestFile`;
   }
 
-  update(id: number, updateCustomerRequestFileInput: UpdateCustomerRequestFileInput) {
+  update(
+    id: number,
+    updateCustomerRequestFileInput: UpdateCustomerRequestFileInput
+  ) {
     return `This action updates a #${id} customerRequestFile`;
   }
 

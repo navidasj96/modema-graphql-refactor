@@ -2,7 +2,9 @@ import { CreateReturnRequestItemHistoryInput } from './create-return-request-ite
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateReturnRequestItemHistoryInput extends PartialType(CreateReturnRequestItemHistoryInput) {
+export class UpdateReturnRequestItemHistoryInput extends PartialType(
+  CreateReturnRequestItemHistoryInput
+) {
   @Field(() => Int)
   id: number;
 }

@@ -11,7 +11,7 @@ import { ModemaAccelerator } from '@/modules/modema-accelerator/entities/modema-
 @Index(
   'modema_accelerator_images_modema_accelerator_id_index',
   ['modemaAcceleratorId'],
-  {},
+  {}
 )
 @Entity('modema_accelerator_images', { schema: 'modema' })
 export class ModemaAcceleratorImage {
@@ -52,7 +52,7 @@ export class ModemaAcceleratorImage {
   @ManyToOne(
     () => ModemaAccelerator,
     (modemaAccelerator) => modemaAccelerator.modemaAcceleratorImages,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'modema_accelerator_id', referencedColumnName: 'id' }])
   modemaAccelerator?: ModemaAccelerator;

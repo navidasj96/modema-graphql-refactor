@@ -5,6 +5,6 @@ import { ProductCommentLike } from '@/modules/product-comment-like/domain/produc
 @Resolver(() => ProductCommentLike)
 export class ProductCommentLikeResolver {
   constructor(
-    private readonly productCommentLikeService: ProductCommentLikeService,
+    private readonly productCommentLikeService: ProductCommentLikeService
   ) {}
 }

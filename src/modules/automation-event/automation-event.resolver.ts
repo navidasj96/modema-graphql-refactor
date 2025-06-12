@@ -5,6 +5,6 @@ import { AutomationEvent } from './domain/automation-event';
 @Resolver(() => AutomationEvent)
 export class AutomationEventResolver {
   constructor(
-    private readonly automationEventService: AutomationEventService,
+    private readonly automationEventService: AutomationEventService
   ) {}
 }

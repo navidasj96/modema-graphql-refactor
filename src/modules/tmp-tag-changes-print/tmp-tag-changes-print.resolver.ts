@@ -5,6 +5,6 @@ import { TmpTagChangesPrint } from '@/modules/tmp-tag-changes-print/domain/tmp-t
 @Resolver(() => TmpTagChangesPrint)
 export class TmpTagChangesPrintResolver {
   constructor(
-    private readonly tmpTagChangesPrintService: TmpTagChangesPrintService,
+    private readonly tmpTagChangesPrintService: TmpTagChangesPrintService
   ) {}
 }

@@ -22,7 +22,7 @@ export class UpdateUserProvider {
      * Inject hashingProvider
      */
     @Inject(forwardRef(() => HashingProvider))
-    private readonly hashingProvider: HashingProvider,
+    private readonly hashingProvider: HashingProvider
   ) {}
 
   public async updateUser(updateUserInput: UpdateUserInput, id: number) {
@@ -38,7 +38,7 @@ export class UpdateUserProvider {
         'unable to process your request at the moment',
         {
           description: 'Error connecting to the database',
-        },
+        }
       );
     }
 
@@ -67,7 +67,7 @@ export class UpdateUserProvider {
         }),
         ...(updateUserInput.password && {
           password: await this.hashingProvider.hashPassword(
-            updateUserInput.password,
+            updateUserInput.password
           ),
         }),
         ...(updateUserInput.isPreorderApplicant && {

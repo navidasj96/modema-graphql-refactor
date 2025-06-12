@@ -24,7 +24,7 @@ export class NegotiationType {
 
   @OneToMany(
     () => NegotiationStep,
-    (negotiationStep) => negotiationStep.negotiationType,
+    (negotiationStep) => negotiationStep.negotiationType
   )
   negotiationSteps: NegotiationStep[];
 }

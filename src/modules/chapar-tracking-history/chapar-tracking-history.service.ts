@@ -16,7 +16,10 @@ export class ChaparTrackingHistoryService {
     return `This action returns a #${id} chaparTrackingHistory`;
   }
 
-  update(id: number, updateChaparTrackingHistoryInput: UpdateChaparTrackingHistoryInput) {
+  update(
+    id: number,
+    updateChaparTrackingHistoryInput: UpdateChaparTrackingHistoryInput
+  ) {
     return `This action updates a #${id} chaparTrackingHistory`;
   }
 

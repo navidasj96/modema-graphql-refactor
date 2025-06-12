@@ -198,7 +198,7 @@ export class Coupon {
 
   @OneToMany(
     () => UtmGoogleFormCoupon,
-    (utmGoogleFormCoupons) => utmGoogleFormCoupons.coupon,
+    (utmGoogleFormCoupons) => utmGoogleFormCoupons.coupon
   )
   utmGoogleFormCoupons: UtmGoogleFormCoupon[];
 }

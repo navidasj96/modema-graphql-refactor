@@ -16,7 +16,10 @@ export class RecommendedSubproductService {
     return `This action returns a #${id} recommendedSubproduct`;
   }
 
-  update(id: number, updateRecommendedSubproductInput: UpdateRecommendedSubproductInput) {
+  update(
+    id: number,
+    updateRecommendedSubproductInput: UpdateRecommendedSubproductInput
+  ) {
     return `This action updates a #${id} recommendedSubproduct`;
   }
 

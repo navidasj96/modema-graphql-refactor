@@ -36,13 +36,13 @@ export class InvoiceStatus {
 
   @OneToMany(
     () => InvoiceInvoiceStatus,
-    (invoiceInvoiceStatus) => invoiceInvoiceStatus.invoiceStatus,
+    (invoiceInvoiceStatus) => invoiceInvoiceStatus.invoiceStatus
   )
   invoiceInvoiceStatuses: InvoiceInvoiceStatus[];
 
   @OneToMany(
     () => InvoiceReversal,
-    (invoiceReversal) => invoiceReversal.invoiceStatus,
+    (invoiceReversal) => invoiceReversal.invoiceStatus
   )
   invoiceReversals: InvoiceReversal[];
 

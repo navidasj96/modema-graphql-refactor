@@ -16,7 +16,10 @@ export class TmpTagChangesPrintService {
     return `This action returns a #${id} tmpTagChangesPrint`;
   }
 
-  update(id: number, updateTmpTagChangesPrintInput: UpdateTmpTagChangesPrintInput) {
+  update(
+    id: number,
+    updateTmpTagChangesPrintInput: UpdateTmpTagChangesPrintInput
+  ) {
     return `This action updates a #${id} tmpTagChangesPrint`;
   }
 

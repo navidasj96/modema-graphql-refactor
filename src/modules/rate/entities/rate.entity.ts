@@ -33,7 +33,7 @@ export class Rate {
 
   @OneToMany(
     () => ProductCategoryRate,
-    (productCategoryRate) => productCategoryRate.rate,
+    (productCategoryRate) => productCategoryRate.rate
   )
   productCategoryRates: ProductCategoryRate[];
 
@@ -42,7 +42,7 @@ export class Rate {
 
   @OneToMany(
     () => ProductRateAverage,
-    (productRateAverage) => productRateAverage.rate,
+    (productRateAverage) => productRateAverage.rate
   )
   productRateAverages: ProductRateAverage[];
 }

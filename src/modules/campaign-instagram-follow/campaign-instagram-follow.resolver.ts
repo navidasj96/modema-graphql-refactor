@@ -5,6 +5,6 @@ import { CampaignInstagramFollow } from './domain/campaign-instagram-follow';
 @Resolver(() => CampaignInstagramFollow)
 export class CampaignInstagramFollowResolver {
   constructor(
-    private readonly campaignInstagramFollowService: CampaignInstagramFollowService,
+    private readonly campaignInstagramFollowService: CampaignInstagramFollowService
   ) {}
 }

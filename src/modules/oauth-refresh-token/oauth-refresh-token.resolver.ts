@@ -5,6 +5,6 @@ import { OauthRefreshToken } from '@/modules/oauth-refresh-token/domain/oauth-re
 @Resolver(() => OauthRefreshToken)
 export class OauthRefreshTokenResolver {
   constructor(
-    private readonly oauthRefreshTokenService: OauthRefreshTokenService,
+    private readonly oauthRefreshTokenService: OauthRefreshTokenService
   ) {}
 }

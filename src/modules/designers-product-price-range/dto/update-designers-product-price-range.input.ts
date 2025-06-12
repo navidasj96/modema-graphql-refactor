@@ -2,7 +2,9 @@ import { CreateDesignersProductPriceRangeInput } from './create-designers-produc
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateDesignersProductPriceRangeInput extends PartialType(CreateDesignersProductPriceRangeInput) {
+export class UpdateDesignersProductPriceRangeInput extends PartialType(
+  CreateDesignersProductPriceRangeInput
+) {
   @Field(() => Int)
   id: number;
 }

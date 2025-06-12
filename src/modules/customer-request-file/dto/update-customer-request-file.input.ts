@@ -2,7 +2,9 @@ import { CreateCustomerRequestFileInput } from './create-customer-request-file.i
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCustomerRequestFileInput extends PartialType(CreateCustomerRequestFileInput) {
+export class UpdateCustomerRequestFileInput extends PartialType(
+  CreateCustomerRequestFileInput
+) {
   @Field(() => Int)
   id: number;
 }

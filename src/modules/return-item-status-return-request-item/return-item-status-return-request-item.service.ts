@@ -4,7 +4,9 @@ import { UpdateReturnItemStatusReturnRequestItemInput } from './dto/update-retur
 
 @Injectable()
 export class ReturnItemStatusReturnRequestItemService {
-  create(createReturnItemStatusReturnRequestItemInput: CreateReturnItemStatusReturnRequestItemInput) {
+  create(
+    createReturnItemStatusReturnRequestItemInput: CreateReturnItemStatusReturnRequestItemInput
+  ) {
     return 'This action adds a new returnItemStatusReturnRequestItem';
   }
 
@@ -16,7 +18,10 @@ export class ReturnItemStatusReturnRequestItemService {
     return `This action returns a #${id} returnItemStatusReturnRequestItem`;
   }
 
-  update(id: number, updateReturnItemStatusReturnRequestItemInput: UpdateReturnItemStatusReturnRequestItemInput) {
+  update(
+    id: number,
+    updateReturnItemStatusReturnRequestItemInput: UpdateReturnItemStatusReturnRequestItemInput
+  ) {
     return `This action updates a #${id} returnItemStatusReturnRequestItem`;
   }
 

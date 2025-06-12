@@ -10,7 +10,7 @@ export class AddressResolver {
 
   @Mutation(() => Address)
   createAddress(
-    @Args('createAddressInput') createAddressInput: CreateAddressInput,
+    @Args('createAddressInput') createAddressInput: CreateAddressInput
   ) {
     return this.addressService.create(createAddressInput);
   }
@@ -27,11 +27,11 @@ export class AddressResolver {
 
   @Mutation(() => Address)
   updateAddress(
-    @Args('updateAddressInput') updateAddressInput: UpdateAddressInput,
+    @Args('updateAddressInput') updateAddressInput: UpdateAddressInput
   ) {
     return this.addressService.update(
       updateAddressInput.id,
-      updateAddressInput,
+      updateAddressInput
     );
   }
 

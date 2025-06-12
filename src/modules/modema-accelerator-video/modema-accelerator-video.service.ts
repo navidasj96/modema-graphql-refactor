@@ -16,7 +16,10 @@ export class ModemaAcceleratorVideoService {
     return `This action returns a #${id} modemaAcceleratorVideo`;
   }
 
-  update(id: number, updateModemaAcceleratorVideoInput: UpdateModemaAcceleratorVideoInput) {
+  update(
+    id: number,
+    updateModemaAcceleratorVideoInput: UpdateModemaAcceleratorVideoInput
+  ) {
     return `This action updates a #${id} modemaAcceleratorVideo`;
   }
 

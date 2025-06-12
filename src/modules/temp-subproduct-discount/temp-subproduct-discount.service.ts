@@ -16,7 +16,10 @@ export class TempSubproductDiscountService {
     return `This action returns a #${id} tempSubproductDiscount`;
   }
 
-  update(id: number, updateTempSubproductDiscountInput: UpdateTempSubproductDiscountInput) {
+  update(
+    id: number,
+    updateTempSubproductDiscountInput: UpdateTempSubproductDiscountInput
+  ) {
     return `This action updates a #${id} tempSubproductDiscount`;
   }
 

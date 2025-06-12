@@ -5,6 +5,6 @@ import { SocialFacebookAccount } from '@/modules/social-facebook-account/domain/
 @Resolver(() => SocialFacebookAccount)
 export class SocialFacebookAccountResolver {
   constructor(
-    private readonly socialFacebookAccountService: SocialFacebookAccountService,
+    private readonly socialFacebookAccountService: SocialFacebookAccountService
   ) {}
 }

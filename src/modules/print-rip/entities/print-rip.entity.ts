@@ -35,7 +35,7 @@ export class PrintRip {
 
   @OneToMany(
     () => InvoiceProductItem,
-    (invoiceProductItem) => invoiceProductItem.printRip,
+    (invoiceProductItem) => invoiceProductItem.printRip
   )
   invoiceProductItems: InvoiceProductItem[];
 

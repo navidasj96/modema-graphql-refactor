@@ -4,7 +4,9 @@ import { UpdateCampaignUefaEuroSubscriberHistoryInput } from './dto/update-campa
 
 @Injectable()
 export class CampaignUefaEuroSubscriberHistoryService {
-  create(createCampaignUefaEuroSubscriberHistoryInput: CreateCampaignUefaEuroSubscriberHistoryInput) {
+  create(
+    createCampaignUefaEuroSubscriberHistoryInput: CreateCampaignUefaEuroSubscriberHistoryInput
+  ) {
     return 'This action adds a new campaignUefaEuroSubscriberHistory';
   }
 
@@ -16,7 +18,10 @@ export class CampaignUefaEuroSubscriberHistoryService {
     return `This action returns a #${id} campaignUefaEuroSubscriberHistory`;
   }
 
-  update(id: number, updateCampaignUefaEuroSubscriberHistoryInput: UpdateCampaignUefaEuroSubscriberHistoryInput) {
+  update(
+    id: number,
+    updateCampaignUefaEuroSubscriberHistoryInput: UpdateCampaignUefaEuroSubscriberHistoryInput
+  ) {
     return `This action updates a #${id} campaignUefaEuroSubscriberHistory`;
   }
 

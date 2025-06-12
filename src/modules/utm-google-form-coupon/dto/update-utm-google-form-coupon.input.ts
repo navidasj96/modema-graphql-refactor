@@ -2,7 +2,9 @@ import { CreateUtmGoogleFormCouponInput } from './create-utm-google-form-coupon.
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateUtmGoogleFormCouponInput extends PartialType(CreateUtmGoogleFormCouponInput) {
+export class UpdateUtmGoogleFormCouponInput extends PartialType(
+  CreateUtmGoogleFormCouponInput
+) {
   @Field(() => Int)
   id: number;
 }

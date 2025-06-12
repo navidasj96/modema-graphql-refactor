@@ -5,6 +5,6 @@ import { ContactFormHistory } from './domain/contact-form-history';
 @Resolver(() => ContactFormHistory)
 export class ContactFormHistoryResolver {
   constructor(
-    private readonly contactFormHistoryService: ContactFormHistoryService,
+    private readonly contactFormHistoryService: ContactFormHistoryService
   ) {}
 }

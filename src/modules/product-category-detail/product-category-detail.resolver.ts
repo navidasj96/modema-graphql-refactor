@@ -5,6 +5,6 @@ import { ProductCategoryDetail } from '@/modules/product-category-detail/domain/
 @Resolver(() => ProductCategoryDetail)
 export class ProductCategoryDetailResolver {
   constructor(
-    private readonly productCategoryDetailService: ProductCategoryDetailService,
+    private readonly productCategoryDetailService: ProductCategoryDetailService
   ) {}
 }

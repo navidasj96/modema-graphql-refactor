@@ -5,6 +5,6 @@ import { NeedsPhotographySubproduct } from '@/modules/needs-photography-subprodu
 @Resolver(() => NeedsPhotographySubproduct)
 export class NeedsPhotographySubproductResolver {
   constructor(
-    private readonly needsPhotographySubproductService: NeedsPhotographySubproductService,
+    private readonly needsPhotographySubproductService: NeedsPhotographySubproductService
   ) {}
 }

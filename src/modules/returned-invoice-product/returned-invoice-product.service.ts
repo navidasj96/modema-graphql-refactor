@@ -16,7 +16,10 @@ export class ReturnedInvoiceProductService {
     return `This action returns a #${id} returnedInvoiceProduct`;
   }
 
-  update(id: number, updateReturnedInvoiceProductInput: UpdateReturnedInvoiceProductInput) {
+  update(
+    id: number,
+    updateReturnedInvoiceProductInput: UpdateReturnedInvoiceProductInput
+  ) {
     return `This action updates a #${id} returnedInvoiceProduct`;
   }
 

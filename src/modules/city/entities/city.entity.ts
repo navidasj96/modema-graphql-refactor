@@ -55,7 +55,7 @@ export class City {
 
   @OneToMany(
     () => BasicCarpetDesigner,
-    (basicCarpetDesigner) => basicCarpetDesigner.city,
+    (basicCarpetDesigner) => basicCarpetDesigner.city
   )
   basicCarpetDesigners: BasicCarpetDesigner[];
 
@@ -71,13 +71,13 @@ export class City {
 
   @OneToMany(
     () => ReturnRequestAddress,
-    (returnRequestAddress) => returnRequestAddress.city,
+    (returnRequestAddress) => returnRequestAddress.city
   )
   returnRequestAddresses: ReturnRequestAddress[];
 
   @OneToMany(
     () => SenderInformation,
-    (senderInformation) => senderInformation.city,
+    (senderInformation) => senderInformation.city
   )
   senderInformations: SenderInformation[];
 }

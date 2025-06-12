@@ -46,7 +46,7 @@ export class InvoiceReversal {
 
   @OneToMany(
     () => InvoiceReversalItem,
-    (invoiceReversalItem) => invoiceReversalItem.invoiceReversal,
+    (invoiceReversalItem) => invoiceReversalItem.invoiceReversal
   )
   invoiceReversalItems: InvoiceReversalItem[];
 
@@ -60,7 +60,7 @@ export class InvoiceReversal {
   @ManyToOne(
     () => InvoiceStatus,
     (invoiceStatus) => invoiceStatus.invoiceReversals,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_status_id', referencedColumnName: 'id' }])
   invoiceStatus: InvoiceStatus;

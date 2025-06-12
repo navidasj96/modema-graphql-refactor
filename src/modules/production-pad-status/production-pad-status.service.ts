@@ -16,7 +16,10 @@ export class ProductionPadStatusService {
     return `This action returns a #${id} productionPadStatus`;
   }
 
-  update(id: number, updateProductionPadStatusInput: UpdateProductionPadStatusInput) {
+  update(
+    id: number,
+    updateProductionPadStatusInput: UpdateProductionPadStatusInput
+  ) {
     return `This action updates a #${id} productionPadStatus`;
   }
 

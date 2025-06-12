@@ -5,6 +5,6 @@ import { CarpetUsagePlaceInvoiceProduct } from './domain/carpet-usage-place-invo
 @Resolver(() => CarpetUsagePlaceInvoiceProduct)
 export class CarpetUsagePlaceInvoiceProductResolver {
   constructor(
-    private readonly carpetUsagePlaceInvoiceProductService: CarpetUsagePlaceInvoiceProductService,
+    private readonly carpetUsagePlaceInvoiceProductService: CarpetUsagePlaceInvoiceProductService
   ) {}
 }

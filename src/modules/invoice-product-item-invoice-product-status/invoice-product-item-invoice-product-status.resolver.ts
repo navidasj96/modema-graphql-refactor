@@ -5,6 +5,6 @@ import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-produc
 @Resolver(() => InvoiceProductItemInvoiceProductStatus)
 export class InvoiceProductItemInvoiceProductStatusResolver {
   constructor(
-    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService,
+    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService
   ) {}
 }

@@ -74,7 +74,7 @@ export class ProductComment {
 
   @OneToMany(
     () => ProductCommentLike,
-    (productCommentLikes) => productCommentLikes.productComment,
+    (productCommentLikes) => productCommentLikes.productComment
   )
   productCommentLikes: ProductCommentLike[];
 
@@ -88,14 +88,14 @@ export class ProductComment {
   @ManyToOne(
     () => ProductComment,
     (productComment) => productComment.productComments,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'parent_comment_id', referencedColumnName: 'id' }])
   parentComment: ProductComment;
 
   @OneToMany(
     () => ProductComment,
-    (productComment) => productComment.parentComment,
+    (productComment) => productComment.parentComment
   )
   productComments: ProductComment[];
 
@@ -125,7 +125,7 @@ export class ProductComment {
 
   @OneToOne(
     () => WalletGiftCharge,
-    (walletGiftCharges) => walletGiftCharges.productComment,
+    (walletGiftCharges) => walletGiftCharges.productComment
   )
   walletGiftCharges: WalletGiftCharge;
 }

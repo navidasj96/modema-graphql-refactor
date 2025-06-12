@@ -5,6 +5,6 @@ import { AttributeProduct } from './domain/attribute-product';
 @Resolver(() => AttributeProduct)
 export class AttributeProductResolver {
   constructor(
-    private readonly attributeProductService: AttributeProductService,
+    private readonly attributeProductService: AttributeProductService
   ) {}
 }

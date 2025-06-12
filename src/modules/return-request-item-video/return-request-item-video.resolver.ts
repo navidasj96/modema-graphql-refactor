@@ -5,6 +5,6 @@ import { ReturnRequestItemVideo } from '@/modules/return-request-item-video/doma
 @Resolver(() => ReturnRequestItemVideo)
 export class ReturnRequestItemVideoResolver {
   constructor(
-    private readonly returnRequestItemVideoService: ReturnRequestItemVideoService,
+    private readonly returnRequestItemVideoService: ReturnRequestItemVideoService
   ) {}
 }

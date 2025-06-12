@@ -16,7 +16,10 @@ export class InvoicePaymentTypeService {
     return `This action returns a #${id} invoicePaymentType`;
   }
 
-  update(id: number, updateInvoicePaymentTypeInput: UpdateInvoicePaymentTypeInput) {
+  update(
+    id: number,
+    updateInvoicePaymentTypeInput: UpdateInvoicePaymentTypeInput
+  ) {
     return `This action updates a #${id} invoicePaymentType`;
   }
 

@@ -17,7 +17,7 @@ export class WithdrawalRequestStatus {
 
   @OneToMany(
     () => WithdrawalRequest,
-    (withdrawalRequest) => withdrawalRequest.withdrawalRequestStatus,
+    (withdrawalRequest) => withdrawalRequest.withdrawalRequestStatus
   )
   withdrawalRequests: WithdrawalRequest[];
 }

@@ -5,6 +5,6 @@ import { ProductColorImage } from '@/modules/product-color-image/domain/product-
 @Resolver(() => ProductColorImage)
 export class ProductColorImageResolver {
   constructor(
-    private readonly productColorImageService: ProductColorImageService,
+    private readonly productColorImageService: ProductColorImageService
   ) {}
 }

@@ -2,7 +2,9 @@ import { CreateSubproductStockHistoryInput } from './create-subproduct-stock-his
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateSubproductStockHistoryInput extends PartialType(CreateSubproductStockHistoryInput) {
+export class UpdateSubproductStockHistoryInput extends PartialType(
+  CreateSubproductStockHistoryInput
+) {
   @Field(() => Int)
   id: number;
 }

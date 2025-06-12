@@ -12,7 +12,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'campaign_voting_image_users_wallet_charged_index',
   ['walletCharged'],
-  {},
+  {}
 )
 @Entity('campaign_voting_image_users', { schema: 'modema' })
 export class CampaignVotingImageUser {

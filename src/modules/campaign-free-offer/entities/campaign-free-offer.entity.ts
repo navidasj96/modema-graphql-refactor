@@ -20,7 +20,7 @@ export class CampaignFreeOffer {
 
   @OneToMany(
     () => CampaignFreeOfferSize,
-    (campaignFreeOfferSize) => campaignFreeOfferSize.campaignFreeOffer,
+    (campaignFreeOfferSize) => campaignFreeOfferSize.campaignFreeOffer
   )
   campaignFreeOfferSizes: CampaignFreeOfferSize[];
 }

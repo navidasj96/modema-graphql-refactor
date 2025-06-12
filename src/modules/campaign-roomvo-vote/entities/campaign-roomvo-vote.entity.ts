@@ -12,7 +12,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'campaign_roomvo_votes_campaign_roomvo_image_id_index',
   ['campaignRoomvoImageId'],
-  {},
+  {}
 )
 @Index('campaign_roomvo_votes_user_id_index', ['userId'], {})
 @Entity('campaign_roomvo_votes', { schema: 'modema' })
@@ -35,7 +35,7 @@ export class CampaignRoomvoVote {
   @ManyToOne(
     () => CampaignRoomvoImage,
     (campaignRoomvoImage) => campaignRoomvoImage.campaignRoomvoVotes,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'campaign_roomvo_image_id', referencedColumnName: 'id' },

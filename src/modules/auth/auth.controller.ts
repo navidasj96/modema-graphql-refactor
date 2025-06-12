@@ -24,7 +24,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   public async login(
     @Body() signInDto: SignInDto,
-    @Res({ passthrough: true }) res: Response,
+    @Res({ passthrough: true }) res: Response
   ) {
     try {
       const { username, id } = await this.authService.signIn(signInDto, res);
@@ -40,7 +40,7 @@ export class AuthController {
   public async refreshTokens(
     @Body() refreshTokenDto: RefreshTokenDto,
     @Res({ passthrough: true }) res: Response,
-    @Req() request: Request,
+    @Req() request: Request
   ) {
     const refreshTokenFromReq = request.cookies.refresh_token;
 
@@ -49,7 +49,7 @@ export class AuthController {
         {
           refreshToken: refreshTokenFromReq,
         },
-        res,
+        res
       );
     } catch {
       throw new RuntimeException('Error signing in');

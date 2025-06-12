@@ -12,7 +12,7 @@ export class PermissionService {
      * inject permissionRepository
      */
     @InjectRepository(Permission)
-    private readonly permissionRepository: Repository<Permission>,
+    private readonly permissionRepository: Repository<Permission>
   ) {}
 
   create(createPermissionInput: CreatePermissionInput) {

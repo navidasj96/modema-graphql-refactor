@@ -14,7 +14,7 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'torob_products_basic_carpet_color_id_foreign',
   ['basicCarpetColorId'],
-  {},
+  {}
 )
 @Index('torob_products_basic_carpet_size_id_foreign', ['basicCarpetSizeId'], {})
 @Index('torob_products_product_id_foreign', ['productId'], {})
@@ -75,7 +75,7 @@ export class TorobProduct {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.torobProducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
   basicCarpetColor: BasicCarpetColor;
@@ -83,7 +83,7 @@ export class TorobProduct {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.torobProducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;

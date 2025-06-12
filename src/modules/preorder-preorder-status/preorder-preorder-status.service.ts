@@ -16,7 +16,10 @@ export class PreorderPreorderStatusService {
     return `This action returns a #${id} preorderPreorderStatus`;
   }
 
-  update(id: number, updatePreorderPreorderStatusInput: UpdatePreorderPreorderStatusInput) {
+  update(
+    id: number,
+    updatePreorderPreorderStatusInput: UpdatePreorderPreorderStatusInput
+  ) {
     return `This action updates a #${id} preorderPreorderStatus`;
   }
 

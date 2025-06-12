@@ -5,6 +5,6 @@ import { RecommendedSubproduct } from '@/modules/recommended-subproduct/domain/r
 @Resolver(() => RecommendedSubproduct)
 export class RecommendedSubproductResolver {
   constructor(
-    private readonly recommendedSubproductService: RecommendedSubproductService,
+    private readonly recommendedSubproductService: RecommendedSubproductService
   ) {}
 }

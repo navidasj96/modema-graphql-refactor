@@ -5,6 +5,6 @@ import { CampaignSubscription } from './domain/campaign-subscription';
 @Resolver(() => CampaignSubscription)
 export class CampaignSubscriptionResolver {
   constructor(
-    private readonly campaignSubscriptionService: CampaignSubscriptionService,
+    private readonly campaignSubscriptionService: CampaignSubscriptionService
   ) {}
 }

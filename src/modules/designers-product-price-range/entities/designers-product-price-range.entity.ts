@@ -11,7 +11,7 @@ import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carp
 @Index(
   'designers_product_price_ranges_basic_carpet_size_id_index',
   ['basicCarpetSizeId'],
-  {},
+  {}
 )
 @Entity('designers_product_price_ranges', { schema: 'modema' })
 export class DesignersProductPriceRange {
@@ -36,7 +36,7 @@ export class DesignersProductPriceRange {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSizes) => basicCarpetSizes.designersProductPriceRanges,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;

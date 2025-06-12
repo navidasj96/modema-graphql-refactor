@@ -4,7 +4,9 @@ import { UpdateCarpetUsagePlaceInvoiceProductInput } from './dto/update-carpet-u
 
 @Injectable()
 export class CarpetUsagePlaceInvoiceProductService {
-  create(createCarpetUsagePlaceInvoiceProductInput: CreateCarpetUsagePlaceInvoiceProductInput) {
+  create(
+    createCarpetUsagePlaceInvoiceProductInput: CreateCarpetUsagePlaceInvoiceProductInput
+  ) {
     return 'This action adds a new carpetUsagePlaceInvoiceProduct';
   }
 
@@ -16,7 +18,10 @@ export class CarpetUsagePlaceInvoiceProductService {
     return `This action returns a #${id} carpetUsagePlaceInvoiceProduct`;
   }
 
-  update(id: number, updateCarpetUsagePlaceInvoiceProductInput: UpdateCarpetUsagePlaceInvoiceProductInput) {
+  update(
+    id: number,
+    updateCarpetUsagePlaceInvoiceProductInput: UpdateCarpetUsagePlaceInvoiceProductInput
+  ) {
     return `This action updates a #${id} carpetUsagePlaceInvoiceProduct`;
   }
 

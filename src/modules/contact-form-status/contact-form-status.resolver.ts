@@ -5,6 +5,6 @@ import { ContactFormStatus } from './domain/contact-form-status';
 @Resolver(() => ContactFormStatus)
 export class ContactFormStatusResolver {
   constructor(
-    private readonly contactFormStatusService: ContactFormStatusService,
+    private readonly contactFormStatusService: ContactFormStatusService
   ) {}
 }

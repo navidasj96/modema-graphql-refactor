@@ -2,7 +2,9 @@ import { CreateNeedsPhotographySubproductInput } from './create-needs-photograph
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateNeedsPhotographySubproductInput extends PartialType(CreateNeedsPhotographySubproductInput) {
+export class UpdateNeedsPhotographySubproductInput extends PartialType(
+  CreateNeedsPhotographySubproductInput
+) {
   @Field(() => Int)
   id: number;
 }

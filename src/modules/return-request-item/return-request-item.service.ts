@@ -16,7 +16,10 @@ export class ReturnRequestItemService {
     return `This action returns a #${id} returnRequestItem`;
   }
 
-  update(id: number, updateReturnRequestItemInput: UpdateReturnRequestItemInput) {
+  update(
+    id: number,
+    updateReturnRequestItemInput: UpdateReturnRequestItemInput
+  ) {
     return `This action updates a #${id} returnRequestItem`;
   }
 

@@ -5,6 +5,6 @@ import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/domain/invo
 @Resolver(() => InvoiceShippingRate)
 export class InvoiceShippingRateResolver {
   constructor(
-    private readonly invoiceShippingRateService: InvoiceShippingRateService,
+    private readonly invoiceShippingRateService: InvoiceShippingRateService
   ) {}
 }

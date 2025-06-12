@@ -5,6 +5,6 @@ import { ColorCategorySubproduct } from './domain/color-category-subproduct';
 @Resolver(() => ColorCategorySubproduct)
 export class ColorCategorySubproductResolver {
   constructor(
-    private readonly colorCategorySubproductService: ColorCategorySubproductService,
+    private readonly colorCategorySubproductService: ColorCategorySubproductService
   ) {}
 }

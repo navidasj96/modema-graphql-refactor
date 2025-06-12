@@ -49,7 +49,7 @@ export class AttributeSubproduct {
   @ManyToOne(
     () => AttributeItem,
     (attributeItem) => attributeItem.attributeSubproducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'attribute_item_id', referencedColumnName: 'id' }])
   attributeItem?: AttributeItem;
@@ -57,7 +57,7 @@ export class AttributeSubproduct {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.attributeSubproducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

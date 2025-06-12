@@ -51,7 +51,7 @@ export class ProductVideo {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.productVideos,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
   basicCarpetColor: BasicCarpetColor;

@@ -14,7 +14,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'prod_pad_prod_pad_status_status_id_foreign',
   ['productionPadStatusId'],
-  {},
+  {}
 )
 @Index('production_pad_production_pad_status_user_id_index', ['userId'], {})
 @Entity('production_pad_production_pad_status', { schema: 'modema' })
@@ -47,7 +47,7 @@ export class ProductionPadProductionPadStatus {
   @ManyToOne(
     () => ProductionPad,
     (productionPad) => productionPad.productionPadProductionPadStatuses,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'production_pad_id', referencedColumnName: 'id' }])
   productionPad: ProductionPad;
@@ -56,7 +56,7 @@ export class ProductionPadProductionPadStatus {
     () => ProductionPadStatus,
     (productionPadStatus) =>
       productionPadStatus.productionPadProductionPadStatuses,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'production_pad_status_id', referencedColumnName: 'id' },

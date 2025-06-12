@@ -16,7 +16,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'contact_forms_contact_form_status_id_index',
   ['contactFormStatusId'],
-  {},
+  {}
 )
 @Index('contact_forms_country_id_index', ['countryId'], {})
 @Index('contact_forms_department_id_index', ['departmentId'], {})
@@ -74,14 +74,14 @@ export class ContactForm {
 
   @OneToMany(
     () => ContactFormHistory,
-    (contactFormHistory) => contactFormHistory.contactForm,
+    (contactFormHistory) => contactFormHistory.contactForm
   )
   contactFormHistories: ContactFormHistory[];
 
   @ManyToOne(
     () => ContactFormStatus,
     (contactFormStatus) => contactFormStatus.contactForms,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
   contactFormStatus: ContactFormStatus;

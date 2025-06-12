@@ -16,7 +16,10 @@ export class BasicCarpetDesignerService {
     return `This action returns a #${id} basicCarpetDesigner`;
   }
 
-  update(id: number, updateBasicCarpetDesignerInput: UpdateBasicCarpetDesignerInput) {
+  update(
+    id: number,
+    updateBasicCarpetDesignerInput: UpdateBasicCarpetDesignerInput
+  ) {
     return `This action updates a #${id} basicCarpetDesigner`;
   }
 

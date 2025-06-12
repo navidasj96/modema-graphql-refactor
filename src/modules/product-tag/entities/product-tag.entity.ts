@@ -14,7 +14,7 @@ import { Tag } from '@/modules/tag/entities/tag.entity';
 @Index(
   'product_tag_product_id_subproduct_id_tag_id_unique',
   ['productId', 'subproductId', 'tagId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('product_tag_subproduct_id_index', ['subproductId'], {})
 @Index('product_tag_tag_id_index', ['tagId'], {})

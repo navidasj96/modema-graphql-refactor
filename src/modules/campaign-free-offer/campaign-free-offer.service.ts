@@ -16,7 +16,10 @@ export class CampaignFreeOfferService {
     return `This action returns a #${id} campaignFreeOffer`;
   }
 
-  update(id: number, updateCampaignFreeOfferInput: UpdateCampaignFreeOfferInput) {
+  update(
+    id: number,
+    updateCampaignFreeOfferInput: UpdateCampaignFreeOfferInput
+  ) {
     return `This action updates a #${id} campaignFreeOffer`;
   }
 

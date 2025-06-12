@@ -5,6 +5,6 @@ import { ProductRateAverage } from '@/modules/product-rate-average/domain/produc
 @Resolver(() => ProductRateAverage)
 export class ProductRateAverageResolver {
   constructor(
-    private readonly productRateAverageService: ProductRateAverageService,
+    private readonly productRateAverageService: ProductRateAverageService
   ) {}
 }

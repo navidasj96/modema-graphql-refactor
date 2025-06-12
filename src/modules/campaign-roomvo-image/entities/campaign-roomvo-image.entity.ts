@@ -50,7 +50,7 @@ export class CampaignRoomvoImage {
 
   @OneToMany(
     () => CampaignRoomvoVote,
-    (campaignRoomvoVote) => campaignRoomvoVote.campaignRoomvoImage,
+    (campaignRoomvoVote) => campaignRoomvoVote.campaignRoomvoImage
   )
   campaignRoomvoVotes: CampaignRoomvoVote[];
 }

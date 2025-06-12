@@ -2,7 +2,9 @@ import { CreateInvoiceProductItemInvoiceProductStatusInput } from './create-invo
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateInvoiceProductItemInvoiceProductStatusInput extends PartialType(CreateInvoiceProductItemInvoiceProductStatusInput) {
+export class UpdateInvoiceProductItemInvoiceProductStatusInput extends PartialType(
+  CreateInvoiceProductItemInvoiceProductStatusInput
+) {
   @Field(() => Int)
   id: number;
 }

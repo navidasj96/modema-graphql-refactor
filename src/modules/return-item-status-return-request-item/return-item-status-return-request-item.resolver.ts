@@ -5,6 +5,6 @@ import { ReturnItemStatusReturnRequestItem } from '@/modules/return-item-status-
 @Resolver(() => ReturnItemStatusReturnRequestItem)
 export class ReturnItemStatusReturnRequestItemResolver {
   constructor(
-    private readonly returnItemStatusReturnRequestItemService: ReturnItemStatusReturnRequestItemService,
+    private readonly returnItemStatusReturnRequestItemService: ReturnItemStatusReturnRequestItemService
   ) {}
 }

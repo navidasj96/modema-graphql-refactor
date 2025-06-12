@@ -72,7 +72,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/entitie
     'basicCarpetSizeId',
     'basicCarpetColorId',
   ],
-  { unique: true },
+  { unique: true }
 )
 @Index('subproducts_product_id_index', ['productId'], {})
 @Index('subproducts_short_code_index', ['shortCode'], {})
@@ -334,13 +334,13 @@ export class Subproduct {
 
   @OneToMany(
     () => AttributeSubproduct,
-    (attributeSubproduct) => attributeSubproduct.subproduct,
+    (attributeSubproduct) => attributeSubproduct.subproduct
   )
   attributeSubproducts: AttributeSubproduct[];
 
   @OneToMany(
     () => ColorCategorySubproduct,
-    (colorCategorySubproduct) => colorCategorySubproduct.subproduct,
+    (colorCategorySubproduct) => colorCategorySubproduct.subproduct
   )
   colorCategorySubproducts: ColorCategorySubproduct[];
 
@@ -349,31 +349,31 @@ export class Subproduct {
 
   @OneToMany(
     () => DiscountSubject,
-    (discountSubject) => discountSubject.subproduct,
+    (discountSubject) => discountSubject.subproduct
   )
   discountSubjects: DiscountSubject[];
 
   @OneToMany(
     () => FavoriteProduct,
-    (favoriteProduct) => favoriteProduct.subproduct,
+    (favoriteProduct) => favoriteProduct.subproduct
   )
   favoriteProducts: FavoriteProduct[];
 
   @OneToMany(
     () => ImageSubproduct,
-    (imageSubproduct) => imageSubproduct.subproduct,
+    (imageSubproduct) => imageSubproduct.subproduct
   )
   imageSubproducts: ImageSubproduct[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.relatedSubproduct,
+    (invoiceProductHistory) => invoiceProductHistory.relatedSubproduct
   )
   invoiceProductHistories: InvoiceProductHistory[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.subproduct,
+    (invoiceProductHistory) => invoiceProductHistory.subproduct
   )
   invoiceProductHistories2: InvoiceProductHistory[];
 
@@ -382,19 +382,19 @@ export class Subproduct {
 
   @OneToMany(
     () => InvoiceProduct,
-    (invoiceProduct) => invoiceProduct.relatedSubproduct,
+    (invoiceProduct) => invoiceProduct.relatedSubproduct
   )
   invoiceProducts2: InvoiceProduct[];
 
   @OneToMany(
     () => InvoiceProduct,
-    (invoiceProduct) => invoiceProduct.subproduct,
+    (invoiceProduct) => invoiceProduct.subproduct
   )
   invoiceProducts3: InvoiceProduct[];
 
   @OneToMany(
     () => NeedsPhotographySubproduct,
-    (needsPhotographySubproduct) => needsPhotographySubproduct.subproduct,
+    (needsPhotographySubproduct) => needsPhotographySubproduct.subproduct
   )
   needsPhotographySubproducts: NeedsPhotographySubproduct[];
 
@@ -403,7 +403,7 @@ export class Subproduct {
 
   @OneToMany(
     () => ProductComment,
-    (productComment) => productComment.subproduct,
+    (productComment) => productComment.subproduct
   )
   productComments: ProductComment[];
 
@@ -415,7 +415,7 @@ export class Subproduct {
 
   @OneToMany(
     () => ProductRateAverage,
-    (productRateAverage) => productRateAverage.subproduct,
+    (productRateAverage) => productRateAverage.subproduct
   )
   productRateAverages: ProductRateAverage[];
 
@@ -424,50 +424,50 @@ export class Subproduct {
 
   @OneToMany(
     () => RecommendedSubproduct,
-    (recommendedSubproduct) => recommendedSubproduct.subproduct,
+    (recommendedSubproduct) => recommendedSubproduct.subproduct
   )
   recommendedSubproducts: RecommendedSubproduct[];
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.subproduct,
+    (returnRequestItemHistory) => returnRequestItemHistory.subproduct
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItem,
-    (returnRequestItem) => returnRequestItem.subproduct,
+    (returnRequestItem) => returnRequestItem.subproduct
   )
   returnRequestItems: ReturnRequestItem[];
 
   @OneToMany(
     () => ReturnedInvoiceProduct,
-    (returnedInvoiceProduct) => returnedInvoiceProduct.subproduct,
+    (returnedInvoiceProduct) => returnedInvoiceProduct.subproduct
   )
   returnedInvoiceProducts: ReturnedInvoiceProduct[];
 
   @OneToMany(
     () => SubproductSpecialImage,
-    (subproductSpecialImage) => subproductSpecialImage.subproduct,
+    (subproductSpecialImage) => subproductSpecialImage.subproduct
   )
   subproductSpecialImages: SubproductSpecialImage[];
 
   @OneToMany(
     () => SubproductStockHistory,
-    (subproductStockHistory) => subproductStockHistory.subproduct,
+    (subproductStockHistory) => subproductStockHistory.subproduct
   )
   subproductStockHistories: SubproductStockHistory[];
 
   @OneToMany(
     () => SubproductVideo,
-    (subproductVideo) => subproductVideo.subproduct,
+    (subproductVideo) => subproductVideo.subproduct
   )
   subproductVideos: SubproductVideo[];
 
   @ManyToOne(
     () => BasicCarpetBorder,
     (basicCarpetBorder) => basicCarpetBorder.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_border_id', referencedColumnName: 'id' }])
   basicCarpetBorder: BasicCarpetBorder;
@@ -475,7 +475,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetBrand,
     (basicCarpetBrand) => basicCarpetBrand.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'basic_carpet_brand_id', referencedColumnName: 'id' }])
   basicCarpetBrand: BasicCarpetBrand;
@@ -483,7 +483,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
   basicCarpetColor: BasicCarpetColor;
@@ -491,7 +491,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetDesigner,
     (basicCarpetDesigner) => basicCarpetDesigner.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([
     { name: 'basic_carpet_designer_id', referencedColumnName: 'id' },
@@ -501,7 +501,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetDesign,
     (basicCarpetDesign) => basicCarpetDesign.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'basic_carpet_design_id', referencedColumnName: 'id' }])
   basicCarpetDesign: BasicCarpetDesign;
@@ -509,7 +509,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetMaterial,
     (basicCarpetMaterial) => basicCarpetMaterial.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([
     { name: 'basic_carpet_material_id', referencedColumnName: 'id' },
@@ -519,7 +519,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;
@@ -527,7 +527,7 @@ export class Subproduct {
   @ManyToOne(
     () => BasicCarpetType,
     (basicCarpetType) => basicCarpetType.subproducts,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'basic_carpet_type_id', referencedColumnName: 'id' }])
   basicCarpetType: BasicCarpetType;

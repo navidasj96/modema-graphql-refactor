@@ -4,7 +4,9 @@ import { UpdateNeedsPhotographySubproductInput } from './dto/update-needs-photog
 
 @Injectable()
 export class NeedsPhotographySubproductService {
-  create(createNeedsPhotographySubproductInput: CreateNeedsPhotographySubproductInput) {
+  create(
+    createNeedsPhotographySubproductInput: CreateNeedsPhotographySubproductInput
+  ) {
     return 'This action adds a new needsPhotographySubproduct';
   }
 
@@ -16,7 +18,10 @@ export class NeedsPhotographySubproductService {
     return `This action returns a #${id} needsPhotographySubproduct`;
   }
 
-  update(id: number, updateNeedsPhotographySubproductInput: UpdateNeedsPhotographySubproductInput) {
+  update(
+    id: number,
+    updateNeedsPhotographySubproductInput: UpdateNeedsPhotographySubproductInput
+  ) {
     return `This action updates a #${id} needsPhotographySubproduct`;
   }
 

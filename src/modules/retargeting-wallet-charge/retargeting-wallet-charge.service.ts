@@ -4,7 +4,9 @@ import { UpdateRetargetingWalletChargeInput } from './dto/update-retargeting-wal
 
 @Injectable()
 export class RetargetingWalletChargeService {
-  create(createRetargetingWalletChargeInput: CreateRetargetingWalletChargeInput) {
+  create(
+    createRetargetingWalletChargeInput: CreateRetargetingWalletChargeInput
+  ) {
     return 'This action adds a new retargetingWalletCharge';
   }
 
@@ -16,7 +18,10 @@ export class RetargetingWalletChargeService {
     return `This action returns a #${id} retargetingWalletCharge`;
   }
 
-  update(id: number, updateRetargetingWalletChargeInput: UpdateRetargetingWalletChargeInput) {
+  update(
+    id: number,
+    updateRetargetingWalletChargeInput: UpdateRetargetingWalletChargeInput
+  ) {
     return `This action updates a #${id} retargetingWalletCharge`;
   }
 

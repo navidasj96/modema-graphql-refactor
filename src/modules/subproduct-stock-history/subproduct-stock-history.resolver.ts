@@ -5,6 +5,6 @@ import { SubproductStockHistory } from '@/modules/subproduct-stock-history/domai
 @Resolver(() => SubproductStockHistory)
 export class SubproductStockHistoryResolver {
   constructor(
-    private readonly subproductStockHistoryService: SubproductStockHistoryService,
+    private readonly subproductStockHistoryService: SubproductStockHistoryService
   ) {}
 }

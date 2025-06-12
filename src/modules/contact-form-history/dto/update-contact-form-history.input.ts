@@ -2,7 +2,9 @@ import { CreateContactFormHistoryInput } from './create-contact-form-history.inp
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateContactFormHistoryInput extends PartialType(CreateContactFormHistoryInput) {
+export class UpdateContactFormHistoryInput extends PartialType(
+  CreateContactFormHistoryInput
+) {
   @Field(() => Int)
   id: number;
 }

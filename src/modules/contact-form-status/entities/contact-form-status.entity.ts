@@ -21,20 +21,19 @@ export class ContactFormStatus {
   @OneToMany(
     () => CampaignUefaEuroSubscriberHistory,
     (campaignUefaEuroSubscriberHistory) =>
-      campaignUefaEuroSubscriberHistory.contactFormStatus,
+      campaignUefaEuroSubscriberHistory.contactFormStatus
   )
   campaignUefaEuroSubscriberHistories: CampaignUefaEuroSubscriberHistory[];
 
   @OneToMany(
     () => CampaignUefaEuroSubscriber,
-    (campaignUefaEuroSubscriber) =>
-      campaignUefaEuroSubscriber.contactFormStatus,
+    (campaignUefaEuroSubscriber) => campaignUefaEuroSubscriber.contactFormStatus
   )
   campaignUefaEuroSubscribers: CampaignUefaEuroSubscriber[];
 
   @OneToMany(
     () => ContactFormHistory,
-    (contactFormHistory) => contactFormHistory.contactFormStatus,
+    (contactFormHistory) => contactFormHistory.contactFormStatus
   )
   contactFormHistories: ContactFormHistory[];
 

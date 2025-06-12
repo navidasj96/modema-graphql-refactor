@@ -12,12 +12,12 @@ export class CreateTransactionProvider {
      * Inject transaction repository
      */
     @InjectRepository(Transaction)
-    private readonly transactionRepo: Repository<Transaction>,
+    private readonly transactionRepo: Repository<Transaction>
   ) {}
 
   public async createTransaction(
     createTransactionInput: CreateTransactionInput,
-    manager?: EntityManager,
+    manager?: EntityManager
   ) {
     const {
       withdrawable = 0,

@@ -5,6 +5,6 @@ import { MellatPaymentError } from '@/modules/mellat-payment-error/domain/mellat
 @Resolver(() => MellatPaymentError)
 export class MellatPaymentErrorResolver {
   constructor(
-    private readonly mellatPaymentErrorService: MellatPaymentErrorService,
+    private readonly mellatPaymentErrorService: MellatPaymentErrorService
   ) {}
 }

@@ -5,6 +5,6 @@ import { PatternCategory } from '@/modules/pattern-category/domain/pattern-categ
 @Resolver(() => PatternCategory)
 export class PatternCategoryResolver {
   constructor(
-    private readonly patternCategoryService: PatternCategoryService,
+    private readonly patternCategoryService: PatternCategoryService
   ) {}
 }

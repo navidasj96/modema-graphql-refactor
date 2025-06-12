@@ -52,7 +52,7 @@ export class State {
 
   @OneToMany(
     () => BasicCarpetDesigner,
-    (basicCarpetDesigner) => basicCarpetDesigner.state,
+    (basicCarpetDesigner) => basicCarpetDesigner.state
   )
   basicCarpetDesigners: BasicCarpetDesigner[];
 
@@ -64,13 +64,13 @@ export class State {
 
   @OneToMany(
     () => ReturnRequestAddress,
-    (returnRequestAddress) => returnRequestAddress.state,
+    (returnRequestAddress) => returnRequestAddress.state
   )
   returnRequestAddresses: ReturnRequestAddress[];
 
   @OneToMany(
     () => SenderInformation,
-    (senderInformation) => senderInformation.state,
+    (senderInformation) => senderInformation.state
   )
   senderInformations: SenderInformation[];
 

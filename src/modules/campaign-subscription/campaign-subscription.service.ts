@@ -16,7 +16,10 @@ export class CampaignSubscriptionService {
     return `This action returns a #${id} campaignSubscription`;
   }
 
-  update(id: number, updateCampaignSubscriptionInput: UpdateCampaignSubscriptionInput) {
+  update(
+    id: number,
+    updateCampaignSubscriptionInput: UpdateCampaignSubscriptionInput
+  ) {
     return `This action updates a #${id} campaignSubscription`;
   }
 

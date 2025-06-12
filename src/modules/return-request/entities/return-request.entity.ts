@@ -142,31 +142,31 @@ export class ReturnRequest {
 
   @OneToMany(
     () => ReturnRequestAddress,
-    (returnRequestAddress) => returnRequestAddress.returnRequest,
+    (returnRequestAddress) => returnRequestAddress.returnRequest
   )
   returnRequestAddresses: ReturnRequestAddress[];
 
   @OneToOne(
     () => ReturnRequestHistory,
-    (returnRequestHistory) => returnRequestHistory.parent,
+    (returnRequestHistory) => returnRequestHistory.parent
   )
   returnRequestHistories: ReturnRequestHistory;
 
   @OneToMany(
     () => ReturnRequestItemHistory,
-    (returnRequestItemHistory) => returnRequestItemHistory.returnRequest,
+    (returnRequestItemHistory) => returnRequestItemHistory.returnRequest
   )
   returnRequestItemHistories: ReturnRequestItemHistory[];
 
   @OneToMany(
     () => ReturnRequestItem,
-    (returnRequestItem) => returnRequestItem.returnRequest,
+    (returnRequestItem) => returnRequestItem.returnRequest
   )
   returnRequestItems: ReturnRequestItem[];
 
   @OneToMany(
     () => ReturnRequestReturnStatus,
-    (returnRequestReturnStatus) => returnRequestReturnStatus.returnRequest,
+    (returnRequestReturnStatus) => returnRequestReturnStatus.returnRequest
   )
   returnRequestReturnStatuses: ReturnRequestReturnStatus[];
 
@@ -187,7 +187,7 @@ export class ReturnRequest {
   @OneToOne(
     () => ReturnRequest,
     (returnRequest) => returnRequest.returnRequests,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'parent_id', referencedColumnName: 'id' }])
   parent: ReturnRequest;
@@ -198,7 +198,7 @@ export class ReturnRequest {
   @ManyToOne(
     () => ReturnStatus,
     (returnStatus) => returnStatus.returnRequests,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_status_id', referencedColumnName: 'id' }])
   returnStatus: ReturnStatus;

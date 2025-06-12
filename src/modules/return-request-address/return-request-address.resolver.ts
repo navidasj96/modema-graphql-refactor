@@ -5,6 +5,6 @@ import { ReturnRequestAddress } from '@/modules/return-request-address/domain/re
 @Resolver(() => ReturnRequestAddress)
 export class ReturnRequestAddressResolver {
   constructor(
-    private readonly returnRequestAddressService: ReturnRequestAddressService,
+    private readonly returnRequestAddressService: ReturnRequestAddressService
   ) {}
 }

@@ -12,7 +12,7 @@ export class BasicCarpetBorderService {
      * Inject basicCarpetBorderRepository
      */
     @InjectRepository(BasicCarpetBorder)
-    private readonly basicCarpetBorderRepository: Repository<BasicCarpetBorder>,
+    private readonly basicCarpetBorderRepository: Repository<BasicCarpetBorder>
   ) {}
 
   create(createBasicCarpetBorderInput: CreateBasicCarpetBorderInput) {
@@ -29,7 +29,7 @@ export class BasicCarpetBorderService {
 
   update(
     id: number,
-    updateBasicCarpetBorderInput: UpdateBasicCarpetBorderInput,
+    updateBasicCarpetBorderInput: UpdateBasicCarpetBorderInput
   ) {
     return `This action updates a #${id} basicCarpetBorder`;
   }

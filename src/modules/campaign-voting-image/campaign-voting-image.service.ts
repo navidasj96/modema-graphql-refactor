@@ -16,7 +16,10 @@ export class CampaignVotingImageService {
     return `This action returns a #${id} campaignVotingImage`;
   }
 
-  update(id: number, updateCampaignVotingImageInput: UpdateCampaignVotingImageInput) {
+  update(
+    id: number,
+    updateCampaignVotingImageInput: UpdateCampaignVotingImageInput
+  ) {
     return `This action updates a #${id} campaignVotingImage`;
   }
 

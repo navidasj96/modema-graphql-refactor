@@ -46,7 +46,7 @@ export class SubproductSpecialImage {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.subproductSpecialImages,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

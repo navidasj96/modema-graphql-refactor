@@ -4,7 +4,9 @@ import { UpdateWithdrawalRequestStatusInput } from './dto/update-withdrawal-requ
 
 @Injectable()
 export class WithdrawalRequestStatusService {
-  create(createWithdrawalRequestStatusInput: CreateWithdrawalRequestStatusInput) {
+  create(
+    createWithdrawalRequestStatusInput: CreateWithdrawalRequestStatusInput
+  ) {
     return 'This action adds a new withdrawalRequestStatus';
   }
 
@@ -16,7 +18,10 @@ export class WithdrawalRequestStatusService {
     return `This action returns a #${id} withdrawalRequestStatus`;
   }
 
-  update(id: number, updateWithdrawalRequestStatusInput: UpdateWithdrawalRequestStatusInput) {
+  update(
+    id: number,
+    updateWithdrawalRequestStatusInput: UpdateWithdrawalRequestStatusInput
+  ) {
     return `This action updates a #${id} withdrawalRequestStatus`;
   }
 

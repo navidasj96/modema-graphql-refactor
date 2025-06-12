@@ -12,12 +12,12 @@ import { Product } from '@/modules/product/entities/product.entity';
 @Index(
   'product_color_sales_basic_carpet_color_id_index',
   ['basicCarpetColorId'],
-  {},
+  {}
 )
 @Index(
   'product_color_sales_product_id_basic_carpet_color_id_unique',
   ['productId', 'basicCarpetColorId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('product_color_sales_product_id_index', ['productId'], {})
 @Entity('product_color_sales', { schema: 'modema' })
@@ -55,7 +55,7 @@ export class ProductColorSale {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.productColorSales,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
   basicCarpetColor: BasicCarpetColor;

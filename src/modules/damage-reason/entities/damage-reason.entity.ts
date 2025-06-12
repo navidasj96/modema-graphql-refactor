@@ -23,7 +23,7 @@ export class DamageReason {
 
   @OneToMany(
     () => InvoiceProductItem,
-    (invoiceProductItem) => invoiceProductItem.damageReason,
+    (invoiceProductItem) => invoiceProductItem.damageReason
   )
   invoiceProductItems: InvoiceProductItem[];
 }

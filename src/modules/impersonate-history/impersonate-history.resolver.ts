@@ -5,6 +5,6 @@ import { ImpersonateHistory } from '@/modules/impersonate-history/domain/imperso
 @Resolver(() => ImpersonateHistory)
 export class ImpersonateHistoryResolver {
   constructor(
-    private readonly impersonateHistoryService: ImpersonateHistoryService,
+    private readonly impersonateHistoryService: ImpersonateHistoryService
   ) {}
 }

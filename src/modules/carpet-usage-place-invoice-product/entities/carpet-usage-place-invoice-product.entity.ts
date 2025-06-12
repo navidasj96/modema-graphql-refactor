@@ -12,12 +12,12 @@ import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-produ
 @Index(
   'carpet_usage_place_invoice_product_carpet_usage_place_id_index',
   ['carpetUsagePlaceId'],
-  {},
+  {}
 )
 @Index(
   'carpet_usage_place_invoice_product_invoice_product_id_index',
   ['invoiceProductId'],
-  {},
+  {}
 )
 @Entity('carpet_usage_place_invoice_product', { schema: 'modema' })
 export class CarpetUsagePlaceInvoiceProduct {
@@ -42,7 +42,7 @@ export class CarpetUsagePlaceInvoiceProduct {
   @ManyToOne(
     () => CarpetUsagePlace,
     (carpetUsagePlace) => carpetUsagePlace.carpetUsagePlaceInvoiceProducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'carpet_usage_place_id', referencedColumnName: 'id' }])
   carpetUsagePlace: CarpetUsagePlace;
@@ -50,7 +50,7 @@ export class CarpetUsagePlaceInvoiceProduct {
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.carpetUsagePlaceInvoiceProducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;

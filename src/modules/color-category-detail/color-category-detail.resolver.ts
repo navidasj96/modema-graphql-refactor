@@ -5,6 +5,6 @@ import { ColorCategoryDetail } from './domain/color-category-detail';
 @Resolver(() => ColorCategoryDetail)
 export class ColorCategoryDetailResolver {
   constructor(
-    private readonly colorCategoryDetailService: ColorCategoryDetailService,
+    private readonly colorCategoryDetailService: ColorCategoryDetailService
   ) {}
 }

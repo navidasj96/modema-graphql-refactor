@@ -12,12 +12,12 @@ import { InvoiceReversal } from '@/modules/invoice-reversal/entities/invoice-rev
 @Index(
   'invoice_reversal_items_invoice_product_id_index',
   ['invoiceProductId'],
-  {},
+  {}
 )
 @Index(
   'invoice_reversal_items_invoice_reversal_id_index',
   ['invoiceReversalId'],
-  {},
+  {}
 )
 @Entity('invoice_reversal_items', { schema: 'modema' })
 export class InvoiceReversalItem {
@@ -45,7 +45,7 @@ export class InvoiceReversalItem {
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.invoiceReversalItems,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;
@@ -53,7 +53,7 @@ export class InvoiceReversalItem {
   @ManyToOne(
     () => InvoiceReversal,
     (invoiceReversal) => invoiceReversal.invoiceReversalItems,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_reversal_id', referencedColumnName: 'id' }])
   invoiceReversal: InvoiceReversal;

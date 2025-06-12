@@ -5,6 +5,6 @@ import { CampaignVotingImage } from './domain/campaign-voting-image';
 @Resolver(() => CampaignVotingImage)
 export class CampaignVotingImageResolver {
   constructor(
-    private readonly campaignVotingImageService: CampaignVotingImageService,
+    private readonly campaignVotingImageService: CampaignVotingImageService
   ) {}
 }

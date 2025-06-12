@@ -37,7 +37,7 @@ export class AttributeItem {
   @ManyToOne(
     () => AttributeGroup,
     (attributeGroup) => attributeGroup.attributeItems,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'attribute_group_id', referencedColumnName: 'id' }])
   attributeGroup?: AttributeGroup;
@@ -51,13 +51,13 @@ export class AttributeItem {
 
   @OneToMany(
     () => AttributeProduct,
-    (attributeProduct) => attributeProduct.attributeItem,
+    (attributeProduct) => attributeProduct.attributeItem
   )
   attributeProducts?: AttributeProduct[];
 
   @OneToMany(
     () => AttributeSubproduct,
-    (attributeSubproduct) => attributeSubproduct.attributeItem,
+    (attributeSubproduct) => attributeSubproduct.attributeItem
   )
   attributeSubproducts?: AttributeSubproduct[];
 }

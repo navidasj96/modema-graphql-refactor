@@ -13,17 +13,17 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'needs_photography_subproducts_announced_user_id_index',
   ['announcedUserId'],
-  {},
+  {}
 )
 @Index(
   'needs_photography_subproducts_photography_user_id_index',
   ['photographyUserId'],
-  {},
+  {}
 )
 @Index(
   'needs_photography_subproducts_subproduct_id_index',
   ['subproductId'],
-  {},
+  {}
 )
 @Entity('needs_photography_subproducts', { schema: 'modema' })
 export class NeedsPhotographySubproduct {
@@ -75,7 +75,7 @@ export class NeedsPhotographySubproduct {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.needsPhotographySubproducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct?: Subproduct;

@@ -16,7 +16,10 @@ export class ImpersonateHistoryService {
     return `This action returns a #${id} impersonateHistory`;
   }
 
-  update(id: number, updateImpersonateHistoryInput: UpdateImpersonateHistoryInput) {
+  update(
+    id: number,
+    updateImpersonateHistoryInput: UpdateImpersonateHistoryInput
+  ) {
     return `This action updates a #${id} impersonateHistory`;
   }
 

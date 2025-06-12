@@ -16,7 +16,10 @@ export class ChaparSettlementStatusService {
     return `This action returns a #${id} chaparSettlementStatus`;
   }
 
-  update(id: number, updateChaparSettlementStatusInput: UpdateChaparSettlementStatusInput) {
+  update(
+    id: number,
+    updateChaparSettlementStatusInput: UpdateChaparSettlementStatusInput
+  ) {
     return `This action updates a #${id} chaparSettlementStatus`;
   }
 

@@ -5,6 +5,6 @@ import { InvoicePaymentStatus } from '@/modules/invoice-payment-status/domain/in
 @Resolver(() => InvoicePaymentStatus)
 export class InvoicePaymentStatusResolver {
   constructor(
-    private readonly invoicePaymentStatusService: InvoicePaymentStatusService,
+    private readonly invoicePaymentStatusService: InvoicePaymentStatusService
   ) {}
 }

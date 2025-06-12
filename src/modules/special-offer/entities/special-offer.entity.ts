@@ -11,12 +11,12 @@ import { Product } from '@/modules/product/entities/product.entity';
 @Index(
   'special_offers_special_offer_product_id_index',
   ['specialOfferProductId'],
-  {},
+  {}
 )
 @Index(
   'special_offers_wonderful_offer_product_id_index',
   ['wonderfulOfferProductId'],
-  {},
+  {}
 )
 @Entity('special_offers', { schema: 'modema' })
 export class SpecialOffer {

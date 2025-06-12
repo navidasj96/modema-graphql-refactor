@@ -16,7 +16,10 @@ export class ProductColorImageService {
     return `This action returns a #${id} productColorImage`;
   }
 
-  update(id: number, updateProductColorImageInput: UpdateProductColorImageInput) {
+  update(
+    id: number,
+    updateProductColorImageInput: UpdateProductColorImageInput
+  ) {
     return `This action updates a #${id} productColorImage`;
   }
 

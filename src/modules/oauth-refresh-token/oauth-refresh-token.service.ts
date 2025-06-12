@@ -16,7 +16,10 @@ export class OauthRefreshTokenService {
     return `This action returns a #${id} oauthRefreshToken`;
   }
 
-  update(id: number, updateOauthRefreshTokenInput: UpdateOauthRefreshTokenInput) {
+  update(
+    id: number,
+    updateOauthRefreshTokenInput: UpdateOauthRefreshTokenInput
+  ) {
     return `This action updates a #${id} oauthRefreshToken`;
   }
 

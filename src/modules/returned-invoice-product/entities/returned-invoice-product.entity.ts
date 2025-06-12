@@ -14,13 +14,13 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'returned_invoice_products_invoice_product_id_index',
   ['invoiceProductId'],
-  {},
+  {}
 )
 @Index('returned_invoice_products_product_id_index', ['productId'], {})
 @Index(
   'returned_invoice_products_returned_invoice_id_index',
   ['returnedInvoiceId'],
-  {},
+  {}
 )
 @Index('returned_invoice_products_subproduct_id_index', ['subproductId'], {})
 @Entity('returned_invoice_products', { schema: 'modema' })
@@ -55,7 +55,7 @@ export class ReturnedInvoiceProduct {
   @ManyToOne(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.returnedInvoiceProducts,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'invoice_product_id', referencedColumnName: 'id' }])
   invoiceProduct: InvoiceProduct;
@@ -70,7 +70,7 @@ export class ReturnedInvoiceProduct {
   @ManyToOne(
     () => ReturnedInvoice,
     (returnedInvoice) => returnedInvoice.returnedInvoiceProducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'returned_invoice_id', referencedColumnName: 'id' }])
   returnedInvoice: ReturnedInvoice;
@@ -78,7 +78,7 @@ export class ReturnedInvoiceProduct {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.returnedInvoiceProducts,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

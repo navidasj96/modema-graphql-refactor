@@ -5,6 +5,6 @@ import { ReturnedInvoiceProduct } from '@/modules/returned-invoice-product/domai
 @Resolver(() => ReturnedInvoiceProduct)
 export class ReturnedInvoiceProductResolver {
   constructor(
-    private readonly returnedInvoiceProductService: ReturnedInvoiceProductService,
+    private readonly returnedInvoiceProductService: ReturnedInvoiceProductService
   ) {}
 }

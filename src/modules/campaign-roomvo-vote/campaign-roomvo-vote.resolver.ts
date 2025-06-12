@@ -5,6 +5,6 @@ import { CampaignRoomvoVote } from './domain/campaign-roomvo-vote';
 @Resolver(() => CampaignRoomvoVote)
 export class CampaignRoomvoVoteResolver {
   constructor(
-    private readonly campaignRoomvoVoteService: CampaignRoomvoVoteService,
+    private readonly campaignRoomvoVoteService: CampaignRoomvoVoteService
   ) {}
 }

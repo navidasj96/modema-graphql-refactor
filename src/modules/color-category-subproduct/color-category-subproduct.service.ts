@@ -4,7 +4,9 @@ import { UpdateColorCategorySubproductInput } from './dto/update-color-category-
 
 @Injectable()
 export class ColorCategorySubproductService {
-  create(createColorCategorySubproductInput: CreateColorCategorySubproductInput) {
+  create(
+    createColorCategorySubproductInput: CreateColorCategorySubproductInput
+  ) {
     return 'This action adds a new colorCategorySubproduct';
   }
 
@@ -16,7 +18,10 @@ export class ColorCategorySubproductService {
     return `This action returns a #${id} colorCategorySubproduct`;
   }
 
-  update(id: number, updateColorCategorySubproductInput: UpdateColorCategorySubproductInput) {
+  update(
+    id: number,
+    updateColorCategorySubproductInput: UpdateColorCategorySubproductInput
+  ) {
     return `This action updates a #${id} colorCategorySubproduct`;
   }
 

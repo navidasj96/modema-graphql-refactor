@@ -5,6 +5,6 @@ import { ModemaAccelerator } from '@/modules/modema-accelerator/domain/modema-ac
 @Resolver(() => ModemaAccelerator)
 export class ModemaAcceleratorResolver {
   constructor(
-    private readonly modemaAcceleratorService: ModemaAcceleratorService,
+    private readonly modemaAcceleratorService: ModemaAcceleratorService
   ) {}
 }

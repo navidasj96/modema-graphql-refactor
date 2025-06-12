@@ -5,6 +5,6 @@ import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/in
 @Resolver(() => InvoiceProductStatus)
 export class InvoiceProductStatusResolver {
   constructor(
-    private readonly invoiceProductStatusService: InvoiceProductStatusService,
+    private readonly invoiceProductStatusService: InvoiceProductStatusService
   ) {}
 }

@@ -5,6 +5,6 @@ import { CarpetFeatureUser } from './domain/carpet-feature-user';
 @Resolver(() => CarpetFeatureUser)
 export class CarpetFeatureUserResolver {
   constructor(
-    private readonly carpetFeatureUserService: CarpetFeatureUserService,
+    private readonly carpetFeatureUserService: CarpetFeatureUserService
   ) {}
 }

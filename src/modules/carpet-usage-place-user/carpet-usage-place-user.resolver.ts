@@ -5,6 +5,6 @@ import { CarpetUsagePlaceUser } from './domain/carpet-usage-place-user';
 @Resolver(() => CarpetUsagePlaceUser)
 export class CarpetUsagePlaceUserResolver {
   constructor(
-    private readonly carpetUsagePlaceUserService: CarpetUsagePlaceUserService,
+    private readonly carpetUsagePlaceUserService: CarpetUsagePlaceUserService
   ) {}
 }

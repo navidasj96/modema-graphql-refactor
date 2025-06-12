@@ -4,7 +4,9 @@ import { UpdateCampaignVotingImageUserInput } from './dto/update-campaign-voting
 
 @Injectable()
 export class CampaignVotingImageUserService {
-  create(createCampaignVotingImageUserInput: CreateCampaignVotingImageUserInput) {
+  create(
+    createCampaignVotingImageUserInput: CreateCampaignVotingImageUserInput
+  ) {
     return 'This action adds a new campaignVotingImageUser';
   }
 
@@ -16,7 +18,10 @@ export class CampaignVotingImageUserService {
     return `This action returns a #${id} campaignVotingImageUser`;
   }
 
-  update(id: number, updateCampaignVotingImageUserInput: UpdateCampaignVotingImageUserInput) {
+  update(
+    id: number,
+    updateCampaignVotingImageUserInput: UpdateCampaignVotingImageUserInput
+  ) {
     return `This action updates a #${id} campaignVotingImageUser`;
   }
 

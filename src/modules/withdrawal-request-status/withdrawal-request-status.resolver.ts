@@ -5,6 +5,6 @@ import { WithdrawalRequestStatus } from '@/modules/withdrawal-request-status/dom
 @Resolver(() => WithdrawalRequestStatus)
 export class WithdrawalRequestStatusResolver {
   constructor(
-    private readonly withdrawalRequestStatusService: WithdrawalRequestStatusService,
+    private readonly withdrawalRequestStatusService: WithdrawalRequestStatusService
   ) {}
 }

@@ -11,7 +11,7 @@ export class AddressService {
    * Inject AddressRepository
    */(
     @InjectRepository(Address)
-    private readonly addressRepository: Repository<Address>,
+    private readonly addressRepository: Repository<Address>
   ) {}
 
   create(createAddressInput: CreateAddressInput) {

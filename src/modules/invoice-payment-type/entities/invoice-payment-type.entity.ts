@@ -19,19 +19,19 @@ export class InvoicePaymentType {
 
   @OneToMany(
     () => InvoicePaymentHistory,
-    (invoicePaymentHistory) => invoicePaymentHistory.invoicePaymentType,
+    (invoicePaymentHistory) => invoicePaymentHistory.invoicePaymentType
   )
   invoicePaymentHistories: InvoicePaymentHistory[];
 
   @OneToMany(
     () => InvoicePayment,
-    (invoicePayment) => invoicePayment.invoicePaymentType,
+    (invoicePayment) => invoicePayment.invoicePaymentType
   )
   invoicePayments: InvoicePayment[];
 
   @OneToMany(
     () => PreorderRegister,
-    (preorderRegister) => preorderRegister.paymentType,
+    (preorderRegister) => preorderRegister.paymentType
   )
   preorderRegisters: PreorderRegister[];
 }

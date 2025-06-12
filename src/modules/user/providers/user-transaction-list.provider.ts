@@ -22,7 +22,7 @@ export class UserTransactionListProvider {
     /**
      * inject invoiceHistoryService
      */
-    private readonly invoiceHistoryService: InvoiceHistoryService,
+    private readonly invoiceHistoryService: InvoiceHistoryService
   ) {}
 
   public async userTransactionList(userId: number) {
@@ -35,7 +35,7 @@ export class UserTransactionListProvider {
 
     //load wallet histories
     const walletHistories = await this.walletHistoryService.userWalletHistories(
-      user.id,
+      user.id
     );
 
     //  Load invoice histories and invoices
@@ -66,7 +66,7 @@ export class UserTransactionListProvider {
             (payment) =>
               payment.invoicePaymentTypeId !==
                 InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
-              payment.isConfirmed,
+              payment.isConfirmed
           )
           .reduce((sum, p) => sum + Number(p.amount), 0);
 
@@ -77,7 +77,7 @@ export class UserTransactionListProvider {
                 InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
               !payment.forShipping &&
               payment.isConfirmed &&
-              Number(payment.amount) > 0,
+              Number(payment.amount) > 0
           )
           .reduce((sum, payment) => sum + Number(payment.amount), 0);
 
@@ -88,7 +88,7 @@ export class UserTransactionListProvider {
                 InvoicePaymentType.INVOICE_PAYMENT_TYPE_BY_WALLET &&
               !payment.forShipping &&
               payment.isConfirmed &&
-              Number(payment.amount) < 0,
+              Number(payment.amount) < 0
           )
           .reduce((sum, payment) => sum + Number(payment.amount), 0);
 
@@ -99,7 +99,7 @@ export class UserTransactionListProvider {
           totalWalletDecreased,
           totalWalletIncreased,
         };
-      },
+      }
     );
 
     return {

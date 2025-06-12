@@ -5,6 +5,6 @@ import { WithdrawalRequest } from '@/modules/withdrawal-request/domain/withdrawa
 @Resolver(() => WithdrawalRequest)
 export class WithdrawalRequestResolver {
   constructor(
-    private readonly withdrawalRequestService: WithdrawalRequestService,
+    private readonly withdrawalRequestService: WithdrawalRequestService
   ) {}
 }

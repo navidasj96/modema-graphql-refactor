@@ -2,7 +2,9 @@ import { CreateCampaignVotingImageUserInput } from './create-campaign-voting-ima
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCampaignVotingImageUserInput extends PartialType(CreateCampaignVotingImageUserInput) {
+export class UpdateCampaignVotingImageUserInput extends PartialType(
+  CreateCampaignVotingImageUserInput
+) {
   @Field(() => Int)
   id: number;
 }

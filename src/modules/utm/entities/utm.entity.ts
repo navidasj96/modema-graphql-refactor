@@ -10,7 +10,7 @@ import { UserUtm } from '@/modules/user-utm/entities/user-utm.entity';
 @Index(
   'utms_utm_source_utm_medium_unique',
   ['utmSource', 'utmMedium', 'utmCampaign', 'utmContent'],
-  { unique: true },
+  { unique: true }
 )
 @Entity('utms', { schema: 'modema' })
 export class Utm {

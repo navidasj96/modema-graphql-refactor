@@ -4,7 +4,9 @@ import { UpdateProductionPadProductionPadStatusInput } from './dto/update-produc
 
 @Injectable()
 export class ProductionPadProductionPadStatusService {
-  create(createProductionPadProductionPadStatusInput: CreateProductionPadProductionPadStatusInput) {
+  create(
+    createProductionPadProductionPadStatusInput: CreateProductionPadProductionPadStatusInput
+  ) {
     return 'This action adds a new productionPadProductionPadStatus';
   }
 
@@ -16,7 +18,10 @@ export class ProductionPadProductionPadStatusService {
     return `This action returns a #${id} productionPadProductionPadStatus`;
   }
 
-  update(id: number, updateProductionPadProductionPadStatusInput: UpdateProductionPadProductionPadStatusInput) {
+  update(
+    id: number,
+    updateProductionPadProductionPadStatusInput: UpdateProductionPadProductionPadStatusInput
+  ) {
     return `This action updates a #${id} productionPadProductionPadStatus`;
   }
 

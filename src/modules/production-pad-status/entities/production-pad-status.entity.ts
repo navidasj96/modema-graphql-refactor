@@ -22,13 +22,13 @@ export class ProductionPadStatus {
   @OneToMany(
     () => ProductionPadProductionPadStatus,
     (productionPadProductionPadStatus) =>
-      productionPadProductionPadStatus.productionPadStatus,
+      productionPadProductionPadStatus.productionPadStatus
   )
   productionPadProductionPadStatuses: ProductionPadProductionPadStatus[];
 
   @OneToMany(
     () => ProductionPad,
-    (productionPad) => productionPad.productionPadStatus,
+    (productionPad) => productionPad.productionPadStatus
   )
   productionPads: ProductionPad[];
 }

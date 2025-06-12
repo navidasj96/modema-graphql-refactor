@@ -5,6 +5,6 @@ import { RetargetingWalletCharge } from '@/modules/retargeting-wallet-charge/dom
 @Resolver(() => RetargetingWalletCharge)
 export class RetargetingWalletChargeResolver {
   constructor(
-    private readonly retargetingWalletChargeService: RetargetingWalletChargeService,
+    private readonly retargetingWalletChargeService: RetargetingWalletChargeService
   ) {}
 }

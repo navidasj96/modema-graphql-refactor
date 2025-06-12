@@ -2,7 +2,9 @@ import { CreateChaparSettlementStatusInput } from './create-chapar-settlement-st
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateChaparSettlementStatusInput extends PartialType(CreateChaparSettlementStatusInput) {
+export class UpdateChaparSettlementStatusInput extends PartialType(
+  CreateChaparSettlementStatusInput
+) {
   @Field(() => Int)
   id: number;
 }

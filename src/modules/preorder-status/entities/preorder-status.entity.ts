@@ -18,7 +18,7 @@ export class PreorderStatus {
 
   @OneToMany(
     () => PreorderPreorderStatus,
-    (preorderPreorderStatus) => preorderPreorderStatus.preorderStatus,
+    (preorderPreorderStatus) => preorderPreorderStatus.preorderStatus
   )
   preorderPreorderStatuses: PreorderPreorderStatus[];
 

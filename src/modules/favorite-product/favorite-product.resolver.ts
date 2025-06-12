@@ -5,6 +5,6 @@ import { FavoriteProduct } from './domain/favorite-product';
 @Resolver(() => FavoriteProduct)
 export class FavoriteProductResolver {
   constructor(
-    private readonly favoriteProductService: FavoriteProductService,
+    private readonly favoriteProductService: FavoriteProductService
   ) {}
 }

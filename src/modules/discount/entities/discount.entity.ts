@@ -116,7 +116,7 @@ export class Discount {
 
   @OneToMany(
     () => DiscountSubject,
-    (discountSubject) => discountSubject.discount,
+    (discountSubject) => discountSubject.discount
   )
   discountSubjects: DiscountSubject[];
 
@@ -136,19 +136,19 @@ export class Discount {
 
   @OneToMany(
     () => IncredibleOffer,
-    (incredibleOffer) => incredibleOffer.discount,
+    (incredibleOffer) => incredibleOffer.discount
   )
   incredibleOffers: IncredibleOffer[];
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.discount_2,
+    (invoiceProductHistory) => invoiceProductHistory.discount_2
   )
   invoiceProductHistories: InvoiceProductHistory[];
 
   @OneToMany(
     () => InvoiceProduct,
-    (invoiceProduct) => invoiceProduct.discount_2,
+    (invoiceProduct) => invoiceProduct.discount_2
   )
   invoiceProducts: InvoiceProduct[];
 }

@@ -5,6 +5,6 @@ import { BasicCarpetBrand } from './domain/basic-carpet-brand';
 @Resolver(() => BasicCarpetBrand)
 export class BasicCarpetBrandResolver {
   constructor(
-    private readonly basicCarpetBrandService: BasicCarpetBrandService,
+    private readonly basicCarpetBrandService: BasicCarpetBrandService
   ) {}
 }

@@ -14,7 +14,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'campaign_uefa_euro_subscribers_contact_form_status_id_index',
   ['contactFormStatusId'],
-  {},
+  {}
 )
 @Index('campaign_uefa_euro_subscribers_mobile_unique', ['mobile'], {
   unique: true,
@@ -50,14 +50,14 @@ export class CampaignUefaEuroSubscriber {
   @OneToMany(
     () => CampaignUefaEuroSubscriberHistory,
     (campaignUefaEuroSubscriberHistory) =>
-      campaignUefaEuroSubscriberHistory.campaignUefaEuroSubscriber,
+      campaignUefaEuroSubscriberHistory.campaignUefaEuroSubscriber
   )
   campaignUefaEuroSubscriberHistories: CampaignUefaEuroSubscriberHistory[];
 
   @ManyToOne(
     () => ContactFormStatus,
     (contactFormStatus) => contactFormStatus.campaignUefaEuroSubscribers,
-    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
+    { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' }
   )
   @JoinColumn([{ name: 'contact_form_status_id', referencedColumnName: 'id' }])
   contactFormStatus: ContactFormStatus;

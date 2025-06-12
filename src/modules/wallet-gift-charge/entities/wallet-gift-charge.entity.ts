@@ -47,7 +47,7 @@ export class WalletGiftCharge {
   @OneToOne(
     () => ProductComment,
     (productComment) => productComment.walletGiftCharges,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_comment_id', referencedColumnName: 'id' }])
   productComment: ProductComment;

@@ -4,7 +4,9 @@ import { UpdateInvoiceAddressValidationResultInput } from './dto/update-invoice-
 
 @Injectable()
 export class InvoiceAddressValidationResultService {
-  create(createInvoiceAddressValidationResultInput: CreateInvoiceAddressValidationResultInput) {
+  create(
+    createInvoiceAddressValidationResultInput: CreateInvoiceAddressValidationResultInput
+  ) {
     return 'This action adds a new invoiceAddressValidationResult';
   }
 
@@ -16,7 +18,10 @@ export class InvoiceAddressValidationResultService {
     return `This action returns a #${id} invoiceAddressValidationResult`;
   }
 
-  update(id: number, updateInvoiceAddressValidationResultInput: UpdateInvoiceAddressValidationResultInput) {
+  update(
+    id: number,
+    updateInvoiceAddressValidationResultInput: UpdateInvoiceAddressValidationResultInput
+  ) {
     return `This action updates a #${id} invoiceAddressValidationResult`;
   }
 

@@ -16,7 +16,10 @@ export class ContactFormStatusService {
     return `This action returns a #${id} contactFormStatus`;
   }
 
-  update(id: number, updateContactFormStatusInput: UpdateContactFormStatusInput) {
+  update(
+    id: number,
+    updateContactFormStatusInput: UpdateContactFormStatusInput
+  ) {
     return `This action updates a #${id} contactFormStatus`;
   }
 

@@ -4,7 +4,9 @@ import { UpdateDesignersProductPriceRangeInput } from './dto/update-designers-pr
 
 @Injectable()
 export class DesignersProductPriceRangeService {
-  create(createDesignersProductPriceRangeInput: CreateDesignersProductPriceRangeInput) {
+  create(
+    createDesignersProductPriceRangeInput: CreateDesignersProductPriceRangeInput
+  ) {
     return 'This action adds a new designersProductPriceRange';
   }
 
@@ -16,7 +18,10 @@ export class DesignersProductPriceRangeService {
     return `This action returns a #${id} designersProductPriceRange`;
   }
 
-  update(id: number, updateDesignersProductPriceRangeInput: UpdateDesignersProductPriceRangeInput) {
+  update(
+    id: number,
+    updateDesignersProductPriceRangeInput: UpdateDesignersProductPriceRangeInput
+  ) {
     return `This action updates a #${id} designersProductPriceRange`;
   }
 

@@ -5,6 +5,6 @@ import { SubproductVideo } from '@/modules/subproduct-video/domain/subproduct-vi
 @Resolver(() => SubproductVideo)
 export class SubproductVideoResolver {
   constructor(
-    private readonly subproductVideoService: SubproductVideoService,
+    private readonly subproductVideoService: SubproductVideoService
   ) {}
 }

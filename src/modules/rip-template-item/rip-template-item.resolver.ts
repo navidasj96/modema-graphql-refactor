@@ -5,6 +5,6 @@ import { RipTemplateItem } from '@/modules/rip-template-item/domain/rip-template
 @Resolver(() => RipTemplateItem)
 export class RipTemplateItemResolver {
   constructor(
-    private readonly ripTemplateItemService: RipTemplateItemService,
+    private readonly ripTemplateItemService: RipTemplateItemService
   ) {}
 }

@@ -16,7 +16,10 @@ export class PaymentRequestStatusService {
     return `This action returns a #${id} paymentRequestStatus`;
   }
 
-  update(id: number, updatePaymentRequestStatusInput: UpdatePaymentRequestStatusInput) {
+  update(
+    id: number,
+    updatePaymentRequestStatusInput: UpdatePaymentRequestStatusInput
+  ) {
     return `This action updates a #${id} paymentRequestStatus`;
   }
 

@@ -5,6 +5,6 @@ import { PaymentMethodField } from '@/modules/payment-method-field/domain/paymen
 @Resolver(() => PaymentMethodField)
 export class PaymentMethodFieldResolver {
   constructor(
-    private readonly paymentMethodFieldService: PaymentMethodFieldService,
+    private readonly paymentMethodFieldService: PaymentMethodFieldService
   ) {}
 }

@@ -15,7 +15,7 @@ import { ProductionPadStatus } from '@/modules/production-pad-status/entities/pr
 @Index(
   'production_pads_production_pad_status_id_index',
   ['productionPadStatusId'],
-  {},
+  {}
 )
 @Entity('production_pads', { schema: 'modema' })
 export class ProductionPad {
@@ -55,14 +55,14 @@ export class ProductionPad {
   @OneToMany(
     () => ProductionPadProductionPadStatus,
     (productionPadProductionPadStatus) =>
-      productionPadProductionPadStatus.productionPad,
+      productionPadProductionPadStatus.productionPad
   )
   productionPadProductionPadStatuses: ProductionPadProductionPadStatus[];
 
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSizes) => basicCarpetSizes.productionPads,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;
@@ -70,7 +70,7 @@ export class ProductionPad {
   @ManyToOne(
     () => ProductionPadStatus,
     (productionPadStatus) => productionPadStatus.productionPads,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'production_pad_status_id', referencedColumnName: 'id' },

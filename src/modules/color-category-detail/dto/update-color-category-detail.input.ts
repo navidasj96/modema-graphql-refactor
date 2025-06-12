@@ -2,7 +2,9 @@ import { CreateColorCategoryDetailInput } from './create-color-category-detail.i
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateColorCategoryDetailInput extends PartialType(CreateColorCategoryDetailInput) {
+export class UpdateColorCategoryDetailInput extends PartialType(
+  CreateColorCategoryDetailInput
+) {
   @Field(() => Int)
   id: number;
 }

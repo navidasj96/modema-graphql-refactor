@@ -39,13 +39,13 @@ export class ReturnStatus {
 
   @OneToMany(
     () => ReturnRequestHistory,
-    (returnRequestHistory) => returnRequestHistory.returnStatus,
+    (returnRequestHistory) => returnRequestHistory.returnStatus
   )
   returnRequestHistories: ReturnRequestHistory[];
 
   @OneToMany(
     () => ReturnRequestReturnStatus,
-    (returnRequestReturnStatus) => returnRequestReturnStatus.returnStatus,
+    (returnRequestReturnStatus) => returnRequestReturnStatus.returnStatus
   )
   returnRequestReturnStatuses: ReturnRequestReturnStatus[];
 

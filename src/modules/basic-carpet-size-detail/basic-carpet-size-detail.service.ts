@@ -16,7 +16,10 @@ export class BasicCarpetSizeDetailService {
     return `This action returns a #${id} basicCarpetSizeDetail`;
   }
 
-  update(id: number, updateBasicCarpetSizeDetailInput: UpdateBasicCarpetSizeDetailInput) {
+  update(
+    id: number,
+    updateBasicCarpetSizeDetailInput: UpdateBasicCarpetSizeDetailInput
+  ) {
     return `This action updates a #${id} basicCarpetSizeDetail`;
   }
 

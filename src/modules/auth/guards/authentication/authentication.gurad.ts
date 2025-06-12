@@ -26,7 +26,7 @@ export class AuthenticationGuard implements CanActivate {
     /**
      * inject accessTokenGuard
      */
-    private readonly accessTokenGuard: AccessTokenGuard,
+    private readonly accessTokenGuard: AccessTokenGuard
   ) {
     this.authTypeGuardMap = {
       [AuthType.Bearer]: this.accessTokenGuard,
@@ -49,7 +49,7 @@ export class AuthenticationGuard implements CanActivate {
     // if we have 1 None the controller will become public even if it has a Bearer metaData
     for (const guard of guards) {
       const canActivate = await Promise.resolve(
-        guard.canActivate(context),
+        guard.canActivate(context)
       ).catch((err) => {});
 
       if (canActivate) {

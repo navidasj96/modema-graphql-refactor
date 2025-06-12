@@ -5,6 +5,6 @@ import { DesignersProductPriceRange } from './domain/designers-product-price-ran
 @Resolver(() => DesignersProductPriceRange)
 export class DesignersProductPriceRangeResolver {
   constructor(
-    private readonly designersProductPriceRangeService: DesignersProductPriceRangeService,
+    private readonly designersProductPriceRangeService: DesignersProductPriceRangeService
   ) {}
 }

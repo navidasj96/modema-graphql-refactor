@@ -2,7 +2,9 @@ import { CreateCustomerVideoProductInput } from './create-customer-video-product
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCustomerVideoProductInput extends PartialType(CreateCustomerVideoProductInput) {
+export class UpdateCustomerVideoProductInput extends PartialType(
+  CreateCustomerVideoProductInput
+) {
   @Field(() => Int)
   id: number;
 }

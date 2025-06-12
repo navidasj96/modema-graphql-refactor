@@ -4,7 +4,7 @@ import { Permission } from '@/modules/permission/entities/permission.entity';
 @Index(
   'model_has_permissions_model_type_model_id_index',
   ['modelType', 'modelId'],
-  {},
+  {}
 )
 @Entity('model_has_permissions', { schema: 'modema' })
 export class ModelHasPermission {

@@ -5,6 +5,6 @@ import { VisitorGroupRate } from '@/modules/visitor-group-rate/domain/visitor-gr
 @Resolver(() => VisitorGroupRate)
 export class VisitorGroupRateResolver {
   constructor(
-    private readonly visitorGroupRateService: VisitorGroupRateService,
+    private readonly visitorGroupRateService: VisitorGroupRateService
   ) {}
 }

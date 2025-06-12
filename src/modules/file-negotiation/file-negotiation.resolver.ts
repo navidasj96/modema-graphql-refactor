@@ -5,6 +5,6 @@ import { FileNegotiation } from './domain/file-negotiation';
 @Resolver(() => FileNegotiation)
 export class FileNegotiationResolver {
   constructor(
-    private readonly fileNegotiationService: FileNegotiationService,
+    private readonly fileNegotiationService: FileNegotiationService
   ) {}
 }

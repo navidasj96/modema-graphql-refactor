@@ -2,7 +2,9 @@ import { CreateCampaignInstagramFollowInput } from './create-campaign-instagram-
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCampaignInstagramFollowInput extends PartialType(CreateCampaignInstagramFollowInput) {
+export class UpdateCampaignInstagramFollowInput extends PartialType(
+  CreateCampaignInstagramFollowInput
+) {
   @Field(() => Int)
   id: number;
 }

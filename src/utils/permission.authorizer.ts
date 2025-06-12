@@ -5,7 +5,7 @@ import { CustomAuthorizer } from '@ptc-org/nestjs-query-graphql';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 
 export function PermissionsAuthorizer(
-  permission: string[],
+  permission: string[]
 ): new () => CustomAuthorizer<any> {
   @Injectable()
   class SubTaskAuthorizerWithPermission implements CustomAuthorizer<any> {

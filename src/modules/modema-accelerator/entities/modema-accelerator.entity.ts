@@ -39,13 +39,13 @@ export class ModemaAccelerator {
 
   @OneToMany(
     () => ModemaAcceleratorImage,
-    (modemaAcceleratorImage) => modemaAcceleratorImage.modemaAccelerator,
+    (modemaAcceleratorImage) => modemaAcceleratorImage.modemaAccelerator
   )
   modemaAcceleratorImages: ModemaAcceleratorImage[];
 
   @OneToMany(
     () => ModemaAcceleratorVideo,
-    (modemaAcceleratorVideo) => modemaAcceleratorVideo.modemaAccelerator,
+    (modemaAcceleratorVideo) => modemaAcceleratorVideo.modemaAccelerator
   )
   modemaAcceleratorVideos: ModemaAcceleratorVideo[];
 }

@@ -16,7 +16,7 @@ import { ProductComment } from '@/modules/product-comment/entities/product-comme
 @Index(
   'product_rate_rate_id_product_comment_id_unique',
   ['rateId', 'productCommentId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('product_rates_product_id_index', ['productId'], {})
 @Index('product_rates_rate_id_index', ['rateId'], {})
@@ -95,7 +95,7 @@ export class ProductRate {
   @ManyToOne(
     () => ProductComment,
     (productComment) => productComment.productRates,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_comment_id', referencedColumnName: 'id' }])
   productComment: ProductComment;

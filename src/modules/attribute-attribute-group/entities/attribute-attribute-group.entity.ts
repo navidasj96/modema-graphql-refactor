@@ -12,7 +12,7 @@ import { Attribute } from '@/modules/attribute/entities/attribute.entity';
 @Index(
   'attribute_attribute_group_attribute_group_id_index',
   ['attributeGroupId'],
-  {},
+  {}
 )
 @Index('attribute_attribute_group_attribute_id_index', ['attributeId'], {})
 @Entity('attribute_attribute_group', { schema: 'modema' })
@@ -35,7 +35,7 @@ export class AttributeAttributeGroup {
   @ManyToOne(
     () => AttributeGroup,
     (attributeGroups) => attributeGroups.attributeAttributeGroups,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'attribute_group_id', referencedColumnName: 'id' }])
   attributeGroup: AttributeGroup;
@@ -43,7 +43,7 @@ export class AttributeAttributeGroup {
   @ManyToOne(
     () => Attribute,
     (attributes) => attributes.attributeAttributeGroups,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'attribute_id', referencedColumnName: 'id' }])
   attribute: Attribute;

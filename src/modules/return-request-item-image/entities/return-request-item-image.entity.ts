@@ -17,7 +17,7 @@ import { Image } from '@/modules/image/entities/image.entity';
 @Index(
   'return_request_item_images_return_request_item_id_index',
   ['returnRequestItemId'],
-  {},
+  {}
 )
 @Entity('return_request_item_images', { schema: 'modema' })
 export class ReturnRequestItemImage {
@@ -46,7 +46,7 @@ export class ReturnRequestItemImage {
   @ManyToOne(
     () => ReturnRequestItem,
     (returnRequestItem) => returnRequestItem.returnRequestItemImages,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
   returnRequestItem: ReturnRequestItem;

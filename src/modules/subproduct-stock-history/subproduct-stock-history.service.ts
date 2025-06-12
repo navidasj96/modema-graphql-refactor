@@ -16,7 +16,10 @@ export class SubproductStockHistoryService {
     return `This action returns a #${id} subproductStockHistory`;
   }
 
-  update(id: number, updateSubproductStockHistoryInput: UpdateSubproductStockHistoryInput) {
+  update(
+    id: number,
+    updateSubproductStockHistoryInput: UpdateSubproductStockHistoryInput
+  ) {
     return `This action updates a #${id} subproductStockHistory`;
   }
 

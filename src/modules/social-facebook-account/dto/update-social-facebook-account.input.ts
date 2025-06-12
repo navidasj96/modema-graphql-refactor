@@ -2,7 +2,9 @@ import { CreateSocialFacebookAccountInput } from './create-social-facebook-accou
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateSocialFacebookAccountInput extends PartialType(CreateSocialFacebookAccountInput) {
+export class UpdateSocialFacebookAccountInput extends PartialType(
+  CreateSocialFacebookAccountInput
+) {
   @Field(() => Int)
   id: number;
 }

@@ -5,6 +5,6 @@ import { NegotiationType } from '@/modules/negotiation-type/domain/negotiation-t
 @Resolver(() => NegotiationType)
 export class NegotiationTypeResolver {
   constructor(
-    private readonly negotiationTypeService: NegotiationTypeService,
+    private readonly negotiationTypeService: NegotiationTypeService
   ) {}
 }

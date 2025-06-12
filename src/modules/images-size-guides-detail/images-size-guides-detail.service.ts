@@ -16,7 +16,10 @@ export class ImagesSizeGuidesDetailService {
     return `This action returns a #${id} imagesSizeGuidesDetail`;
   }
 
-  update(id: number, updateImagesSizeGuidesDetailInput: UpdateImagesSizeGuidesDetailInput) {
+  update(
+    id: number,
+    updateImagesSizeGuidesDetailInput: UpdateImagesSizeGuidesDetailInput
+  ) {
     return `This action updates a #${id} imagesSizeGuidesDetail`;
   }
 

@@ -17,16 +17,16 @@ export class WalletHistoryService {
      * inject walletHistoryRepository :
      */
     @InjectRepository(WalletHistory)
-    private readonly walletHistoryRepository: Repository<WalletHistory>,
+    private readonly walletHistoryRepository: Repository<WalletHistory>
   ) {}
 
   async create(
     createWalletHistoryInput: CreateWalletHistoryInput,
-    manager?: EntityManager,
+    manager?: EntityManager
   ) {
     return await this.createWalletHistoryProvider.createWalletHistory(
       createWalletHistoryInput,
-      manager,
+      manager
     );
   }
 

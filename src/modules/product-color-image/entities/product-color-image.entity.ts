@@ -13,7 +13,7 @@ import { Product } from '@/modules/product/entities/product.entity';
 @Index(
   'product_color_images_basic_carpet_color_id_index',
   ['basicCarpetColorId'],
-  {},
+  {}
 )
 @Index('product_color_images_image_id_index', ['imageId'], {})
 @Index('product_color_images_product_id_index', ['productId'], {})
@@ -52,7 +52,7 @@ export class ProductColorImage {
   @ManyToOne(
     () => BasicCarpetColor,
     (basicCarpetColor) => basicCarpetColor.productColorImages,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_color_id', referencedColumnName: 'id' }])
   basicCarpetColor: BasicCarpetColor;

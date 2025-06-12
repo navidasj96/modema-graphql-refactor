@@ -2,7 +2,9 @@ import { CreateAttributeSubproductInput } from './create-attribute-subproduct.in
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateAttributeSubproductInput extends PartialType(CreateAttributeSubproductInput) {
+export class UpdateAttributeSubproductInput extends PartialType(
+  CreateAttributeSubproductInput
+) {
   @Field(() => Int)
   id: number;
 }

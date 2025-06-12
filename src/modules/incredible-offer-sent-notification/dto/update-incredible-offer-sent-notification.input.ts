@@ -2,7 +2,9 @@ import { CreateIncredibleOfferSentNotificationInput } from './create-incredible-
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateIncredibleOfferSentNotificationInput extends PartialType(CreateIncredibleOfferSentNotificationInput) {
+export class UpdateIncredibleOfferSentNotificationInput extends PartialType(
+  CreateIncredibleOfferSentNotificationInput
+) {
   @Field(() => Int)
   id: number;
 }

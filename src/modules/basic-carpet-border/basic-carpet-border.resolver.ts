@@ -5,6 +5,6 @@ import { BasicCarpetBorder } from './domain/basic-carpet-border';
 @Resolver(() => BasicCarpetBorder)
 export class BasicCarpetBorderResolver {
   constructor(
-    private readonly basicCarpetBorderService: BasicCarpetBorderService,
+    private readonly basicCarpetBorderService: BasicCarpetBorderService
   ) {}
 }

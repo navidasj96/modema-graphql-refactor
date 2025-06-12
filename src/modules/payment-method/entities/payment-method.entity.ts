@@ -18,7 +18,7 @@ export class PaymentMethod {
 
   @OneToMany(
     () => PaymentMethodField,
-    (paymentMethodField) => paymentMethodField.paymentMethod,
+    (paymentMethodField) => paymentMethodField.paymentMethod
   )
   paymentMethodFields: PaymentMethodField[];
 }

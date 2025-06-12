@@ -12,7 +12,7 @@ export class AutomationRfmScoreService {
      * Inject automationRfmScoreRepository
      */
     @InjectRepository(AutomationRfmScore)
-    private readonly automationRfmScoreRepository: Repository<AutomationRfmScore>,
+    private readonly automationRfmScoreRepository: Repository<AutomationRfmScore>
   ) {}
 
   create(createAutomationRfmScoreInput: CreateAutomationRfmScoreInput) {
@@ -29,7 +29,7 @@ export class AutomationRfmScoreService {
 
   update(
     id: number,
-    updateAutomationRfmScoreInput: UpdateAutomationRfmScoreInput,
+    updateAutomationRfmScoreInput: UpdateAutomationRfmScoreInput
   ) {
     return `This action updates a #${id} automationRfmScore`;
   }

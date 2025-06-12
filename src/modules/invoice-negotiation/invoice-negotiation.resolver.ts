@@ -5,6 +5,6 @@ import { InvoiceNegotiation } from '@/modules/invoice-negotiation/domain/invoice
 @Resolver(() => InvoiceNegotiation)
 export class InvoiceNegotiationResolver {
   constructor(
-    private readonly invoiceNegotiationService: InvoiceNegotiationService,
+    private readonly invoiceNegotiationService: InvoiceNegotiationService
   ) {}
 }

@@ -12,12 +12,12 @@ import { Image } from '@/modules/image/entities/image.entity';
 @Index(
   'home_page_customer_images_desktop_image_id_foreign',
   ['desktopImageId'],
-  {},
+  {}
 )
 @Index(
   'home_page_customer_images_mobile_image_id_foreign',
   ['mobileImageId'],
-  {},
+  {}
 )
 @Index('home_page_customer_images_product_id_index', ['productId'], {})
 @Entity('home_page_customer_images', { schema: 'modema' })

@@ -5,6 +5,6 @@ import { ImagesSizeGuidesDetail } from '@/modules/images-size-guides-detail/doma
 @Resolver(() => ImagesSizeGuidesDetail)
 export class ImagesSizeGuidesDetailResolver {
   constructor(
-    private readonly imagesSizeGuidesDetailService: ImagesSizeGuidesDetailService,
+    private readonly imagesSizeGuidesDetailService: ImagesSizeGuidesDetailService
   ) {}
 }

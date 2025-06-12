@@ -16,7 +16,10 @@ export class InvoiceReversalItemService {
     return `This action returns a #${id} invoiceReversalItem`;
   }
 
-  update(id: number, updateInvoiceReversalItemInput: UpdateInvoiceReversalItemInput) {
+  update(
+    id: number,
+    updateInvoiceReversalItemInput: UpdateInvoiceReversalItemInput
+  ) {
     return `This action updates a #${id} invoiceReversalItem`;
   }
 

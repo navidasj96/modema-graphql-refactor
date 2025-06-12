@@ -16,7 +16,7 @@ export class WalletResolver {
 
   @Mutation(() => UpdateWalletResponseDto)
   updateWallet(
-    @Args('updateWalletInput') updateWalletInput: UpdateWalletInput,
+    @Args('updateWalletInput') updateWalletInput: UpdateWalletInput
   ) {
     return this.walletService.update(updateWalletInput);
   }

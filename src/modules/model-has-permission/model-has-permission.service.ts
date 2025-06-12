@@ -16,7 +16,10 @@ export class ModelHasPermissionService {
     return `This action returns a #${id} modelHasPermission`;
   }
 
-  update(id: number, updateModelHasPermissionInput: UpdateModelHasPermissionInput) {
+  update(
+    id: number,
+    updateModelHasPermissionInput: UpdateModelHasPermissionInput
+  ) {
     return `This action updates a #${id} modelHasPermission`;
   }
 

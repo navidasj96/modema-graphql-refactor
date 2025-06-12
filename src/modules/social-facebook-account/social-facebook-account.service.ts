@@ -16,7 +16,10 @@ export class SocialFacebookAccountService {
     return `This action returns a #${id} socialFacebookAccount`;
   }
 
-  update(id: number, updateSocialFacebookAccountInput: UpdateSocialFacebookAccountInput) {
+  update(
+    id: number,
+    updateSocialFacebookAccountInput: UpdateSocialFacebookAccountInput
+  ) {
     return `This action updates a #${id} socialFacebookAccount`;
   }
 

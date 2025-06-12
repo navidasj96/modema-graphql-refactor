@@ -16,7 +16,10 @@ export class CarpetFeatureUserService {
     return `This action returns a #${id} carpetFeatureUser`;
   }
 
-  update(id: number, updateCarpetFeatureUserInput: UpdateCarpetFeatureUserInput) {
+  update(
+    id: number,
+    updateCarpetFeatureUserInput: UpdateCarpetFeatureUserInput
+  ) {
     return `This action updates a #${id} carpetFeatureUser`;
   }
 

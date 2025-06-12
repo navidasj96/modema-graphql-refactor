@@ -36,7 +36,7 @@ export class Video {
 
   @OneToMany(
     () => CustomerVideoProduct,
-    (customerVideoProduct) => customerVideoProduct.video,
+    (customerVideoProduct) => customerVideoProduct.video
   )
   customerVideoProducts: CustomerVideoProduct[];
 
@@ -45,7 +45,7 @@ export class Video {
 
   @OneToMany(
     () => ReturnRequestItemVideo,
-    (returnRequestItemVideo) => returnRequestItemVideo.video,
+    (returnRequestItemVideo) => returnRequestItemVideo.video
   )
   returnRequestItemVideos: ReturnRequestItemVideo[];
 

@@ -16,7 +16,10 @@ export class WithdrawalRequestService {
     return `This action returns a #${id} withdrawalRequest`;
   }
 
-  update(id: number, updateWithdrawalRequestInput: UpdateWithdrawalRequestInput) {
+  update(
+    id: number,
+    updateWithdrawalRequestInput: UpdateWithdrawalRequestInput
+  ) {
     return `This action updates a #${id} withdrawalRequest`;
   }
 

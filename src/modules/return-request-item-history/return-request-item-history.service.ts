@@ -4,7 +4,9 @@ import { UpdateReturnRequestItemHistoryInput } from './dto/update-return-request
 
 @Injectable()
 export class ReturnRequestItemHistoryService {
-  create(createReturnRequestItemHistoryInput: CreateReturnRequestItemHistoryInput) {
+  create(
+    createReturnRequestItemHistoryInput: CreateReturnRequestItemHistoryInput
+  ) {
     return 'This action adds a new returnRequestItemHistory';
   }
 
@@ -16,7 +18,10 @@ export class ReturnRequestItemHistoryService {
     return `This action returns a #${id} returnRequestItemHistory`;
   }
 
-  update(id: number, updateReturnRequestItemHistoryInput: UpdateReturnRequestItemHistoryInput) {
+  update(
+    id: number,
+    updateReturnRequestItemHistoryInput: UpdateReturnRequestItemHistoryInput
+  ) {
     return `This action updates a #${id} returnRequestItemHistory`;
   }
 

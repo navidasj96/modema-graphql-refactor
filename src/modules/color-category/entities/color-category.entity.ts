@@ -111,13 +111,13 @@ export class ColorCategory {
 
   @OneToMany(
     () => ColorCategoryDetail,
-    (colorCategoryDetails) => colorCategoryDetails.colorCategory,
+    (colorCategoryDetails) => colorCategoryDetails.colorCategory
   )
   colorCategoryDetails: ColorCategoryDetail[];
 
   @OneToMany(
     () => ColorCategorySubproduct,
-    (colorCategorySubproduct) => colorCategorySubproduct.colorCategory,
+    (colorCategorySubproduct) => colorCategorySubproduct.colorCategory
   )
   colorCategorySubproducts: ColorCategorySubproduct[];
 }

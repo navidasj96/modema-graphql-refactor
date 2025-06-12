@@ -26,7 +26,7 @@ export class RecommendedSubproduct {
   @ManyToOne(
     () => Subproduct,
     (subproduct) => subproduct.recommendedSubproducts,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'subproduct_id', referencedColumnName: 'id' }])
   subproduct: Subproduct;

@@ -4,7 +4,9 @@ import { UpdateReturnRequestReturnStatusInput } from './dto/update-return-reques
 
 @Injectable()
 export class ReturnRequestReturnStatusService {
-  create(createReturnRequestReturnStatusInput: CreateReturnRequestReturnStatusInput) {
+  create(
+    createReturnRequestReturnStatusInput: CreateReturnRequestReturnStatusInput
+  ) {
     return 'This action adds a new returnRequestReturnStatus';
   }
 
@@ -16,7 +18,10 @@ export class ReturnRequestReturnStatusService {
     return `This action returns a #${id} returnRequestReturnStatus`;
   }
 
-  update(id: number, updateReturnRequestReturnStatusInput: UpdateReturnRequestReturnStatusInput) {
+  update(
+    id: number,
+    updateReturnRequestReturnStatusInput: UpdateReturnRequestReturnStatusInput
+  ) {
     return `This action updates a #${id} returnRequestReturnStatus`;
   }
 

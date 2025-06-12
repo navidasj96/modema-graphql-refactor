@@ -4,7 +4,9 @@ import { UpdateCampaignUefaEuroSubscriberInput } from './dto/update-campaign-uef
 
 @Injectable()
 export class CampaignUefaEuroSubscriberService {
-  create(createCampaignUefaEuroSubscriberInput: CreateCampaignUefaEuroSubscriberInput) {
+  create(
+    createCampaignUefaEuroSubscriberInput: CreateCampaignUefaEuroSubscriberInput
+  ) {
     return 'This action adds a new campaignUefaEuroSubscriber';
   }
 
@@ -16,7 +18,10 @@ export class CampaignUefaEuroSubscriberService {
     return `This action returns a #${id} campaignUefaEuroSubscriber`;
   }
 
-  update(id: number, updateCampaignUefaEuroSubscriberInput: UpdateCampaignUefaEuroSubscriberInput) {
+  update(
+    id: number,
+    updateCampaignUefaEuroSubscriberInput: UpdateCampaignUefaEuroSubscriberInput
+  ) {
     return `This action updates a #${id} campaignUefaEuroSubscriber`;
   }
 

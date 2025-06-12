@@ -16,7 +16,10 @@ export class ReturnRequestItemImageService {
     return `This action returns a #${id} returnRequestItemImage`;
   }
 
-  update(id: number, updateReturnRequestItemImageInput: UpdateReturnRequestItemImageInput) {
+  update(
+    id: number,
+    updateReturnRequestItemImageInput: UpdateReturnRequestItemImageInput
+  ) {
     return `This action updates a #${id} returnRequestItemImage`;
   }
 

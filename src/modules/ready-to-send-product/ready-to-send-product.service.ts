@@ -16,7 +16,10 @@ export class ReadyToSendProductService {
     return `This action returns a #${id} readyToSendProduct`;
   }
 
-  update(id: number, updateReadyToSendProductInput: UpdateReadyToSendProductInput) {
+  update(
+    id: number,
+    updateReadyToSendProductInput: UpdateReadyToSendProductInput
+  ) {
     return `This action updates a #${id} readyToSendProduct`;
   }
 

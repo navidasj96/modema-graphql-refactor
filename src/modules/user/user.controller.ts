@@ -8,7 +8,7 @@ export class UserController {
     /**
      * Inject userService
      */
-    private readonly userService: UserService,
+    private readonly userService: UserService
   ) {}
 
   @Post('create')

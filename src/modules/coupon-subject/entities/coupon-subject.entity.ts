@@ -54,7 +54,7 @@ export class CouponSubject {
   @ManyToOne(
     () => BasicCarpetSize,
     (basicCarpetSize) => basicCarpetSize.couponSubjects,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'basic_carpet_size_id', referencedColumnName: 'id' }])
   basicCarpetSize: BasicCarpetSize;
@@ -69,7 +69,7 @@ export class CouponSubject {
   @ManyToOne(
     () => ProductCategory,
     (productCategory) => productCategory.couponSubjects,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'product_category_id', referencedColumnName: 'id' }])
   productCategory: ProductCategory;

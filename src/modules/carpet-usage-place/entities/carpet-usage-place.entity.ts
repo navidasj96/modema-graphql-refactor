@@ -32,13 +32,13 @@ export class CarpetUsagePlace {
   @OneToMany(
     () => CarpetUsagePlaceInvoiceProduct,
     (carpetUsagePlaceInvoiceProduct) =>
-      carpetUsagePlaceInvoiceProduct.carpetUsagePlace,
+      carpetUsagePlaceInvoiceProduct.carpetUsagePlace
   )
   carpetUsagePlaceInvoiceProducts: CarpetUsagePlaceInvoiceProduct[];
 
   @OneToMany(
     () => CarpetUsagePlaceUser,
-    (carpetUsagePlaceUser) => carpetUsagePlaceUser.carpetUsagePlace,
+    (carpetUsagePlaceUser) => carpetUsagePlaceUser.carpetUsagePlace
   )
   carpetUsagePlaceUsers: CarpetUsagePlaceUser[];
 }

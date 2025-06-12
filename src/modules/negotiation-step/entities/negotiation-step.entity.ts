@@ -42,7 +42,7 @@ export class NegotiationStep {
   @ManyToOne(
     () => Negotiation,
     (negotiations) => negotiations.negotiationSteps,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'negotiation_id', referencedColumnName: 'id' }])
   negotiation: Negotiation;
@@ -50,7 +50,7 @@ export class NegotiationStep {
   @ManyToOne(
     () => NegotiationType,
     (negotiationTypes) => negotiationTypes.negotiationSteps,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'negotiation_type_id', referencedColumnName: 'id' }])
   negotiationType: NegotiationType;

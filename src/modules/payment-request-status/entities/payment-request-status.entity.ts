@@ -23,7 +23,7 @@ export class PaymentRequestStatus {
 
   @OneToMany(
     () => PaymentRequest,
-    (paymentRequest) => paymentRequest.paymentRequestStatus,
+    (paymentRequest) => paymentRequest.paymentRequestStatus
   )
   paymentRequests: PaymentRequest[];
 }

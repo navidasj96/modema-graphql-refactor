@@ -2,7 +2,9 @@ import { CreateRecommendedProductInput } from './create-recommended-product.inpu
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateRecommendedProductInput extends PartialType(CreateRecommendedProductInput) {
+export class UpdateRecommendedProductInput extends PartialType(
+  CreateRecommendedProductInput
+) {
   @Field(() => Int)
   id: number;
 }

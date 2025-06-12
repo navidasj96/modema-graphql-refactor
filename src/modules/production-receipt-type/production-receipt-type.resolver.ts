@@ -5,6 +5,6 @@ import { ProductionReceiptType } from '@/modules/production-receipt-type/domain/
 @Resolver(() => ProductionReceiptType)
 export class ProductionReceiptTypeResolver {
   constructor(
-    private readonly productionReceiptTypeService: ProductionReceiptTypeService,
+    private readonly productionReceiptTypeService: ProductionReceiptTypeService
   ) {}
 }

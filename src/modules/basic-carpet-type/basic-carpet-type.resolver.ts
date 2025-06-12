@@ -5,6 +5,6 @@ import { BasicCarpetType } from './domain/basic-carpet-type';
 @Resolver(() => BasicCarpetType)
 export class BasicCarpetTypeResolver {
   constructor(
-    private readonly basicCarpetTypeService: BasicCarpetTypeService,
+    private readonly basicCarpetTypeService: BasicCarpetTypeService
   ) {}
 }

@@ -5,6 +5,6 @@ import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/
 @Resolver(() => InvoicePaymentHistory)
 export class InvoicePaymentHistoryResolver {
   constructor(
-    private readonly invoicePaymentHistoryService: InvoicePaymentHistoryService,
+    private readonly invoicePaymentHistoryService: InvoicePaymentHistoryService
   ) {}
 }

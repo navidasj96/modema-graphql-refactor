@@ -5,6 +5,6 @@ import { CustomerImageProduct } from './domain/customer-image-product';
 @Resolver(() => CustomerImageProduct)
 export class CustomerImageProductResolver {
   constructor(
-    private readonly customerImageProductService: CustomerImageProductService,
+    private readonly customerImageProductService: CustomerImageProductService
   ) {}
 }

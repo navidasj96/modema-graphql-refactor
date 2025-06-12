@@ -11,7 +11,7 @@ import { CustomerRequest } from '@/modules/customer-request/entities/customer-re
 @Index(
   'customer_request_files_customer_request_id_index',
   ['customerRequestId'],
-  {},
+  {}
 )
 @Entity('customer_request_files', { schema: 'modema' })
 export class CustomerRequestFile {
@@ -42,7 +42,7 @@ export class CustomerRequestFile {
   @ManyToOne(
     () => CustomerRequest,
     (customerRequest) => customerRequest.customerRequestFiles,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'customer_request_id', referencedColumnName: 'id' }])
   customerRequest: CustomerRequest;

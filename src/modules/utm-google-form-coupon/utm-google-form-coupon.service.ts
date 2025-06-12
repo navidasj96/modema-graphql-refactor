@@ -16,7 +16,10 @@ export class UtmGoogleFormCouponService {
     return `This action returns a #${id} utmGoogleFormCoupon`;
   }
 
-  update(id: number, updateUtmGoogleFormCouponInput: UpdateUtmGoogleFormCouponInput) {
+  update(
+    id: number,
+    updateUtmGoogleFormCouponInput: UpdateUtmGoogleFormCouponInput
+  ) {
     return `This action updates a #${id} utmGoogleFormCoupon`;
   }
 

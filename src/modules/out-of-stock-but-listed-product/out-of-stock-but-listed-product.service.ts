@@ -4,7 +4,9 @@ import { UpdateOutOfStockButListedProductInput } from './dto/update-out-of-stock
 
 @Injectable()
 export class OutOfStockButListedProductService {
-  create(createOutOfStockButListedProductInput: CreateOutOfStockButListedProductInput) {
+  create(
+    createOutOfStockButListedProductInput: CreateOutOfStockButListedProductInput
+  ) {
     return 'This action adds a new outOfStockButListedProduct';
   }
 
@@ -16,7 +18,10 @@ export class OutOfStockButListedProductService {
     return `This action returns a #${id} outOfStockButListedProduct`;
   }
 
-  update(id: number, updateOutOfStockButListedProductInput: UpdateOutOfStockButListedProductInput) {
+  update(
+    id: number,
+    updateOutOfStockButListedProductInput: UpdateOutOfStockButListedProductInput
+  ) {
     return `This action updates a #${id} outOfStockButListedProduct`;
   }
 

@@ -15,7 +15,7 @@ import { Video } from '@/modules/video/entities/video.entity';
 @Index(
   'return_request_item_videos_return_request_item_id_index',
   ['returnRequestItemId'],
-  {},
+  {}
 )
 @Index('return_request_item_videos_video_id_index', ['videoId'], {})
 @Entity('return_request_item_videos', { schema: 'modema' })
@@ -38,7 +38,7 @@ export class ReturnRequestItemVideo {
   @ManyToOne(
     () => ReturnRequestItem,
     (returnRequestItem) => returnRequestItem.returnRequestItemVideos,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'return_request_item_id', referencedColumnName: 'id' }])
   returnRequestItem: ReturnRequestItem;

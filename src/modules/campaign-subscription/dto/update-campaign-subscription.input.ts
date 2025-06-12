@@ -2,7 +2,9 @@ import { CreateCampaignSubscriptionInput } from './create-campaign-subscription.
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCampaignSubscriptionInput extends PartialType(CreateCampaignSubscriptionInput) {
+export class UpdateCampaignSubscriptionInput extends PartialType(
+  CreateCampaignSubscriptionInput
+) {
   @Field(() => Int)
   id: number;
 }

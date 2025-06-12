@@ -11,7 +11,7 @@ import { ColorCategory } from '@/modules/color-category/entities/color-category.
 @Index(
   'color_category_details_color_category_id_index',
   ['colorCategoryId'],
-  {},
+  {}
 )
 @Entity('color_category_details', { schema: 'modema' })
 export class ColorCategoryDetail {
@@ -48,7 +48,7 @@ export class ColorCategoryDetail {
   @ManyToOne(
     () => ColorCategory,
     (colorCategory) => colorCategory.colorCategoryDetails,
-    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'color_category_id', referencedColumnName: 'id' }])
   colorCategory: ColorCategory;

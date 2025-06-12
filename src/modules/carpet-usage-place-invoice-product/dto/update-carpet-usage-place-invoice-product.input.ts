@@ -2,7 +2,9 @@ import { CreateCarpetUsagePlaceInvoiceProductInput } from './create-carpet-usage
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateCarpetUsagePlaceInvoiceProductInput extends PartialType(CreateCarpetUsagePlaceInvoiceProductInput) {
+export class UpdateCarpetUsagePlaceInvoiceProductInput extends PartialType(
+  CreateCarpetUsagePlaceInvoiceProductInput
+) {
   @Field(() => Int)
   id: number;
 }

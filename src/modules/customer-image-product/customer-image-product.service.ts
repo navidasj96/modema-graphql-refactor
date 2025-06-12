@@ -16,7 +16,10 @@ export class CustomerImageProductService {
     return `This action returns a #${id} customerImageProduct`;
   }
 
-  update(id: number, updateCustomerImageProductInput: UpdateCustomerImageProductInput) {
+  update(
+    id: number,
+    updateCustomerImageProductInput: UpdateCustomerImageProductInput
+  ) {
     return `This action updates a #${id} customerImageProduct`;
   }
 

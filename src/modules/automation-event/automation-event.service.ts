@@ -12,7 +12,7 @@ export class AutomationEventService {
      * Inject automationEventRepository
      */
     @InjectRepository(AutomationEvent)
-    private readonly automationEventRepository: Repository<AutomationEvent>,
+    private readonly automationEventRepository: Repository<AutomationEvent>
   ) {}
 
   create(createAutomationEventInput: CreateAutomationEventInput) {

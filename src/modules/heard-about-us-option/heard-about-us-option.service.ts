@@ -16,7 +16,10 @@ export class HeardAboutUsOptionService {
     return `This action returns a #${id} heardAboutUsOption`;
   }
 
-  update(id: number, updateHeardAboutUsOptionInput: UpdateHeardAboutUsOptionInput) {
+  update(
+    id: number,
+    updateHeardAboutUsOptionInput: UpdateHeardAboutUsOptionInput
+  ) {
     return `This action updates a #${id} heardAboutUsOption`;
   }
 

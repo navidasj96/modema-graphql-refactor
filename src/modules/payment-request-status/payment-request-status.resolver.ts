@@ -5,6 +5,6 @@ import { PaymentRequestStatus } from '@/modules/payment-request-status/domain/pa
 @Resolver(() => PaymentRequestStatus)
 export class PaymentRequestStatusResolver {
   constructor(
-    private readonly paymentRequestStatusService: PaymentRequestStatusService,
+    private readonly paymentRequestStatusService: PaymentRequestStatusService
   ) {}
 }

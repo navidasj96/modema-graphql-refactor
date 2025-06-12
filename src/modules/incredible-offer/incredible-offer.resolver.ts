@@ -5,6 +5,6 @@ import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-of
 @Resolver(() => IncredibleOffer)
 export class IncredibleOfferResolver {
   constructor(
-    private readonly incredibleOfferService: IncredibleOfferService,
+    private readonly incredibleOfferService: IncredibleOfferService
   ) {}
 }

@@ -5,6 +5,6 @@ import { CampaignFreeOffer } from './domain/campaign-free-offer';
 @Resolver(() => CampaignFreeOffer)
 export class CampaignFreeOfferResolver {
   constructor(
-    private readonly campaignFreeOfferService: CampaignFreeOfferService,
+    private readonly campaignFreeOfferService: CampaignFreeOfferService
   ) {}
 }

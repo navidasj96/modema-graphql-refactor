@@ -74,7 +74,7 @@ export class GetSnappAuthTokenProvider {
             })
           )
       );
-      
+
       return response;
     } catch (error) {
       return { status: false };

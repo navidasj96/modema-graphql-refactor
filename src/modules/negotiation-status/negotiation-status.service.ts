@@ -16,7 +16,10 @@ export class NegotiationStatusService {
     return `This action returns a #${id} negotiationStatus`;
   }
 
-  update(id: number, updateNegotiationStatusInput: UpdateNegotiationStatusInput) {
+  update(
+    id: number,
+    updateNegotiationStatusInput: UpdateNegotiationStatusInput
+  ) {
     return `This action updates a #${id} negotiationStatus`;
   }
 

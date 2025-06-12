@@ -5,6 +5,6 @@ import { CampaignUefaEuroSubscriberHistory } from './domain/campaign-uefa-euro-s
 @Resolver(() => CampaignUefaEuroSubscriberHistory)
 export class CampaignUefaEuroSubscriberHistoryResolver {
   constructor(
-    private readonly campaignUefaEuroSubscriberHistoryService: CampaignUefaEuroSubscriberHistoryService,
+    private readonly campaignUefaEuroSubscriberHistoryService: CampaignUefaEuroSubscriberHistoryService
   ) {}
 }

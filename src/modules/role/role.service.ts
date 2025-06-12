@@ -13,7 +13,7 @@ export class RoleService {
      * inject roleRepository
      */
     @InjectRepository(Role)
-    private readonly roleRepository: Repository<Role>,
+    private readonly roleRepository: Repository<Role>
   ) {}
 
   create(createRoleInput: CreateRoleInput) {

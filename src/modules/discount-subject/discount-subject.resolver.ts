@@ -5,6 +5,6 @@ import { DiscountSubject } from './domain/discount-subject';
 @Resolver(() => DiscountSubject)
 export class DiscountSubjectResolver {
   constructor(
-    private readonly discountSubjectService: DiscountSubjectService,
+    private readonly discountSubjectService: DiscountSubjectService
   ) {}
 }

@@ -5,6 +5,6 @@ import { ReadyToSendProduct } from '@/modules/ready-to-send-product/domain/ready
 @Resolver(() => ReadyToSendProduct)
 export class ReadyToSendProductResolver {
   constructor(
-    private readonly readyToSendProductService: ReadyToSendProductService,
+    private readonly readyToSendProductService: ReadyToSendProductService
   ) {}
 }

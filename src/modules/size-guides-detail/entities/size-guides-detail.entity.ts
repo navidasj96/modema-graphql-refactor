@@ -53,7 +53,7 @@ export class SizeGuidesDetail {
 
   @OneToMany(
     () => ImagesSizeGuidesDetail,
-    (imagesSizeGuidesDetail) => imagesSizeGuidesDetail.sizeGuidesDetails,
+    (imagesSizeGuidesDetail) => imagesSizeGuidesDetail.sizeGuidesDetails
   )
   imagesSizeGuidesDetails: ImagesSizeGuidesDetail[];
 

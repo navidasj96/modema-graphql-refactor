@@ -16,7 +16,10 @@ export class HomePageCustomerImageService {
     return `This action returns a #${id} homePageCustomerImage`;
   }
 
-  update(id: number, updateHomePageCustomerImageInput: UpdateHomePageCustomerImageInput) {
+  update(
+    id: number,
+    updateHomePageCustomerImageInput: UpdateHomePageCustomerImageInput
+  ) {
     return `This action updates a #${id} homePageCustomerImage`;
   }
 

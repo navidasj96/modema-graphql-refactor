@@ -16,7 +16,10 @@ export class SitemapStaticPageService {
     return `This action returns a #${id} sitemapStaticPage`;
   }
 
-  update(id: number, updateSitemapStaticPageInput: UpdateSitemapStaticPageInput) {
+  update(
+    id: number,
+    updateSitemapStaticPageInput: UpdateSitemapStaticPageInput
+  ) {
     return `This action updates a #${id} sitemapStaticPage`;
   }
 

@@ -5,6 +5,6 @@ import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-rever
 @Resolver(() => InvoiceReversal)
 export class InvoiceReversalResolver {
   constructor(
-    private readonly invoiceReversalService: InvoiceReversalService,
+    private readonly invoiceReversalService: InvoiceReversalService
   ) {}
 }

@@ -11,7 +11,7 @@ import { User } from '@/modules/user/entities/user.entity';
 @Index(
   'impersonate_histories_impersonate_user_id_index',
   ['impersonateUserId'],
-  {},
+  {}
 )
 @Index('impersonate_histories_user_id_index', ['userId'], {})
 @Entity('impersonate_histories', { schema: 'modema' })

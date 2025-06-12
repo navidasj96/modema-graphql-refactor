@@ -2,7 +2,9 @@ import { CreateHomePageCustomerImageInput } from './create-home-page-customer-im
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateHomePageCustomerImageInput extends PartialType(CreateHomePageCustomerImageInput) {
+export class UpdateHomePageCustomerImageInput extends PartialType(
+  CreateHomePageCustomerImageInput
+) {
   @Field(() => Int)
   id: number;
 }

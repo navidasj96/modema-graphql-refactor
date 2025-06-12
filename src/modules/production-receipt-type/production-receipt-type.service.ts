@@ -16,7 +16,10 @@ export class ProductionReceiptTypeService {
     return `This action returns a #${id} productionReceiptType`;
   }
 
-  update(id: number, updateProductionReceiptTypeInput: UpdateProductionReceiptTypeInput) {
+  update(
+    id: number,
+    updateProductionReceiptTypeInput: UpdateProductionReceiptTypeInput
+  ) {
     return `This action updates a #${id} productionReceiptType`;
   }
 

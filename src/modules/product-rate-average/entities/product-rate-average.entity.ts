@@ -14,7 +14,7 @@ import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
 @Index(
   'product_rate_averages_product_id_subproduct_id_rate_id_unique',
   ['productId', 'subproductId', 'rateId'],
-  { unique: true },
+  { unique: true }
 )
 @Index('product_rate_averages_rate_id_index', ['rateId'], {})
 @Index('product_rate_averages_subproduct_id_index', ['subproductId'], {})

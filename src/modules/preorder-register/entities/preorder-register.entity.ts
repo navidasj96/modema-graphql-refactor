@@ -14,7 +14,7 @@ import { InvoicePaymentType } from '@/modules/invoice-payment-type/entities/invo
 @Index(
   'preorder_registers_money_transfer_confirmed_by_index',
   ['moneyTransferConfirmedBy'],
-  {},
+  {}
 )
 @Index('preorder_registers_payment_type_id_index', ['paymentTypeId'], {})
 @Index('preorder_registers_preorder_number_index', ['preorderNumber'], {})
@@ -92,7 +92,7 @@ export class PreorderRegister {
 
   @OneToMany(
     () => InvoiceBankGatewayHistory,
-    (invoiceBankGatewayHistory) => invoiceBankGatewayHistory.preorderRegister,
+    (invoiceBankGatewayHistory) => invoiceBankGatewayHistory.preorderRegister
   )
   invoiceBankGatewayHistories: InvoiceBankGatewayHistory[];
 
@@ -108,7 +108,7 @@ export class PreorderRegister {
   @ManyToOne(
     () => InvoicePaymentType,
     (invoicePaymentType) => invoicePaymentType.preorderRegisters,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'payment_type_id', referencedColumnName: 'id' }])
   paymentType: InvoicePaymentType;

@@ -16,7 +16,10 @@ export class ProductProductCategoryService {
     return `This action returns a #${id} productProductCategory`;
   }
 
-  update(id: number, updateProductProductCategoryInput: UpdateProductProductCategoryInput) {
+  update(
+    id: number,
+    updateProductProductCategoryInput: UpdateProductProductCategoryInput
+  ) {
     return `This action updates a #${id} productProductCategory`;
   }
 

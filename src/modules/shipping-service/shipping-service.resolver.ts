@@ -5,6 +5,6 @@ import { ShippingService } from '@/modules/shipping-service/domain/shipping-serv
 @Resolver(() => ShippingService)
 export class ShippingServiceResolver {
   constructor(
-    private readonly shippingServiceService: ShippingServiceService,
+    private readonly shippingServiceService: ShippingServiceService
   ) {}
 }

@@ -76,13 +76,13 @@ export class Wallet {
 
   @OneToMany(
     () => RetargetingWalletCharge,
-    (retargetingWalletCharge) => retargetingWalletCharge.wallet,
+    (retargetingWalletCharge) => retargetingWalletCharge.wallet
   )
   retargetingWalletCharges: RetargetingWalletCharge[];
 
   @OneToMany(
     () => WalletGiftCharge,
-    (walletGiftCharge) => walletGiftCharge.wallet,
+    (walletGiftCharge) => walletGiftCharge.wallet
   )
   walletGiftCharges: WalletGiftCharge[];
 

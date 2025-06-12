@@ -5,6 +5,6 @@ import { PreorderRegister } from '@/modules/preorder-register/domain/preorder-re
 @Resolver(() => PreorderRegister)
 export class PreorderRegisterResolver {
   constructor(
-    private readonly preorderRegisterService: PreorderRegisterService,
+    private readonly preorderRegisterService: PreorderRegisterService
   ) {}
 }

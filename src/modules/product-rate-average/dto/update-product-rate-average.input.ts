@@ -2,7 +2,9 @@ import { CreateProductRateAverageInput } from './create-product-rate-average.inp
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateProductRateAverageInput extends PartialType(CreateProductRateAverageInput) {
+export class UpdateProductRateAverageInput extends PartialType(
+  CreateProductRateAverageInput
+) {
   @Field(() => Int)
   id: number;
 }

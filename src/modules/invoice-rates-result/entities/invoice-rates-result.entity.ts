@@ -15,12 +15,12 @@ import { ShippingService } from '@/modules/shipping-service/entities/shipping-se
 @Index(
   'invoice_rates_results_invoice_id_shipping_service_id_unique',
   ['invoiceId', 'shippingServiceId'],
-  { unique: true },
+  { unique: true }
 )
 @Index(
   'invoice_rates_results_shipping_service_id_index',
   ['shippingServiceId'],
-  {},
+  {}
 )
 @Entity('invoice_rates_results', { schema: 'modema' })
 export class InvoiceRatesResult {
@@ -69,7 +69,7 @@ export class InvoiceRatesResult {
   @ManyToOne(
     () => ShippingService,
     (shippingService) => shippingService.invoiceRatesResults,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'shipping_service_id', referencedColumnName: 'id' }])
   shippingService: ShippingService;

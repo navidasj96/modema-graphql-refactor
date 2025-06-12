@@ -3,7 +3,7 @@ import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateCampaignGoldCoinSubInput extends PartialType(
-  CreateCampaignGoldCoinSubInput,
+  CreateCampaignGoldCoinSubInput
 ) {
   @Field(() => Int)
   id: number;

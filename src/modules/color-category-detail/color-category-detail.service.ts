@@ -16,7 +16,10 @@ export class ColorCategoryDetailService {
     return `This action returns a #${id} colorCategoryDetail`;
   }
 
-  update(id: number, updateColorCategoryDetailInput: UpdateColorCategoryDetailInput) {
+  update(
+    id: number,
+    updateColorCategoryDetailInput: UpdateColorCategoryDetailInput
+  ) {
     return `This action updates a #${id} colorCategoryDetail`;
   }
 

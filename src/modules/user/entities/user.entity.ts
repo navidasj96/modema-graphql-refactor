@@ -94,7 +94,7 @@ import { UserHasPermission } from '@/modules/user-has-permission/entities/user-h
 @Index(
   'campaign_finding_coupon_winner_place',
   ['campaignFindingCouponWinnerPlace'],
-  {},
+  {}
 )
 @Index('login_email', ['loginEmail'], { unique: true })
 @Index('login_email_2', ['loginEmail'], { unique: true })
@@ -103,7 +103,7 @@ import { UserHasPermission } from '@/modules/user-has-permission/entities/user-h
 @Index(
   'users_campaign_finding_coupon_used_index',
   ['campaignFindingCouponUsed'],
-  {},
+  {}
 )
 @Index('users_campain_id_index', ['campaignId'], {})
 @Index('users_email_unique', ['email'], { unique: true })
@@ -450,19 +450,19 @@ export class User {
 
   @OneToMany(
     () => BasicCarpetDesigner,
-    (basicCarpetDesigner) => basicCarpetDesigner.user,
+    (basicCarpetDesigner) => basicCarpetDesigner.user
   )
   basicCarpetDesigners: BasicCarpetDesigner[];
 
   @OneToOne(
     () => CampaignGoldCoinSub,
-    (campaignGoldCoinSub) => campaignGoldCoinSub.user,
+    (campaignGoldCoinSub) => campaignGoldCoinSub.user
   )
   campaignGoldCoinSubs: CampaignGoldCoinSub;
 
   @OneToMany(
     () => CampaignInstagramFollow,
-    (campaignInstagramFollow) => campaignInstagramFollow.user,
+    (campaignInstagramFollow) => campaignInstagramFollow.user
   )
   campaignInstagramFollows: CampaignInstagramFollow[];
 
@@ -471,56 +471,56 @@ export class User {
 
   @OneToMany(
     () => CampaignRoomvoImage,
-    (campaignRoomvoImage) => campaignRoomvoImage.user,
+    (campaignRoomvoImage) => campaignRoomvoImage.user
   )
   campaignRoomvoImages: CampaignRoomvoImage[];
 
   @OneToMany(
     () => CampaignRoomvoVote,
-    (campaignRoomvoVote) => campaignRoomvoVote.user,
+    (campaignRoomvoVote) => campaignRoomvoVote.user
   )
   campaignRoomvoVotes: CampaignRoomvoVote[];
 
   @OneToMany(
     () => CampaignSubscription,
-    (campaignSubscription) => campaignSubscription.user,
+    (campaignSubscription) => campaignSubscription.user
   )
   campaignSubscriptions: CampaignSubscription[];
 
   @OneToMany(
     () => CampaignUefaEuroSubscriberHistory,
     (campaignUefaEuroSubscriberHistory) =>
-      campaignUefaEuroSubscriberHistory.user,
+      campaignUefaEuroSubscriberHistory.user
   )
   campaignUefaEuroSubscriberHistories: CampaignUefaEuroSubscriberHistory[];
 
   @OneToMany(
     () => CampaignUefaEuroSubscriber,
-    (campaignUefaEuroSubscriber) => campaignUefaEuroSubscriber.user,
+    (campaignUefaEuroSubscriber) => campaignUefaEuroSubscriber.user
   )
   campaignUefaEuroSubscribers: CampaignUefaEuroSubscriber[];
 
   @OneToMany(
     () => CampaignVotingImageUser,
-    (campaignVotingImageUser) => campaignVotingImageUser.user,
+    (campaignVotingImageUser) => campaignVotingImageUser.user
   )
   campaignVotingImageUsers: CampaignVotingImageUser[];
 
   @OneToMany(
     () => CarpetFeatureUser,
-    (carpetFeatureUser) => carpetFeatureUser.user,
+    (carpetFeatureUser) => carpetFeatureUser.user
   )
   carpetFeatureUsers?: CarpetFeatureUser[];
 
   @OneToMany(
     () => CarpetUsagePlaceUser,
-    (carpetUsagePlaceUser) => carpetUsagePlaceUser.user,
+    (carpetUsagePlaceUser) => carpetUsagePlaceUser.user
   )
   carpetUsagePlaceUsers?: CarpetUsagePlaceUser[];
 
   @OneToMany(
     () => ContactFormHistory,
-    (contactFormHistory) => contactFormHistory.user,
+    (contactFormHistory) => contactFormHistory.user
   )
   contactFormHistories?: ContactFormHistory[];
 
@@ -547,7 +547,7 @@ export class User {
 
   @OneToMany(
     () => DiscountNotification,
-    (discountNotification) => discountNotification.user,
+    (discountNotification) => discountNotification.user
   )
   discountNotifications?: DiscountNotification[];
 
@@ -574,19 +574,19 @@ export class User {
 
   @OneToMany(
     () => ImpersonateHistory,
-    (impersonateHistory) => impersonateHistory.impersonateUser,
+    (impersonateHistory) => impersonateHistory.impersonateUser
   )
   impersonateHistories?: ImpersonateHistory[];
 
   @OneToMany(
     () => ImpersonateHistory,
-    (impersonateHistory) => impersonateHistory.user,
+    (impersonateHistory) => impersonateHistory.user
   )
   impersonateHistories2?: ImpersonateHistory[];
 
   @OneToMany(
     () => IncredibleOfferSentNotification,
-    (incredibleOfferSentNotification) => incredibleOfferSentNotification.user,
+    (incredibleOfferSentNotification) => incredibleOfferSentNotification.user
   )
   incredibleOfferSentNotifications?: IncredibleOfferSentNotification[];
 
@@ -595,31 +595,31 @@ export class User {
 
   @OneToMany(
     () => InvoiceHistory,
-    (invoiceHistory) => invoiceHistory.editorUser,
+    (invoiceHistory) => invoiceHistory.editorUser
   )
   invoiceHistories?: InvoiceHistory[];
 
   @OneToMany(
     () => InvoiceInvoiceStatus,
-    (invoiceInvoiceStatus) => invoiceInvoiceStatus.user,
+    (invoiceInvoiceStatus) => invoiceInvoiceStatus.user
   )
   invoiceInvoiceStatuses?: InvoiceInvoiceStatus[];
 
   @OneToMany(
     () => InvoicePaymentHistory,
-    (invoicePaymentHistory) => invoicePaymentHistory.confirmedBy2,
+    (invoicePaymentHistory) => invoicePaymentHistory.confirmedBy2
   )
   invoicePaymentHistories?: InvoicePaymentHistory[];
 
   @OneToMany(
     () => InvoicePaymentHistory,
-    (invoicePaymentHistory) => invoicePaymentHistory.user,
+    (invoicePaymentHistory) => invoicePaymentHistory.user
   )
   invoicePaymentHistories2?: InvoicePaymentHistory[];
 
   @OneToMany(
     () => InvoicePayment,
-    (invoicePayment) => invoicePayment.confirmedBy2,
+    (invoicePayment) => invoicePayment.confirmedBy2
   )
   invoicePayments?: InvoicePayment[];
 
@@ -629,13 +629,13 @@ export class User {
   @OneToMany(
     () => InvoiceProductItemInvoiceProductStatus,
     (invoiceProductItemInvoiceProductStatus) =>
-      invoiceProductItemInvoiceProductStatus.user,
+      invoiceProductItemInvoiceProductStatus.user
   )
   invoiceProductItemInvoiceProductStatuses?: InvoiceProductItemInvoiceProductStatus[];
 
   @OneToMany(
     () => InvoiceReversal,
-    (invoiceReversal) => invoiceReversal.reviewedBy2,
+    (invoiceReversal) => invoiceReversal.reviewedBy2
   )
   invoiceReversals?: InvoiceReversal[];
 
@@ -650,37 +650,37 @@ export class User {
 
   @OneToMany(
     () => NeedsPhotographySubproduct,
-    (needsPhotographySubproduct) => needsPhotographySubproduct.announcedUser,
+    (needsPhotographySubproduct) => needsPhotographySubproduct.announcedUser
   )
   needsPhotographySubproducts?: NeedsPhotographySubproduct[];
 
   @OneToMany(
     () => NeedsPhotographySubproduct,
-    (needsPhotographySubproduct) => needsPhotographySubproduct.photographyUser,
+    (needsPhotographySubproduct) => needsPhotographySubproduct.photographyUser
   )
   needsPhotographySubproducts2?: NeedsPhotographySubproduct[];
 
   @OneToMany(
     () => NegotiationHistory,
-    (negotiationHistory) => negotiationHistory.newNegotiator,
+    (negotiationHistory) => negotiationHistory.newNegotiator
   )
   negotiationHistories?: NegotiationHistory[];
 
   @OneToMany(
     () => NegotiationHistory,
-    (negotiationHistory) => negotiationHistory.oldNegotiator,
+    (negotiationHistory) => negotiationHistory.oldNegotiator
   )
   negotiationHistories2?: NegotiationHistory[];
 
   @OneToMany(
     () => NegotiationHistory,
-    (negotiationHistory) => negotiationHistory.submittedBy2,
+    (negotiationHistory) => negotiationHistory.submittedBy2
   )
   negotiationHistories3?: NegotiationHistory[];
 
   @OneToMany(
     () => NegotiationStep,
-    (negotiationStep) => negotiationStep.submittedBy2,
+    (negotiationStep) => negotiationStep.submittedBy2
   )
   negotiationSteps?: NegotiationStep[];
 
@@ -695,19 +695,19 @@ export class User {
 
   @OneToMany(
     () => PreorderPreorderStatus,
-    (preorderPreorderStatus) => preorderPreorderStatus.user,
+    (preorderPreorderStatus) => preorderPreorderStatus.user
   )
   preorderPreorderStatuses?: PreorderPreorderStatus[];
 
   @OneToMany(
     () => PreorderRegister,
-    (preorderRegister) => preorderRegister.moneyTransferConfirmedBy2,
+    (preorderRegister) => preorderRegister.moneyTransferConfirmedBy2
   )
   preorderRegisters?: PreorderRegister[];
 
   @OneToMany(
     () => PreorderRegister,
-    (preorderRegisters) => preorderRegisters.user,
+    (preorderRegisters) => preorderRegisters.user
   )
   preorderRegisters2?: PreorderRegister[];
 
@@ -731,13 +731,13 @@ export class User {
 
   @OneToMany(
     () => ProductCommentLike,
-    (productCommentLike) => productCommentLike.user,
+    (productCommentLike) => productCommentLike.user
   )
   productCommentLikes?: ProductCommentLike[];
 
   @OneToMany(
     () => ProductComment,
-    (productComment) => productComment.approvedBy2,
+    (productComment) => productComment.approvedBy2
   )
   productComments?: ProductComment[];
 
@@ -752,7 +752,7 @@ export class User {
 
   @OneToMany(
     () => ProductionPadProductionPadStatus,
-    (productionPadProductionPadStatus) => productionPadProductionPadStatus.user,
+    (productionPadProductionPadStatus) => productionPadProductionPadStatus.user
   )
   productionPadProductionPadStatuses?: ProductionPadProductionPadStatus[];
 
@@ -761,51 +761,51 @@ export class User {
 
   @OneToMany(
     () => ProductionRoll,
-    (productionRolls) => productionRolls.createdBy2,
+    (productionRolls) => productionRolls.createdBy2
   )
   productionRolls2?: ProductionRoll[];
 
   @OneToMany(
     () => RetargetingWalletCharge,
-    (retargetingWalletCharge) => retargetingWalletCharge.user,
+    (retargetingWalletCharge) => retargetingWalletCharge.user
   )
   retargetingWalletCharges?: RetargetingWalletCharge[];
 
   @OneToMany(
     () => ReturnItemStatusReturnRequestItem,
     (returnItemStatusReturnRequestItem) =>
-      returnItemStatusReturnRequestItem.user,
+      returnItemStatusReturnRequestItem.user
   )
   returnItemStatusReturnRequestItems?: ReturnItemStatusReturnRequestItem[];
 
   @OneToMany(
     () => ReturnRequestAddress,
-    (returnRequestAddress) => returnRequestAddress.user,
+    (returnRequestAddress) => returnRequestAddress.user
   )
   returnRequestAddresses?: ReturnRequestAddress[];
 
   @OneToMany(
     () => ReturnRequestHistory,
-    (returnRequestHistory) => returnRequestHistory.editorUser,
+    (returnRequestHistory) => returnRequestHistory.editorUser
   )
   returnRequestHistories?: ReturnRequestHistory[];
 
   @OneToMany(
     () => ReturnRequestHistory,
-    (returnRequestHistory) => returnRequestHistory.user,
+    (returnRequestHistory) => returnRequestHistory.user
   )
   returnRequestHistories2?: ReturnRequestHistory[];
 
   @OneToMany(
     () => ReturnRequestItemReturnItemStatus,
     (returnRequestItemReturnItemStatus) =>
-      returnRequestItemReturnItemStatus.user,
+      returnRequestItemReturnItemStatus.user
   )
   returnRequestItemReturnItemStatuses?: ReturnRequestItemReturnItemStatus[];
 
   @OneToMany(
     () => ReturnRequestReturnStatus,
-    (returnRequestReturnStatus) => returnRequestReturnStatus.user,
+    (returnRequestReturnStatus) => returnRequestReturnStatus.user
   )
   returnRequestReturnStatuses?: ReturnRequestReturnStatus[];
 
@@ -820,19 +820,19 @@ export class User {
 
   @OneToMany(
     () => SocialFacebookAccount,
-    (socialFacebookAccount) => socialFacebookAccount.user,
+    (socialFacebookAccount) => socialFacebookAccount.user
   )
   socialFacebookAccounts?: SocialFacebookAccount[];
 
   @OneToMany(
     () => SocialGoogleAccount,
-    (socialGoogleAccount) => socialGoogleAccount.user,
+    (socialGoogleAccount) => socialGoogleAccount.user
   )
   socialGoogleAccounts?: SocialGoogleAccount[];
 
   @OneToMany(
     () => SubproductStockHistory,
-    (subproductStockHistory) => subproductStockHistory.user,
+    (subproductStockHistory) => subproductStockHistory.user
   )
   subproductStockHistories?: SubproductStockHistory[];
 
@@ -851,7 +851,7 @@ export class User {
   @ManyToOne(
     () => HeardAboutUsOption,
     (heardAboutUsOption) => heardAboutUsOption.users,
-    { onDelete: 'SET NULL', onUpdate: 'CASCADE' },
+    { onDelete: 'SET NULL', onUpdate: 'CASCADE' }
   )
   @JoinColumn([
     { name: 'heard_about_us_option_id', referencedColumnName: 'id' },
@@ -877,7 +877,7 @@ export class User {
 
   @OneToMany(
     () => UtmGoogleFormCoupon,
-    (utmGoogleFormCoupon) => utmGoogleFormCoupon.user,
+    (utmGoogleFormCoupon) => utmGoogleFormCoupon.user
   )
   utmGoogleFormCoupons?: UtmGoogleFormCoupon[];
 
@@ -889,7 +889,7 @@ export class User {
 
   @OneToMany(
     () => WalletGiftCharge,
-    (walletGiftCharge) => walletGiftCharge.user,
+    (walletGiftCharge) => walletGiftCharge.user
   )
   walletGiftCharges?: WalletGiftCharge[];
 
@@ -901,13 +901,13 @@ export class User {
 
   @OneToMany(
     () => WithdrawalRequest,
-    (withdrawalRequest) => withdrawalRequest.confirmedBy2,
+    (withdrawalRequest) => withdrawalRequest.confirmedBy2
   )
   withdrawalRequests?: WithdrawalRequest[];
 
   @OneToMany(
     () => WithdrawalRequest,
-    (withdrawalRequest) => withdrawalRequest.user,
+    (withdrawalRequest) => withdrawalRequest.user
   )
   withdrawalRequests2?: WithdrawalRequest[];
 
@@ -916,7 +916,7 @@ export class User {
 
   @OneToMany(
     () => UserHasPermission,
-    (userHasPermission) => userHasPermission.user,
+    (userHasPermission) => userHasPermission.user
   )
   userHasPermission: UserHasPermission[];
 }

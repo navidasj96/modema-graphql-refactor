@@ -4,7 +4,9 @@ import { UpdateOauthPersonalAccessClientInput } from './dto/update-oauth-persona
 
 @Injectable()
 export class OauthPersonalAccessClientService {
-  create(createOauthPersonalAccessClientInput: CreateOauthPersonalAccessClientInput) {
+  create(
+    createOauthPersonalAccessClientInput: CreateOauthPersonalAccessClientInput
+  ) {
     return 'This action adds a new oauthPersonalAccessClient';
   }
 
@@ -16,7 +18,10 @@ export class OauthPersonalAccessClientService {
     return `This action returns a #${id} oauthPersonalAccessClient`;
   }
 
-  update(id: number, updateOauthPersonalAccessClientInput: UpdateOauthPersonalAccessClientInput) {
+  update(
+    id: number,
+    updateOauthPersonalAccessClientInput: UpdateOauthPersonalAccessClientInput
+  ) {
     return `This action updates a #${id} oauthPersonalAccessClient`;
   }
 

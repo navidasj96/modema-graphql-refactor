@@ -5,6 +5,6 @@ import { FedexAddressValidationAttribute } from './domain/fedex-address-validati
 @Resolver(() => FedexAddressValidationAttribute)
 export class FedexAddressValidationAttributeResolver {
   constructor(
-    private readonly fedexAddressValidationAttributeService: FedexAddressValidationAttributeService,
+    private readonly fedexAddressValidationAttributeService: FedexAddressValidationAttributeService
   ) {}
 }

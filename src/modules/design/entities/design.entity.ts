@@ -136,7 +136,7 @@ export class Design {
 
   @OneToMany(
     () => InvoiceProductHistory,
-    (invoiceProductHistory) => invoiceProductHistory.design,
+    (invoiceProductHistory) => invoiceProductHistory.design
   )
   invoiceProductHistories: InvoiceProductHistory[];
 

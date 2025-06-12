@@ -60,32 +60,32 @@ export class Negotiation {
 
   @OneToMany(
     () => FileNegotiation,
-    (fileNegotiation) => fileNegotiation.negotiation,
+    (fileNegotiation) => fileNegotiation.negotiation
   )
   fileNegotiations: FileNegotiation[];
 
   @OneToMany(
     () => InvoiceNegotiation,
-    (invoiceNegotiation) => invoiceNegotiation.negotiation,
+    (invoiceNegotiation) => invoiceNegotiation.negotiation
   )
   invoiceNegotiations: InvoiceNegotiation[];
 
   @OneToMany(
     () => NegotiationHistory,
-    (negotiationHistories) => negotiationHistories.negotiation,
+    (negotiationHistories) => negotiationHistories.negotiation
   )
   negotiationHistories: NegotiationHistory[];
 
   @OneToMany(
     () => NegotiationStep,
-    (negotiationStep) => negotiationStep.negotiation,
+    (negotiationStep) => negotiationStep.negotiation
   )
   negotiationSteps: NegotiationStep[];
 
   @ManyToOne(
     () => NegotiationStatus,
     (negotiationStatus) => negotiationStatus.negotiations,
-    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' },
+    { onDelete: 'NO ACTION', onUpdate: 'CASCADE' }
   )
   @JoinColumn([{ name: 'negotiation_status_id', referencedColumnName: 'id' }])
   negotiationStatus: NegotiationStatus;

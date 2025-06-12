@@ -5,6 +5,6 @@ import { SitemapStaticPage } from '@/modules/sitemap-static-page/domain/sitemap-
 @Resolver(() => SitemapStaticPage)
 export class SitemapStaticPageResolver {
   constructor(
-    private readonly sitemapStaticPageService: SitemapStaticPageService,
+    private readonly sitemapStaticPageService: SitemapStaticPageService
   ) {}
 }

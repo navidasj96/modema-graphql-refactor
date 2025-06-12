@@ -16,7 +16,10 @@ export class DiscountNotificationService {
     return `This action returns a #${id} discountNotification`;
   }
 
-  update(id: number, updateDiscountNotificationInput: UpdateDiscountNotificationInput) {
+  update(
+    id: number,
+    updateDiscountNotificationInput: UpdateDiscountNotificationInput
+  ) {
     return `This action updates a #${id} discountNotification`;
   }
 

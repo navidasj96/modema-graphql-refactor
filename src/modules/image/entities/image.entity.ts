@@ -64,19 +64,19 @@ export class Image {
 
   @OneToMany(
     () => BasicCarpetSize,
-    (basicCarpetSize) => basicCarpetSize.mobileImage,
+    (basicCarpetSize) => basicCarpetSize.mobileImage
   )
   basicCarpetSizes2: BasicCarpetSize[];
 
   @OneToMany(
     () => CampaignVotingImage,
-    (campaignVotingImage) => campaignVotingImage.image,
+    (campaignVotingImage) => campaignVotingImage.image
   )
   campaignVotingImages: CampaignVotingImage[];
 
   @OneToMany(
     () => ColorCategory,
-    (colorCategory) => colorCategory.homepageImage,
+    (colorCategory) => colorCategory.homepageImage
   )
   colorCategories: ColorCategory[];
 
@@ -88,7 +88,7 @@ export class Image {
 
   @OneToMany(
     () => CustomerImageProduct,
-    (customerImageProduct) => customerImageProduct.image,
+    (customerImageProduct) => customerImageProduct.image
   )
   customerImageProducts: CustomerImageProduct[];
 
@@ -97,13 +97,13 @@ export class Image {
 
   @OneToMany(
     () => HomePageCustomerImage,
-    (homePageCustomerImage) => homePageCustomerImage.desktopImage,
+    (homePageCustomerImage) => homePageCustomerImage.desktopImage
   )
   homePageCustomerImages: HomePageCustomerImage[];
 
   @OneToMany(
     () => HomePageCustomerImage,
-    (homePageCustomerImage) => homePageCustomerImage.mobileImage,
+    (homePageCustomerImage) => homePageCustomerImage.mobileImage
   )
   homePageCustomerImages2: HomePageCustomerImage[];
 
@@ -115,7 +115,7 @@ export class Image {
 
   @OneToMany(
     () => ImagesSizeGuidesDetail,
-    (imagesSizeGuidesDetail) => imagesSizeGuidesDetail.image,
+    (imagesSizeGuidesDetail) => imagesSizeGuidesDetail.image
   )
   imagesSizeGuidesDetails: ImagesSizeGuidesDetail[];
 
@@ -124,7 +124,7 @@ export class Image {
 
   @OneToMany(
     () => ProductCategory,
-    (productCategory) => productCategory.homepageImage,
+    (productCategory) => productCategory.homepageImage
   )
   productCategories: ProductCategory[];
 
@@ -133,13 +133,13 @@ export class Image {
 
   @OneToMany(
     () => ProductCategory,
-    (productCategory) => productCategory.mobileImage,
+    (productCategory) => productCategory.mobileImage
   )
   productCategories3: ProductCategory[];
 
   @OneToMany(
     () => ProductColorImage,
-    (productColorImage) => productColorImage.image,
+    (productColorImage) => productColorImage.image
   )
   productColorImages: ProductColorImage[];
 
@@ -148,7 +148,7 @@ export class Image {
 
   @OneToMany(
     () => ReturnRequestItemImage,
-    (returnRequestItemImage) => returnRequestItemImage.image,
+    (returnRequestItemImage) => returnRequestItemImage.image
   )
   returnRequestItemImages: ReturnRequestItemImage[];
 
@@ -157,13 +157,13 @@ export class Image {
 
   @OneToMany(
     () => SizeGuidesDetail,
-    (sizeGuidesDetail) => sizeGuidesDetail.image,
+    (sizeGuidesDetail) => sizeGuidesDetail.image
   )
   sizeGuidesDetails: SizeGuidesDetail[];
 
   @OneToMany(
     () => SubproductSpecialImage,
-    (subproductSpecialImage) => subproductSpecialImage.image,
+    (subproductSpecialImage) => subproductSpecialImage.image
   )
   subproductSpecialImages: SubproductSpecialImage[];
 

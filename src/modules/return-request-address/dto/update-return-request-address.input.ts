@@ -2,7 +2,9 @@ import { CreateReturnRequestAddressInput } from './create-return-request-address
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateReturnRequestAddressInput extends PartialType(CreateReturnRequestAddressInput) {
+export class UpdateReturnRequestAddressInput extends PartialType(
+  CreateReturnRequestAddressInput
+) {
   @Field(() => Int)
   id: number;
 }

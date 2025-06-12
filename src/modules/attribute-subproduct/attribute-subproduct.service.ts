@@ -16,7 +16,10 @@ export class AttributeSubproductService {
     return `This action returns a #${id} attributeSubproduct`;
   }
 
-  update(id: number, updateAttributeSubproductInput: UpdateAttributeSubproductInput) {
+  update(
+    id: number,
+    updateAttributeSubproductInput: UpdateAttributeSubproductInput
+  ) {
     return `This action updates a #${id} attributeSubproduct`;
   }
 

@@ -4,32 +4,32 @@ import { Column, Entity, Index } from 'typeorm';
 @Index(
   'temp_subproduct_discounts_all_with_stock_discount_id_index',
   ['allWithStockDiscountId'],
-  {},
+  {}
 )
 @Index(
   'temp_subproduct_discounts_category_discount_id_index',
   ['categoryDiscountId'],
-  {},
+  {}
 )
 @Index(
   'temp_subproduct_discounts_price_group_discount_id_index',
   ['priceGroupDiscountId'],
-  {},
+  {}
 )
 @Index(
   'temp_subproduct_discounts_product_discount_id_index',
   ['productDiscountId'],
-  {},
+  {}
 )
 @Index(
   'temp_subproduct_discounts_size_discount_id_index',
   ['sizeDiscountId'],
-  {},
+  {}
 )
 @Index(
   'temp_subproduct_discounts_subproduct_discount_id_index',
   ['subproductDiscountId'],
-  {},
+  {}
 )
 @Index('temp_subproduct_discounts_view_product_id_index', ['viewProductId'], {})
 @Entity('temp_subproduct_discounts', { schema: 'modema' })

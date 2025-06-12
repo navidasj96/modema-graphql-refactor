@@ -5,6 +5,6 @@ import { BasicCarpetColor } from './domain/basic-carpet-color';
 @Resolver(() => BasicCarpetColor)
 export class BasicCarpetColorResolver {
   constructor(
-    private readonly basicCarpetColorService: BasicCarpetColorService,
+    private readonly basicCarpetColorService: BasicCarpetColorService
   ) {}
 }

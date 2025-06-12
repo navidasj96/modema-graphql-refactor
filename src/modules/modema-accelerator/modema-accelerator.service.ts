@@ -16,7 +16,10 @@ export class ModemaAcceleratorService {
     return `This action returns a #${id} modemaAccelerator`;
   }
 
-  update(id: number, updateModemaAcceleratorInput: UpdateModemaAcceleratorInput) {
+  update(
+    id: number,
+    updateModemaAcceleratorInput: UpdateModemaAcceleratorInput
+  ) {
     return `This action updates a #${id} modemaAccelerator`;
   }
 

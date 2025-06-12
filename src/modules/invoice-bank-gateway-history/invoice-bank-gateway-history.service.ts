@@ -4,7 +4,9 @@ import { UpdateInvoiceBankGatewayHistoryInput } from './dto/update-invoice-bank-
 
 @Injectable()
 export class InvoiceBankGatewayHistoryService {
-  create(createInvoiceBankGatewayHistoryInput: CreateInvoiceBankGatewayHistoryInput) {
+  create(
+    createInvoiceBankGatewayHistoryInput: CreateInvoiceBankGatewayHistoryInput
+  ) {
     return 'This action adds a new invoiceBankGatewayHistory';
   }
 
@@ -16,7 +18,10 @@ export class InvoiceBankGatewayHistoryService {
     return `This action returns a #${id} invoiceBankGatewayHistory`;
   }
 
-  update(id: number, updateInvoiceBankGatewayHistoryInput: UpdateInvoiceBankGatewayHistoryInput) {
+  update(
+    id: number,
+    updateInvoiceBankGatewayHistoryInput: UpdateInvoiceBankGatewayHistoryInput
+  ) {
     return `This action updates a #${id} invoiceBankGatewayHistory`;
   }
 

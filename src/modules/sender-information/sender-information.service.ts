@@ -16,7 +16,10 @@ export class SenderInformationService {
     return `This action returns a #${id} senderInformation`;
   }
 
-  update(id: number, updateSenderInformationInput: UpdateSenderInformationInput) {
+  update(
+    id: number,
+    updateSenderInformationInput: UpdateSenderInformationInput
+  ) {
     return `This action updates a #${id} senderInformation`;
   }
 

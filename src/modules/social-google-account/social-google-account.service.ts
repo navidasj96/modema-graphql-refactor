@@ -16,7 +16,10 @@ export class SocialGoogleAccountService {
     return `This action returns a #${id} socialGoogleAccount`;
   }
 
-  update(id: number, updateSocialGoogleAccountInput: UpdateSocialGoogleAccountInput) {
+  update(
+    id: number,
+    updateSocialGoogleAccountInput: UpdateSocialGoogleAccountInput
+  ) {
     return `This action updates a #${id} socialGoogleAccount`;
   }
 

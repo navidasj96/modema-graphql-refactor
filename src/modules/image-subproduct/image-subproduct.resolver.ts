@@ -5,6 +5,6 @@ import { ImageSubproduct } from '@/modules/image-subproduct/domain/image-subprod
 @Resolver(() => ImageSubproduct)
 export class ImageSubproductResolver {
   constructor(
-    private readonly imageSubproductService: ImageSubproductService,
+    private readonly imageSubproductService: ImageSubproductService
   ) {}
 }
