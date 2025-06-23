@@ -1,11 +1,11 @@
 import { AuthService } from '@/modules/auth/auth.service';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { UpdateInvocieProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
+import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { ProductionRollService } from '@/modules/production-roll/production-roll.service';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { DataSource, In, Repository } from 'typeorm';
 
 @Injectable()
 export class UpdateInvoiceProductItemsRollIdProvider {
@@ -22,12 +22,16 @@ export class UpdateInvoiceProductItemsRollIdProvider {
     /**
      * inject productionRollService
      */
-    private readonly productionRollService: ProductionRollService
+    private readonly productionRollService: ProductionRollService,
+    /**
+     * inject dataSource
+     */
+    private readonly dataSource: DataSource
   ) {}
 
   async updateInvoiceProductItemsRollId(
     context: { req: UserContext },
-    updateInvocieProductItemsRollIdInput: UpdateInvocieProductItemsRollIdInput
+    updateInvoiceProductItemsRollIdInput: UpdateInvoiceProductItemsRollIdInput
   ) {
     const userHasPermission = await this.authService.userPermissionCheck(
       ['edit roll reference code'],
@@ -40,45 +44,59 @@ export class UpdateInvoiceProductItemsRollIdProvider {
         status: false,
       };
     }
+
+    const queryRunner = this.dataSource.createQueryRunner();
+    const manager = queryRunner.manager;
+    const invoiceProductItemRepository =
+      manager.getRepository(InvoiceProductItem);
+
     const productionRollId =
-      updateInvocieProductItemsRollIdInput.productionRollId;
-    const ids = updateInvocieProductItemsRollIdInput.ids;
+      updateInvoiceProductItemsRollIdInput.productionRollId;
+    const ids = updateInvoiceProductItemsRollIdInput.ids;
     const productionRoll = await this.productionRollService.findOne({
       where: { id: productionRollId },
     });
-    const invoiceProductItems = await this.invoiceProductItemRepository.find({
-      where: { id: In(ids) },
-    });
 
-    for (const invoiceProductItem of invoiceProductItems) {
-      const invoiceProduct = invoiceProductItem.invoiceProduct;
-      const product = invoiceProduct.product;
-      if (
-        (product.isShaggy == 1 && !productionRoll?.isShaggy) ||
-        (!product.isShaggy && productionRoll?.isShaggy)
-      ) {
-        return {
-          message:
-            'آیتم های شگی را تنها می‌توانید به رول های مربوط به شگی ارتباط دهید',
-          status: false,
-        };
-      }
-      invoiceProductItem.productionRollId = productionRollId;
-      invoiceProductItem.rollReferenceCode = productionRoll?.rollNumber;
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      const invoiceProductItems = await invoiceProductItemRepository.find({
+        where: { id: In(ids) },
+        relations: { invoiceProduct: { product: true } },
+      });
 
-      try {
-        await this.invoiceProductItemRepository.save(invoiceProductItem);
-      } catch {
-        return {
-          message:
-            'مشکلی در تغییر کد رول تولید موارد انتخابی بوجود آمد. لطفا دوباره امتحان نمایید.',
-          status: false,
-        };
+      for (const invoiceProductItem of invoiceProductItems) {
+        const invoiceProduct = invoiceProductItem.invoiceProduct;
+        const product = invoiceProduct.product;
+        if (
+          (product.isShaggy == 1 && !productionRoll?.isShaggy) ||
+          (!product.isShaggy && productionRoll?.isShaggy)
+        ) {
+          return {
+            message:
+              'آیتم های شگی را تنها می‌توانید به رول های مربوط به شگی ارتباط دهید',
+            status: false,
+          };
+        }
+        invoiceProductItem.productionRollId = productionRollId;
+        invoiceProductItem.rollReferenceCode = productionRoll?.rollNumber;
+
+        await invoiceProductItemRepository.save(invoiceProductItem);
       }
+      await queryRunner.commitTransaction();
+      return {
+        message: 'کد رول تولید موارد انتخابی با موفقیت تغییر داده شد',
+        status: true,
+      };
+    } catch (error) {
+      console.log('error', error);
+      await queryRunner.rollbackTransaction();
+      return {
+        message: 'خطا در تغییر کد رول تولید موارد انتخابی',
+        status: false,
+      };
+    } finally {
+      await queryRunner.release();
     }
-    return {
-      message: 'کد رول تولید موارد انتخابی با موفقیت تغییر داده شد',
-      status: true,
-    };
   }
 }

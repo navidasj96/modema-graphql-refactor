@@ -8,6 +8,8 @@ import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
 import { UpdateInvoiceProductItemsProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items.provider';
+import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
+import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -20,7 +22,12 @@ export class InvoiceProductItemService {
     /**
      * inject pdateInvoiceItemsProvider
      */
-    private readonly updateInvoiceProductItemsProvider: UpdateInvoiceProductItemsProvider
+    private readonly updateInvoiceProductItemsProvider: UpdateInvoiceProductItemsProvider,
+
+    /**
+     * inject updateInvoiceProductItemsRollIdProvider
+     */
+    private readonly updateInvoiceProductItemsRollIdProvider: UpdateInvoiceProductItemsRollIdProvider
   ) {}
 
   create(createInvoiceProductItemInput: CreateInvoiceProductItemInput) {
@@ -60,6 +67,16 @@ export class InvoiceProductItemService {
     return await this.updateInvoiceProductItemsProvider.updateInvoiceProductItems(
       context,
       updateInvoiceItemsInput
+    );
+  }
+
+  async updateInvoiceProductItemsRollId(
+    context: { req: UserContext },
+    updateInvoiceProductItemsRollIdInput: UpdateInvoiceProductItemsRollIdInput
+  ) {
+    return await this.updateInvoiceProductItemsRollIdProvider.updateInvoiceProductItemsRollId(
+      context,
+      updateInvoiceProductItemsRollIdInput
     );
   }
 }
