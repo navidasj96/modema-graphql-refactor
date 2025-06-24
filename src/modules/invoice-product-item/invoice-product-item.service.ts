@@ -10,6 +10,7 @@ import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/d
 import { UpdateInvoiceProductItemsProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items.provider';
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
+import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -27,7 +28,12 @@ export class InvoiceProductItemService {
     /**
      * inject updateInvoiceProductItemsRollIdProvider
      */
-    private readonly updateInvoiceProductItemsRollIdProvider: UpdateInvoiceProductItemsRollIdProvider
+    private readonly updateInvoiceProductItemsRollIdProvider: UpdateInvoiceProductItemsRollIdProvider,
+
+    /**
+     * inject damagedInvoiceItemControllerProvider
+     */
+    private readonly damagedInvoiceItemControllerProvider: DamagedInvoiceItemsControllerProvider
   ) {}
 
   create(createInvoiceProductItemInput: CreateInvoiceProductItemInput) {
@@ -77,6 +83,16 @@ export class InvoiceProductItemService {
     return await this.updateInvoiceProductItemsRollIdProvider.updateInvoiceProductItemsRollId(
       context,
       updateInvoiceProductItemsRollIdInput
+    );
+  }
+
+  async submitDamagedInvoiceItems(
+    context: { req: UserContext },
+    invoiceProductItemId: number
+  ) {
+    return await this.damagedInvoiceItemControllerProvider.submitDamagedInvoiceItems(
+      context,
+      invoiceProductItemId
     );
   }
 }

@@ -17,6 +17,7 @@ import { InvoiceProductItemInvoiceProductStatusModule } from '@/modules/invoice-
 import { InvoiceModule } from '@/modules/invoice/invoice.module';
 import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
+import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
 
 @Module({
   providers: [
@@ -25,6 +26,7 @@ import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-produ
     UpdateInvoiceProductItemsProvider,
     PermissionsToChangeInvoiceProductItemStatusProvider,
     UpdateInvoiceProductItemsRollIdProvider,
+    DamagedInvoiceItemsControllerProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
