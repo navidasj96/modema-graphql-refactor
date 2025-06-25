@@ -377,8 +377,16 @@ export class DamagedInvoiceItemsControllerProvider {
       InvoiceProductItemDamageTypeEnum.DAMAGE_TYPE_CAN_BE_CONVERTED_TO_OTHER_PRODUCTS_OR_SIZES
     ) {
       const userForDamages = this.userForDamages;
+
+      if (!userForDamages) {
+        throw new GraphQLError('User for damages not found.');
+      }
       const addressForDamages = this.addressForDamages;
       const newProducts = this.newProducts;
+      const newInvoiceNumber = await this.invoiceService.getNewInvoiceNumber();
+
+      const invoiceForNewProducts = new Invoice();
+      invoiceForNewProducts.userId = userForDamages.id;
     }
   }
 }
