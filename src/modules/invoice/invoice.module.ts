@@ -28,6 +28,7 @@ import { WalletModule } from '@/modules/wallet/wallet.module';
 import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
 import { InvoiceProductStatusModule } from '@/modules/invoice-product-status/invoice-product-status.module';
 import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
+import { GetNewInvoiceNumberProvider } from '@/modules/invoice/providers/get-new-invoice-number.provider';
 
 @Module({
   providers: [
@@ -40,6 +41,7 @@ import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/
     ShowInvoiceProvider,
     InvoicePrepareProvider,
     SubproductsDepotInProgressProvider,
+    GetNewInvoiceNumberProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

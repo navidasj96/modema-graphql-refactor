@@ -137,7 +137,7 @@ export class Invoice {
     scale: 2,
     default: () => "'0.00'",
   })
-  shippingRate: string | null;
+  shippingRate: number | null;
 
   @Column('decimal', {
     name: 'shipping_rate_cod',
@@ -145,7 +145,7 @@ export class Invoice {
     precision: 18,
     scale: 2,
   })
-  shippingRateCod: string | null;
+  shippingRateCod: number | null;
 
   @Column('double', {
     name: 'paid_cod_shipping_rate',

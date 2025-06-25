@@ -93,10 +93,10 @@ export class InvoiceProductItem {
   printProfileId?: number | null;
 
   @Column('tinyint', { name: 'damage_type', nullable: true })
-  damageType?: number;
+  damageType: number | null;
 
   @Column('varchar', { name: 'damage_cause', nullable: true, length: 191 })
-  damageCause?: string;
+  damageCause: string | null;
 
   @Column('int', { name: 'damage_reason_id', nullable: true, unsigned: true })
   damageReasonId?: number;

@@ -83,7 +83,7 @@ export class InvoiceProduct {
   pricePerInch: number | null;
 
   @Column('decimal', { name: 'price', precision: 18, scale: 2 })
-  price: string;
+  price: number;
 
   @Column('decimal', {
     name: 'bundle_price',

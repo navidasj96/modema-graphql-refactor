@@ -41,10 +41,10 @@ export class Address {
   cityId: number;
 
   @Column('varchar', { name: 'fullname', nullable: true, length: 191 })
-  fullname?: string;
+  fullname: string | null;
 
   @Column('varchar', { name: 'zip_code', nullable: true, length: 191 })
-  zipCode?: string;
+  zipCode: string | null;
 
   @Column('varchar', {
     name: 'address',
@@ -59,25 +59,25 @@ export class Address {
     comment: 'Optional Second Line of Address',
     length: 191,
   })
-  address2?: string;
+  address2: string | null;
 
   @Column('varchar', { name: 'phone', nullable: true, length: 191 })
-  phone?: string;
+  phone: string | null;
 
   @Column('varchar', { name: 'phone2', nullable: true, length: 191 })
-  phone2?: string;
+  phone2: string | null;
 
   @Column('varchar', { name: 'longitude', nullable: true, length: 191 })
-  longitude?: string;
+  longitude: string | null;
 
   @Column('varchar', { name: 'latitude', nullable: true, length: 191 })
-  latitude?: string;
+  latitude: string | null;
 
   @Column('varchar', { name: 'email', nullable: true, length: 191 })
-  email?: string;
+  email: string | null;
 
   @Column('text', { name: 'full_address', nullable: true })
-  fullAddress?: string;
+  fullAddress: string | null;
 
   @Column('varchar', { name: 'national_id', nullable: true, length: 191 })
   nationalId?: string;

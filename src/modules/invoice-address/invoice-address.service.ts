@@ -3,6 +3,8 @@ import { CreateInvoiceAddressInput } from './dto/create-invoice-address.input';
 import { UpdateInvoiceAddressInput } from './dto/update-invoice-address.input';
 import { InvoiceAddressPrepareProvider } from '@/modules/invoice-address/providers/invoice-address-prepare.provider';
 import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
+import { EntityManager, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class InvoiceAddressService {
@@ -10,7 +12,12 @@ export class InvoiceAddressService {
     /**
      * inject invoiceAddressPrepareProvider
      */
-    private readonly invoiceAddressPrepareProvider: InvoiceAddressPrepareProvider
+    private readonly invoiceAddressPrepareProvider: InvoiceAddressPrepareProvider,
+    /**
+     * inject invoiceAddressRepository
+     */
+    @InjectRepository(InvoiceAddress)
+    private readonly invoiceAddressRepository: Repository<InvoiceAddress>
   ) {}
 
   create(createInvoiceAddressInput: CreateInvoiceAddressInput) {
@@ -35,5 +42,12 @@ export class InvoiceAddressService {
 
   invoiceAddressPrepare(address: InvoiceAddress) {
     return this.invoiceAddressPrepareProvider.InvoiceAddressPrepare(address);
+  }
+
+  async save(invoiceAddress: InvoiceAddress, manager?: EntityManager) {
+    const invoiceAddressRepository = manager
+      ? manager.getRepository(InvoiceAddress)
+      : this.invoiceAddressRepository;
+    return await invoiceAddressRepository.save(invoiceAddress);
   }
 }

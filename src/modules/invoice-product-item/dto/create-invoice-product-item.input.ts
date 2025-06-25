@@ -56,7 +56,7 @@ export class CreateInvoiceProductItemInput {
   damageType?: number;
 
   @Field({ nullable: true })
-  damageCause?: string;
+  damageCause: string | null;
 
   @Field({ nullable: true })
   damageReasonId?: number;

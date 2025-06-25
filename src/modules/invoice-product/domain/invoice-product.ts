@@ -86,7 +86,7 @@ export class InvoiceProduct {
   pricePerInch?: number;
 
   @Field()
-  price: string;
+  price: number;
 
   @Field()
   bundlePrice: string;

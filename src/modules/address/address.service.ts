@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAddressInput } from './dto/create-address.input';
 import { UpdateAddressInput } from './dto/update-address.input';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 import { Address } from './entities/address.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -22,8 +22,8 @@ export class AddressService {
     return `This action returns all address`;
   }
 
-  async findOne(id: number) {
-    return await this.addressRepository.findOne({ where: { id } });
+  async findOne(options: FindOneOptions<Address>) {
+    return await this.addressRepository.findOne(options);
   }
 
   update(id: number, updateAddressInput: UpdateAddressInput) {

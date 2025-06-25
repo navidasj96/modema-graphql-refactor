@@ -17,6 +17,7 @@ import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dt
 import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
 import { SubproductsDepotInProgressInput } from '@/modules/invoice/dto/subproducts-depot-in-progress.input';
 import { SubproductsDepotInProgressOutput } from '@/modules/invoice/dto/subproducts-depot-in-progress.output';
+import { GetNewInvoiceNumberProvider } from '@/modules/invoice/providers/get-new-invoice-number.provider';
 
 @Injectable()
 export class InvoiceService {
@@ -46,7 +47,10 @@ export class InvoiceService {
     /**
      * inject subproductsDepotInProgressProvider
      */
-    private readonly subproductsDepotInProgressProvider: SubproductsDepotInProgressProvider
+    private readonly subproductsDepotInProgressProvider: SubproductsDepotInProgressProvider,
+    /**
+     * inject getNewInvoiceNumberProvider
+     */ private readonly getNewInvoiceNumberProvider: GetNewInvoiceNumberProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -122,5 +126,11 @@ export class InvoiceService {
       ? manager.getRepository(Invoice)
       : this.invoiceRepository;
     return await repository.save(invoice);
+  }
+
+  async getNewInvoiceNumber(invoiceId = 0) {
+    return await this.getNewInvoiceNumberProvider.getNewInvoiceNumber(
+      invoiceId
+    );
   }
 }

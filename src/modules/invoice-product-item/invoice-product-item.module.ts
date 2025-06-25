@@ -18,6 +18,12 @@ import { InvoiceModule } from '@/modules/invoice/invoice.module';
 import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
 import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
+import { SubproductModule } from '@/modules/subproduct/subproduct.module';
+import { ProductService } from '@/modules/product/product.service';
+import { AddressModule } from '@/modules/address/address.module';
+import { UserModule } from '@/modules/user/user.module';
+import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
+import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.module';
 
 @Module({
   providers: [
@@ -48,6 +54,12 @@ import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product
     InvoiceInvoiceStatusModule,
     forwardRef(() => InvoiceModule),
     ProductionRollModule,
+    SubproductModule,
+    ProductService,
+    AddressModule,
+    UserModule,
+    InvoiceAddressModule,
+    InvoiceProductModule,
   ],
   exports: [InvoiceProductItemService],
 })
