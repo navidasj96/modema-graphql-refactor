@@ -60,10 +60,10 @@ export class InvoiceHistory {
   selectedShippingServiceId?: number;
 
   @Field({ nullable: true })
-  shippingRate?: string;
+  shippingRate?: number;
 
   @Field({ nullable: true })
-  shippingRateCod?: string;
+  shippingRateCod?: number;
 
   @Field()
   name: string;

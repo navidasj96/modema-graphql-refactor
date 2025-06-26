@@ -11,6 +11,7 @@ import { UpdateInvoiceProductItemsProvider } from '@/modules/invoice-product-ite
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
+import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -88,11 +89,11 @@ export class InvoiceProductItemService {
 
   async submitDamagedInvoiceItems(
     context: { req: UserContext },
-    invoiceProductItemId: number
+    submitInvoiceProductDamageInput: SubmitInvoiceProductDamageInput
   ) {
     return await this.damagedInvoiceItemControllerProvider.submitDamagedInvoiceItems(
       context,
-      invoiceProductItemId
+      submitInvoiceProductDamageInput
     );
   }
 }

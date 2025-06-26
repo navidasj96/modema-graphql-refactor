@@ -77,7 +77,7 @@ export class InvoiceProductItem {
   @Field({ nullable: true })
   printProfileId?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Number, { nullable: true })
   damageType: number | null;
 
   @Field({ nullable: true })

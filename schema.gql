@@ -1192,7 +1192,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-24T07:17:42.850Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.242Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1286,7 +1286,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-24T07:17:42.873Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.260Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1401,7 +1401,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-24T07:17:42.936Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.322Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1491,7 +1491,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-24T07:17:42.874Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.261Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1726,7 +1726,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-24T07:17:42.894Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.281Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1831,7 +1831,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-24T07:17:42.876Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.263Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5174,7 +5174,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-24T07:17:43.466Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.843Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5196,7 +5196,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-06-24T07:17:43.478Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.852Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5211,7 +5211,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-24T07:17:43.488Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.861Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5235,7 +5235,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-06-24T07:17:43.498Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.871Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5266,7 +5266,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-24T07:17:43.506Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.880Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5307,7 +5307,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-06-24T07:17:43.525Z"
+  createdAt: DateTime! = "2025-06-26T06:57:23.898Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -28023,8 +28023,8 @@ type InvoiceHistory {
   replacementPriceMoneyTransferCode: String
   saleRefId: String
   selectedShippingServiceId: Float
-  shippingRate: String
-  shippingRateCod: String
+  shippingRate: Float
+  shippingRateCod: Float
   stateId: Float!
   subtotalPrice: Float
   taxRate: Float
@@ -28139,8 +28139,8 @@ type InvoiceHistoryDeleteResponse {
   replacementPriceMoneyTransferCode: String
   saleRefId: String
   selectedShippingServiceId: Float
-  shippingRate: String
-  shippingRateCod: String
+  shippingRate: Float
+  shippingRateCod: Float
   stateId: Float
   subtotalPrice: Float
   taxRate: Float
@@ -28233,8 +28233,8 @@ input InvoiceHistoryDomain {
   replacementPriceMoneyTransferCode: String
   saleRefId: String
   selectedShippingServiceId: Float
-  shippingRate: String
-  shippingRateCod: String
+  shippingRate: Float
+  shippingRateCod: Float
   stateId: Float!
   subtotalPrice: Float
   taxRate: Float
@@ -30143,7 +30143,7 @@ type InvoiceProduct {
   manuallyAdded: Float!
   pad: Subproduct!
   padId: Float
-  price: String!
+  price: Float!
   pricePerInch: Float
   product: Product!
   productId: Float
@@ -30361,7 +30361,7 @@ type InvoiceProductDeleteResponse {
   manuallyAdded: Float
   pad: Subproduct
   padId: Float
-  price: String
+  price: Float
   pricePerInch: Float
   product: Product
   productId: Float
@@ -30415,7 +30415,7 @@ input InvoiceProductDomain {
   manuallyAdded: Float!
   pad: SubproductDomain
   padId: Float
-  price: String!
+  price: Float!
   pricePerInch: Float
   product: ProductDomain
   productId: Float
@@ -30591,7 +30591,7 @@ type InvoiceProductHistory {
   length: Float
   manuallyAdded: Float!
   padId: Float
-  price: String!
+  price: Float!
   pricePerInch: Float
   product: Product
   productId: Float
@@ -30651,7 +30651,7 @@ type InvoiceProductHistoryDeleteResponse {
   length: Float
   manuallyAdded: Float
   padId: Float
-  price: String
+  price: Float
   pricePerInch: Float
   product: Product
   productId: Float
@@ -30697,7 +30697,7 @@ input InvoiceProductHistoryDomain {
   length: Float
   manuallyAdded: Float!
   padId: Float
-  price: String!
+  price: Float!
   pricePerInch: Float
   product: ProductDomain
   productId: Float
@@ -36538,6 +36538,7 @@ input ModemaAcceleratorVideoUpdateFilter {
 type Mutation {
   changeActivePrintProfile(printProfileId: Float!): GeneralResponseDto!
   changeInvoicesStatus(ChangeInvoicesStatusInput: ChangeInvoicesStatusInput!): ChangeInvoicesStatusResponseDto!
+  createAddress(createAddressInput: CreateAddressInput!): Address!
   createManyActivities(input: CreateManyActivitiesInput!): [Activity!]!
   createManyAddresses(input: CreateManyAddressesInput!): [Address!]!
   createManyAttributeAttributeGroups(input: CreateManyAttributeAttributeGroupsInput!): [AttributeAttributeGroup!]!
@@ -37580,12 +37581,15 @@ type Mutation {
   deleteOneWithdrawalRequest(input: DeleteOneWithdrawalRequestInput!): WithdrawalRequestDeleteResponse!
   deleteOneWithdrawalRequestStatus(input: DeleteOneWithdrawalRequestStatusInput!): WithdrawalRequestStatusDeleteResponse!
   deleteOneWonderfulOffer(input: DeleteOneWonderfulOfferInput!): WonderfulOfferDeleteResponse!
+  removeAddress(id: Int!): Address!
   removeNegotiationStep(id: Int!): NegotiationStep!
   removeSetting(id: Int!): Setting!
   removeSettingsHistory(id: Int!): SettingsHistory!
   removeTagDetail(id: Int!): TagDetail!
   removeUser(id: Int!): User!
   setInvoiceAsDepotForDigikala(ids: [String!]!): SetInvoiceAsDepotForDigikalaResponseDto!
+  submitDamagedInvoiceItems(submitDamagedInvoiceItems: SubmitInvoiceProductDamageInput!): GeneralResponseDto!
+  updateAddress(updateAddressInput: UpdateAddressInput!): Address!
   updateInvoiceProductItems(updateInvoiceItems: UpdateInvoiceProductItemsInput!): UpdateInvoiceProductItemsOutput!
   updateInvoiceProductItemsRollId(updateInvoiceProductItemsRollId: UpdateInvoiceProductItemsRollIdInput!): GeneralResponseDto!
   updateManyActivities(input: UpdateManyActivitiesInput!): UpdateManyResponse!
@@ -50420,6 +50424,13 @@ input SubcolorUpdateFilter {
   or: [SubcolorUpdateFilter!]
 }
 
+input SubmitInvoiceProductDamageInput {
+  damageCause: String!
+  damageType: Float!
+  id: Float!
+  newProducts: [newProductsInput!]!
+}
+
 type Subproduct {
   attributeSubproducts: [AttributeSubproduct!]!
   basicCarpetBorder: BasicCarpetBorder!
@@ -50469,7 +50480,7 @@ type Subproduct {
   otherImagesChanged: Boolean!
   padPrice: String!
   preorders: [Preorder!]!
-  price: String
+  price: Float
   product: Product!
   productComments: [ProductComment!]!
   productId: Float!
@@ -50565,7 +50576,7 @@ type SubproductDeleteResponse {
   otherImagesChanged: Boolean
   padPrice: String
   preorders: [Preorder!]
-  price: String
+  price: Float
   product: Product
   productComments: [ProductComment!]
   productId: Float
@@ -50651,7 +50662,7 @@ input SubproductDomain {
   otherImagesChanged: Boolean!
   padPrice: String!
   preorders: [PreorderDomain!]!
-  price: String
+  price: Float
   product: ProductDomain!
   productComments: [ProductCommentDomain!]!
   productId: Float!
@@ -52225,6 +52236,43 @@ input UpdateAddress {
   zipCode: String
 }
 
+input UpdateAddressInput {
+  address: String
+  address2: String
+  city: CityDomain
+  cityId: Float
+  country: CountryDomain
+  countryId: Float
+  createdAt: DateTime
+  crmCompanyId: String
+  crmCompanyPersonId: String
+  deletedAt: DateTime
+  email: String
+  fullAddress: String
+  fullname: String
+  fullnameDescription: String
+  fullnameTrimmed: String
+  id: Int!
+  invoiceAddressValidationResults: [InvoiceAddressValidationResultDomain!]
+  invoiceAddresses: [InvoiceAddressDomain!]
+  invoiceRatesResults: [InvoiceRatesResultDomain!]
+  invoices: [InvoiceDomain!]
+  latitude: String
+  longitude: String
+  nationalId: String
+  oldAddress: String
+  phone: String
+  phone2: String
+  returnRequestAddresses: [ReturnRequestAddressDomain!]
+  sepidarId: Float
+  state: StateDomain
+  stateId: Float
+  updatedAt: DateTime
+  user: UserDomain
+  userId: Float
+  zipCode: String
+}
+
 input UpdateAttribute {
   createdAt: DateTime
   id: ID
@@ -52358,7 +52406,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-06-24T07:17:42.850Z"
+  createdAt: DateTime = "2025-06-26T06:57:23.242Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -52380,7 +52428,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-06-24T07:17:42.873Z"
+  createdAt: DateTime = "2025-06-26T06:57:23.260Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52395,7 +52443,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-06-24T07:17:42.936Z"
+  createdAt: DateTime = "2025-06-26T06:57:23.322Z"
   description: String
   facebookId: String
   headerImage: String
@@ -52419,7 +52467,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-06-24T07:17:42.874Z"
+  createdAt: DateTime = "2025-06-26T06:57:23.261Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52436,7 +52484,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-06-24T07:17:42.894Z"
+  createdAt: DateTime = "2025-06-26T06:57:23.281Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -52491,7 +52539,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-06-24T07:17:42.876Z"
+  createdAt: DateTime = "2025-06-26T06:57:23.263Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53772,8 +53820,8 @@ input UpdateInvoiceHistory {
   replacementPriceMoneyTransferCode: String
   saleRefId: String
   selectedShippingServiceId: Float
-  shippingRate: String
-  shippingRateCod: String
+  shippingRate: Float
+  shippingRateCod: Float
   stateId: Float
   subtotalPrice: Float
   taxRate: Float
@@ -53932,7 +53980,7 @@ input UpdateInvoiceProduct {
   manuallyAdded: Float
   pad: SubproductDomain
   padId: Float
-  price: String
+  price: Float
   pricePerInch: Float
   product: ProductDomain
   productId: Float
@@ -53984,7 +54032,7 @@ input UpdateInvoiceProductHistory {
   length: Float
   manuallyAdded: Float
   padId: Float
-  price: String
+  price: Float
   pricePerInch: Float
   product: ProductDomain
   productId: Float
@@ -60182,7 +60230,7 @@ input UpdateSubproduct {
   otherImagesChanged: Boolean
   padPrice: String
   preorders: [PreorderDomain!]
-  price: String
+  price: Float
   product: ProductDomain
   productComments: [ProductCommentDomain!]
   productId: Float
@@ -63661,6 +63709,12 @@ input WonderfulOfferUpdateFilter {
   and: [WonderfulOfferUpdateFilter!]
   id: IDFilterComparison
   or: [WonderfulOfferUpdateFilter!]
+}
+
+input newProductsInput {
+  productId: Float!
+  statusId: Float!
+  subproductId: Float!
 }
 
 input updateWalletResponse {

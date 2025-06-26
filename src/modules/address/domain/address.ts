@@ -33,34 +33,34 @@ export class Address {
   @Field()
   cityId: number;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   fullname: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   zipCode: string | null;
 
   @Field()
   address: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   address2: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   phone: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   phone2: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   longitude: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   latitude: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   email: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   fullAddress: string | null;
 
   @Field({ nullable: true })

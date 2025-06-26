@@ -21,5 +21,6 @@ import { CreateProductInput } from '@/modules/product/dto/create-product.input';
       ],
     }),
   ],
+  exports: [ProductService],
 })
 export class ProductModule {}

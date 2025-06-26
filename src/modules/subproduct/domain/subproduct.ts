@@ -70,8 +70,8 @@ export class Subproduct {
   @Field({ nullable: true })
   searchName?: string;
 
-  @Field({ nullable: true })
-  price?: string;
+  @Field(() => Number, { nullable: true })
+  price: number | null;
 
   @Field()
   padPrice: string;

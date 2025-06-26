@@ -3,7 +3,7 @@ import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 import { InvoiceItemDamageTypes } from '@/utils/invoice-product-item-damage-types';
 import { InvoiceProductItemPermissions } from '@/utils/permissions';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { GraphQLError } from 'graphql';
 import { DataSource, EntityManager, Repository } from 'typeorm';
 import { SubproductService } from '@/modules/subproduct/subproduct.service';
@@ -59,6 +59,7 @@ export class DamagedInvoiceItemsControllerProvider {
     /**
      * inject invoiceService
      */
+    @Inject(forwardRef(() => InvoiceService))
     private readonly invoiceService: InvoiceService,
     /**
      * inject invoiceInvoiceStatusService
@@ -84,7 +85,7 @@ export class DamagedInvoiceItemsControllerProvider {
 
   private damageCause: null | string = null;
   private damageType: null | number = null;
-  private newProducts: any;
+  private newProducts: SubmitInvoiceProductDamageInput['newProducts'];
   private addressForDamages: Address | null;
   private userForDamages: User | null;
   private invoiceForDamages: Invoice;
@@ -149,6 +150,21 @@ export class DamagedInvoiceItemsControllerProvider {
         invoiceProductItemRepository,
         manager
       );
+
+      await this.createNewInvoiceForConvertedProducts(
+        userId,
+        invoiceProductItemRepository,
+        manager
+      );
+
+      await this.createNewInvoiceProductItemToProduceForCustomers(
+        invoiceProductItem,
+        invoiceProductItemRepository,
+        userId,
+        manager
+      );
+
+      await queryRunner.commitTransaction();
     } catch (error) {
       await queryRunner.rollbackTransaction();
       throw new GraphQLError(
@@ -231,9 +247,9 @@ export class DamagedInvoiceItemsControllerProvider {
 
           return {
             message: `محصول
-            ${product?.name}
+            {product?.name}
             با شناسه subproduct
-            ${newProduct.subproductId}
+            {newProduct.subproductId}
             در سیستم تعریف نشده است
             `,
             status: false,
@@ -371,22 +387,213 @@ export class DamagedInvoiceItemsControllerProvider {
     );
   }
 
-  private async createNewInvoiceForConvertedProducts() {
+  private async createNewInvoiceForConvertedProducts(
+    userId: number,
+    invoiceProductItemRepository: Repository<InvoiceProductItem>,
+    manager: EntityManager
+  ) {
     if (
       this.damageType ==
       InvoiceProductItemDamageTypeEnum.DAMAGE_TYPE_CAN_BE_CONVERTED_TO_OTHER_PRODUCTS_OR_SIZES
     ) {
       const userForDamages = this.userForDamages;
-
-      if (!userForDamages) {
-        throw new GraphQLError('User for damages not found.');
-      }
       const addressForDamages = this.addressForDamages;
+      if (!userForDamages || !addressForDamages) {
+        throw new GraphQLError('User or address for damages not found.');
+      }
       const newProducts = this.newProducts;
       const newInvoiceNumber = await this.invoiceService.getNewInvoiceNumber();
 
       const invoiceForNewProducts = new Invoice();
       invoiceForNewProducts.userId = userForDamages.id;
+      invoiceForNewProducts.userId = userForDamages.id;
+      invoiceForNewProducts.currentInvoiceStatusId =
+        InvoiceStatusEnum.PREPARING_PRODUCTS;
+      invoiceForNewProducts.addressId = addressForDamages.id;
+      invoiceForNewProducts.invoiceModeId =
+        InvoiceModeEnum.INVOICE_MODE_CREATED_FROM_DAMAGED;
+      invoiceForNewProducts.invoiceTypeId = InvoiceTypeEnum.FOR_DEPOT;
+      invoiceForNewProducts.name = userForDamages.name;
+      invoiceForNewProducts.lastName = userForDamages.family;
+      invoiceForNewProducts.issueDate = new Date();
+      invoiceForNewProducts.taxRate = 0;
+      invoiceForNewProducts.shippingRate = 0;
+      invoiceForNewProducts.shippingRateCod = 0;
+      invoiceForNewProducts.paidCodShippingRate = 0;
+      invoiceForNewProducts.subtotalPrice = 0;
+      invoiceForNewProducts.totalPrice = 0;
+      invoiceForNewProducts.couponId = null;
+      invoiceForNewProducts.refId = null;
+      invoiceForNewProducts.orderId = null;
+      invoiceForNewProducts.selectedShippingServiceId = null;
+      invoiceForNewProducts.visitorCouponId = null;
+      invoiceForNewProducts.visitorRate = null;
+      invoiceForNewProducts.totalVisitorShare = null;
+      invoiceForNewProducts.totalDiscount = null;
+      invoiceForNewProducts.totalCouponDiscount = null;
+      invoiceForNewProducts.invoicePaymentStatusId =
+        InvoicePaymentStatusEnum.DEPOT_WITHOUT_PAYMENT;
+      invoiceForNewProducts.cashOnDelivery = 0;
+      invoiceForNewProducts.parentInvoiceId = this.invoiceForDamages.id;
+      invoiceForNewProducts.isDepot = 1;
+
+      // به شماره فاکتوری که با فرمول بالا به دست آمد تاریخ جاری اضافه می شود و همچنین با قرار دادن تعدادی صفر قبل از عدد، شماره آن به یک عدد 5 رقمی تبدیل میشود
+      invoiceForNewProducts.invoiceNumber = newInvoiceNumber;
+
+      await this.invoiceService.save(invoiceForNewProducts, manager);
+      const comment =
+        'صورتحساب معیوبی جهت کالاهایی که از کالای معیوبی تولید می شوند';
+      await this.invoiceInvoiceStatusService.attach(
+        invoiceForNewProducts.id,
+        invoiceForNewProducts.currentInvoiceStatusId,
+        userId,
+        comment,
+        manager
+      );
+
+      const invoiceAddressForNewProducts = new InvoiceAddress();
+      invoiceAddressForNewProducts.invoiceId = invoiceForNewProducts.id;
+      invoiceAddressForNewProducts.addressId = addressForDamages.id;
+      invoiceAddressForNewProducts.userId = userForDamages.id;
+      invoiceAddressForNewProducts.countryId = addressForDamages.countryId;
+      invoiceAddressForNewProducts.stateId = addressForDamages.stateId;
+      invoiceAddressForNewProducts.cityId = addressForDamages.cityId;
+      invoiceAddressForNewProducts.zipCode = addressForDamages.zipCode;
+      invoiceAddressForNewProducts.address = addressForDamages.address;
+      invoiceAddressForNewProducts.address2 = addressForDamages.address2;
+      invoiceAddressForNewProducts.phone = addressForDamages.phone;
+      invoiceAddressForNewProducts.phone2 = addressForDamages.phone2;
+      invoiceAddressForNewProducts.longitude = addressForDamages.longitude;
+      invoiceAddressForNewProducts.latitude = addressForDamages.latitude;
+      invoiceAddressForNewProducts.fullname = addressForDamages.fullname;
+      invoiceAddressForNewProducts.email = addressForDamages.email;
+      invoiceAddressForNewProducts.fullAddress = addressForDamages.fullAddress;
+
+      await this.invoiceAddressService.save(
+        invoiceAddressForNewProducts,
+        manager
+      );
+
+      for (const newProduct of newProducts) {
+        if (
+          newProduct.productId &&
+          newProduct.subproductId &&
+          newProduct.statusId
+        ) {
+          const selectedSubproduct = await this.subproductService.findOne({
+            where: {
+              productId: newProduct.productId,
+              id: newProduct.subproductId,
+            },
+          });
+
+          if (!selectedSubproduct) {
+            const product = await this.productService.findOne({
+              where: { id: newProduct.productId },
+            });
+
+            throw new GraphQLError(
+              `محصول ${product?.name} با شناسه subproduct ${newProduct.subproductId} در سیستم تعریف نشده است`
+            );
+          }
+
+          const invoiceProductForNewProduct = new InvoiceProduct();
+          invoiceProductForNewProduct.invoiceId = invoiceForNewProducts.id;
+          invoiceProductForNewProduct.productId = selectedSubproduct.productId;
+          invoiceProductForNewProduct.subproductId = selectedSubproduct.id;
+          invoiceProductForNewProduct.price = selectedSubproduct.price || 0;
+          invoiceProductForNewProduct.count = 1;
+          invoiceProductForNewProduct.totalPrice = selectedSubproduct.price;
+          invoiceProductForNewProduct.withPad = 0;
+          invoiceProductForNewProduct.invoiceProductItemsCreated = 1;
+          invoiceProductForNewProduct.itemsToProduce = 1;
+          invoiceProductForNewProduct.itemsFromDepot = 0;
+
+          await this.invoiceProductService.save(
+            invoiceProductForNewProduct,
+            manager
+          );
+
+          const rowForNewProduct = 1;
+          const invoiceProductItemForNewProduct = new InvoiceProductItem();
+          invoiceProductItemForNewProduct.row = rowForNewProduct;
+          invoiceProductItemForNewProduct.invoiceProductId =
+            invoiceProductForNewProduct.id;
+          invoiceProductItemForNewProduct.currentStatusId =
+            newProduct['statusId'];
+          invoiceProductItemForNewProduct.code =
+            invoiceForNewProducts.invoiceNumber +
+            '_' +
+            selectedSubproduct.id +
+            '_' +
+            rowForNewProduct;
+          invoiceProductItemForNewProduct.isTagPrinted = 0;
+
+          await invoiceProductItemRepository.save(
+            invoiceProductItemForNewProduct
+          );
+
+          await this.invoiceProductItemInvoiceProductStatusService.attach(
+            invoiceProductItemForNewProduct.id,
+            invoiceProductItemForNewProduct.currentStatusId,
+            userId,
+            'آیتم جدید جهت ادامه فرآیند تولید از کالای معیوبی انتخابی ایجاد گردید',
+            manager
+          );
+        }
+      }
+    }
+  }
+
+  private async createNewInvoiceProductItemToProduceForCustomers(
+    invoiceProductItem: InvoiceProductItem,
+    invoiceProductItemRepository: Repository<InvoiceProductItem>,
+    userId: number,
+    manager: EntityManager
+  ) {
+    const invoiceProduct = invoiceProductItem.invoiceProduct;
+    const subproduct = invoiceProduct.subproduct;
+    const invoice = invoiceProduct.invoice;
+
+    // New production items are not needed for depot invoices...
+    if (invoice.invoiceTypeId != InvoiceTypeEnum.FOR_DEPOT) {
+      const newRow = invoiceProductItem.row;
+      const newInvoiceProductItem = new InvoiceProductItem();
+      newInvoiceProductItem.row = newRow;
+      newInvoiceProductItem.invoiceProductId = invoiceProduct.id;
+      newInvoiceProductItem.currentStatusId =
+        InvoiceProductStatusEnum.BEGIN_PRODUCTION;
+      newInvoiceProductItem.fromDepot = 0;
+
+      let prefix: string;
+
+      if (invoiceProductItem.code.startsWith('m')) {
+        const explodedCode = invoiceProductItem.code.split('_');
+        const numericPart = parseInt(explodedCode[0].replace('m', ''), 10);
+        const incremented = numericPart + 1;
+        prefix = 'm' + incremented.toString().padStart(2, '0');
+      } else {
+        prefix = 'm01';
+      }
+
+      newInvoiceProductItem.code =
+        prefix +
+        '_' +
+        invoice.invoiceNumber +
+        '_' +
+        subproduct.id +
+        '_' +
+        newRow;
+
+      await invoiceProductItemRepository.save(newInvoiceProductItem);
+
+      await this.invoiceProductItemInvoiceProductStatusService.attach(
+        newInvoiceProductItem.id,
+        newInvoiceProductItem.currentStatusId,
+        userId,
+        'آیتم جدید جهت ادامه فرآیند تولید از کالای معیوبی انتخابی ایجاد گردید',
+        manager
+      );
     }
   }
 }

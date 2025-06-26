@@ -22,7 +22,7 @@ export class AddressResolver {
 
   @Query(() => Address, { name: 'address' })
   findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.addressService.findOne(id);
+    return this.addressService.findOne({ where: { id } });
   }
 
   @Mutation(() => Address)

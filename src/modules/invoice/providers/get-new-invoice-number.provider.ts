@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import dayjs from 'dayjs';
 import jalaliPlugin from 'jalali-dayjs';
 import { PluginFunc } from 'dayjs';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class GetNewInvoiceNumberProvider {
@@ -11,6 +12,7 @@ export class GetNewInvoiceNumberProvider {
     /**
      * inject invoiceRepository
      */
+    @InjectRepository(Invoice)
     private readonly invoiceRepository: Repository<Invoice>
   ) {}
 

@@ -26,5 +26,6 @@ import { SubproductViewModelFactoryProvider } from '@/modules/subproduct/provide
       ],
     }),
   ],
+  exports: [SubproductService],
 })
 export class SubproductModule {}

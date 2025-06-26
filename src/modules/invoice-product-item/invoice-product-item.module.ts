@@ -24,6 +24,7 @@ import { AddressModule } from '@/modules/address/address.module';
 import { UserModule } from '@/modules/user/user.module';
 import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
 import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.module';
+import { ProductModule } from '@/modules/product/product.module';
 
 @Module({
   providers: [
@@ -55,7 +56,7 @@ import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.
     forwardRef(() => InvoiceModule),
     ProductionRollModule,
     SubproductModule,
-    ProductService,
+    ProductModule,
     AddressModule,
     UserModule,
     InvoiceAddressModule,

@@ -98,7 +98,7 @@ export class Subproduct {
   searchName?: string;
 
   @Column('decimal', { name: 'price', nullable: true, precision: 18, scale: 2 })
-  price?: string;
+  price: number | null;
 
   @Column('decimal', {
     name: 'pad_price',

@@ -71,7 +71,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  shippingRate: string | null;
+  shippingRate: number | null;
 
   @Column('decimal', {
     name: 'shipping_rate_cod',
@@ -79,7 +79,7 @@ export class InvoiceHistory {
     precision: 18,
     scale: 2,
   })
-  shippingRateCod: string | null;
+  shippingRateCod: number | null;
 
   @Column('varchar', { name: 'name', length: 191 })
   name: string;

@@ -7,6 +7,7 @@ import { UpdateInvoiceProductItemsOutput } from '@/modules/invoice-product-item/
 import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
+import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -43,6 +44,23 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.updateInvoiceProductItemsRollId(
       context,
       updateInvoiceProductItemsRollId
+    );
+  }
+
+  @Mutation(() => GeneralResponseDto)
+  async submitDamagedInvoiceItems(
+    @Args('submitDamagedInvoiceItems', {
+      type: () => SubmitInvoiceProductDamageInput,
+    })
+    submitInvoiceProductDamageInput: SubmitInvoiceProductDamageInput,
+    @Context()
+    context: {
+      req: UserContext;
+    }
+  ) {
+    return await this.invoiceProductItemService.submitDamagedInvoiceItems(
+      context,
+      submitInvoiceProductDamageInput
     );
   }
 }
