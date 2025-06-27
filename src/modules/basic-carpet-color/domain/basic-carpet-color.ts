@@ -1,5 +1,10 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { IncredibleOffer } from '@/modules/incredible-offer/domain/incredible-offer';
 import { ProductColorImage } from '@/modules/product-color-image/domain/product-color-image';
 import { ProductColorSale } from '@/modules/product-color-sale/domain/product-color-sale';
@@ -9,6 +14,9 @@ import { Subproduct } from '@/modules/subproduct/domain/subproduct';
 import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
 @InputType('BasicCarpetColorDomain')
+@QueryOptions({
+  pagingStrategy: PagingStrategies.NONE,
+})
 @ObjectType()
 export class BasicCarpetColor {
   @IDField(() => ID)

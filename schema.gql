@@ -1150,14 +1150,6 @@ type BasicCarpetColor {
   updatedAt: DateTime!
 }
 
-type BasicCarpetColorConnection {
-  """Array of edges."""
-  edges: [BasicCarpetColorEdge!]!
-
-  """Paging information"""
-  pageInfo: PageInfo!
-}
-
 input BasicCarpetColorDeleteFilter {
   and: [BasicCarpetColorDeleteFilter!]
   code: StringFieldComparison
@@ -1192,7 +1184,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-26T06:57:23.242Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.585Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1210,14 +1202,6 @@ input BasicCarpetColorDomain {
   title: String!
   torobProducts: [TorobProductDomain!]!
   updatedAt: DateTime!
-}
-
-type BasicCarpetColorEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the BasicCarpetColor"""
-  node: BasicCarpetColor!
 }
 
 input BasicCarpetColorFilter {
@@ -1286,7 +1270,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-26T06:57:23.260Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.595Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1401,7 +1385,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-26T06:57:23.322Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.632Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1491,7 +1475,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-26T06:57:23.261Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.596Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1726,7 +1710,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-26T06:57:23.281Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.609Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1831,7 +1815,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-26T06:57:23.263Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.597Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5174,7 +5158,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-26T06:57:23.843Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.977Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5196,7 +5180,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-06-26T06:57:23.852Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.983Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5211,7 +5195,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-26T06:57:23.861Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.989Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5235,7 +5219,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-06-26T06:57:23.871Z"
+  createdAt: DateTime! = "2025-06-27T08:05:12.996Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5266,7 +5250,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-26T06:57:23.880Z"
+  createdAt: DateTime! = "2025-06-27T08:05:13.002Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5307,7 +5291,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-06-26T06:57:23.898Z"
+  createdAt: DateTime! = "2025-06-27T08:05:13.012Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -12154,14 +12138,6 @@ type DamageReason {
   updatedAt: DateTime
 }
 
-type DamageReasonConnection {
-  """Array of edges."""
-  edges: [DamageReasonEdge!]!
-
-  """Paging information"""
-  pageInfo: PageInfo!
-}
-
 input DamageReasonDeleteFilter {
   and: [DamageReasonDeleteFilter!]
   id: IDFilterComparison
@@ -12186,14 +12162,6 @@ input DamageReasonDomain {
   invoiceProductItems: [InvoiceProductItemDomain!]!
   name: String!
   updatedAt: DateTime
-}
-
-type DamageReasonEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the DamageReason"""
-  node: DamageReason!
 }
 
 input DamageReasonFilter {
@@ -19723,6 +19691,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceP
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
@@ -20369,6 +20338,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
@@ -20449,6 +20419,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterS
 input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterProductAggregateFilter!]
@@ -21596,6 +21567,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
@@ -21880,6 +21852,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
 input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
@@ -22015,6 +21988,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceReversalItemAggr
 input InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
@@ -22067,6 +22041,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilterS
 input InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilterSubproductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilterSubproductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilterSubproductAggregateFilterProductAggregateFilter!]
@@ -22136,6 +22111,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilt
 input InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterProductAggregateFilter!]
@@ -22815,6 +22791,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProd
 input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilter!]
@@ -24672,6 +24649,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceReversal
 input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterProductFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterProductFilter!]
@@ -25312,6 +25290,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceReversalItemFilter {
 input InvoiceFilterInvoiceFilterInvoiceProductFilterProductFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceProductFilterProductFilter!]
@@ -25392,6 +25371,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterSubproductFilterImageFilter 
 input InvoiceFilterInvoiceFilterInvoiceProductFilterSubproductFilterProductFilter {
   and: [InvoiceFilterInvoiceFilterInvoiceProductFilterSubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceProductFilterSubproductFilterProductFilter!]
@@ -26533,6 +26513,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceR
 input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterProductFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterProductFilter!]
@@ -26817,6 +26798,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFil
 input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -26952,6 +26934,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceReversalItemFilter {
 input InvoiceFilterInvoiceProductFilterProductFilter {
   and: [InvoiceFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceProductFilterProductFilter!]
@@ -27004,6 +26987,7 @@ input InvoiceFilterInvoiceProductFilterProductFilterSubproductFilterImageFilter 
 input InvoiceFilterInvoiceProductFilterProductFilterSubproductFilterProductFilter {
   and: [InvoiceFilterInvoiceProductFilterProductFilterSubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceProductFilterProductFilterSubproductFilterProductFilter!]
@@ -27073,6 +27057,7 @@ input InvoiceFilterInvoiceProductFilterSubproductFilterImageFilter {
 input InvoiceFilterInvoiceProductFilterSubproductFilterProductFilter {
   and: [InvoiceFilterInvoiceProductFilterSubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterInvoiceProductFilterSubproductFilterProductFilter!]
@@ -27752,6 +27737,7 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceReversalIte
 input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterProductFilter {
   and: [InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterProductFilter!]
@@ -30277,6 +30263,7 @@ input InvoiceProductAggregateFilterInvoiceReversalItemAggregateFilter {
 input InvoiceProductAggregateFilterProductAggregateFilter {
   and: [InvoiceProductAggregateFilterProductAggregateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductAggregateFilterProductAggregateFilter!]
@@ -30525,6 +30512,7 @@ input InvoiceProductFilterInvoiceReversalItemFilter {
 input InvoiceProductFilterProductFilter {
   and: [InvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductFilterProductFilter!]
@@ -31557,6 +31545,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFil
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterProductFilter!]
@@ -31841,6 +31830,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
 input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -31976,6 +31966,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceReversalItemFilter {
 input InvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -32028,6 +32019,7 @@ input InvoiceProductItemFilterInvoiceProductFilterProductFilterSubproductFilterI
 input InvoiceProductItemFilterInvoiceProductFilterProductFilterSubproductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterProductFilterSubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterProductFilterSubproductFilterProductFilter!]
@@ -32097,6 +32089,7 @@ input InvoiceProductItemFilterInvoiceProductFilterSubproductFilterImageFilter {
 input InvoiceProductItemFilterInvoiceProductFilterSubproductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductFilterSubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterSubproductFilterProductFilter!]
@@ -32245,6 +32238,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
 input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -32926,6 +32920,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
 input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -33883,6 +33878,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -33963,6 +33959,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterSubp
 input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterSubproductFilterProductFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterSubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterSubproductFilterProductFilter!]
@@ -34395,6 +34392,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
 input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter {
   and: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterProductFilter!]
@@ -41648,16 +41646,17 @@ input ProductCommentUpdateFilter {
 }
 
 type ProductConnection {
-  """Array of edges."""
-  edges: [ProductEdge!]!
+  """Array of nodes."""
+  nodes: [Product!]!
 
   """Paging information"""
-  pageInfo: PageInfo!
+  pageInfo: OffsetPageInfo!
 }
 
 input ProductDeleteFilter {
   and: [ProductDeleteFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [ProductDeleteFilter!]
@@ -41861,17 +41860,10 @@ input ProductDomain {
   wonderfulOffers: [WonderfulOfferDomain!]!
 }
 
-type ProductEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the Product"""
-  node: Product!
-}
-
 input ProductFilter {
   and: [ProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [ProductFilter!]
@@ -42237,6 +42229,7 @@ input ProductSort {
 
 enum ProductSortFields {
   id
+  isActive
   isCarpetPad
   name
 }
@@ -42324,6 +42317,7 @@ input ProductTagUpdateFilter {
 input ProductUpdateFilter {
   and: [ProductUpdateFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [ProductUpdateFilter!]
@@ -42996,12 +42990,9 @@ type Query {
     """Specify to filter the records returned."""
     filter: BasicCarpetColorFilter! = {}
 
-    """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
-
     """Specify to sort results."""
     sorting: [BasicCarpetColorSort!]! = []
-  ): BasicCarpetColorConnection!
+  ): [BasicCarpetColor!]!
   basicCarpetDesign(
     """The id of the record to find."""
     id: ID!
@@ -43679,12 +43670,9 @@ type Query {
     """Specify to filter the records returned."""
     filter: DamageReasonFilter! = {}
 
-    """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
-
     """Specify to sort results."""
     sorting: [DamageReasonSort!]! = []
-  ): DamageReasonConnection!
+  ): [DamageReason!]!
   department(
     """The id of the record to find."""
     id: ID!
@@ -45313,7 +45301,7 @@ type Query {
     filter: ProductFilter! = {}
 
     """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
+    paging: OffsetPaging! = {limit: 10}
 
     """Specify to sort results."""
     sorting: [ProductSort!]! = []
@@ -50745,6 +50733,7 @@ input SubproductFilterImageFilter {
 input SubproductFilterProductFilter {
   and: [SubproductFilterProductFilter!]
   id: IDFilterComparison
+  isActive: NumberFieldComparison
   isCarpetPad: NumberFieldComparison
   name: StringFieldComparison
   or: [SubproductFilterProductFilter!]
@@ -52406,7 +52395,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-06-26T06:57:23.242Z"
+  createdAt: DateTime = "2025-06-27T08:05:12.585Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -52428,7 +52417,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-06-26T06:57:23.260Z"
+  createdAt: DateTime = "2025-06-27T08:05:12.595Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52443,7 +52432,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-06-26T06:57:23.322Z"
+  createdAt: DateTime = "2025-06-27T08:05:12.632Z"
   description: String
   facebookId: String
   headerImage: String
@@ -52467,7 +52456,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-06-26T06:57:23.261Z"
+  createdAt: DateTime = "2025-06-27T08:05:12.596Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52484,7 +52473,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-06-26T06:57:23.281Z"
+  createdAt: DateTime = "2025-06-27T08:05:12.609Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -52539,7 +52528,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-06-26T06:57:23.263Z"
+  createdAt: DateTime = "2025-06-27T08:05:12.597Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float

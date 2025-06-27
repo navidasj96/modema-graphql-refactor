@@ -1,8 +1,15 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 
 @InputType('DamageReasonDomain')
+@QueryOptions({
+  pagingStrategy: PagingStrategies.NONE,
+})
 @ObjectType()
 export class DamageReason {
   @IDField(() => ID)

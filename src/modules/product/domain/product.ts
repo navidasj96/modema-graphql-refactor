@@ -3,6 +3,8 @@ import {
   FilterableField,
   FilterableUnPagedRelation,
   IDField,
+  PagingStrategies,
+  QueryOptions,
 } from '@ptc-org/nestjs-query-graphql';
 import { AttributeProduct } from '@/modules/attribute-product/domain/attribute-product';
 import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
@@ -46,6 +48,9 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 
 @InputType('ProductDomain')
 @FilterableUnPagedRelation('subproducts', () => Subproduct)
+@QueryOptions({
+  pagingStrategy: PagingStrategies.OFFSET,
+})
 @ObjectType()
 export class Product {
   @IDField(() => ID)
@@ -162,7 +167,7 @@ export class Product {
   @Field({ nullable: true })
   sortOrder?: number;
 
-  @Field()
+  @FilterableField()
   isActive: number;
 
   @Field()
