@@ -3,13 +3,16 @@ import { Field, InputType } from '@nestjs/graphql';
 @InputType()
 export class newProductsInput {
   @Field(() => Number)
-  productId: number;
+  product: number;
 
   @Field(() => Number)
-  subproductId: number;
+  color: number;
 
   @Field(() => Number)
-  statusId: number;
+  size: number;
+
+  @Field(() => Number)
+  status: number;
 }
 
 @InputType()
@@ -18,11 +21,16 @@ export class SubmitInvoiceProductDamageInput {
   id: number;
 
   @Field(() => String)
-  damageCause: string;
+  damageReasonId: number;
 
   @Field(() => Number)
   damageType: number;
 
   @Field(() => [newProductsInput])
-  newProducts: { productId: number; subproductId: number; statusId: number }[];
+  newProducts: {
+    product: number;
+    color: number;
+    size: number;
+    status: number;
+  }[];
 }

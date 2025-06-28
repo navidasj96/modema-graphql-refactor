@@ -15,7 +15,10 @@ import { Address } from '@/modules/address/entities/address.entity';
 import { User } from '@/modules/user/entities/user.entity';
 import { InvoiceService } from '@/modules/invoice/invoice.service';
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
-import { InvoiceStatusEnum } from '@/utils/invoice-status';
+import {
+  InvoiceStatusEnum,
+  SENT_AND_AFTER_SENT_STATUSES,
+} from '@/utils/invoice-status';
 import { InvoiceModeEnum } from '@/utils/invoice-mode.enum';
 import { InvoiceTypeEnum } from '@/utils/invoice-type.enum';
 import { InvoicePaymentStatusEnum } from '@/utils/invoice-payment-status';
@@ -28,6 +31,8 @@ import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import { InvoiceProductStatusService } from '@/modules/invoice-product-status/invoice-product-status.service';
 import { InvoiceProductItemInvoiceProductStatusService } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.service';
 import { InvoiceProductItemDamageTypeEnum } from '../../../utils/invoice-product-item-damage-type.enum';
+import { DamageReasonService } from '@/modules/damage-reason/damage-reason.service';
+import { BasicCarpetColorService } from '@/modules/basic-carpet-color/basic-carpet-color.service';
 
 @Injectable()
 export class DamagedInvoiceItemsControllerProvider {
@@ -80,9 +85,18 @@ export class DamagedInvoiceItemsControllerProvider {
     /**
      * inject InvoiceProductItemInvoiceProductStatusService
      */
-    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService
+    private readonly invoiceProductItemInvoiceProductStatusService: InvoiceProductItemInvoiceProductStatusService,
+    /**
+     * inject damageReasonService
+     */
+    private readonly damageReasonService: DamageReasonService,
+    /**
+     * inject basicCarpetColorService
+     */
+    private readonly basicCarpetColorService: BasicCarpetColorService
   ) {}
 
+  private damageReason: null | string = null;
   private damageCause: null | string = null;
   private damageType: null | number = null;
   private newProducts: SubmitInvoiceProductDamageInput['newProducts'];
@@ -114,9 +128,10 @@ export class DamagedInvoiceItemsControllerProvider {
     const validationResult = await this.validateFields(
       submitInvoiceProductDamageInput
     );
-
-    if (!validationResult.status) {
-      throw new GraphQLError(validationResult.message);
+    if (!validationResult || !validationResult.status) {
+      throw new GraphQLError(
+        validationResult?.message || 'تمام موارد خواسته شده را وارد کنید'
+      );
     }
     const { id } = submitInvoiceProductDamageInput;
     const queryRunner = this.dataSource.createQueryRunner();
@@ -144,6 +159,7 @@ export class DamagedInvoiceItemsControllerProvider {
       );
 
       await this.changeRelationInvoiceProductItemToNewInvoice(
+        submitInvoiceProductDamageInput,
         invoiceProductItem,
         userId,
         invoiceProductItemRepository,
@@ -177,31 +193,17 @@ export class DamagedInvoiceItemsControllerProvider {
   private async validateFields(
     submitInvoiceProductDamageInput: SubmitInvoiceProductDamageInput
   ) {
-    if (
-      !submitInvoiceProductDamageInput.damageCause ||
-      submitInvoiceProductDamageInput.damageCause == ''
-    ) {
+    if (submitInvoiceProductDamageInput.damageReasonId == 0) {
       return {
-        message: 'لطفا دلیل اعلام معیوبی کالا را بطور خلاصه وارد نمایید',
+        message: 'لطفا دلیل اعلام معیوبی کالا را وارد نمایید',
         status: false,
       };
     } else {
-      this.damageCause = submitInvoiceProductDamageInput.damageCause;
-    }
+      const damageReason = await this.damageReasonService.findOne({
+        where: { id: submitInvoiceProductDamageInput.damageReasonId },
+      });
 
-    if (
-      !submitInvoiceProductDamageInput.damageType ||
-      ![
-        InvoiceItemDamageTypes.DAMAGE_TYPE_CAN_BE_CONVERTED_TO_OTHER_PRODUCTS_OR_SIZES,
-        InvoiceItemDamageTypes.DAMAGE_TYPE_COMPLETELY_DAMAGED,
-      ].includes(submitInvoiceProductDamageInput.damageType)
-    ) {
-      return {
-        message: 'لطفا نوع معیوب شدن کالا را انتخاب نمایید',
-        status: false,
-      };
-    } else {
-      this.damageType = submitInvoiceProductDamageInput.damageType;
+      this.damageCause = damageReason ? damageReason.name : null;
     }
 
     if (
@@ -221,46 +223,23 @@ export class DamagedInvoiceItemsControllerProvider {
 
       for (const newProduct of newProducts) {
         if (
-          !newProduct.productId ||
-          !newProduct.subproductId ||
-          !newProduct.statusId
+          !newProduct.product ||
+          !newProduct.size ||
+          !newProduct.status ||
+          !newProduct.color
         ) {
           return {
             message:
-              'لطفا در صورت تولید محصول جدید از کالای معیوب شده، رنگ و سایز محصول جدید و وضعیت فعلی آن را انتخاب نمایید',
-            status: false,
-          };
-        }
-
-        const selectedSubproduct = await this.subproductService.findOne({
-          where: {
-            productId: newProduct.productId,
-            id: newProduct.subproductId,
-          },
-        });
-
-        if (!selectedSubproduct) {
-          const product = await this.productService.findOne({
-            where: { id: newProduct.productId },
-          });
-
-          return {
-            message: `محصول
-            {product?.name}
-            با شناسه subproduct
-            {newProduct.subproductId}
-            در سیستم تعریف نشده است
-            `,
+              'لطفا در صورت تولید محصول جدید از کالای معیوب شده، همه ستون ها را تکمیل و انتخاب نمایید',
             status: false,
           };
         }
       }
+      return {
+        message: 'صحیح',
+        status: true,
+      };
     }
-
-    return {
-      message: 'موارد ارسالی شما معتبر است',
-      status: true,
-    };
   }
 
   private async createNewInvoiceForDamagedProduct(
@@ -270,6 +249,13 @@ export class DamagedInvoiceItemsControllerProvider {
   ) {
     const invoiceProduct = invoiceProductItem.invoiceProduct;
     const invoice = invoiceProduct.invoice;
+    if (SENT_AND_AFTER_SENT_STATUSES.includes(invoice.currentInvoiceStatusId)) {
+      return {
+        message:
+          "'صورتحساب انتخابی در مرحله ارسال شده است و در این مرحله امکان اعلام معیوبی وجود ندارد.'",
+        status: false,
+      };
+    }
     const addressForDamages = await this.addressService.findOne({
       where: { id: 4 },
     });
@@ -284,6 +270,7 @@ export class DamagedInvoiceItemsControllerProvider {
 
     //create new invoice for damaged product
     const invoiceForDamages = new Invoice();
+    console.log('invoiceForDamages', invoiceForDamages);
     invoiceForDamages.userId = userForDamages?.id ?? null;
     invoiceForDamages.currentInvoiceStatusId =
       InvoiceStatusEnum.DAMAGED_DURING_PRODUCTION;
@@ -314,7 +301,6 @@ export class DamagedInvoiceItemsControllerProvider {
     invoiceForDamages.parentInvoiceId = invoice.id;
     invoiceForDamages.isDepot = 1;
     invoiceForDamages.invoiceNumber = newInvoiceNumber;
-
     await this.invoiceService.save(invoiceForDamages, manager);
 
     this.invoiceForDamages = invoiceForDamages;
@@ -365,6 +351,7 @@ export class DamagedInvoiceItemsControllerProvider {
   }
 
   private async changeRelationInvoiceProductItemToNewInvoice(
+    submitInvoiceProductDamageInput: SubmitInvoiceProductDamageInput,
     invoiceProductItem: InvoiceProductItem,
     userId: number,
     invoiceProductItemRepository: Repository<InvoiceProductItem>,
@@ -372,6 +359,8 @@ export class DamagedInvoiceItemsControllerProvider {
   ) {
     invoiceProductItem.invoiceProductId = this.invoiceProductDamaged.id;
     invoiceProductItem.damageType = this.damageType;
+    invoiceProductItem.damageReasonId =
+      submitInvoiceProductDamageInput.damageReasonId;
     invoiceProductItem.damageCause = this.damageCause;
     invoiceProductItem.currentStatusId =
       InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION;
@@ -475,24 +464,29 @@ export class DamagedInvoiceItemsControllerProvider {
 
       for (const newProduct of newProducts) {
         if (
-          newProduct.productId &&
-          newProduct.subproductId &&
-          newProduct.statusId
+          newProduct.product &&
+          newProduct.color &&
+          newProduct.status &&
+          newProduct.size
         ) {
           const selectedSubproduct = await this.subproductService.findOne({
             where: {
-              productId: newProduct.productId,
-              id: newProduct.subproductId,
+              productId: newProduct.product,
+              basicCarpetSizeId: newProduct.size,
+              basicCarpetColorId: newProduct.color,
             },
           });
 
           if (!selectedSubproduct) {
             const product = await this.productService.findOne({
-              where: { id: newProduct.productId },
+              where: { id: newProduct.product },
+            });
+            const color = await this.basicCarpetColorService.findOne({
+              where: { id: newProduct.color },
             });
 
             throw new GraphQLError(
-              `محصول ${product?.name} با شناسه subproduct ${newProduct.subproductId} در سیستم تعریف نشده است`
+              `محصول ${product?.name} با رنگ subproduct ${color?.title}  در سیستم تعریف نشده است. لطفا رنگ و سایز محصول انتخابی را بازبینی نمایید.`
             );
           }
 
@@ -519,7 +513,7 @@ export class DamagedInvoiceItemsControllerProvider {
           invoiceProductItemForNewProduct.invoiceProductId =
             invoiceProductForNewProduct.id;
           invoiceProductItemForNewProduct.currentStatusId =
-            newProduct['statusId'];
+            newProduct['status'];
           invoiceProductItemForNewProduct.code =
             invoiceForNewProducts.invoiceNumber +
             '_' +

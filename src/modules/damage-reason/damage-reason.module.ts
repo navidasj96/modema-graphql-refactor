@@ -4,8 +4,10 @@ import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { DamageReason } from './entities/damage-reason.entity';
 import { DamageReason as DamageReasonGraphQL } from './domain/damage-reason';
 import { CreateDamageReasonInput } from './dto/create-damage-reason.input';
+import { DamageReasonService } from '@/modules/damage-reason/damage-reason.service';
 
 @Module({
+  providers: [DamageReasonService],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([DamageReason])],
@@ -18,5 +20,6 @@ import { CreateDamageReasonInput } from './dto/create-damage-reason.input';
       ],
     }),
   ],
+  exports: [DamageReasonService],
 })
 export class DamageReasonModule {}

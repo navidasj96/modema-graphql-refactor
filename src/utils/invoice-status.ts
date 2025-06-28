@@ -65,3 +65,10 @@ export const INVOICE_STATUSES_PACKAGING_AND_AFTER_STATUSES: InvoiceStatusEnum[] 
     InvoiceStatusEnum.DAMAGED_DURING_PRODUCTION,
     InvoiceStatusEnum.CANCELED_SNAPP_AFTER_RECEIVED_BY_CUSTOMER,
   ];
+
+export const SENT_AND_AFTER_SENT_STATUSES: InvoiceStatusEnum[] = [
+  InvoiceStatusEnum.SENT,
+  InvoiceStatusEnum.DELIVERED,
+  InvoiceStatusEnum.RETURN_TO_ORIGIN,
+  InvoiceStatusEnum.CANCELED_SNAPP_AFTER_RECEIVED_BY_CUSTOMER,
+];

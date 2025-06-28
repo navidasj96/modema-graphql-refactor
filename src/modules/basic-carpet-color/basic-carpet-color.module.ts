@@ -5,8 +5,10 @@ import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateBasicCarpetColorInput } from './dto/create-basic-carpet-color.input';
 import { BasicCarpetColor as BasicCarpetColorGraphQL } from './domain/basic-carpet-color';
 import { BasicCarpetColor } from './entities/basic-carpet-color.entity';
+import { BasicCarpetColorService } from '@/modules/basic-carpet-color/basic-carpet-color.service';
 
 @Module({
+  providers: [BasicCarpetColorService],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([BasicCarpetColor])],
@@ -19,5 +21,6 @@ import { BasicCarpetColor } from './entities/basic-carpet-color.entity';
       ],
     }),
   ],
+  exports: [BasicCarpetColorService],
 })
 export class BasicCarpetColorModule {}

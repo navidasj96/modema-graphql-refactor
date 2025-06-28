@@ -19,12 +19,13 @@ import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/inv
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
 import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
 import { SubproductModule } from '@/modules/subproduct/subproduct.module';
-import { ProductService } from '@/modules/product/product.service';
 import { AddressModule } from '@/modules/address/address.module';
 import { UserModule } from '@/modules/user/user.module';
 import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
 import { InvoiceProductModule } from '@/modules/invoice-product/invoice-product.module';
 import { ProductModule } from '@/modules/product/product.module';
+import { DamageReasonModule } from '@/modules/damage-reason/damage-reason.module';
+import { BasicCarpetColorModule } from '@/modules/basic-carpet-color/basic-carpet-color.module';
 
 @Module({
   providers: [
@@ -61,6 +62,8 @@ import { ProductModule } from '@/modules/product/product.module';
     UserModule,
     InvoiceAddressModule,
     InvoiceProductModule,
+    DamageReasonModule,
+    BasicCarpetColorModule,
   ],
   exports: [InvoiceProductItemService],
 })
