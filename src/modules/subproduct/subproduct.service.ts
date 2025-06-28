@@ -35,4 +35,28 @@ export class SubproductService {
   remove(id: number) {
     return `This action removes a #${id} subproduct`;
   }
+
+  async changeColorBasedOnProduct(productId: number) {
+    const subproducts = await this.subproductRepository.find({
+      where: {
+        productId: productId,
+      },
+      relations: {
+        basicCarpetColor: true,
+      },
+    });
+
+    const seen = new Set<number>();
+    const uniqueColors: { id: number; title: string }[] = [];
+
+    for (const sub of subproducts) {
+      const color = sub.basicCarpetColor;
+      if (color && !seen.has(color.id)) {
+        seen.add(color.id);
+        uniqueColors.push({ id: color.id, title: color.title });
+      }
+    }
+
+    return uniqueColors;
+  }
 }

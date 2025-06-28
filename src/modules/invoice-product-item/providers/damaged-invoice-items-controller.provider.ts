@@ -118,8 +118,7 @@ export class DamagedInvoiceItemsControllerProvider {
     if (!validationResult.status) {
       throw new GraphQLError(validationResult.message);
     }
-    const { id, damageCause, damageType, newProducts } =
-      submitInvoiceProductDamageInput;
+    const { id } = submitInvoiceProductDamageInput;
     const queryRunner = this.dataSource.createQueryRunner();
     const manager = queryRunner.manager;
     const invoiceProductItemRepository =
