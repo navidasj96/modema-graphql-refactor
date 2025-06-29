@@ -1,9 +1,7 @@
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import dayjs from 'dayjs';
-import jalaliPlugin from 'jalali-dayjs';
-import { PluginFunc } from 'dayjs';
+import * as moment from 'moment-jalaali';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
@@ -26,10 +24,13 @@ export class GetNewInvoiceNumberProvider {
         'invoice_number'
       )
       .where('invoice.id <> :invoiceId', { invoiceId })
-      .getRawOne()) as { invoiceNumber: number };
+      .getRawOne()) as { invoice_number: string };
+
+    console.log('maxInvoice');
+
     let maxInvoiceNumber = 0;
     if (maxInvoice) {
-      maxInvoiceNumber = maxInvoice.invoiceNumber;
+      maxInvoiceNumber = parseInt(maxInvoice.invoice_number, 10);
     }
     // اگر شماره آخرین فاکتور وجود نداشت یعنی فاکتوری در جدول موجود نبوده پس شماره فاکتور عددی بین 1 تا 50 انتخاب می شود
     else {
@@ -40,8 +41,7 @@ export class GetNewInvoiceNumberProvider {
 
     // به شماره فاکتوری که با فرمول بالا به دست آمد تاریخ جاری اضافه می شود و همچنین با قرار دادن تعدادی صفر قبل از عدد، شماره آن به یک عدد 5 رقمی تبدیل میشود
 
-    dayjs.extend(jalaliPlugin as PluginFunc);
-    const nowJalali = dayjs().calendar('jalali').format('YYYYMMDD');
+    const nowJalali = moment().format('jYYYYjMMjDD') as string;
     const newInvoiceNumber = `${nowJalali}-${newInvoiceNumberNumericPart.toString().padStart(5, '0')}`;
 
     return newInvoiceNumber;

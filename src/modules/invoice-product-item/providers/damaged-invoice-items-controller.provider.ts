@@ -142,7 +142,7 @@ export class DamagedInvoiceItemsControllerProvider {
     const invoiceProductItem = await invoiceProductItemRepository.findOne({
       where: { id },
       relations: {
-        invoiceProduct: { invoice: true },
+        invoiceProduct: { invoice: true, subproduct: true },
       },
     });
     if (!invoiceProductItem) {
@@ -180,11 +180,24 @@ export class DamagedInvoiceItemsControllerProvider {
       );
 
       await queryRunner.commitTransaction();
+
+      return {
+        message: 'ثبت معیوبی کالا حین تولید با موفقیت انجام شد',
+        status: true,
+      };
     } catch (error) {
       await queryRunner.rollbackTransaction();
-      throw new GraphQLError(
-        `Error creating new invoice for damaged product: ${error}`
-      );
+      throw new GraphQLError('مشکلی پیش آمد', {
+        extensions: {
+          code: 'BAD_USER_INPUT',
+          originalError: {
+            message: 'مشکلی در تغییر وضعیت ایتم بوجود امده است',
+            error: error?.message,
+            stack: error?.stack,
+            statusCode: 400,
+          },
+        },
+      });
     } finally {
       await queryRunner.release();
     }
@@ -267,10 +280,8 @@ export class DamagedInvoiceItemsControllerProvider {
     const newInvoiceNumber = await this.invoiceService.getNewInvoiceNumber(
       invoice.id
     );
-
     //create new invoice for damaged product
     const invoiceForDamages = new Invoice();
-    console.log('invoiceForDamages', invoiceForDamages);
     invoiceForDamages.userId = userForDamages?.id ?? null;
     invoiceForDamages.currentInvoiceStatusId =
       InvoiceStatusEnum.DAMAGED_DURING_PRODUCTION;
@@ -301,6 +312,8 @@ export class DamagedInvoiceItemsControllerProvider {
     invoiceForDamages.parentInvoiceId = invoice.id;
     invoiceForDamages.isDepot = 1;
     invoiceForDamages.invoiceNumber = newInvoiceNumber;
+    invoiceForDamages.createdAt = new Date();
+    invoiceForDamages.updatedAt = new Date();
     await this.invoiceService.save(invoiceForDamages, manager);
 
     this.invoiceForDamages = invoiceForDamages;
