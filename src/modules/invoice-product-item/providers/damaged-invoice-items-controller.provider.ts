@@ -248,11 +248,11 @@ export class DamagedInvoiceItemsControllerProvider {
           };
         }
       }
-      return {
-        message: 'صحیح',
-        status: true,
-      };
     }
+    return {
+      message: 'صحیح',
+      status: true,
+    };
   }
 
   private async createNewInvoiceForDamagedProduct(
@@ -402,6 +402,14 @@ export class DamagedInvoiceItemsControllerProvider {
       if (!userForDamages || !addressForDamages) {
         throw new GraphQLError('User or address for damages not found.');
       }
+
+      if (!this.newProducts) {
+        return {
+          message: 'هیچ محصول جدیدی برای تولید از کالای معیوب انتخاب نشده است',
+          status: false,
+        };
+      }
+
       const newProducts = this.newProducts;
       const newInvoiceNumber = await this.invoiceService.getNewInvoiceNumber();
 

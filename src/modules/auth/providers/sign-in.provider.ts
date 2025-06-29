@@ -44,7 +44,6 @@ export class SignInProvider {
   ): Promise<SingInReturnInterface> {
     //find user by email
     let user = await this.usersService.findUserByUsername(signInDto.username);
-
     //compare passwords
     let isEqual: boolean = false;
     try {
@@ -63,6 +62,7 @@ export class SignInProvider {
 
     const { refreshToken, accessToken } =
       await this.generateTokenProvider.generateTokens(user);
+
     // console.log(
     //   'this.jwtConfiguration.accessTokenTtl',
     //   this.jwtConfiguration.accessTokenTtl

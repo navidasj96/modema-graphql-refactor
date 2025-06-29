@@ -29,8 +29,8 @@ export class AuthController {
     try {
       const { username, id } = await this.authService.signIn(signInDto, res);
       return { username, id };
-    } catch {
-      throw new RuntimeException('Error signing in');
+    } catch (error) {
+      throw new RuntimeException(`Error signing in:${error}`);
     }
   }
 

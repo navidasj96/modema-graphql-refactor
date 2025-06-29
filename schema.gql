@@ -1184,7 +1184,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-29T06:25:18.800Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.253Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1270,7 +1270,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-29T06:25:18.819Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.270Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1385,7 +1385,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-29T06:25:18.890Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.330Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1475,7 +1475,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-29T06:25:18.821Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.271Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1710,7 +1710,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-29T06:25:18.846Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.290Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1815,7 +1815,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-06-29T06:25:18.823Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.272Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5163,7 +5163,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-06-29T06:25:19.449Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.895Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5185,7 +5185,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-06-29T06:25:19.462Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.905Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5200,7 +5200,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-06-29T06:25:19.472Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.916Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5224,7 +5224,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-06-29T06:25:19.482Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.930Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5255,7 +5255,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-06-29T06:25:19.491Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.939Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5296,7 +5296,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-06-29T06:25:19.510Z"
+  createdAt: DateTime! = "2025-06-29T11:10:49.959Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -19683,6 +19683,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceP
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -20274,6 +20275,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
   invoiceProduct: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   printProfile: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintProfileAggregateFilter
   printRip: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintRipAggregateFilter
@@ -21559,6 +21561,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -21753,6 +21756,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
   invoiceProduct: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   printProfile: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintProfileAggregateFilter
   printRip: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterPrintRipAggregateFilter
@@ -21844,6 +21848,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -21914,6 +21919,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductItemInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -21955,6 +21961,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductStatusAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -22783,6 +22790,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProd
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -24641,6 +24649,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductI
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -25226,6 +25235,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   invoiceProduct: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   printProfile: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
@@ -26505,6 +26515,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceP
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -26699,6 +26710,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilter {
   invoiceProduct: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   printProfile: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
@@ -26790,6 +26802,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFil
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -26860,6 +26873,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductIte
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -26901,6 +26915,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductSta
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -27729,6 +27744,7 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceProductItem
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -30255,6 +30271,7 @@ input InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter {
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductAggregateFilterInvoiceProductItemAggregateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -30504,6 +30521,7 @@ input InvoiceProductFilterInvoiceProductItemFilter {
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -30805,6 +30823,7 @@ input InvoiceProductItemDeleteFilter {
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemDeleteFilter!]
   updatedAt: DateFieldComparison
 }
@@ -30892,6 +30911,7 @@ input InvoiceProductItemFilter {
   invoiceProduct: InvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilter!]
   printProfile: InvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterPrintRipFilter
@@ -31537,6 +31557,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFil
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -31731,6 +31752,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter {
   invoiceProduct: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
@@ -31822,6 +31844,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -31892,6 +31915,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -31933,6 +31957,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -32139,6 +32164,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   invoiceProduct: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -32230,6 +32256,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -32300,6 +32327,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -32341,6 +32369,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -32393,6 +32422,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   invoiceProduct: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -32470,6 +32500,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -32821,6 +32852,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
   invoiceProduct: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -32912,6 +32944,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -32982,6 +33015,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -33023,6 +33057,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -33074,6 +33109,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoic
   invoiceProduct: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -33152,6 +33188,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -33302,6 +33339,7 @@ input InvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter {
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -33354,6 +33392,7 @@ enum InvoiceProductItemSortFields {
   fromDepot
   id
   invoiceProductId
+  isTagPrinted
   updatedAt
 }
 
@@ -33365,6 +33404,7 @@ input InvoiceProductItemUpdateFilter {
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductItemUpdateFilter!]
   updatedAt: DateFieldComparison
 }
@@ -33460,6 +33500,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilter {
   invoiceProduct: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -33814,6 +33855,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvo
   invoiceProduct: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterPrintRipFilter
@@ -33998,6 +34040,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoic
   invoiceProduct: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -34076,6 +34119,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoic
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -34152,6 +34196,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilt
   invoiceProduct: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -34229,6 +34274,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilt
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -34293,6 +34339,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   invoiceProduct: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -34384,6 +34431,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -34454,6 +34502,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -34495,6 +34544,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -34547,6 +34597,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   invoiceProduct: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilter
   invoiceProductId: NumberFieldComparison
   invoiceProductItemInvoiceProductStatuses: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilter
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilter!]
   printProfile: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintProfileFilter
   printRip: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemFilterPrintRipFilter
@@ -34624,6 +34675,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   fromDepot: NumberFieldComparison
   id: IDFilterComparison
   invoiceProductId: NumberFieldComparison
+  isTagPrinted: NumberFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilter!]
   updatedAt: DateFieldComparison
 }
@@ -50422,7 +50474,7 @@ input SubmitInvoiceProductDamageInput {
   damageReasonId: String!
   damageType: Float!
   id: Float!
-  newProducts: [newProductsInput!]!
+  newProducts: [newProductsInput!]
 }
 
 type Subproduct {
@@ -52401,7 +52453,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-06-29T06:25:18.800Z"
+  createdAt: DateTime = "2025-06-29T11:10:49.253Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -52423,7 +52475,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-06-29T06:25:18.819Z"
+  createdAt: DateTime = "2025-06-29T11:10:49.270Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52438,7 +52490,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-06-29T06:25:18.890Z"
+  createdAt: DateTime = "2025-06-29T11:10:49.330Z"
   description: String
   facebookId: String
   headerImage: String
@@ -52462,7 +52514,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-06-29T06:25:18.821Z"
+  createdAt: DateTime = "2025-06-29T11:10:49.271Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52479,7 +52531,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-06-29T06:25:18.846Z"
+  createdAt: DateTime = "2025-06-29T11:10:49.290Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -52534,7 +52586,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-06-29T06:25:18.823Z"
+  createdAt: DateTime = "2025-06-29T11:10:49.272Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float

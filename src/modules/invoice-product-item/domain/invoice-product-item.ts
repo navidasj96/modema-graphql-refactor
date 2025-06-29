@@ -62,7 +62,7 @@ export class InvoiceProductItem {
   @Field({ nullable: true })
   predictedDateForReceivedByRepository?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   isTagPrinted?: number;
 
   @Field({ nullable: true })

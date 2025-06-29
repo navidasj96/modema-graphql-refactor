@@ -26,11 +26,13 @@ export class SubmitInvoiceProductDamageInput {
   @Field(() => Number)
   damageType: number;
 
-  @Field(() => [newProductsInput])
-  newProducts: {
-    product: number;
-    color: number;
-    size: number;
-    status: number;
-  }[];
+  @Field(() => [newProductsInput], { nullable: true })
+  newProducts:
+    | {
+        product: number;
+        color: number;
+        size: number;
+        status: number;
+      }[]
+    | null;
 }
