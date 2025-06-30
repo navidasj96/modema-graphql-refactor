@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   IDField,
   PagingStrategies,
   QueryOptions,
@@ -16,7 +17,7 @@ export class PrintProfile {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   versionNo: string;
 
   @Field()

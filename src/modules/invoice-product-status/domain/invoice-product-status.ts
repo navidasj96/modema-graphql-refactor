@@ -24,7 +24,7 @@ export class InvoiceProductStatus {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   status: string;
 
   @FilterableField({ nullable: true })

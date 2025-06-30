@@ -17,7 +17,7 @@ export class ProductionRoll {
   @IDField(() => ID)
   id: number;
 
-  @Field()
+  @FilterableField()
   rollNumber: string;
 
   @Field()

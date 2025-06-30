@@ -1,4 +1,4 @@
-import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { InvoiceProductItemService } from './invoice-product-item.service';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 
@@ -8,6 +8,7 @@ import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/d
 import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
+import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -61,6 +62,18 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.submitDamagedInvoiceItems(
       context,
       submitInvoiceProductDamageInput
+    );
+  }
+
+  @Query(() => [InvoiceProductItem])
+  async invoiceProductItemsList(
+    @Args('invoiceProductItemsListInput', {
+      type: () => InvoiceProductItemsListInput,
+    })
+    invoiceProductItemsListInput: InvoiceProductItemsListInput
+  ) {
+    return await this.invoiceProductItemService.invoiceProductItemsList(
+      invoiceProductItemsListInput
     );
   }
 }
