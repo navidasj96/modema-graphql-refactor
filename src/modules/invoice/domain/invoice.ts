@@ -240,7 +240,7 @@ export class Invoice {
   @Field({ nullable: true })
   crmCompanyPersonId?: string;
 
-  @Field()
+  @FilterableField()
   isDepot: number;
 
   @Field()

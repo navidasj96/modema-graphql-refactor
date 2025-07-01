@@ -1189,7 +1189,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-01T08:20:00.130Z"
+  createdAt: DateTime! = "2025-07-01T08:42:10.679Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1275,7 +1275,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-01T08:20:00.148Z"
+  createdAt: DateTime! = "2025-07-01T08:42:10.696Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1390,7 +1390,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-01T08:20:00.208Z"
+  createdAt: DateTime! = "2025-07-01T08:42:10.757Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1480,7 +1480,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-01T08:20:00.149Z"
+  createdAt: DateTime! = "2025-07-01T08:42:10.697Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1715,7 +1715,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-01T08:20:00.168Z"
+  createdAt: DateTime! = "2025-07-01T08:42:10.716Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1820,7 +1820,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-01T08:20:00.150Z"
+  createdAt: DateTime! = "2025-07-01T08:42:10.699Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5168,7 +5168,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-01T08:20:00.720Z"
+  createdAt: DateTime! = "2025-07-01T08:42:11.273Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5190,7 +5190,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-07-01T08:20:00.730Z"
+  createdAt: DateTime! = "2025-07-01T08:42:11.283Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5205,7 +5205,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-01T08:20:00.739Z"
+  createdAt: DateTime! = "2025-07-01T08:42:11.292Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5229,7 +5229,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-07-01T08:20:00.749Z"
+  createdAt: DateTime! = "2025-07-01T08:42:11.302Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5260,7 +5260,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-01T08:20:00.758Z"
+  createdAt: DateTime! = "2025-07-01T08:42:11.310Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5301,7 +5301,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-07-01T08:20:00.777Z"
+  createdAt: DateTime! = "2025-07-01T08:42:11.329Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -18580,6 +18580,7 @@ input InvoiceAggregateFilter {
   invoiceType: InvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilter
@@ -18745,6 +18746,7 @@ input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvo
   invoiceType: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -18818,6 +18820,7 @@ input InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvo
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -19014,6 +19017,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilter {
   invoiceType: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -19142,6 +19146,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterU
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAddressAggregateFilterUserAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -19185,6 +19190,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter {
   invoiceType: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -19323,6 +19329,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceA
   invoiceType: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -19396,6 +19403,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceA
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -19676,6 +19684,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceP
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -19850,6 +19859,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggr
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -20040,6 +20050,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
   invoiceType: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -20113,6 +20124,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterI
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -20597,6 +20609,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggr
   invoiceType: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -20670,6 +20683,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggr
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -20932,6 +20946,7 @@ input InvoiceAggregateFilterInvoiceNegotiationAggregateFilterNegotiationAggregat
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceNegotiationAggregateFilterNegotiationAggregateFilterUserAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -21042,6 +21057,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterDiscountAggregateFilter
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterDiscountAggregateFilterUserAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -21079,6 +21095,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilter 
   invoiceType: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -21217,6 +21234,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
   invoiceType: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -21290,6 +21308,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -21570,6 +21589,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterI
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -21744,6 +21764,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterU
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -21859,6 +21880,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggre
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceProductItemAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -22323,6 +22345,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter {
   invoiceType: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -22461,6 +22484,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggr
   invoiceType: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceTypeAggregateFilter
   invoices: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceStatusAggregateFilter
   moneyTransferConfirmedBy2: InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter
@@ -22534,6 +22558,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggr
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -22814,6 +22839,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProd
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -22988,6 +23014,7 @@ input InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggrega
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilterUserAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -23039,6 +23066,7 @@ type InvoiceAggregateGroupBy {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate(by: GroupBy! = DAY): DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -23061,6 +23089,7 @@ type InvoiceAvgAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -23243,6 +23272,7 @@ type InvoiceCountAggregate {
   id: Int
   invoiceNumber: Int
   isChaparDelivery: Int
+  isDepot: Int
   issueDate: Int
   shippingRate: Int
   shippingRateCod: Int
@@ -23291,6 +23321,7 @@ input InvoiceDeleteFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceDeleteFilter!]
   shippingRate: NumberFieldComparison
@@ -23574,6 +23605,7 @@ input InvoiceFilter {
   invoiceType: InvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilter
@@ -23739,6 +23771,7 @@ input InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoiceFilter
@@ -23818,6 +23851,7 @@ input InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -24014,6 +24048,7 @@ input InvoiceFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilterInvoiceFilter
@@ -24142,6 +24177,7 @@ input InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceAddressFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -24191,6 +24227,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter
@@ -24335,6 +24372,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter
@@ -24414,6 +24452,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -24682,6 +24721,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -24856,6 +24896,7 @@ input InvoiceFilterInvoiceFilterInvoiceFilterUserFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -25040,6 +25081,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
@@ -25119,6 +25161,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -25597,6 +25640,7 @@ input InvoiceFilterInvoiceFilterUserFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoiceFilter
@@ -25676,6 +25720,7 @@ input InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceFilterUserFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -25926,6 +25971,7 @@ input InvoiceFilterInvoiceNegotiationFilterNegotiationFilterUserFilterInvoiceFil
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceNegotiationFilterNegotiationFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -26036,6 +26082,7 @@ input InvoiceFilterInvoiceProductFilterDiscountFilterUserFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceProductFilterDiscountFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -26073,6 +26120,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
@@ -26217,6 +26265,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilter {
   invoiceType: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter
@@ -26296,6 +26345,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -26564,6 +26614,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceF
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -26738,6 +26789,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -26853,6 +26905,7 @@ input InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFil
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -27317,6 +27370,7 @@ input InvoiceFilterUserFilterInvoiceFilter {
   invoiceType: InvoiceFilterUserFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterUserFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterUserFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterUserFilterInvoiceFilterInvoiceFilter
@@ -27461,6 +27515,7 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceFilter {
   invoiceType: InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoiceFilter
@@ -27540,6 +27595,7 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -27808,6 +27864,7 @@ input InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -27982,6 +28039,7 @@ input InvoiceFilterUserFilterInvoiceFilterUserFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceFilterUserFilterInvoiceFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -28993,6 +29051,7 @@ type InvoiceInvoicesAggregateGroupBy {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29015,6 +29074,7 @@ type InvoiceInvoicesAvgAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -29028,6 +29088,7 @@ type InvoiceInvoicesCountAggregate {
   id: Int
   invoiceNumber: Int
   isChaparDelivery: Int
+  isDepot: Int
   issueDate: Int
   shippingRate: Int
   shippingRateCod: Int
@@ -29042,6 +29103,7 @@ type InvoiceInvoicesMaxAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29056,6 +29118,7 @@ type InvoiceInvoicesMinAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29069,6 +29132,7 @@ type InvoiceInvoicesSumAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -29115,6 +29179,7 @@ type InvoiceMaxAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29129,6 +29194,7 @@ type InvoiceMinAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29211,6 +29277,7 @@ type InvoiceMoneyTransferConfirmedBy2AggregateGroupBy {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29233,6 +29300,7 @@ type InvoiceMoneyTransferConfirmedBy2AvgAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -29246,6 +29314,7 @@ type InvoiceMoneyTransferConfirmedBy2CountAggregate {
   id: Int
   invoiceNumber: Int
   isChaparDelivery: Int
+  isDepot: Int
   issueDate: Int
   shippingRate: Int
   shippingRateCod: Int
@@ -29260,6 +29329,7 @@ type InvoiceMoneyTransferConfirmedBy2MaxAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29274,6 +29344,7 @@ type InvoiceMoneyTransferConfirmedBy2MinAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29287,6 +29358,7 @@ type InvoiceMoneyTransferConfirmedBy2SumAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -29744,6 +29816,7 @@ type InvoicePaymentHistoryInvoiceAggregateGroupBy {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29766,6 +29839,7 @@ type InvoicePaymentHistoryInvoiceAvgAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -29779,6 +29853,7 @@ type InvoicePaymentHistoryInvoiceCountAggregate {
   id: Int
   invoiceNumber: Int
   isChaparDelivery: Int
+  isDepot: Int
   issueDate: Int
   shippingRate: Int
   shippingRateCod: Int
@@ -29832,6 +29907,7 @@ type InvoicePaymentHistoryInvoiceMaxAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29846,6 +29922,7 @@ type InvoicePaymentHistoryInvoiceMinAggregate {
   id: ID
   invoiceNumber: String
   isChaparDelivery: Float
+  isDepot: Float
   issueDate: DateTime
   shippingRate: Float
   shippingRateCod: Float
@@ -29931,6 +30008,7 @@ type InvoicePaymentHistoryInvoiceSumAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -30337,6 +30415,7 @@ input InvoiceProductAggregateFilterInvoiceAggregateFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductAggregateFilterInvoiceAggregateFilter!]
   shippingRate: NumberFieldComparison
@@ -30588,6 +30667,7 @@ input InvoiceProductFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -31100,6 +31180,7 @@ input InvoiceProductItemFilterInvoiceProductFilterDiscountFilterUserFilterInvoic
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterDiscountFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -31137,6 +31218,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilter {
   invoiceType: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
@@ -31281,6 +31363,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilter {
   invoiceType: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter
@@ -31360,6 +31443,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvo
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -31628,6 +31712,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFil
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -31802,6 +31887,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterInvoice
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -31917,6 +32003,7 @@ input InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoic
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -32339,6 +32426,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoic
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -32716,6 +32804,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFi
   invoiceType: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceFilter
@@ -32795,6 +32884,7 @@ input InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFi
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -33044,6 +33134,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilter
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -33370,6 +33461,7 @@ input InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoic
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -33754,6 +33846,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvo
   invoiceType: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilter
@@ -33833,6 +33926,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvo
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -34331,6 +34425,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoic
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -34586,6 +34681,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvo
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -34963,6 +35059,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUser
   invoiceType: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceTypeFilter
   invoices: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceFilter
@@ -35042,6 +35139,7 @@ input InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUser
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemInvoiceProductStatusFilterUserFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
@@ -35766,6 +35864,7 @@ enum InvoiceSortFields {
   id
   invoiceNumber
   isChaparDelivery
+  isDepot
   issueDate
   shippingRate
   shippingRateCod
@@ -35858,6 +35957,7 @@ type InvoiceSumAggregate {
   currentInvoiceStatusId: Float
   id: Float
   isChaparDelivery: Float
+  isDepot: Float
   shippingRate: Float
   shippingRateCod: Float
   subtotalPrice: Float
@@ -35924,6 +36024,7 @@ input InvoiceUpdateFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [InvoiceUpdateFilter!]
   shippingRate: NumberFieldComparison
@@ -52671,7 +52772,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-07-01T08:20:00.130Z"
+  createdAt: DateTime = "2025-07-01T08:42:10.679Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -52693,7 +52794,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-07-01T08:20:00.148Z"
+  createdAt: DateTime = "2025-07-01T08:42:10.696Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52708,7 +52809,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-07-01T08:20:00.208Z"
+  createdAt: DateTime = "2025-07-01T08:42:10.757Z"
   description: String
   facebookId: String
   headerImage: String
@@ -52732,7 +52833,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-07-01T08:20:00.149Z"
+  createdAt: DateTime = "2025-07-01T08:42:10.697Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -52749,7 +52850,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-07-01T08:20:00.168Z"
+  createdAt: DateTime = "2025-07-01T08:42:10.716Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -52804,7 +52905,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-07-01T08:20:00.150Z"
+  createdAt: DateTime = "2025-07-01T08:42:10.699Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -62013,6 +62114,7 @@ input UserFilterInvoiceFilter {
   invoiceType: UserFilterInvoiceFilterInvoiceTypeFilter
   invoices: UserFilterInvoiceFilterInvoiceFilter
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   lockState2: UserFilterInvoiceFilterInvoiceStatusFilter
   moneyTransferConfirmedBy2: UserFilterInvoiceFilterInvoiceFilter
@@ -62092,6 +62194,7 @@ input UserFilterInvoiceFilterInvoiceFilter {
   id: IDFilterComparison
   invoiceNumber: StringFieldComparison
   isChaparDelivery: NumberFieldComparison
+  isDepot: NumberFieldComparison
   issueDate: DateFieldComparison
   or: [UserFilterInvoiceFilterInvoiceFilter!]
   shippingRate: NumberFieldComparison
