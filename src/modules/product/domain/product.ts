@@ -122,7 +122,7 @@ export class Product {
   @FilterableField({ nullable: true })
   isCarpetPad?: number;
 
-  @Field()
+  @FilterableField()
   isShaggy: number;
 
   @Field({ nullable: true })

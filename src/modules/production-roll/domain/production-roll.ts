@@ -35,7 +35,7 @@ export class ProductionRoll {
   @Field({ nullable: true })
   closeDate?: Date;
 
-  @Field()
+  @FilterableField()
   isShaggy: number;
 
   @Field({ nullable: true })
