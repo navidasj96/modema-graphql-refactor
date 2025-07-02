@@ -1,15 +1,11 @@
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
 import { Injectable } from '@nestjs/common';
-import { Brackets, DataSource, Repository } from 'typeorm';
+import { Brackets, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  INVOICE_STATUSES_AFTER_PRODUCTION_START,
-  InvoiceStatusEnum,
-} from '@/utils/invoice-status';
+import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
 import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/invoice-product-item/providers/viewable-invoice-product-item-statues-for-user';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
 
 @Injectable()
 export class InvoiceProductItemsListProvider {
@@ -122,7 +118,7 @@ export class InvoiceProductItemsListProvider {
     }
 
     if (hideDepot) {
-      invoiceProductItemsQuery.andWhere('inv.depotId :isDepot', {
+      invoiceProductItemsQuery.andWhere('inv.isDepot = :isDepot', {
         isDepot: 0,
       });
     }
@@ -131,11 +127,12 @@ export class InvoiceProductItemsListProvider {
       //default
       invoiceProductItemsQuery
         .addSelect('inv.invoiceNumber')
-        .orderBy('inv.invoiceNumber', 'DESC');
+        .orderBy('inv.invoiceNumber', 'DESC')
+        .addGroupBy('inv.invoiceNumber');
     } else {
       //possible sort fields
       const sortMap: Record<string, { column: string; alias: string }> = {
-        name: { column: 'prod.name', alias: 'prod.name' },
+        name: { column: 'addr.fullname', alias: 'addr.fullname' },
         invoiceNumber: {
           column: 'inv.invoiceNumber',
           alias: 'inv.invoiceNumber',
@@ -160,7 +157,8 @@ export class InvoiceProductItemsListProvider {
       if (sortDef && ['ASC', 'DESC'].includes(order.toUpperCase())) {
         invoiceProductItemsQuery
           .addSelect(sortDef.column)
-          .orderBy(sortDef.column, order.toUpperCase() as 'ASC' | 'DESC');
+          .orderBy(sortDef.column, order.toUpperCase() as 'ASC' | 'DESC')
+          .addGroupBy(sortDef.column);
       }
     }
     const [invoiceProductItems, totalCount] =
