@@ -156,7 +156,6 @@ export class InvoiceProductItemsListProvider {
       };
 
       const { field, order } = sort;
-      console.log('sort', sort);
       const sortDef = sortMap[field];
       if (sortDef && ['ASC', 'DESC'].includes(order.toUpperCase())) {
         invoiceProductItemsQuery
