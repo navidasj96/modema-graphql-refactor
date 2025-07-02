@@ -9,6 +9,7 @@ import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
+import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -65,14 +66,19 @@ export class InvoiceProductItemResolver {
     );
   }
 
-  @Query(() => [InvoiceProductItem])
+  @Query(() => InvoiceProductItemsListOutput)
   async invoiceProductItemsList(
     @Args('invoiceProductItemsListInput', {
       type: () => InvoiceProductItemsListInput,
     })
-    invoiceProductItemsListInput: InvoiceProductItemsListInput
+    invoiceProductItemsListInput: InvoiceProductItemsListInput,
+    @Context()
+    context: {
+      req: UserContext;
+    }
   ) {
     return await this.invoiceProductItemService.invoiceProductItemsList(
+      context,
       invoiceProductItemsListInput
     );
   }

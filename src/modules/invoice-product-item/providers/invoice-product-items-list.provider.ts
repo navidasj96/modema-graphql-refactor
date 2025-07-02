@@ -1,9 +1,15 @@
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
 import { Injectable } from '@nestjs/common';
-import { DataSource, Repository } from 'typeorm';
+import { Brackets, DataSource, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
+import {
+  INVOICE_STATUSES_AFTER_PRODUCTION_START,
+  InvoiceStatusEnum,
+} from '@/utils/invoice-status';
+import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/invoice-product-item/providers/viewable-invoice-product-item-statues-for-user';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
 
 @Injectable()
 export class InvoiceProductItemsListProvider {
@@ -13,81 +19,154 @@ export class InvoiceProductItemsListProvider {
      */
     @InjectRepository(InvoiceProductItem)
     private readonly invoiceProductItemRepository: Repository<InvoiceProductItem>,
+
     /**
-     * inject dataSource
+     * inject viewableInvoiceProductItemStatusesForUserProvider
      */
-    private readonly dataSource: DataSource
+    private readonly viewableInvoiceProductItemStatusesForUserProvider: ViewableInvoiceProductItemStatusesForUserProvider
   ) {}
 
   async invoiceProductItemsList(
+    context: {
+      req: UserContext;
+    },
     invoiceProductItemsListInput: InvoiceProductItemsListInput
   ) {
-    const { limit, offset, isShaggy, rollReferenceCode, search } =
-      invoiceProductItemsListInput;
+    const {
+      limit,
+      offset,
+      isShaggy,
+      rollReferenceCode,
+      search,
+      status,
+      hideDepot,
+      sort,
+    } = invoiceProductItemsListInput;
+    const { user } = context.req;
+    const { sub: userId } = user;
 
-    const invoiceProductItems = (await this.dataSource.query(
-      `
-        SELECT 
-          item.id,
-          item.code,
-          invoice.invoice_number AS invoiceNumber,
-          product.name AS productName,
-          roll.roll_number AS rollNumber,
-          address.fullname,
-          status.status AS currentStatus,
-          size.title AS carpetSize,
-          size.code AS carpetSizeCode,
-          color.title AS carpetColor,
-          color.code AS carpetColorCode,
-          profile.version_no AS printProfileVersion,
-          rip.rip_number AS printRipNumber
-        FROM invoice_product_items item
-          INNER JOIN invoice_products ip ON item.invoice_product_id = ip.id
-          INNER JOIN invoices invoice ON ip.invoice_id = invoice.id
-          INNER JOIN invoice_addresses address ON invoice.id = address.invoice_id
-          INNER JOIN products product ON ip.product_id = product.id
-          INNER JOIN subproducts sub ON ip.subproduct_id = sub.id
-          INNER JOIN basic_carpet_sizes size ON sub.basic_carpet_size_id = size.id
-          INNER JOIN basic_carpet_colors color ON sub.basic_carpet_color_id = color.id
-          INNER JOIN invoice_product_statuses status ON item.current_status_id = status.id
-          LEFT JOIN print_profiles profile ON item.print_profile_id = profile.id
-          LEFT JOIN production_rolls roll ON item.production_roll_id = roll.id
-          LEFT JOIN print_rips rip ON item.print_rip_id = rip.id
-        WHERE product.is_shaggy = ?
-          AND invoice.current_invoice_status_id IN (?,?,?)
-          ${
-            search
-              ? `AND (
-            invoice.invoice_number LIKE ?
-            OR item.code LIKE ?
-            OR roll.roll_number LIKE ?
-            OR address.fullname LIKE ?
-            OR status.status LIKE ?
-            OR product.name LIKE ?
-            OR size.title LIKE ?
-            OR size.code LIKE ?
-            OR color.title LIKE ?
-            OR color.code LIKE ?
-            OR profile.version_no LIKE ?
-            OR rip.rip_number LIKE ?
-          )`
-              : ''
-          }
-        LIMIT ? OFFSET ?
-        `,
-      [
-        isShaggy ? 1 : 0,
-        ...INVOICE_STATUSES_AFTER_PRODUCTION_START,
-        ...(search
-          ? Array(14).fill(`%${search}%`) // 14 OR conditions
-          : []),
-        limit,
-        offset,
-      ]
-    )) as InvoiceProductItem[];
+    const statusesToView =
+      await this.viewableInvoiceProductItemStatusesForUserProvider.viewableInvoiceProductItemStatusesForUser(
+        userId,
+        isShaggy
+      );
 
-    console.log('invoiceProductItems', invoiceProductItems);
+    const invoiceProductItemsQuery = this.invoiceProductItemRepository
+      .createQueryBuilder('ipi')
+      .select(['ipi'])
+      .innerJoin('ipi.invoiceProduct', 'ip')
+      .innerJoin('ip.invoice', 'inv')
+      .innerJoin('inv.invoiceAddresses', 'addr')
+      .innerJoin('ip.product', 'prod')
+      .innerJoin('ip.subproduct', 'subprod')
+      .innerJoin('subprod.basicCarpetSize', 'bcs')
+      .innerJoin('subprod.basicCarpetColor', 'bcc')
+      .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipis')
+      .innerJoin('ipis.invoiceProductStatus', 'status')
+      .leftJoin('ipi.printProfile', 'profile')
+      .leftJoin('ipi.productionRoll', 'productionRoll')
+      .leftJoin('ipi.printRip', 'printRip')
+      .where('inv.currentInvoiceStatusId IN (:...invoiceStatuses)', {
+        invoiceStatuses: INVOICE_STATUSES_AFTER_PRODUCTION_START,
+      })
+      .andWhere('prod.isShaggy = :isShaggy', { isShaggy: isShaggy ? 1 : 0 })
+      .groupBy('ipi.id')
+      .skip(offset)
+      .take(limit);
 
-    return invoiceProductItems;
+    if (status === 0 || !status) {
+      invoiceProductItemsQuery.andWhere(
+        'ipi.currentStatusId IN (:...statusesToView)',
+        {
+          statusesToView,
+        }
+      );
+    } else {
+      invoiceProductItemsQuery
+        .andWhere('ipi.currentStatusId IN (:...statusesToView)', {
+          statusesToView,
+        })
+        .andWhere('ipi.currentStatusId = :status', {
+          status,
+        });
+    }
+
+    if (search) {
+      const like = `%${search}%`;
+      invoiceProductItemsQuery.andWhere(
+        new Brackets((qb) => {
+          qb.where('inv.invoiceNumber LIKE :like', { like })
+            .orWhere('ipi.code LIKE :like', { like })
+            .orWhere('productionRoll.rollNumber LIKE :like', { like })
+            .orWhere('addr.fullname LIKE :like', { like })
+            .orWhere('status.status LIKE :like', { like })
+            .orWhere('prod.name LIKE :like', { like })
+            .orWhere('bcs.title LIKE :like', { like })
+            .orWhere('bcc.title LIKE :like', { like })
+            .orWhere('bcs.code LIKE :like', { like })
+            .orWhere('bcc.code LIKE :like', { like })
+            .orWhere('profile.versionNo LIKE :like', { like })
+            .orWhere('printRip.ripNumber LIKE :like', { like });
+        })
+      );
+    }
+
+    if (rollReferenceCode) {
+      const like = `%${rollReferenceCode}%`;
+      invoiceProductItemsQuery.andWhere(
+        'productionRoll.rollNumber LIKE :like',
+        {
+          like,
+        }
+      );
+    }
+
+    if (hideDepot) {
+      invoiceProductItemsQuery.andWhere('inv.depotId :isDepot', {
+        isDepot: 0,
+      });
+    }
+
+    if (!sort) {
+      //default
+      invoiceProductItemsQuery
+        .addSelect('inv.invoiceNumber')
+        .orderBy('inv.invoiceNumber', 'DESC');
+    } else {
+      //possible sort fields
+      const sortMap: Record<string, { column: string; alias: string }> = {
+        name: { column: 'prod.name', alias: 'prod.name' },
+        invoiceNumber: {
+          column: 'inv.invoiceNumber',
+          alias: 'inv.invoiceNumber',
+        },
+        productName: { column: 'prod.name', alias: 'prod.name' },
+        currentStatus: { column: 'status.status', alias: 'status.status' },
+        predictedDateForReceivedByRepository: {
+          column: 'ipi.predictedDateForReceivedByRepository',
+          alias: 'ipi.predictedDateForReceivedByRepository',
+        },
+        code: { column: 'ipi.code', alias: 'ipi.code' },
+        rollReferenceCode: {
+          column: 'productionRoll.rollNumber',
+          alias: 'productionRoll.rollNumber',
+        },
+        printRip: { column: 'printRip.ripNumber', alias: 'printRip.ripNumber' },
+        versionNo: { column: 'profile.versionNo', alias: 'profile.versionNo' },
+      };
+
+      const { field, order } = sort;
+      console.log('sort', sort);
+      const sortDef = sortMap[field];
+      if (sortDef && ['ASC', 'DESC'].includes(order.toUpperCase())) {
+        invoiceProductItemsQuery
+          .addSelect(sortDef.column)
+          .orderBy(sortDef.column, order.toUpperCase() as 'ASC' | 'DESC');
+      }
+    }
+    const [invoiceProductItems, totalCount] =
+      await invoiceProductItemsQuery.getManyAndCount();
+
+    return { invoiceProductItems, totalCount };
   }
 }

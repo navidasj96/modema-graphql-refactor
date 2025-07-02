@@ -18,6 +18,7 @@ import { CreateUserProvider } from '@/modules/user/providers/create-user.provide
 import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
 import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
 import { UserTransactionListProvider } from '@/modules/user/providers/user-transaction-list.provider';
+import { UserRolesAndPermissionByIdProvider } from '@/modules/user/providers/user-roles-and-permission-by-id.provider';
 
 @Injectable()
 export class UserService {
@@ -48,7 +49,11 @@ export class UserService {
     /**
      * inject userTransactionListProvider
      */
-    private readonly userTransactionListProvider: UserTransactionListProvider
+    private readonly userTransactionListProvider: UserTransactionListProvider,
+    /**
+     * inject userRolesAndPermissionByIdProvider
+     */
+    private readonly userRolesAndPermissionByIdProvider: UserRolesAndPermissionByIdProvider
   ) {}
 
   create(createUserInput: CreateUserInput) {
@@ -129,51 +134,9 @@ export class UserService {
   }
 
   async findRolesAndPermissionsById(userId: number) {
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      relations: {
-        userHasPermission: {
-          permission: true,
-        },
-        userHasRole: {
-          role: {
-            roleHasPermission: {
-              permission: true,
-            },
-          },
-        },
-      },
-    });
-
-    if (!user) {
-      throw new BadRequestException('User does not exist');
-    }
-
-    //roles and permissions of the user
-    const userPermission = user.userHasPermission;
-    const userRoles = user.userHasRole;
-    const rolesName = userRoles.map((role) => role.role.name);
-    //extract name of every permissions of the roles assigned to the user
-    const rolePermissionsNameArray = userRoles.map((userRole) => {
-      return userRole.role.roleHasPermission.map(
-        (perm) => perm.permission.name
-      );
-    });
-
-    //extract permissions assign to the user
-    const permissionsNameArray = userPermission.map(
-      (perm) => perm.permission.name
+    return await this.userRolesAndPermissionByIdProvider.findRolesAndPermissionsById(
+      userId
     );
-
-    return {
-      permissions: [
-        ...new Set([
-          ...rolePermissionsNameArray.flat(),
-          ...permissionsNameArray,
-        ]),
-      ],
-      roles: rolesName,
-    };
   }
 
   async createUser(createUserDto: CreateUserDto) {

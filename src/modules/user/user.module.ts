@@ -17,6 +17,7 @@ import { UserTransactionListProvider } from '@/modules/user/providers/user-trans
 import { WalletHistoryModule } from '@/modules/wallet-history/wallet-history.module';
 import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
 import { InvoicePaymentHistoryModule } from '@/modules/invoice-payment-history/invoice-payment-history.module';
+import { UserRolesAndPermissionByIdProvider } from '@/modules/user/providers/user-roles-and-permission-by-id.provider';
 
 @Module({
   providers: [
@@ -25,6 +26,7 @@ import { InvoicePaymentHistoryModule } from '@/modules/invoice-payment-history/i
     CreateUserProvider,
     UpdateUserProvider,
     UserTransactionListProvider,
+    UserRolesAndPermissionByIdProvider,
   ],
   exports: [UserService, CreateUserProvider, UpdateUserProvider],
   imports: [

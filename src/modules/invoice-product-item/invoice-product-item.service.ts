@@ -104,9 +104,13 @@ export class InvoiceProductItemService {
   }
 
   async invoiceProductItemsList(
+    context: {
+      req: UserContext;
+    },
     invoiceProductItemsListInput: InvoiceProductItemsListInput
   ) {
     return await this.invoiceProductItemsListProvider.invoiceProductItemsList(
+      context,
       invoiceProductItemsListInput
     );
   }
