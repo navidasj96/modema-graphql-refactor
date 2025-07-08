@@ -1,8 +1,26 @@
-import { Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
 import { RipTemplateService } from './rip-template.service';
 import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
+import { GeneralResponseDto } from '@/utils/general-response.dto';
+import { UpdateRipTemplateInput } from '@/modules/rip-template/dto/update-rip-template.input';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
 
 @Resolver(() => RipTemplate)
 export class RipTemplateResolver {
   constructor(private readonly ripTemplateService: RipTemplateService) {}
+
+  @Mutation(() => GeneralResponseDto)
+  async updateRipTemplate(
+    @Args('updateRipTemplateInput', { type: () => UpdateRipTemplateInput })
+    updateRipTemplateInput: UpdateRipTemplateInput,
+    @Context()
+    context: {
+      req: UserContext;
+    }
+  ) {
+    return await this.ripTemplateService.update(
+      updateRipTemplateInput,
+      context
+    );
+  }
 }
