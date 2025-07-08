@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
   QueryOptions,
@@ -22,6 +23,11 @@ import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 @QueryOptions({
   pagingStrategy: PagingStrategies.NONE,
 })
+@FilterableUnPagedRelation('subproducts', () => Subproduct)
+@FilterableUnPagedRelation(
+  'basicCarpetSizeDetails',
+  () => BasicCarpetSizeDetail
+)
 @ObjectType()
 export class BasicCarpetSize {
   @IDField(() => ID)
@@ -66,7 +72,7 @@ export class BasicCarpetSize {
   @Field({ nullable: true })
   sortOrder?: number;
 
-  @Field({ defaultValue: true })
+  @FilterableField({ defaultValue: true })
   isActive: boolean;
 
   @Field({ defaultValue: new Date() })

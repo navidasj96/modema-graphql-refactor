@@ -1,9 +1,10 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FilterableRelation, IDField } from '@ptc-org/nestjs-query-graphql';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 
 @InputType('BasicCarpetSizeDetailDomain')
 @ObjectType()
+@FilterableRelation('basicCarpetSize', () => BasicCarpetSize)
 export class BasicCarpetSizeDetail {
   @IDField(() => ID)
   id: number;

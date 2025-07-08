@@ -1,9 +1,10 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
+import { FilterableRelation, IDField } from '@ptc-org/nestjs-query-graphql';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { RipTemplate } from '@/modules/rip-template/domain/rip-template';
 
 @InputType('RipTemplateItemDomain')
+@FilterableRelation('basicCarpetSize', () => BasicCarpetSize)
 @ObjectType()
 export class RipTemplateItem {
   @IDField(() => ID)

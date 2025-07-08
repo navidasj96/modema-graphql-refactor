@@ -1,10 +1,7 @@
-import { CreateRipTemplateItemInput } from './create-rip-template-item.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateRipTemplateItemInput extends PartialType(
-  CreateRipTemplateItemInput
-) {
+export class UpdateRipTemplateItemInput {
   @Field(() => Int)
   id: number;
 }
