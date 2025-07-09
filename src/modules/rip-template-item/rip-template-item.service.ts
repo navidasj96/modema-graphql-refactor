@@ -3,6 +3,7 @@ import { CreateRipTemplateItemInput } from './dto/create-rip-template-item.input
 import { UpdateRipTemplateItemInput } from './dto/update-rip-template-item.input';
 import { UpdateRipTemplateItemProvider } from '@/modules/rip-template-item/providers/update-rip-template-item.provider';
 import { EntityManager } from 'typeorm';
+import { CreateRipTemplateItemsProvider } from '@/modules/rip-template-item/providers/create-rip-template-item.provider';
 
 @Injectable()
 export class RipTemplateItemService {
@@ -10,10 +11,20 @@ export class RipTemplateItemService {
     /**
      * inject UpdateRipTemplateItemProvider
      */
-    private readonly updateRipTemplateItemProvider: UpdateRipTemplateItemProvider
+    private readonly updateRipTemplateItemProvider: UpdateRipTemplateItemProvider,
+    /**
+     * inject createRipTemplateItemProvider
+     */
+    private readonly createRipTemplateItemsProvider: CreateRipTemplateItemsProvider
   ) {}
-  create(createRipTemplateItemInput: CreateRipTemplateItemInput) {
-    return 'This action adds a new ripTemplateItem';
+  async create(
+    updateRipTemplateItemInput: UpdateRipTemplateItemInput,
+    manager?: EntityManager
+  ) {
+    return await this.createRipTemplateItemsProvider.createRipTemplateItems(
+      updateRipTemplateItemInput,
+      manager
+    );
   }
 
   findAll() {

@@ -24,7 +24,7 @@ export class UpdateRipTemplateItemProvider {
     const { id, ripTemplateItemUpdate } = updateRipTemplateItemInput;
     try {
       const ripTemplateItems = await ripTemplateItemRepository.find({
-        where: { id },
+        where: { ripTemplateId: id },
       });
 
       const updateMap = new Map<number, { width: number; length: number }>();
@@ -39,7 +39,6 @@ export class UpdateRipTemplateItemProvider {
           item.length = update.length;
         }
       }
-
       await ripTemplateItemRepository.save(ripTemplateItems);
       return {
         message: `Rip Template items successfully edited`,

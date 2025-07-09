@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateRipTemplateInput } from './dto/create-rip-template.input';
 import { UpdateRipTemplateInput } from './dto/update-rip-template.input';
 import { UpdateRipTemplateProvider } from '@/modules/rip-template/providers/update-rip-template.provider';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { CreateRipTemplateProvider } from '@/modules/rip-template/providers/create-rip-template.provider';
+import { CreateRipTemplateInput } from '@/modules/rip-template/dto/create-rip-template.input';
 
 @Injectable()
 export class RipTemplateService {
@@ -10,10 +11,22 @@ export class RipTemplateService {
     /**
      * inject UpdateRipTemplateProvider
      */
-    private readonly updateRipTemplateProvider: UpdateRipTemplateProvider
+    private readonly updateRipTemplateProvider: UpdateRipTemplateProvider,
+    /**
+     * inject createRipTemplateProvivider
+     */
+    private readonly createRipTemplateProvider: CreateRipTemplateProvider
   ) {}
-  create(createRipTemplateInput: CreateRipTemplateInput) {
-    return 'This action adds a new ripTemplate';
+  async create(
+    createRipTemplateInput: CreateRipTemplateInput,
+    context: {
+      req: UserContext;
+    }
+  ) {
+    return await this.createRipTemplateProvider.createRipTemplate(
+      context,
+      createRipTemplateInput
+    );
   }
 
   findAll() {

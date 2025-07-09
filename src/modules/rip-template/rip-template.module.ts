@@ -10,12 +10,14 @@ import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
 import { UpdateRipTemplateProvider } from '@/modules/rip-template/providers/update-rip-template.provider';
 import { RipTemplateItemModule } from '@/modules/rip-template-item/rip-template-item.module';
 import { AuthModule } from '@/modules/auth/auth.module';
+import { CreateRipTemplateProvider } from '@/modules/rip-template/providers/create-rip-template.provider';
 
 @Module({
   providers: [
     RipTemplateResolver,
     RipTemplateService,
     UpdateRipTemplateProvider,
+    CreateRipTemplateProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

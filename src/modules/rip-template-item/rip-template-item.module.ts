@@ -7,12 +7,14 @@ import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateRipTemplateItemInput } from '@/modules/rip-template-item/dto/create-rip-template-item.input';
 import { UpdateRipTemplateItemProvider } from '@/modules/rip-template-item/providers/update-rip-template-item.provider';
+import { CreateRipTemplateItemsProvider } from '@/modules/rip-template-item/providers/create-rip-template-item.provider';
 
 @Module({
   providers: [
     RipTemplateItemResolver,
     RipTemplateItemService,
     UpdateRipTemplateItemProvider,
+    CreateRipTemplateItemsProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

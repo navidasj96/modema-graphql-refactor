@@ -1,6 +1,7 @@
 import { AuthService } from '@/modules/auth/auth.service';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { RipTemplateItemService } from '@/modules/rip-template-item/rip-template-item.service';
+import { CreateRipTemplateInput } from '@/modules/rip-template/dto/create-rip-template.input';
 import { UpdateRipTemplateInput } from '@/modules/rip-template/dto/update-rip-template.input';
 import { RipTemplate } from '@/modules/rip-template/entities/rip-template.entity';
 import { RipTemplatePermissions } from '@/utils/permissions';
@@ -8,7 +9,7 @@ import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
 @Injectable()
-export class UpdateRipTemplateProvider {
+export class CreateRipTemplateProvider {
   constructor(
     /**
      * inject ripTemplateItemService
@@ -24,20 +25,24 @@ export class UpdateRipTemplateProvider {
     private readonly authService: AuthService
   ) {}
 
-  async updateRipTemplate(
+  async createRipTemplate(
     context: {
       req: UserContext;
     },
-    updateRipTemplateInput: UpdateRipTemplateInput
+    createRipTemplateInput: CreateRipTemplateInput
   ) {
     const userCanEditRipTemplate = await this.authService.userPermissionCheck(
       [RipTemplatePermissions.PERMISSION_TO_CHANGE],
       context
     );
-
+    const {
+      req: {
+        user: { sub },
+      },
+    } = context;
     if (!userCanEditRipTemplate) {
       return {
-        message: 'دسترسی لازم برای تغییر ریپ را ندارید',
+        message: 'دسترسی لازم برای ایجاد ریپ را ندارید',
         status: false,
       };
     }
@@ -46,26 +51,33 @@ export class UpdateRipTemplateProvider {
     await queryRunner.startTransaction();
     const manager = queryRunner.manager;
     const ripTemplateRepository = manager.getRepository(RipTemplate);
-    const { id, name } = updateRipTemplateInput;
+
     try {
-      await ripTemplateRepository.update(id, { name });
-      const updateRipTemplateResponse =
-        await this.ripTemplateItemService.update(
-          updateRipTemplateInput,
+      const createdRipTemplate = ripTemplateRepository.create({
+        name: createRipTemplateInput.name,
+        userId: sub,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      await ripTemplateRepository.save(createdRipTemplate);
+      const createRipTemplateResponse =
+        await this.ripTemplateItemService.create(
+          {
+            id: createdRipTemplate.id,
+            ripTemplateItemUpdate: createRipTemplateInput.ripTemplateItemUpdate,
+          },
           manager
         );
-      if (!updateRipTemplateResponse.status) {
+      if (!createRipTemplateResponse.status) {
         await queryRunner.rollbackTransaction();
         return {
-          message: updateRipTemplateResponse.message,
+          message: createRipTemplateResponse.message,
           status: false,
         };
       }
-
       await queryRunner.commitTransaction();
-
       return {
-        message: `Rip Template : ${name} successfully edited`,
+        message: 'ریپ با موفقیت ایجاد شد',
         status: true,
       };
     } catch (error) {
