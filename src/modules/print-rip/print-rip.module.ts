@@ -6,9 +6,17 @@ import { PrintRip as PrintRipGraphQL } from '@/modules/print-rip/domain/print-ri
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreatePrintRipInput } from '@/modules/print-rip/dto/create-print-rip.input';
+import { UpdatePrintRipProvider } from '@/modules/print-rip/providers/update-print-rip.provider';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { CreatePrintRipProvider } from '@/modules/print-rip/providers/create-print-rip.provider';
 
 @Module({
-  providers: [PrintRipResolver, PrintRipService],
+  providers: [
+    PrintRipResolver,
+    PrintRipService,
+    UpdatePrintRipProvider,
+    CreatePrintRipProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([PrintRip])],
@@ -20,6 +28,8 @@ import { CreatePrintRipInput } from '@/modules/print-rip/dto/create-print-rip.in
         },
       ],
     }),
+    AuthModule,
   ],
+  exports: [PrintRipService],
 })
 export class PrintRipModule {}

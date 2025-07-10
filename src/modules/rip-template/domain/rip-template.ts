@@ -1,5 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
+  FilterableField,
   FilterableUnPagedRelation,
   IDField,
   PagingStrategies,
@@ -19,7 +20,7 @@ export class RipTemplate {
   @IDField(() => ID)
   id: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   createdAt?: Date;
 
   @Field({ nullable: true })
