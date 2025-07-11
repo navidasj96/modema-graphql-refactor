@@ -4,6 +4,7 @@ import { UpdatePrintRipInput } from './dto/update-print-rip.input';
 import { UpdatePrintRipProvider } from '@/modules/print-rip/providers/update-print-rip.provider';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CreatePrintRipProvider } from '@/modules/print-rip/providers/create-print-rip.provider';
+import { RipToPrintPrintRipsListProvider } from '@/modules/print-rip/providers/rip-to-print-print-rips-list.provider';
 
 @Injectable()
 export class PrintRipService {
@@ -15,7 +16,11 @@ export class PrintRipService {
     /**
      * inject createPrintRipProvider
      */
-    private readonly createPrintRipProvider: CreatePrintRipProvider
+    private readonly createPrintRipProvider: CreatePrintRipProvider,
+    /**
+     * inject ipToPrintPrintRipsListProvider
+     */
+    private readonly ripToPrintPrintRipsListProvider: RipToPrintPrintRipsListProvider
   ) {}
 
   async create(
@@ -47,6 +52,12 @@ export class PrintRipService {
     return await this.updatePrintRipProvider.updatePrintRip(
       context,
       updatePrintRip
+    );
+  }
+
+  async ripToPrintPrintRipsList(context: { req: UserContext }) {
+    return await this.ripToPrintPrintRipsListProvider.ripToPrintPrintRipsList(
+      context
     );
   }
 

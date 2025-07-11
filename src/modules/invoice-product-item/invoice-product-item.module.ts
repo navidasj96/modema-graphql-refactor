@@ -28,6 +28,7 @@ import { DamageReasonModule } from '@/modules/damage-reason/damage-reason.module
 import { BasicCarpetColorModule } from '@/modules/basic-carpet-color/basic-carpet-color.module';
 import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-list.provider';
 import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/invoice-product-item/providers/viewable-invoice-product-item-statues-for-user';
+import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 
 @Module({
   providers: [
@@ -39,6 +40,7 @@ import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/inv
     DamagedInvoiceItemsControllerProvider,
     InvoiceProductItemsListProvider,
     ViewableInvoiceProductItemStatusesForUserProvider,
+    InvoiceProductItemsRipToPrintListProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

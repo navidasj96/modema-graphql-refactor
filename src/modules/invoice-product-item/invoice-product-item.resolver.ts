@@ -10,6 +10,7 @@ import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
 import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
+import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -78,6 +79,23 @@ export class InvoiceProductItemResolver {
     }
   ) {
     return await this.invoiceProductItemService.invoiceProductItemsList(
+      context,
+      invoiceProductItemsListInput
+    );
+  }
+
+  @Query(() => [InvoiceProductItem])
+  async invoiceProductItemsRipToPrintList(
+    @Args('invoiceProductItemsListInput', {
+      type: () => InvoiceProductItemRipToPrintInput,
+    })
+    invoiceProductItemsListInput: InvoiceProductItemRipToPrintInput,
+    @Context()
+    context: {
+      req: UserContext;
+    }
+  ) {
+    return await this.invoiceProductItemService.invoiceProductItemsRipToPrintList(
       context,
       invoiceProductItemsListInput
     );

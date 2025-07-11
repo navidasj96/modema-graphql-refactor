@@ -9,6 +9,7 @@ import { CreatePrintRipInput } from '@/modules/print-rip/dto/create-print-rip.in
 import { UpdatePrintRipProvider } from '@/modules/print-rip/providers/update-print-rip.provider';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { CreatePrintRipProvider } from '@/modules/print-rip/providers/create-print-rip.provider';
+import { RipToPrintPrintRipsListProvider } from '@/modules/print-rip/providers/rip-to-print-print-rips-list.provider';
 
 @Module({
   providers: [
@@ -16,6 +17,7 @@ import { CreatePrintRipProvider } from '@/modules/print-rip/providers/create-pri
     PrintRipService,
     UpdatePrintRipProvider,
     CreatePrintRipProvider,
+    RipToPrintPrintRipsListProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

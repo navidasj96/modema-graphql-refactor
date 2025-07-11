@@ -44,7 +44,7 @@ export class ProductionRoll {
   @FilterableField()
   isClosed: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   createdAt?: Date;
 
   @Field({ nullable: true })
@@ -53,7 +53,7 @@ export class ProductionRoll {
   @Field({ nullable: true })
   createdBy?: number;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   closedBy?: number;
 
   @Field(() => [InvoiceProductItem])

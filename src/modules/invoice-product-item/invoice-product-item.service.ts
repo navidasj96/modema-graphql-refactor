@@ -14,6 +14,8 @@ import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-list.provider';
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
+import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
+import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -40,7 +42,11 @@ export class InvoiceProductItemService {
     /**
      * inject invoiceProductItemsListProvider
      */
-    private readonly invoiceProductItemsListProvider: InvoiceProductItemsListProvider
+    private readonly invoiceProductItemsListProvider: InvoiceProductItemsListProvider,
+    /**
+     * inject invoiceProductItemsRipToPrintListProvider
+     */
+    private readonly invoiceProductItemsRipToPrintListProvider: InvoiceProductItemsRipToPrintListProvider
   ) {}
 
   create(createInvoiceProductItemInput: CreateInvoiceProductItemInput) {
@@ -110,6 +116,16 @@ export class InvoiceProductItemService {
     invoiceProductItemsListInput: InvoiceProductItemsListInput
   ) {
     return await this.invoiceProductItemsListProvider.invoiceProductItemsList(
+      context,
+      invoiceProductItemsListInput
+    );
+  }
+
+  async invoiceProductItemsRipToPrintList(
+    context: { req: UserContext },
+    invoiceProductItemsListInput: InvoiceProductItemRipToPrintInput
+  ) {
+    return await this.invoiceProductItemsRipToPrintListProvider.invoiceProductItemsRipToPrintList(
       context,
       invoiceProductItemsListInput
     );

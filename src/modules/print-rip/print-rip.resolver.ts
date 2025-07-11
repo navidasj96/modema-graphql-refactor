@@ -1,4 +1,4 @@
-import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PrintRipService } from './print-rip.service';
 import { PrintRip } from '@/modules/print-rip/domain/print-rip';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
@@ -32,5 +32,15 @@ export class PrintRipResolver {
     }
   ) {
     return await this.printRipService.create(context, createPrintRip);
+  }
+
+  @Query(() => PrintRip)
+  async ripToPrintPrintRipsList(
+    @Context()
+    context: {
+      req: UserContext;
+    }
+  ) {
+    return await this.printRipService.ripToPrintPrintRipsList(context);
   }
 }
