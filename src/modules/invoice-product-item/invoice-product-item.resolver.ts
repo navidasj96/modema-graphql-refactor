@@ -11,6 +11,7 @@ import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
 import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
 import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
+import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-rip-to-print-list.output';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -84,7 +85,7 @@ export class InvoiceProductItemResolver {
     );
   }
 
-  @Query(() => [InvoiceProductItem])
+  @Query(() => InvoiceProductItemsRipToPrintListOutput)
   async invoiceProductItemsRipToPrintList(
     @Args('invoiceProductItemsListInput', {
       type: () => InvoiceProductItemRipToPrintInput,

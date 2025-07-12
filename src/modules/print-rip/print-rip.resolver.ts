@@ -34,7 +34,7 @@ export class PrintRipResolver {
     return await this.printRipService.create(context, createPrintRip);
   }
 
-  @Query(() => PrintRip)
+  @Query(() => [PrintRip])
   async ripToPrintPrintRipsList(
     @Context()
     context: {

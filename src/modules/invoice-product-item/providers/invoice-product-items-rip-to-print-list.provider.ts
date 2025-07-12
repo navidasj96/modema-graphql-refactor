@@ -28,6 +28,7 @@ export class InvoiceProductItemsRipToPrintListProvider {
     invoiceProductItemsListInput: InvoiceProductItemRipToPrintInput
   ) {
     const { printRipId } = invoiceProductItemsListInput;
+    console.log('printRipId', printRipId);
     const userCanViewInvoiceProductItems =
       await this.authService.userPermissionCheck(
         [
@@ -62,13 +63,33 @@ export class InvoiceProductItemsRipToPrintListProvider {
       .orderBy('inv.issueDate', 'DESC')
       .addOrderBy('ipi.sortOrder', 'ASC');
 
+    let printAndHeatItems: InvoiceProductItem[] = [];
     if (printRipId) {
-      invoiceProductItemsQuery.andWhere('ipi.printRipId = :printRipId', {
-        printRipId,
-      });
+      printAndHeatItems = await this.invoiceProductItemRepository
+        .createQueryBuilder('ipi')
+        .select(['ipi'])
+        .innerJoin('ipi.invoiceProduct', 'ip')
+        .innerJoin('ip.invoice', 'inv')
+        .innerJoin('ip.product', 'prod')
+        .where('inv.currentInvoiceStatusId IN (:...invoiceStatuses)', {
+          invoiceStatuses: INVOICE_STATUSES_AFTER_PRODUCTION_START,
+        })
+        .andWhere('ipi.currentStatusId = :status', {
+          status: InvoiceProductStatusEnum.PRINT,
+        })
+        .andWhere('prod.isShaggy = :isShaggy', { isShaggy: 0 })
+        .andWhere('ipi.printRipId = :printRipId', {
+          printRipId,
+        })
+        .orderBy('ipi.sortOrder', 'ASC')
+        .addOrderBy('ipi.id', 'ASC')
+        .getMany();
     }
     const invoiceProductItems = await invoiceProductItemsQuery.getMany();
 
-    return invoiceProductItems;
+    return {
+      ripItems: invoiceProductItems,
+      printAndHeatItems: printAndHeatItems,
+    };
   }
 }
