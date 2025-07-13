@@ -16,6 +16,8 @@ import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/
 import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
 import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
+import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
+import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -46,7 +48,11 @@ export class InvoiceProductItemService {
     /**
      * inject invoiceProductItemsRipToPrintListProvider
      */
-    private readonly invoiceProductItemsRipToPrintListProvider: InvoiceProductItemsRipToPrintListProvider
+    private readonly invoiceProductItemsRipToPrintListProvider: InvoiceProductItemsRipToPrintListProvider,
+    /**
+     * inject updateInvoiceProductItemRipToPrintProvider
+     */
+    private readonly updateInvoiceProductItemRipToPrintProvider: UpdateInvoiceProductItemRipToPrintProvider
   ) {}
 
   create(createInvoiceProductItemInput: CreateInvoiceProductItemInput) {
@@ -128,6 +134,16 @@ export class InvoiceProductItemService {
     return await this.invoiceProductItemsRipToPrintListProvider.invoiceProductItemsRipToPrintList(
       context,
       invoiceProductItemsListInput
+    );
+  }
+
+  async updateInvoiceProductItemRipToPrint(
+    context: { req: UserContext },
+    updateInvoiceProductItemRipToPrintInput: UpdateInvoiceProductItemRipToPrintInput
+  ) {
+    return await this.updateInvoiceProductItemRipToPrintProvider.updateInvoiceProductItemRipToPrint(
+      context,
+      updateInvoiceProductItemRipToPrintInput
     );
   }
 }

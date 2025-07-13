@@ -98,11 +98,11 @@ export class InvoiceProductItem {
   @Field({ nullable: true })
   tempStatusId?: number;
 
-  @Field({ nullable: true })
-  printRipId?: number;
+  @Field(() => Number, { nullable: true })
+  printRipId: number | null;
 
-  @Field({ nullable: true })
-  sortOrder?: number;
+  @Field(() => Number, { nullable: true })
+  sortOrder: number | null;
 
   @Field({ nullable: true })
   tagSortOrder?: number;

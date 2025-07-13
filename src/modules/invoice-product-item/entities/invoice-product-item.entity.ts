@@ -124,10 +124,10 @@ export class InvoiceProductItem {
   tempStatusId?: number;
 
   @Column('int', { name: 'print_rip_id', nullable: true, unsigned: true })
-  printRipId?: number;
+  printRipId: number | null;
 
   @Column('int', { name: 'sort_order', nullable: true })
-  sortOrder?: number;
+  sortOrder: number | null;
 
   @Column('smallint', { name: 'tag_sort_order', nullable: true })
   tagSortOrder?: number;

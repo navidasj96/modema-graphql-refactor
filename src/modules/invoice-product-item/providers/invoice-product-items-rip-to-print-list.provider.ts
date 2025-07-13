@@ -28,7 +28,6 @@ export class InvoiceProductItemsRipToPrintListProvider {
     invoiceProductItemsListInput: InvoiceProductItemRipToPrintInput
   ) {
     const { printRipId } = invoiceProductItemsListInput;
-    console.log('printRipId', printRipId);
     const userCanViewInvoiceProductItems =
       await this.authService.userPermissionCheck(
         [
