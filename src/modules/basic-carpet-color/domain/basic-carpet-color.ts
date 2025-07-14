@@ -46,7 +46,7 @@ export class BasicCarpetColor {
   @Field({ nullable: true })
   sortOrder?: number;
 
-  @Field({ defaultValue: true })
+  @FilterableField({ defaultValue: true })
   isActive: boolean;
 
   @Field({ defaultValue: new Date() })

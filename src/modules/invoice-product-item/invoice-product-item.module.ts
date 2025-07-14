@@ -30,6 +30,7 @@ import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/
 import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/invoice-product-item/providers/viewable-invoice-product-item-statues-for-user';
 import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
+import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
 
 @Module({
   providers: [
@@ -43,6 +44,7 @@ import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-pr
     ViewableInvoiceProductItemStatusesForUserProvider,
     InvoiceProductItemsRipToPrintListProvider,
     UpdateInvoiceProductItemRipToPrintProvider,
+    CancelDepotInvoiceItemProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

@@ -119,7 +119,7 @@ export class UpdateInvoiceProductItemRipToPrintProvider {
       }
       await queryRunner.commitTransaction();
       return {
-        message: 'وضعیت ریپورتاژ با موفقیت بروزرسانی شد',
+        message: '  با موفقیت بروزرسانی شد',
         status: true,
       };
     } catch (error) {

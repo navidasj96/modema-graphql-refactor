@@ -18,6 +18,8 @@ import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-pro
 import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
 import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
 import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
+import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
+import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -52,12 +54,12 @@ export class InvoiceProductItemService {
     /**
      * inject updateInvoiceProductItemRipToPrintProvider
      */
-    private readonly updateInvoiceProductItemRipToPrintProvider: UpdateInvoiceProductItemRipToPrintProvider
+    private readonly updateInvoiceProductItemRipToPrintProvider: UpdateInvoiceProductItemRipToPrintProvider,
+    /**
+     * inject cancelDepotInvoiceItemProvider
+     */
+    private readonly cancelDepotInvoiceItemProvider: CancelDepotInvoiceItemProvider
   ) {}
-
-  create(createInvoiceProductItemInput: CreateInvoiceProductItemInput) {
-    return 'This action adds a new invoiceProductItem';
-  }
 
   async findAll(options: FindManyOptions<InvoiceProductItem>) {
     return await this.invoiceProductItemRepository.find(options);
@@ -65,17 +67,6 @@ export class InvoiceProductItemService {
 
   async findOne(options: FindOneOptions<InvoiceProductItem>) {
     return await this.invoiceProductItemRepository.findOne(options);
-  }
-
-  update(
-    id: number,
-    updateInvoiceProductItemInput: UpdateInvoiceProductItemInput
-  ) {
-    return `This action updates a #${id} invoiceProductItem`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} invoiceProductItem`;
   }
 
   async save(invoiceProductItem: InvoiceProductItem, manage?: EntityManager) {
@@ -144,6 +135,16 @@ export class InvoiceProductItemService {
     return await this.updateInvoiceProductItemRipToPrintProvider.updateInvoiceProductItemRipToPrint(
       context,
       updateInvoiceProductItemRipToPrintInput
+    );
+  }
+
+  async cancelDepotInvoiceItem(
+    context: { req: UserContext },
+    cancelDepotInvoiceItemInput: CancelDepotInvoiceItemInput
+  ) {
+    return await this.cancelDepotInvoiceItemProvider.cancelDepotInvoiceItem(
+      context,
+      cancelDepotInvoiceItemInput
     );
   }
 }

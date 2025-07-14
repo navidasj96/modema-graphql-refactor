@@ -13,6 +13,7 @@ import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dt
 import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
 import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-rip-to-print-list.output';
 import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
+import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -115,6 +116,21 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.updateInvoiceProductItemRipToPrint(
       context,
       updateInvoiceProductItemRipToPrintInput
+    );
+  }
+
+  @Mutation(() => GeneralResponseDto)
+  async cancelDepotInvoiceItem(
+    @Args('cancelDepotInvoiceItemInput', {
+      type: () => CancelDepotInvoiceItemInput,
+    })
+    cancelDepotInvoiceItemInput: CancelDepotInvoiceItemInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.invoiceProductItemService.cancelDepotInvoiceItem(
+      context,
+      cancelDepotInvoiceItemInput
     );
   }
 }

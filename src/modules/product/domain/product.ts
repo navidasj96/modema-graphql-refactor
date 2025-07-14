@@ -50,6 +50,7 @@ import { InvoiceProductHistory } from '@/modules/invoice-product-history/domain/
 @FilterableUnPagedRelation('subproducts', () => Subproduct)
 @QueryOptions({
   pagingStrategy: PagingStrategies.OFFSET,
+  filterDepth: 4,
 })
 @ObjectType()
 export class Product {
