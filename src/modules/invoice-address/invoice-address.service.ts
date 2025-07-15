@@ -3,7 +3,7 @@ import { CreateInvoiceAddressInput } from './dto/create-invoice-address.input';
 import { UpdateInvoiceAddressInput } from './dto/update-invoice-address.input';
 import { InvoiceAddressPrepareProvider } from '@/modules/invoice-address/providers/invoice-address-prepare.provider';
 import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager, FindOneOptions, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
@@ -28,8 +28,8 @@ export class InvoiceAddressService {
     return `This action returns all invoiceAddress`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} invoiceAddress`;
+  async findOne(options: FindOneOptions<InvoiceAddress>) {
+    return await this.invoiceAddressRepository.findOne(options);
   }
 
   update(id: number, updateInvoiceAddressInput: UpdateInvoiceAddressInput) {

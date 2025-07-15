@@ -14,6 +14,7 @@ import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto
 import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-rip-to-print-list.output';
 import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
+import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -131,6 +132,21 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.cancelDepotInvoiceItem(
       context,
       cancelDepotInvoiceItemInput
+    );
+  }
+
+  @Mutation(() => GeneralResponseDto)
+  async createNewInvoiceItemForDepot(
+    @Args('createNewInvoiceItemForDepotInput', {
+      type: () => CreateNewInvoiceItemForDepotInput,
+    })
+    createNewInvoiceItemForDepotInput: CreateNewInvoiceItemForDepotInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.invoiceProductItemService.createNewInvoiceItemForDepot(
+      createNewInvoiceItemForDepotInput,
+      context
     );
   }
 }

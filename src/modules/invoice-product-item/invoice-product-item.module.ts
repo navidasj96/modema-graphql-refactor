@@ -31,6 +31,8 @@ import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/inv
 import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
 import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
+import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
+import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
 
 @Module({
   providers: [
@@ -45,6 +47,7 @@ import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/p
     InvoiceProductItemsRipToPrintListProvider,
     UpdateInvoiceProductItemRipToPrintProvider,
     CancelDepotInvoiceItemProvider,
+    CreateNewInvoiceItemForDepotProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -74,6 +77,7 @@ import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/p
     InvoiceProductModule,
     DamageReasonModule,
     BasicCarpetColorModule,
+    PrintRipModule,
   ],
   exports: [InvoiceProductItemService],
 })

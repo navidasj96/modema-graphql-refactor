@@ -88,3 +88,6 @@ export const INVOICE_STATUSES_AFTER_PRODUCTION_START: InvoiceStatusEnum[] = [
   InvoiceStatusEnum.DAMAGED_DURING_PRODUCTION,
   InvoiceStatusEnum.CANCELED_SNAPP_AFTER_RECEIVED_BY_CUSTOMER,
 ];
+
+export const ADDRESS_ID_FOR_DEPOT_INVOICES = 10147; // انبار دپو مدما
+export const USER_ID_FOR_DEPOT_INVOICES = 205555; // اشکان محمدی

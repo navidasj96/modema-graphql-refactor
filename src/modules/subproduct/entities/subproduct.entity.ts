@@ -115,7 +115,7 @@ export class Subproduct {
     precision: 18,
     scale: 2,
   })
-  bundlePrice?: string;
+  bundlePrice: string | null;
 
   @Column('decimal', {
     name: 'bundle_pad_price',

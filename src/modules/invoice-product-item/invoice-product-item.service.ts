@@ -20,6 +20,8 @@ import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-pr
 import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
 import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
+import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
+import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -58,7 +60,11 @@ export class InvoiceProductItemService {
     /**
      * inject cancelDepotInvoiceItemProvider
      */
-    private readonly cancelDepotInvoiceItemProvider: CancelDepotInvoiceItemProvider
+    private readonly cancelDepotInvoiceItemProvider: CancelDepotInvoiceItemProvider,
+    /**
+     * private readonly createNewInvoiceItemForDepotProvider
+     */
+    private readonly createNewInvoiceItemForDepotProvider: CreateNewInvoiceItemForDepotProvider
   ) {}
 
   async findAll(options: FindManyOptions<InvoiceProductItem>) {
@@ -145,6 +151,16 @@ export class InvoiceProductItemService {
     return await this.cancelDepotInvoiceItemProvider.cancelDepotInvoiceItem(
       context,
       cancelDepotInvoiceItemInput
+    );
+  }
+
+  async createNewInvoiceItemForDepot(
+    createNewInvoiceItemForDepotInput: CreateNewInvoiceItemForDepotInput,
+    context: { req: UserContext }
+  ) {
+    return await this.createNewInvoiceItemForDepotProvider.addNewSubproductForDepot(
+      createNewInvoiceItemForDepotInput,
+      context
     );
   }
 }

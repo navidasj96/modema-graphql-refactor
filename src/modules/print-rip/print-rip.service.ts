@@ -5,6 +5,13 @@ import { UpdatePrintRipProvider } from '@/modules/print-rip/providers/update-pri
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CreatePrintRipProvider } from '@/modules/print-rip/providers/create-print-rip.provider';
 import { RipToPrintPrintRipsListProvider } from '@/modules/print-rip/providers/rip-to-print-print-rips-list.provider';
+import { PrintRip } from '@/modules/print-rip/entities/print-rip.entity';
+import { Repository } from 'typeorm';
+import {
+  INVOICE_PRODUCT_STATUSES_HEAT_AND_AFTER,
+  InvoiceProductStatusEnum,
+} from '@/utils/invoice-product-status';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class PrintRipService {
@@ -20,7 +27,12 @@ export class PrintRipService {
     /**
      * inject ipToPrintPrintRipsListProvider
      */
-    private readonly ripToPrintPrintRipsListProvider: RipToPrintPrintRipsListProvider
+    private readonly ripToPrintPrintRipsListProvider: RipToPrintPrintRipsListProvider,
+    /**
+     * inject printRipRepository
+     */
+    @InjectRepository(PrintRip)
+    private readonly printRipRepository: Repository<PrintRip>
   ) {}
 
   async create(
@@ -63,5 +75,17 @@ export class PrintRipService {
 
   remove(id: number) {
     return `This action removes a #${id} printRip`;
+  }
+
+  async printRipForDepot() {
+    return await this.printRipRepository
+      .createQueryBuilder('print_rips')
+      .leftJoin('print_rips.invoiceProductItems', 'invoice_product_items')
+      .where('invoice_product_items.current_status_id IN (:...statuses)', {
+        statuses: INVOICE_PRODUCT_STATUSES_HEAT_AND_AFTER,
+      })
+      .groupBy('print_rips.id')
+      .orderBy('print_rips.createdAt', 'DESC')
+      .getOne();
   }
 }

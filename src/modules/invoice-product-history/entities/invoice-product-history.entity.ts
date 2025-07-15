@@ -76,7 +76,7 @@ export class InvoiceProductHistory {
   pricePerInch: number | null;
 
   @Column('decimal', { name: 'price', precision: 18, scale: 2 })
-  price: number;
+  price: number | null;
 
   @Column('decimal', {
     name: 'bundle_price',
