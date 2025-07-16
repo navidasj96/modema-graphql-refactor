@@ -15,6 +15,11 @@ import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-produ
 import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
 import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
+import { UseGuards } from '@nestjs/common';
+import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
+import { InvoiceProductItemPermissions } from '@/utils/permissions';
+import { Permissions } from '@/utils/permission-guard/permissions.decorator';
+import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -135,6 +140,13 @@ export class InvoiceProductItemResolver {
     );
   }
 
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_BEGIN_PRODUCTION,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_PRINT_AND_HEAT,
+    InvoiceProductItemPermissions.PERMISSION_TO_CHANGE_ITEMS_TO_PRINT_AND_HEAT,
+  ])
   @Mutation(() => GeneralResponseDto)
   async createNewInvoiceItemForDepot(
     @Args('createNewInvoiceItemForDepotInput', {
@@ -147,6 +159,25 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.createNewInvoiceItemForDepot(
       createNewInvoiceItemForDepotInput,
       context
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_BEGIN_PRODUCTION,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_PRINT_AND_HEAT,
+    InvoiceProductItemPermissions.PERMISSION_TO_CHANGE_ITEMS_TO_PRINT_AND_HEAT,
+  ])
+  @Query(() => [InvoiceProductItem])
+  async searchInvoiceProductItemForReplacementList(
+    @Args('searchInvoiceProductItemForReplacementListInput', {
+      type: () => SearchInvoiceProductItemForReplacementListInput,
+    })
+    searchInvoiceProductItemForReplacementListInput: SearchInvoiceProductItemForReplacementListInput
+  ) {
+    return await this.invoiceProductItemService.searchInvoiceProductItemForReplacementList(
+      searchInvoiceProductItemForReplacementListInput
     );
   }
 }

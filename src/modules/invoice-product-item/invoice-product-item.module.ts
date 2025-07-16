@@ -33,6 +33,7 @@ import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-pr
 import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
 import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
 import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
+import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
 
 @Module({
   providers: [
@@ -48,6 +49,7 @@ import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
     UpdateInvoiceProductItemRipToPrintProvider,
     CancelDepotInvoiceItemProvider,
     CreateNewInvoiceItemForDepotProvider,
+    InvoiceItemReplaceProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

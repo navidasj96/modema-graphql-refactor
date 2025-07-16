@@ -50,3 +50,24 @@ export function pluck<
     {} as Record<T[K], T[V]>
   );
 }
+export function faToEn(str: string): string {
+  return str.replace(/[۰-۹]/g, (digit) =>
+    String.fromCharCode(digit.charCodeAt(0) - 1728)
+  );
+}
+
+export function addCountryCodeToPhoneNumber(phoneNo: string): string {
+  // ✅ Convert Persian/Arabic digits to English digits (faToEn equivalent)
+  phoneNo = faToEn(phoneNo).replace(/^\+/, ''); // remove leading '+'
+  phoneNo = phoneNo.replace(/^0+/, ''); // remove leading zeros
+
+  if (!phoneNo.startsWith('98') && !phoneNo.startsWith('+')) {
+    phoneNo = '98' + phoneNo;
+  }
+
+  if (!phoneNo.startsWith('+')) {
+    phoneNo = '+' + phoneNo;
+  }
+
+  return phoneNo;
+}
