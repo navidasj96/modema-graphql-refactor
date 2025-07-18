@@ -20,6 +20,7 @@ import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
 import { InvoiceProductItemPermissions } from '@/utils/permissions';
 import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
+import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -178,6 +179,25 @@ export class InvoiceProductItemResolver {
   ) {
     return await this.invoiceProductItemService.searchInvoiceProductItemForReplacementList(
       searchInvoiceProductItemForReplacementListInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_BEGIN_PRODUCTION,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_PRINT_AND_HEAT,
+    InvoiceProductItemPermissions.PERMISSION_TO_CHANGE_ITEMS_TO_PRINT_AND_HEAT,
+  ])
+  @Mutation(() => GeneralResponseDto)
+  async invoiceItemsReplaceUpdate(
+    @Args('invoiceItemReplaceUpdateInput', {
+      type: () => InvoiceItemReplaceUpdateInput,
+    })
+    invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput
+  ) {
+    return await this.invoiceProductItemService.invoiceItemsReplaceUpdate(
+      invoiceItemReplaceUpdateInput
     );
   }
 }

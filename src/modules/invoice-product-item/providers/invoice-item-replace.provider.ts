@@ -1,6 +1,7 @@
 import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { addCountryCodeToPhoneNumber } from '@/utils/helpers';
 import {
   INVOICE_STATUSES_AFTER_PRODUCTION_START,
@@ -77,7 +78,9 @@ export class InvoiceItemReplaceProvider {
     return invoiceProductItems;
   }
 
-  async update(invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput) {
+  async update(
+    invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput
+  ): Promise<GeneralResponseDto> {
     const { replaceFromId, replaceToId } = invoiceItemReplaceUpdateInput;
 
     const invoiceItemFrom = await this.invoiceProductItemRepository.findOne({
@@ -120,7 +123,7 @@ export class InvoiceItemReplaceProvider {
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
-      const fromStatus = invoiceItemFrom.currentStatusId;
+      const fromStatusId = invoiceItemFrom.currentStatusId;
       const toStatusId = invoiceItemTo.currentStatusId;
       const subproductFrom = invoiceItemFrom.invoiceProduct.subproduct;
       const subproductTo = invoiceItemTo.invoiceProduct.subproduct;
@@ -140,10 +143,62 @@ export class InvoiceItemReplaceProvider {
         invoiceItemFrom.invoiceProductItemInvoiceProductStatuses.map(
           (pivot) => pivot.invoiceProductStatus
         );
+
+      const fromHistoryIdsArr: number[] = [];
+      const toHistoryIdsArr: number[] = [];
+
+      for (const invoiceProductItemFromStatus of invoiceProductItemFromStatuses) {
+        fromHistoryIdsArr.push(invoiceProductItemFromStatus.id);
+      }
+
+      for (const invoiceProductItemToStatus of invoiceProductItemToStatuses) {
+        toHistoryIdsArr.push(invoiceProductItemToStatus.id);
+      }
+
+      const fromHistoryIds = fromHistoryIdsArr.join(',');
+      const toHistoryIds = toHistoryIdsArr.join(',');
+
+      invoiceItemFrom.currentStatusId = toStatusId;
+      await invoiceProductItemRepository.save(invoiceItemFrom);
+      invoiceItemTo.currentStatusId = fromStatusId;
+      await invoiceProductItemRepository.save(invoiceItemTo);
+
+      if (fromHistoryIdsArr.length) {
+        await manager.query(`
+          UPDATE invoice_product_item_invoice_product_status 
+          SET invoice_product_item_id = ${replaceToId} 
+          WHERE id IN (${fromHistoryIds})
+        `);
+
+        await manager.query(`
+          UPDATE invoice_product_item_invoice_product_status 
+          SET user_id = ${toUserId} 
+          WHERE id IN (${fromHistoryIds}) AND user_id = ${fromUserId}
+        `);
+      }
+
+      if (toHistoryIdsArr.length) {
+        await manager.query(`
+          UPDATE invoice_product_item_invoice_product_status 
+          SET invoice_product_item_id = ${replaceFromId} 
+          WHERE id IN (${toHistoryIds})
+        `);
+
+        await manager.query(`
+          UPDATE invoice_product_item_invoice_product_status 
+          SET user_id = ${fromUserId} 
+          WHERE id IN (${toHistoryIds}) AND user_id = ${toUserId}
+        `);
+      }
+
       await queryRunner.commitTransaction();
+
+      return {
+        message: 'آیتم‌های انتخاب شده با موفقیت با هم جابجا شدند.',
+        status: true,
+      };
     } catch (error) {
       await queryRunner.rollbackTransaction();
-
       return {
         message: `${error}`,
         status: false,
@@ -151,13 +206,5 @@ export class InvoiceItemReplaceProvider {
     } finally {
       await queryRunner.release();
     }
-    // Perform the replacement logic here
-    // For example, you might want to swap some properties or update references
-
-    // Save the changes
-    await this.invoiceProductItemRepository.save(invoiceItemFrom);
-    await this.invoiceProductItemRepository.save(invoiceItemTo);
-
-    return { success: true };
   }
 }

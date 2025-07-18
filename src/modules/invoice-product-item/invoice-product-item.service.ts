@@ -24,6 +24,7 @@ import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-
 import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
+import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -175,6 +176,14 @@ export class InvoiceProductItemService {
   ) {
     return await this.invoiceItemReplaceProvider.searchInvoiceProductItemForReplacementList(
       searchInvoiceProductItemForReplacementListInput
+    );
+  }
+
+  async invoiceItemsReplaceUpdate(
+    invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput
+  ) {
+    return await this.invoiceItemReplaceProvider.update(
+      invoiceItemReplaceUpdateInput
     );
   }
 }
