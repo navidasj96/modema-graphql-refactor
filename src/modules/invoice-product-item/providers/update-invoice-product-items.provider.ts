@@ -165,8 +165,8 @@ export class UpdateInvoiceProductItemsProvider {
                   where: { id: settings.productionRollId },
                 })
               : null;
-          console.log('productionRoll', productionRoll);
-          invoiceProductItem.productionRollId = settings?.productionRollId;
+          invoiceProductItem.productionRollId =
+            settings?.productionRollId || null;
           invoiceProductItem.rollReferenceCode = productionRoll?.rollNumber;
         } else if (
           status == InvoiceProductStatusEnum.CUTTING &&

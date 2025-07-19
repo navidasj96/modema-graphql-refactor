@@ -25,6 +25,8 @@ import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-ite
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
 import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
+import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/providers/invoice-items-print-to-heat.provider';
+import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -71,7 +73,11 @@ export class InvoiceProductItemService {
     /**
      * inject invoiceItemReplaceProvider
      */
-    private readonly invoiceItemReplaceProvider: InvoiceItemReplaceProvider
+    private readonly invoiceItemReplaceProvider: InvoiceItemReplaceProvider,
+    /**
+     * inject invoiceItemsPrintToHeatProvider
+     */
+    private readonly invoiceItemsPrintToHeatProvider: InvoiceItemsPrintToHeatProvider
   ) {}
 
   async findAll(options: FindManyOptions<InvoiceProductItem>) {
@@ -184,6 +190,14 @@ export class InvoiceProductItemService {
   ) {
     return await this.invoiceItemReplaceProvider.update(
       invoiceItemReplaceUpdateInput
+    );
+  }
+
+  async invoiceItemsPrintToHeatList(
+    invoiceItemsPrintToHeatListInput: InvoiceItemsPrintToHeatListInput
+  ) {
+    return await this.invoiceItemsPrintToHeatProvider.invoiceItemsPrintToHeatList(
+      invoiceItemsPrintToHeatListInput
     );
   }
 }

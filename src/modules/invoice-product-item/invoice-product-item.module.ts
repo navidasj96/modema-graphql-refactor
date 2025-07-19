@@ -34,6 +34,7 @@ import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/p
 import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
 import { PrintRipModule } from '@/modules/print-rip/print-rip.module';
 import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
+import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/providers/invoice-items-print-to-heat.provider';
 
 @Module({
   providers: [
@@ -50,6 +51,7 @@ import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/provi
     CancelDepotInvoiceItemProvider,
     CreateNewInvoiceItemForDepotProvider,
     InvoiceItemReplaceProvider,
+    InvoiceItemsPrintToHeatProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

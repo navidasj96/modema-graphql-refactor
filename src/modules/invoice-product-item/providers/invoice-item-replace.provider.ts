@@ -129,7 +129,7 @@ export class InvoiceItemReplaceProvider {
       const subproductTo = invoiceItemTo.invoiceProduct.subproduct;
       const fromUserId = invoiceItemFrom.invoiceProduct.invoice.user.id;
       const toUserId = invoiceItemTo.invoiceProduct.invoice.user.id;
-      if (subproductFrom != subproductTo) {
+      if (subproductFrom.id != subproductTo.id) {
         return {
           message: 'نوع محصول‌های انتخاب شده برای جابجایی باید یکسان باشند',
           status: false,

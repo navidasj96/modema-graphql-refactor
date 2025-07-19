@@ -21,6 +21,8 @@ import { InvoiceProductItemPermissions } from '@/utils/permissions';
 import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
+import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
+import { InvoiceItemsPrintToHeatListOutput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.output';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -198,6 +200,25 @@ export class InvoiceProductItemResolver {
   ) {
     return await this.invoiceProductItemService.invoiceItemsReplaceUpdate(
       invoiceItemReplaceUpdateInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_BEGIN_PRODUCTION,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_PRINT_AND_HEAT,
+    InvoiceProductItemPermissions.PERMISSION_TO_CHANGE_ITEMS_TO_PRINT_AND_HEAT,
+  ])
+  @Query(() => InvoiceItemsPrintToHeatListOutput)
+  async invoiceItemsPrintToHeatList(
+    @Args('invoiceItemsPrintToHeatListInput', {
+      type: () => InvoiceItemsPrintToHeatListInput,
+    })
+    invoiceItemsPrintToHeatListInput: InvoiceItemsPrintToHeatListInput
+  ) {
+    return await this.invoiceProductItemService.invoiceItemsPrintToHeatList(
+      invoiceItemsPrintToHeatListInput
     );
   }
 }

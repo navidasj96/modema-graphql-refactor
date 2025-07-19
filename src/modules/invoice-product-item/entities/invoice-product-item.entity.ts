@@ -60,7 +60,7 @@ export class InvoiceProductItem {
   rollReferenceCode?: string;
 
   @Column('int', { name: 'production_roll_id', nullable: true, unsigned: true })
-  productionRollId?: number | null;
+  productionRollId: number | null;
 
   @Column('date', {
     name: 'predicted_date_for_received_by_repository',

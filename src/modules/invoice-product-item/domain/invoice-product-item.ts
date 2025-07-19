@@ -56,8 +56,8 @@ export class InvoiceProductItem {
   @Field({ nullable: true })
   rollReferenceCode?: string;
 
-  @Field({ nullable: true })
-  productionRollId?: number;
+  @Field(() => Number, { nullable: true })
+  productionRollId: number | null;
 
   @Field({ nullable: true })
   predictedDateForReceivedByRepository?: string;

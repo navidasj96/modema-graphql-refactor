@@ -286,6 +286,7 @@ import { QueueModule } from './modules/queue/queue.module';
 import redisConfig from '@/configuration/redis.config';
 import { JobsModule } from '@/modules/jobs/jobs.module';
 import { TagDetailModule } from './modules/tag-detail/tag-detail.module';
+import { PrintMachineModule } from '@/modules/print-machine/print-machine.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -317,7 +318,7 @@ const ENV = process.env.NODE_ENV;
         host: configService.get('database.host'),
         port: +configService.get('database.port'),
         username: configService.get('database.user'),
-        password: configService.get('database.password'),
+        password: '',
         database: configService.get('database.name'),
         autoLoadEntities: true,
         synchronize: false,
@@ -631,6 +632,7 @@ const ENV = process.env.NODE_ENV;
     QueueModule,
     JobsModule,
     TagDetailModule,
+    PrintMachineModule,
   ],
   controllers: [AppController, UserController],
   providers: [

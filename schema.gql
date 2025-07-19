@@ -1190,7 +1190,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-18T12:53:42.562Z"
+  createdAt: DateTime! = "2025-07-19T11:18:58.942Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1279,7 +1279,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-18T12:53:42.572Z"
+  createdAt: DateTime! = "2025-07-19T11:18:58.959Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1394,7 +1394,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-18T12:53:42.610Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.020Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1484,7 +1484,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-18T12:53:42.572Z"
+  createdAt: DateTime! = "2025-07-19T11:18:58.960Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1742,7 +1742,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-18T12:53:42.583Z"
+  createdAt: DateTime! = "2025-07-19T11:18:58.979Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1868,7 +1868,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-18T12:53:42.573Z"
+  createdAt: DateTime! = "2025-07-19T11:18:58.962Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5225,7 +5225,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-18T12:53:42.971Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.546Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5247,7 +5247,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-07-18T12:53:42.977Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.557Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5262,7 +5262,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-18T12:53:42.984Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.572Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5286,7 +5286,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-07-18T12:53:42.992Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.583Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5317,7 +5317,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-18T12:53:42.997Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.593Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5358,7 +5358,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-07-18T12:53:43.008Z"
+  createdAt: DateTime! = "2025-07-19T11:18:59.619Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -7814,6 +7814,11 @@ input CreateManyPriceGroupsInput {
   priceGroups: [CreatePriceGroupInput!]!
 }
 
+input CreateManyPrintMachinesInput {
+  """Array of records to create"""
+  printMachines: [CreatePrintMachineInput!]!
+}
+
 input CreateManyPrintProfilesInput {
   """Array of records to create"""
   printProfiles: [CreatePrintProfileInput!]!
@@ -9344,6 +9349,11 @@ input CreateOnePriceGroupSizeInput {
   priceGroupSize: CreatePriceGroupSizeInput!
 }
 
+input CreateOnePrintMachineInput {
+  """The record to create"""
+  printMachine: CreatePrintMachineInput!
+}
+
 input CreateOnePrintProfileInput {
   """The record to create"""
   printProfile: CreatePrintProfileInput!
@@ -10071,6 +10081,12 @@ input CreatePriceGroupSizeInput {
   price: String!
   priceGroup: PriceGroupDomain!
   priceGroupId: Float!
+  updatedAt: DateTime
+}
+
+input CreatePrintMachineInput {
+  createdAt: DateTime
+  name: String!
   updatedAt: DateTime
 }
 
@@ -13071,6 +13087,11 @@ input DeleteManyPriceGroupsInput {
   filter: PriceGroupDeleteFilter!
 }
 
+input DeleteManyPrintMachinesInput {
+  """Filter to find records to delete"""
+  filter: PrintMachineDeleteFilter!
+}
+
 input DeleteManyPrintProfilesInput {
   """Filter to find records to delete"""
   filter: PrintProfileDeleteFilter!
@@ -14367,6 +14388,11 @@ input DeleteOnePriceGroupInput {
 }
 
 input DeleteOnePriceGroupSizeInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOnePrintMachineInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -29281,6 +29307,16 @@ input InvoiceItemReplaceUpdateInput {
   replaceToId: Float!
 }
 
+input InvoiceItemsPrintToHeatListInput {
+  printRipId: Float
+  productionRollId: Float
+}
+
+type InvoiceItemsPrintToHeatListOutput {
+  heatItems: [InvoiceProductItem!]!
+  ripItems: [InvoiceProductItem!]!
+}
+
 type InvoiceLockState2AggregateGroupBy {
   id: ID
 }
@@ -37357,6 +37393,7 @@ type Mutation {
   createManyPreorders(input: CreateManyPreordersInput!): [Preorder!]!
   createManyPriceGroupSizes(input: CreateManyPriceGroupSizesInput!): [PriceGroupSize!]!
   createManyPriceGroups(input: CreateManyPriceGroupsInput!): [PriceGroup!]!
+  createManyPrintMachines(input: CreateManyPrintMachinesInput!): [PrintMachine!]!
   createManyPrintProfiles(input: CreateManyPrintProfilesInput!): [PrintProfile!]!
   createManyPrintRips(input: CreateManyPrintRipsInput!): [PrintRip!]!
   createManyProductCategories(input: CreateManyProductCategoriesInput!): [ProductCategory!]!
@@ -37618,6 +37655,7 @@ type Mutation {
   createOnePreorderStatus(input: CreateOnePreorderStatusInput!): PreorderStatus!
   createOnePriceGroup(input: CreateOnePriceGroupInput!): PriceGroup!
   createOnePriceGroupSize(input: CreateOnePriceGroupSizeInput!): PriceGroupSize!
+  createOnePrintMachine(input: CreateOnePrintMachineInput!): PrintMachine!
   createOnePrintProfile(input: CreateOnePrintProfileInput!): PrintProfile!
   createOnePrintRip(input: CreateOnePrintRipInput!): PrintRip!
   createOneProduct(input: CreateOneProductInput!): Product!
@@ -37884,6 +37922,7 @@ type Mutation {
   deleteManyPreorders(input: DeleteManyPreordersInput!): DeleteManyResponse!
   deleteManyPriceGroupSizes(input: DeleteManyPriceGroupSizesInput!): DeleteManyResponse!
   deleteManyPriceGroups(input: DeleteManyPriceGroupsInput!): DeleteManyResponse!
+  deleteManyPrintMachines(input: DeleteManyPrintMachinesInput!): DeleteManyResponse!
   deleteManyPrintProfiles(input: DeleteManyPrintProfilesInput!): DeleteManyResponse!
   deleteManyPrintRips(input: DeleteManyPrintRipsInput!): DeleteManyResponse!
   deleteManyProductCategories(input: DeleteManyProductCategoriesInput!): DeleteManyResponse!
@@ -38143,6 +38182,7 @@ type Mutation {
   deleteOnePreorderStatus(input: DeleteOnePreorderStatusInput!): PreorderStatusDeleteResponse!
   deleteOnePriceGroup(input: DeleteOnePriceGroupInput!): PriceGroupDeleteResponse!
   deleteOnePriceGroupSize(input: DeleteOnePriceGroupSizeInput!): PriceGroupSizeDeleteResponse!
+  deleteOnePrintMachine(input: DeleteOnePrintMachineInput!): PrintMachineDeleteResponse!
   deleteOnePrintProfile(input: DeleteOnePrintProfileInput!): PrintProfileDeleteResponse!
   deleteOnePrintRip(input: DeleteOnePrintRipInput!): PrintRipDeleteResponse!
   deleteOneProduct(input: DeleteOneProductInput!): ProductDeleteResponse!
@@ -38415,6 +38455,7 @@ type Mutation {
   updateManyPreorders(input: UpdateManyPreordersInput!): UpdateManyResponse!
   updateManyPriceGroupSizes(input: UpdateManyPriceGroupSizesInput!): UpdateManyResponse!
   updateManyPriceGroups(input: UpdateManyPriceGroupsInput!): UpdateManyResponse!
+  updateManyPrintMachines(input: UpdateManyPrintMachinesInput!): UpdateManyResponse!
   updateManyPrintProfiles(input: UpdateManyPrintProfilesInput!): UpdateManyResponse!
   updateManyPrintRips(input: UpdateManyPrintRipsInput!): UpdateManyResponse!
   updateManyProductCategories(input: UpdateManyProductCategoriesInput!): UpdateManyResponse!
@@ -38675,6 +38716,7 @@ type Mutation {
   updateOnePreorderStatus(input: UpdateOnePreorderStatusInput!): PreorderStatus!
   updateOnePriceGroup(input: UpdateOnePriceGroupInput!): PriceGroup!
   updateOnePriceGroupSize(input: UpdateOnePriceGroupSizeInput!): PriceGroupSize!
+  updateOnePrintMachine(input: UpdateOnePrintMachineInput!): PrintMachine!
   updateOnePrintProfile(input: UpdateOnePrintProfileInput!): PrintProfile!
   updateOnePrintRip(input: UpdateOnePrintRipInput!): PrintRip!
   updateOneProduct(input: UpdateOneProductInput!): Product!
@@ -41311,6 +41353,55 @@ input PriceGroupUpdateFilter {
   and: [PriceGroupUpdateFilter!]
   id: IDFilterComparison
   or: [PriceGroupUpdateFilter!]
+}
+
+type PrintMachine {
+  createdAt: DateTime
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+}
+
+input PrintMachineDeleteFilter {
+  and: [PrintMachineDeleteFilter!]
+  id: IDFilterComparison
+  or: [PrintMachineDeleteFilter!]
+}
+
+type PrintMachineDeleteResponse {
+  createdAt: DateTime
+  id: ID
+  name: String
+  updatedAt: DateTime
+}
+
+input PrintMachineDomain {
+  createdAt: DateTime
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+}
+
+input PrintMachineFilter {
+  and: [PrintMachineFilter!]
+  id: IDFilterComparison
+  or: [PrintMachineFilter!]
+}
+
+input PrintMachineSort {
+  direction: SortDirection!
+  field: PrintMachineSortFields!
+  nulls: SortNulls
+}
+
+enum PrintMachineSortFields {
+  id
+}
+
+input PrintMachineUpdateFilter {
+  and: [PrintMachineUpdateFilter!]
+  id: IDFilterComparison
+  or: [PrintMachineUpdateFilter!]
 }
 
 type PrintProfile {
@@ -45104,6 +45195,7 @@ type Query {
     """Specify to sort results."""
     sorting: [InvoiceInvoiceStatusSort!]! = []
   ): InvoiceInvoiceStatusConnection!
+  invoiceItemsPrintToHeatList(invoiceItemsPrintToHeatListInput: InvoiceItemsPrintToHeatListInput!): InvoiceItemsPrintToHeatListOutput!
   invoiceMode(
     """The id of the record to find."""
     id: ID!
@@ -45894,6 +45986,17 @@ type Query {
     """Specify to sort results."""
     sorting: [PriceGroupSort!]! = []
   ): PriceGroupConnection!
+  printMachine(
+    """The id of the record to find."""
+    id: ID!
+  ): PrintMachine!
+  printMachines(
+    """Specify to filter the records returned."""
+    filter: PrintMachineFilter! = {}
+
+    """Specify to sort results."""
+    sorting: [PrintMachineSort!]! = []
+  ): [PrintMachine!]!
   printProfile(
     """The id of the record to find."""
     id: ID!
@@ -53295,7 +53398,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-07-18T12:53:42.562Z"
+  createdAt: DateTime = "2025-07-19T11:18:58.942Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -53317,7 +53420,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-07-18T12:53:42.572Z"
+  createdAt: DateTime = "2025-07-19T11:18:58.959Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53332,7 +53435,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-07-18T12:53:42.610Z"
+  createdAt: DateTime = "2025-07-19T11:18:59.020Z"
   description: String
   facebookId: String
   headerImage: String
@@ -53356,7 +53459,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-07-18T12:53:42.572Z"
+  createdAt: DateTime = "2025-07-19T11:18:58.960Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53373,7 +53476,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-07-18T12:53:42.583Z"
+  createdAt: DateTime = "2025-07-19T11:18:58.979Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -53428,7 +53531,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-07-18T12:53:42.573Z"
+  createdAt: DateTime = "2025-07-19T11:18:58.962Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -56382,6 +56485,14 @@ input UpdateManyPriceGroupsInput {
   update: UpdatePriceGroup!
 }
 
+input UpdateManyPrintMachinesInput {
+  """Filter used to find fields to update"""
+  filter: PrintMachineUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdatePrintMachine!
+}
+
 input UpdateManyPrintProfilesInput {
   """Filter used to find fields to update"""
   filter: PrintProfileUpdateFilter!
@@ -58703,6 +58814,14 @@ input UpdateOnePriceGroupSizeInput {
   update: UpdatePriceGroupSize!
 }
 
+input UpdateOnePrintMachineInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdatePrintMachine!
+}
+
 input UpdateOnePrintProfileInput {
   """The id of the record to update"""
   id: ID!
@@ -59746,6 +59865,13 @@ input UpdatePriceGroupSize {
   price: String
   priceGroup: PriceGroupDomain
   priceGroupId: Float
+  updatedAt: DateTime
+}
+
+input UpdatePrintMachine {
+  createdAt: DateTime
+  id: ID
+  name: String
   updatedAt: DateTime
 }
 
