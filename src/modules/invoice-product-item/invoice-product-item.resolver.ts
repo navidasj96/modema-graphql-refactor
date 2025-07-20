@@ -25,6 +25,7 @@ import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item
 import { InvoiceItemsPrintToHeatListOutput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.output';
 import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
 import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
+import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -262,6 +263,20 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.invoiceItemsPrintToHeatUpdate(
       context,
       updateInvoiceProductItemPrintToHeatInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([InvoiceProductItemPermissions.PERMISSION_TO_VIEW])
+  @Query(() => [InvoiceProductItem])
+  async printItemTagList(
+    @Args('printItemTagListInput', {
+      type: () => PrintItemTagListInput,
+    })
+    printItemTagListInput: PrintItemTagListInput
+  ) {
+    return await this.invoiceProductItemService.printItemTagList(
+      printItemTagListInput
     );
   }
 }

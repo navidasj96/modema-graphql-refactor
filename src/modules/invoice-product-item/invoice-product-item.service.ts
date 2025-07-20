@@ -28,6 +28,8 @@ import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/
 import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
 import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
 import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
+import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
+import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -78,7 +80,11 @@ export class InvoiceProductItemService {
     /**
      * inject invoiceItemsPrintToHeatProvider
      */
-    private readonly invoiceItemsPrintToHeatProvider: InvoiceItemsPrintToHeatProvider
+    private readonly invoiceItemsPrintToHeatProvider: InvoiceItemsPrintToHeatProvider,
+    /**
+     * inject printItemTagProvider
+     */
+    private readonly printItemTagProvider: PrintItemTagProvider
   ) {}
 
   async findAll(options: FindManyOptions<InvoiceProductItem>) {
@@ -220,5 +226,9 @@ export class InvoiceProductItemService {
       context,
       updateInvoiceProductItemPrintToHeatInput
     );
+  }
+
+  async printItemTagList(printItemTagListInput: PrintItemTagListInput) {
+    return await this.printItemTagProvider.itemsList(printItemTagListInput);
   }
 }

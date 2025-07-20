@@ -1,10 +1,8 @@
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
-import {
-  INVOICE_STATUSES_AFTER_PRODUCTION_START,
-  InvoiceStatusEnum,
-} from '@/utils/invoice-status';
+import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -13,6 +11,7 @@ export class PrintItemTagProvider {
     /**
      * inject invoiceProductItemRepository
      */
+    @InjectRepository(InvoiceProductItem)
     private readonly invoiceProductItemRepository: Repository<InvoiceProductItem> // Replace 'any' with the actual type of the repository
   ) {}
 
@@ -38,7 +37,7 @@ export class PrintItemTagProvider {
       //   ])
       .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')
       .innerJoin('invoiceProduct.invoice', 'invoice')
-      .innerJoin('invoice.invoiceAddress', 'invoiceAddress')
+      .innerJoin('invoice.invoiceAddresses', 'invoiceAddress')
       .innerJoin('invoiceAddress.country', 'country')
       .innerJoin('invoiceAddress.state', 'state')
       .innerJoin('invoiceAddress.city', 'city')
@@ -56,7 +55,7 @@ export class PrintItemTagProvider {
         isTagPrinted: 0,
       })
       .andWhere('invoice.currentInvoiceStatusId IN (:...invoiceStatuses)', {
-        invoiceStatuses: [INVOICE_STATUSES_AFTER_PRODUCTION_START], // Adjust as needed
+        invoiceStatuses: [INVOICE_STATUSES_AFTER_PRODUCTION_START],
       })
       .groupBy('invoiceProductItem.id');
 
@@ -88,8 +87,8 @@ export class PrintItemTagProvider {
           break;
       }
     }
-    const invoiceProdi;
+    const invoiceProduct = await query.getMany();
     // Execute the query
-    return await query.getRawMany();
+    return invoiceProduct;
   }
 }
