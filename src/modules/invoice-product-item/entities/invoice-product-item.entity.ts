@@ -15,6 +15,7 @@ import { PrintProfile } from '@/modules/print-profile/entities/print-profile.ent
 import { PrintRip } from '@/modules/print-rip/entities/print-rip.entity';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/entities/invoice-product-status.entity';
+import { PrintMachine } from '@/modules/print-machine/entities/print-machine.entity';
 
 @Index('code', ['code'], { unique: true })
 @Index('invoice_product_items_current_status_id_index', ['currentStatusId'], {})
@@ -57,7 +58,7 @@ export class InvoiceProductItem {
     nullable: true,
     length: 191,
   })
-  rollReferenceCode?: string;
+  rollReferenceCode: string | null;
 
   @Column('int', { name: 'production_roll_id', nullable: true, unsigned: true })
   productionRollId: number | null;
@@ -66,7 +67,7 @@ export class InvoiceProductItem {
     name: 'predicted_date_for_received_by_repository',
     nullable: true,
   })
-  predictedDateForReceivedByRepository?: string;
+  predictedDateForReceivedByRepository: string | null;
 
   @Column('tinyint', {
     name: 'is_tag_printed',
@@ -130,7 +131,22 @@ export class InvoiceProductItem {
   sortOrder: number | null;
 
   @Column('smallint', { name: 'tag_sort_order', nullable: true })
-  tagSortOrder?: number;
+  tagSortOrder: number | null;
+
+  @Column('int', { name: 'print_machine_id', nullable: true, unsigned: true })
+  printMachineId: number | null;
+
+  @ManyToOne(
+    () => PrintMachine,
+    (printMachine) => printMachine.invoiceProductItems,
+    {
+      nullable: true,
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE',
+    }
+  )
+  @JoinColumn({ name: 'print_machine_id' })
+  printMachine: PrintMachine;
 
   @OneToMany(
     () => ExitControlItem,

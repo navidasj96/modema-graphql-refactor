@@ -79,7 +79,9 @@ export class UpdateInvoiceProductItemsRollIdProvider {
           };
         }
         invoiceProductItem.productionRollId = productionRollId;
-        invoiceProductItem.rollReferenceCode = productionRoll?.rollNumber;
+        invoiceProductItem.rollReferenceCode = productionRoll
+          ? productionRoll.rollNumber
+          : null;
 
         await invoiceProductItemRepository.save(invoiceProductItem);
       }

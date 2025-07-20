@@ -23,6 +23,8 @@ import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoi
 import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
 import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
 import { InvoiceItemsPrintToHeatListOutput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.output';
+import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
+import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -219,6 +221,47 @@ export class InvoiceProductItemResolver {
   ) {
     return await this.invoiceProductItemService.invoiceItemsPrintToHeatList(
       invoiceItemsPrintToHeatListInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_BEGIN_PRODUCTION,
+    InvoiceProductItemPermissions.PERMISSION_TO_VIEW_ITEMS_IN_PRINT_AND_HEAT,
+    InvoiceProductItemPermissions.PERMISSION_TO_CHANGE_ITEMS_TO_PRINT_AND_HEAT,
+  ])
+  @Mutation(() => GeneralResponseDto)
+  async moveBackInvoiceItemToRip(
+    @Args('moveBackInvoiceItemToRipInput', {
+      type: () => MoveBackInvoiceItemToRipInput,
+    })
+    moveBackInvoiceItemToRip: MoveBackInvoiceItemToRipInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.invoiceProductItemService.moveBackInvoiceItemToRip(
+      context,
+      moveBackInvoiceItemToRip
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    InvoiceProductItemPermissions.PERMISSION_TO_CHANGE_ITEMS_TO_PRINT_AND_HEAT,
+  ])
+  @Mutation(() => GeneralResponseDto)
+  async invoiceItemsPrintToHeatUpdate(
+    @Args('updateInvoiceProductItemPrintToHeatInput', {
+      type: () => UpdateInvoiceProductItemPrintToHeatInput,
+    })
+    updateInvoiceProductItemPrintToHeatInput: UpdateInvoiceProductItemPrintToHeatInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.invoiceProductItemService.invoiceItemsPrintToHeatUpdate(
+      context,
+      updateInvoiceProductItemPrintToHeatInput
     );
   }
 }

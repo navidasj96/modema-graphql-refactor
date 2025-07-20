@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('print_machines', { schema: 'modema' })
 export class PrintMachine {
@@ -13,4 +14,10 @@ export class PrintMachine {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt: Date | null;
+
+  @OneToMany(
+    () => InvoiceProductItem,
+    (invoiceProductItem) => invoiceProductItem.printMachine
+  )
+  invoiceProductItems: InvoiceProductItem[];
 }

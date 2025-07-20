@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductionRollInput } from './dto/create-production-roll.input';
 import { UpdateProductionRollInput } from './dto/update-production-roll.input';
-import { FindOneOptions, Repository } from 'typeorm';
+import { EntityManager, FindOneOptions, Repository } from 'typeorm';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -32,5 +32,12 @@ export class ProductionRollService {
 
   remove(id: number) {
     return `This action removes a #${id} productionRoll`;
+  }
+
+  async save(productionRoll: ProductionRoll, manager: EntityManager) {
+    const productionRollRepository = manager
+      ? manager.getRepository(ProductionRoll)
+      : this.productionRollRepository;
+    return await productionRollRepository.save(productionRoll);
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateInvoiceProductItemInput } from './dto/create-invoice-product-item.input';
-import { UpdateInvoiceProductItemInput } from './dto/update-invoice-product-item.input';
+
 import { EntityManager, FindManyOptions, Repository } from 'typeorm';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -27,6 +26,8 @@ import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/provi
 import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
 import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/providers/invoice-items-print-to-heat.provider';
 import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
+import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
+import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -198,6 +199,26 @@ export class InvoiceProductItemService {
   ) {
     return await this.invoiceItemsPrintToHeatProvider.invoiceItemsPrintToHeatList(
       invoiceItemsPrintToHeatListInput
+    );
+  }
+
+  async moveBackInvoiceItemToRip(
+    context: { req: UserContext },
+    moveBackInvoiceItemToRipInput: MoveBackInvoiceItemToRipInput
+  ) {
+    return await this.invoiceItemsPrintToHeatProvider.moveBackInvoiceItemToRip(
+      context,
+      moveBackInvoiceItemToRipInput
+    );
+  }
+
+  async invoiceItemsPrintToHeatUpdate(
+    context: { req: UserContext },
+    updateInvoiceProductItemPrintToHeatInput: UpdateInvoiceProductItemPrintToHeatInput
+  ) {
+    return await this.invoiceItemsPrintToHeatProvider.updateInvoiceItems(
+      context,
+      updateInvoiceProductItemPrintToHeatInput
     );
   }
 }

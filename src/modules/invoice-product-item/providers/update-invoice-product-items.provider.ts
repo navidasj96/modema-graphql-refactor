@@ -167,7 +167,9 @@ export class UpdateInvoiceProductItemsProvider {
               : null;
           invoiceProductItem.productionRollId =
             settings?.productionRollId || null;
-          invoiceProductItem.rollReferenceCode = productionRoll?.rollNumber;
+          invoiceProductItem.rollReferenceCode = productionRoll
+            ? productionRoll.rollNumber
+            : null;
         } else if (
           status == InvoiceProductStatusEnum.CUTTING &&
           product.isShaggy == 1

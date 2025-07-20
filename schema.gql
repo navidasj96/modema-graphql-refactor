@@ -1190,7 +1190,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-19T11:18:58.942Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.368Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1279,7 +1279,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-19T11:18:58.959Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.384Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1394,7 +1394,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-19T11:18:59.020Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.444Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1484,7 +1484,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-19T11:18:58.960Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.386Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1742,7 +1742,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-19T11:18:58.979Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.404Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1868,7 +1868,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-19T11:18:58.962Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.387Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5225,7 +5225,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-19T11:18:59.546Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.957Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5247,7 +5247,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-07-19T11:18:59.557Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.967Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5262,7 +5262,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-19T11:18:59.572Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.976Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5286,7 +5286,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-07-19T11:18:59.583Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.986Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5317,7 +5317,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-19T11:18:59.593Z"
+  createdAt: DateTime! = "2025-07-20T11:25:23.994Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5358,7 +5358,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-07-19T11:18:59.619Z"
+  createdAt: DateTime! = "2025-07-20T11:25:24.017Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -31138,6 +31138,8 @@ type InvoiceProductItem {
   isTagPrinted: Float
   padCode: String
   predictedDateForReceivedByRepository: String
+  printMachine: PrintMachine
+  printMachineId: Float
   printProfile: PrintProfile
   printProfileId: Float
   printRip: PrintRip
@@ -31197,6 +31199,8 @@ type InvoiceProductItemDeleteResponse {
   isTagPrinted: Float
   padCode: String
   predictedDateForReceivedByRepository: String
+  printMachine: PrintMachine
+  printMachineId: Float
   printProfile: PrintProfile
   printProfileId: Float
   printRip: PrintRip
@@ -31232,6 +31236,8 @@ input InvoiceProductItemDomain {
   isTagPrinted: Float
   padCode: String
   predictedDateForReceivedByRepository: String
+  printMachine: PrintMachineDomain
+  printMachineId: Float
   printProfile: PrintProfileDomain
   printProfileId: Float
   printRip: PrintRipDomain
@@ -37230,6 +37236,10 @@ input ModemaAcceleratorVideoUpdateFilter {
   or: [ModemaAcceleratorVideoUpdateFilter!]
 }
 
+input MoveBackInvoiceItemToRipInput {
+  itemId: Float!
+}
+
 type Mutation {
   cancelDepotInvoiceItem(cancelDepotInvoiceItemInput: CancelDepotInvoiceItemInput!): GeneralResponseDto!
   changeActivePrintProfile(printProfileId: Float!): GeneralResponseDto!
@@ -38284,7 +38294,9 @@ type Mutation {
   deleteOneWithdrawalRequest(input: DeleteOneWithdrawalRequestInput!): WithdrawalRequestDeleteResponse!
   deleteOneWithdrawalRequestStatus(input: DeleteOneWithdrawalRequestStatusInput!): WithdrawalRequestStatusDeleteResponse!
   deleteOneWonderfulOffer(input: DeleteOneWonderfulOfferInput!): WonderfulOfferDeleteResponse!
+  invoiceItemsPrintToHeatUpdate(updateInvoiceProductItemPrintToHeatInput: UpdateInvoiceProductItemPrintToHeatInput!): GeneralResponseDto!
   invoiceItemsReplaceUpdate(invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput!): GeneralResponseDto!
+  moveBackInvoiceItemToRip(moveBackInvoiceItemToRipInput: MoveBackInvoiceItemToRipInput!): GeneralResponseDto!
   removeAddress(id: Int!): Address!
   removeNegotiationStep(id: Int!): NegotiationStep!
   removeSetting(id: Int!): Setting!
@@ -53398,7 +53410,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-07-19T11:18:58.942Z"
+  createdAt: DateTime = "2025-07-20T11:25:23.368Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -53420,7 +53432,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-07-19T11:18:58.959Z"
+  createdAt: DateTime = "2025-07-20T11:25:23.384Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53435,7 +53447,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-07-19T11:18:59.020Z"
+  createdAt: DateTime = "2025-07-20T11:25:23.444Z"
   description: String
   facebookId: String
   headerImage: String
@@ -53459,7 +53471,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-07-19T11:18:58.960Z"
+  createdAt: DateTime = "2025-07-20T11:25:23.386Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53476,7 +53488,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-07-19T11:18:58.979Z"
+  createdAt: DateTime = "2025-07-20T11:25:23.404Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -53531,7 +53543,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-07-19T11:18:58.962Z"
+  createdAt: DateTime = "2025-07-20T11:25:23.387Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -55064,6 +55076,8 @@ input UpdateInvoiceProductItem {
   isTagPrinted: Float
   padCode: String
   predictedDateForReceivedByRepository: String
+  printMachine: PrintMachineDomain
+  printMachineId: Float
   printProfile: PrintProfileDomain
   printProfileId: Float
   printRip: PrintRipDomain
@@ -55089,6 +55103,15 @@ input UpdateInvoiceProductItemInvoiceProductStatus {
   updatedAt: DateTime
   user: UserDomain
   userId: Float
+}
+
+input UpdateInvoiceProductItemPrintToHeatInput {
+  closeRoll: Boolean!
+  completeArr: [Float!]!
+  deliveryToRepositoryDate: String!
+  paddingArr: [Float!]!
+  printMachineId: Float
+  productionRollId: Float!
 }
 
 input UpdateInvoiceProductItemRipToPrintInput {

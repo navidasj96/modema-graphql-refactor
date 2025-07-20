@@ -15,6 +15,7 @@ import { PrintProfile } from '@/modules/print-profile/domain/print-profile';
 import { PrintRip } from '@/modules/print-rip/domain/print-rip';
 import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
 import { InvoiceProductStatus } from '@/modules/invoice-product-status/domain/invoice-product-status';
+import { PrintMachine } from '@/modules/print-machine/domain/print-machine';
 
 @InputType('InvoiceProductItemDomain')
 @FilterableUnPagedRelation('exitControlItems', () => ExitControlItem)
@@ -53,14 +54,14 @@ export class InvoiceProductItem {
   @Field({ nullable: true })
   padCode?: string;
 
-  @Field({ nullable: true })
-  rollReferenceCode?: string;
+  @Field(() => String, { nullable: true })
+  rollReferenceCode: string | null;
 
   @Field(() => Number, { nullable: true })
   productionRollId: number | null;
 
-  @Field({ nullable: true })
-  predictedDateForReceivedByRepository?: string;
+  @Field(() => String, { nullable: true })
+  predictedDateForReceivedByRepository: string | null;
 
   @FilterableField({ nullable: true })
   isTagPrinted?: number;
@@ -104,8 +105,11 @@ export class InvoiceProductItem {
   @Field(() => Number, { nullable: true })
   sortOrder: number | null;
 
-  @Field({ nullable: true })
-  tagSortOrder?: number;
+  @Field(() => Number, { nullable: true })
+  tagSortOrder: number | null;
+
+  @Field(() => Number, { nullable: true })
+  printMachineId: number | null;
 
   @Field(() => [ExitControlItem], { nullable: true })
   exitControlItems?: ExitControlItem[];
@@ -130,4 +134,7 @@ export class InvoiceProductItem {
 
   @Field(() => ProductionRoll, { nullable: true })
   productionRoll?: ProductionRoll;
+
+  @Field(() => PrintMachine, { nullable: true })
+  printMachine: PrintMachine | null;
 }
