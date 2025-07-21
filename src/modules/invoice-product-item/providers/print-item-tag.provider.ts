@@ -22,7 +22,7 @@ export class PrintItemTagProvider {
       .createQueryBuilder('invoiceProductItem')
       //   .select([
       //     'invoiceProductItem',
-      //     'invoiceProductItemInvoiceProductStatus.createdAt AS statusCreatedAt',
+      //     'InvoiceProductItemInvoiceProductStatus.createdAt AS statusCreatedAt',
       //     'invoiceProduct.id AS invoiceProductId',
       //     'invoice.id AS invoiceId',
       //     'invoiceAddress.id AS invoiceAddressId',
@@ -47,9 +47,9 @@ export class PrintItemTagProvider {
       .innerJoin('subproduct.basicCarpetColor', 'basicCarpetColor')
       .innerJoin('invoiceProductItem.currentStatus', 'invoiceProductStatus')
       .leftJoin(
-        'invoiceProductItemInvoiceProductStatus',
-        'invoiceProductItemInvoiceProductStatus',
-        'invoiceProductItem.id = invoiceProductItemInvoiceProductStatus.invoiceProductItemId AND invoiceProductItem.currentStatusId = invoiceProductItemInvoiceProductStatus.invoiceProductStatusId'
+        'InvoiceProductItemInvoiceProductStatus',
+        'InvoiceProductItemInvoiceProductStatus',
+        'invoiceProductItem.id = InvoiceProductItemInvoiceProductStatus.invoiceProductItemId AND invoiceProductItem.currentStatusId = InvoiceProductItemInvoiceProductStatus.invoiceProductStatusId'
       )
       .where('invoiceProductItem.isTagPrinted = :isTagPrinted', {
         isTagPrinted: 0,
