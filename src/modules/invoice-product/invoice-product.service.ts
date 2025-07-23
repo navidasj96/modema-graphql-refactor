@@ -4,6 +4,8 @@ import { UpdateInvoiceProductInput } from './dto/update-invoice-product.input';
 import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
 import { EntityManager, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ReadyInvoiceProductProvider } from '@/modules/invoice-product/providers/ready-invoice-items.provider';
+import { ReadyInvoiceProductItemsListInput } from '@/modules/invoice-product/dto/ready-invoice-product-items-list.input';
 
 @Injectable()
 export class InvoiceProductService {
@@ -12,7 +14,11 @@ export class InvoiceProductService {
      * inject repository
      */
     @InjectRepository(InvoiceProduct)
-    private readonly invoiceProductRepository: Repository<InvoiceProduct>
+    private readonly invoiceProductRepository: Repository<InvoiceProduct>,
+    /**
+     * inject readyInvoiceProductProvider
+     */
+    private readonly readyInvoiceProductProvider: ReadyInvoiceProductProvider
   ) {}
   create(createInvoiceProductInput: CreateInvoiceProductInput) {
     return 'This action adds a new invoiceProduct';
@@ -43,5 +49,13 @@ export class InvoiceProductService {
       : this.invoiceProductRepository;
 
     return await repository.save(invoiceProduct);
+  }
+
+  async readyInvoiceProductItemList(
+    readyInvoiceProductItemsListInput: ReadyInvoiceProductItemsListInput
+  ) {
+    return await this.readyInvoiceProductProvider.itemsList(
+      readyInvoiceProductItemsListInput
+    );
   }
 }

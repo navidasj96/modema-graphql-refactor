@@ -30,6 +30,7 @@ import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dt
 import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
 import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
+import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -230,5 +231,15 @@ export class InvoiceProductItemService {
 
   async printItemTagList(printItemTagListInput: PrintItemTagListInput) {
     return await this.printItemTagProvider.itemsList(printItemTagListInput);
+  }
+
+  async confirmTagsPrinted(
+    context: { req: UserContext },
+    confirmTagsPrintedInput: ConfirmTagsPrintedInput
+  ) {
+    return await this.printItemTagProvider.confirmTagsPrinted(
+      context,
+      confirmTagsPrintedInput
+    );
   }
 }

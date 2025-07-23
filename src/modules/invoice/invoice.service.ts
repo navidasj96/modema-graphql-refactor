@@ -18,6 +18,7 @@ import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/
 import { SubproductsDepotInProgressInput } from '@/modules/invoice/dto/subproducts-depot-in-progress.input';
 import { SubproductsDepotInProgressOutput } from '@/modules/invoice/dto/subproducts-depot-in-progress.output';
 import { GetNewInvoiceNumberProvider } from '@/modules/invoice/providers/get-new-invoice-number.provider';
+import { InvoiceStatusEnum } from '@/utils/invoice-status';
 
 @Injectable()
 export class InvoiceService {
@@ -59,6 +60,10 @@ export class InvoiceService {
 
   findAll() {
     return `This action returns all invoice`;
+  }
+
+  async find(options: FindOneOptions<Invoice>) {
+    return await this.invoiceRepository.find(options);
   }
 
   async findOne(options: FindOneOptions<Invoice>) {
@@ -132,5 +137,38 @@ export class InvoiceService {
     return await this.getNewInvoiceNumberProvider.getNewInvoiceNumber(
       invoiceId
     );
+  }
+
+  async readyOnlyPads(fromData?: string, toDate?: string) {
+    const readyOnlyPadsInvoicesQuery = this.invoiceRepository
+      .createQueryBuilder('invoice')
+      .innerJoinAndSelect('invoice.invoiceAddresses', 'invoiceAddress')
+      .innerJoinAndSelect('invoice.invoiceProducts', 'invoiceProduct')
+      .innerJoinAndSelect('invoiceProduct.product', 'product')
+      .innerJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
+      .where('invoice.currentInvoiceStatusId IN (:...statusIds)', {
+        statusIds: [InvoiceStatusEnum.PRODUCTION_COMPLETED],
+      })
+      .andWhere('invoice.containsPadsOnly = :containsPadsOnly', {
+        containsPadsOnly: true,
+      });
+
+    if (fromData) {
+      const startDate = new Date(fromData);
+      readyOnlyPadsInvoicesQuery.andWhere('invoice.issueDate >= :fromData', {
+        fromData: startDate,
+      });
+    }
+
+    if (toDate) {
+      const endDate = new Date(toDate);
+      readyOnlyPadsInvoicesQuery.andWhere('invoice.issueDate <= :toDate', {
+        toDate: endDate,
+      });
+    }
+
+    const readyOnlyPadsInvoices = await readyOnlyPadsInvoicesQuery.getMany();
+
+    return readyOnlyPadsInvoices;
   }
 }

@@ -26,6 +26,7 @@ import { InvoiceItemsPrintToHeatListOutput } from '@/modules/invoice-product-ite
 import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
 import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
+import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -277,6 +278,23 @@ export class InvoiceProductItemResolver {
   ) {
     return await this.invoiceProductItemService.printItemTagList(
       printItemTagListInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([InvoiceProductItemPermissions.PERMISSION_TO_PRINT_ITEMS_TAGS])
+  @Mutation(() => GeneralResponseDto)
+  async confirmTagsPrinted(
+    @Args('confirmTagsPrintedInput', {
+      type: () => ConfirmTagsPrintedInput,
+    })
+    confirmTagsPrintedInput: ConfirmTagsPrintedInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.invoiceProductItemService.confirmTagsPrinted(
+      context,
+      confirmTagsPrintedInput
     );
   }
 }
