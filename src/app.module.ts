@@ -287,6 +287,7 @@ import redisConfig from '@/configuration/redis.config';
 import { JobsModule } from '@/modules/jobs/jobs.module';
 import { TagDetailModule } from './modules/tag-detail/tag-detail.module';
 import { PrintMachineModule } from '@/modules/print-machine/print-machine.module';
+import { ProductionPadRollModule } from '@/modules/production-pad-roll/production-pad-roll.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -633,6 +634,7 @@ const ENV = process.env.NODE_ENV;
     JobsModule,
     TagDetailModule,
     PrintMachineModule,
+    ProductionPadRollModule,
   ],
   controllers: [AppController, UserController],
   providers: [

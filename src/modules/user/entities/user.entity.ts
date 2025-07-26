@@ -90,6 +90,7 @@ import { Holiday } from '@/modules/holiday/entities/holiday.entity';
 import { Activity } from '@/modules/activity/entities/activity.entity';
 import { UserHasRole } from '@/modules/user-has-role/entities/user-has-role.entity';
 import { UserHasPermission } from '@/modules/user-has-permission/entities/user-has-role.entity';
+import { ProductionPadRoll } from '@/modules/production-pad-roll/entities/production-pad-roll.entity';
 
 @Index(
   'campaign_finding_coupon_winner_place',
@@ -919,4 +920,16 @@ export class User {
     (userHasPermission) => userHasPermission.user
   )
   userHasPermission: UserHasPermission[];
+
+  @OneToMany(
+    () => ProductionPadRoll,
+    (productionPadRoll) => productionPadRoll.closedBy2
+  )
+  productionPadRolls: ProductionPadRoll[];
+
+  @OneToMany(
+    () => ProductionPadRoll,
+    (productionPadRolls) => productionPadRolls.createdBy2
+  )
+  productionPadRolls2: ProductionPadRoll[];
 }
