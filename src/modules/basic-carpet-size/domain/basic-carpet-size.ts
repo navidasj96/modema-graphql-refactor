@@ -69,7 +69,7 @@ export class BasicCarpetSize {
   @Field({ nullable: true })
   altText?: string;
 
-  @Field({ nullable: true })
+  @FilterableField({ nullable: true })
   sortOrder?: number;
 
   @FilterableField({ defaultValue: true })

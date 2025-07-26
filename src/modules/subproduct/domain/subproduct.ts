@@ -155,13 +155,13 @@ export class Subproduct {
   stockCount?: number;
 
   @Field()
-  isOutOfStock: boolean;
+  isOutOfStock: number;
 
   @Field({ nullable: true })
   sortOrder?: number;
 
   @Field()
-  isActive: boolean;
+  isActive: number;
 
   @Field({ nullable: true })
   createdAt?: Date;
@@ -170,10 +170,10 @@ export class Subproduct {
   updatedAt?: Date;
 
   @Field({ nullable: true })
-  mainImageChanged?: boolean;
+  mainImageChanged?: number;
 
   @Field()
-  otherImagesChanged: boolean;
+  otherImagesChanged: number;
 
   @Field({ nullable: true })
   colorCategoriesChanged?: number;
@@ -182,7 +182,7 @@ export class Subproduct {
   sepidarId?: number;
 
   @Field()
-  getStockCountFromSepidar: boolean;
+  getStockCountFromSepidar: number;
 
   @Field({ nullable: true })
   nameEn?: string;

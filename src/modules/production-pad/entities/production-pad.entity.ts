@@ -32,10 +32,10 @@ export class ProductionPad {
   code: string;
 
   @Column('tinyint', { name: 'is_used', width: 1, default: () => "'0'" })
-  isUsed: boolean;
+  isUsed: number;
 
   @Column('tinyint', { name: 'is_tag_printed', width: 1, default: () => "'0'" })
-  isTagPrinted: boolean;
+  isTagPrinted: number;
 
   @Column('varchar', { name: 'roll_ref_code', nullable: true, length: 191 })
   rollRefCode?: string;

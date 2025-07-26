@@ -1190,7 +1190,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-26T11:31:55.802Z"
+  createdAt: DateTime! = "2025-07-26T17:07:25.855Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1279,7 +1279,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-26T11:31:55.820Z"
+  createdAt: DateTime! = "2025-07-26T17:07:25.864Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1394,7 +1394,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-26T11:31:55.887Z"
+  createdAt: DateTime! = "2025-07-26T17:07:25.897Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1484,7 +1484,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-26T11:31:55.821Z"
+  createdAt: DateTime! = "2025-07-26T17:07:25.865Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1588,6 +1588,7 @@ input BasicCarpetSizeDeleteFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [BasicCarpetSizeDeleteFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -1715,6 +1716,7 @@ input BasicCarpetSizeDetailFilterBasicCarpetSizeFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [BasicCarpetSizeDetailFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -1742,7 +1744,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-26T11:31:55.841Z"
+  createdAt: DateTime! = "2025-07-26T17:07:25.875Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1788,6 +1790,7 @@ input BasicCarpetSizeFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [BasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   subproducts: BasicCarpetSizeFilterSubproductFilter
   title: StringFieldComparison
 }
@@ -1818,6 +1821,7 @@ enum BasicCarpetSizeSortFields {
   code
   id
   isActive
+  sortOrder
   title
 }
 
@@ -1827,6 +1831,7 @@ input BasicCarpetSizeUpdateFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [BasicCarpetSizeUpdateFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -1868,7 +1873,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-26T11:31:55.822Z"
+  createdAt: DateTime! = "2025-07-26T17:07:25.865Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5229,7 +5234,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-26T11:31:56.401Z"
+  createdAt: DateTime! = "2025-07-26T17:07:26.222Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5251,7 +5256,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-07-26T11:31:56.411Z"
+  createdAt: DateTime! = "2025-07-26T17:07:26.227Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5266,7 +5271,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-26T11:31:56.423Z"
+  createdAt: DateTime! = "2025-07-26T17:07:26.233Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5290,7 +5295,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-07-26T11:31:56.432Z"
+  createdAt: DateTime! = "2025-07-26T17:07:26.241Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5321,7 +5326,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-26T11:31:56.441Z"
+  createdAt: DateTime! = "2025-07-26T17:07:26.246Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5362,7 +5367,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-07-26T11:31:56.461Z"
+  createdAt: DateTime! = "2025-07-26T17:07:26.259Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5550,6 +5555,12 @@ input CreateCarpetMaterialInput {
   pricePerInch: Float!
   sortOrder: Float
   updatedAt: DateTime
+}
+
+input CreateCarpetPadInput {
+  padRequestDate: String!
+  productionPadRollId: Float!
+  sizesWithCount: SizeWithCountInput!
 }
 
 input CreateCarpetShapeInput {
@@ -20571,6 +20582,7 @@ input InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterS
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceAggregateFilterInvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterBasicCarpetSizeAggregateFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -22238,6 +22250,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilterS
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterProductAggregateFilterSubproductAggregateFilterBasicCarpetSizeAggregateFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -22312,6 +22325,7 @@ input InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilt
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterBasicCarpetSizeAggregateFilter!]
+  sortOrder: NumberFieldComparison
   subproducts: InvoiceAggregateFilterInvoiceProductAggregateFilterSubproductAggregateFilterBasicCarpetSizeAggregateFilterSubproductAggregateFilter
   title: StringFieldComparison
 }
@@ -25640,6 +25654,7 @@ input InvoiceFilterInvoiceFilterInvoiceProductFilterSubproductFilterBasicCarpetS
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceFilterInvoiceFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -27301,6 +27316,7 @@ input InvoiceFilterInvoiceProductFilterProductFilterSubproductFilterBasicCarpetS
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceFilterInvoiceProductFilterProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -27375,6 +27391,7 @@ input InvoiceFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   subproducts: InvoiceFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilterSubproductFilter
   title: StringFieldComparison
 }
@@ -32453,6 +32470,7 @@ input InvoiceProductItemFilterInvoiceProductFilterProductFilterSubproductFilterB
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -32527,6 +32545,7 @@ input InvoiceProductItemFilterInvoiceProductFilterSubproductFilterBasicCarpetSiz
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceProductItemFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   subproducts: InvoiceProductItemFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilterSubproductFilter
   title: StringFieldComparison
 }
@@ -33781,6 +33800,7 @@ input InvoiceProductItemFilterPrintRipFilterRipTemplateFilterRipTemplateItemFilt
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceProductItemFilterPrintRipFilterRipTemplateFilterRipTemplateItemFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -34587,6 +34607,7 @@ input InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterSubp
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [InvoiceProductStatusFilterInvoiceProductItemFilterInvoiceProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -37275,6 +37296,7 @@ type Mutation {
   changeInvoicesStatus(ChangeInvoicesStatusInput: ChangeInvoicesStatusInput!): ChangeInvoicesStatusResponseDto!
   confirmTagsPrinted(confirmTagsPrintedInput: ConfirmTagsPrintedInput!): GeneralResponseDto!
   createAddress(createAddressInput: CreateAddressInput!): Address!
+  createCarpetPads(createCarpetPadsInput: CreateCarpetPadInput!): GeneralResponseDto!
   createManyActivities(input: CreateManyActivitiesInput!): [Activity!]!
   createManyAddresses(input: CreateManyAddressesInput!): [Address!]!
   createManyAttributeAttributeGroups(input: CreateManyAttributeAttributeGroupsInput!): [AttributeAttributeGroup!]!
@@ -42731,6 +42753,7 @@ input ProductFilterSubproductFilterBasicCarpetSizeFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [ProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   subproducts: ProductFilterSubproductFilterBasicCarpetSizeFilterSubproductFilter
   title: StringFieldComparison
 }
@@ -42748,6 +42771,7 @@ input ProductFilterSubproductFilterBasicCarpetSizeFilterBasicCarpetSizeDetailFil
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [ProductFilterSubproductFilterBasicCarpetSizeFilterBasicCarpetSizeDetailFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -42787,6 +42811,7 @@ input ProductFilterSubproductFilterBasicCarpetSizeFilterSubproductFilterBasicCar
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [ProductFilterSubproductFilterBasicCarpetSizeFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -42859,6 +42884,7 @@ input ProductFilterSubproductFilterProductFilterSubproductFilterBasicCarpetSizeF
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [ProductFilterSubproductFilterProductFilterSubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -43412,8 +43438,8 @@ type ProductionPad {
   code: String!
   createdAt: DateTime
   id: ID!
-  isTagPrinted: Boolean!
-  isUsed: Boolean!
+  isTagPrinted: Float!
+  isUsed: Float!
   productionPadProductionPadStatuses: [ProductionPadProductionPadStatus!]!
   productionPadStatus: ProductionPadStatus!
   productionPadStatusId: Float!
@@ -43443,8 +43469,8 @@ type ProductionPadDeleteResponse {
   code: String
   createdAt: DateTime
   id: ID
-  isTagPrinted: Boolean
-  isUsed: Boolean
+  isTagPrinted: Float
+  isUsed: Float
   productionPadProductionPadStatuses: [ProductionPadProductionPadStatus!]
   productionPadStatus: ProductionPadStatus
   productionPadStatusId: Float
@@ -43460,8 +43486,8 @@ input ProductionPadDomain {
   code: String!
   createdAt: DateTime
   id: ID!
-  isTagPrinted: Boolean!
-  isUsed: Boolean!
+  isTagPrinted: Float!
+  isUsed: Float!
   productionPadProductionPadStatuses: [ProductionPadProductionPadStatusDomain!]!
   productionPadStatus: ProductionPadStatusDomain!
   productionPadStatusId: Float!
@@ -50046,6 +50072,7 @@ input RipTemplateItemFilterBasicCarpetSizeFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [RipTemplateItemFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -51238,6 +51265,11 @@ input SizeGuidesDetailUpdateFilter {
   or: [SizeGuidesDetailUpdateFilter!]
 }
 
+input SizeWithCountInput {
+  count: Float!
+  size: String!
+}
+
 type SocialFacebookAccount {
   createdAt: DateTime
   id: ID!
@@ -51719,21 +51751,21 @@ type Subproduct {
   description: String
   discountSubjects: [DiscountSubject!]!
   favoriteProducts: [FavoriteProduct!]!
-  getStockCountFromSepidar: Boolean!
+  getStockCountFromSepidar: Float!
   id: ID!
   image: Image!
   imageId: Float
   imageSubproducts: [ImageSubproduct!]!
   invoiceProductHistories: [InvoiceProductHistory!]!
   invoiceProducts: [InvoiceProduct!]!
-  isActive: Boolean!
-  isOutOfStock: Boolean!
+  isActive: Float!
+  isOutOfStock: Float!
   length: Float
-  mainImageChanged: Boolean
+  mainImageChanged: Float
   name: String!
   nameEn: String
   needsPhotographySubproducts: [NeedsPhotographySubproduct!]!
-  otherImagesChanged: Boolean!
+  otherImagesChanged: Float!
   padPrice: String!
   preorders: [Preorder!]!
   price: Float
@@ -51815,21 +51847,21 @@ type SubproductDeleteResponse {
   description: String
   discountSubjects: [DiscountSubject!]
   favoriteProducts: [FavoriteProduct!]
-  getStockCountFromSepidar: Boolean
+  getStockCountFromSepidar: Float
   id: ID
   image: Image
   imageId: Float
   imageSubproducts: [ImageSubproduct!]
   invoiceProductHistories: [InvoiceProductHistory!]
   invoiceProducts: [InvoiceProduct!]
-  isActive: Boolean
-  isOutOfStock: Boolean
+  isActive: Float
+  isOutOfStock: Float
   length: Float
-  mainImageChanged: Boolean
+  mainImageChanged: Float
   name: String
   nameEn: String
   needsPhotographySubproducts: [NeedsPhotographySubproduct!]
-  otherImagesChanged: Boolean
+  otherImagesChanged: Float
   padPrice: String
   preorders: [Preorder!]
   price: Float
@@ -51901,21 +51933,21 @@ input SubproductDomain {
   description: String
   discountSubjects: [DiscountSubjectDomain!]!
   favoriteProducts: [FavoriteProductDomain!]!
-  getStockCountFromSepidar: Boolean!
+  getStockCountFromSepidar: Float!
   id: ID!
   image: ImageDomain!
   imageId: Float
   imageSubproducts: [ImageSubproductDomain!]!
   invoiceProductHistories: [InvoiceProductHistoryDomain!]!
   invoiceProducts: [InvoiceProductDomain!]!
-  isActive: Boolean!
-  isOutOfStock: Boolean!
+  isActive: Float!
+  isOutOfStock: Float!
   length: Float
-  mainImageChanged: Boolean
+  mainImageChanged: Float
   name: String!
   nameEn: String
   needsPhotographySubproducts: [NeedsPhotographySubproductDomain!]!
-  otherImagesChanged: Boolean!
+  otherImagesChanged: Float!
   padPrice: String!
   preorders: [PreorderDomain!]!
   price: Float
@@ -51991,6 +52023,7 @@ input SubproductFilterBasicCarpetSizeFilter {
   id: IDFilterComparison
   isActive: BooleanFieldComparison
   or: [SubproductFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
   title: StringFieldComparison
 }
 
@@ -53666,7 +53699,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-07-26T11:31:55.802Z"
+  createdAt: DateTime = "2025-07-26T17:07:25.855Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -53688,7 +53721,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-07-26T11:31:55.820Z"
+  createdAt: DateTime = "2025-07-26T17:07:25.864Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53703,7 +53736,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-07-26T11:31:55.887Z"
+  createdAt: DateTime = "2025-07-26T17:07:25.897Z"
   description: String
   facebookId: String
   headerImage: String
@@ -53727,7 +53760,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-07-26T11:31:55.821Z"
+  createdAt: DateTime = "2025-07-26T17:07:25.865Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53744,7 +53777,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-07-26T11:31:55.841Z"
+  createdAt: DateTime = "2025-07-26T17:07:25.875Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -53799,7 +53832,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-07-26T11:31:55.822Z"
+  createdAt: DateTime = "2025-07-26T17:07:25.865Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -60535,8 +60568,8 @@ input UpdateProductionPad {
   code: String
   createdAt: DateTime
   id: ID
-  isTagPrinted: Boolean
-  isUsed: Boolean
+  isTagPrinted: Float
+  isUsed: Float
   productionPadProductionPadStatuses: [ProductionPadProductionPadStatusDomain!]
   productionPadStatus: ProductionPadStatusDomain
   productionPadStatusId: Float
@@ -61557,21 +61590,21 @@ input UpdateSubproduct {
   description: String
   discountSubjects: [DiscountSubjectDomain!]
   favoriteProducts: [FavoriteProductDomain!]
-  getStockCountFromSepidar: Boolean
+  getStockCountFromSepidar: Float
   id: ID
   image: ImageDomain
   imageId: Float
   imageSubproducts: [ImageSubproductDomain!]
   invoiceProductHistories: [InvoiceProductHistoryDomain!]
   invoiceProducts: [InvoiceProductDomain!]
-  isActive: Boolean
-  isOutOfStock: Boolean
+  isActive: Float
+  isOutOfStock: Float
   length: Float
-  mainImageChanged: Boolean
+  mainImageChanged: Float
   name: String
   nameEn: String
   needsPhotographySubproducts: [NeedsPhotographySubproductDomain!]
-  otherImagesChanged: Boolean
+  otherImagesChanged: Float
   padPrice: String
   preorders: [PreorderDomain!]
   price: Float

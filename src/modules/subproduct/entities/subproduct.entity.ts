@@ -276,13 +276,13 @@ export class Subproduct {
     width: 1,
     default: () => "'0'",
   })
-  isOutOfStock: boolean;
+  isOutOfStock: number;
 
   @Column('int', { name: 'sort_order', nullable: true, unsigned: true })
   sortOrder?: number;
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
-  isActive: boolean;
+  isActive: number;
 
   @Column('timestamp', { name: 'created_at', nullable: true })
   createdAt?: Date;
@@ -296,14 +296,14 @@ export class Subproduct {
     width: 1,
     default: () => "'1'",
   })
-  mainImageChanged?: boolean;
+  mainImageChanged?: number;
 
   @Column('tinyint', {
     name: 'other_images_changed',
     width: 1,
     default: () => "'0'",
   })
-  otherImagesChanged: boolean;
+  otherImagesChanged: number;
 
   @Column('tinyint', {
     name: 'color_categories_changed',
@@ -321,7 +321,7 @@ export class Subproduct {
     width: 1,
     default: () => "'1'",
   })
-  getStockCountFromSepidar: boolean;
+  getStockCountFromSepidar: number;
 
   @Column('varchar', { name: 'name_en', nullable: true, length: 191 })
   nameEn?: string;

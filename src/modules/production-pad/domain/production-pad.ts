@@ -20,10 +20,10 @@ export class ProductionPad {
   code: string;
 
   @Field()
-  isUsed: boolean;
+  isUsed: number;
 
   @Field()
-  isTagPrinted: boolean;
+  isTagPrinted: number;
 
   @Field({ nullable: true })
   rollRefCode?: string;

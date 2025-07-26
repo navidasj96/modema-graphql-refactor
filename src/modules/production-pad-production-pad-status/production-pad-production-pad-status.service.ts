@@ -1,31 +1,35 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProductionPadProductionPadStatusInput } from './dto/create-production-pad-production-pad-status.input';
-import { UpdateProductionPadProductionPadStatusInput } from './dto/update-production-pad-production-pad-status.input';
+
+import { EntityManager, Repository } from 'typeorm';
+import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/entities/production-pad-production-pad-status.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ProductionPadProductionPadStatusService {
-  create(
-    createProductionPadProductionPadStatusInput: CreateProductionPadProductionPadStatusInput
+  constructor(
+    /**
+     * inject productionPadProductionPadStatusRepository
+     */
+    @InjectRepository(ProductionPadProductionPadStatus)
+    private readonly productionPadProductionPadStatusRepository: Repository<ProductionPadProductionPadStatus>
+  ) {}
+
+  async attach(
+    productionPadId: number,
+    productionPadStatusId: number,
+    userId: number,
+    manager: EntityManager
   ) {
-    return 'This action adds a new productionPadProductionPadStatus';
-  }
+    const productionPadProductionPadStatusRepository = manager
+      ? manager.getRepository(ProductionPadProductionPadStatus)
+      : this.productionPadProductionPadStatusRepository;
 
-  findAll() {
-    return `This action returns all productionPadProductionPadStatus`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} productionPadProductionPadStatus`;
-  }
-
-  update(
-    id: number,
-    updateProductionPadProductionPadStatusInput: UpdateProductionPadProductionPadStatusInput
-  ) {
-    return `This action updates a #${id} productionPadProductionPadStatus`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} productionPadProductionPadStatus`;
+    await productionPadProductionPadStatusRepository.save({
+      productionPadId,
+      productionPadStatusId,
+      userId,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
   }
 }
