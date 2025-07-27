@@ -30,8 +30,6 @@ export class ProductionPadResolver {
     );
   }
 
-  @UseGuards(PermissionsGuard)
-  @Permissions(['print carpet pad labels'])
   @Mutation(() => PrintCarpetPadLabelsOutput)
   async printCarpetPadLabels(
     @Args('printCarpetPadLabelsInput', {

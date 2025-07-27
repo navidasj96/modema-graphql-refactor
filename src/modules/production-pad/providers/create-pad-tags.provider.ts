@@ -189,6 +189,7 @@ export class CreatePadTagsProvider {
           rowNo: Between(startRowNo, endRowNo),
           basicCarpetSizeId: sizeId,
         },
+        relations: { basicCarpetSize: true },
       });
     const queryRunner = this.dataSource.createQueryRunner();
     const manager = queryRunner.manager;
