@@ -1,5 +1,4 @@
 import { ProductionPadProductionPadStatusService } from '@/modules/production-pad-production-pad-status/production-pad-production-pad-status.service';
-import { ProductionPadRoll } from '@/modules/production-pad-roll/entities/production-pad-roll.entity';
 import { ProductionPadRollService } from '@/modules/production-pad-roll/production-pad-roll.service';
 import { CreateCarpetPadInput } from '@/modules/production-pad/dto/create-carpet-pad.input';
 import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
@@ -7,9 +6,11 @@ import { SettingService } from '@/modules/setting/setting.service';
 import { SubproductService } from '@/modules/subproduct/subproduct.service';
 import { ProductionPadStatusEnum } from '@/utils/production-pad-status.enum';
 import { Injectable } from '@nestjs/common';
-import { DataSource } from 'typeorm';
+import { Between, DataSource } from 'typeorm';
 import { BasicCarpetSizeService } from '@/modules/basic-carpet-size/basic-carpet-size.service';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { PrintCarpetPadLabelsInput } from '@/modules/production-pad/dto/print-carpet-pad-labels.input';
+import { PrintCarpetPadLabelsOutputTs } from '@/modules/production-pad/dto/print-carpet-pad-labels.output';
 
 @Injectable()
 export class CreatePadTagsProvider {
@@ -46,6 +47,7 @@ export class CreatePadTagsProvider {
   ) {
     let { padRequestDate, productionPadRollId, sizesWithCount } =
       createCarpetPadInput;
+
     const {
       req: {
         user: { sub: userId },
@@ -80,9 +82,8 @@ export class CreatePadTagsProvider {
     await queryRunner.startTransaction();
 
     try {
-      let startRowNo = 0;
-      let endRowNo = 0;
-      for (const [sizeId, count] of Object.entries(sizesWithCount)) {
+      const startAndEndRowNo: PrintCarpetPadLabelsOutputTs[] = [];
+      for (const { sizeId, count } of sizesWithCount) {
         if (count > 0) {
           const subproduct = await this.subproductService.findOne({
             where: {
@@ -90,7 +91,10 @@ export class CreatePadTagsProvider {
               product: { isActive: 1 },
               basicCarpetSizeId: Number(sizeId),
             },
+            relations: ['product'],
           });
+          console.log('subproduct', subproduct);
+
           if (!subproduct) {
             await queryRunner.rollbackTransaction();
             return {
@@ -110,8 +114,9 @@ export class CreatePadTagsProvider {
               ? Math.max(...pads.map((p) => p.rowNo))
               : null
             : null;
-
-          for (let i = 0; i < Number(sizeId); i++) {
+          console.log('maxRowNoForSize', maxRowNoForSize);
+          let startRowNo = 0;
+          for (let i = 0; i < Number(count); i++) {
             if (!maxRowNoForSize) {
               maxRowNoForSize = 1;
             } else {
@@ -133,7 +138,7 @@ export class CreatePadTagsProvider {
             productionPad.requestDate = new Date(padRequestDate);
             productionPad.rowNo = maxRowNoForSize;
             await productionPadRepository.save(productionPad);
-            // productionPad.productionPadRollId = productionPadRollId;
+            productionPad.productionPadRollId = productionPadRollId;
 
             await this.productionPadProductionPadStatusService.attach(
               productionPad.id,
@@ -142,19 +147,73 @@ export class CreatePadTagsProvider {
               manager
             );
           }
+
+          const endRowNo = maxRowNoForSize || 0;
+          startAndEndRowNo.push({
+            startNo: startRowNo,
+            endNo: endRowNo,
+            count: Number(count),
+            sizeId: Number(sizeId),
+          });
         }
       }
 
       await queryRunner.commitTransaction();
+
       return {
-        message: 'با موفقیت انجام شد',
+        printCarpetPadLabels: startAndEndRowNo,
+        message: 'پدها با موفقیت ایجاد شدند',
         status: true,
       };
     } catch (error) {
       await queryRunner.rollbackTransaction();
       return {
+        printCarpetPadLabels: null,
         message: `${error}`,
+        status: false,
+      };
+    } finally {
+      await queryRunner.release();
+    }
+  }
+
+  async printCarpetPadLabels(
+    printCarpetPadLabelsInput: PrintCarpetPadLabelsInput
+  ) {
+    const { endRowNo, startRowNo, sizeId } = printCarpetPadLabelsInput;
+
+    const productionPads = await this.dataSource
+      .getRepository(ProductionPad)
+      .find({
+        where: {
+          rowNo: Between(startRowNo, endRowNo),
+          basicCarpetSizeId: sizeId,
+        },
+      });
+    const queryRunner = this.dataSource.createQueryRunner();
+    const manager = queryRunner.manager;
+
+    const productionPadRepository = manager.getRepository(ProductionPad);
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      for (const productionPad of productionPads) {
+        productionPad.isTagPrinted = 1;
+        await productionPadRepository.save(productionPad);
+      }
+      await queryRunner.commitTransaction();
+
+      return {
+        productionPads,
+        message: 'برچسب ها با موفقیت چاپ شد',
         status: true,
+      };
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      return {
+        productionPads: [],
+        message: `${error}`,
+        status: false,
       };
     } finally {
       await queryRunner.release();

@@ -4,9 +4,11 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '@/modules/user/entities/user.entity';
+import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
 
 @Index('production_pad_rolls_roll_number_unique', ['rollNumber'], {
   unique: true,
@@ -65,4 +67,7 @@ export class ProductionPadRoll {
   })
   @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
   createdBy2: User;
+
+  @OneToMany(() => ProductionPad, (pp) => pp.productionPadRoll)
+  productionPads: ProductionPad[];
 }

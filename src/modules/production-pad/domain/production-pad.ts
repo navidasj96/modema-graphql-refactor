@@ -40,6 +40,9 @@ export class ProductionPad {
   @Field({ nullable: true })
   updatedAt?: Date;
 
+  @Field(() => Number, { nullable: true })
+  productionPadRollId: number | null;
+
   @Field(() => [ProductionPadProductionPadStatus])
   productionPadProductionPadStatuses: ProductionPadProductionPadStatus[];
 

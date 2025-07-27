@@ -10,6 +10,7 @@ import {
 import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/entities/production-pad-production-pad-status.entity';
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/entities/basic-carpet-size.entity';
 import { ProductionPadStatus } from '@/modules/production-pad-status/entities/production-pad-status.entity';
+import { ProductionPadRoll } from '@/modules/production-pad-roll/entities/production-pad-roll.entity';
 
 @Index('production_pads_basic_carpet_size_id_index', ['basicCarpetSizeId'], {})
 @Index(
@@ -52,6 +53,13 @@ export class ProductionPad {
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
 
+  @Column('int', {
+    name: 'production_pad_roll_id',
+    nullable: true,
+    unsigned: true,
+  })
+  productionPadRollId: number | null;
+
   @OneToMany(
     () => ProductionPadProductionPadStatus,
     (productionPadProductionPadStatus) =>
@@ -76,4 +84,10 @@ export class ProductionPad {
     { name: 'production_pad_status_id', referencedColumnName: 'id' },
   ])
   productionPadStatus: ProductionPadStatus;
+
+  @ManyToOne(() => ProductionPadRoll, (ppr) => ppr.productionPads, {
+    nullable: true,
+  })
+  @JoinColumn([{ name: 'production_pad_roll_id', referencedColumnName: 'id' }])
+  productionPadRoll: ProductionPadRoll | null;
 }

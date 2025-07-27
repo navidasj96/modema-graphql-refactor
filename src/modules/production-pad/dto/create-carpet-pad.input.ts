@@ -3,7 +3,7 @@ import { Field, InputType } from '@nestjs/graphql';
 @InputType()
 export class SizeWithCountInput {
   @Field(() => String)
-  size: string;
+  sizeId: string;
 
   @Field(() => Number)
   count: number;
@@ -17,6 +17,6 @@ export class CreateCarpetPadInput {
   @Field(() => String)
   padRequestDate: string;
 
-  @Field(() => SizeWithCountInput)
-  sizesWithCount: SizeWithCountInput;
+  @Field(() => [SizeWithCountInput])
+  sizesWithCount: [SizeWithCountInput];
 }
