@@ -184,11 +184,20 @@ export class ProductionPadProvider {
 
   async basicCarpetSizesAndRollRefCode() {
     const basicCarpetSizes = await this.basicCarpetSizeService.findAll({});
+    // const rollRefCodes = await this.productionPadRepository
+    //   .createQueryBuilder('productionPad')
+    //   .where('productionPad.rollRefCode IS NOT NULL')
+    //   .groupBy('productionPad.rollRefCode')
+    //   .getMany();
     const rollRefCodes = await this.productionPadRepository
       .createQueryBuilder('productionPad')
+      .select([
+        'productionPad.rollRefCode AS rollRefCode',
+        'MIN(productionPad.id) AS id', // or MAX, or ANY_VALUE if supported
+      ])
       .where('productionPad.rollRefCode IS NOT NULL')
       .groupBy('productionPad.rollRefCode')
-      .getMany();
+      .getRawMany();
 
     return {
       basicCarpetSizes,
