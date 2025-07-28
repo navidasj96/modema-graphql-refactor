@@ -1,6 +1,14 @@
 import { Field, Float, ID, ObjectType } from '@nestjs/graphql';
-import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
+import {
+  FilterableField,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 
+@QueryOptions({
+  pagingStrategy: PagingStrategies.NONE,
+})
 @ObjectType()
 export class Setting {
   @IDField(() => ID)
@@ -219,7 +227,7 @@ export class Setting {
   @Field(() => Number, { nullable: true })
   preorderFakeMultiplyBy?: number;
 
-  @Field()
+  @FilterableField()
   isActive: number;
 
   @Field({ nullable: true })

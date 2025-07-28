@@ -4,6 +4,8 @@ import { CreatePadTagsProvider } from '@/modules/production-pad/providers/create
 import { CreateCarpetPadInput } from '@/modules/production-pad/dto/create-carpet-pad.input';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { PrintCarpetPadLabelsInput } from '@/modules/production-pad/dto/print-carpet-pad-labels.input';
+import { ProductionPadProvider } from '@/modules/production-pad/providers/production-pad.provider';
+import { ProductionPadListInput } from '@/modules/production-pad/dto/prodcution-pad-list.input';
 
 @Injectable()
 export class ProductionPadService {
@@ -11,7 +13,12 @@ export class ProductionPadService {
     /**
      * inject createPadTagsProvider
      */
-    private readonly createPadTagsProvider: CreatePadTagsProvider
+    private readonly createPadTagsProvider: CreatePadTagsProvider,
+
+    /**
+     * inject productionPadProvider
+     */
+    private readonly productionPadProvider: ProductionPadProvider
   ) {}
 
   async createCarpetPads(
@@ -30,5 +37,19 @@ export class ProductionPadService {
     return await this.createPadTagsProvider.printCarpetPadLabels(
       printCarpetPadLabelsInput
     );
+  }
+
+  async productionPadList(
+    productionPadListInput: ProductionPadListInput,
+    context: { req: UserContext }
+  ) {
+    return await this.productionPadProvider.productionPadList(
+      productionPadListInput,
+      context
+    );
+  }
+
+  async basicCarpetSizesAndRollRefCode() {
+    return await this.productionPadProvider.basicCarpetSizesAndRollRefCode();
   }
 }

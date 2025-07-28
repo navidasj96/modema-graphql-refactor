@@ -1,4 +1,4 @@
-import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ProductionPadService } from './production-pad.service';
 import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
@@ -10,6 +10,10 @@ import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import { PrintCarpetPadLabelsInput } from '@/modules/production-pad/dto/print-carpet-pad-labels.input';
 import { PrintCarpetPadLabelsOutput } from '@/modules/production-pad/dto/print-carpet-pad-labels.output';
 import { CreateCarpetPadOutput } from '@/modules/production-pad/dto/create-carpet-pad-output';
+import { ProductionPadListInput } from '@/modules/production-pad/dto/prodcution-pad-list.input';
+import { ProductionPadListOutput } from '@/modules/production-pad/dto/production-pad-list.output';
+import { ProductionPadPermissions } from '@/utils/permissions';
+import { BasicCarpetSizesAndRollsRefCodeOutput } from '@/modules/production-pad/dto/basic-carpet-sizes-and-rolls-ref-code.output';
 
 @Resolver(() => ProductionPad)
 export class ProductionPadResolver {
@@ -40,5 +44,27 @@ export class ProductionPadResolver {
     return await this.productionPadService.printCarpetPadLabels(
       printCarpetPadLabelsInput
     );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([ProductionPadPermissions.PERMISSION_TO_VIEW])
+  @Query(() => ProductionPadListOutput)
+  async productionPadList(
+    @Args('productionPadListInput', {
+      type: () => ProductionPadListInput,
+    })
+    productionPadListInput: ProductionPadListInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.productionPadService.productionPadList(
+      productionPadListInput,
+      context
+    );
+  }
+
+  @Query(() => BasicCarpetSizesAndRollsRefCodeOutput)
+  async basicCarpetSizesAndRollRefCode() {
+    return await this.productionPadService.basicCarpetSizesAndRollRefCode();
   }
 }

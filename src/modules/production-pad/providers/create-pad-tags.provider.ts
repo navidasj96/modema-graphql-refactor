@@ -77,7 +77,7 @@ export class CreatePadTagsProvider {
     } else {
       productionPadRollId = productionPadRolls[0].id;
     }
-
+    console.log('productionPadRollId', productionPadRollId);
     await queryRunner.connect();
     await queryRunner.startTransaction();
 
@@ -93,7 +93,6 @@ export class CreatePadTagsProvider {
             },
             relations: ['product'],
           });
-          console.log('subproduct', subproduct);
 
           if (!subproduct) {
             await queryRunner.rollbackTransaction();
@@ -114,7 +113,6 @@ export class CreatePadTagsProvider {
               ? Math.max(...pads.map((p) => p.rowNo))
               : null
             : null;
-          console.log('maxRowNoForSize', maxRowNoForSize);
           let startRowNo = 0;
           for (let i = 0; i < Number(count); i++) {
             if (!maxRowNoForSize) {
@@ -137,8 +135,10 @@ export class CreatePadTagsProvider {
             productionPad.isTagPrinted = 0;
             productionPad.requestDate = new Date(padRequestDate);
             productionPad.rowNo = maxRowNoForSize;
-            await productionPadRepository.save(productionPad);
+            productionPad.createdAt = new Date();
+            productionPad.updatedAt = new Date();
             productionPad.productionPadRollId = productionPadRollId;
+            await productionPadRepository.save(productionPad);
 
             await this.productionPadProductionPadStatusService.attach(
               productionPad.id,

@@ -12,12 +12,15 @@ import { SubproductModule } from '@/modules/subproduct/subproduct.module';
 import { ProductionPadRollModule } from '@/modules/production-pad-roll/production-pad-roll.module';
 import { ProductionPadProductionPadStatusModule } from '@/modules/production-pad-production-pad-status/production-pad-production-pad-status.module';
 import { BasicCarpetSizeModule } from '@/modules/basic-carpet-size/basic-carpet-size.module';
+import { ProductionPadProvider } from '@/modules/production-pad/providers/production-pad.provider';
+import { AuthModule } from '@/modules/auth/auth.module';
 
 @Module({
   providers: [
     ProductionPadResolver,
     ProductionPadService,
     CreatePadTagsProvider,
+    ProductionPadProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -35,6 +38,7 @@ import { BasicCarpetSizeModule } from '@/modules/basic-carpet-size/basic-carpet-
     ProductionPadRollModule,
     ProductionPadProductionPadStatusModule,
     BasicCarpetSizeModule,
+    AuthModule,
   ],
 })
 export class ProductionPadModule {}
