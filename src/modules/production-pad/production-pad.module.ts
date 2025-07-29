@@ -14,6 +14,7 @@ import { ProductionPadProductionPadStatusModule } from '@/modules/production-pad
 import { BasicCarpetSizeModule } from '@/modules/basic-carpet-size/basic-carpet-size.module';
 import { ProductionPadProvider } from '@/modules/production-pad/providers/production-pad.provider';
 import { AuthModule } from '@/modules/auth/auth.module';
+import { SettingsHistoryModule } from '@/modules/settings-history/settings-history.module';
 
 @Module({
   providers: [
@@ -39,6 +40,7 @@ import { AuthModule } from '@/modules/auth/auth.module';
     ProductionPadProductionPadStatusModule,
     BasicCarpetSizeModule,
     AuthModule,
+    SettingsHistoryModule,
   ],
 })
 export class ProductionPadModule {}

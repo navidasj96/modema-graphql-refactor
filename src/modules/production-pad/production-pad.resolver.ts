@@ -14,6 +14,7 @@ import { ProductionPadListInput } from '@/modules/production-pad/dto/prodcution-
 import { ProductionPadListOutput } from '@/modules/production-pad/dto/production-pad-list.output';
 import { ProductionPadPermissions } from '@/utils/permissions';
 import { BasicCarpetSizesAndRollsRefCodeOutput } from '@/modules/production-pad/dto/basic-carpet-sizes-and-rolls-ref-code.output';
+import { UpdateSelectedProductionPadsStatusInput } from '@/modules/production-pad/dto/update-selected-production-pads-status.input';
 
 @Resolver(() => ProductionPad)
 export class ProductionPadResolver {
@@ -66,5 +67,35 @@ export class ProductionPadResolver {
   @Query(() => BasicCarpetSizesAndRollsRefCodeOutput)
   async basicCarpetSizesAndRollRefCode() {
     return await this.productionPadService.basicCarpetSizesAndRollRefCode();
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions(['edit roll reference code'])
+  @Mutation(() => GeneralResponseDto)
+  async updateRollReferenceCode(
+    @Args('padRollRefCode', { type: () => String })
+    padRollRefCode: string,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.productionPadService.updateRollReferenceCode(
+      padRollRefCode,
+      context
+    );
+  }
+
+  @Mutation(() => GeneralResponseDto)
+  async updateSelectedProductionPadsStatus(
+    @Args('updateSelectedProductionPadsStatusInput', {
+      type: () => UpdateSelectedProductionPadsStatusInput,
+    })
+    updateSelectedProductionPadsStatusInput: UpdateSelectedProductionPadsStatusInput,
+    @Context()
+    context: { req: UserContext }
+  ) {
+    return await this.productionPadService.updateSelectedProductionPadsStatus(
+      updateSelectedProductionPadsStatusInput,
+      context
+    );
   }
 }

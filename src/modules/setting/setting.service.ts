@@ -27,8 +27,8 @@ export class SettingService {
     return `This action returns a #${id} setting`;
   }
 
-  update(id: number, updateSettingInput: UpdateSettingInput) {
-    return `This action updates a #${id} setting`;
+  async update(id: number, updateSettingInput: UpdateSettingInput) {
+    return await this.settingRepository.update(id, updateSettingInput);
   }
 
   remove(id: number) {

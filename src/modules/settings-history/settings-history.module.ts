@@ -23,5 +23,6 @@ import { CreateSettingsHistoryInput } from '@/modules/settings-history/dto/creat
       ],
     }),
   ],
+  exports: [SettingsHistoryService],
 })
 export class SettingsHistoryModule {}

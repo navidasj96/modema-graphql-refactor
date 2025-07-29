@@ -59,8 +59,8 @@ export class CreateSettingInput {
   @Field(() => Number, { nullable: true })
   productionRollId?: number;
 
-  @Field({ nullable: true })
-  padRollRefCode?: string;
+  @Field(() => String, { nullable: true })
+  padRollRefCode: string | null;
 
   @Field()
   redisWorkerStatus: number;

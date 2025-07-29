@@ -46,7 +46,7 @@ export class SettingsHistory {
   taxRate?: number;
 
   @Field()
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Field({ nullable: true })
   minimumPriceForFreeDelivery?: string;
@@ -67,10 +67,10 @@ export class SettingsHistory {
   padRollRefCode?: string;
 
   @Field()
-  redisWorkerStatus: boolean;
+  redisWorkerStatus: number;
 
   @Field()
-  preorderMode: boolean;
+  preorderMode: number;
 
   @Field({ nullable: true })
   shirazDeliveryRate?: string;
@@ -181,7 +181,7 @@ export class SettingsHistory {
   maxWastagePercent?: number;
 
   @Field()
-  preorderNewModeActive: boolean;
+  preorderNewModeActive: number;
 
   @Field(() => Int, { nullable: true })
   preorderDailyLimit?: number;
@@ -223,7 +223,7 @@ export class SettingsHistory {
   preorderFakeMultiplyBy?: number;
 
   @Field()
-  isActive: boolean;
+  isActive: number;
 
   @Field(() => Int, { nullable: true })
   historyCreatedBy?: number;

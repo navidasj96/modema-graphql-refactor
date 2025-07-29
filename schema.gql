@@ -1190,7 +1190,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-28T11:28:56.029Z"
+  createdAt: DateTime! = "2025-07-29T08:36:15.676Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1279,7 +1279,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-28T11:28:56.046Z"
+  createdAt: DateTime! = "2025-07-29T08:36:15.695Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1394,7 +1394,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-28T11:28:56.105Z"
+  createdAt: DateTime! = "2025-07-29T08:36:15.759Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1484,7 +1484,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-28T11:28:56.047Z"
+  createdAt: DateTime! = "2025-07-29T08:36:15.696Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1744,7 +1744,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-28T11:28:56.066Z"
+  createdAt: DateTime! = "2025-07-29T08:36:15.717Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1878,7 +1878,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-28T11:28:56.048Z"
+  createdAt: DateTime! = "2025-07-29T08:36:15.698Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5239,7 +5239,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-28T11:28:56.631Z"
+  createdAt: DateTime! = "2025-07-29T08:36:16.319Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5261,7 +5261,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-07-28T11:28:56.642Z"
+  createdAt: DateTime! = "2025-07-29T08:36:16.329Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5276,7 +5276,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-28T11:28:56.653Z"
+  createdAt: DateTime! = "2025-07-29T08:36:16.342Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5300,7 +5300,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-07-28T11:28:56.662Z"
+  createdAt: DateTime! = "2025-07-29T08:36:16.353Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5331,7 +5331,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-28T11:28:56.672Z"
+  createdAt: DateTime! = "2025-07-29T08:36:16.362Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5372,7 +5372,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-07-28T11:28:56.700Z"
+  createdAt: DateTime! = "2025-07-29T08:36:16.390Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -38902,7 +38902,9 @@ type Mutation {
   updateOneWonderfulOffer(input: UpdateOneWonderfulOfferInput!): WonderfulOffer!
   updatePrintRip(updatePrintRip: UpdatePrintRipInput!): GeneralResponseDto!
   updateRipTemplate(updateRipTemplateInput: UpdateRipTemplateInput!): GeneralResponseDto!
+  updateRollReferenceCode(padRollRefCode: String!): GeneralResponseDto!
   updateRollRefrenceCode(rollReferenceCode: String!, rollReferenceCodeId: String!): GeneralResponseDto!
+  updateSelectedProductionPadsStatus(updateSelectedProductionPadsStatusInput: UpdateSelectedProductionPadsStatusInput!): GeneralResponseDto!
   updateSetting(updateSettingInput: UpdateSettingInput!): Setting!
   updateSettingsHistory(updateSettingsHistoryInput: UpdateSettingsHistoryInput!): SettingsHistory!
   updateTagDetail(updateTagDetailInput: UpdateTagDetailInput!): TagDetail!
@@ -43739,14 +43741,6 @@ type ProductionPadStatus {
   updatedAt: DateTime
 }
 
-type ProductionPadStatusConnection {
-  """Array of edges."""
-  edges: [ProductionPadStatusEdge!]!
-
-  """Paging information"""
-  pageInfo: PageInfo!
-}
-
 input ProductionPadStatusDeleteFilter {
   and: [ProductionPadStatusDeleteFilter!]
   id: IDFilterComparison
@@ -43771,14 +43765,6 @@ input ProductionPadStatusDomain {
   productionPads: [ProductionPadDomain!]!
   step: Float!
   updatedAt: DateTime
-}
-
-type ProductionPadStatusEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the ProductionPadStatus"""
-  node: ProductionPadStatus!
 }
 
 input ProductionPadStatusFilter {
@@ -46452,12 +46438,9 @@ type Query {
     """Specify to filter the records returned."""
     filter: ProductionPadStatusFilter! = {}
 
-    """Limit or page results."""
-    paging: CursorPaging! = {first: 10}
-
     """Specify to sort results."""
     sorting: [ProductionPadStatusSort!]! = []
-  ): ProductionPadStatusConnection!
+  ): [ProductionPadStatus!]!
   productionPads(
     """Specify to filter the records returned."""
     filter: ProductionPadFilter! = {}
@@ -50765,12 +50748,12 @@ type SettingsHistory {
   digikalaSharePercent: Float
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean!
+  freeDelivery: Float!
   historyCreatedAt: DateTime
   historyCreatedBy: Int
   historyUpdatedAt: DateTime
   id: ID!
-  isActive: Boolean!
+  isActive: Float!
   maxDistanceForFreeDelivery: Float
   maxLength: Float
   maxWastagePercent: Int
@@ -50783,8 +50766,8 @@ type SettingsHistory {
   preorderDailyLimit: Int
   preorderFakeCountLow: Int
   preorderFakeMultiplyBy: Int
-  preorderMode: Boolean!
-  preorderNewModeActive: Boolean!
+  preorderMode: Float!
+  preorderNewModeActive: Float!
   preorderNotifyAfterPeriodStartedDays: Int
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Int
@@ -50796,7 +50779,7 @@ type SettingsHistory {
   preorderWaitDays: Int
   pricePerMeter: String!
   productionRollId: Int
-  redisWorkerStatus: Boolean!
+  redisWorkerStatus: Float!
   retargetingCommentingReminderDays: Int!
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Int
@@ -50862,12 +50845,12 @@ type SettingsHistoryDeleteResponse {
   digikalaSharePercent: Float
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean
+  freeDelivery: Float
   historyCreatedAt: DateTime
   historyCreatedBy: Int
   historyUpdatedAt: DateTime
   id: ID
-  isActive: Boolean
+  isActive: Float
   maxDistanceForFreeDelivery: Float
   maxLength: Float
   maxWastagePercent: Int
@@ -50880,8 +50863,8 @@ type SettingsHistoryDeleteResponse {
   preorderDailyLimit: Int
   preorderFakeCountLow: Int
   preorderFakeMultiplyBy: Int
-  preorderMode: Boolean
-  preorderNewModeActive: Boolean
+  preorderMode: Float
+  preorderNewModeActive: Float
   preorderNotifyAfterPeriodStartedDays: Int
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Int
@@ -50893,7 +50876,7 @@ type SettingsHistoryDeleteResponse {
   preorderWaitDays: Int
   pricePerMeter: String
   productionRollId: Int
-  redisWorkerStatus: Boolean
+  redisWorkerStatus: Float
   retargetingCommentingReminderDays: Int
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Int
@@ -53725,7 +53708,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-07-28T11:28:56.029Z"
+  createdAt: DateTime = "2025-07-29T08:36:15.676Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -53747,7 +53730,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-07-28T11:28:56.046Z"
+  createdAt: DateTime = "2025-07-29T08:36:15.695Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53762,7 +53745,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-07-28T11:28:56.105Z"
+  createdAt: DateTime = "2025-07-29T08:36:15.759Z"
   description: String
   facebookId: String
   headerImage: String
@@ -53786,7 +53769,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-07-28T11:28:56.047Z"
+  createdAt: DateTime = "2025-07-29T08:36:15.696Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53803,7 +53786,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-07-28T11:28:56.066Z"
+  createdAt: DateTime = "2025-07-29T08:36:15.717Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -53858,7 +53841,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-07-28T11:28:56.048Z"
+  createdAt: DateTime = "2025-07-29T08:36:15.698Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -61114,6 +61097,11 @@ input UpdateRussian {
   russianName: String
 }
 
+input UpdateSelectedProductionPadsStatusInput {
+  productionPadsIds: [Float!]!
+  selectedStatusId: Float!
+}
+
 input UpdateSenderInformation {
   buildingPart: String
   buildingPartDescription: String
@@ -61326,12 +61314,12 @@ input UpdateSettingsHistory {
   digikalaSharePercent: Float
   digipayToken: String
   digipayTokenExpiresAt: DateTime
-  freeDelivery: Boolean
+  freeDelivery: Float
   historyCreatedAt: DateTime
   historyCreatedBy: Int
   historyUpdatedAt: DateTime
   id: ID
-  isActive: Boolean
+  isActive: Float
   maxDistanceForFreeDelivery: Float
   maxLength: Float
   maxWastagePercent: Int
@@ -61344,8 +61332,8 @@ input UpdateSettingsHistory {
   preorderDailyLimit: Int
   preorderFakeCountLow: Int
   preorderFakeMultiplyBy: Int
-  preorderMode: Boolean
-  preorderNewModeActive: Boolean
+  preorderMode: Float
+  preorderNewModeActive: Float
   preorderNotifyAfterPeriodStartedDays: Int
   preorderNotifyAfterStartedText: String
   preorderNotifyBeforeDays: Int
@@ -61357,7 +61345,7 @@ input UpdateSettingsHistory {
   preorderWaitDays: Int
   pricePerMeter: String
   productionRollId: Int
-  redisWorkerStatus: Boolean
+  redisWorkerStatus: Float
   retargetingCommentingReminderDays: Int
   retargetingCommentingReminderText: String
   retargetingCouponAmount: Int

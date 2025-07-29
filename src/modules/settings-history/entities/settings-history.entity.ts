@@ -92,7 +92,7 @@ export class SettingsHistory {
   taxRate: number | null;
 
   @Column('tinyint', { name: 'free_delivery', width: 1, default: () => "'1'" })
-  freeDelivery: boolean;
+  freeDelivery: number;
 
   @Column('decimal', {
     name: 'minimum_price_for_free_delivery',
@@ -135,10 +135,10 @@ export class SettingsHistory {
     width: 1,
     default: () => "'0'",
   })
-  redisWorkerStatus: boolean;
+  redisWorkerStatus: number;
 
   @Column('tinyint', { name: 'preorder_mode', width: 1, default: () => "'0'" })
-  preorderMode: boolean;
+  preorderMode: number;
 
   @Column('decimal', {
     name: 'shiraz_delivery_rate',
@@ -353,7 +353,7 @@ export class SettingsHistory {
     width: 1,
     default: () => "'0'",
   })
-  preorderNewModeActive: boolean;
+  preorderNewModeActive: number;
 
   @Column('int', {
     name: 'preorder_daily_limit',
@@ -445,7 +445,7 @@ export class SettingsHistory {
   preorderFakeMultiplyBy: number | null;
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
-  isActive: boolean;
+  isActive: number;
 
   @Column('int', { name: 'history_created_by', nullable: true, unsigned: true })
   historyCreatedBy: number | null;

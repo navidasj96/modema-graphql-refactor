@@ -6,6 +6,7 @@ import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { PrintCarpetPadLabelsInput } from '@/modules/production-pad/dto/print-carpet-pad-labels.input';
 import { ProductionPadProvider } from '@/modules/production-pad/providers/production-pad.provider';
 import { ProductionPadListInput } from '@/modules/production-pad/dto/prodcution-pad-list.input';
+import { UpdateSelectedProductionPadsStatusInput } from '@/modules/production-pad/dto/update-selected-production-pads-status.input';
 
 @Injectable()
 export class ProductionPadService {
@@ -51,5 +52,25 @@ export class ProductionPadService {
 
   async basicCarpetSizesAndRollRefCode() {
     return await this.productionPadProvider.basicCarpetSizesAndRollRefCode();
+  }
+
+  async updateRollReferenceCode(
+    padRollRefCode: string,
+    context: { req: UserContext }
+  ) {
+    return await this.productionPadProvider.updateRollReferenceCode(
+      padRollRefCode,
+      context
+    );
+  }
+
+  async updateSelectedProductionPadsStatus(
+    updateSelectedProductionPadsStatusInput: UpdateSelectedProductionPadsStatusInput,
+    context: { req: UserContext }
+  ) {
+    return await this.productionPadProvider.updateSelectedProductionPadsStatus(
+      updateSelectedProductionPadsStatusInput,
+      context
+    );
   }
 }
