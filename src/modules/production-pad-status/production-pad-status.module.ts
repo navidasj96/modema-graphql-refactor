@@ -23,5 +23,6 @@ import { CreateProductionPadStatusInput } from '@/modules/production-pad-status/
       ],
     }),
   ],
+  exports: [ProductionPadStatusService],
 })
 export class ProductionPadStatusModule {}

@@ -73,4 +73,10 @@ export class ProductionPadService {
       context
     );
   }
+
+  async productionPadProgress(productionPadId: number) {
+    return await this.productionPadProvider.productionPadProgress(
+      productionPadId
+    );
+  }
 }

@@ -2,6 +2,7 @@ import { AuthService } from '@/modules/auth/auth.service';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { BasicCarpetSizeService } from '@/modules/basic-carpet-size/basic-carpet-size.service';
 import { ProductionPadProductionPadStatusService } from '@/modules/production-pad-production-pad-status/production-pad-production-pad-status.service';
+import { ProductionPadStatusService } from '@/modules/production-pad-status/production-pad-status.service';
 import { ProductionPadListInput } from '@/modules/production-pad/dto/prodcution-pad-list.input';
 import { UpdateSelectedProductionPadsStatusInput } from '@/modules/production-pad/dto/update-selected-production-pads-status.input';
 import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
@@ -48,7 +49,11 @@ export class ProductionPadProvider {
     /**
      * inject productionPadProductionPadStatusService
      */
-    private readonly productionPadProductionPadStatusService: ProductionPadProductionPadStatusService
+    private readonly productionPadProductionPadStatusService: ProductionPadProductionPadStatusService,
+    /**
+     * inject ProductionPadStatusService
+     */
+    private readonly productionPadStatusService: ProductionPadStatusService
   ) {}
 
   async productionPadList(
@@ -387,5 +392,30 @@ export class ProductionPadProvider {
     } finally {
       await queryRunner.release();
     }
+  }
+
+  async productionPadProgress(productionPadId: number) {
+    const productionPad = await this.productionPadRepository.findOne({
+      where: { id: productionPadId },
+      order: { updatedAt: 'DESC' },
+      relations: {
+        basicCarpetSize: true,
+        productionPadStatus: true,
+        productionPadProductionPadStatuses: {
+          productionPadStatus: true,
+          user: true,
+        },
+      },
+    });
+
+    const productionPadStatus =
+      await this.productionPadStatusService.productionPadStatusById(
+        productionPadId
+      );
+
+    return {
+      productionPad,
+      productionPadStatus,
+    };
   }
 }

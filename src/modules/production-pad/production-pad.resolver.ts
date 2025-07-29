@@ -15,6 +15,7 @@ import { ProductionPadListOutput } from '@/modules/production-pad/dto/production
 import { ProductionPadPermissions } from '@/utils/permissions';
 import { BasicCarpetSizesAndRollsRefCodeOutput } from '@/modules/production-pad/dto/basic-carpet-sizes-and-rolls-ref-code.output';
 import { UpdateSelectedProductionPadsStatusInput } from '@/modules/production-pad/dto/update-selected-production-pads-status.input';
+import { ProductionPadProgress } from '@/modules/production-pad/dto/prodction-pad-progress.output';
 
 @Resolver(() => ProductionPad)
 export class ProductionPadResolver {
@@ -96,6 +97,20 @@ export class ProductionPadResolver {
     return await this.productionPadService.updateSelectedProductionPadsStatus(
       updateSelectedProductionPadsStatusInput,
       context
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([
+    ProductionPadPermissions.PERMISSION_TO_VIEW_PAD_PRODUCTION_PROGRESS,
+  ])
+  @Query(() => ProductionPadProgress)
+  async productionPadProgress(
+    @Args('productionPadProgressInput', { type: () => Number })
+    productionPadId: number
+  ) {
+    return await this.productionPadService.productionPadProgress(
+      productionPadId
     );
   }
 }
