@@ -1,6 +1,7 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   IDField,
   PagingStrategies,
   QueryOptions,
@@ -9,6 +10,7 @@ import { ProductionPadProductionPadStatus } from '@/modules/production-pad-produ
 import { BasicCarpetSize } from '@/modules/basic-carpet-size/domain/basic-carpet-size';
 import { ProductionPadStatus } from '@/modules/production-pad-status/domain/production-pad-status';
 
+@FilterableRelation('basicCarpetSize', () => BasicCarpetSize)
 @InputType('ProductionPadDomain')
 @QueryOptions({
   pagingStrategy: PagingStrategies.NONE,

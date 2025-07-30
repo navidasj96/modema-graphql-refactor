@@ -61,6 +61,7 @@ export class ProductionPadProvider {
     context: { req: UserContext }
   ) {
     const columnMap: Record<number, string> = {
+      0: 'productionPad.id',
       1: 'productionPad.requestDate',
       2: 'basicCarpetSize.title',
       3: 'productionPadStatus.name',
@@ -83,10 +84,9 @@ export class ProductionPadProvider {
         'productionPad.productionPadStatus',
         'productionPadStatus'
       )
-      .leftJoin(
-        'ProductionPadProductionPadStatus',
-        'ppps',
-        'ppps.productionPadId = productionPad.id AND ppps.productionPadStatusId = productionPad.productionPadStatusId'
+      .leftJoinAndSelect(
+        'productionPad.productionPadProductionPadStatuses',
+        'productionPadProductionPadStatuses'
       );
 
     if (limit) {
@@ -143,7 +143,7 @@ export class ProductionPadProvider {
     }
 
     if (!sort) {
-      productionPadQuery.addOrderBy('basicCarpetSize.title', 'DESC');
+      productionPadQuery.addOrderBy(columnMap[0], 'DESC');
     } else {
       const direction = sort.direction.toUpperCase() as 'ASC' | 'DESC';
       const field = columnMap[sort.field];
@@ -417,5 +417,36 @@ export class ProductionPadProvider {
       productionPad,
       productionPadStatus,
     };
+  }
+
+  async printProductionPadLabels(productionPadIds: number[]) {
+    const queryRunner = this.dataSource.createQueryRunner();
+    const manager = queryRunner.manager;
+    const productionPadRepository = manager.getRepository(ProductionPad);
+    const productionPads = await productionPadRepository.find({
+      where: { id: In(productionPadIds) },
+    });
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      for (const productionPad of productionPads) {
+        productionPad.isTagPrinted = 1;
+        await productionPadRepository.save(productionPad);
+      }
+      await queryRunner.commitTransaction();
+      return {
+        message: 'برچسب ها با موفقیت چاپ شد',
+        status: true,
+      };
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      return {
+        message: `خطا در چاپ برچسب ها: ${error}`,
+        status: false,
+      };
+    } finally {
+      await queryRunner.release();
+    }
   }
 }

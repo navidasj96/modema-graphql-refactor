@@ -288,6 +288,7 @@ import { JobsModule } from '@/modules/jobs/jobs.module';
 import { TagDetailModule } from './modules/tag-detail/tag-detail.module';
 import { PrintMachineModule } from '@/modules/print-machine/print-machine.module';
 import { ProductionPadRollModule } from '@/modules/production-pad-roll/production-pad-roll.module';
+import { ProductionReceiptModule } from '@/modules/production-receipt/production-receipt.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -635,6 +636,7 @@ const ENV = process.env.NODE_ENV;
     TagDetailModule,
     PrintMachineModule,
     ProductionPadRollModule,
+    ProductionReceiptModule,
   ],
   controllers: [AppController, UserController],
   providers: [

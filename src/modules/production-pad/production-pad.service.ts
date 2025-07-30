@@ -79,4 +79,10 @@ export class ProductionPadService {
       productionPadId
     );
   }
+
+  async printProductionPadLabels(productionPadIds: number[]) {
+    return await this.productionPadProvider.printProductionPadLabels(
+      productionPadIds
+    );
+  }
 }

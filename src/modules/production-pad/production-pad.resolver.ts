@@ -113,4 +113,16 @@ export class ProductionPadResolver {
       productionPadId
     );
   }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([ProductionPadPermissions.PERMISSION_TO_PRINT_CARPET_PAD_TAGS])
+  @Mutation(() => GeneralResponseDto)
+  async printProductionPadLabels(
+    @Args('productionPadIds', { type: () => [Number] })
+    productionPadIds: number[]
+  ) {
+    return await this.productionPadService.printProductionPadLabels(
+      productionPadIds
+    );
+  }
 }

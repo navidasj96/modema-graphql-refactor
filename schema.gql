@@ -1190,7 +1190,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-29T08:36:15.676Z"
+  createdAt: DateTime! = "2025-07-30T11:03:35.602Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1279,7 +1279,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-29T08:36:15.695Z"
+  createdAt: DateTime! = "2025-07-30T11:03:35.621Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1394,7 +1394,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-29T08:36:15.759Z"
+  createdAt: DateTime! = "2025-07-30T11:03:35.682Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1484,7 +1484,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-29T08:36:15.696Z"
+  createdAt: DateTime! = "2025-07-30T11:03:35.623Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1744,7 +1744,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-29T08:36:15.717Z"
+  createdAt: DateTime! = "2025-07-30T11:03:35.643Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1878,7 +1878,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-07-29T08:36:15.698Z"
+  createdAt: DateTime! = "2025-07-30T11:03:35.624Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5239,7 +5239,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-07-29T08:36:16.319Z"
+  createdAt: DateTime! = "2025-07-30T11:03:36.193Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5261,7 +5261,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-07-29T08:36:16.329Z"
+  createdAt: DateTime! = "2025-07-30T11:03:36.203Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5276,7 +5276,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-07-29T08:36:16.342Z"
+  createdAt: DateTime! = "2025-07-30T11:03:36.213Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5300,7 +5300,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-07-29T08:36:16.353Z"
+  createdAt: DateTime! = "2025-07-30T11:03:36.222Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5331,7 +5331,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-07-29T08:36:16.362Z"
+  createdAt: DateTime! = "2025-07-30T11:03:36.231Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5372,7 +5372,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-07-29T08:36:16.390Z"
+  createdAt: DateTime! = "2025-07-30T11:03:36.256Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -7945,6 +7945,11 @@ input CreateManyProductionReceiptTypesInput {
   productionReceiptTypes: [CreateProductionReceiptTypeInput!]!
 }
 
+input CreateManyProductionReceiptsInput {
+  """Array of records to create"""
+  productionReceipts: [CreateProductionReceiptInput!]!
+}
+
 input CreateManyProductionRollsInput {
   """Array of records to create"""
   productionRolls: [CreateProductionRollInput!]!
@@ -9485,6 +9490,11 @@ input CreateOneProductionPadStatusInput {
   productionPadStatus: CreateProductionPadStatusInput!
 }
 
+input CreateOneProductionReceiptInput {
+  """The record to create"""
+  productionReceipt: CreateProductionReceiptInput!
+}
+
 input CreateOneProductionReceiptTypeInput {
   """The record to create"""
   productionReceiptType: CreateProductionReceiptTypeInput!
@@ -10514,6 +10524,11 @@ input CreateProductionPadStatusInput {
   productionPads: [ProductionPadDomain!]!
   step: Float!
   updatedAt: DateTime
+}
+
+input CreateProductionReceiptInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }
 
 input CreateProductionReceiptTypeInput {
@@ -13233,6 +13248,11 @@ input DeleteManyProductionReceiptTypesInput {
   filter: ProductionReceiptTypeDeleteFilter!
 }
 
+input DeleteManyProductionReceiptsInput {
+  """Filter to find records to delete"""
+  filter: ProductionReceiptDeleteFilter!
+}
+
 input DeleteManyProductionRollsInput {
   """Filter to find records to delete"""
   filter: ProductionRollDeleteFilter!
@@ -14539,6 +14559,11 @@ input DeleteOneProductionPadRollInput {
 }
 
 input DeleteOneProductionPadStatusInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneProductionReceiptInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -37487,6 +37512,7 @@ type Mutation {
   createManyProductionPadStatuses(input: CreateManyProductionPadStatusesInput!): [ProductionPadStatus!]!
   createManyProductionPads(input: CreateManyProductionPadsInput!): [ProductionPad!]!
   createManyProductionReceiptTypes(input: CreateManyProductionReceiptTypesInput!): [ProductionReceiptType!]!
+  createManyProductionReceipts(input: CreateManyProductionReceiptsInput!): [ProductionReceipt!]!
   createManyProductionRolls(input: CreateManyProductionRollsInput!): [ProductionRoll!]!
   createManyProducts(input: CreateManyProductsInput!): [Product!]!
   createManyRates(input: CreateManyRatesInput!): [Rate!]!
@@ -37750,6 +37776,7 @@ type Mutation {
   createOneProductionPadProductionPadStatus(input: CreateOneProductionPadProductionPadStatusInput!): ProductionPadProductionPadStatus!
   createOneProductionPadRoll(input: CreateOneProductionPadRollInput!): ProductionPadRoll!
   createOneProductionPadStatus(input: CreateOneProductionPadStatusInput!): ProductionPadStatus!
+  createOneProductionReceipt(input: CreateOneProductionReceiptInput!): ProductionReceipt!
   createOneProductionReceiptType(input: CreateOneProductionReceiptTypeInput!): ProductionReceiptType!
   createOneProductionRoll(input: CreateOneProductionRollInput!): ProductionRoll!
   createOneRate(input: CreateOneRateInput!): Rate!
@@ -38018,6 +38045,7 @@ type Mutation {
   deleteManyProductionPadStatuses(input: DeleteManyProductionPadStatusesInput!): DeleteManyResponse!
   deleteManyProductionPads(input: DeleteManyProductionPadsInput!): DeleteManyResponse!
   deleteManyProductionReceiptTypes(input: DeleteManyProductionReceiptTypesInput!): DeleteManyResponse!
+  deleteManyProductionReceipts(input: DeleteManyProductionReceiptsInput!): DeleteManyResponse!
   deleteManyProductionRolls(input: DeleteManyProductionRollsInput!): DeleteManyResponse!
   deleteManyProducts(input: DeleteManyProductsInput!): DeleteManyResponse!
   deleteManyRates(input: DeleteManyRatesInput!): DeleteManyResponse!
@@ -38279,6 +38307,7 @@ type Mutation {
   deleteOneProductionPadProductionPadStatus(input: DeleteOneProductionPadProductionPadStatusInput!): ProductionPadProductionPadStatusDeleteResponse!
   deleteOneProductionPadRoll(input: DeleteOneProductionPadRollInput!): ProductionPadRollDeleteResponse!
   deleteOneProductionPadStatus(input: DeleteOneProductionPadStatusInput!): ProductionPadStatusDeleteResponse!
+  deleteOneProductionReceipt(input: DeleteOneProductionReceiptInput!): ProductionReceiptDeleteResponse!
   deleteOneProductionReceiptType(input: DeleteOneProductionReceiptTypeInput!): ProductionReceiptTypeDeleteResponse!
   deleteOneProductionRoll(input: DeleteOneProductionRollInput!): ProductionRollDeleteResponse!
   deleteOneRate(input: DeleteOneRateInput!): RateDeleteResponse!
@@ -38365,6 +38394,7 @@ type Mutation {
   invoiceItemsReplaceUpdate(invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput!): GeneralResponseDto!
   moveBackInvoiceItemToRip(moveBackInvoiceItemToRipInput: MoveBackInvoiceItemToRipInput!): GeneralResponseDto!
   printCarpetPadLabels(printCarpetPadLabelsInput: PrintCarpetPadLabelsInput!): PrintCarpetPadLabelsOutput!
+  printProductionPadLabels(productionPadIds: [Float!]!): GeneralResponseDto!
   removeAddress(id: Int!): Address!
   removeNegotiationStep(id: Int!): NegotiationStep!
   removeSetting(id: Int!): Setting!
@@ -38556,6 +38586,7 @@ type Mutation {
   updateManyProductionPadStatuses(input: UpdateManyProductionPadStatusesInput!): UpdateManyResponse!
   updateManyProductionPads(input: UpdateManyProductionPadsInput!): UpdateManyResponse!
   updateManyProductionReceiptTypes(input: UpdateManyProductionReceiptTypesInput!): UpdateManyResponse!
+  updateManyProductionReceipts(input: UpdateManyProductionReceiptsInput!): UpdateManyResponse!
   updateManyProductionRolls(input: UpdateManyProductionRollsInput!): UpdateManyResponse!
   updateManyProducts(input: UpdateManyProductsInput!): UpdateManyResponse!
   updateManyRates(input: UpdateManyRatesInput!): UpdateManyResponse!
@@ -38818,6 +38849,7 @@ type Mutation {
   updateOneProductionPadProductionPadStatus(input: UpdateOneProductionPadProductionPadStatusInput!): ProductionPadProductionPadStatus!
   updateOneProductionPadRoll(input: UpdateOneProductionPadRollInput!): ProductionPadRoll!
   updateOneProductionPadStatus(input: UpdateOneProductionPadStatusInput!): ProductionPadStatus!
+  updateOneProductionReceipt(input: UpdateOneProductionReceiptInput!): ProductionReceipt!
   updateOneProductionReceiptType(input: UpdateOneProductionReceiptTypeInput!): ProductionReceiptType!
   updateOneProductionRoll(input: UpdateOneProductionRollInput!): ProductionRoll!
   updateOneRate(input: UpdateOneRateInput!): Rate!
@@ -43528,9 +43560,20 @@ input ProductionPadDomain {
 
 input ProductionPadFilter {
   and: [ProductionPadFilter!]
+  basicCarpetSize: ProductionPadFilterBasicCarpetSizeFilter
   id: IDFilterComparison
   or: [ProductionPadFilter!]
   rollRefCode: StringFieldComparison
+}
+
+input ProductionPadFilterBasicCarpetSizeFilter {
+  and: [ProductionPadFilterBasicCarpetSizeFilter!]
+  code: StringFieldComparison
+  id: IDFilterComparison
+  isActive: BooleanFieldComparison
+  or: [ProductionPadFilterBasicCarpetSizeFilter!]
+  sortOrder: NumberFieldComparison
+  title: StringFieldComparison
 }
 
 input ProductionPadListInput {
@@ -43631,6 +43674,11 @@ input ProductionPadProductionPadStatusUpdateFilter {
   and: [ProductionPadProductionPadStatusUpdateFilter!]
   id: IDFilterComparison
   or: [ProductionPadProductionPadStatusUpdateFilter!]
+}
+
+type ProductionPadProgress {
+  productionPad: ProductionPad!
+  productionPadStatus: [ProductionPadStatus!]!
 }
 
 type ProductionPadRoll {
@@ -43796,6 +43844,68 @@ input ProductionPadUpdateFilter {
   rollRefCode: StringFieldComparison
 }
 
+type ProductionReceipt {
+  count: Float!
+  createdAt: DateTime
+  id: ID!
+  productionReceiptTypeId: Float!
+  productionRollId: Float!
+  receiptDate: String!
+  receiptNumber: String
+  updatedAt: DateTime
+  weight: Float!
+}
+
+type ProductionReceiptConnection {
+  """Array of edges."""
+  edges: [ProductionReceiptEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+}
+
+input ProductionReceiptDeleteFilter {
+  and: [ProductionReceiptDeleteFilter!]
+  id: IDFilterComparison
+  or: [ProductionReceiptDeleteFilter!]
+}
+
+type ProductionReceiptDeleteResponse {
+  count: Float
+  createdAt: DateTime
+  id: ID
+  productionReceiptTypeId: Float
+  productionRollId: Float
+  receiptDate: String
+  receiptNumber: String
+  updatedAt: DateTime
+  weight: Float
+}
+
+type ProductionReceiptEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the ProductionReceipt"""
+  node: ProductionReceipt!
+}
+
+input ProductionReceiptFilter {
+  and: [ProductionReceiptFilter!]
+  id: IDFilterComparison
+  or: [ProductionReceiptFilter!]
+}
+
+input ProductionReceiptSort {
+  direction: SortDirection!
+  field: ProductionReceiptSortFields!
+  nulls: SortNulls
+}
+
+enum ProductionReceiptSortFields {
+  id
+}
+
 type ProductionReceiptType {
   createdAt: DateTime
   id: ID!
@@ -43859,6 +43969,12 @@ input ProductionReceiptTypeUpdateFilter {
   and: [ProductionReceiptTypeUpdateFilter!]
   id: IDFilterComparison
   or: [ProductionReceiptTypeUpdateFilter!]
+}
+
+input ProductionReceiptUpdateFilter {
+  and: [ProductionReceiptUpdateFilter!]
+  id: IDFilterComparison
+  or: [ProductionReceiptUpdateFilter!]
 }
 
 type ProductionRoll {
@@ -46419,6 +46535,7 @@ type Query {
     """Specify to sort results."""
     sorting: [ProductionPadProductionPadStatusSort!]! = []
   ): ProductionPadProductionPadStatusConnection!
+  productionPadProgress(productionPadProgressInput: Float!): ProductionPadProgress!
   productionPadRoll(
     """The id of the record to find."""
     id: ID!
@@ -46448,6 +46565,10 @@ type Query {
     """Specify to sort results."""
     sorting: [ProductionPadSort!]! = []
   ): [ProductionPad!]!
+  productionReceipt(
+    """The id of the record to find."""
+    id: ID!
+  ): ProductionReceipt!
   productionReceiptType(
     """The id of the record to find."""
     id: ID!
@@ -46462,6 +46583,16 @@ type Query {
     """Specify to sort results."""
     sorting: [ProductionReceiptTypeSort!]! = []
   ): ProductionReceiptTypeConnection!
+  productionReceipts(
+    """Specify to filter the records returned."""
+    filter: ProductionReceiptFilter! = {}
+
+    """Limit or page results."""
+    paging: CursorPaging! = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ProductionReceiptSort!]! = []
+  ): ProductionReceiptConnection!
   productionRoll(
     """The id of the record to find."""
     id: ID!
@@ -53708,7 +53839,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-07-29T08:36:15.676Z"
+  createdAt: DateTime = "2025-07-30T11:03:35.602Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -53730,7 +53861,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-07-29T08:36:15.695Z"
+  createdAt: DateTime = "2025-07-30T11:03:35.621Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53745,7 +53876,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-07-29T08:36:15.759Z"
+  createdAt: DateTime = "2025-07-30T11:03:35.682Z"
   description: String
   facebookId: String
   headerImage: String
@@ -53769,7 +53900,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-07-29T08:36:15.696Z"
+  createdAt: DateTime = "2025-07-30T11:03:35.623Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53786,7 +53917,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-07-29T08:36:15.717Z"
+  createdAt: DateTime = "2025-07-30T11:03:35.643Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -53841,7 +53972,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-07-29T08:36:15.698Z"
+  createdAt: DateTime = "2025-07-30T11:03:35.624Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -56974,6 +57105,14 @@ input UpdateManyProductionReceiptTypesInput {
   update: UpdateProductionReceiptType!
 }
 
+input UpdateManyProductionReceiptsInput {
+  """Filter used to find fields to update"""
+  filter: ProductionReceiptUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateProductionReceipt!
+}
+
 input UpdateManyProductionRollsInput {
   """Filter used to find fields to update"""
   filter: ProductionRollUpdateFilter!
@@ -59311,6 +59450,14 @@ input UpdateOneProductionPadStatusInput {
   update: UpdateProductionPadStatus!
 }
 
+input UpdateOneProductionReceiptInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateProductionReceipt!
+}
+
 input UpdateOneProductionReceiptTypeInput {
   """The id of the record to update"""
   id: ID!
@@ -60626,6 +60773,18 @@ input UpdateProductionPadStatus {
   productionPads: [ProductionPadDomain!]
   step: Float
   updatedAt: DateTime
+}
+
+input UpdateProductionReceipt {
+  count: Float
+  createdAt: DateTime
+  id: ID
+  productionReceiptTypeId: Float
+  productionRollId: Float
+  receiptDate: String
+  receiptNumber: String
+  updatedAt: DateTime
+  weight: Float
 }
 
 input UpdateProductionReceiptType {
