@@ -4,15 +4,18 @@ import { UpdateProductionRollInput } from './dto/update-production-roll.input';
 import { EntityManager, FindOneOptions, Repository } from 'typeorm';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
+import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
 
 @Injectable()
 export class ProductionRollService {
   constructor(
-    /**
-     * inject productionRollRepository
-     */
     @InjectRepository(ProductionRoll)
-    private readonly productionRollRepository: Repository<ProductionRoll>
+    private readonly productionRollRepository: Repository<ProductionRoll>,
+    /**
+     * inject ProductionRollProvider
+     */
+    private readonly productionRollProvider: ProductionRollProvider
   ) {}
   create(createProductionRollInput: CreateProductionRollInput) {
     return 'This action adds a new productionRoll';
@@ -39,5 +42,11 @@ export class ProductionRollService {
       ? manager.getRepository(ProductionRoll)
       : this.productionRollRepository;
     return await productionRollRepository.save(productionRoll);
+  }
+
+  async productionRollList(productionRollInput: ProductionRollInput) {
+    return await this.productionRollProvider.productionRollList(
+      productionRollInput
+    );
   }
 }

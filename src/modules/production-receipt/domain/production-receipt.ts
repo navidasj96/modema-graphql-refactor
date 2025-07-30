@@ -1,7 +1,11 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { FilterableRelation } from '@ptc-org/nestjs-query-graphql';
 import { IDField } from '@ptc-org/nestjs-query-graphql/src/decorators/id-field.decorator';
 
 @ObjectType()
+@FilterableRelation('productionRoll', () => ProductionRoll)
+@InputType('ProductionReceiptDomain')
 export class ProductionReceipt {
   @IDField(() => ID)
   id: number;
@@ -29,4 +33,7 @@ export class ProductionReceipt {
 
   @Field(() => Date, { nullable: true })
   updatedAt: Date | null;
+
+  @Field(() => ProductionRoll)
+  productionRoll: ProductionRoll;
 }

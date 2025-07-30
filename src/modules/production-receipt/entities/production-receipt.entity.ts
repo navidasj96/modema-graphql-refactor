@@ -1,4 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Index('production_receipts_receipt_number_unique', ['receiptNumber'], {
   unique: true,
@@ -42,4 +50,11 @@ export class ProductionReceipt {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt: Date | null;
+
+  @ManyToOne(() => ProductionRoll, (roll) => roll.productionReceipts, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn([{ name: 'production_roll_id', referencedColumnName: 'id' }])
+  productionRoll: ProductionRoll;
 }

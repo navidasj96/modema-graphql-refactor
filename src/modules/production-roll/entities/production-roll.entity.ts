@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { User } from '@/modules/user/entities/user.entity';
+import { ProductionReceipt } from '@/modules/production-receipt/entities/production-receipt.entity';
 
 @Index('production_rolls_bill_number_index', ['billNumber'], {})
 @Index('production_rolls_closed_by_index', ['closedBy'], {})
@@ -85,4 +86,10 @@ export class ProductionRoll {
   })
   @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
   createdBy2: User;
+
+  @OneToMany(
+    () => ProductionReceipt,
+    (productionReceipt) => productionReceipt.productionRoll
+  )
+  productionReceipts: ProductionReceipt[];
 }

@@ -1,17 +1,22 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
+  FilterableRelation,
   IDField,
   PagingStrategies,
   QueryOptions,
+  UnPagedRelation,
 } from '@ptc-org/nestjs-query-graphql';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 import { User } from '@/modules/user/domain/user';
+import { ProductionReceipt } from '@/modules/production-receipt/domain/production-receipt';
 
 @InputType('ProductionRollDomain')
 @QueryOptions({
   pagingStrategy: PagingStrategies.NONE,
 })
+@UnPagedRelation('productionReceipts', () => ProductionReceipt)
+@UnPagedRelation('invoiceProductItems', () => InvoiceProductItem)
 @ObjectType()
 export class ProductionRoll {
   @IDField(() => ID)
@@ -58,6 +63,9 @@ export class ProductionRoll {
 
   @Field(() => [InvoiceProductItem])
   invoiceProductItems: InvoiceProductItem[];
+
+  @Field(() => [ProductionReceipt])
+  productionReceipts: ProductionReceipt[];
 
   @Field(() => User, { nullable: true })
   closedBy2?: User;

@@ -6,9 +6,14 @@ import { ProductionRoll as ProductionRollGraphQL } from '@/modules/production-ro
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
+import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
 
 @Module({
-  providers: [ProductionRollResolver, ProductionRollService],
+  providers: [
+    ProductionRollResolver,
+    ProductionRollService,
+    ProductionRollProvider,
+  ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([ProductionRoll])],
