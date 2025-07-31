@@ -6,6 +6,7 @@ import { ProductionRoll } from '@/modules/production-roll/entities/production-ro
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
 
 @Injectable()
 export class ProductionRollService {
@@ -17,24 +18,19 @@ export class ProductionRollService {
      */
     private readonly productionRollProvider: ProductionRollProvider
   ) {}
-  create(createProductionRollInput: CreateProductionRollInput) {
-    return 'This action adds a new productionRoll';
-  }
 
-  findAll() {
-    return `This action returns all productionRoll`;
+  create(
+    createProductionRollInput: CreateProductionRollInput,
+    context: { req: UserContext }
+  ) {
+    return this.productionRollProvider.create(
+      createProductionRollInput,
+      context
+    );
   }
 
   async findOne(options: FindOneOptions<ProductionRoll>) {
     return await this.productionRollRepository.findOne(options);
-  }
-
-  update(id: number, updateProductionRollInput: UpdateProductionRollInput) {
-    return `This action updates a #${id} productionRoll`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} productionRoll`;
   }
 
   async save(productionRoll: ProductionRoll, manager: EntityManager) {
@@ -47,6 +43,22 @@ export class ProductionRollService {
   async productionRollList(productionRollInput: ProductionRollInput) {
     return await this.productionRollProvider.productionRollList(
       productionRollInput
+    );
+  }
+
+  async closeProductionRoll(
+    productionRollId: number,
+    context: { req: UserContext }
+  ) {
+    return await this.productionRollProvider.closeProductionRoll(
+      productionRollId,
+      context
+    );
+  }
+
+  async productionRollWastage(productionRollIds: number[]) {
+    return await this.productionRollProvider.productionRollWastage(
+      productionRollIds
     );
   }
 }

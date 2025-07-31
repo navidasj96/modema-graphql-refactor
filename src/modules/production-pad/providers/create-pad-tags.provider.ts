@@ -77,7 +77,6 @@ export class CreatePadTagsProvider {
     } else {
       productionPadRollId = productionPadRolls[0].id;
     }
-    console.log('productionPadRollId', productionPadRollId);
     await queryRunner.connect();
     await queryRunner.startTransaction();
 

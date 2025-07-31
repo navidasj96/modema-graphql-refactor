@@ -1,5 +1,8 @@
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
+import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -45,7 +48,7 @@ export class ProductionRollProvider {
         .orWhere('productionRoll.billNumber LIKE :search', {
           search: `%${search}%`,
         })
-        .orWhere('ProductionReceipt.receiptNumber LIKE :search', {
+        .orWhere('receipt.receiptNumber LIKE :search', {
           search: `%${search}%`,
         });
     }
@@ -53,5 +56,130 @@ export class ProductionRollProvider {
     const [productionRolls, count] =
       await productionRollQuery.getManyAndCount();
     return { productionRolls, count };
+  }
+
+  async create(
+    createProductionRollInput: CreateProductionRollInput,
+    context: { req: UserContext }
+  ) {
+    const { rollNumber, width, length, weight, isShaggy, billNumber } =
+      createProductionRollInput;
+    const {
+      user: { sub: userId },
+    } = context.req;
+    const productionRoll = this.productionRollRepository.create({
+      rollNumber,
+      width,
+      length,
+      weight,
+      isShaggy,
+      billNumber,
+      createdBy: userId,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    try {
+      const productionRollWithSameRollNumber =
+        await this.productionRollRepository.findOne({
+          where: { rollNumber },
+        });
+      if (productionRollWithSameRollNumber) {
+        return {
+          message: 'شماره رول انتخابی قبلا در سیستم وارد شده است',
+          status: false,
+        };
+      } else {
+        await this.productionRollRepository.save(productionRoll);
+        return {
+          message: 'Production roll created successfully',
+          status: true,
+        };
+      }
+    } catch {
+      return {
+        message: 'Failed to create production roll',
+        status: false,
+      };
+    }
+  }
+
+  async closeProductionRoll(
+    productionRollId: number,
+    context: { req: UserContext }
+  ) {
+    const productionRoll = await this.productionRollRepository.findOne({
+      where: { id: productionRollId, isClosed: 0 },
+    });
+    const {
+      user: { sub: userId },
+    } = context.req;
+    if (!productionRoll) {
+      return {
+        message: 'رول انتخابی قبلا بسته شده است',
+        status: false,
+      };
+    }
+
+    try {
+      productionRoll.isClosed = 1;
+      productionRoll.closedBy = userId;
+      productionRoll.closeDate = new Date();
+      productionRoll.updatedAt = new Date();
+      await this.productionRollRepository.save(productionRoll);
+      return {
+        message: 'رول انتخابی شما با موفقیت بسته شد.',
+        status: true,
+      };
+    } catch (error) {
+      return {
+        message: `خطا در بسته شدن رول: ${error}`,
+        status: false,
+      };
+    }
+  }
+
+  async productionRollWastage(productionRollIds: number[]) {
+    const productionRolls = await this.productionRollRepository
+      .createQueryBuilder('production_rolls')
+      .select('production_rolls.*')
+      .addSelect((subQuery) => {
+        return subQuery
+          .select('SUM(bcs.width * bcs.length)', 'produced_area')
+          .from('invoice_product_items', 'ipi')
+          .innerJoin('invoice_products', 'ip', 'ip.id = ipi.invoice_product_id')
+          .innerJoin('subproducts', 'sp', 'sp.id = ip.subproduct_id')
+          .innerJoin(
+            'basic_carpet_sizes',
+            'bcs',
+            'bcs.id = sp.basic_carpet_size_id'
+          )
+          .where(`ipi.current_status_id NOT IN (:...notDamagedStatus)`)
+          .andWhere('ipi.production_roll_id = production_rolls.id');
+      }, 'producedArea')
+      .addSelect((subQuery) => {
+        return subQuery
+          .select('SUM(bcs.width * bcs.length)', 'damagedArea')
+          .from('invoice_product_items', 'ipi')
+          .innerJoin('invoice_products', 'ip', 'ip.id = ipi.invoice_product_id')
+          .innerJoin('subproducts', 'sp', 'sp.id = ip.subproduct_id')
+          .innerJoin(
+            'basic_carpet_sizes',
+            'bcs',
+            'bcs.id = sp.basic_carpet_size_id'
+          )
+          .where(`ipi.current_status_id IN (:...damagedStatus)`)
+          .andWhere('ipi.production_roll_id = production_rolls.id');
+      }, 'damagedArea')
+      .whereInIds(productionRollIds)
+      .groupBy('production_rolls.id')
+      .orderBy('production_rolls.roll_number', 'DESC')
+      .setParameters({
+        notDamagedStatus: [InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION],
+        damagedStatus: [InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION],
+      })
+      .getRawMany();
+
+    console.log('Production Roll Wastage:', productionRolls);
   }
 }
