@@ -10,6 +10,7 @@ import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
+import { ProductionRollWastageOutput } from '@/modules/production-roll/dto/production-roll-wastage.output';
 
 @Resolver(() => ProductionRoll)
 export class ProductionRollResolver {
@@ -61,7 +62,7 @@ export class ProductionRollResolver {
 
   @UseGuards(PermissionsGuard)
   @Permissions([ProductionRollPermissions.PERMISSION_TO_VIEW])
-  @Query(() => ProductionRollListOutput)
+  @Query(() => ProductionRollWastageOutput)
   async productionRollWastage(
     @Args('productionRollIds', { type: () => [Number] })
     productionRollIds: number[]
