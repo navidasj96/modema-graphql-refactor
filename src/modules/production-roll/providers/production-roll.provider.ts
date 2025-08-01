@@ -1,11 +1,14 @@
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceProductItemService } from '@/modules/invoice-product-item/invoice-product-item.service';
 import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
+import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
+import { UserService } from '@/modules/user/user.service';
 import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 
 @Injectable()
 export class ProductionRollProvider {
@@ -14,7 +17,16 @@ export class ProductionRollProvider {
      * inject productionRollRepository
      */
     @InjectRepository(ProductionRoll)
-    private readonly productionRollRepository: Repository<ProductionRoll>
+    private readonly productionRollRepository: Repository<ProductionRoll>,
+    /**
+     * inject invoiceProductItemService
+     */
+    @Inject(forwardRef(() => InvoiceProductItemService))
+    private readonly invoiceProductItemService: InvoiceProductItemService,
+    /**
+     * inject userService
+     */
+    private readonly userService: UserService
   ) {}
 
   async productionRollList(productionRollInput: ProductionRollInput) {
@@ -139,10 +151,28 @@ export class ProductionRollProvider {
     }
   }
 
-  async productionRollWastage(productionRollIds: number[]) {
-    const productionRolls = await this.productionRollRepository
+  async productionRollWastage(
+    productionRollWastageInput: ProductionRollWastageInput
+  ) {
+    const { productionRollIds, limit, offset } = productionRollWastageInput;
+    const productionRollsQuery = this.productionRollRepository
       .createQueryBuilder('production_rolls')
-      .select('production_rolls.*')
+      .select([
+        'production_rolls.id AS id',
+        'production_rolls.roll_number AS rollNumber',
+        'production_rolls.width AS width',
+        'production_rolls.length AS length',
+        'production_rolls.weight AS weight',
+        'production_rolls.bill_number AS billNumber',
+        'production_rolls.close_date AS closeDate',
+        'production_rolls.is_shaggy AS isShaggy',
+        'production_rolls.shaggy_color AS shaggyColor',
+        'production_rolls.is_closed AS isClosed',
+        'production_rolls.created_at AS createdAt',
+        'production_rolls.updated_at AS updatedAt',
+        'production_rolls.created_by AS createdBy',
+        'production_rolls.closed_by AS closedBy',
+      ])
       .addSelect((subQuery) => {
         return subQuery
           .select('SUM(bcs.width * bcs.length)', 'produced_area')
@@ -173,13 +203,30 @@ export class ProductionRollProvider {
       }, 'damagedArea')
       .whereInIds(productionRollIds)
       .groupBy('production_rolls.id')
-      .orderBy('production_rolls.roll_number', 'DESC')
+      .orderBy('production_rolls.rollNumber', 'DESC')
       .setParameters({
         notDamagedStatus: [InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION],
         damagedStatus: [InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION],
-      })
-      .getRawMany();
+      });
 
-    console.log('Production Roll Wastage:', productionRolls);
+    // Clone for count query
+    const countQuery = productionRollsQuery.clone();
+    const count = await countQuery.getCount();
+
+    const productionRollWastage = await productionRollsQuery.getRawMany();
+    console.log(productionRollWastage);
+    return {
+      productionRollWastage,
+      count,
+    };
+  }
+
+  async printRollsTags(productionRollId: number) {
+    const invoiceProductItems =
+      await this.invoiceProductItemService.invoiceProductItemForPrintProductTag(
+        productionRollId
+      );
+
+    return invoiceProductItems;
   }
 }

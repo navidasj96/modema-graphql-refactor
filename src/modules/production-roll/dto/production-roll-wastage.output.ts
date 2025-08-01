@@ -5,11 +5,11 @@ export class ProductionRollWastageData {
   @Field(() => Number)
   id: number;
 
-  @Field(() => String)
-  rollNumber: string;
+  @Field(() => String, { nullable: true })
+  rollNumber: string | null;
 
-  @Field(() => Number)
-  width: number;
+  @Field(() => Number, { nullable: true })
+  width: number | null;
 
   @Field(() => Number)
   length: number;
@@ -26,14 +26,8 @@ export class ProductionRollWastageData {
   @Field(() => Number)
   isShaggy: number;
 
-  @Field(() => String)
-  isClosed: number;
-
-  @Field(() => String)
-  createdAt: string;
-
-  @Field(() => String)
-  updatedAt: string;
+  @Field(() => Number, { nullable: true })
+  isClosed: number | null;
 
   @Field(() => Number, { nullable: true })
   producedArea: number | null;

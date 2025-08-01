@@ -7,6 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
 
 @Injectable()
 export class ProductionRollService {
@@ -56,9 +57,15 @@ export class ProductionRollService {
     );
   }
 
-  async productionRollWastage(productionRollIds: number[]) {
+  async productionRollWastage(
+    productionRollWastageInput: ProductionRollWastageInput
+  ) {
     return await this.productionRollProvider.productionRollWastage(
-      productionRollIds
+      productionRollWastageInput
     );
+  }
+
+  async printRollsTags(productionRollId: number) {
+    return await this.productionRollProvider.printRollsTags(productionRollId);
   }
 }

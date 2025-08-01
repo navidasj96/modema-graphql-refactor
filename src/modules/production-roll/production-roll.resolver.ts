@@ -5,12 +5,18 @@ import { ProductionRollListOutput } from '@/modules/production-roll/dto/producti
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
 import { UseGuards } from '@nestjs/common';
 import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
-import { ProductionRollPermissions } from '@/utils/permissions';
+import {
+  InvoiceProductItemPermissions,
+  ProductionRollPermissions,
+} from '@/utils/permissions';
 import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { ProductionRollWastageOutput } from '@/modules/production-roll/dto/production-roll-wastage.output';
+import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { PrintRollTagsOutput } from '@/modules/production-roll/dto/print-roll-tags.output';
 
 @Resolver(() => ProductionRoll)
 export class ProductionRollResolver {
@@ -64,11 +70,23 @@ export class ProductionRollResolver {
   @Permissions([ProductionRollPermissions.PERMISSION_TO_VIEW])
   @Query(() => ProductionRollWastageOutput)
   async productionRollWastage(
-    @Args('productionRollIds', { type: () => [Number] })
-    productionRollIds: number[]
+    @Args('productionRollIds', { type: () => ProductionRollWastageInput })
+    productionRollWastageInput: ProductionRollWastageInput
   ) {
     return await this.productionRollService.productionRollWastage(
-      productionRollIds
+      productionRollWastageInput
     );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([InvoiceProductItemPermissions.PERMISSION_TO_PRINT_ITEMS_TAGS])
+  @Query(() => [InvoiceProductItem])
+  async printRollsTags(
+    @Args('productionRollId', {
+      type: () => Number,
+    })
+    productionRollId: number
+  ) {
+    return await this.productionRollService.printRollsTags(productionRollId);
   }
 }

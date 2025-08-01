@@ -242,4 +242,45 @@ export class InvoiceProductItemService {
       confirmTagsPrintedInput
     );
   }
+
+  async invoiceProductItemForPrintProductTag(productionRollId: number) {
+    const invoiceProductItems = await this.invoiceProductItemRepository
+      .createQueryBuilder('invoiceProductItem')
+      .select('invoiceProductItem')
+
+      // Join once and reuse the alias
+      .innerJoinAndSelect('invoiceProductItem.invoiceProduct', 'invoiceProduct')
+
+      // Now continue joining from 'invoiceProduct'
+      .innerJoin('invoiceProduct.subproduct', 'subproduct')
+      .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
+      .leftJoinAndSelect('invoice.address', 'invoiceAddress')
+      .leftJoinAndSelect('invoiceAddress.state', 'state')
+      .leftJoinAndSelect('invoiceAddress.city', 'city')
+      .leftJoinAndSelect('invoiceProduct.product', 'product')
+      .leftJoinAndSelect('product.image', 'productImage')
+      .leftJoinAndSelect('subproduct.image', 'subproductImage')
+      .leftJoinAndSelect('subproduct.basicCarpetSize', 'basicCarpetSize')
+      .leftJoinAndSelect('subproduct.basicCarpetColor', 'basicCarpetColor')
+
+      // Pivot join
+      .leftJoinAndSelect(
+        'invoiceProductItem.invoiceProductItemInvoiceProductStatuses',
+        'invoiceProductItemInvoiceProductStatuses'
+      )
+      .leftJoinAndSelect(
+        'invoiceProductItemInvoiceProductStatuses.invoiceProductStatus',
+        'invoiceProductStatus'
+      )
+
+      .where('invoiceProductItem.productionRollId = :productionRollId', {
+        productionRollId,
+      })
+      .orderBy('invoiceProductItem.tagSortOrder', 'ASC')
+      .addOrderBy('subproduct.width * subproduct.length', 'DESC')
+      .addOrderBy('invoiceProductItem.updatedAt', 'ASC')
+      .getMany();
+
+    return invoiceProductItems;
+  }
 }

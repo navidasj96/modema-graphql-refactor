@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ProductionReceipt } from '@/modules/production-receipt/entities/production-receipt.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('production_receipt_types', { schema: 'modema' })
 export class ProductionReceiptType {
@@ -13,4 +14,10 @@ export class ProductionReceiptType {
 
   @Column('timestamp', { name: 'updated_at', nullable: true })
   updatedAt?: Date;
+
+  @OneToMany(
+    () => ProductionReceipt,
+    (productionReceipt) => productionReceipt.productionReceiptType
+  )
+  productionReceipts: ProductionReceipt[];
 }

@@ -1,3 +1,4 @@
+import { ProductionReceiptType } from '@/modules/production-receipt-type/domain/production-receipt-type';
 import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { FilterableRelation } from '@ptc-org/nestjs-query-graphql';
@@ -5,6 +6,7 @@ import { IDField } from '@ptc-org/nestjs-query-graphql/src/decorators/id-field.d
 
 @ObjectType()
 @FilterableRelation('productionRoll', () => ProductionRoll)
+@FilterableRelation('productionReceiptType', () => ProductionReceiptType)
 @InputType('ProductionReceiptDomain')
 export class ProductionReceipt {
   @IDField(() => ID)
@@ -36,4 +38,7 @@ export class ProductionReceipt {
 
   @Field(() => ProductionRoll)
   productionRoll: ProductionRoll;
+
+  @Field(() => ProductionReceiptType)
+  productionReceiptType: ProductionReceiptType;
 }

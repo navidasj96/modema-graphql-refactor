@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { ProductionRollService } from './production-roll.service';
 import { ProductionRollResolver } from './production-roll.resolver';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
@@ -7,6 +7,8 @@ import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
+import { InvoiceProductItemModule } from '@/modules/invoice-product-item/invoice-product-item.module';
+import { UserModule } from '@/modules/user/user.module';
 
 @Module({
   providers: [
@@ -25,6 +27,8 @@ import { ProductionRollProvider } from '@/modules/production-roll/providers/prod
         },
       ],
     }),
+    forwardRef(() => InvoiceProductItemModule),
+    UserModule,
   ],
   exports: [ProductionRollService],
 })

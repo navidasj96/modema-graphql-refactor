@@ -1,3 +1,4 @@
+import { ProductionReceiptType } from '@/modules/production-receipt-type/entities/production-receipt-type.entity';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
 import {
   Column,
@@ -57,4 +58,17 @@ export class ProductionReceipt {
   })
   @JoinColumn([{ name: 'production_roll_id', referencedColumnName: 'id' }])
   productionRoll: ProductionRoll;
+
+  @ManyToOne(
+    () => ProductionReceiptType,
+    (productionReceiptType) => productionReceiptType.productionReceipts,
+    {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    }
+  )
+  @JoinColumn([
+    { name: 'production_receipt_type_id', referencedColumnName: 'id' },
+  ])
+  productionReceiptType: ProductionReceiptType;
 }
