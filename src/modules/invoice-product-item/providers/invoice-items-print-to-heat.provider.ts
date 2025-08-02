@@ -48,6 +48,7 @@ export class InvoiceItemsPrintToHeatProvider {
     let ripItems: InvoiceProductItem[] = [];
 
     if (printRipId) {
+      console.log('ripItems', ripItems);
       const invoiceProductRipItems = await this.invoiceProductItemRepository
         .createQueryBuilder('invoiceProductItem')
         .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')
@@ -71,6 +72,8 @@ export class InvoiceItemsPrintToHeatProvider {
     }
 
     if (productionRollId) {
+      console.log('heatItems', heatItems);
+
       const invoiceProductHeatItems = await this.invoiceProductItemRepository
         .createQueryBuilder('invoiceProductItem')
         .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')

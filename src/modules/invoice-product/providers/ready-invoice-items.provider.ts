@@ -174,22 +174,7 @@ export class ReadyInvoiceProductProvider {
 
       readyInvoiceProductItems.push({ ...itemInvoiceProduct, withPadText });
     }
-
-    // const readyOnlyPadsInvoices = await this.invoiceService.readyOnlyPads(
-    //   fromDate ? fromDate : undefined,
-    //   toDate ? toDate : undefined
-    // );
-    // const invoicesContainsPadsOnly: ReadyInvoiceProductItemTs[] = [];
-    // for (const readyOnlyPadsInvoice of readyOnlyPadsInvoices) {
-    //   for (const invoiceProduct of readyOnlyPadsInvoice.invoiceProducts) {
-    //     const withPadText = 'سفارش پد به تنهایی';
-    //     invoicesContainsPadsOnly.push({
-    //       ...invoiceProduct,
-    //       withPadText,
-    //     });
-    //   }
-    // }
-
+    console.log('itemInvoiceProducts', itemInvoiceProducts);
     return {
       itemInvoiceProducts: readyInvoiceProductItems,
       totalCount: total,
