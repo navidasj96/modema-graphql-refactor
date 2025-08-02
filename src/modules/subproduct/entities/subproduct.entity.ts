@@ -378,19 +378,19 @@ export class Subproduct {
   invoiceProductHistories2: InvoiceProductHistory[];
 
   @OneToMany(() => InvoiceProduct, (invoiceProduct) => invoiceProduct.pad)
-  invoiceProducts: InvoiceProduct[];
+  padInvoiceProducts: InvoiceProduct[];
 
   @OneToMany(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.relatedSubproduct
   )
-  invoiceProducts2: InvoiceProduct[];
+  relatedInvoiceProducts: InvoiceProduct[];
 
   @OneToMany(
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.subproduct
   )
-  invoiceProducts3: InvoiceProduct[];
+  invoiceProducts: InvoiceProduct[];
 
   @OneToMany(
     () => NeedsPhotographySubproduct,

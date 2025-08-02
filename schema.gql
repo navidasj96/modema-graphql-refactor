@@ -1190,7 +1190,7 @@ type BasicCarpetColorDeleteResponse {
 input BasicCarpetColorDomain {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-08-01T18:56:12.196Z"
+  createdAt: DateTime! = "2025-08-02T09:53:42.736Z"
   englishTitle: String
   id: ID!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -1279,7 +1279,7 @@ type BasicCarpetDesignDeleteResponse {
 
 input BasicCarpetDesignDomain {
   code: String!
-  createdAt: DateTime! = "2025-08-01T18:56:12.205Z"
+  createdAt: DateTime! = "2025-08-02T09:53:42.753Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1394,7 +1394,7 @@ input BasicCarpetDesignerDomain {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-08-01T18:56:12.239Z"
+  createdAt: DateTime! = "2025-08-02T09:53:42.816Z"
   description: String
   facebookId: String
   headerImage: String
@@ -1484,7 +1484,7 @@ type BasicCarpetMaterialDeleteResponse {
 
 input BasicCarpetMaterialDomain {
   code: String!
-  createdAt: DateTime! = "2025-08-01T18:56:12.206Z"
+  createdAt: DateTime! = "2025-08-02T09:53:42.754Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -1744,7 +1744,7 @@ input BasicCarpetSizeDomain {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-08-01T18:56:12.217Z"
+  createdAt: DateTime! = "2025-08-02T09:53:42.774Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -1878,7 +1878,7 @@ type BasicCarpetTypeDeleteResponse {
 
 input BasicCarpetTypeDomain {
   code: String!
-  createdAt: DateTime! = "2025-08-01T18:56:12.207Z"
+  createdAt: DateTime! = "2025-08-02T09:53:42.756Z"
   id: ID!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5239,7 +5239,7 @@ input CreateBasicCarpetBrandInput {
 input CreateBasicCarpetColorInput {
   code: String!
   colorCode: String
-  createdAt: DateTime! = "2025-08-01T18:56:12.597Z"
+  createdAt: DateTime! = "2025-08-02T09:53:43.340Z"
   englishTitle: String
   id: Float!
   incredibleOffers: [IncredibleOfferDomain!]!
@@ -5261,7 +5261,7 @@ input CreateBasicCarpetColorInput {
 
 input CreateBasicCarpetDesignInput {
   code: String!
-  createdAt: DateTime! = "2025-08-01T18:56:12.603Z"
+  createdAt: DateTime! = "2025-08-02T09:53:43.351Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5276,7 +5276,7 @@ input CreateBasicCarpetDesignerInput {
   code: String!
   country: CountryDomain!
   countryId: Float
-  createdAt: DateTime! = "2025-08-01T18:56:12.612Z"
+  createdAt: DateTime! = "2025-08-02T09:53:43.361Z"
   description: String
   facebookId: String
   headerImage: String
@@ -5300,7 +5300,7 @@ input CreateBasicCarpetDesignerInput {
 
 input CreateBasicCarpetMaterialInput {
   code: String!
-  createdAt: DateTime! = "2025-08-01T18:56:12.617Z"
+  createdAt: DateTime! = "2025-08-02T09:53:43.371Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -5331,7 +5331,7 @@ input CreateBasicCarpetSizeInput {
   carpetVolume: Float = 0
   code: String!
   couponSubjects: [CouponSubjectDomain!]!
-  createdAt: DateTime! = "2025-08-01T18:56:12.622Z"
+  createdAt: DateTime! = "2025-08-02T09:53:43.379Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]!
@@ -5372,7 +5372,7 @@ input CreateBasicCarpetSizeInput {
 
 input CreateBasicCarpetTypeInput {
   code: String!
-  createdAt: DateTime! = "2025-08-01T18:56:12.636Z"
+  createdAt: DateTime! = "2025-08-02T09:53:43.406Z"
   id: Float!
   isActive: Boolean! = true
   sortOrder: Float
@@ -10527,8 +10527,12 @@ input CreateProductionPadStatusInput {
 }
 
 input CreateProductionReceiptInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  count: Float!
+  productionReceiptTypeId: Float!
+  productionRollId: Float!
+  receiptDate: String!
+  receiptNumber: String!
+  weight: Float!
 }
 
 input CreateProductionReceiptTypeInput {
@@ -37850,6 +37854,7 @@ type Mutation {
   createOneWithdrawalRequestStatus(input: CreateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   createOneWonderfulOffer(input: CreateOneWonderfulOfferInput!): WonderfulOffer!
   createPrintRip(createPrintRip: CreatePrintRipInput!): GeneralResponseDto!
+  createProductionReceipt(createProductionReceiptInput: CreateProductionReceiptInput!): GeneralResponseDto!
   createProductionRoll(createProductionRollInput: CreateProductionRollInput!): GeneralResponseDto!
   createRipTemplate(createRipTemplateInput: CreateRipTemplateInput!): GeneralResponseDto!
   createSetting(createSettingInput: CreateSettingInput!): Setting!
@@ -38381,6 +38386,7 @@ type Mutation {
   deleteOneWithdrawalRequest(input: DeleteOneWithdrawalRequestInput!): WithdrawalRequestDeleteResponse!
   deleteOneWithdrawalRequestStatus(input: DeleteOneWithdrawalRequestStatusInput!): WithdrawalRequestStatusDeleteResponse!
   deleteOneWonderfulOffer(input: DeleteOneWonderfulOfferInput!): WonderfulOfferDeleteResponse!
+  deleteProductionReceipt(id: Int!): GeneralResponseDto!
   invoiceItemsPrintToHeatUpdate(updateInvoiceProductItemPrintToHeatInput: UpdateInvoiceProductItemPrintToHeatInput!): GeneralResponseDto!
   invoiceItemsReplaceUpdate(invoiceItemReplaceUpdateInput: InvoiceItemReplaceUpdateInput!): GeneralResponseDto!
   moveBackInvoiceItemToRip(moveBackInvoiceItemToRipInput: MoveBackInvoiceItemToRipInput!): GeneralResponseDto!
@@ -38924,6 +38930,7 @@ type Mutation {
   updateOneWithdrawalRequestStatus(input: UpdateOneWithdrawalRequestStatusInput!): WithdrawalRequestStatus!
   updateOneWonderfulOffer(input: UpdateOneWonderfulOfferInput!): WonderfulOffer!
   updatePrintRip(updatePrintRip: UpdatePrintRipInput!): GeneralResponseDto!
+  updateProductionReceipt(updateProductionReceiptInput: UpdateProductionReceiptInput!): GeneralResponseDto!
   updateRipTemplate(updateRipTemplateInput: UpdateRipTemplateInput!): GeneralResponseDto!
   updateRollReferenceCode(padRollRefCode: String!): GeneralResponseDto!
   updateRollRefrenceCode(rollReferenceCode: String!, rollReferenceCodeId: String!): GeneralResponseDto!
@@ -53903,7 +53910,7 @@ input UpdateBasicCarpetBrand {
 input UpdateBasicCarpetColor {
   code: String
   colorCode: String
-  createdAt: DateTime = "2025-08-01T18:56:12.196Z"
+  createdAt: DateTime = "2025-08-02T09:53:42.736Z"
   englishTitle: String
   id: ID
   incredibleOffers: [IncredibleOfferDomain!]
@@ -53925,7 +53932,7 @@ input UpdateBasicCarpetColor {
 
 input UpdateBasicCarpetDesign {
   code: String
-  createdAt: DateTime = "2025-08-01T18:56:12.205Z"
+  createdAt: DateTime = "2025-08-02T09:53:42.753Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53940,7 +53947,7 @@ input UpdateBasicCarpetDesigner {
   code: String
   country: CountryDomain
   countryId: Float
-  createdAt: DateTime = "2025-08-01T18:56:12.239Z"
+  createdAt: DateTime = "2025-08-02T09:53:42.816Z"
   description: String
   facebookId: String
   headerImage: String
@@ -53964,7 +53971,7 @@ input UpdateBasicCarpetDesigner {
 
 input UpdateBasicCarpetMaterial {
   code: String
-  createdAt: DateTime = "2025-08-01T18:56:12.206Z"
+  createdAt: DateTime = "2025-08-02T09:53:42.754Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -53981,7 +53988,7 @@ input UpdateBasicCarpetSize {
   carpetVolume: Float = 0
   code: String
   couponSubjects: [CouponSubjectDomain!]
-  createdAt: DateTime = "2025-08-01T18:56:12.217Z"
+  createdAt: DateTime = "2025-08-02T09:53:42.774Z"
   description: String
   descriptionEn: String
   designersProductPriceRanges: [DesignersProductPriceRangeDomain!]
@@ -54036,7 +54043,7 @@ input UpdateBasicCarpetSizeDetail {
 
 input UpdateBasicCarpetType {
   code: String
-  createdAt: DateTime = "2025-08-01T18:56:12.207Z"
+  createdAt: DateTime = "2025-08-02T09:53:42.756Z"
   id: ID
   isActive: Boolean = true
   sortOrder: Float
@@ -60850,6 +60857,16 @@ input UpdateProductionReceipt {
   receiptDate: String
   receiptNumber: String
   updatedAt: DateTime
+  weight: Float
+}
+
+input UpdateProductionReceiptInput {
+  count: Float
+  id: Int!
+  productionReceiptTypeId: Float
+  productionRollId: Float
+  receiptDate: String
+  receiptNumber: String
   weight: Float
 }
 

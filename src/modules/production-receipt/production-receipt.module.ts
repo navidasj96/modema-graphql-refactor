@@ -7,9 +7,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 import { CreateProductionReceiptInput } from '@/modules/production-receipt/dto/create-production-receipt.input';
+import { ProductionRollModule } from '@/modules/production-roll/production-roll.module';
+import { ProductionReceiptProvider } from '@/modules/production-receipt/providers/production-receipt.provider';
 
 @Module({
-  providers: [ProductionReceiptService, ProductionReceiptResolver],
+  providers: [
+    ProductionReceiptService,
+    ProductionReceiptResolver,
+    ProductionReceiptProvider,
+  ],
   imports: [
     TypeOrmModule.forFeature([ProductionReceipt]),
     NestjsQueryGraphQLModule.forFeature({
@@ -22,6 +28,7 @@ import { CreateProductionReceiptInput } from '@/modules/production-receipt/dto/c
         },
       ],
     }),
+    ProductionRollModule,
   ],
   exports: [ProductionReceiptService],
 })

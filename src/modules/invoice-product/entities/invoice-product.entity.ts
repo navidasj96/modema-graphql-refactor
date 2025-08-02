@@ -252,7 +252,7 @@ export class InvoiceProduct {
   @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
   invoice: Invoice;
 
-  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts, {
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.padInvoiceProducts, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
@@ -266,21 +266,25 @@ export class InvoiceProduct {
   @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
   product: Product;
 
-  @ManyToOne(() => Product, (product) => product.invoiceProducts2, {
+  @ManyToOne(() => Product, (product) => product.relatedInvoiceProducts, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'related_product_id', referencedColumnName: 'id' }])
   relatedProduct: Product;
 
-  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts2, {
-    onDelete: 'NO ACTION',
-    onUpdate: 'CASCADE',
-  })
+  @ManyToOne(
+    () => Subproduct,
+    (subproduct) => subproduct.relatedInvoiceProducts,
+    {
+      onDelete: 'NO ACTION',
+      onUpdate: 'CASCADE',
+    }
+  )
   @JoinColumn([{ name: 'related_subproduct_id', referencedColumnName: 'id' }])
   relatedSubproduct: Subproduct;
 
-  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts3, {
+  @ManyToOne(() => Subproduct, (subproduct) => subproduct.invoiceProducts, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
   })

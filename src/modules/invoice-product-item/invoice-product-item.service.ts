@@ -31,6 +31,8 @@ import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-prod
 import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
 import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
+import { InvoiceStatusEnum } from '@/utils/invoice-status';
+import { NOT_SENT_INVOICE_STATUSES } from '../../utils/invoice-status';
 
 @Injectable()
 export class InvoiceProductItemService {
@@ -246,36 +248,48 @@ export class InvoiceProductItemService {
   async invoiceProductItemForPrintProductTag(productionRollId: number) {
     const invoiceProductItems = await this.invoiceProductItemRepository
       .createQueryBuilder('invoiceProductItem')
-      .select('invoiceProductItem')
 
+      .select('invoiceProductItem')
       // Join once and reuse the alias
-      .innerJoinAndSelect('invoiceProductItem.invoiceProduct', 'invoiceProduct')
+      .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')
 
       // Now continue joining from 'invoiceProduct'
-      .innerJoin('invoiceProduct.subproduct', 'subproduct')
-      .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
-      .leftJoinAndSelect('invoice.address', 'invoiceAddress')
-      .leftJoinAndSelect('invoiceAddress.state', 'state')
-      .leftJoinAndSelect('invoiceAddress.city', 'city')
-      .leftJoinAndSelect('invoiceProduct.product', 'product')
-      .leftJoinAndSelect('product.image', 'productImage')
-      .leftJoinAndSelect('subproduct.image', 'subproductImage')
-      .leftJoinAndSelect('subproduct.basicCarpetSize', 'basicCarpetSize')
-      .leftJoinAndSelect('subproduct.basicCarpetColor', 'basicCarpetColor')
+      .innerJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
+      .innerJoinAndSelect('invoiceProduct.invoice', 'invoice')
+      .innerJoinAndSelect('invoice.address', 'invoiceAddress')
+      .innerJoinAndSelect('invoice.user', 'invoiceUser')
+      .innerJoinAndSelect('invoiceUser.invoices', 'userInvoices')
+      .innerJoinAndSelect('userInvoices.invoiceProducts', 'userInvoiceProducts')
+      .innerJoinAndSelect(
+        'userInvoiceProducts.subproduct',
+        'userInvoiceSubproduct'
+      )
+      .innerJoinAndSelect('invoiceAddress.state', 'state')
+      .innerJoinAndSelect('invoiceAddress.city', 'city')
+      .innerJoinAndSelect('invoiceProduct.product', 'product')
+      .innerJoinAndSelect('product.image', 'productImage')
+      .innerJoinAndSelect('subproduct.image', 'subproductImage')
+      .innerJoinAndSelect('subproduct.basicCarpetSize', 'basicCarpetSize')
+      .innerJoinAndSelect('subproduct.basicCarpetColor', 'basicCarpetColor')
 
       // Pivot join
-      .leftJoinAndSelect(
+      .innerJoinAndSelect(
         'invoiceProductItem.invoiceProductItemInvoiceProductStatuses',
         'invoiceProductItemInvoiceProductStatuses'
       )
-      .leftJoinAndSelect(
+      .innerJoinAndSelect(
         'invoiceProductItemInvoiceProductStatuses.invoiceProductStatus',
         'invoiceProductStatus'
       )
-
       .where('invoiceProductItem.productionRollId = :productionRollId', {
         productionRollId,
       })
+      .andWhere(
+        'userInvoices.currentInvoiceStatusId IN (:...currentInvoiceStatusId)',
+        {
+          currentInvoiceStatusId: NOT_SENT_INVOICE_STATUSES,
+        }
+      )
       .orderBy('invoiceProductItem.tagSortOrder', 'ASC')
       .addOrderBy('subproduct.width * subproduct.length', 'DESC')
       .addOrderBy('invoiceProductItem.updatedAt', 'ASC')

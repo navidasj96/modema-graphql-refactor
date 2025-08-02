@@ -386,7 +386,7 @@ export class Product {
     () => InvoiceProduct,
     (invoiceProduct) => invoiceProduct.relatedProduct
   )
-  invoiceProducts2: InvoiceProduct[];
+  relatedInvoiceProducts: InvoiceProduct[];
 
   @OneToMany(() => LabelProduct, (labelProduct) => labelProduct.product)
   labelProducts: LabelProduct[];

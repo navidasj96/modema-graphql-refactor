@@ -641,10 +641,10 @@ export class User {
   invoiceReversals?: InvoiceReversal[];
 
   @OneToMany(() => Invoice, (invoice) => invoice.moneyTransferConfirmedBy2)
-  invoices?: Invoice[];
+  invoicesConfirmedBy?: Invoice[];
 
   @OneToMany(() => Invoice, (invoice) => invoice.user)
-  invoices2?: Invoice[];
+  invoices?: Invoice[];
 
   @OneToMany(() => ModelVisit, (modelVisit) => modelVisit.user)
   modelVisits?: ModelVisit[];

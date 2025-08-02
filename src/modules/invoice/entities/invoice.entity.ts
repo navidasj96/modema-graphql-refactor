@@ -667,8 +667,8 @@ export class Invoice {
   ])
   replacementPaymentStatus: InvoicePaymentStatus;
 
-  @ManyToOne(() => User, (user) => user.invoices2, {
-    onDelete: 'NO ACTION',
+  @ManyToOne(() => User, (user) => user.invoices, {
+    onDelete: 'RESTRICT',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
