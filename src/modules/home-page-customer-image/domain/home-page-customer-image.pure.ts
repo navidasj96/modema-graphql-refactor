@@ -1,10 +1,10 @@
-import { Image } from '@/modules/image/domain/image';
-import { Product } from '@/modules/product/domain/product';
+import { ImagePure } from '@/modules/image/domain/image.pure';
+import { ProductPure } from '@/modules/product/domain/product.pure';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
-@InputType('HomePageCustomerImageDomain')
+@InputType('HomePageCustomerImagePureDomain')
 @ObjectType()
-export class HomePageCustomerImage {
+export class HomePageCustomerImagePure {
   @Field(() => ID)
   id: number;
 
@@ -32,12 +32,12 @@ export class HomePageCustomerImage {
   @Field({ nullable: true })
   productId?: number;
 
-  @Field(() => Image, { nullable: true })
-  desktopImage?: Image;
+  @Field(() => ImagePure, { nullable: true })
+  desktopImage?: ImagePure;
 
-  @Field(() => Image, { nullable: true })
-  mobileImage?: Image;
+  @Field(() => ImagePure, { nullable: true })
+  mobileImage?: ImagePure;
 
-  @Field(() => Product, { nullable: true })
-  product?: Product;
+  @Field(() => ProductPure, { nullable: true })
+  product?: ProductPure;
 }
