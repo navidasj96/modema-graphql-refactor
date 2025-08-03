@@ -251,7 +251,7 @@ export class InvoiceProductItemService {
 
       .select('invoiceProductItem')
       // Join once and reuse the alias
-      .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')
+      .innerJoinAndSelect('invoiceProductItem.invoiceProduct', 'invoiceProduct')
 
       // Now continue joining from 'invoiceProduct'
       .innerJoinAndSelect('invoiceProduct.subproduct', 'subproduct')

@@ -17,6 +17,7 @@ import { ProductionRollWastageOutput } from '@/modules/production-roll/dto/produ
 import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
 import { PrintRollTagsOutput } from '@/modules/production-roll/dto/print-roll-tags.output';
+import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
 
 @Resolver(() => ProductionRoll)
 export class ProductionRollResolver {
@@ -80,7 +81,7 @@ export class ProductionRollResolver {
 
   @UseGuards(PermissionsGuard)
   @Permissions([InvoiceProductItemPermissions.PERMISSION_TO_PRINT_ITEMS_TAGS])
-  @Query(() => [InvoiceProductItem])
+  @Query(() => [InvoiceProductItemPure])
   async printRollsTags(
     @Args('productionRollId', {
       type: () => Number,

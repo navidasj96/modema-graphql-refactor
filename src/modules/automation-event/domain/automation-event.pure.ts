@@ -1,0 +1,75 @@
+import { UserPure } from '@/modules/user/domain/user.pure';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
+
+@InputType('AutomationEventDomain')
+@ObjectType()
+export class AutomationEvent {
+  @Field()
+  id: number;
+
+  @Field()
+  typeId: number;
+
+  @Field()
+  type: string;
+
+  @Field({ defaultValue: false })
+  smsSent: boolean;
+
+  @Field({ defaultValue: false })
+  onlineSheetSaved: boolean;
+
+  @Field()
+  eventDatetime: Date;
+
+  @Field()
+  triggerDatetime: Date;
+
+  @Field()
+  event: string;
+
+  @Field()
+  eventDate: string;
+
+  @Field()
+  eventTimestamp: string;
+
+  @Field({ nullable: true })
+  rfmScore?: string;
+
+  @Field({ nullable: true })
+  rfmCat?: string;
+
+  @Field()
+  userName: string;
+
+  @Field({ nullable: true })
+  userId?: number;
+
+  @Field()
+  userUid: number;
+
+  @Field()
+  userContact: string;
+
+  @Field()
+  status: string;
+
+  @Field({ nullable: true })
+  lastEec?: string;
+
+  @Field({ nullable: true })
+  messages?: string;
+
+  @Field({ nullable: true })
+  createdAt?: Date;
+
+  @Field({ nullable: true })
+  updatedAt?: Date;
+
+  @Field({ nullable: true })
+  deletedAt?: Date;
+
+  @Field(() => UserPure, { nullable: true })
+  user?: UserPure;
+}
