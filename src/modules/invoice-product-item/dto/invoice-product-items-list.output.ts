@@ -1,10 +1,10 @@
-import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class InvoiceProductItemsListOutput {
-  @Field(() => [InvoiceProductItem])
-  invoiceProductItems?: InvoiceProductItem[];
+  @Field(() => [InvoiceProductItemPure])
+  invoiceProductItems?: InvoiceProductItemPure[];
 
   @Field(() => Number)
   totalCount: number;

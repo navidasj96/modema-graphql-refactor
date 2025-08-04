@@ -1,12 +1,21 @@
 import { AuthService } from '@/modules/auth/auth.service';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
+import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
 import { InvoiceProductItemInvoiceProductStatusService } from '@/modules/invoice-product-item-invoice-product-status/invoice-product-item-invoice-product-status.service';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { InvoiceProductItemService } from '@/modules/invoice-product-item/invoice-product-item.service';
+import { InvoiceProductService } from '@/modules/invoice-product/invoice-product.service';
 import { ChangeInvoicesStatusResponseDto } from '@/modules/invoice/dto/change-invoices-status-response.dto';
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { JobsEnum } from '@/modules/jobs/enum/jobsEnum';
 import { SettingService } from '@/modules/setting/setting.service';
+import { ShippingServiceService } from '@/modules/shipping-service/shipping-service.service';
+import { User } from '@/modules/user/entities/user.entity';
 import { permissionsToChangeInvoiceStatusEnum } from '@/modules/user/helpers/permission-to-change-invoice-status';
+import { UserService } from '@/modules/user/user.service';
+import { VisitorService } from '@/modules/visitor/visitor.service';
 import { RolesNameEnum } from '@/utils/general-enums.enum';
 import { checkUserHasPermission, checkUserHasRole } from '@/utils/helpers';
 import {
@@ -21,7 +30,13 @@ import {
   READY_TO_SEND_INVOICE_STATUSES,
 } from '@/utils/invoice-status';
 import { InvoicePermissions } from '@/utils/permissions';
-import { Injectable } from '@nestjs/common';
+import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
+import { InjectQueue } from '@nestjs/bull';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Queue } from 'bull';
+import { GraphQLError } from 'graphql';
 import {
   DataSource,
   EntityManager,
@@ -30,21 +45,6 @@ import {
   Not,
   Repository,
 } from 'typeorm';
-import { ShippingServiceService } from '@/modules/shipping-service/shipping-service.service';
-import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
-import { ConfigService } from '@nestjs/config';
-import { VisitorService } from '@/modules/visitor/visitor.service';
-import { InjectQueue } from '@nestjs/bull';
-import { Queue } from 'bull';
-import { User } from '@/modules/user/entities/user.entity';
-import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
-import { InvoiceProductService } from '@/modules/invoice-product/invoice-product.service';
-import { InjectRepository } from '@nestjs/typeorm';
-import { InvoiceInvoiceStatusService } from '@/modules/invoice-invoice-status/invoice-invoice-status.service';
-import { InvoiceHistoryService } from '@/modules/invoice-history/invoice-history.service';
-import { GraphQLError } from 'graphql';
-import { UserService } from '@/modules/user/user.service';
-import { JobsEnum } from '@/modules/jobs/enum/jobsEnum';
 
 @Injectable()
 export class ChangeInvoiceStatusProvider {
@@ -64,6 +64,7 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject invoiceProductItemService
      */
+    @Inject(forwardRef(() => InvoiceProductItemService))
     private readonly invoiceProductItemService: InvoiceProductItemService,
     /**
      * inject invoiceProductItemInvoiceProductStatusService

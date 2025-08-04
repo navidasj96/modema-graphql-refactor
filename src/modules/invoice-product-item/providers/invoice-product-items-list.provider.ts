@@ -1,11 +1,11 @@
-import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
-import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
-import { Injectable } from '@nestjs/common';
-import { Brackets, Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
-import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
-import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/invoice-product-item/providers/viewable-invoice-product-item-statues-for-user';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { ViewableInvoiceProductItemStatusesForUserProvider } from '@/modules/invoice-product-item/providers/viewable-invoice-product-item-statues-for-user';
+import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Brackets, Repository } from 'typeorm';
 
 @Injectable()
 export class InvoiceProductItemsListProvider {
@@ -49,24 +49,27 @@ export class InvoiceProductItemsListProvider {
 
     const invoiceProductItemsQuery = this.invoiceProductItemRepository
       .createQueryBuilder('ipi')
-      .select(['ipi'])
-      .innerJoin('ipi.invoiceProduct', 'ip')
-      .innerJoin('ip.invoice', 'inv')
-      .innerJoin('inv.invoiceAddresses', 'addr')
-      .innerJoin('ip.product', 'prod')
-      .innerJoin('ip.subproduct', 'subprod')
-      .innerJoin('subprod.basicCarpetSize', 'bcs')
-      .innerJoin('subprod.basicCarpetColor', 'bcc')
-      .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipis')
-      .innerJoin('ipis.invoiceProductStatus', 'status')
-      .leftJoin('ipi.printProfile', 'profile')
-      .leftJoin('ipi.productionRoll', 'productionRoll')
-      .leftJoin('ipi.printRip', 'printRip')
+
+      .innerJoinAndSelect('ipi.invoiceProduct', 'ip')
+      .innerJoinAndSelect('ipi.currentStatus', 'currentStatus')
+      .innerJoinAndSelect('ip.invoice', 'inv')
+      .innerJoinAndSelect('inv.invoiceAddresses', 'addr')
+      .innerJoinAndSelect('ip.product', 'prod')
+      .innerJoinAndSelect('ip.subproduct', 'subprod')
+      .innerJoinAndSelect('subprod.basicCarpetSize', 'bcs')
+      .innerJoinAndSelect('subprod.basicCarpetColor', 'bcc')
+      .innerJoinAndSelect(
+        'ipi.invoiceProductItemInvoiceProductStatuses',
+        'ipis'
+      )
+      .innerJoinAndSelect('ipis.invoiceProductStatus', 'status')
+      .leftJoinAndSelect('ipi.printProfile', 'profile')
+      .leftJoinAndSelect('ipi.productionRoll', 'productionRoll')
+      .leftJoinAndSelect('ipi.printRip', 'printRip')
       .where('inv.currentInvoiceStatusId IN (:...invoiceStatuses)', {
         invoiceStatuses: INVOICE_STATUSES_AFTER_PRODUCTION_START,
       })
       .andWhere('prod.isShaggy = :isShaggy', { isShaggy: isShaggy ? 1 : 0 })
-      .groupBy('ipi.id')
       .skip(offset)
       .take(limit);
 
@@ -125,10 +128,7 @@ export class InvoiceProductItemsListProvider {
 
     if (!sort) {
       //default
-      invoiceProductItemsQuery
-        .addSelect('inv.invoiceNumber')
-        .orderBy('inv.invoiceNumber', 'DESC')
-        .addGroupBy('inv.invoiceNumber');
+      invoiceProductItemsQuery.orderBy('inv.invoiceNumber', 'DESC');
     } else {
       //possible sort fields
       const sortMap: Record<string, { column: string; alias: string }> = {
@@ -155,10 +155,10 @@ export class InvoiceProductItemsListProvider {
       const { field, order } = sort;
       const sortDef = sortMap[field];
       if (sortDef && ['ASC', 'DESC'].includes(order.toUpperCase())) {
-        invoiceProductItemsQuery
-          .addSelect(sortDef.column)
-          .orderBy(sortDef.column, order.toUpperCase() as 'ASC' | 'DESC')
-          .addGroupBy(sortDef.column);
+        invoiceProductItemsQuery.orderBy(
+          sortDef.column,
+          order.toUpperCase() as 'ASC' | 'DESC'
+        );
       }
     }
     const [invoiceProductItems, totalCount] =
