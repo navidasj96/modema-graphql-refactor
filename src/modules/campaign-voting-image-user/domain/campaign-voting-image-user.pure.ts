@@ -1,9 +1,9 @@
 import { UserPure } from '@/modules/user/domain/user.pure';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
-@InputType('CampaignVotingImageUserDomain')
+@InputType('CampaignVotingImageUserPureDomain')
 @ObjectType()
-export class CampaignVotingImageUser {
+export class CampaignVotingImageUserPure {
   @Field(() => ID)
   id: number;
 

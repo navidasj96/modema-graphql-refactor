@@ -1,7 +1,7 @@
-import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType('ActivityPure')
-@ObjectType()
+@ObjectType('ActivityPureDomain')
 export class ActivityPure {
   @Field()
   id: number;

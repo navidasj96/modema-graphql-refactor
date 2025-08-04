@@ -2,7 +2,7 @@ import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { FilterableField, IDField } from '@ptc-org/nestjs-query-graphql';
 
 @InputType('ActivityInput')
-@ObjectType()
+@ObjectType('ActivityDomain')
 export class Activity {
   @IDField(() => ID)
   id: number;

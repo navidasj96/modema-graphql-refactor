@@ -1,6 +1,6 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
-import { City } from '@/modules/city/domain/city.pure';
+import { CityPure } from '@/modules/city/domain/city.pure';
 import { CountryPure } from '@/modules/country/domain/country.pure';
 import { InvoiceAddressValidationResultPure } from '@/modules/invoice-address-validation-result/domain/invoice-address-validation-result.pure';
 import { InvoiceAddressPure } from '@/modules/invoice-address/domain/invoice-address.pure';
@@ -89,7 +89,7 @@ export class AddressPure {
   fullnameDescription?: string;
 
   @Field()
-  city: City;
+  city: CityPure;
 
   @Field()
   country: CountryPure;

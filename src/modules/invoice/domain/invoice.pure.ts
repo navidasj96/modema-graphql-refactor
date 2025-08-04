@@ -27,7 +27,7 @@ import { ShippingServicePure } from '@/modules/shipping-service/domain/shipping-
 import { UserPure } from '@/modules/user/domain/user.pure';
 import { VisitorCouponPure } from '@/modules/visitor-coupon/domain/visitor-coupon.pure';
 import { VisitorGroupPure } from '@/modules/visitor-group/domain/visitor-group.pure';
-import { VisitorPure } from '@/modules/visitor/domain/visitor.puer';
+import { VisitorPure } from '@/modules/visitor/domain/visitor.pure';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType('InvoicePureDomain')
@@ -354,11 +354,11 @@ export class InvoicePure {
   @Field(() => UserPure, { nullable: true })
   moneyTransferConfirmedBy2?: UserPure;
 
-  @Field(() => Invoice, { nullable: true })
-  parentInvoice?: Invoice;
+  @Field(() => InvoicePure, { nullable: true })
+  parentInvoice?: InvoicePure;
 
-  @Field(() => [Invoice], { nullable: true })
-  invoices?: Invoice[];
+  @Field(() => [InvoicePure], { nullable: true })
+  invoices?: InvoicePure[];
 
   @Field(() => InvoicePaymentStatusPure, { nullable: true })
   replacementPaymentStatus?: InvoicePaymentStatusPure;

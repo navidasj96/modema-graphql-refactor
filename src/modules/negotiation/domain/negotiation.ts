@@ -1,14 +1,14 @@
+import { FileNegotiation } from '@/modules/file-negotiation/domain/file-negotiation';
+import { InvoiceNegotiation } from '@/modules/invoice-negotiation/domain/invoice-negotiation';
+import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotiation-history';
+import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiation-status';
+import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-step';
+import { User } from '@/modules/user/domain/user';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableUnPagedRelation,
   IDField,
 } from '@ptc-org/nestjs-query-graphql';
-import { FileNegotiation } from '@/modules/file-negotiation/domain/file-negotiation';
-import { InvoiceNegotiation } from '@/modules/invoice-negotiation/domain/invoice-negotiation';
-import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotiation-history';
-import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-step';
-import { NegotiationStatus } from '@/modules/negotiation-status/domain/negotiation-status';
-import { User } from '@/modules/user/domain/user';
 
 @InputType('NegotiationDomain')
 @FilterableUnPagedRelation('negotiator', () => User)

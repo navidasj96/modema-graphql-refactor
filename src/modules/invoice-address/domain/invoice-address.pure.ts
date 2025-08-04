@@ -29,22 +29,22 @@ export class InvoiceAddressPure {
   @Field()
   stateId: number;
 
-  @FilterableField()
+  @Field()
   cityId: number;
 
-  @FilterableField({ nullable: true })
+  @Field({ nullable: true })
   fullname?: string;
 
-  @FilterableField({ nullable: true })
+  @Field({ nullable: true })
   zipCode?: string;
 
-  @FilterableField()
+  @Field()
   address: string;
 
-  @FilterableField({ nullable: true })
+  @Field({ nullable: true })
   address2?: string;
 
-  @FilterableField({ nullable: true })
+  @Field({ nullable: true })
   phone?: string;
 
   @Field({ nullable: true })

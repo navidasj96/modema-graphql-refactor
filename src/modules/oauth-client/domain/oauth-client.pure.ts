@@ -1,0 +1,38 @@
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+
+@InputType('OauthClientPureDomain')
+@ObjectType()
+export class OauthClientPure {
+  @Field(() => ID)
+  id: number;
+
+  @Field({ nullable: true })
+  userId?: number;
+
+  @Field()
+  name: string;
+
+  @Field({ nullable: true })
+  secret?: string;
+
+  @Field({ nullable: true })
+  provider?: string;
+
+  @Field()
+  redirect: string;
+
+  @Field()
+  personalAccessClient: boolean;
+
+  @Field()
+  passwordClient: boolean;
+
+  @Field()
+  revoked: boolean;
+
+  @Field({ nullable: true })
+  createdAt?: Date;
+
+  @Field({ nullable: true })
+  updatedAt?: Date;
+}

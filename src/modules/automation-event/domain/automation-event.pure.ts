@@ -1,9 +1,9 @@
 import { UserPure } from '@/modules/user/domain/user.pure';
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 
-@InputType('AutomationEventDomain')
+@InputType('AutomationEventPureDomain')
 @ObjectType()
-export class AutomationEvent {
+export class AutomationEventPure {
   @Field()
   id: number;
 

@@ -1,11 +1,12 @@
 import { Image } from '@/modules/image/domain/image';
 import { Product } from '@/modules/product/domain/product';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { IDField } from '@ptc-org/nestjs-query-graphql';
 
 @InputType('HomePageCustomerImageDomain')
 @ObjectType()
 export class HomePageCustomerImage {
-  @Field(() => ID)
+  @IDField(() => ID)
   id: number;
 
   @Field({ nullable: true })

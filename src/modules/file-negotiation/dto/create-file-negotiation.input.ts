@@ -1,6 +1,6 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { Negotiation } from '@/modules/negotiation/domain/negotiation';
 import { File } from '@/modules/file/domain/file';
+import { Negotiation } from '@/modules/negotiation/domain/negotiation';
+import { Field, InputType } from '@nestjs/graphql';
 
 @InputType('CreateFileNegotiationInput')
 export class CreateFileNegotiationInput {

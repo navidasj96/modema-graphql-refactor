@@ -1,13 +1,13 @@
-import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
-import { ReturnRequestHistory } from '@/modules/return-request-history/domain/return-request-history';
 import { InvoiceProduct } from '@/modules/invoice-product/domain/invoice-product';
 import { Product } from '@/modules/product/domain/product';
 import { ReturnItemStatus } from '@/modules/return-item-status/domain/return-item-status';
 import { ReturnReason } from '@/modules/return-reason/domain/return-reason';
-import { ReturnRequest } from '@/modules/return-request/domain/return-request';
+import { ReturnRequestHistory } from '@/modules/return-request-history/domain/return-request-history';
 import { ReturnRequestItem } from '@/modules/return-request-item/domain/return-request-item';
+import { ReturnRequest } from '@/modules/return-request/domain/return-request';
 import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { IDField } from '@ptc-org/nestjs-query-graphql';
 
 @InputType('ReturnRequestItemHistoryDomain')
 @ObjectType()
@@ -89,5 +89,4 @@ export class ReturnRequestItemHistory {
 
   @Field(() => Subproduct)
   subproduct: Subproduct;
-  s;
 }

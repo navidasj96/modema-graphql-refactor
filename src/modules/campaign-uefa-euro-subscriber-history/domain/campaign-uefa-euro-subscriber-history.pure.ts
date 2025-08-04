@@ -1,6 +1,6 @@
 import { CampaignUefaEuroSubscriberPure } from '@/modules/campaign-uefa-euro-subscriber/domain/campaign-uefa-euro-subscriber.pure';
 import { ContactFormStatusPure } from '@/modules/contact-form-status/domain/contact-form-status.pure';
-import { UserPure } from '@/modules/user/domain/user';
+import { UserPure } from '@/modules/user/domain/user.pure';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType('CampaignUefaEuroSubscriberHistoryPureDomain')

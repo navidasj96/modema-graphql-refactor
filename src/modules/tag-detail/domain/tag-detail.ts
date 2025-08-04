@@ -1,14 +1,6 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { IDField } from '@ptc-org/nestjs-query-graphql';
-import { ID, InputType, ObjectType, Field } from '@nestjs/graphql';
 import { Tag } from '@/modules/tag/domain/tag';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { IDField } from '@ptc-org/nestjs-query-graphql';
 
 @InputType('TagDetailDomain')
 @ObjectType()

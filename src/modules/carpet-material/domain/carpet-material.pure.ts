@@ -1,4 +1,4 @@
-import { DesignPure } from '@/modules/design/domain/design';
+import { DesignPure } from '@/modules/design/domain/design.pure';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType('CarpetMaterialPureDomain')

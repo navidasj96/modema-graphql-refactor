@@ -2,7 +2,7 @@ import { AddressPure } from '@/modules/address/domain/address.pure';
 import { BasicCarpetDesignerPure } from '@/modules/basic-carpet-designer/domain/basic-carpet-designer.pure';
 import { InvoiceAddressPure } from '@/modules/invoice-address/domain/invoice-address.pure';
 import { ReturnRequestAddressPure } from '@/modules/return-request-address/domain/return-request-address.pure';
-import { SenderInformationPrue } from '@/modules/sender-information/domain/sender-information.pure';
+import { SenderInformationPure } from '@/modules/sender-information/domain/sender-information.pure';
 import { StatePure } from '@/modules/state/domain/state.pure';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
@@ -54,6 +54,6 @@ export class CityPure {
   @Field(() => [ReturnRequestAddressPure])
   returnRequestAddresses: ReturnRequestAddressPure[];
 
-  @Field(() => [SenderInformationPrue])
-  senderInformations: SenderInformationPrue[];
+  @Field(() => [SenderInformationPure])
+  senderInformations: SenderInformationPure[];
 }

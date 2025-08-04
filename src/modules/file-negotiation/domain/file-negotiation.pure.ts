@@ -1,6 +1,6 @@
 import { FilePure } from '@/modules/file/domain/file.pure';
 import { NegotiationPure } from '@/modules/negotiation/domain/negotiation.pure';
-import { Field, ID, InputType, ObjectType } from '@nestjs/graphql.pure';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType('FileNegotiationPureDomain')
 @ObjectType()
