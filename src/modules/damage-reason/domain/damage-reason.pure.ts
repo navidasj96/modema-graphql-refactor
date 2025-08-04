@@ -4,7 +4,7 @@ import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/in
 
 @InputType('DamageReasonPureDomain')
 @ObjectType()
-export class DamageReason {
+export class DamageReasonPure {
   @Field(() => ID)
   id: number;
 

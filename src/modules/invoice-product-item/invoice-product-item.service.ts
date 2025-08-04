@@ -1,37 +1,36 @@
 import { Injectable } from '@nestjs/common';
 
-import { EntityManager, FindManyOptions, Repository } from 'typeorm';
-import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
-import { UpdateInvoiceProductItemsProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items.provider';
-import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
-import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
-import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
-import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
-import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-list.provider';
-import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
-import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
-import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
-import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
-import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
-import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
-import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
-import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
-import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
-import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
-import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
-import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/providers/invoice-items-print-to-heat.provider';
-import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
-import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
-import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
-import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
-import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
 import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
-import { InvoiceStatusEnum } from '@/utils/invoice-status';
+import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
+import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
+import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
+import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
+import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
+import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
+import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
+import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
+import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
+import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
+import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
+import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
+import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
+import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
+import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
+import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
+import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/providers/invoice-items-print-to-heat.provider';
+import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-list.provider';
+import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
+import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
+import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
+import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
+import { UpdateInvoiceProductItemsProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items.provider';
+import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
+import { InjectRepository } from '@nestjs/typeorm';
+import { EntityManager, FindManyOptions, Repository } from 'typeorm';
+import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { NOT_SENT_INVOICE_STATUSES } from '../../utils/invoice-status';
 
 @Injectable()
@@ -249,10 +248,10 @@ export class InvoiceProductItemService {
     const invoiceProductItems = await this.invoiceProductItemRepository
       .createQueryBuilder('invoiceProductItem')
 
-      .select('invoiceProductItem')
       // Join once and reuse the alias
+      .innerJoinAndSelect('invoiceProductItem.productionRoll', 'productionRoll')
+      .innerJoinAndSelect('invoiceProductItem.printProfile', 'printProfile')
       .innerJoinAndSelect('invoiceProductItem.invoiceProduct', 'invoiceProduct')
-
       // Now continue joining from 'invoiceProduct'
       .innerJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
       .innerJoinAndSelect('invoiceProduct.invoice', 'invoice')

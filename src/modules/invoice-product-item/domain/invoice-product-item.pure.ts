@@ -1,10 +1,18 @@
+import { DamageReasonPure } from '@/modules/damage-reason/domain/damage-reason.pure';
+import { ExitControlItemPure } from '@/modules/exit-control-item/domain/exit-control-item.pure';
+import { InvoiceProductItemInvoiceProductStatusPure } from '@/modules/invoice-product-item-invoice-product-status/domain/invoice-product-item-invoice-product-status.pure';
+import { InvoiceProductStatusPure } from '@/modules/invoice-product-status/domain/invoice-product-status.pure';
 import { InvoiceProductPure } from '@/modules/invoice-product/domain/invoice-product.pure';
-import { Field, InputType, ObjectType } from '@nestjs/graphql';
+import { PrintMachinePure } from '@/modules/print-machine/domain/print-machine.pure';
+import { PrintProfilePure } from '@/modules/print-profile/domain/print-profile.pure';
+import { PrintRipPure } from '@/modules/print-rip/domain/print-rip.pure';
+import { ProductionRollPure } from '@/modules/production-roll/domain/production-roll.pure';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 
-@InputType('InvoiceProductItemPureInput')
-@ObjectType('InvoiceProductItemPure')
+@InputType('InvoiceProductItemPureDomain')
+@ObjectType()
 export class InvoiceProductItemPure {
-  @Field()
+  @Field(() => ID)
   id: number;
 
   @Field()
@@ -79,6 +87,30 @@ export class InvoiceProductItemPure {
   @Field(() => Number, { nullable: true })
   printMachineId: number | null;
 
+  @Field(() => [ExitControlItemPure], { nullable: true })
+  exitControlItems?: ExitControlItemPure[];
+
+  @Field(() => [InvoiceProductItemInvoiceProductStatusPure], { nullable: true })
+  invoiceProductItemInvoiceProductStatuses?: InvoiceProductItemInvoiceProductStatusPure[];
+
+  @Field(() => InvoiceProductStatusPure, { nullable: true })
+  currentStatus?: InvoiceProductStatusPure;
+
+  @Field(() => DamageReasonPure, { nullable: true })
+  damageReason?: DamageReasonPure;
+
   @Field(() => InvoiceProductPure, { nullable: true })
   invoiceProduct?: InvoiceProductPure;
+
+  @Field(() => PrintProfilePure, { nullable: true })
+  printProfile?: PrintProfilePure;
+
+  @Field(() => PrintRipPure, { nullable: true })
+  printRip?: PrintRipPure;
+
+  @Field(() => ProductionRollPure, { nullable: true })
+  productionRoll?: ProductionRollPure;
+
+  @Field(() => PrintMachinePure, { nullable: true })
+  printMachine: PrintMachinePure | null;
 }
