@@ -1,15 +1,14 @@
+import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { ProductionReceipt } from '@/modules/production-receipt/domain/production-receipt';
+import { User } from '@/modules/user/domain/user';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
-  FilterableRelation,
   IDField,
   PagingStrategies,
   QueryOptions,
   UnPagedRelation,
 } from '@ptc-org/nestjs-query-graphql';
-import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
-import { User } from '@/modules/user/domain/user';
-import { ProductionReceipt } from '@/modules/production-receipt/domain/production-receipt';
 
 @InputType('ProductionRollDomain')
 @QueryOptions({

@@ -1,23 +1,22 @@
-import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { ProductionRollService } from './production-roll.service';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
 import { ProductionRoll } from '@/modules/production-roll/domain/production-roll';
-import { ProductionRollListOutput } from '@/modules/production-roll/dto/production-roll-list.output';
+import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
-import { UseGuards } from '@nestjs/common';
+import { ProductionRollListOutput } from '@/modules/production-roll/dto/production-roll-list.output';
+import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
+import { ProductionRollWastageOutput } from '@/modules/production-roll/dto/production-roll-wastage.output';
+import { UpdateProductionRollInput } from '@/modules/production-roll/dto/update-production-roll.input';
+import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
+import { Permissions } from '@/utils/permission-guard/permissions.decorator';
 import {
   InvoiceProductItemPermissions,
   ProductionRollPermissions,
 } from '@/utils/permissions';
-import { Permissions } from '@/utils/permission-guard/permissions.decorator';
-import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
-import { GeneralResponseDto } from '@/utils/general-response.dto';
-import { ProductionRollWastageOutput } from '@/modules/production-roll/dto/production-roll-wastage.output';
-import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
-import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
-import { PrintRollTagsOutput } from '@/modules/production-roll/dto/print-roll-tags.output';
-import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
+import { UseGuards } from '@nestjs/common';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { ProductionRollService } from './production-roll.service';
 
 @Resolver(() => ProductionRoll)
 export class ProductionRollResolver {
@@ -89,5 +88,31 @@ export class ProductionRollResolver {
     productionRollId: number
   ) {
     return await this.productionRollService.printRollsTags(productionRollId);
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([ProductionRollPermissions.PERMISSION_TO_CHANGE])
+  @Mutation(() => GeneralResponseDto)
+  async updateProductionRoll(
+    @Args('updateProductionRollInput', {
+      type: () => UpdateProductionRollInput,
+    })
+    updateProductionRollInput: UpdateProductionRollInput
+  ) {
+    return await this.productionRollService.updateProductionRoll(
+      updateProductionRollInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([ProductionRollPermissions.PERMISSION_TO_CHANGE])
+  @Mutation(() => GeneralResponseDto)
+  async deleteProductionRoll(
+    @Args('productionRollId', { type: () => Number })
+    productionRollId: number
+  ) {
+    return await this.productionRollService.deleteProductionRoll(
+      productionRollId
+    );
   }
 }

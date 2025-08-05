@@ -1,13 +1,13 @@
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
+import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
+import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
+import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { EntityManager, FindOneOptions, Repository } from 'typeorm';
 import { CreateProductionRollInput } from './dto/create-production-roll.input';
 import { UpdateProductionRollInput } from './dto/update-production-roll.input';
-import { EntityManager, FindOneOptions, Repository } from 'typeorm';
-import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ProductionRollProvider } from '@/modules/production-roll/providers/production-roll.provider';
-import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
-import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
 
 @Injectable()
 export class ProductionRollService {
@@ -67,5 +67,19 @@ export class ProductionRollService {
 
   async printRollsTags(productionRollId: number) {
     return await this.productionRollProvider.printRollsTags(productionRollId);
+  }
+
+  async updateProductionRoll(
+    updateProductionRollInput: UpdateProductionRollInput
+  ) {
+    return await this.productionRollProvider.updateProductionRoll(
+      updateProductionRollInput
+    );
+  }
+
+  async deleteProductionRoll(productionRollId: number) {
+    return await this.productionRollProvider.deleteProductionRoll(
+      productionRollId
+    );
   }
 }

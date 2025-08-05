@@ -3,12 +3,13 @@ import { InvoiceProductItemService } from '@/modules/invoice-product-item/invoic
 import { CreateProductionRollInput } from '@/modules/production-roll/dto/create-production-roll.input';
 import { ProductionRollInput } from '@/modules/production-roll/dto/production-roll-list.input';
 import { ProductionRollWastageInput } from '@/modules/production-roll/dto/production-roll-wastage.input';
+import { UpdateProductionRollInput } from '@/modules/production-roll/dto/update-production-roll.input';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
 import { UserService } from '@/modules/user/user.service';
 import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { Not, Repository } from 'typeorm';
 
 @Injectable()
 export class ProductionRollProvider {
@@ -228,5 +229,87 @@ export class ProductionRollProvider {
       );
 
     return invoiceProductItems;
+  }
+
+  async updateProductionRoll(
+    updateProductionRollInput: UpdateProductionRollInput
+  ) {
+    if (
+      !updateProductionRollInput.rollNumber ||
+      updateProductionRollInput.rollNumber.trim() === ''
+    ) {
+      return {
+        message: 'شماره رول نمی تواند خالی باشد',
+        status: false,
+      };
+    }
+    const sameProductionRoll = await this.productionRollRepository.findOne({
+      where: {
+        id: Not(updateProductionRollInput.id),
+        rollNumber: updateProductionRollInput.rollNumber,
+      },
+    });
+
+    console.log(sameProductionRoll);
+    if (sameProductionRoll) {
+      return {
+        message: 'شماره رول انتخابی قبلا در سیستم وارد شده است',
+        status: false,
+      };
+    }
+
+    const productionRoll = await this.productionRollRepository.findOne({
+      where: { id: updateProductionRollInput.id },
+    });
+
+    if (!productionRoll) {
+      return {
+        message: 'رول انتخابی یافت نشد',
+        status: false,
+      };
+    }
+
+    Object.assign(productionRoll, updateProductionRollInput);
+    try {
+      await this.productionRollRepository.save({
+        ...productionRoll,
+        updatedAt: new Date(),
+      });
+      return {
+        message: 'رول با موفقیت به روز رسانی شد',
+        status: true,
+      };
+    } catch {
+      return {
+        message: 'خطا در به روز رسانی رول',
+        status: false,
+      };
+    }
+  }
+
+  async deleteProductionRoll(productionRollId: number) {
+    const productionRoll = await this.productionRollRepository.findOne({
+      where: { id: productionRollId },
+    });
+
+    if (!productionRoll) {
+      return {
+        message: 'رول انتخابی یافت نشد',
+        status: false,
+      };
+    }
+
+    try {
+      await this.productionRollRepository.remove(productionRoll);
+      return {
+        message: 'رول با موفقیت حذف شد',
+        status: true,
+      };
+    } catch {
+      return {
+        message: `این رول در حال حاضر در حال استفاده است و نمی تواند حذف شود`,
+        status: false,
+      };
+    }
   }
 }

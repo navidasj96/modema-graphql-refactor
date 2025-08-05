@@ -320,13 +320,13 @@ const ENV = process.env.NODE_ENV;
         host: configService.get('database.host'),
         port: +configService.get('database.port'),
         username: configService.get('database.user'),
-        password: configService.get('database.password'),
+        password: '',
         database: configService.get('database.name'),
         autoLoadEntities: true,
         synchronize: false,
         retryAttempts: 0, // Disable retry
         retryDelay: 0, // No delay
-        // logging: ['query'],
+        logging: ['query'],
       }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
