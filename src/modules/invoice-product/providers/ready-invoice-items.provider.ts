@@ -1,16 +1,12 @@
+import { ReadyInvoiceProductItemTs } from '@/modules/invoice-product/dto/ready-invoice-product-item';
 import { ReadyInvoiceProductItemsListInput } from '@/modules/invoice-product/dto/ready-invoice-product-items-list.input';
+import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
+import { InvoiceService } from '@/modules/invoice/invoice.service';
+import { InvoiceStatusEnum } from '@/utils/invoice-status';
+import { InvoiceTypeEnum } from '@/utils/invoice-type.enum';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Brackets, Repository } from 'typeorm';
-import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
-import { InvoiceStatusEnum } from '@/utils/invoice-status';
-import { InvoiceTypeEnum } from '@/utils/invoice-type.enum';
-import {
-  ReadyInvoiceProductItem,
-  ReadyInvoiceProductItemTs,
-} from '@/modules/invoice-product/dto/ready-invoice-product-item';
-import { InvoiceService } from '@/modules/invoice/invoice.service';
-import { from } from 'rxjs';
 
 @Injectable()
 export class ReadyInvoiceProductProvider {

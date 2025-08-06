@@ -326,7 +326,7 @@ const ENV = process.env.NODE_ENV;
         synchronize: false,
         retryAttempts: 0, // Disable retry
         retryDelay: 0, // No delay
-        logging: ['query'],
+        // logging: ['query'],
       }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

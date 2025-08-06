@@ -215,7 +215,6 @@ export class ProductionRollProvider {
     const count = await countQuery.getCount();
 
     const productionRollWastage = await productionRollsQuery.getRawMany();
-    console.log(productionRollWastage);
     return {
       productionRollWastage,
       count,
@@ -250,7 +249,6 @@ export class ProductionRollProvider {
       },
     });
 
-    console.log(sameProductionRoll);
     if (sameProductionRoll) {
       return {
         message: 'شماره رول انتخابی قبلا در سیستم وارد شده است',

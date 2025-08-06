@@ -73,6 +73,7 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject shippingService
      */
+    @Inject(forwardRef(() => ShippingServiceService))
     private readonly shippingService: ShippingServiceService,
     /**
      * inject configService
@@ -90,6 +91,7 @@ export class ChangeInvoiceStatusProvider {
     /**
      * inject invoiceProductsService
      */
+    @Inject(forwardRef(() => InvoiceProductService))
     private readonly invoiceProductsService: InvoiceProductService,
     /**
      * inject invoiceRepository

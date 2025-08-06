@@ -1,32 +1,34 @@
-import { Args, Context, Mutation, Resolver, Query } from '@nestjs/graphql';
-import { InvoiceProductItemService } from './invoice-product-item.service';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/domain/invoice-product-item';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { InvoiceProductItemService } from './invoice-product-item.service';
 
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { UpdateInvoiceProductItemsOutput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.output.dto';
-import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
-import { GeneralResponseDto } from '@/utils/general-response.dto';
-import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
-import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
-import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
-import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
-import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
-import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-rip-to-print-list.output';
-import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
+import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
+import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
 import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
-import { UseGuards } from '@nestjs/common';
-import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
-import { InvoiceProductItemPermissions } from '@/utils/permissions';
-import { Permissions } from '@/utils/permission-guard/permissions.decorator';
-import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { InvoiceItemReplaceUpdateInput } from '@/modules/invoice-product-item/dto/invoice-item-replace-update.input';
 import { InvoiceItemsPrintToHeatListInput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.input';
 import { InvoiceItemsPrintToHeatListOutput } from '@/modules/invoice-product-item/dto/invoice-items-print-to-heat-list.output';
+import { InvoiceProductItemsListInput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.input';
+import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-list.output';
+import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-rip-to-print-list.output';
 import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
-import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
-import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
+import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-report-list.input';
+import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
+import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
+import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
+import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-rip-to-print.input';
+import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
+import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
+import { UpdateInvoiceProductItemsOutput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.output.dto';
+import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
+import { GeneralResponseDto } from '@/utils/general-response.dto';
+import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
+import { Permissions } from '@/utils/permission-guard/permissions.decorator';
+import { InvoiceProductItemPermissions } from '@/utils/permissions';
+import { UseGuards } from '@nestjs/common';
 
 @Resolver(() => InvoiceProductItem)
 export class InvoiceProductItemResolver {
@@ -295,6 +297,20 @@ export class InvoiceProductItemResolver {
     return await this.invoiceProductItemService.confirmTagsPrinted(
       context,
       confirmTagsPrintedInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([InvoiceProductItemPermissions.PERMISSION_TO_PRINT_ITEMS_TAGS])
+  @Query(() => [InvoiceProductItemPure])
+  async rollsReportList(
+    @Args('rollsReportListInput', {
+      type: () => RollsReportListInput,
+    })
+    rollsReportListInput: RollsReportListInput
+  ) {
+    return await this.invoiceProductItemService.rollsReportList(
+      rollsReportListInput
     );
   }
 }
