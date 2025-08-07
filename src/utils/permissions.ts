@@ -699,3 +699,5 @@ export const WithdrawalRequestPermissions = {
   PERMISSION_TO_VIEW: 'view withdrawal requests',
   PERMISSION_TO_CONFIRM_PAYMENTS: 'confirm withdrawal payments',
 };
+
+export const PERMISSION_TO_VIEW_ROLLS_REPORT = 'view rolls report';

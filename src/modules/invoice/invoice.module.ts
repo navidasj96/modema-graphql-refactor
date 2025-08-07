@@ -20,6 +20,7 @@ import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/
 import { QueueModule } from '@/modules/queue/queue.module';
 import { SettingModule } from '@/modules/setting/setting.module';
 import { ShippingServiceModule } from '@/modules/shipping-service/shipping-service.module';
+import { SubproductModule } from '@/modules/subproduct/subproduct.module';
 import { UserModule } from '@/modules/user/user.module';
 import { VisitorModule } from '@/modules/visitor/visitor.module';
 import { WalletModule } from '@/modules/wallet/wallet.module';
@@ -68,6 +69,7 @@ import { InvoiceService } from './invoice.service';
     WalletModule,
     InvoiceAddressModule,
     InvoiceProductStatusModule,
+    SubproductModule,
     forwardRef(() => ShippingServiceModule),
     forwardRef(() => InvoiceProductItemModule),
     forwardRef(() => InvoiceProductModule),

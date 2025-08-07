@@ -9,7 +9,7 @@ import { ShippingServiceService } from '@/modules/shipping-service/shipping-serv
 import { UserService } from '@/modules/user/user.service';
 import { WalletService } from '@/modules/wallet/wallet.service';
 import { InvoiceItemViewModel } from '@/view-models/general/invoice-item.viewModel';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GraphQLError } from 'graphql';
 import { Repository } from 'typeorm';
@@ -45,6 +45,7 @@ export class InvoicePrepareProvider {
     /**
      * inject shippingServiceService
      */
+    @Inject(forwardRef(() => ShippingServiceService))
     private readonly shippingService: ShippingServiceService
   ) {}
 

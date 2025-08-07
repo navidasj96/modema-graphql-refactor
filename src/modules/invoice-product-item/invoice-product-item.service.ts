@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
@@ -17,6 +17,7 @@ import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-produ
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
+import { CancelDepotInvoiceItemProvider } from '@/modules/invoice-product-item/providers/cancel-depot-invoice-item.provider';
 import { CreateNewInvoiceItemForDepotProvider } from '@/modules/invoice-product-item/providers/create-new-invoice-item-for-depot.provider';
 import { DamagedInvoiceItemsControllerProvider } from '@/modules/invoice-product-item/providers/damaged-invoice-items-controller.provider';
 import { InvoiceItemReplaceProvider } from '@/modules/invoice-product-item/providers/invoice-item-replace.provider';
@@ -24,6 +25,7 @@ import { InvoiceItemsPrintToHeatProvider } from '@/modules/invoice-product-item/
 import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-list.provider';
 import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
+import { RollsReportDetailInput } from '@/modules/invoice-product-item/providers/rolls-report-detail.input';
 import { RollsReportProvider } from '@/modules/invoice-product-item/providers/rolls-report.provider';
 import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
@@ -71,10 +73,12 @@ export class InvoiceProductItemService {
     /**
      * inject cancelDepotInvoiceItemProvider
      */
-    // private readonly cancelDepotInvoiceItemProvider: CancelDepotInvoiceItemProvider,
+    @Inject(forwardRef(() => CancelDepotInvoiceItemProvider))
+    private readonly cancelDepotInvoiceItemProvider: CancelDepotInvoiceItemProvider,
     /**
      * private readonly createNewInvoiceItemForDepotProvider
      */
+    @Inject(forwardRef(() => CreateNewInvoiceItemForDepotProvider))
     private readonly createNewInvoiceItemForDepotProvider: CreateNewInvoiceItemForDepotProvider,
     /**
      * inject invoiceItemReplaceProvider
@@ -91,6 +95,7 @@ export class InvoiceProductItemService {
     /**
      * inject rollsReportProvider
      */
+    @Inject(forwardRef(() => RollsReportProvider))
     private readonly rollsReportProvider: RollsReportProvider
   ) {}
 
@@ -175,7 +180,10 @@ export class InvoiceProductItemService {
     context: { req: UserContext },
     cancelDepotInvoiceItemInput: CancelDepotInvoiceItemInput
   ) {
-    return true;
+    return await this.cancelDepotInvoiceItemProvider.cancelDepotInvoiceItem(
+      context,
+      cancelDepotInvoiceItemInput
+    );
   }
 
   async createNewInvoiceItemForDepot(
@@ -248,6 +256,12 @@ export class InvoiceProductItemService {
 
   async rollsReportList(rollsReportListInput: RollsReportListInput) {
     return await this.rollsReportProvider.rollsReportList(rollsReportListInput);
+  }
+
+  async rollsReportDetail(rollsReportDetailInput: RollsReportDetailInput) {
+    return await this.rollsReportProvider.rollReportDetail(
+      rollsReportDetailInput
+    );
   }
 
   async invoiceProductItemForPrintProductTag(productionRollId: number) {

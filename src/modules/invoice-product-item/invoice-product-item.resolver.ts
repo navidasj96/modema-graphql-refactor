@@ -3,7 +3,6 @@ import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { InvoiceProductItemService } from './invoice-product-item.service';
 
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
 import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
 import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
@@ -16,6 +15,7 @@ import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-produ
 import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
 import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-report-list.input';
+import { RollsReportListOutput } from '@/modules/invoice-product-item/dto/rolls-report-list.output';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
@@ -23,11 +23,16 @@ import { UpdateInvoiceProductItemRipToPrintInput } from '@/modules/invoice-produ
 import { UpdateInvoiceProductItemsRollIdInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items-roll-id.input';
 import { UpdateInvoiceProductItemsInput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.input.dto';
 import { UpdateInvoiceProductItemsOutput } from '@/modules/invoice-product-item/dto/update-invoice-product-items.output.dto';
+import { RollsReportDetailInput } from '@/modules/invoice-product-item/providers/rolls-report-detail.input';
 import { InvoiceProductItemRipToPrintInput } from '@/modules/invoice-product/dto/invoice-product-items-rip-to-print.input';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
 import { Permissions } from '@/utils/permission-guard/permissions.decorator';
-import { InvoiceProductItemPermissions } from '@/utils/permissions';
+import {
+  InvoiceProductItemPermissions,
+  PERMISSION_TO_VIEW_ROLLS_REPORT,
+  ProductionRollPermissions,
+} from '@/utils/permissions';
 import { UseGuards } from '@nestjs/common';
 
 @Resolver(() => InvoiceProductItem)
@@ -301,8 +306,8 @@ export class InvoiceProductItemResolver {
   }
 
   @UseGuards(PermissionsGuard)
-  @Permissions([InvoiceProductItemPermissions.PERMISSION_TO_PRINT_ITEMS_TAGS])
-  @Query(() => [InvoiceProductItemPure])
+  @Permissions([ProductionRollPermissions.PERMISSION_TO_CHANGE])
+  @Query(() => RollsReportListOutput)
   async rollsReportList(
     @Args('rollsReportListInput', {
       type: () => RollsReportListInput,
@@ -311,6 +316,20 @@ export class InvoiceProductItemResolver {
   ) {
     return await this.invoiceProductItemService.rollsReportList(
       rollsReportListInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PERMISSION_TO_VIEW_ROLLS_REPORT])
+  @Query(() => RollsReportListOutput)
+  async rollsReportDetail(
+    @Args('rollsReportDetailInput', {
+      type: () => RollsReportDetailInput,
+    })
+    rollsReportDetailInput: RollsReportDetailInput
+  ) {
+    return await this.invoiceProductItemService.rollsReportDetail(
+      rollsReportDetailInput
     );
   }
 }
