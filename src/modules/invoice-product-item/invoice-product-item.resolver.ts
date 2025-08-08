@@ -14,6 +14,7 @@ import { InvoiceProductItemsListOutput } from '@/modules/invoice-product-item/dt
 import { InvoiceProductItemsRipToPrintListOutput } from '@/modules/invoice-product-item/dto/invoice-product-items-rip-to-print-list.output';
 import { MoveBackInvoiceItemToRipInput } from '@/modules/invoice-product-item/dto/move-back-invoice-item-to-rip.input';
 import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-item-tag-list.input';
+import { RollsReportDetailData } from '@/modules/invoice-product-item/dto/rolls-report-detail.dto';
 import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-report-list.input';
 import { RollsReportListOutput } from '@/modules/invoice-product-item/dto/rolls-report-list.output';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
@@ -321,7 +322,7 @@ export class InvoiceProductItemResolver {
 
   @UseGuards(PermissionsGuard)
   @Permissions([PERMISSION_TO_VIEW_ROLLS_REPORT])
-  @Query(() => RollsReportListOutput)
+  @Query(() => RollsReportDetailData)
   async rollsReportDetail(
     @Args('rollsReportDetailInput', {
       type: () => RollsReportDetailInput,

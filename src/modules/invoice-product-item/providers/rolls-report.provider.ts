@@ -1,6 +1,7 @@
 import {
+  RawProductItemDto,
+  RollsReportDetailData,
   RollsReportDetailItemTs,
-  RollsReportDetailProducedItems,
 } from '@/modules/invoice-product-item/dto/rolls-report-detail.dto';
 import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-report-list.input';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
@@ -35,15 +36,11 @@ export class RollsReportProvider {
     const baseQuery = this.invoiceProductItemRepository
       .createQueryBuilder('ipi')
       .select([
-        'ipi.id',
-        'ipi.rollReferenceCode',
-        'ipi.isTagPrinted',
         'ipi.productionRollId',
-        'ipi.currentStatusId',
-        'productionRoll.id',
         'productionRoll.rollNumber',
-        'invoice.currentInvoiceStatusId',
+        'productionRoll.id',
       ])
+      .addSelect('MIN(ipi.id)', 'ipi_id')
       .innerJoin('ipi.invoiceProduct', 'invoiceProduct')
       .innerJoin('invoiceProduct.invoice', 'invoice')
       .innerJoin('ipi.productionRoll', 'productionRoll')
@@ -59,10 +56,11 @@ export class RollsReportProvider {
       })
       .andWhere('ipi.productionRollId IS NOT NULL')
       .groupBy('productionRoll.id')
+      .addOrderBy('ipi_id', 'ASC')
+      .addOrderBy('productionRoll.id', 'ASC')
       .skip(offset)
       .take(limit);
 
-    // Add search conditions if provided
     if (search && search.length > 0) {
       const sanitizedSearch = search.replace(/\//g, '').toLowerCase();
 
@@ -76,14 +74,15 @@ export class RollsReportProvider {
         })
       );
     }
-    baseQuery.addOrderBy('productionRoll.id', 'ASC');
 
     const [invoiceProductItems, totalCount] = await baseQuery.getManyAndCount();
 
     return { invoiceProductItems, totalCount };
   }
 
-  async rollReportDetail(rollsReportDetailInput: RollsReportDetailInput) {
+  async rollReportDetail(
+    rollsReportDetailInput: RollsReportDetailInput
+  ): Promise<RollsReportDetailData> {
     const { productionRollId, limit, offset } = rollsReportDetailInput;
     let rollWeight = 0;
     let perMeterWeight = 0;
@@ -114,27 +113,53 @@ export class RollsReportProvider {
     );
 
     if (total.length > 0) {
-      for (const item of total) {
-        const rollReportDetailItem: RollsReportDetailItemTs = {};
-        rollReportDetailItem.producedCount = 0;
-        rollReportDetailItem.producedFromBrokenCount = 0;
-        rollReportDetailItem.producedFromBrokenArea = 0;
-        rollReportDetailItem.brokenCount = 0;
-        rollReportDetailItem.producingCount = 0;
-        rollReportDetailItem.brokenArea = 0;
-        rollReportDetailItem.producingArea = 0;
-        rollReportDetailItem.producedArea = 0;
+      for (const rowData of total) {
+        const rollReportDetailItem: RollsReportDetailItemTs = {
+          brokenArea: 0,
+          brokenCount: 0,
+          producedArea: 0,
+          producedCount: 0,
+          producingArea: 0,
+          producingCount: 0,
+          producedFromBrokenArea: 0,
+          producedFromBrokenCount: 0,
+          sizeTitle: rowData.title,
+        };
 
-        for (const pd of producedData as RollsReportDetailProducedItems[]) {
-          if (pd.sizeId === item.sizeId) {
-            rollReportDetailItem.producedCount += pd.producedCount;
+        for (const pd of producedData) {
+          if (pd.sizeId === rowData.sizeId) {
+            rollReportDetailItem.producedCount += pd.count;
             rollReportDetailItem.producedArea +=
-              pd.length * pd.width * pd.producedCount;
+              pd.width * pd.length * pd.count;
           }
         }
+
+        for (const ing of producingData) {
+          if (ing.sizeId === rowData.sizeId) {
+            rollReportDetailItem.producingCount += ing.count;
+            rollReportDetailItem.producingArea +=
+              ing.width * ing.length * ing.count;
+          }
+        }
+
+        for (const bd of brokenData) {
+          if (bd.sizeId === rowData.sizeId) {
+            rollReportDetailItem.brokenCount += bd.count;
+            rollReportDetailItem.brokenArea += bd.width * bd.length * bd.count;
+          }
+        }
+
+        for (const fromBroken of producedFromBrokenData) {
+          if (fromBroken.sizeId === rowData.sizeId) {
+            rollReportDetailItem.producedFromBrokenCount += fromBroken.count;
+            rollReportDetailItem.producedFromBrokenArea +=
+              fromBroken.width * fromBroken.length * fromBroken.count;
+          }
+        }
+        rollsReportDetailItems.push(rollReportDetailItem);
       }
     }
-
+    console.log('rollsReportDetailItems', rollsReportDetailItems);
     try {
       const productionRoll = await this.productionRollService.findOne({
         where: { id: productionRollId },
@@ -181,7 +206,13 @@ export class RollsReportProvider {
       throw new Error(`Error calculating roll report detail: ${error}`);
     }
 
-    return true;
+    return {
+      perMeterWeight,
+      RollsReportDetailItems: rollsReportDetailItems,
+      rollWeight,
+      totalDamagedMeters,
+      totalDamagedWeight,
+    };
   }
 
   async getItemsWithStatuses(
@@ -190,18 +221,7 @@ export class RollsReportProvider {
     producedFromBrokenItems?: boolean,
     limit?: number,
     offset?: number
-  ): Promise<RollsReportDetailProducedItems[]> {
-    type RawProducedItem = {
-      count: number;
-      id: number;
-      sizeId: number;
-      title: string;
-      length: number;
-      width: number;
-      producedCount: number;
-      stateId: number;
-    };
-
+  ): Promise<RawProductItemDto[]> {
     const baseQuery = this.invoiceProductItemRepository
       .createQueryBuilder('ipi')
       .select([
@@ -243,7 +263,8 @@ export class RollsReportProvider {
     if (offset) {
       baseQuery.skip(offset);
     }
-    const result: RawProducedItem[] = await baseQuery.getRawMany();
+
+    const result: RawProductItemDto[] = await baseQuery.getRawMany();
     return result.map((item) => ({
       count: Number(item.count),
       id: Number(item.id),

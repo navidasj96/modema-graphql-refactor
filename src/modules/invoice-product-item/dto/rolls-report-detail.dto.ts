@@ -33,9 +33,6 @@ export class RollsReportDetailItem {
   producingCount: number;
 
   @Field(() => Number)
-  producingCount: number;
-
-  @Field(() => Number)
   producingArea: number;
 
   @Field(() => Number)
@@ -60,8 +57,6 @@ export class RollsReportDetailItemTs {
 
   producingCount: number;
 
-  producingCount: number;
-
   producingArea: number;
 
   brokenCount: number;
@@ -72,3 +67,14 @@ export class RollsReportDetailItemTs {
 
   producedFromBrokenArea: number;
 }
+
+export type RawProductItemDto = {
+  count: number;
+  id: number;
+  sizeId: number;
+  title: string;
+  length: number;
+  width: number;
+  producedCount: number;
+  stateId: number;
+};
