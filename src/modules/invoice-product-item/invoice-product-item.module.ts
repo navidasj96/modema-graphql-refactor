@@ -17,6 +17,7 @@ import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/
 import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 import { PermissionsToChangeInvoiceProductItemStatusProvider } from '@/modules/invoice-product-item/providers/permissions-to-change-invoice-product-item-status.provider';
 import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
+import { RollsReportProductionProvider } from '@/modules/invoice-product-item/providers/rolls-report-production.provider';
 import { RollsReportProvider } from '@/modules/invoice-product-item/providers/rolls-report.provider';
 import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
@@ -56,6 +57,7 @@ import { InvoiceProductItemService } from './invoice-product-item.service';
     InvoiceItemsPrintToHeatProvider,
     PrintItemTagProvider,
     RollsReportProvider,
+    RollsReportProductionProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({

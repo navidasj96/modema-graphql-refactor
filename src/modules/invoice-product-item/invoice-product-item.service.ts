@@ -26,6 +26,7 @@ import { InvoiceProductItemsListProvider } from '@/modules/invoice-product-item/
 import { InvoiceProductItemsRipToPrintListProvider } from '@/modules/invoice-product-item/providers/invoice-product-items-rip-to-print-list.provider';
 import { PrintItemTagProvider } from '@/modules/invoice-product-item/providers/print-item-tag.provider';
 import { RollsReportDetailInput } from '@/modules/invoice-product-item/providers/rolls-report-detail.input';
+import { RollsReportProductionProvider } from '@/modules/invoice-product-item/providers/rolls-report-production.provider';
 import { RollsReportProvider } from '@/modules/invoice-product-item/providers/rolls-report.provider';
 import { UpdateInvoiceProductItemRipToPrintProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-item-rip-to-print.provider';
 import { UpdateInvoiceProductItemsRollIdProvider } from '@/modules/invoice-product-item/providers/update-invoice-product-items-roll-id.provider';
@@ -96,7 +97,13 @@ export class InvoiceProductItemService {
      * inject rollsReportProvider
      */
     @Inject(forwardRef(() => RollsReportProvider))
-    private readonly rollsReportProvider: RollsReportProvider
+    private readonly rollsReportProvider: RollsReportProvider,
+
+    /**
+     * inject RollsReportProductionProvider
+     */
+
+    private readonly rollsReportProductionProvider: RollsReportProductionProvider
   ) {}
 
   async findAll(options: FindManyOptions<InvoiceProductItem>) {
@@ -264,6 +271,11 @@ export class InvoiceProductItemService {
     );
   }
 
+  async rollsReportProductionList(productionRollId: number) {
+    return await this.rollsReportProductionProvider.rollsReportProductionList(
+      productionRollId
+    );
+  }
   async invoiceProductItemForPrintProductTag(productionRollId: number) {
     const invoiceProductItems = await this.invoiceProductItemRepository
       .createQueryBuilder('invoiceProductItem')

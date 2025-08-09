@@ -89,28 +89,42 @@ export class RollsReportProvider {
     let totalDamagedWeight = 0;
     let totalDamagedMeters = 0;
     const rollsReportDetailItems: RollsReportDetailItemTs[] = [];
-    const producedData = await this.getItemsWithStatuses(
+
+    const productionRoll = await this.productionRollService.findOne({
+      where: { id: productionRollId },
+      select: ['rollNumber'],
+    });
+    const producedDataResult = await this.getItemsWithStatuses(
       productionRollId,
       [25, 27]
     );
-    const producingData = await this.getItemsWithStatuses(
+    const producingDataResult = await this.getItemsWithStatuses(
       productionRollId,
       [5, 7, 10, 15, 20]
     );
-    const brokenData = await this.getItemsWithStatuses(productionRollId, [35]);
-    const producedFromBrokenData = await this.getItemsWithStatuses(
+    const brokenDataResult = await this.getItemsWithStatuses(productionRollId, [
+      35,
+    ]);
+    const producedFromBrokenDataResult = await this.getItemsWithStatuses(
       productionRollId,
       [25, 27],
       true
     );
 
-    const total = await this.getItemsWithStatuses(
+    const totalResult = await this.getItemsWithStatuses(
       productionRollId,
       undefined,
       undefined,
       limit,
       offset
     );
+
+    // Extract data arrays from the results
+    const producedData = producedDataResult.data;
+    const producingData = producingDataResult.data;
+    const brokenData = brokenDataResult.data;
+    const producedFromBrokenData = producedFromBrokenDataResult.data;
+    const total = totalResult.data;
 
     if (total.length > 0) {
       for (const rowData of total) {
@@ -124,42 +138,48 @@ export class RollsReportProvider {
           producedFromBrokenArea: 0,
           producedFromBrokenCount: 0,
           sizeTitle: rowData.title,
+          totalArea:
+            Math.round(rowData.width * rowData.length * rowData.count * 100) /
+            100,
         };
-
+        console.log('rowData.count', rowData.count);
         for (const pd of producedData) {
           if (pd.sizeId === rowData.sizeId) {
             rollReportDetailItem.producedCount += pd.count;
-            rollReportDetailItem.producedArea +=
-              pd.width * pd.length * pd.count;
+            const area = pd.width * pd.length * pd.count;
+            rollReportDetailItem.producedArea += Math.round(area * 100) / 100;
           }
         }
 
         for (const ing of producingData) {
           if (ing.sizeId === rowData.sizeId) {
             rollReportDetailItem.producingCount += ing.count;
-            rollReportDetailItem.producingArea +=
-              ing.width * ing.length * ing.count;
+            const area = ing.width * ing.length * ing.count;
+            rollReportDetailItem.producingArea += Math.round(area * 100) / 100;
           }
         }
 
         for (const bd of brokenData) {
           if (bd.sizeId === rowData.sizeId) {
             rollReportDetailItem.brokenCount += bd.count;
-            rollReportDetailItem.brokenArea += bd.width * bd.length * bd.count;
+            const area = bd.width * bd.length * bd.count;
+            rollReportDetailItem.brokenArea += Math.round(area * 100) / 100;
           }
         }
 
         for (const fromBroken of producedFromBrokenData) {
           if (fromBroken.sizeId === rowData.sizeId) {
             rollReportDetailItem.producedFromBrokenCount += fromBroken.count;
-            rollReportDetailItem.producedFromBrokenArea +=
+            const area =
               fromBroken.width * fromBroken.length * fromBroken.count;
+            rollReportDetailItem.producedFromBrokenArea +=
+              Math.round(area * 100) / 100;
           }
         }
         rollsReportDetailItems.push(rollReportDetailItem);
       }
     }
-    console.log('rollsReportDetailItems', rollsReportDetailItems);
+
     try {
       const productionRoll = await this.productionRollService.findOne({
         where: { id: productionRollId },
@@ -212,6 +232,8 @@ export class RollsReportProvider {
       rollWeight,
       totalDamagedMeters,
       totalDamagedWeight,
+      rollNumber: productionRoll?.rollNumber || '',
+      totalCount: totalResult.totalCount || 1,
     };
   }
 
@@ -221,17 +243,15 @@ export class RollsReportProvider {
     producedFromBrokenItems?: boolean,
     limit?: number,
     offset?: number
-  ): Promise<RawProductItemDto[]> {
+  ): Promise<{ data: RawProductItemDto[]; totalCount?: number }> {
     const baseQuery = this.invoiceProductItemRepository
       .createQueryBuilder('ipi')
       .select([
-        'COUNT(basicCarpetSize.id) as count',
-        'ipi.id as id',
+        'COUNT(ipi.id) as count',
         'basicCarpetSize.id as sizeId',
         'basicCarpetSize.title as title',
         'basicCarpetSize.length as length',
         'basicCarpetSize.width as width',
-        'COUNT(ipi.id) as producedCount',
         'ipi.currentStatusId as stateId',
       ])
       .innerJoin('ipi.invoiceProduct', 'invoiceProduct')
@@ -240,10 +260,8 @@ export class RollsReportProvider {
       .innerJoin('subproduct.basicCarpetSize', 'basicCarpetSize')
       .innerJoin('ipi.productionRoll', 'productionRoll')
       .where('productionRoll.id = :productionRollId', { productionRollId })
-
       .andWhere('invoice.invoiceModeId != :excludeMode', { excludeMode: 6 })
       .groupBy('basicCarpetSize.id')
-      .addGroupBy('ipi.id')
       .addGroupBy('ipi.currentStatusId');
 
     if (status) {
@@ -264,16 +282,65 @@ export class RollsReportProvider {
       baseQuery.skip(offset);
     }
 
-    const result: RawProductItemDto[] = await baseQuery.getRawMany();
-    return result.map((item) => ({
+    // If limit or offset is provided, calculate total count
+    if (limit || offset) {
+      // Create a separate count query without select, groupBy, limit, and offset for accurate count
+      const countQuery = this.invoiceProductItemRepository
+        .createQueryBuilder('ipi')
+        .select('COUNT(DISTINCT basicCarpetSize.id)', 'totalCount')
+        .innerJoin('ipi.invoiceProduct', 'invoiceProduct')
+        .innerJoin('invoiceProduct.invoice', 'invoice')
+        .innerJoin('invoiceProduct.subproduct', 'subproduct')
+        .innerJoin('subproduct.basicCarpetSize', 'basicCarpetSize')
+        .innerJoin('ipi.productionRoll', 'productionRoll')
+        .where('productionRoll.id = :productionRollId', { productionRollId })
+        .andWhere('invoice.invoiceModeId != :excludeMode', { excludeMode: 6 });
+
+      if (status) {
+        countQuery.andWhere('ipi.currentStatusId IN (:...allowedStatuses)', {
+          allowedStatuses: status,
+        });
+      }
+
+      if (producedFromBrokenItems) {
+        countQuery.andWhere('invoice.invoiceModeId = :modeId', { modeId: 6 });
+      }
+
+      const [result, countResult] = await Promise.all([
+        baseQuery.getRawMany(),
+        countQuery.getRawOne(),
+      ]);
+
+      const mappedData = (result as RawProductItemDto[]).map((item) => ({
+        count: Number(item.count),
+        id: 0, // Not needed for grouped data
+        sizeId: Number(item.sizeId),
+        title: String(item.title),
+        length: Number(item.length),
+        width: Number(item.width),
+        producedCount: Number(item.count), // Use count as producedCount
+        stateId: Number(item.stateId),
+      }));
+
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      const totalCount = Number(countResult?.['totalCount'] || 0);
+
+      return { data: mappedData, totalCount };
+    }
+
+    // Otherwise, just get the data without count
+    const result = await baseQuery.getRawMany();
+    const mappedData = (result as RawProductItemDto[]).map((item) => ({
       count: Number(item.count),
-      id: Number(item.id),
+      id: 0, // Not needed for grouped data
       sizeId: Number(item.sizeId),
       title: String(item.title),
       length: Number(item.length),
       width: Number(item.width),
-      producedCount: Number(item.producedCount),
+      producedCount: Number(item.count), // Use count as producedCount
       stateId: Number(item.stateId),
     }));
+
+    return { data: mappedData };
   }
 }

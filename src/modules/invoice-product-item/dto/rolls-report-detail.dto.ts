@@ -14,6 +14,12 @@ export class RollsReportDetailData {
   @Field(() => Number)
   totalDamagedMeters: number;
 
+  @Field(() => Number)
+  totalCount: number;
+
+  @Field(() => String)
+  rollNumber: string;
+
   @Field(() => [RollsReportDetailItem])
   RollsReportDetailItems: RollsReportDetailItem[];
 }
@@ -46,6 +52,9 @@ export class RollsReportDetailItem {
 
   @Field(() => Number)
   producedFromBrokenArea: number;
+
+  @Field(() => Number)
+  totalArea: number;
 }
 
 export class RollsReportDetailItemTs {
@@ -66,6 +75,8 @@ export class RollsReportDetailItemTs {
   producedFromBrokenCount: number;
 
   producedFromBrokenArea: number;
+
+  totalArea: number;
 }
 
 export type RawProductItemDto = {

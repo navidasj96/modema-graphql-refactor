@@ -3,6 +3,7 @@ import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { InvoiceProductItemService } from './invoice-product-item.service';
 
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { InvoiceProductItemPure } from '@/modules/invoice-product-item/domain/invoice-product-item.pure';
 import { CancelDepotInvoiceItemInput } from '@/modules/invoice-product-item/dto/cancel-depot-invoice-item.input';
 import { ConfirmTagsPrintedInput } from '@/modules/invoice-product-item/dto/confirm-tags-printed.input';
 import { CreateNewInvoiceItemForDepotInput } from '@/modules/invoice-product-item/dto/create-new-invoice-item-for-depot.input';
@@ -331,6 +332,18 @@ export class InvoiceProductItemResolver {
   ) {
     return await this.invoiceProductItemService.rollsReportDetail(
       rollsReportDetailInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PERMISSION_TO_VIEW_ROLLS_REPORT])
+  @Query(() => [InvoiceProductItemPure])
+  async rollsReportProductionList(
+    @Args('productionRollId', { type: () => Number })
+    productionRollId: number
+  ) {
+    return await this.invoiceProductItemService.rollsReportProductionList(
+      productionRollId
     );
   }
 }
