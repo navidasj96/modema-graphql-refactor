@@ -346,4 +346,19 @@ export class InvoiceProductItemResolver {
       productionRollId
     );
   }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PERMISSION_TO_VIEW_ROLLS_REPORT])
+  @Query(() => [InvoiceProductItemPure])
+  async sepidarExportInfo(
+    @Args('productionRollId', { type: () => Number })
+    productionRollId: number,
+    @Args('partially', { type: () => Number, nullable: true, defaultValue: 0 })
+    partially = 0
+  ) {
+    return await this.invoiceProductItemService.sepidarExportInfo(
+      productionRollId,
+      partially
+    );
+  }
 }

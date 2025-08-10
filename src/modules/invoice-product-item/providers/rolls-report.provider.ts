@@ -13,7 +13,7 @@ import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status'
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GraphQLError } from 'graphql';
-import { Brackets, Repository } from 'typeorm';
+import { Brackets, DataSource, In, Repository } from 'typeorm';
 
 @Injectable()
 export class RollsReportProvider {
@@ -28,7 +28,11 @@ export class RollsReportProvider {
      * inject productionRollService
      */
     @Inject(forwardRef(() => ProductionRollService))
-    private readonly productionRollService: ProductionRollService
+    private readonly productionRollService: ProductionRollService,
+    /**
+     * inject dataSource
+     */
+    private readonly dataSource: DataSource
   ) {}
 
   async rollsReportList(rollsReportListInput: RollsReportListInput) {
@@ -130,23 +134,29 @@ export class RollsReportProvider {
 
     if (total.length > 0) {
       for (const rowData of total) {
-        const rollReportDetailItem: RollsReportDetailItemTs = {
-          brokenArea: 0,
-          brokenCount: 0,
-          producedArea: 0,
-          producedCount: 0,
-          producingArea: 0,
-          producingCount: 0,
-          producedFromBrokenArea: 0,
-          producedFromBrokenCount: 0,
-          sizeTitle: rowData.title,
-          totalArea:
-            Math.round(rowData.width * rowData.length * rowData.count * 100) /
-            100,
-        };
-        console.log('rowData.count', rowData.count);
+        const sameSizeRow = rollsReportDetailItems.find(
+          (item) => item.sizeTitle === rowData.title
+        );
+        const rollReportDetailItem: RollsReportDetailItemTs = sameSizeRow
+          ? sameSizeRow
+          : {
+              brokenArea: 0,
+              brokenCount: 0,
+              producedArea: 0,
+              producedCount: 0,
+              producingArea: 0,
+              producingCount: 0,
+              producedFromBrokenArea: 0,
+              producedFromBrokenCount: 0,
+              sizeTitle: rowData.title,
+              totalArea:
+                Math.round(
+                  rowData.width * rowData.length * rowData.count * 100
+                ) / 100,
+            };
+
         for (const pd of producedData) {
-          if (pd.sizeId === rowData.sizeId) {
+          if (pd.sizeId === rowData.sizeId && !sameSizeRow) {
             rollReportDetailItem.producedCount += pd.count;
             const area = pd.width * pd.length * pd.count;
             rollReportDetailItem.producedArea += Math.round(area * 100) / 100;
@@ -154,7 +164,7 @@ export class RollsReportProvider {
         }
 
         for (const ing of producingData) {
-          if (ing.sizeId === rowData.sizeId) {
+          if (ing.sizeId === rowData.sizeId && !sameSizeRow) {
             rollReportDetailItem.producingCount += ing.count;
             const area = ing.width * ing.length * ing.count;
             rollReportDetailItem.producingArea += Math.round(area * 100) / 100;
@@ -162,7 +172,7 @@ export class RollsReportProvider {
         }
 
         for (const bd of brokenData) {
-          if (bd.sizeId === rowData.sizeId) {
+          if (bd.sizeId === rowData.sizeId && !sameSizeRow) {
             rollReportDetailItem.brokenCount += bd.count;
             const area = bd.width * bd.length * bd.count;
             rollReportDetailItem.brokenArea += Math.round(area * 100) / 100;
@@ -178,7 +188,21 @@ export class RollsReportProvider {
               Math.round(area * 100) / 100;
           }
         }
-        rollsReportDetailItems.push(rollReportDetailItem);
+
+        if (sameSizeRow) {
+          rollReportDetailItem.totalArea +=
+            Math.round(rowData.width * rowData.length * rowData.count * 100) /
+            100;
+          rollsReportDetailItems.map((item) => {
+            if (item.sizeTitle === rowData.title) {
+              return sameSizeRow;
+            } else {
+              return item;
+            }
+          });
+        } else {
+          rollsReportDetailItems.push(rollReportDetailItem);
+        }
       }
     }
 
@@ -264,6 +288,9 @@ export class RollsReportProvider {
       .where('productionRoll.id = :productionRollId', { productionRollId })
       .andWhere('invoice.invoiceModeId != :excludeMode', { excludeMode: 6 })
       .groupBy('basicCarpetSize.id')
+      .addGroupBy('basicCarpetSize.title')
+      .addGroupBy('basicCarpetSize.length')
+      .addGroupBy('basicCarpetSize.width')
       .addGroupBy('ipi.currentStatusId');
 
     if (status) {
@@ -308,12 +335,14 @@ export class RollsReportProvider {
         countQuery.andWhere('invoice.invoiceModeId = :modeId', { modeId: 6 });
       }
 
-      const [result, countResult] = await Promise.all([
+      const results = await Promise.all([
         baseQuery.getRawMany(),
         countQuery.getRawOne(),
       ]);
+      const result = results[0] as RawProductItemDto[];
+      const countResult = results[1] as { count: string };
 
-      const mappedData = (result as RawProductItemDto[]).map((item) => ({
+      const mappedData = result.map((item) => ({
         count: Number(item.count),
         id: 0, // Not needed for grouped data
         sizeId: Number(item.sizeId),
@@ -324,8 +353,7 @@ export class RollsReportProvider {
         stateId: Number(item.stateId),
       }));
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      const totalCount = Number(countResult?.['totalCount'] || 0);
+      const totalCount = Number(countResult?.count || 0);
 
       return { data: mappedData, totalCount };
     }
@@ -356,35 +384,137 @@ export class RollsReportProvider {
     }
 
     const customerModeStatus = InvoiceModeEnum.INVOICE_MODE_FOR_CUSTOMER;
-    const depotModeStatus = InvoiceModeEnum.INVOICE_MODE_FOR_DEPOT;
-    const depotCancelledModeStatus =
-      InvoiceModeEnum.INVOICE_MODE_FOR_DEPOT_CANCELED;
-    const defectiveModeStatus = InvoiceModeEnum.INVOICE_MODE_DAMAGED;
 
     const department =
       InvoiceProductStatusEnum.RECEIVED_BY_REPOSITORY_DEPARTMENT;
     const defective = InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION;
 
     const invoiceModes = await this.invoiceProductItemRepository
-      .createQueryBuilder('invoiceProductItem')
-      .leftJoinAndSelect('invoiceProductItem.invoiceProduct', 'invoiceProduct')
-      .leftJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
-      .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
-      .leftJoinAndSelect('invoice.invoiceMode', 'invoiceMode')
-      .leftJoinAndSelect(
-        'invoiceProductItem.invoiceProductStatuses',
-        'invoiceProductStatuses'
-      )
-      .where('invoiceProductItem.productionRollId = :productionRollId', {
-        productionRollId,
-      })
-      .andWhere('invoiceProductItem.currentStatusId IN (:...statuses)', {
+      .createQueryBuilder('ipi')
+      .select([
+        'ipi.id',
+        'invoiceProduct.id',
+        'invoice.id',
+        'invoiceMode.id',
+        'invoiceMode.name',
+      ])
+      .innerJoin('ipi.invoiceProduct', 'invoiceProduct')
+      .innerJoin('invoiceProduct.invoice', 'invoice')
+      .innerJoin('invoice.invoiceMode', 'invoiceMode')
+      .where('ipi.currentStatusId IN (:...statuses)', {
         statuses: [department, defective],
       })
+      .andWhere('ipi.productionRollId = :productionRollId', {
+        productionRollId,
+      })
+      .andWhere(
+        partially === 1 ? 'invoice.invoiceModeId = :customerModeStatus' : '1=1',
+        partially === 1 ? { customerModeStatus } : {}
+      )
+      .groupBy('invoiceProduct.invoice.invoiceMode.id')
+      .addGroupBy('ipi.id')
+      .addGroupBy('invoiceProduct.id')
+      .addGroupBy('invoice.id')
+      .addGroupBy('invoiceMode.name')
       .getMany();
 
-    if (partially == 1) {
-      $invoiceModes;
+    const invoiceModeDatesQuery = this.invoiceProductItemRepository
+      .createQueryBuilder('ipi')
+      .select([
+        'DATE(ipiips.createdAt) as current_status_date',
+        'COUNT(*) as count',
+        'ipi.invoiceProductId',
+        'invoiceProduct.subproductId',
+        'invoiceProduct.invoiceId',
+        'invoice.invoiceModeId',
+      ])
+      .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
+      .leftJoin('ipi.invoiceProduct', 'invoiceProduct')
+      .leftJoin('invoiceProduct.subproduct', 'subproduct')
+      .leftJoin('invoiceProduct.invoice', 'invoice')
+      .leftJoin('invoice.invoiceMode', 'invoiceMode')
+      .where('ipi.productionRollId = :productionRollId', { productionRollId })
+      .andWhere('ipi.currentStatusId IN (:...currentStatuses)', {
+        currentStatuses: [department, defective],
+      })
+      .andWhere('ipiips.invoiceProductStatusId IN (:...statusIds)', {
+        statusIds: [department, defective],
+      })
+      .groupBy('DATE(ipiips.createdAt)')
+      .addGroupBy('ipi.invoiceProductId')
+      .addGroupBy('invoiceProduct.subproductId')
+      .addGroupBy('invoiceProduct.invoiceId')
+      .addGroupBy('invoice.invoiceModeId');
+
+    if (partially === 1) {
+      invoiceModeDatesQuery.andWhere(
+        'ipi.isInsertedIntoSepidar = :isInserted',
+        {
+          isInserted: 0,
+        }
+      );
+    }
+    const invoiceProductItems = await this.invoiceProductItemRepository.find({
+      where: { currentStatusId: In([department, defective]), productionRollId },
+    });
+    invoiceModeDatesQuery.addGroupBy('invoiceProduct.invoice.invoiceMode.id');
+    const invoiceModeDates = await invoiceModeDatesQuery.getRawAndEntities();
+
+    return {
+      productionRoll,
+      invoiceModes,
+      invoiceModeDates,
+    };
+  }
+
+  async confirmSepidarPartiallyImportedFromExcel(productionRollId: number) {
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    const manager = queryRunner.manager;
+    const invoiceProductItemRepository =
+      manager.getRepository(InvoiceProductItem);
+    const productionRoll = await this.productionRollService.findOne({
+      where: { id: productionRollId },
+    });
+
+    const rollRefCode = productionRoll?.rollNumber;
+
+    const department =
+      InvoiceProductStatusEnum.RECEIVED_BY_REPOSITORY_DEPARTMENT;
+    const defective = InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION;
+
+    const InvoiceProductItems = await invoiceProductItemRepository.find({
+      where: {
+        productionRollId,
+        currentStatusId: In([department, defective]),
+        isInsertedIntoSepidar: 0,
+      },
+      relations: {
+        invoiceProduct: {
+          subproduct: true,
+          invoice: {
+            invoiceMode: true,
+          },
+        },
+      },
+    });
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      for (const invoiceProductItem of InvoiceProductItems) {
+        invoiceProductItem.isInsertedIntoSepidar = 1;
+        await invoiceProductItemRepository.save(invoiceProductItem);
+      }
+      await queryRunner.commitTransaction();
+    } catch {
+      await queryRunner.rollbackTransaction();
+      throw new GraphQLError(
+        `Error confirming Sepidar import for roll ${rollRefCode}`
+      );
+    } finally {
+      await queryRunner.release();
     }
   }
 }

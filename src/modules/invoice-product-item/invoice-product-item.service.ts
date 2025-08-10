@@ -276,6 +276,18 @@ export class InvoiceProductItemService {
       productionRollId
     );
   }
+
+  async sepidarExportInfo(productionRollId: number, partially = 0) {
+    return await this.rollsReportProvider.sepidarExportInfo(
+      productionRollId,
+      partially
+    );
+  }
+
+  async exportToCSV(productionRollId: number) {
+    return await this.rollsReportProvider.exportToCSV(productionRollId);
+  }
+
   async invoiceProductItemForPrintProductTag(productionRollId: number) {
     const invoiceProductItems = await this.invoiceProductItemRepository
       .createQueryBuilder('invoiceProductItem')
