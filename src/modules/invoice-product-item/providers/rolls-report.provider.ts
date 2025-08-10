@@ -7,10 +7,12 @@ import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-r
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { RollsReportDetailInput } from '@/modules/invoice-product-item/providers/rolls-report-detail.input';
 import { ProductionRollService } from '@/modules/production-roll/production-roll.service';
+import { InvoiceModeEnum } from '@/utils/invoice-mode.enum';
 import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GraphQLError } from 'graphql';
 import { Brackets, Repository } from 'typeorm';
 
 @Injectable()
@@ -342,5 +344,47 @@ export class RollsReportProvider {
     }));
 
     return { data: mappedData };
+  }
+
+  async sepidarExportInfo(productionRollId: number, partially = 0) {
+    const productionRoll = await this.productionRollService.findOne({
+      where: { id: productionRollId },
+    });
+
+    if (!productionRoll) {
+      throw new GraphQLError('Roll not found');
+    }
+
+    const customerModeStatus = InvoiceModeEnum.INVOICE_MODE_FOR_CUSTOMER;
+    const depotModeStatus = InvoiceModeEnum.INVOICE_MODE_FOR_DEPOT;
+    const depotCancelledModeStatus =
+      InvoiceModeEnum.INVOICE_MODE_FOR_DEPOT_CANCELED;
+    const defectiveModeStatus = InvoiceModeEnum.INVOICE_MODE_DAMAGED;
+
+    const department =
+      InvoiceProductStatusEnum.RECEIVED_BY_REPOSITORY_DEPARTMENT;
+    const defective = InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION;
+
+    const invoiceModes = await this.invoiceProductItemRepository
+      .createQueryBuilder('invoiceProductItem')
+      .leftJoinAndSelect('invoiceProductItem.invoiceProduct', 'invoiceProduct')
+      .leftJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
+      .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
+      .leftJoinAndSelect('invoice.invoiceMode', 'invoiceMode')
+      .leftJoinAndSelect(
+        'invoiceProductItem.invoiceProductStatuses',
+        'invoiceProductStatuses'
+      )
+      .where('invoiceProductItem.productionRollId = :productionRollId', {
+        productionRollId,
+      })
+      .andWhere('invoiceProductItem.currentStatusId IN (:...statuses)', {
+        statuses: [department, defective],
+      })
+      .getMany();
+
+    if (partially == 1) {
+      $invoiceModes;
+    }
   }
 }
