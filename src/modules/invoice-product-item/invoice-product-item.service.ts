@@ -284,10 +284,6 @@ export class InvoiceProductItemService {
     );
   }
 
-  async exportToCSV(productionRollId: number) {
-    return await this.rollsReportProvider.exportToCSV(productionRollId);
-  }
-
   async invoiceProductItemForPrintProductTag(productionRollId: number) {
     const invoiceProductItems = await this.invoiceProductItemRepository
       .createQueryBuilder('invoiceProductItem')

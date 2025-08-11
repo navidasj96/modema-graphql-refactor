@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { CreateShippingServiceInput } from './dto/create-shipping-service.input';
-import { UpdateShippingServiceInput } from './dto/update-shipping-service.input';
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
-import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
+import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
 import { CreateShipmentChaparProvider } from '@/modules/shipping-service/providers/create-shipment-chapar.provider';
 import { SnappAuthenticationControllerProvider } from '@/modules/shipping-service/providers/snapp-authentication-controller.provider';
+import { ShippingServiceEnum } from '@/utils/ShippingServiceEnum';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
-import { FindOneOptions, Repository } from 'typeorm';
+import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
+import { CreateShippingServiceInput } from './dto/create-shipping-service.input';
+import { UpdateShippingServiceInput } from './dto/update-shipping-service.input';
 
 @Injectable()
 export class ShippingServiceService {
@@ -31,8 +31,8 @@ export class ShippingServiceService {
     return 'This action adds a new shippingService';
   }
 
-  findAll() {
-    return `This action returns all shippingService`;
+  async findAll(options: FindManyOptions<ShippingService>) {
+    return await this.shippingServiceRepository.find(options);
   }
 
   async findOne(options: FindOneOptions<ShippingService>) {

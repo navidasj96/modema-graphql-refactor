@@ -701,3 +701,6 @@ export const WithdrawalRequestPermissions = {
 };
 
 export const PERMISSION_TO_VIEW_ROLLS_REPORT = 'view rolls report';
+
+export const PERMISSION_TO_VIEW_REPORT_SENT_INVOICES =
+  'view report sent invoices';

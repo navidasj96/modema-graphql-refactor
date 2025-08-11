@@ -10,8 +10,8 @@ import { InvoiceProductStatusEnum } from '@/utils/invoice-product-status';
 import { INVOICE_STATUSES_AFTER_PRODUCTION_START } from '@/utils/invoice-status';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DataSource, In, Repository } from 'typeorm';
 import * as moment from 'moment-jalaali';
+import { DataSource, In, Repository } from 'typeorm';
 
 @Injectable()
 export class InvoiceItemsPrintToHeatProvider {
@@ -48,7 +48,6 @@ export class InvoiceItemsPrintToHeatProvider {
     let ripItems: InvoiceProductItem[] = [];
 
     if (printRipId) {
-      console.log('ripItems', ripItems);
       const invoiceProductRipItems = await this.invoiceProductItemRepository
         .createQueryBuilder('invoiceProductItem')
         .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')
@@ -72,8 +71,6 @@ export class InvoiceItemsPrintToHeatProvider {
     }
 
     if (productionRollId) {
-      console.log('heatItems', heatItems);
-
       const invoiceProductHeatItems = await this.invoiceProductItemRepository
         .createQueryBuilder('invoiceProductItem')
         .innerJoin('invoiceProductItem.invoiceProduct', 'invoiceProduct')

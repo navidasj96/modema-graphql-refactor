@@ -1,3 +1,15 @@
+import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/entities/basic-carpet-size-detail.entity';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/entities/campaign-free-offer-size.entity';
+import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
+import { DesignersProductPriceRange } from '@/modules/designers-product-price-range/entities/designers-product-price-range.entity';
+import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
+import { Image } from '@/modules/image/entities/image.entity';
+import { PriceGroupSize } from '@/modules/price-group-size/entities/price-group-size.entity';
+import { Product } from '@/modules/product/entities/product.entity';
+import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
+import { RipTemplateItem } from '@/modules/rip-template-item/entities/rip-template-item.entity';
+import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
+import { TorobProduct } from '@/modules/torob-product/entities/torob-product.entity';
 import {
   Column,
   Entity,
@@ -7,18 +19,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/entities/campaign-free-offer-size.entity';
-import { CouponSubject } from '@/modules/coupon-subject/entities/coupon-subject.entity';
-import { DesignersProductPriceRange } from '@/modules/designers-product-price-range/entities/designers-product-price-range.entity';
-import { DiscountSubject } from '@/modules/discount-subject/entities/discount-subject.entity';
-import { PriceGroupSize } from '@/modules/price-group-size/entities/price-group-size.entity';
-import { ProductionPad } from '@/modules/production-pad/entities/production-pad.entity';
-import { Product } from '@/modules/product/entities/product.entity';
-import { RipTemplateItem } from '@/modules/rip-template-item/entities/rip-template-item.entity';
-import { Subproduct } from '@/modules/subproduct/entities/subproduct.entity';
-import { TorobProduct } from '@/modules/torob-product/entities/torob-product.entity';
-import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/entities/basic-carpet-size-detail.entity';
-import { Image } from '@/modules/image/entities/image.entity';
 
 @Index('basic_carpet_sizes_code_unique', ['code'], { unique: true })
 @Index('basic_carpet_sizes_image_id_foreign', ['imageId'], {})
@@ -87,7 +87,7 @@ export class BasicCarpetSize {
   sortOrder?: number;
 
   @Column('tinyint', { name: 'is_active', width: 1, default: () => "'1'" })
-  isActive: boolean;
+  isActive: number;
 
   @Column('timestamp', {
     name: 'created_at',

@@ -1,12 +1,10 @@
+import { InvoiceStatus } from '@/modules/invoice-status/entities/invoice-status.entity';
+import { InvoiceStatusPrepareProvider } from '@/modules/invoice-status/providers/invoice-status-prepare.provider';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { CreateInvoiceStatusInput } from './dto/create-invoice-status.input';
 import { UpdateInvoiceStatusInput } from './dto/update-invoice-status.input';
-import { InjectRepository } from '@nestjs/typeorm';
-import { InvoiceStatus } from '@/modules/invoice-status/entities/invoice-status.entity';
-import { ReadyToSendProduct } from '../ready-to-send-product/entities/ready-to-send-product.entity';
-import { read } from 'fs';
-import { FindManyOptions, Repository } from 'typeorm';
-import { InvoiceStatusPrepareProvider } from '@/modules/invoice-status/providers/invoice-status-prepare.provider';
 
 @Injectable()
 export class InvoiceStatusService {
@@ -31,6 +29,10 @@ export class InvoiceStatusService {
 
   findOne(id: number) {
     return `This action returns a #${id} invoiceStatus`;
+  }
+
+  async find(options: FindManyOptions<InvoiceStatus>) {
+    return await this.invoiceStatusRepository.find(options);
   }
 
   update(id: number, updateInvoiceStatusInput: UpdateInvoiceStatusInput) {

@@ -1,3 +1,4 @@
+import { BasicCarpetSizeModule } from '@/modules/basic-carpet-size/basic-carpet-size.module';
 import { InvoiceAddressModule } from '@/modules/invoice-address/invoice-address.module';
 import { InvoiceHistoryModule } from '@/modules/invoice-history/invoice-history.module';
 import { InvoiceInvoiceStatusModule } from '@/modules/invoice-invoice-status/invoice-invoice-status.module';
@@ -14,6 +15,8 @@ import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers
 import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
 import { GetNewInvoiceNumberProvider } from '@/modules/invoice/providers/get-new-invoice-number.provider';
 import { InvoicePrepareProvider } from '@/modules/invoice/providers/invoice-prepare.provider';
+import { ReportPadsToProduceProvider } from '@/modules/invoice/providers/report-pads-to-produce.provider';
+import { ReportSentInvoicesProvider } from '@/modules/invoice/providers/report-sent-invoices.provider';
 import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/providers/set-invoice-as-depot-for-digikala';
 import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
 import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
@@ -43,6 +46,8 @@ import { InvoiceService } from './invoice.service';
     InvoicePrepareProvider,
     SubproductsDepotInProgressProvider,
     GetNewInvoiceNumberProvider,
+    ReportPadsToProduceProvider,
+    ReportSentInvoicesProvider,
   ],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
@@ -70,6 +75,7 @@ import { InvoiceService } from './invoice.service';
     InvoiceAddressModule,
     InvoiceProductStatusModule,
     SubproductModule,
+    BasicCarpetSizeModule,
     forwardRef(() => ShippingServiceModule),
     forwardRef(() => InvoiceProductItemModule),
     forwardRef(() => InvoiceProductModule),

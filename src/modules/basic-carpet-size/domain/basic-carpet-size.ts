@@ -1,3 +1,15 @@
+import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/domain/basic-carpet-size-detail';
+import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/domain/campaign-free-offer-size';
+import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
+import { DesignersProductPriceRange } from '@/modules/designers-product-price-range/domain/designers-product-price-range';
+import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
+import { Image } from '@/modules/image/domain/image';
+import { PriceGroupSize } from '@/modules/price-group-size/domain/price-group-size';
+import { Product } from '@/modules/product/domain/product';
+import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
+import { RipTemplateItem } from '@/modules/rip-template-item/domain/rip-template-item';
+import { Subproduct } from '@/modules/subproduct/domain/subproduct';
+import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import {
   FilterableField,
@@ -6,18 +18,6 @@ import {
   PagingStrategies,
   QueryOptions,
 } from '@ptc-org/nestjs-query-graphql';
-import { BasicCarpetSizeDetail } from '@/modules/basic-carpet-size-detail/domain/basic-carpet-size-detail';
-import { Image } from '@/modules/image/domain/image';
-import { CampaignFreeOfferSize } from '@/modules/campaign-free-offer-size/domain/campaign-free-offer-size';
-import { CouponSubject } from '@/modules/coupon-subject/domain/coupon-subject';
-import { DesignersProductPriceRange } from '@/modules/designers-product-price-range/domain/designers-product-price-range';
-import { DiscountSubject } from '@/modules/discount-subject/domain/discount-subject';
-import { PriceGroupSize } from '@/modules/price-group-size/domain/price-group-size';
-import { ProductionPad } from '@/modules/production-pad/domain/production-pad';
-import { Product } from '@/modules/product/domain/product';
-import { RipTemplateItem } from '@/modules/rip-template-item/domain/rip-template-item';
-import { Subproduct } from '@/modules/subproduct/domain/subproduct';
-import { TorobProduct } from '@/modules/torob-product/domain/torob-product';
 
 @InputType('BasicCarpetSizeDomain')
 @QueryOptions({
@@ -73,7 +73,7 @@ export class BasicCarpetSize {
   sortOrder?: number;
 
   @FilterableField({ defaultValue: true })
-  isActive: boolean;
+  isActive: number;
 
   @Field({ defaultValue: new Date() })
   createdAt: Date;

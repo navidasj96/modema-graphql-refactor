@@ -1,4 +1,4 @@
-import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 
 @InputType('BasicCarpetSizePureInput')
 @ObjectType('BasicCarpetSizePureDomain')
@@ -46,7 +46,7 @@ export class BasicCarpetSizePure {
   sortOrder?: number;
 
   @Field({ defaultValue: true })
-  isActive: boolean;
+  isActive: number;
 
   @Field({ defaultValue: new Date() })
   createdAt: Date;

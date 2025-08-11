@@ -1,19 +1,27 @@
-import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { InvoiceService } from './invoice.service';
+import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { Invoice } from '@/modules/invoice/domain/invoice';
+import { ChangeInvoicesStatusResponseDto } from '@/modules/invoice/dto/change-invoices-status-response.dto';
+import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
 import { CheckSimilarInvoiceWithNameInput } from '@/modules/invoice/dto/check-similar-invoice-with-name.input.dto';
 import { CheckSimilarInvoiceWithNameOutput } from '@/modules/invoice/dto/check-similar-invoice-with-name.outpt.dto';
-import { UseGuards } from '@nestjs/common';
-import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
-import { Permissions } from '@/utils/permission-guard/permissions.decorator';
-import { InvoicePermissions } from '@/utils/permissions';
+import { ReportPadsToProduceInput } from '@/modules/invoice/dto/report-pads-to-produce.input';
+import { ReportPadsToProduceOutput } from '@/modules/invoice/dto/report-pads-to-produce.output';
+import { ReportSentInvoicesInput } from '@/modules/invoice/dto/report-sent-invoices.input';
+import { ReportSentInvoicesOutput } from '@/modules/invoice/dto/report-sent-invoices.output';
 import { SetInvoiceAsDepotForDigikalaResponseDto } from '@/modules/invoice/dto/set-invoice-as-depot-for-digikala-response.dto';
-import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
-import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { ChangeInvoicesStatusResponseDto } from '@/modules/invoice/dto/change-invoices-status-response.dto';
 import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dto';
 import { SubproductsDepotInProgressInput } from '@/modules/invoice/dto/subproducts-depot-in-progress.input';
 import { SubproductsDepotInProgressOutput } from '@/modules/invoice/dto/subproducts-depot-in-progress.output';
+import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
+import { Permissions } from '@/utils/permission-guard/permissions.decorator';
+import {
+  InvoicePermissions,
+  PERMISSION_TO_VIEW_REPORT_SENT_INVOICES,
+  ProductionPadPermissions,
+} from '@/utils/permissions';
+import { UseGuards } from '@nestjs/common';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { InvoiceService } from './invoice.service';
 
 @Resolver(() => Invoice)
 export class InvoiceResolver {
@@ -81,6 +89,30 @@ export class InvoiceResolver {
   ) {
     return await this.invoiceService.subproductsDepotInProgress(
       subproductsDepotInProgressInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([ProductionPadPermissions.PERMISSION_TO_VIEW])
+  @Query(() => [ReportPadsToProduceOutput])
+  async reportPadsToProduceList(
+    @Args('reportPadsToProduceInput', { type: () => ReportPadsToProduceInput })
+    reportPadsToProduceInput: ReportPadsToProduceInput
+  ) {
+    return await this.invoiceService.reportPadsToProduceList(
+      reportPadsToProduceInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PERMISSION_TO_VIEW_REPORT_SENT_INVOICES])
+  @Query(() => ReportSentInvoicesOutput)
+  async reportSentInvoicesList(
+    @Args('reportSentInvoicesInput', { type: () => ReportSentInvoicesInput })
+    reportSentInvoicesInput: ReportSentInvoicesInput
+  ) {
+    return await this.invoiceService.reportSentInvoicesList(
+      reportSentInvoicesInput
     );
   }
 }

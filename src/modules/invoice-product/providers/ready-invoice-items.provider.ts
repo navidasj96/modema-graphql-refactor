@@ -170,7 +170,6 @@ export class ReadyInvoiceProductProvider {
 
       readyInvoiceProductItems.push({ ...itemInvoiceProduct, withPadText });
     }
-    console.log('itemInvoiceProducts', itemInvoiceProducts);
     return {
       itemInvoiceProducts: readyInvoiceProductItems,
       totalCount: total,

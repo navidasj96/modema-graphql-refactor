@@ -1,24 +1,28 @@
-import { Injectable } from '@nestjs/common';
-import { CreateInvoiceInput } from './dto/create-invoice.input';
-import { UpdateInvoiceInput } from './dto/update-invoice.input';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
-import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers/check-similar-invoice-with-name.provider';
-import { CheckSimilarInvoiceWithNameInput } from '@/modules/invoice/dto/check-similar-invoice-with-name.input.dto';
-import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/providers/set-invoice-as-depot-for-digikala';
-import { ChangeInvoiceStatusProvider } from './providers/change-invoices-status.provider';
 import { ChangeInvoicesStatusInput } from '@/modules/invoice/dto/change-invoices-status.input';
-import { Invoice } from '@/modules/invoice/entities/invoice.entity';
-import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
-import { EntityManager, Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
-import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
-import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
+import { CheckSimilarInvoiceWithNameInput } from '@/modules/invoice/dto/check-similar-invoice-with-name.input.dto';
+import { ReportPadsToProduceInput } from '@/modules/invoice/dto/report-pads-to-produce.input';
+import { ReportSentInvoicesInput } from '@/modules/invoice/dto/report-sent-invoices.input';
 import { ShowInvoiceInputDto } from '@/modules/invoice/dto/show-invoice.input.dto';
-import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
 import { SubproductsDepotInProgressInput } from '@/modules/invoice/dto/subproducts-depot-in-progress.input';
 import { SubproductsDepotInProgressOutput } from '@/modules/invoice/dto/subproducts-depot-in-progress.output';
+import { Invoice } from '@/modules/invoice/entities/invoice.entity';
+import { CheckSimilarInvoiceWithNameProvider } from '@/modules/invoice/providers/check-similar-invoice-with-name.provider';
+import { FillInvoicePackageCountIfEmptyProvider } from '@/modules/invoice/providers/fill-invoice-package-count-if-empty.provider';
 import { GetNewInvoiceNumberProvider } from '@/modules/invoice/providers/get-new-invoice-number.provider';
+import { ReportPadsToProduceProvider } from '@/modules/invoice/providers/report-pads-to-produce.provider';
+import { ReportSentInvoicesProvider } from '@/modules/invoice/providers/report-sent-invoices.provider';
+import { SetInvoiceAsDepotForDigikalaProvider } from '@/modules/invoice/providers/set-invoice-as-depot-for-digikala';
+import { ShowInvoiceProvider } from '@/modules/invoice/providers/show-invoice-provider';
+import { SubproductsDepotInProgressProvider } from '@/modules/invoice/providers/subproducts-depot-in-progress.provider';
 import { InvoiceStatusEnum } from '@/utils/invoice-status';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { EntityManager, Repository } from 'typeorm';
+import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
+import { CreateInvoiceInput } from './dto/create-invoice.input';
+import { UpdateInvoiceInput } from './dto/update-invoice.input';
+import { ChangeInvoiceStatusProvider } from './providers/change-invoices-status.provider';
 
 @Injectable()
 export class InvoiceService {
@@ -51,7 +55,15 @@ export class InvoiceService {
     private readonly subproductsDepotInProgressProvider: SubproductsDepotInProgressProvider,
     /**
      * inject getNewInvoiceNumberProvider
-     */ private readonly getNewInvoiceNumberProvider: GetNewInvoiceNumberProvider
+     */ private readonly getNewInvoiceNumberProvider: GetNewInvoiceNumberProvider,
+    /**
+     * inject reportPadsToProduceProvider
+     */
+    private readonly reportPadsToProduceProvider: ReportPadsToProduceProvider,
+    /**
+     * inject ReportSentInvoicesProvider
+     */
+    private readonly reportSentInvoicesProvider: ReportSentInvoicesProvider
   ) {}
 
   create(createInvoiceInput: CreateInvoiceInput) {
@@ -139,6 +151,21 @@ export class InvoiceService {
     );
   }
 
+  async reportPadsToProduceList(
+    reportPadsToProduceInput: ReportPadsToProduceInput
+  ) {
+    return await this.reportPadsToProduceProvider.reportPadsToProduceList(
+      reportPadsToProduceInput
+    );
+  }
+
+  async reportSentInvoicesList(
+    reportSentInvoicesInput: ReportSentInvoicesInput
+  ) {
+    return await this.reportSentInvoicesProvider.reportSentInvoicesList(
+      reportSentInvoicesInput
+    );
+  }
   async readyOnlyPads(fromData?: string, toDate?: string) {
     const readyOnlyPadsInvoicesQuery = this.invoiceRepository
       .createQueryBuilder('invoice')
