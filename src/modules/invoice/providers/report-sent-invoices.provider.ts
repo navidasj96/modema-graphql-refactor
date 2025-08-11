@@ -38,6 +38,10 @@ export class ReportSentInvoicesProvider {
     const sentInvoices = await this.invoiceRepository
       .createQueryBuilder('invoice')
       .select('invoice')
+      .innerJoinAndSelect('invoice.invoiceProducts', 'invoiceProduct')
+      .innerJoinAndSelect('invoiceProduct.product', 'product')
+      .innerJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
+      .innerJoinAndSelect('subproduct.basicCarpetSize', 'basicCarpetSize')
       .innerJoin('invoice.invoiceInvoiceStatuses', 'iis')
       .where('iis.invoiceStatusId = :sentStatus', {
         sentStatus: InvoiceStatusEnum.SENT,
@@ -48,6 +52,8 @@ export class ReportSentInvoicesProvider {
       })
       .groupBy('invoice.id')
       .getMany();
+
+    console.log('sentInvoices', sentInvoices);
     finalResult.sentInvoices = sentInvoices.length;
     finalResult.totalBoxCount = sentInvoices.reduce(
       (acc, invoice) => acc + (invoice.packageCount || 0),
