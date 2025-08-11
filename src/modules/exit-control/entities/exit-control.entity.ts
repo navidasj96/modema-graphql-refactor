@@ -1,3 +1,5 @@
+import { ExitControlItem } from '@/modules/exit-control-item/entities/exit-control-item.entity';
+import { User } from '@/modules/user/entities/user.entity';
 import {
   Column,
   Entity,
@@ -7,8 +9,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ExitControlItem } from '@/modules/exit-control-item/entities/exit-control-item.entity';
-import { User } from '@/modules/user/entities/user.entity';
 
 @Index('exit_controls_user_id_index', ['userId'], {})
 @Entity('exit_controls', { schema: 'modema' })

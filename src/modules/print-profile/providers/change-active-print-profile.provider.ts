@@ -4,8 +4,7 @@ import { PrintProfile } from '@/modules/print-profile/entities/print-profile.ent
 import { checkUserHasPermission } from '@/utils/helpers';
 import { PrintProfilePermissions } from '@/utils/permissions';
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { DataSource, Not, Repository } from 'typeorm';
+import { DataSource, Not } from 'typeorm';
 
 @Injectable()
 export class ChangeActivePrintProfileProvider {

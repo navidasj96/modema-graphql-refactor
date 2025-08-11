@@ -1,8 +1,14 @@
-import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
-import { PrintProfileService } from './print-profile.service';
-import { PrintProfile } from '@/modules/print-profile/domain/print-profile';
-import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { PrintProfile } from '@/modules/print-profile/domain/print-profile';
+import { PrintProfilePure } from '@/modules/print-profile/domain/print-profile.pure';
+import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-print-profile.input';
+import { GeneralResponseDto } from '@/utils/general-response.dto';
+import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
+import { Permissions } from '@/utils/permission-guard/permissions.decorator';
+import { PrintProfilePermissions } from '@/utils/permissions';
+import { UseGuards } from '@nestjs/common';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { PrintProfileService } from './print-profile.service';
 
 @Resolver(() => PrintProfile)
 export class PrintProfileResolver {
@@ -19,6 +25,27 @@ export class PrintProfileResolver {
     return await this.printProfileService.changeActivePrintProfile(
       context,
       printProfileId
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PrintProfilePermissions.PERMISSION_TO_VIEW])
+  @Query(() => [PrintProfilePure])
+  async printProfileList() {
+    return await this.printProfileService.printProfileList();
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PrintProfilePermissions.PERMISSION_TO_CHANGE])
+  @Mutation(() => GeneralResponseDto)
+  async createPrintProfile(
+    @Args('createPrintProfileInput', { type: () => CreatePrintProfileInput })
+    createPrintProfileInput: CreatePrintProfileInput,
+    @Context() context: { req: UserContext }
+  ): Promise<GeneralResponseDto> {
+    return await this.printProfileService.createPrintProfile(
+      createPrintProfileInput,
+      context
     );
   }
 }

@@ -50,16 +50,19 @@ export class ReportSentInvoicesProvider {
         fromDate,
         toDate,
       })
-      .groupBy('invoice.id')
+      .groupBy(
+        'invoice.id, invoiceProduct.id, product.id, subproduct.id, basicCarpetSize.id'
+      )
       .getMany();
 
-    console.log('sentInvoices', sentInvoices);
     finalResult.sentInvoices = sentInvoices.length;
     finalResult.totalBoxCount = sentInvoices.reduce(
       (acc, invoice) => acc + (invoice.packageCount || 0),
       0
     );
 
+    let totalCarpetArea = 0;
+    let totalPadArea = 0;
     for (const invoice of sentInvoices) {
       for (const invoiceProduct of invoice.invoiceProducts) {
         const count = invoiceProduct.count;
@@ -68,18 +71,19 @@ export class ReportSentInvoicesProvider {
         const basicCarpetSize = subproduct.basicCarpetSize;
 
         if (product.isCarpetPad) {
-          finalResult.totalPadArea +=
-            basicCarpetSize.width * basicCarpetSize.length * count;
-          finalResult.totalSentMeter +=
+          totalPadArea +=
             basicCarpetSize.width * basicCarpetSize.length * count;
         } else {
-          finalResult.totalCarpetArea +=
-            basicCarpetSize.width * basicCarpetSize.length * count;
-          finalResult.totalSentMeter +=
+          totalCarpetArea +=
             basicCarpetSize.width * basicCarpetSize.length * count;
         }
       }
     }
+    finalResult.totalCarpetArea = Math.round(totalCarpetArea * 100) / 100;
+    finalResult.totalPadArea = Math.round(totalPadArea * 100) / 100;
+    finalResult.totalSentMeter =
+      Math.round(totalCarpetArea * 100) / 100 +
+      Math.round(totalPadArea * 100) / 100;
 
     const usedShippingServices: Record<
       number,
@@ -104,7 +108,6 @@ export class ReportSentInvoicesProvider {
         currentShippingServiceCount;
     }
 
-    let row = 1;
     const results: { key: string; value: number }[] = [];
 
     for (const usedShippingService of Object.values(usedShippingServices)) {

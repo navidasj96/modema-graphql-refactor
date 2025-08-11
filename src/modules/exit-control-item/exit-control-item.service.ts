@@ -1,26 +1,21 @@
+import { ExitControlItemReportInput } from '@/modules/exit-control-item/dto/exit-control-item-report.input';
+import { ExitControlItemReportProvider } from '@/modules/exit-control-item/providers/exit-control-item-report.provider';
 import { Injectable } from '@nestjs/common';
-import { CreateExitControlItemInput } from './dto/create-exit-control-item.input';
-import { UpdateExitControlItemInput } from './dto/update-exit-control-item.input';
 
 @Injectable()
 export class ExitControlItemService {
-  create(createExitControlItemInput: CreateExitControlItemInput) {
-    return 'This action adds a new exitControlItem';
-  }
+  constructor(
+    /**
+     * inject exitControlReportProvider
+     */
+    private readonly exitControlItemReportProvider: ExitControlItemReportProvider
+  ) {}
 
-  findAll() {
-    return `This action returns all exitControlItem`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} exitControlItem`;
-  }
-
-  update(id: number, updateExitControlItemInput: UpdateExitControlItemInput) {
-    return `This action updates a #${id} exitControlItem`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} exitControlItem`;
+  async exitControlList(
+    exitControlItemReportInput: ExitControlItemReportInput
+  ) {
+    return this.exitControlItemReportProvider.exitControlList(
+      exitControlItemReportInput
+    );
   }
 }

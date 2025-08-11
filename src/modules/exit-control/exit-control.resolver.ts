@@ -1,6 +1,6 @@
 import { Resolver } from '@nestjs/graphql';
-import { ExitControlService } from './exit-control.service';
 import { ExitControl } from './domain/exit-control';
+import { ExitControlService } from './exit-control.service';
 
 @Resolver(() => ExitControl)
 export class ExitControlResolver {

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ExitControlService } from './exit-control.service';
-import { ExitControlResolver } from './exit-control.resolver';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
-import { ExitControl } from './entities/exit-control.entity';
 import { ExitControl as ExitControlGraphQL } from './domain/exit-control';
 import { CreateExitControlInput } from './dto/create-exit-control.input';
+import { ExitControl } from './entities/exit-control.entity';
+import { ExitControlResolver } from './exit-control.resolver';
+import { ExitControlService } from './exit-control.service';
 
 @Module({
   providers: [ExitControlResolver, ExitControlService],

@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { CreatePrintProfileInput } from './dto/create-print-profile.input';
-import { UpdatePrintProfileInput } from './dto/update-print-profile.input';
-import { FindOneOptions, Repository } from 'typeorm';
-import { PrintProfile } from '@/modules/print-profile/entities/print-profile.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ChangeActivePrintProfileProvider } from '@/modules/print-profile/providers/change-active-print-profile.provider';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-print-profile.input';
+import { PrintProfile } from '@/modules/print-profile/entities/print-profile.entity';
+import { ChangeActivePrintProfileProvider } from '@/modules/print-profile/providers/change-active-print-profile.provider';
+import { PrintProfileProvider } from '@/modules/print-profile/providers/print-profile.provider';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class PrintProfileService {
@@ -18,26 +18,15 @@ export class PrintProfileService {
     /**
      * inject changeActivePrintProfileProvider
      */
-    private readonly changeActivePrintProfileProvider: ChangeActivePrintProfileProvider
+    private readonly changeActivePrintProfileProvider: ChangeActivePrintProfileProvider,
+    /**
+     * inject printProfileProvider
+     */
+    private readonly printProfileProvider: PrintProfileProvider
   ) {}
-  create(createPrintProfileInput: CreatePrintProfileInput) {
-    return 'This action adds a new printProfile';
-  }
-
-  findAll() {
-    return `This action returns all printProfile`;
-  }
 
   async findOne(options: FindOneOptions<PrintProfile>) {
     return await this.printProfileRepository.findOne(options);
-  }
-
-  update(id: number, updatePrintProfileInput: UpdatePrintProfileInput) {
-    return `This action updates a #${id} printProfile`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} printProfile`;
   }
 
   async changeActivePrintProfile(
@@ -47,6 +36,20 @@ export class PrintProfileService {
     return await this.changeActivePrintProfileProvider.changeActivePrintProfile(
       context,
       printProfileId
+    );
+  }
+
+  async printProfileList() {
+    return this.printProfileProvider.printProfileList();
+  }
+
+  async createPrintProfile(
+    createPrintProfileInput: CreatePrintProfileInput,
+    context: { req: UserContext }
+  ) {
+    return this.printProfileProvider.createPrintProfile(
+      createPrintProfileInput,
+      context
     );
   }
 }
