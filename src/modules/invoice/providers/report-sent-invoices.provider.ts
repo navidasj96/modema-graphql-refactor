@@ -46,13 +46,9 @@ export class ReportSentInvoicesProvider {
       .where('iis.invoiceStatusId = :sentStatus', {
         sentStatus: InvoiceStatusEnum.SENT,
       })
-      .andWhere('iis.createdAt BETWEEN :fromDate AND :toDate', {
-        fromDate,
-        toDate,
-      })
-      .groupBy(
-        'invoice.id, invoiceProduct.id, product.id, subproduct.id, basicCarpetSize.id'
-      )
+      .andWhere('iis.createdAt >= :fromDate', { fromDate })
+      .andWhere('iis.createdAt <= :toDate', { toDate })
+      .groupBy('invoice.id')
       .getMany();
 
     finalResult.sentInvoices = sentInvoices.length;

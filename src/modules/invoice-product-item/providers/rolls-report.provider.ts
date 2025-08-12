@@ -383,56 +383,62 @@ export class RollsReportProvider {
       throw new GraphQLError('Roll not found');
     }
 
+    const rollRefCode = productionRoll.rollNumber ?? null;
+
+    // Invoice Mode constants
     const customerModeStatus = InvoiceModeEnum.INVOICE_MODE_FOR_CUSTOMER;
+    const depotModeStatus = InvoiceModeEnum.INVOICE_MODE_FOR_DEPOT;
+    const depotCancelledModeStatus =
+      InvoiceModeEnum.INVOICE_MODE_FOR_DEPOT_CANCELED;
+    const defectiveModeStatus = InvoiceModeEnum.INVOICE_MODE_DAMAGED;
 
     const department =
       InvoiceProductStatusEnum.RECEIVED_BY_REPOSITORY_DEPARTMENT;
     const defective = InvoiceProductStatusEnum.DAMAGED_DURING_PRODUCTION;
 
-    const invoiceModes = await this.invoiceProductItemRepository
+    // Get invoice modes grouped by invoice mode id
+    const invoiceModesQuery = this.invoiceProductItemRepository
       .createQueryBuilder('ipi')
-      .select([
-        'ipi.id',
-        'invoiceProduct.id',
-        'invoice.id',
-        'invoiceMode.id',
-        'invoiceMode.name',
-      ])
-      .innerJoin('ipi.invoiceProduct', 'invoiceProduct')
-      .innerJoin('invoiceProduct.invoice', 'invoice')
-      .innerJoin('invoice.invoiceMode', 'invoiceMode')
-      .where('ipi.currentStatusId IN (:...statuses)', {
+      .select('ipi')
+      .leftJoinAndSelect('ipi.invoiceProduct', 'invoiceProduct')
+      .leftJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
+      .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
+      .leftJoinAndSelect('invoice.invoiceMode', 'invoiceMode')
+      .leftJoinAndSelect('ipi.invoiceProductStatuses', 'invoiceProductStatuses')
+      .where('ipi.productionRollId = :productionRollId', { productionRollId })
+      .andWhere('ipi.currentStatusId IN (:...statuses)', {
         statuses: [department, defective],
-      })
-      .andWhere('ipi.productionRollId = :productionRollId', {
-        productionRollId,
-      })
-      .andWhere(
-        partially === 1 ? 'invoice.invoiceModeId = :customerModeStatus' : '1=1',
-        partially === 1 ? { customerModeStatus } : {}
-      )
-      .groupBy('invoiceProduct.invoice.invoiceMode.id')
-      .addGroupBy('ipi.id')
-      .addGroupBy('invoiceProduct.id')
-      .addGroupBy('invoice.id')
-      .addGroupBy('invoiceMode.name')
-      .getMany();
+      });
 
+    if (partially === 1) {
+      invoiceModesQuery.andWhere('ipi.isInsertedIntoSepidar = :isInserted', {
+        isInserted: 0,
+      });
+    }
+
+    const invoiceModesResult = await invoiceModesQuery.getMany();
+
+    // Group by invoice mode id
+    const invoiceModes: Record<number, InvoiceProductItem[]> = {};
+    for (const item of invoiceModesResult) {
+      const modeId = item.invoiceProduct?.invoice?.invoiceMode?.id;
+      if (modeId) {
+        if (!invoiceModes[modeId]) {
+          invoiceModes[modeId] = [];
+        }
+        invoiceModes[modeId].push(item);
+      }
+    }
+
+    // Get invoice mode dates
     const invoiceModeDatesQuery = this.invoiceProductItemRepository
       .createQueryBuilder('ipi')
-      .select([
-        'DATE(ipiips.createdAt) as current_status_date',
-        'COUNT(*) as count',
-        'ipi.invoiceProductId',
-        'invoiceProduct.subproductId',
-        'invoiceProduct.invoiceId',
-        'invoice.invoiceModeId',
-      ])
+      .select(['DATE(ipiips.createdAt) as current_status_date', 'ipi.id'])
       .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
-      .leftJoin('ipi.invoiceProduct', 'invoiceProduct')
-      .leftJoin('invoiceProduct.subproduct', 'subproduct')
-      .leftJoin('invoiceProduct.invoice', 'invoice')
-      .leftJoin('invoice.invoiceMode', 'invoiceMode')
+      .leftJoinAndSelect('ipi.invoiceProduct', 'invoiceProduct')
+      .leftJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
+      .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
+      .leftJoinAndSelect('invoice.invoiceMode', 'invoiceMode')
       .where('ipi.productionRollId = :productionRollId', { productionRollId })
       .andWhere('ipi.currentStatusId IN (:...currentStatuses)', {
         currentStatuses: [department, defective],
@@ -441,10 +447,7 @@ export class RollsReportProvider {
         statusIds: [department, defective],
       })
       .groupBy('DATE(ipiips.createdAt)')
-      .addGroupBy('ipi.invoiceProductId')
-      .addGroupBy('invoiceProduct.subproductId')
-      .addGroupBy('invoiceProduct.invoiceId')
-      .addGroupBy('invoice.invoiceModeId');
+      .addGroupBy('ipi.id');
 
     if (partially === 1) {
       invoiceModeDatesQuery.andWhere(
@@ -454,17 +457,278 @@ export class RollsReportProvider {
         }
       );
     }
-    const invoiceProductItems = await this.invoiceProductItemRepository.find({
-      where: { currentStatusId: In([department, defective]), productionRollId },
-    });
-    invoiceModeDatesQuery.addGroupBy('invoiceProduct.invoice.invoiceMode.id');
+
     const invoiceModeDates = await invoiceModeDatesQuery.getRawAndEntities();
+
+    // Type for raw invoice mode date results
+    interface InvoiceModeDateRaw {
+      current_status_date: string;
+      ipi_id: string;
+    }
+
+    // Process the collection data
+    const collection: {
+      customer: string[][];
+      depot: string[][];
+      depotDigikala: string[][];
+      defective: string[][];
+    } = {
+      customer: [],
+      depot: [],
+      depotDigikala: [],
+      defective: [],
+    };
+
+    let maxCount = 0;
+    let i = 0;
+
+    for (const invoiceModeDate of invoiceModeDates.raw as InvoiceModeDateRaw[]) {
+      const dateToExport = invoiceModeDate.current_status_date;
+
+      const depotItems = invoiceModes[depotModeStatus] || [];
+      const depotCanceledItems = invoiceModes[depotCancelledModeStatus] || [];
+      const customerItems = invoiceModes[customerModeStatus] || [];
+      const defectiveItems = invoiceModes[defectiveModeStatus] || [];
+
+      collection.customer[i] = await this.getCustomer(
+        customerItems,
+        dateToExport
+      );
+      collection.depot[i] = await this.getDepot(
+        depotItems,
+        depotCanceledItems,
+        dateToExport
+      );
+      collection.depotDigikala[i] = await this.getDepotDigikala(
+        depotItems,
+        dateToExport
+      );
+      collection.defective[i] = await this.getDefective(
+        defectiveItems,
+        dateToExport
+      );
+
+      maxCount = Math.max(
+        maxCount,
+        collection.customer[i].length,
+        collection.depot[i].length,
+        collection.defective[i].length,
+        collection.depotDigikala[i].length
+      );
+      i++;
+    }
+
+    // Export data processing
+    const dataToExport: (string | null)[][] = [];
+    let counter = 0;
+
+    while (counter <= maxCount) {
+      i = 0;
+      const arrayToPush: (string | null)[] = [];
+
+      for (
+        let j = 0;
+        j < (invoiceModeDates.raw as InvoiceModeDateRaw[]).length;
+        j++
+      ) {
+        const customer = collection.customer[i]?.[counter] || null;
+        const depot = collection.depot[i]?.[counter] || null;
+        const defective = collection.defective[i]?.[counter] || null;
+        const depotDigikala = collection.depotDigikala[i]?.[counter] || null;
+
+        arrayToPush.push(customer, depot, defective, depotDigikala);
+        i++;
+      }
+
+      dataToExport.push(arrayToPush);
+      counter++;
+    }
 
     return {
       productionRoll,
+      rollRefCode,
       invoiceModes,
-      invoiceModeDates,
+      invoiceModeDates: invoiceModeDates.raw,
+      collection,
+      dataToExport,
+      maxCount,
     };
+  }
+
+  // Helper methods implementation
+  private async getCustomer(
+    customerItems: InvoiceProductItem[],
+    dateToExport: string
+  ): Promise<string[]> {
+    const arr: string[] = [];
+
+    // Format date (you might need to install moment or use a date formatting library)
+    arr.push(`مشتری ${dateToExport}`);
+
+    interface StatusDateResult {
+      statusDate: string;
+    }
+
+    for (const invoiceProductItem of customerItems) {
+      // Get current status with pivot date
+      const currentStatus = (await this.invoiceProductItemRepository
+        .createQueryBuilder('ipi')
+        .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
+        .where('ipi.id = :itemId', { itemId: invoiceProductItem.id })
+        .andWhere('ipiips.invoiceProductStatusId = :statusId', {
+          statusId: invoiceProductItem.currentStatusId,
+        })
+        .select(['DATE(ipiips.createdAt) as statusDate'])
+        .getRawOne()) as StatusDateResult | null;
+
+      if (currentStatus && currentStatus.statusDate === dateToExport) {
+        const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
+        if (subProduct?.code) {
+          arr.push(subProduct.code);
+        }
+      }
+    }
+
+    return arr;
+  }
+
+  private async getDepot(
+    depotItems: InvoiceProductItem[],
+    depotCanceledItems: InvoiceProductItem[],
+    dateToExport: string
+  ): Promise<string[]> {
+    const arr: string[] = [];
+
+    arr.push(`دپو ${dateToExport}`);
+
+    interface StatusDateResult {
+      statusDate: string;
+    }
+
+    // Process depot items
+    for (const invoiceProductItem of depotItems) {
+      const invoice = invoiceProductItem.invoiceProduct?.invoice;
+
+      // Skip if for_digikala is true
+      if (!invoice?.forDigikala) {
+        const currentStatus = (await this.invoiceProductItemRepository
+          .createQueryBuilder('ipi')
+          .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
+          .where('ipi.id = :itemId', { itemId: invoiceProductItem.id })
+          .andWhere('ipiips.invoiceProductStatusId = :statusId', {
+            statusId: invoiceProductItem.currentStatusId,
+          })
+          .select(['DATE(ipiips.createdAt) as statusDate'])
+          .getRawOne()) as StatusDateResult | null;
+
+        if (currentStatus && currentStatus.statusDate === dateToExport) {
+          const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
+          if (subProduct?.code) {
+            arr.push(subProduct.code);
+          }
+        }
+      }
+    }
+
+    // Process depot canceled items
+    for (const invoiceProductItem of depotCanceledItems) {
+      const invoice = invoiceProductItem.invoiceProduct?.invoice;
+
+      // Skip if for_digikala is true
+      if (!invoice?.forDigikala) {
+        const currentStatus = (await this.invoiceProductItemRepository
+          .createQueryBuilder('ipi')
+          .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
+          .where('ipi.id = :itemId', { itemId: invoiceProductItem.id })
+          .andWhere('ipiips.invoiceProductStatusId = :statusId', {
+            statusId: invoiceProductItem.currentStatusId,
+          })
+          .select(['DATE(ipiips.createdAt) as statusDate'])
+          .getRawOne()) as StatusDateResult | null;
+
+        if (currentStatus && currentStatus.statusDate === dateToExport) {
+          const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
+          if (subProduct?.code) {
+            arr.push(subProduct.code);
+          }
+        }
+      }
+    }
+
+    return arr;
+  }
+
+  private async getDepotDigikala(
+    depotItems: InvoiceProductItem[],
+    dateToExport: string
+  ): Promise<string[]> {
+    const arr: string[] = [];
+
+    arr.push(`دپوی دیجی کالا ${dateToExport}`);
+
+    interface StatusDateResult {
+      statusDate: string;
+    }
+
+    for (const invoiceProductItem of depotItems) {
+      const invoice = invoiceProductItem.invoiceProduct?.invoice;
+
+      // Only process if for_digikala is true
+      if (invoice?.forDigikala) {
+        const currentStatus = (await this.invoiceProductItemRepository
+          .createQueryBuilder('ipi')
+          .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
+          .where('ipi.id = :itemId', { itemId: invoiceProductItem.id })
+          .andWhere('ipiips.invoiceProductStatusId = :statusId', {
+            statusId: invoiceProductItem.currentStatusId,
+          })
+          .select(['DATE(ipiips.createdAt) as statusDate'])
+          .getRawOne()) as StatusDateResult | null;
+
+        if (currentStatus && currentStatus.statusDate === dateToExport) {
+          const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
+          if (subProduct?.code) {
+            arr.push(subProduct.code);
+          }
+        }
+      }
+    }
+
+    return arr;
+  }
+
+  private async getDefective(
+    defectiveItems: InvoiceProductItem[],
+    dateToExport: string
+  ): Promise<string[]> {
+    const arr: string[] = [];
+
+    arr.push(`معیوب ${dateToExport}`);
+
+    interface StatusDateResult {
+      statusDate: string;
+    }
+
+    for (const invoiceProductItem of defectiveItems) {
+      const currentStatus = (await this.invoiceProductItemRepository
+        .createQueryBuilder('ipi')
+        .innerJoin('ipi.invoiceProductItemInvoiceProductStatuses', 'ipiips')
+        .where('ipi.id = :itemId', { itemId: invoiceProductItem.id })
+        .andWhere('ipiips.invoiceProductStatusId = :statusId', {
+          statusId: invoiceProductItem.currentStatusId,
+        })
+        .select(['DATE(ipiips.createdAt) as statusDate'])
+        .getRawOne()) as StatusDateResult | null;
+
+      if (currentStatus && currentStatus.statusDate === dateToExport) {
+        const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
+        if (subProduct?.code) {
+          arr.push(subProduct.code);
+        }
+      }
+    }
+
+    return arr;
   }
 
   async confirmSepidarPartiallyImportedFromExcel(productionRollId: number) {

@@ -1,5 +1,6 @@
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-print-profile.input';
+import { UpdatePrintProfileInput } from '@/modules/print-profile/dto/update-print-profile.input';
 import { PrintProfile } from '@/modules/print-profile/entities/print-profile.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -69,6 +70,66 @@ export class PrintProfileProvider {
     } catch (error) {
       return {
         message: `Error creating print profile ${error}`,
+        status: false,
+      };
+    }
+  }
+
+  async updatePrintProfile(updatePrintProfileInput: UpdatePrintProfileInput) {
+    const printProfile = await this.printProfileRepository.findOne({
+      where: { id: updatePrintProfileInput.id },
+    });
+    if (!printProfile) {
+      return {
+        message: 'پروفایل چاپ مورد نظر یافت نشد',
+        status: false,
+      };
+    }
+    Object.assign(printProfile, updatePrintProfileInput);
+    printProfile.updatedAt = new Date();
+    try {
+      await this.printProfileRepository.save(printProfile);
+
+      let comment = `پروفایل رنگ جدید با موفقیت آپدیت شد`;
+      if (printProfile.isActive) {
+        await this.printProfileRepository.update(
+          { isActive: 1, id: Not(printProfile.id) },
+          { isActive: 0 }
+        );
+        comment +=
+          ' و از این پس این ورژن برای چاپ محصولات به کار گرفته خواهد شد.';
+      }
+      return {
+        message: comment,
+        status: true,
+      };
+    } catch (error) {
+      return {
+        message: `Error updating print profile ${error}`,
+        status: false,
+      };
+    }
+  }
+
+  async deletePrintProfile(printProfileId: number) {
+    const printProfile = await this.printProfileRepository.findOne({
+      where: { id: printProfileId },
+    });
+    if (!printProfile) {
+      return {
+        message: 'پروفایل چاپ مورد نظر یافت نشد',
+        status: false,
+      };
+    }
+    try {
+      await this.printProfileRepository.remove(printProfile);
+      return {
+        message: 'پروفایل چاپ با موفقیت حذف شد',
+        status: true,
+      };
+    } catch (error) {
+      return {
+        message: `Error deleting print profile ${error}`,
         status: false,
       };
     }

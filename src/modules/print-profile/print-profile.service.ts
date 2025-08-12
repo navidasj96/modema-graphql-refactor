@@ -1,5 +1,6 @@
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-print-profile.input';
+import { UpdatePrintProfileInput } from '@/modules/print-profile/dto/update-print-profile.input';
 import { PrintProfile } from '@/modules/print-profile/entities/print-profile.entity';
 import { ChangeActivePrintProfileProvider } from '@/modules/print-profile/providers/change-active-print-profile.provider';
 import { PrintProfileProvider } from '@/modules/print-profile/providers/print-profile.provider';
@@ -51,5 +52,21 @@ export class PrintProfileService {
       createPrintProfileInput,
       context
     );
+  }
+
+  async printProfileById(printProfileId: number) {
+    return await this.printProfileRepository.findOne({
+      where: { id: printProfileId },
+    });
+  }
+
+  async updatePrintProfile(updatePrintProfileInput: UpdatePrintProfileInput) {
+    return this.printProfileProvider.updatePrintProfile(
+      updatePrintProfileInput
+    );
+  }
+
+  async deletePrintProfile(printProfileId: number) {
+    return this.printProfileProvider.deletePrintProfile(printProfileId);
   }
 }

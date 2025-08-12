@@ -2,6 +2,7 @@ import { UserContext } from '@/modules/auth/interfaces/UserContext';
 import { PrintProfile } from '@/modules/print-profile/domain/print-profile';
 import { PrintProfilePure } from '@/modules/print-profile/domain/print-profile.pure';
 import { CreatePrintProfileInput } from '@/modules/print-profile/dto/create-print-profile.input';
+import { UpdatePrintProfileInput } from '@/modules/print-profile/dto/update-print-profile.input';
 import { GeneralResponseDto } from '@/utils/general-response.dto';
 import { PermissionsGuard } from '@/utils/permission-guard/permission.guard';
 import { Permissions } from '@/utils/permission-guard/permissions.decorator';
@@ -47,5 +48,35 @@ export class PrintProfileResolver {
       createPrintProfileInput,
       context
     );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PrintProfilePermissions.PERMISSION_TO_VIEW])
+  @Query(() => PrintProfilePure, { nullable: true })
+  async printProfileById(
+    @Args('printProfileId', { type: () => Number }) printProfileId: number
+  ) {
+    return await this.printProfileService.printProfileById(printProfileId);
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PrintProfilePermissions.PERMISSION_TO_CHANGE])
+  @Mutation(() => GeneralResponseDto)
+  async updatePrintProfile(
+    @Args('updatePrintProfileInput', { type: () => UpdatePrintProfileInput })
+    updatePrintProfileInput: UpdatePrintProfileInput
+  ): Promise<GeneralResponseDto> {
+    return await this.printProfileService.updatePrintProfile(
+      updatePrintProfileInput
+    );
+  }
+
+  @UseGuards(PermissionsGuard)
+  @Permissions([PrintProfilePermissions.PERMISSION_TO_CHANGE])
+  @Mutation(() => GeneralResponseDto)
+  async deletePrintProfile(
+    @Args('printProfileId', { type: () => Number }) printProfileId: number
+  ) {
+    return await this.printProfileService.deletePrintProfile(printProfileId);
   }
 }
