@@ -117,6 +117,9 @@ export class UserPure {
   @Field()
   status: number;
 
+  @Field()
+  nestPanelLoggedIn: number;
+
   @Field({ nullable: true })
   username?: string;
 

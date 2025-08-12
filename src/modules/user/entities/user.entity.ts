@@ -1,15 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Activity } from '@/modules/activity/entities/activity.entity';
 import { Address } from '@/modules/address/entities/address.entity';
 import { AutomationEvent } from '@/modules/automation-event/entities/automation-event.entity';
 import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/entities/basic-carpet-designer.entity';
@@ -34,12 +23,16 @@ import { Discount } from '@/modules/discount/entities/discount.entity';
 import { ExitControl } from '@/modules/exit-control/entities/exit-control.entity';
 import { FavoriteProduct } from '@/modules/favorite-product/entities/favorite-product.entity';
 import { GoogleFormUtm } from '@/modules/google-form-utm/entities/google-form-utm.entity';
+import { HeardAboutUsOption } from '@/modules/heard-about-us-option/entities/heard-about-us-option.entity';
 import { HelpDesk } from '@/modules/help-desk/entities/help-desk.entity';
+import { Holiday } from '@/modules/holiday/entities/holiday.entity';
 import { ImpersonateHistory } from '@/modules/impersonate-history/entities/impersonate-history.entity';
 import { IncredibleOfferSentNotification } from '@/modules/incredible-offer-sent-notification/entities/incredible-offer-sent-notification.entity';
+import { InvitationCode } from '@/modules/invitation-code/entities/invitation-code.entity';
 import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-address.entity';
 import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
 import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/entities/invoice-invoice-status.entity';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
 import { InvoicePayment } from '@/modules/invoice-payment/entities/invoice-payment.entity';
 import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/entities/invoice-product-item-invoice-product-status.entity';
 import { InvoiceReversal } from '@/modules/invoice-reversal/entities/invoice-reversal.entity';
@@ -49,6 +42,7 @@ import { NeedsPhotographySubproduct } from '@/modules/needs-photography-subprodu
 import { NegotiationHistory } from '@/modules/negotiation-history/entities/negotiation-history.entity';
 import { NegotiationStep } from '@/modules/negotiation-step/entities/negotiation-step.entity';
 import { Negotiation } from '@/modules/negotiation/entities/negotiation.entity';
+import { PaymentRequest } from '@/modules/payment-request/entities/payment-request.entity';
 import { PreorderPreorderStatus } from '@/modules/preorder-preorder-status/entities/preorder-preorder-status.entity';
 import { PreorderRegister } from '@/modules/preorder-register/entities/preorder-register.entity';
 import { Preorder } from '@/modules/preorder/entities/preorder.entity';
@@ -59,6 +53,7 @@ import { ProductComment } from '@/modules/product-comment/entities/product-comme
 import { ProductLike } from '@/modules/product-like/entities/product-like.entity';
 import { ProductRate } from '@/modules/product-rate/entities/product-rate.entity';
 import { ProductionPadProductionPadStatus } from '@/modules/production-pad-production-pad-status/entities/production-pad-production-pad-status.entity';
+import { ProductionPadRoll } from '@/modules/production-pad-roll/entities/production-pad-roll.entity';
 import { ProductionRoll } from '@/modules/production-roll/entities/production-roll.entity';
 import { RetargetingWalletCharge } from '@/modules/retargeting-wallet-charge/entities/retargeting-wallet-charge.entity';
 import { ReturnItemStatusReturnRequestItem } from '@/modules/return-item-status-return-request-item/entities/return-item-status-return-request-item.entity';
@@ -74,9 +69,9 @@ import { SocialGoogleAccount } from '@/modules/social-google-account/entities/so
 import { SubproductStockHistory } from '@/modules/subproduct-stock-history/entities/subproduct-stock-history.entity';
 import { Transaction } from '@/modules/transaction/entities/transaction.entity';
 import { UserCart } from '@/modules/user-cart/entities/user-cart.entity';
+import { UserHasPermission } from '@/modules/user-has-permission/entities/user-has-role.entity';
+import { UserHasRole } from '@/modules/user-has-role/entities/user-has-role.entity';
 import { UserUtm } from '@/modules/user-utm/entities/user-utm.entity';
-import { HeardAboutUsOption } from '@/modules/heard-about-us-option/entities/heard-about-us-option.entity';
-import { InvitationCode } from '@/modules/invitation-code/entities/invitation-code.entity';
 import { UtmGoogleFormCoupon } from '@/modules/utm-google-form-coupon/entities/utm-google-form-coupon.entity';
 import { VerifyUser } from '@/modules/verify-user/entities/verify-user.entity';
 import { Visitor } from '@/modules/visitor/entities/visitor.entity';
@@ -84,13 +79,18 @@ import { WalletGiftCharge } from '@/modules/wallet-gift-charge/entities/wallet-g
 import { WalletHistory } from '@/modules/wallet-history/entities/wallet-history.entity';
 import { Wallet } from '@/modules/wallet/entities/wallet.entity';
 import { WithdrawalRequest } from '@/modules/withdrawal-request/entities/withdrawal-request.entity';
-import { PaymentRequest } from '@/modules/payment-request/entities/payment-request.entity';
-import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
-import { Holiday } from '@/modules/holiday/entities/holiday.entity';
-import { Activity } from '@/modules/activity/entities/activity.entity';
-import { UserHasRole } from '@/modules/user-has-role/entities/user-has-role.entity';
-import { UserHasPermission } from '@/modules/user-has-permission/entities/user-has-role.entity';
-import { ProductionPadRoll } from '@/modules/production-pad-roll/entities/production-pad-roll.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Index(
   'campaign_finding_coupon_winner_place',
@@ -164,6 +164,13 @@ export class User {
     length: 60,
   })
   apiToken?: string;
+
+  @Column('int', {
+    name: 'nest_panel_logged_in',
+    default: 0,
+    unsigned: true,
+  })
+  nestPanelLoggedIn: number;
 
   @Column('varchar', { name: 'code', nullable: true, length: 191 })
   code?: string;

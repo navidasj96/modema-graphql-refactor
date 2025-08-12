@@ -1,13 +1,4 @@
-import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import {
-  FilterableField,
-  FilterableRelation,
-  FilterableUnPagedRelation,
-  IDField,
-  PagingStrategies,
-  QueryOptions,
-  UnPagedRelation,
-} from '@ptc-org/nestjs-query-graphql';
+import { Activity } from '@/modules/activity/domain/activity';
 import { Address } from '@/modules/address/domain/address';
 import { AutomationEvent } from '@/modules/automation-event/domain/automation-event';
 import { BasicCarpetDesigner } from '@/modules/basic-carpet-designer/domain/basic-carpet-designer';
@@ -32,12 +23,16 @@ import { Discount } from '@/modules/discount/domain/discount';
 import { ExitControl } from '@/modules/exit-control/domain/exit-control';
 import { FavoriteProduct } from '@/modules/favorite-product/domain/favorite-product';
 import { GoogleFormUtm } from '@/modules/google-form-utm/domain/google-form-utm';
+import { HeardAboutUsOption } from '@/modules/heard-about-us-option/domain/heard-about-us-option';
 import { HelpDesk } from '@/modules/help-desk/domain/help-desk';
+import { Holiday } from '@/modules/holiday/domain/holiday';
 import { ImpersonateHistory } from '@/modules/impersonate-history/domain/impersonate-history';
 import { IncredibleOfferSentNotification } from '@/modules/incredible-offer-sent-notification/domain/incredible-offer-sent-notification';
+import { InvitationCode } from '@/modules/invitation-code/domain/invitation-code';
 import { InvoiceAddress } from '@/modules/invoice-address/domain/invoice-address';
 import { InvoiceHistory } from '@/modules/invoice-history/domain/invoice-history';
 import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/domain/invoice-invoice-status';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
 import { InvoicePayment } from '@/modules/invoice-payment/domain/invoice-payment';
 import { InvoiceProductItemInvoiceProductStatus } from '@/modules/invoice-product-item-invoice-product-status/domain/invoice-product-item-invoice-product-status';
 import { InvoiceReversal } from '@/modules/invoice-reversal/domain/invoice-reversal';
@@ -47,6 +42,7 @@ import { NeedsPhotographySubproduct } from '@/modules/needs-photography-subprodu
 import { NegotiationHistory } from '@/modules/negotiation-history/domain/negotiation-history';
 import { NegotiationStep } from '@/modules/negotiation-step/domain/negotiation-step';
 import { Negotiation } from '@/modules/negotiation/domain/negotiation';
+import { PaymentRequest } from '@/modules/payment-request/domain/payment-request';
 import { PreorderPreorderStatus } from '@/modules/preorder-preorder-status/domain/preorder-preorder-status';
 import { PreorderRegister } from '@/modules/preorder-register/domain/preorder-register';
 import { Preorder } from '@/modules/preorder/domain/preorder';
@@ -72,9 +68,9 @@ import { SocialGoogleAccount } from '@/modules/social-google-account/domain/soci
 import { SubproductStockHistory } from '@/modules/subproduct-stock-history/domain/subproduct-stock-history';
 import { Transaction } from '@/modules/transaction/domain/transaction';
 import { UserCart } from '@/modules/user-cart/domain/user-cart';
+import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has-role';
+import { UserHasRole } from '@/modules/user-has-role/domain/user-has-role';
 import { UserUtm } from '@/modules/user-utm/domain/user-utm';
-import { HeardAboutUsOption } from '@/modules/heard-about-us-option/domain/heard-about-us-option';
-import { InvitationCode } from '@/modules/invitation-code/domain/invitation-code';
 import { UtmGoogleFormCoupon } from '@/modules/utm-google-form-coupon/domain/utm-google-form-coupon';
 import { VerifyUser } from '@/modules/verify-user/domain/verify-user';
 import { Visitor } from '@/modules/visitor/domain/visitor';
@@ -82,12 +78,16 @@ import { WalletGiftCharge } from '@/modules/wallet-gift-charge/domain/wallet-gif
 import { WalletHistory } from '@/modules/wallet-history/domain/wallet-history';
 import { Wallet } from '@/modules/wallet/domain/wallet';
 import { WithdrawalRequest } from '@/modules/withdrawal-request/domain/withdrawal-request';
-import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/domain/invoice-payment-history';
-import { Holiday } from '@/modules/holiday/domain/holiday';
-import { PaymentRequest } from '@/modules/payment-request/domain/payment-request';
-import { Activity } from '@/modules/activity/domain/activity';
-import { UserHasRole } from '@/modules/user-has-role/domain/user-has-role';
-import { UserHasPermission } from '@/modules/user-has-permission/domain/user-has-role';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import {
+  FilterableField,
+  FilterableRelation,
+  FilterableUnPagedRelation,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+  UnPagedRelation,
+} from '@ptc-org/nestjs-query-graphql';
 
 @InputType('UserDomain')
 @QueryOptions({
@@ -147,6 +147,9 @@ export class User {
 
   @Field({ nullable: true })
   email?: string;
+
+  @Field()
+  nestPanelLoggedIn: number;
 
   @Field({ nullable: true })
   loginEmail?: string;

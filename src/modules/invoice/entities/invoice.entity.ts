@@ -10,6 +10,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Address } from '@/modules/address/entities/address.entity';
+import { ChaparSettlementStatus } from '@/modules/chapar-settlement-status/entities/chapar-settlement-status.entity';
 import { ChaparTrackingHistory } from '@/modules/chapar-tracking-history/entities/chapar-tracking-history.entity';
 import { Coupon } from '@/modules/coupon/entities/coupon.entity';
 import { InvoiceAddressValidationResult } from '@/modules/invoice-address-validation-result/entities/invoice-address-validation-result.entity';
@@ -17,29 +19,27 @@ import { InvoiceAddress } from '@/modules/invoice-address/entities/invoice-addre
 import { InvoiceBankGatewayHistory } from '@/modules/invoice-bank-gateway-history/entities/invoice-bank-gateway-history.entity';
 import { InvoiceHistory } from '@/modules/invoice-history/entities/invoice-history.entity';
 import { InvoiceInvoiceStatus } from '@/modules/invoice-invoice-status/entities/invoice-invoice-status.entity';
+import { InvoiceMode } from '@/modules/invoice-mode/entities/invoice-mode.entity';
 import { InvoiceNegotiation } from '@/modules/invoice-negotiation/entities/invoice-negotiation.entity';
+import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
+import { InvoicePaymentStatus } from '@/modules/invoice-payment-status/entities/invoice-payment-status.entity';
 import { InvoicePayment } from '@/modules/invoice-payment/entities/invoice-payment.entity';
+import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 import { InvoiceProduct } from '@/modules/invoice-product/entities/invoice-product.entity';
 import { InvoiceRatesResult } from '@/modules/invoice-rates-result/entities/invoice-rates-result.entity';
 import { InvoiceReversal } from '@/modules/invoice-reversal/entities/invoice-reversal.entity';
 import { InvoiceShippingRate } from '@/modules/invoice-shipping-rate/entities/invoice-shipping-rate.entity';
-import { Address } from '@/modules/address/entities/address.entity';
-import { ChaparSettlementStatus } from '@/modules/chapar-settlement-status/entities/chapar-settlement-status.entity';
 import { InvoiceStatus } from '@/modules/invoice-status/entities/invoice-status.entity';
-import { InvoiceMode } from '@/modules/invoice-mode/entities/invoice-mode.entity';
-import { InvoicePaymentStatus } from '@/modules/invoice-payment-status/entities/invoice-payment-status.entity';
 import { InvoiceType } from '@/modules/invoice-type/entities/invoice-type.entity';
-import { User } from '@/modules/user/entities/user.entity';
-import { VisitorCoupon } from '@/modules/visitor-coupon/entities/visitor-coupon.entity';
-import { VisitorGroup } from '@/modules/visitor-group/entities/visitor-group.entity';
-import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 import { PaymentMethodField } from '@/modules/payment-method-field/entities/payment-method-field.entity';
 import { ReturnRequestHistory } from '@/modules/return-request-history/entities/return-request-history.entity';
 import { ReturnRequest } from '@/modules/return-request/entities/return-request.entity';
 import { ReturnedInvoice } from '@/modules/returned-invoice/entities/returned-invoice.entity';
-import { InvoicePaymentHistory } from '@/modules/invoice-payment-history/entities/invoice-payment-history.entity';
-import { InvoiceProductHistory } from '@/modules/invoice-product-history/entities/invoice-product-history.entity';
 import { ShippingService } from '@/modules/shipping-service/entities/shipping-service.entity';
+import { User } from '@/modules/user/entities/user.entity';
+import { VisitorCoupon } from '@/modules/visitor-coupon/entities/visitor-coupon.entity';
+import { VisitorGroup } from '@/modules/visitor-group/entities/visitor-group.entity';
+import { Visitor } from '@/modules/visitor/entities/visitor.entity';
 
 @Index('invoice_number', ['invoiceNumber'], { unique: true })
 @Index('invoices_address_id_index', ['addressId'], {})
