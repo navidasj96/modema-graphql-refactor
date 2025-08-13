@@ -321,7 +321,7 @@ const ENV = process.env.NODE_ENV;
         host: configService.get('database.host'),
         port: +configService.get('database.port'),
         username: configService.get('database.user'),
-        password: '',
+        password: configService.get('database.password'),
         database: configService.get('database.name'),
         autoLoadEntities: true,
         synchronize: false,
