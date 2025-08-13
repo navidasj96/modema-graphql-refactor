@@ -1,11 +1,11 @@
+import { HashingProvider } from '@/modules/auth/providers/hashing.provider';
+import { UserService } from '@/modules/user/user.service';
 import {
   forwardRef,
   Inject,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { HashingProvider } from '@/modules/auth/providers/hashing.provider';
-import { UserService } from '@/modules/user/user.service';
 
 @Injectable()
 export class SignInOtpGeneratorService {
@@ -21,7 +21,7 @@ export class SignInOtpGeneratorService {
     private readonly hashingProvider: HashingProvider
   ) {}
 
-  async otpGeneratorAndSetter(username: string) {
+  async otpGeneratorAndSetter(username: string, password?: string) {
     const user = await this.userService.findUserByUsername(username);
 
     if (!user) {
@@ -31,9 +31,14 @@ export class SignInOtpGeneratorService {
     const otp = '12345';
 
     //hash the created otp
-    const hashedOtp = await this.hashingProvider.hashPassword(otp);
+    const hashedOtp = await this.hashingProvider.hashPassword(
+      password ? password : otp
+    );
 
     //if otp generated successfully we set the bcrypted otp as the user password
-    return await this.userService.updateUsersPassword(user, hashedOtp);
+    return await this.userService.update({
+      id: user.id,
+      password: hashedOtp,
+    });
   }
 }

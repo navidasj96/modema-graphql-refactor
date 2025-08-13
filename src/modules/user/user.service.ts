@@ -1,3 +1,12 @@
+import { ActivityService } from '@/modules/activity/activity.service';
+import { PermissionService } from '@/modules/permission/permission.service';
+import { RoleService } from '@/modules/role/role.service';
+import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
+import { User } from '@/modules/user/entities/user.entity';
+import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
+import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
+import { UserRolesAndPermissionByIdProvider } from '@/modules/user/providers/user-roles-and-permission-by-id.provider';
+import { UserTransactionListProvider } from '@/modules/user/providers/user-transaction-list.provider';
 import {
   BadRequestException,
   forwardRef,
@@ -6,19 +15,10 @@ import {
   RequestTimeoutException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import { ActivityService } from '@/modules/activity/activity.service';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@/modules/user/entities/user.entity';
-import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
-import { PermissionService } from '@/modules/permission/permission.service';
-import { RoleService } from '@/modules/role/role.service';
-import { CreateUserProvider } from '@/modules/user/providers/create-user.provider';
-import { UpdateUserProvider } from '@/modules/user/providers/update-user.provider';
-import { CreateUserDto } from '@/modules/user/dto/create-user.dto';
-import { UserTransactionListProvider } from '@/modules/user/providers/user-transaction-list.provider';
-import { UserRolesAndPermissionByIdProvider } from '@/modules/user/providers/user-roles-and-permission-by-id.provider';
 
 @Injectable()
 export class UserService {
@@ -68,8 +68,11 @@ export class UserService {
     return await this.userRepository.findOne(options);
   }
 
-  update(id: number, updateUserInput: UpdateUserInput) {
-    return `This action updates a #${id} user`;
+  async update(updateUserInput: UpdateUserInput) {
+    return await this.userRepository.update(
+      updateUserInput.id,
+      updateUserInput
+    );
   }
 
   remove(id: number) {
@@ -84,7 +87,7 @@ export class UserService {
     let user: User | null = null;
     try {
       user = await this.userRepository.findOne({
-        where: { phone: username },
+        where: [{ phone: username }, { username: username }],
       });
     } catch (error) {
       throw new RequestTimeoutException(error, {
@@ -99,7 +102,15 @@ export class UserService {
 
   async updateUsersPassword(user: User, password: string) {
     try {
-      await this.userRepository.update(user.id, { password: password });
+      const updateResult = await this.userRepository.update(user.id, {
+        password: password,
+      });
+      console.log('updateResult', updateResult);
+
+      // Check if the update was successful
+      if (updateResult.affected === 0) {
+        throw new BadRequestException('User not found or password not updated');
+      }
     } catch (err) {
       throw new RequestTimeoutException(
         'unable to process your request at the moment',

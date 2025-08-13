@@ -11,7 +11,7 @@ import {
 @Injectable()
 export class CheckPasswordWithPhpApi {
   private readonly logger = new Logger(CheckPasswordWithPhpApi.name);
-  private readonly apiUrl = 'https://panel.modema.com/api/v1/panel-login';
+  private readonly apiUrl = 'https://panel.modema.com/api/panel-login';
 
   constructor(private readonly httpService: HttpService) {}
 

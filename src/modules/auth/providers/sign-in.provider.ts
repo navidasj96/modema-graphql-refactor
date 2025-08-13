@@ -1,6 +1,7 @@
 import jwtConfig from '@/modules/auth/config/jwt.config';
 import { TokensName } from '@/modules/auth/enums/tokens-name.enum';
 import { SingInReturnInterface } from '@/modules/auth/interfaces/sing-in-return.interface';
+import { SignInOtpGeneratorService } from '@/modules/auth/providers/sign-in-otp-generator.service';
 import { ExternalApiService } from '@/modules/external-api/external-api.service';
 import { UserService } from '@/modules/user/user.service';
 import {
@@ -41,48 +42,65 @@ export class SignInProvider {
     /**
      * inject externalApiService
      */
-    private readonly externalApiService: ExternalApiService
+    private readonly externalApiService: ExternalApiService,
+    /**
+     * inject signInOtpGeneratorService
+     */
+    private readonly signInOtpGeneratorService: SignInOtpGeneratorService
   ) {}
 
   public async signIn(
     signInDto: SignInDto,
     res: Response
   ): Promise<SingInReturnInterface> {
-    const apiRes = await this.externalApiService.checkPasswordWithPhp({
-      username: signInDto.username,
-      password: signInDto.password,
-    });
-    console.log('apiRes', apiRes);
     //find user by email
-    let user = await this.usersService.findUserByUsername(signInDto.username);
-
+    const user = await this.usersService.findUserByUsername(signInDto.username);
     //compare passwords
+
     let isEqual: boolean = false;
     try {
-      isEqual = await this.hashingProvider.comparePassword(
-        signInDto.password,
-        user.password ?? ''
-      );
+      if (user.nestPanelLoggedIn == 1) {
+        isEqual = await this.hashingProvider.comparePassword(
+          signInDto.password,
+          user.password ?? ''
+        );
+      } else {
+        const apiRes = await this.externalApiService.checkPasswordWithPhp({
+          username: signInDto.username,
+          password: signInDto.password,
+        });
+        if (apiRes.success) {
+          const setUserPasswordFromPhpPanel =
+            await this.signInOtpGeneratorService.otpGeneratorAndSetter(
+              signInDto.username,
+              signInDto.password
+            );
+
+          if (setUserPasswordFromPhpPanel) {
+            const changedPasswordUser =
+              await this.usersService.findUserByUsername(signInDto.username);
+            const updatedUser = await this.usersService.update({
+              id: changedPasswordUser.id,
+              nestPanelLoggedIn: 1,
+            });
+
+            if (updatedUser) {
+              isEqual = true; // Password is set, so we consider it equal
+            }
+          }
+        }
+      }
     } catch (error) {
       throw new RequestTimeoutException(error, {
         description: 'Error comparing password',
       });
     }
     if (!isEqual) {
-      throw new UnauthorizedException('Incorrect password');
+      throw new UnauthorizedException('Credentials are not valid');
     }
 
     const { refreshToken, accessToken } =
       await this.generateTokenProvider.generateTokens(user);
-
-    // console.log(
-    //   'this.jwtConfiguration.accessTokenTtl',
-    //   this.jwtConfiguration.accessTokenTtl
-    // );
-    // console.log(
-    //   'this.jwtConfiguration.refreshTokenTtl',
-    //   this.jwtConfiguration.refreshTokenTtl
-    // );
 
     res.cookie(TokensName.access_token, accessToken, {
       httpOnly: true,

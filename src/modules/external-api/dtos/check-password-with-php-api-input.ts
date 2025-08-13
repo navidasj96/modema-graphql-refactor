@@ -8,4 +8,5 @@ export class CheckPasswordWithPhpApiResponse {
   message?: string;
   data?: any;
   statusCode?: number;
+  status?: boolean;
 }

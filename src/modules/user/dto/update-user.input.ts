@@ -37,4 +37,7 @@ export class UpdateUserInput {
 
   @Field({ nullable: true })
   isPreorderApplicant?: boolean;
+
+  @Field()
+  nestPanelLoggedIn?: number;
 }

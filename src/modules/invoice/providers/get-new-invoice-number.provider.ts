@@ -1,8 +1,8 @@
 import { Invoice } from '@/modules/invoice/entities/invoice.entity';
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import * as moment from 'moment-jalaali';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as moment from 'moment-jalaali';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class GetNewInvoiceNumberProvider {
@@ -25,8 +25,6 @@ export class GetNewInvoiceNumberProvider {
       )
       .where('invoice.id <> :invoiceId', { invoiceId })
       .getRawOne()) as { invoice_number: string };
-
-    console.log('maxInvoice');
 
     let maxInvoiceNumber = 0;
     if (maxInvoice) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import databaseConfig from '@/configuration/database.config';
 import generalConfig from '@/configuration/general-config';
 import { ImageLayerModule } from '@/modules/image-layer/image-layer.module';
@@ -320,7 +321,7 @@ const ENV = process.env.NODE_ENV;
         host: configService.get('database.host'),
         port: +configService.get('database.port'),
         username: configService.get('database.user'),
-        password: configService.get('database.password'),
+        password: '',
         database: configService.get('database.name'),
         autoLoadEntities: true,
         synchronize: false,

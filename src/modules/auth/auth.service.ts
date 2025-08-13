@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { SignInOtpGeneratorService } from '@/modules/auth/providers/sign-in-otp-generator.service';
-import { UserService } from '@/modules/user/user.service';
-import { SignInProvider } from '@/modules/auth/providers/sign-in.provider';
-import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.provider';
-import { SignInDto } from '@/modules/auth/dtos/sigin.dto';
 import { RefreshTokenDto } from '@/modules/auth/dtos/refresh-token.dto';
-import { Response } from 'express';
-import { UserPermissionCheckProvider } from '@/modules/auth/providers/user-permission-check.provider';
+import { SignInDto } from '@/modules/auth/dtos/sigin.dto';
 import { UserContext } from '@/modules/auth/interfaces/UserContext';
+import { RefreshTokensProvider } from '@/modules/auth/providers/refresh-tokens.provider';
+import { SignInOtpGeneratorService } from '@/modules/auth/providers/sign-in-otp-generator.service';
+import { SignInProvider } from '@/modules/auth/providers/sign-in.provider';
+import { UserPermissionCheckProvider } from '@/modules/auth/providers/user-permission-check.provider';
+import { UserService } from '@/modules/user/user.service';
+import { Injectable } from '@nestjs/common';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
