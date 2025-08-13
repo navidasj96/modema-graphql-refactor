@@ -18,6 +18,7 @@ import { PrintItemTagListInput } from '@/modules/invoice-product-item/dto/print-
 import { RollsReportDetailData } from '@/modules/invoice-product-item/dto/rolls-report-detail.dto';
 import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-report-list.input';
 import { RollsReportListOutput } from '@/modules/invoice-product-item/dto/rolls-report-list.output';
+import { RollsReportSepidarExportInfoOutput } from '@/modules/invoice-product-item/dto/rolls-report-sepidar-export-info.output';
 import { SearchInvoiceProductItemForReplacementListInput } from '@/modules/invoice-product-item/dto/search-invoice-product-item-for-replacement-list.input';
 import { SubmitInvoiceProductDamageInput } from '@/modules/invoice-product-item/dto/submit-invoice-product-damage.input';
 import { UpdateInvoiceProductItemPrintToHeatInput } from '@/modules/invoice-product-item/dto/update-invoice-product-item-print-to-heat.input';
@@ -349,7 +350,7 @@ export class InvoiceProductItemResolver {
 
   @UseGuards(PermissionsGuard)
   @Permissions([PERMISSION_TO_VIEW_ROLLS_REPORT])
-  @Query(() => [InvoiceProductItemPure])
+  @Query(() => RollsReportSepidarExportInfoOutput)
   async sepidarExportInfo(
     @Args('productionRollId', { type: () => Number })
     productionRollId: number,

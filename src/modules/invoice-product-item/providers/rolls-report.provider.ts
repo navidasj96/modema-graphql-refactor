@@ -4,6 +4,7 @@ import {
   RollsReportDetailItemTs,
 } from '@/modules/invoice-product-item/dto/rolls-report-detail.dto';
 import { RollsReportListInput } from '@/modules/invoice-product-item/dto/rolls-report-list.input';
+import { RollsReportSepidarExportInfoOutput } from '@/modules/invoice-product-item/dto/rolls-report-sepidar-export-info.output';
 import { InvoiceProductItem } from '@/modules/invoice-product-item/entities/invoice-product-item.entity';
 import { RollsReportDetailInput } from '@/modules/invoice-product-item/providers/rolls-report-detail.input';
 import { ProductionRollService } from '@/modules/production-roll/production-roll.service';
@@ -14,6 +15,9 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GraphQLError } from 'graphql';
 import { Brackets, DataSource, In, Repository } from 'typeorm';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
+const moment = require('moment-jalaali');
 
 @Injectable()
 export class RollsReportProvider {
@@ -374,7 +378,10 @@ export class RollsReportProvider {
     return { data: mappedData };
   }
 
-  async sepidarExportInfo(productionRollId: number, partially = 0) {
+  async sepidarExportInfo(
+    productionRollId: number,
+    partially = 0
+  ): Promise<RollsReportSepidarExportInfoOutput> {
     const productionRoll = await this.productionRollService.findOne({
       where: { id: productionRollId },
     });
@@ -404,7 +411,14 @@ export class RollsReportProvider {
       .leftJoinAndSelect('invoiceProduct.subproduct', 'subproduct')
       .leftJoinAndSelect('invoiceProduct.invoice', 'invoice')
       .leftJoinAndSelect('invoice.invoiceMode', 'invoiceMode')
-      .leftJoinAndSelect('ipi.invoiceProductStatuses', 'invoiceProductStatuses')
+      .leftJoinAndSelect(
+        'ipi.invoiceProductItemInvoiceProductStatuses',
+        'invoiceProductItemInvoiceProductStatuses'
+      )
+      .leftJoinAndSelect(
+        'invoiceProductItemInvoiceProductStatuses.invoiceProductStatus',
+        'invoiceProductStatus'
+      )
       .where('ipi.productionRollId = :productionRollId', { productionRollId })
       .andWhere('ipi.currentStatusId IN (:...statuses)', {
         statuses: [department, defective],
@@ -518,25 +532,25 @@ export class RollsReportProvider {
       i++;
     }
 
-    // Export data processing
+    // Export data processing - Final version
     const dataToExport: (string | null)[][] = [];
     let counter = 0;
 
-    while (counter <= maxCount) {
-      i = 0;
+    while (counter < maxCount) {
       const arrayToPush: (string | null)[] = [];
+      i = 0;
 
-      for (
-        let j = 0;
-        j < (invoiceModeDates.raw as InvoiceModeDateRaw[]).length;
-        j++
-      ) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      for (const _ of invoiceModeDates.raw as InvoiceModeDateRaw[]) {
         const customer = collection.customer[i]?.[counter] || null;
         const depot = collection.depot[i]?.[counter] || null;
         const defective = collection.defective[i]?.[counter] || null;
         const depotDigikala = collection.depotDigikala[i]?.[counter] || null;
 
-        arrayToPush.push(customer, depot, defective, depotDigikala);
+        arrayToPush.push(customer);
+        arrayToPush.push(depot);
+        arrayToPush.push(defective);
+        arrayToPush.push(depotDigikala);
         i++;
       }
 
@@ -545,14 +559,24 @@ export class RollsReportProvider {
     }
 
     return {
-      productionRoll,
-      rollRefCode,
-      invoiceModes,
-      invoiceModeDates: invoiceModeDates.raw,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
       collection,
-      dataToExport,
-      maxCount,
     };
+  }
+
+  // Helper method to format date in Jalali format
+  private formatJalaliDate(date: string): string {
+    try {
+      // Convert Gregorian date to Jalali
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      const jalaliDate = moment(date).format('jYYYY/jMM/jDD');
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return jalaliDate;
+    } catch {
+      // Fallback to original date if conversion fails
+      return date;
+    }
   }
 
   // Helper methods implementation
@@ -562,8 +586,9 @@ export class RollsReportProvider {
   ): Promise<string[]> {
     const arr: string[] = [];
 
-    // Format date (you might need to install moment or use a date formatting library)
-    arr.push(`مشتری ${dateToExport}`);
+    // Format date in Jalali format
+    const jalaliDate = this.formatJalaliDate(dateToExport);
+    arr.push(`مشتری ${jalaliDate}`);
 
     interface StatusDateResult {
       statusDate: string;
@@ -581,7 +606,13 @@ export class RollsReportProvider {
         .select(['DATE(ipiips.createdAt) as statusDate'])
         .getRawOne()) as StatusDateResult | null;
 
-      if (currentStatus && currentStatus.statusDate === dateToExport) {
+      // Convert both dates to YYYY-MM-DD format for comparison
+      const currentStatusDate = currentStatus?.statusDate
+        ? new Date(currentStatus.statusDate).toISOString().split('T')[0]
+        : null;
+      const exportDate = new Date(dateToExport).toISOString().split('T')[0];
+
+      if (currentStatus && currentStatusDate === exportDate) {
         const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
         if (subProduct?.code) {
           arr.push(subProduct.code);
@@ -599,7 +630,9 @@ export class RollsReportProvider {
   ): Promise<string[]> {
     const arr: string[] = [];
 
-    arr.push(`دپو ${dateToExport}`);
+    // Format date in Jalali format
+    const jalaliDate = this.formatJalaliDate(dateToExport);
+    arr.push(`دپو ${jalaliDate}`);
 
     interface StatusDateResult {
       statusDate: string;
@@ -621,7 +654,13 @@ export class RollsReportProvider {
           .select(['DATE(ipiips.createdAt) as statusDate'])
           .getRawOne()) as StatusDateResult | null;
 
-        if (currentStatus && currentStatus.statusDate === dateToExport) {
+        // Convert both dates to YYYY-MM-DD format for comparison
+        const currentStatusDate = currentStatus?.statusDate
+          ? new Date(currentStatus.statusDate).toISOString().split('T')[0]
+          : null;
+        const exportDate = new Date(dateToExport).toISOString().split('T')[0];
+
+        if (currentStatus && currentStatusDate === exportDate) {
           const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
           if (subProduct?.code) {
             arr.push(subProduct.code);
@@ -646,7 +685,13 @@ export class RollsReportProvider {
           .select(['DATE(ipiips.createdAt) as statusDate'])
           .getRawOne()) as StatusDateResult | null;
 
-        if (currentStatus && currentStatus.statusDate === dateToExport) {
+        // Convert both dates to YYYY-MM-DD format for comparison
+        const currentStatusDate = currentStatus?.statusDate
+          ? new Date(currentStatus.statusDate).toISOString().split('T')[0]
+          : null;
+        const exportDate = new Date(dateToExport).toISOString().split('T')[0];
+
+        if (currentStatus && currentStatusDate === exportDate) {
           const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
           if (subProduct?.code) {
             arr.push(subProduct.code);
@@ -664,7 +709,9 @@ export class RollsReportProvider {
   ): Promise<string[]> {
     const arr: string[] = [];
 
-    arr.push(`دپوی دیجی کالا ${dateToExport}`);
+    // Format date in Jalali format
+    const jalaliDate = this.formatJalaliDate(dateToExport);
+    arr.push(`دپوی دیجی کالا ${jalaliDate}`);
 
     interface StatusDateResult {
       statusDate: string;
@@ -685,7 +732,13 @@ export class RollsReportProvider {
           .select(['DATE(ipiips.createdAt) as statusDate'])
           .getRawOne()) as StatusDateResult | null;
 
-        if (currentStatus && currentStatus.statusDate === dateToExport) {
+        // Convert both dates to YYYY-MM-DD format for comparison
+        const currentStatusDate = currentStatus?.statusDate
+          ? new Date(currentStatus.statusDate).toISOString().split('T')[0]
+          : null;
+        const exportDate = new Date(dateToExport).toISOString().split('T')[0];
+
+        if (currentStatus && currentStatusDate === exportDate) {
           const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
           if (subProduct?.code) {
             arr.push(subProduct.code);
@@ -703,7 +756,9 @@ export class RollsReportProvider {
   ): Promise<string[]> {
     const arr: string[] = [];
 
-    arr.push(`معیوب ${dateToExport}`);
+    // Format date in Jalali format
+    const jalaliDate = this.formatJalaliDate(dateToExport);
+    arr.push(`معیوب ${jalaliDate}`);
 
     interface StatusDateResult {
       statusDate: string;
@@ -720,7 +775,13 @@ export class RollsReportProvider {
         .select(['DATE(ipiips.createdAt) as statusDate'])
         .getRawOne()) as StatusDateResult | null;
 
-      if (currentStatus && currentStatus.statusDate === dateToExport) {
+      // Convert both dates to YYYY-MM-DD format for comparison
+      const currentStatusDate = currentStatus?.statusDate
+        ? new Date(currentStatus.statusDate).toISOString().split('T')[0]
+        : null;
+      const exportDate = new Date(dateToExport).toISOString().split('T')[0];
+
+      if (currentStatus && currentStatusDate === exportDate) {
         const subProduct = invoiceProductItem.invoiceProduct?.subproduct;
         if (subProduct?.code) {
           arr.push(subProduct.code);
